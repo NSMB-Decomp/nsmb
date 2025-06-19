@@ -1,3 +1,7 @@
+// Overlay loading
+LoadedOverlays kind:bss addr:0x02085d0c
+
+
 data_02085880 kind:bss addr:0x02085880
 data_02085884 kind:bss addr:0x02085884
 data_0208588c kind:bss addr:0x0208588c
@@ -118,7 +122,6 @@ data_02085cfc kind:bss addr:0x02085cfc
 data_02085d00 kind:bss addr:0x02085d00
 data_02085d04 kind:bss addr:0x02085d04
 data_02085d08 kind:bss addr:0x02085d08
-data_02085d0c kind:bss addr:0x02085d0c
 data_02085e0c kind:bss addr:0x02085e0c
 data_02085e10 kind:bss addr:0x02085e10
 data_02085e14 kind:bss addr:0x02085e14

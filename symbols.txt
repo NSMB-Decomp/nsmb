@@ -1,3 +1,9 @@
+// Overlay loading
+InitOverlays kind:function(arm,size=0x34) addr:0x02009484
+LoadOverlay kind:function(arm,size=0x238) addr:0x02009560
+UnloadOverlay kind:function(arm,size=0x58) addr:0x020094b8
+
+
 HuffUnCompReadByCallback kind:function(thumb,size=0x4) addr:0x02000074
 LZ77UnCompReadNormalWrite8bit kind:function(thumb,size=0x4) addr:0x020000e2
 IsDebugger kind:function(thumb,size=0x4) addr:0x02000154
@@ -269,10 +275,7 @@ func_020093f8 kind:function(arm,size=0x18) addr:0x020093f8
 func_02009410 kind:function(arm,size=0x14) addr:0x02009410
 func_02009424 kind:function(arm,size=0x54) addr:0x02009424
 func_02009478 kind:function(arm,size=0xc) addr:0x02009478
-func_02009484 kind:function(arm,size=0x34) addr:0x02009484
-func_020094b8 kind:function(arm,size=0x58) addr:0x020094b8
 func_02009510 kind:function(arm,size=0x50) addr:0x02009510
-func_02009560 kind:function(arm,size=0x238) addr:0x02009560
 func_02009798 kind:function(arm,size=0x38) addr:0x02009798
 func_020097d0 kind:function(arm,size=0x1c) addr:0x020097d0
 func_020097ec kind:function(arm,size=0x14) addr:0x020097ec
