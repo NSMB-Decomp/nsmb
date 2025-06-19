@@ -1,0 +1,6 @@
+from:0x0215cc6c kind:load to:0x020caa28 module:overlay(0)
+from:0x0215cc80 kind:arm_call to:0x02045134 module:autoload(2)
+from:0x0215cc98 kind:load to:0x020caa28 module:overlay(0)
+from:0x0215ccac kind:arm_call to:0x0204540c module:autoload(2)
+from:0x0215ccc0 kind:load to:0x0215cce0 module:overlay(53)
+from:0x0215ccc4 kind:load to:0x020caa28 module:overlay(0)
