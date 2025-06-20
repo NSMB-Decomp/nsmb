@@ -1,3 +1,7 @@
+// Class: Base
+Base::vtable kind:data(word[]) addr:0x02085260
+Base::Base kind:function(arm,size=0x17c) addr:0x0204d2ac
+
 func_02043380 kind:function(arm,size=0x18) addr:0x02043380
 func_02043398 kind:function(arm,size=0x18) addr:0x02043398
 func_020433b0 kind:function(arm,size=0x18) addr:0x020433b0
@@ -374,7 +378,6 @@ func_0204d22c kind:function(arm,size=0x8) addr:0x0204d22c
 func_0204d234 kind:function(arm,size=0x8) addr:0x0204d234
 func_0204d23c kind:function(arm,size=0x34) addr:0x0204d23c
 func_0204d270 kind:function(arm,size=0x3c) addr:0x0204d270
-func_0204d2ac kind:function(arm,size=0x17c) addr:0x0204d2ac
 func_0204d428 kind:function(arm,size=0x44) addr:0x0204d428
 func_0204d46c kind:function(arm,size=0x78) addr:0x0204d46c
 func_0204d4e4 kind:function(arm,size=0x7c) addr:0x0204d4e4
@@ -1797,7 +1800,6 @@ data_02085238 kind:data(any) addr:0x02085238
 data_02085240 kind:data(any) addr:0x02085240
 data_02085248 kind:data(any) addr:0x02085248
 data_02085250 kind:data(any) addr:0x02085250
-data_02085260 kind:data(any) addr:0x02085260
 data_020852a8 kind:data(any) addr:0x020852a8
 data_020852ac kind:data(any) addr:0x020852ac
 data_020852b4 kind:data(any) addr:0x020852b4
