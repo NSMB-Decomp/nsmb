@@ -3,6 +3,8 @@ InitOverlays kind:function(arm,size=0x34) addr:0x02009484
 LoadOverlay kind:function(arm,size=0x238) addr:0x02009560
 UnloadOverlay kind:function(arm,size=0x58) addr:0x020094b8
 
+// Class: Object
+Object::vtable kind:data(any) addr:0x0203bce0
 
 HuffUnCompReadByCallback kind:function(thumb,size=0x4) addr:0x02000074
 LZ77UnCompReadNormalWrite8bit kind:function(thumb,size=0x4) addr:0x020000e2
@@ -1618,7 +1620,6 @@ data_0203aeb0 kind:data(any) addr:0x0203aeb0
 data_0203aeb4 kind:data(any) addr:0x0203aeb4
 data_0203bcc8 kind:data(any) addr:0x0203bcc8
 data_0203bcd4 kind:data(any) addr:0x0203bcd4
-data_0203bce0 kind:data(any) addr:0x0203bce0
 data_0203bd28 kind:data(any) addr:0x0203bd28
 data_0203bd2c kind:data(any) addr:0x0203bd2c
 data_0203bd30 kind:data(any) addr:0x0203bd30
