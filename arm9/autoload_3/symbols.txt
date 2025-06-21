@@ -1,6 +1,8 @@
 // Overlay loading
 LoadedOverlays kind:bss addr:0x02085d0c
 
+// Game Variables
+HeldItem kind:data(byte[2]) addr:0x0208b32c
 
 data_02085880 kind:bss addr:0x02085880
 data_02085884 kind:bss addr:0x02085884
@@ -373,7 +375,6 @@ data_0208b2a0 kind:bss addr:0x0208b2a0
 data_0208b320 kind:bss addr:0x0208b320
 data_0208b324 kind:bss addr:0x0208b324
 data_0208b328 kind:bss addr:0x0208b328
-data_0208b32c kind:bss addr:0x0208b32c
 data_0208b330 kind:bss addr:0x0208b330
 data_0208b334 kind:bss addr:0x0208b334
 data_0208b338 kind:bss addr:0x0208b338

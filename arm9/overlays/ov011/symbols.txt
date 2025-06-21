@@ -1,3 +1,8 @@
+// Class: PlayerBase
+PlayerBase::vtable kind:data(any) addr:0x0212f734
+PlayerBase:PlayerBase kind:function(arm,size=0xc8) addr:0x0212c424
+
+
 func_ov011_0212b160 kind:function(arm,size=0x2c) addr:0x0212b160
 func_ov011_0212b18c kind:function(arm,size=0x1c) addr:0x0212b18c
 func_ov011_0212b1a8 kind:function(arm,size=0x2c) addr:0x0212b1a8
@@ -99,7 +104,6 @@ func_ov011_0212c27c kind:function(arm,size=0x68) addr:0x0212c27c
 func_ov011_0212c2e4 kind:function(arm,size=0x68) addr:0x0212c2e4
 func_ov011_0212c34c kind:function(arm,size=0x70) addr:0x0212c34c
 func_ov011_0212c3bc kind:function(arm,size=0x68) addr:0x0212c3bc
-func_ov011_0212c424 kind:function(arm,size=0xc8) addr:0x0212c424
 func_ov011_0212c4ec kind:function(arm,size=0x40) addr:0x0212c4ec
 func_ov011_0212c52c kind:function(arm,size=0x40) addr:0x0212c52c
 func_ov011_0212c56c kind:function(arm,size=0x2c) addr:0x0212c56c
@@ -450,7 +454,6 @@ data_ov011_0212f62c kind:data(any) addr:0x0212f62c
 data_ov011_0212f630 kind:data(any) addr:0x0212f630
 data_ov011_0212f714 kind:data(any) addr:0x0212f714
 data_ov011_0212f724 kind:data(any) addr:0x0212f724
-data_ov011_0212f734 kind:data(any) addr:0x0212f734
 data_ov011_0212f850 kind:data(any) addr:0x0212f850
 data_ov011_0212f868 kind:data(any) addr:0x0212f868
 data_ov011_0212f870 kind:data(any) addr:0x0212f870
