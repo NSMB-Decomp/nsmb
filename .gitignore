@@ -1,4 +1,9 @@
 extracted/*
 !extracted/.gitkeep
+
 build/*
 !build/.gitkeep
+
+objdiff.json
+*.nds
+temp
