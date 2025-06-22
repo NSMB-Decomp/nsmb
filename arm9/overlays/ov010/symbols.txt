@@ -2035,7 +2035,7 @@ data_ov010_02125334 kind:data(any) addr:0x02125334
 data_ov010_0212533c kind:data(any) addr:0x0212533c
 data_ov010_02125348 kind:data(any) addr:0x02125348
 data_ov010_02125354 kind:data(any) addr:0x02125354
-data_ov010_02125368 kind:data(any) addr:0x02125368
+SpinBlock::vtable kind:data(any) addr:0x02125368
 data_ov010_02125484 kind:data(any) addr:0x02125484
 data_ov010_021255a0 kind:data(any) addr:0x021255a0
 data_ov010_021256bc kind:data(any) addr:0x021256bc
