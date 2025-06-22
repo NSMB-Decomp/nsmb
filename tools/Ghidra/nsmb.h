@@ -7,6 +7,7 @@ typedef signed char i8;
 typedef signed short i16;
 typedef signed long i32;
 
+// Placeholders
 typedef u8 unknown1;
 typedef u16 unknown2;
 typedef u32 unknown4;
@@ -14,18 +15,29 @@ typedef void* unknown_pointer;
 struct unknown_vtable {};
 
 // Math
-struct Vec3_32 {
-    unknown_vtable *vtable;
-    i32 x;
-    i32 y;
-    i32 z;
-};
-struct Vec3_16 {
+struct Vec3_16C {
     unknown_vtable *vtable;
     i16 x;
     i16 y;
     i16 z;
     i16 __padding;
+};
+struct Vec3_32C {
+    unknown_vtable *vtable;
+    i32 x;
+    i32 y;
+    i32 z;
+};
+
+struct Vec3_16 {
+    i16 x;
+    i16 y;
+    i16 z;
+};
+struct Vec3_32 {
+    i32 x;
+    i32 y;
+    i32 z;
 };
 
 // Process
