@@ -6,6 +6,14 @@ UnloadOverlay kind:function(arm,size=0x58) addr:0x020094b8
 // Class: Object
 Object::vtable kind:data(any) addr:0x0203bce0
 
+// Game init
+GameMode kind:data(any) addr:0x02039830 // 0 = Main Game, 1 = Mini-Games
+InitGame kind:function(arm,size=0x2c) addr:0x0200567c
+InitMainGame kind:function(arm,size=0x1c) addr:0x02004e5c
+InitMiniGame kind:function(thumb,size=0x2c) addr:0x02023434
+
+// 
+
 HuffUnCompReadByCallback kind:function(thumb,size=0x4) addr:0x02000074
 LZ77UnCompReadNormalWrite8bit kind:function(thumb,size=0x4) addr:0x020000e2
 IsDebugger kind:function(thumb,size=0x4) addr:0x02000154
@@ -114,7 +122,6 @@ func_02004cb8 kind:function(arm,size=0xd8) addr:0x02004cb8
 func_02004d90 kind:function(arm,size=0x6c) addr:0x02004d90
 func_02004dfc kind:function(arm,size=0x24) addr:0x02004dfc
 func_02004e20 kind:function(arm,size=0x3c) addr:0x02004e20
-func_02004e5c kind:function(arm,size=0x1c) addr:0x02004e5c
 func_02004e78 kind:function(arm,size=0x30) addr:0x02004e78
 func_02004ea8 kind:function(arm,size=0x94) addr:0x02004ea8
 func_02004f3c kind:function(arm,size=0x15c) addr:0x02004f3c
@@ -139,7 +146,6 @@ func_0200563c kind:function(arm,size=0x10) addr:0x0200563c
 func_0200564c kind:function(arm,size=0x10) addr:0x0200564c
 func_0200565c kind:function(arm,size=0x10) addr:0x0200565c
 func_0200566c kind:function(arm,size=0x10) addr:0x0200566c
-func_0200567c kind:function(arm,size=0x2c) addr:0x0200567c
 func_020056a8 kind:function(arm,size=0x2c) addr:0x020056a8
 func_020056d4 kind:function(arm,size=0x2c) addr:0x020056d4
 func_02005700 kind:function(arm,size=0x34) addr:0x02005700
@@ -1233,7 +1239,6 @@ func_02023328 kind:function(arm,size=0x24) addr:0x02023328
 func_0202334c kind:function(arm,size=0x24) addr:0x0202334c
 func_02023370 kind:function(thumb,size=0xc) addr:0x02023370
 func_0202337c kind:function(thumb,size=0xb8) addr:0x0202337c
-func_02023434 kind:function(thumb,size=0x2c) addr:0x02023434
 func_02023460 kind:function(thumb,size=0xe4) addr:0x02023460
 func_02023544 kind:function(thumb,size=0xec) addr:0x02023544
 func_02023630 kind:function(thumb,size=0x1c) addr:0x02023630
@@ -1463,7 +1468,6 @@ data_0203981c kind:data(any) addr:0x0203981c
 data_02039820 kind:data(any) addr:0x02039820
 data_02039824 kind:data(any) addr:0x02039824
 data_02039828 kind:data(any) addr:0x02039828
-data_02039830 kind:data(any) addr:0x02039830
 data_02039838 kind:data(any) addr:0x02039838
 data_02039898 kind:data(any) addr:0x02039898
 data_020398b0 kind:data(any) addr:0x020398b0
