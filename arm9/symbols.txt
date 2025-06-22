@@ -1432,8 +1432,8 @@ data_020360c2 kind:data(any) addr:0x020360c2
 data_02037450 kind:data(any) addr:0x02037450
 data_02039170 kind:data(any) addr:0x02039170
 data_020391e8 kind:data(any) addr:0x020391e8
-data_020391f8 kind:data(any) addr:0x020391f8
-data_02039208 kind:data(any) addr:0x02039208
+Vec3_16::vtable kind:data(any) addr:0x020391f8
+Vec3_32::vtable kind:data(any) addr:0x02039208
 data_02039210 kind:data(any) addr:0x02039210
 data_02039218 kind:data(any) addr:0x02039218
 data_02039678 kind:data(any) addr:0x02039678
