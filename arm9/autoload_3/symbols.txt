@@ -1,9 +1,3 @@
-// Overlay loading
-LoadedOverlays kind:bss addr:0x02085d0c
-
-// Game Variables
-HeldItem kind:data(byte[2]) addr:0x0208b32c
-
 data_02085880 kind:bss addr:0x02085880
 data_02085884 kind:bss addr:0x02085884
 data_0208588c kind:bss addr:0x0208588c
@@ -22,7 +16,7 @@ data_02085980 kind:bss addr:0x02085980
 data_02085984 kind:bss addr:0x02085984
 data_02085988 kind:bss addr:0x02085988
 data_0208598c kind:bss addr:0x0208598c
-data_02085990 kind:bss addr:0x02085990
+SelectedMasterGameMode kind:bss addr:0x02085990
 data_02085994 kind:bss addr:0x02085994
 data_02085998 kind:bss addr:0x02085998
 data_0208599c kind:bss addr:0x0208599c
@@ -99,8 +93,8 @@ data_02085adc kind:bss addr:0x02085adc
 data_02085ae4 kind:bss addr:0x02085ae4
 data_02085af0 kind:bss addr:0x02085af0
 data_02085b10 kind:bss addr:0x02085b10
-data_02085b14 kind:bss addr:0x02085b14
-data_02085b18 kind:bss addr:0x02085b18
+Fader::current kind:data(word) addr:0x02085b14
+data_02085b18 kind:data(word) addr:0x02085b18
 data_02085b1c kind:bss addr:0x02085b1c
 data_02085b20 kind:bss addr:0x02085b20
 data_02085b50 kind:bss addr:0x02085b50
@@ -124,6 +118,7 @@ data_02085cfc kind:bss addr:0x02085cfc
 data_02085d00 kind:bss addr:0x02085d00
 data_02085d04 kind:bss addr:0x02085d04
 data_02085d08 kind:bss addr:0x02085d08
+LoadedOverlays kind:bss addr:0x02085d0c
 data_02085e0c kind:bss addr:0x02085e0c
 data_02085e10 kind:bss addr:0x02085e10
 data_02085e14 kind:bss addr:0x02085e14
@@ -375,6 +370,7 @@ data_0208b2a0 kind:bss addr:0x0208b2a0
 data_0208b320 kind:bss addr:0x0208b320
 data_0208b324 kind:bss addr:0x0208b324
 data_0208b328 kind:bss addr:0x0208b328
+HeldItem kind:data(byte[2]) addr:0x0208b32c
 data_0208b330 kind:bss addr:0x0208b330
 data_0208b334 kind:bss addr:0x0208b334
 data_0208b338 kind:bss addr:0x0208b338
@@ -480,7 +476,7 @@ data_0208b634 kind:bss addr:0x0208b634
 data_0208b640 kind:bss addr:0x0208b640
 data_0208b64c kind:bss addr:0x0208b64c
 data_0208b658 kind:bss addr:0x0208b658
-data_0208b668 kind:bss addr:0x0208b668
+FrameCounter kind:data(word) addr:0x0208b668 // Increments by 1 each frame
 data_0208b66c kind:bss addr:0x0208b66c
 data_0208b670 kind:bss addr:0x0208b670
 data_0208b674 kind:bss addr:0x0208b674

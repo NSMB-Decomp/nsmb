@@ -1,19 +1,3 @@
-// Overlay loading
-InitOverlays kind:function(arm,size=0x34) addr:0x02009484
-LoadOverlay kind:function(arm,size=0x238) addr:0x02009560
-UnloadOverlay kind:function(arm,size=0x58) addr:0x020094b8
-
-// Class: Object
-Object::vtable kind:data(any) addr:0x0203bce0
-
-// Game init
-GameMode kind:data(any) addr:0x02039830 // 0 = Main Game, 1 = Mini-Games
-InitGame kind:function(arm,size=0x2c) addr:0x0200567c
-InitMainGame kind:function(arm,size=0x1c) addr:0x02004e5c
-InitMiniGame kind:function(thumb,size=0x2c) addr:0x02023434
-
-// 
-
 HuffUnCompReadByCallback kind:function(thumb,size=0x4) addr:0x02000074
 LZ77UnCompReadNormalWrite8bit kind:function(thumb,size=0x4) addr:0x020000e2
 IsDebugger kind:function(thumb,size=0x4) addr:0x02000154
@@ -122,8 +106,9 @@ func_02004cb8 kind:function(arm,size=0xd8) addr:0x02004cb8
 func_02004d90 kind:function(arm,size=0x6c) addr:0x02004d90
 func_02004dfc kind:function(arm,size=0x24) addr:0x02004dfc
 func_02004e20 kind:function(arm,size=0x3c) addr:0x02004e20
-func_02004e78 kind:function(arm,size=0x30) addr:0x02004e78
-func_02004ea8 kind:function(arm,size=0x94) addr:0x02004ea8
+InitMainGame kind:function(arm,size=0x1c) addr:0x02004e5c
+InitNitroMainGame kind:function(arm,size=0x30) addr:0x02004e78
+StartGameLoop kind:function(arm,size=0x94) addr:0x02004ea8
 func_02004f3c kind:function(arm,size=0x15c) addr:0x02004f3c
 func_02005098 kind:function(arm,size=0x24) addr:0x02005098
 func_020050bc kind:function(arm,size=0x4) addr:0x020050bc
@@ -146,6 +131,7 @@ func_0200563c kind:function(arm,size=0x10) addr:0x0200563c
 func_0200564c kind:function(arm,size=0x10) addr:0x0200564c
 func_0200565c kind:function(arm,size=0x10) addr:0x0200565c
 func_0200566c kind:function(arm,size=0x10) addr:0x0200566c
+InitGame kind:function(arm,size=0x2c) addr:0x0200567c
 func_020056a8 kind:function(arm,size=0x2c) addr:0x020056a8
 func_020056d4 kind:function(arm,size=0x2c) addr:0x020056d4
 func_02005700 kind:function(arm,size=0x34) addr:0x02005700
@@ -202,19 +188,22 @@ func_02006ca4 kind:function(arm,size=0x50) addr:0x02006ca4
 func_02006cf4 kind:function(arm,size=0x1f0) addr:0x02006cf4
 func_02006ee4 kind:function(arm,size=0x4) addr:0x02006ee4
 func_02006ee8 kind:function(arm,size=0x2c) addr:0x02006ee8
-func_02006f14 kind:function(arm,size=0x2c) addr:0x02006f14
-func_02006f40 kind:function(arm,size=0x2c) addr:0x02006f40
-func_02006f6c kind:function(arm,size=0x40) addr:0x02006f6c
-func_02006fac kind:function(arm,size=0xc) addr:0x02006fac
-func_02006fb8 kind:function(arm,size=0x54) addr:0x02006fb8
-func_0200700c kind:function(arm,size=0x15c) addr:0x0200700c
-func_02007168 kind:function(arm,size=0x68) addr:0x02007168
-func_020071d0 kind:function(arm,size=0x68) addr:0x020071d0
-func_02007238 kind:function(arm,size=0x40) addr:0x02007238
-func_02007278 kind:function(arm,size=0x3c) addr:0x02007278
-func_020072b4 kind:function(arm,size=0xd8) addr:0x020072b4
-func_0200738c kind:function(arm,size=0x290) addr:0x0200738c
-func_0200761c kind:function(arm,size=0x4) addr:0x0200761c
+
+// Class: Graphics
+Graphics::FaderStep kind:function(arm,size=0x2c) addr:0x02006f14
+Graphics::UnknownStep kind:function(arm,size=0x2c) addr:0x02006f40 // TODO: Confirm if this is used at all
+Graphics::2DStep kind:function(arm,size=0x40) addr:0x02006f6c
+Graphics::ResetOAM kind:function(arm,size=0xc) addr:0x02006fac
+Graphics::Step kind:function(arm,size=0x54) addr:0x02006fb8
+Graphics::Init kind:function(arm,size=0x15c) addr:0x0200700c
+Graphics::func_02007168 kind:function(arm,size=0x68) addr:0x02007168
+Graphics::func_020071d0 kind:function(arm,size=0x68) addr:0x020071d0
+Graphics::func_02007238 kind:function(arm,size=0x40) addr:0x02007238
+Graphics::func_02007278 kind:function(arm,size=0x3c) addr:0x02007278
+Graphics::func_020072b4 kind:function(arm,size=0xd8) addr:0x020072b4
+Graphics::func_0200738c kind:function(arm,size=0x290) addr:0x0200738c
+Graphics::__stub kind:function(arm,size=0x4) addr:0x0200761c
+
 func_02007620 kind:function(arm,size=0x3c) addr:0x02007620
 func_0200765c kind:function(arm,size=0x28) addr:0x0200765c
 func_02007684 kind:function(arm,size=0x28) addr:0x02007684
@@ -232,7 +221,7 @@ func_02007cb0 kind:function(arm,size=0x48) addr:0x02007cb0
 func_02007cf8 kind:function(arm,size=0xf8) addr:0x02007cf8
 func_02007df0 kind:function(arm,size=0x44) addr:0x02007df0
 func_02007e34 kind:function(arm,size=0x13c) addr:0x02007e34
-func_02007f70 kind:function(arm,size=0x45c) addr:0x02007f70
+Fader::step kind:function(arm,size=0x45c) addr:0x02007f70
 func_020083cc kind:function(arm,size=0x18c) addr:0x020083cc
 func_02008558 kind:function(arm,size=0x30) addr:0x02008558
 func_02008588 kind:function(arm,size=0xc) addr:0x02008588
@@ -283,6 +272,13 @@ func_020093f8 kind:function(arm,size=0x18) addr:0x020093f8
 func_02009410 kind:function(arm,size=0x14) addr:0x02009410
 func_02009424 kind:function(arm,size=0x54) addr:0x02009424
 func_02009478 kind:function(arm,size=0xc) addr:0x02009478
+
+// Overlay loading
+InitOverlays kind:function(arm,size=0x34) addr:0x02009484
+LoadOverlay kind:function(arm,size=0x238) addr:0x02009560
+UnloadOverlay kind:function(arm,size=0x58) addr:0x020094b8
+
+//
 func_02009510 kind:function(arm,size=0x50) addr:0x02009510
 func_02009798 kind:function(arm,size=0x38) addr:0x02009798
 func_020097d0 kind:function(arm,size=0x1c) addr:0x020097d0
@@ -1109,7 +1105,7 @@ func_020201f8 kind:function(arm,size=0x14) addr:0x020201f8
 func_0202020c kind:function(arm,size=0x14) addr:0x0202020c
 func_02020220 kind:function(arm,size=0x10) addr:0x02020220
 func_02020230 kind:function(arm,size=0x10) addr:0x02020230
-func_02020240 kind:function(arm,size=0x10) addr:0x02020240
+GetHeldItem kind:function(arm,size=0x10) addr:0x02020240
 func_02020250 kind:function(arm,size=0x10) addr:0x02020250
 func_02020260 kind:function(arm,size=0x10) addr:0x02020260
 func_02020270 kind:function(arm,size=0x10) addr:0x02020270
@@ -1239,6 +1235,7 @@ func_02023328 kind:function(arm,size=0x24) addr:0x02023328
 func_0202334c kind:function(arm,size=0x24) addr:0x0202334c
 func_02023370 kind:function(thumb,size=0xc) addr:0x02023370
 func_0202337c kind:function(thumb,size=0xb8) addr:0x0202337c
+InitMiniGame kind:function(thumb,size=0x2c) addr:0x02023434
 func_02023460 kind:function(thumb,size=0xe4) addr:0x02023460
 func_02023544 kind:function(thumb,size=0xec) addr:0x02023544
 func_02023630 kind:function(thumb,size=0x1c) addr:0x02023630
@@ -1468,6 +1465,7 @@ data_0203981c kind:data(any) addr:0x0203981c
 data_02039820 kind:data(any) addr:0x02039820
 data_02039824 kind:data(any) addr:0x02039824
 data_02039828 kind:data(any) addr:0x02039828
+MasterGameMode kind:data(any) addr:0x02039830 // 0 = Main Game, 1 = Mini-Games
 data_02039838 kind:data(any) addr:0x02039838
 data_02039898 kind:data(any) addr:0x02039898
 data_020398b0 kind:data(any) addr:0x020398b0
@@ -1624,6 +1622,7 @@ data_0203aeb0 kind:data(any) addr:0x0203aeb0
 data_0203aeb4 kind:data(any) addr:0x0203aeb4
 data_0203bcc8 kind:data(any) addr:0x0203bcc8
 data_0203bcd4 kind:data(any) addr:0x0203bcd4
+Object::vtable kind:data(any) addr:0x0203bce0
 data_0203bd28 kind:data(any) addr:0x0203bd28
 data_0203bd2c kind:data(any) addr:0x0203bd2c
 data_0203bd30 kind:data(any) addr:0x0203bd30

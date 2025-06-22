@@ -14,3 +14,18 @@ Build a new rom using `dsd rom build -c extracted/config.yaml -o build/NSMB_USA.
 [ds-decomp](https://github.com/AetiasHax/ds-decomp)  
 [dsd-ghidra](https://github.com/AetiasHax/dsd-ghidra)  
 [ghidra](https://github.com/NationalSecurityAgency/ghidra)  
+
+## Importing nsmb.h into Ghidra
+1. Open Ghidra
+2. Open your nsmb project
+3. Click **File** on the top left
+4. Click **Parse C Source...**
+5. Click the **Clear Profile** button on the top right
+6. Click the Green Plus button under **Source files to parse**
+7. Select the **nsmb.h** file.
+8. At the bottom set **Program Architectre** to **ARM v5t little**
+9. Click the **Save profile to new name** button on the top right
+10. Name the profile anything you would like
+11. Click the **Parse to Program** button on the bottom left
+12. Click **Continue**
+13. Click **Use Open Archives**
