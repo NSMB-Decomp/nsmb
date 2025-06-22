@@ -23,7 +23,7 @@ func_ov001_020cd074 kind:function(arm,size=0x10) addr:0x020cd074
 func_ov001_020cd084 kind:function(arm,size=0x10) addr:0x020cd084
 func_ov001_020cd094 kind:function(arm,size=0x4) addr:0x020cd094
 func_ov001_020cd098 kind:function(arm,size=0x3c) addr:0x020cd098
-data_ov001_020cd0e0 kind:data(any) addr:0x020cd0e0 ambiguous
+BootScene::profile kind:data(any) addr:0x020cd0e0 ambiguous
 data_ov001_020cd0f0 kind:data(any) addr:0x020cd0f0
 data_ov001_020cd138 kind:data(any) addr:0x020cd138
 data_ov001_020cd144 kind:data(any) addr:0x020cd144

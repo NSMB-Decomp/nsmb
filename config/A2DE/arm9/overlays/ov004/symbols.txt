@@ -28,7 +28,7 @@ data_ov004_020ccc18 kind:data(any) addr:0x020ccc18
 data_ov004_020ccc28 kind:data(any) addr:0x020ccc28
 data_ov004_020ccc38 kind:data(any) addr:0x020ccc38
 func_ov004_020ccc58 kind:function(arm,size=0x58) addr:0x020ccc58
-data_ov004_020cccc0 kind:data(any) addr:0x020cccc0
+UnknownProfile::020cccc0 kind:data(any) addr:0x020cccc0
 data_ov004_020cccd0 kind:data(any) addr:0x020cccd0
 data_ov004_020ccd18 kind:data(any) addr:0x020ccd18
 data_ov004_020ccd20 kind:data(any) addr:0x020ccd20

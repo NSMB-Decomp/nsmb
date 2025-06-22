@@ -82,7 +82,7 @@ data_ov034_021451e0 kind:data(any) addr:0x021451e0
 data_ov034_021451e8 kind:data(any) addr:0x021451e8
 data_ov034_021451f0 kind:data(any) addr:0x021451f0
 data_ov034_021451f8 kind:data(any) addr:0x021451f8
-data_ov034_02145200 kind:data(any) addr:0x02145200
+UnknownProfile::02145200 kind:data(any) addr:0x02145200
 data_ov034_02145214 kind:data(any) addr:0x02145214
 data_ov034_02145320 kind:data(any) addr:0x02145320
 data_ov034_02145328 kind:data(any) addr:0x02145328
@@ -97,7 +97,7 @@ data_ov034_02145368 kind:data(any) addr:0x02145368
 data_ov034_02145370 kind:data(any) addr:0x02145370
 data_ov034_02145378 kind:data(any) addr:0x02145378
 data_ov034_02145380 kind:data(any) addr:0x02145380
-data_ov034_02145388 kind:data(any) addr:0x02145388
+UnknownProfile::02145388 kind:data(any) addr:0x02145388
 data_ov034_0214539c kind:data(any) addr:0x0214539c
 data_ov034_021454c0 kind:bss addr:0x021454c0
 data_ov034_021454c4 kind:bss addr:0x021454c4

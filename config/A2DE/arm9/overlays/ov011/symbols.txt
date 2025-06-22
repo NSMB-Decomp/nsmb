@@ -1,6 +1,6 @@
 // Class: PlayerBase
 PlayerBase::vtable kind:data(any) addr:0x0212f734
-PlayerBase:PlayerBase kind:function(arm,size=0xc8) addr:0x0212c424
+PlayerBase::PlayerBase kind:function(arm,size=0xc8) addr:0x0212c424
 
 
 func_ov011_0212b160 kind:function(arm,size=0x2c) addr:0x0212b160

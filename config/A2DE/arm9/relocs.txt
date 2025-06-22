@@ -5034,9 +5034,9 @@ from:0x02039968 kind:load to:0x02006864 module:main
 from:0x02039970 kind:load to:0x02006864 module:main
 from:0x02039974 kind:load to:0x02006848 module:main
 from:0x02039978 kind:load to:0x020067f8 module:main
-from:0x0203997c kind:load to:0x020cd0e0 module:overlays(1,2)
+from:0x0203997c kind:load to:0x020cd0e0 module:overlay(1)
 from:0x02039980 kind:load to:0x0203967c module:main
-from:0x02039984 kind:load to:0x020cd298 module:overlays(1,2)
+from:0x02039984 kind:load to:0x020cd298 module:overlay(2)
 from:0x02039988 kind:load to:0x020c6d28 module:overlay(0)
 from:0x0203998c kind:load to:0x020da814 module:overlay(9)
 from:0x02039990 kind:load to:0x0215b6c0 module:overlay(52)

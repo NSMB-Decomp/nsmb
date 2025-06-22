@@ -1,7 +1,7 @@
 func_01ff8000 kind:function(arm,size=0x6c) addr:0x01ff8000
 func_01ff806c kind:function(arm,size=0x74) addr:0x01ff806c
 func_01ff80e0 kind:function(arm,size=0x48) addr:0x01ff80e0
-func_01ff8128 kind:function(arm,size=0x38) addr:0x01ff8128
+Nitro::func_01ff8128 kind:function(arm,size=0x38) addr:0x01ff8128
 func_01ff8160 kind:function(arm,size=0x4) addr:0x01ff8160
 func_01ff8164 kind:function(arm,size=0x44) addr:0x01ff8164
 func_01ff81a8 kind:function(arm,size=0x34) addr:0x01ff81a8
@@ -62,7 +62,7 @@ func_01ffa4ac kind:function(arm,size=0x50) addr:0x01ffa4ac
 func_01ffa4fc kind:function(arm,size=0xc8) addr:0x01ffa4fc
 func_01ffa5c4 kind:function(arm,size=0x14) addr:0x01ffa5c4
 func_01ffa5d8 kind:function(arm,size=0x14) addr:0x01ffa5d8
-func_01ffa5ec kind:function(arm,size=0x14) addr:0x01ffa5ec
+Nitro::func_01ffa5ec kind:function(arm,size=0x14) addr:0x01ffa5ec
 func_01ffa600 kind:function(arm,size=0x14) addr:0x01ffa600
 func_01ffa614 kind:function(arm,size=0x8c) addr:0x01ffa614
 func_01ffa6a0 kind:function(arm,size=0xc) addr:0x01ffa6a0

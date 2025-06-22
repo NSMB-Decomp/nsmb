@@ -109,7 +109,7 @@ func_02004e20 kind:function(arm,size=0x3c) addr:0x02004e20
 InitMainGame kind:function(arm,size=0x1c) addr:0x02004e5c
 InitNitroMainGame kind:function(arm,size=0x30) addr:0x02004e78
 StartGameLoop kind:function(arm,size=0x94) addr:0x02004ea8
-func_02004f3c kind:function(arm,size=0x15c) addr:0x02004f3c
+InitGame kind:function(arm,size=0x15c) addr:0x02004f3c
 func_02005098 kind:function(arm,size=0x24) addr:0x02005098
 func_020050bc kind:function(arm,size=0x4) addr:0x020050bc
 func_020050c0 kind:function(arm,size=0x18) addr:0x020050c0
@@ -124,7 +124,7 @@ func_02005230 kind:function(arm,size=0x28c) addr:0x02005230
 func_020054bc kind:function(arm,size=0x54) addr:0x020054bc
 func_02005510 kind:function(arm,size=0xbc) addr:0x02005510
 func_020055cc kind:function(arm,size=0x54) addr:0x020055cc
-func_02005620 kind:function(arm,size=0x4) addr:0x02005620
+__stub kind:function(arm,size=0x4) addr:0x02005620
 func_02005624 kind:function(arm,size=0x8) addr:0x02005624
 func_0200562c kind:function(arm,size=0x10) addr:0x0200562c
 func_0200563c kind:function(arm,size=0x10) addr:0x0200563c
@@ -187,7 +187,7 @@ func_02006c7c kind:function(arm,size=0x28) addr:0x02006c7c
 func_02006ca4 kind:function(arm,size=0x50) addr:0x02006ca4
 func_02006cf4 kind:function(arm,size=0x1f0) addr:0x02006cf4
 func_02006ee4 kind:function(arm,size=0x4) addr:0x02006ee4
-func_02006ee8 kind:function(arm,size=0x2c) addr:0x02006ee8
+resetWindows kind:function(arm,size=0x2c) addr:0x02006ee8
 
 // Class: Graphics
 Graphics::FaderStep kind:function(arm,size=0x2c) addr:0x02006f14
@@ -199,7 +199,7 @@ Graphics::Init kind:function(arm,size=0x15c) addr:0x0200700c
 Graphics::func_02007168 kind:function(arm,size=0x68) addr:0x02007168
 Graphics::func_020071d0 kind:function(arm,size=0x68) addr:0x020071d0
 Graphics::func_02007238 kind:function(arm,size=0x40) addr:0x02007238
-Graphics::func_02007278 kind:function(arm,size=0x3c) addr:0x02007278
+Graphics::Reset3D kind:function(arm,size=0x3c) addr:0x02007278
 Graphics::func_020072b4 kind:function(arm,size=0xd8) addr:0x020072b4
 Graphics::func_0200738c kind:function(arm,size=0x290) addr:0x0200738c
 Graphics::__stub kind:function(arm,size=0x4) addr:0x0200761c
@@ -573,7 +573,7 @@ func_020130b4 kind:function(arm,size=0x4c) addr:0x020130b4
 func_02013100 kind:function(arm,size=0x1c) addr:0x02013100
 func_0201311c kind:function(arm,size=0x20) addr:0x0201311c
 func_0201313c kind:function(arm,size=0x28) addr:0x0201313c
-func_02013164 kind:function(arm,size=0x4) addr:0x02013164
+__stub kind:function(arm,size=0x4) addr:0x02013164
 func_02013168 kind:function(arm,size=0x20) addr:0x02013168
 func_02013188 kind:function(arm,size=0x20) addr:0x02013188
 func_020131a8 kind:function(arm,size=0x30) addr:0x020131a8
@@ -1437,7 +1437,7 @@ Vec3_32::vtable kind:data(any) addr:0x02039208
 data_02039210 kind:data(any) addr:0x02039210
 data_02039218 kind:data(any) addr:0x02039218
 data_02039678 kind:data(any) addr:0x02039678
-data_0203967c kind:data(any) addr:0x0203967c
+ConnectScene::profile kind:data(any) addr:0x0203967c
 data_0203968c kind:data(any) addr:0x0203968c
 data_020396d4 kind:data(any) addr:0x020396d4
 data_020396dc kind:data(any) addr:0x020396dc
@@ -1485,7 +1485,7 @@ data_02039960 kind:data(any) addr:0x02039960
 data_02039968 kind:data(any) addr:0x02039968
 data_0203996c kind:data(any) addr:0x0203996c
 data_02039970 kind:data(any) addr:0x02039970
-data_0203997c kind:data(any) addr:0x0203997c
+MainProfileTable kind:data(any) addr:0x0203997c
 data_02039f80 kind:data(any) addr:0x02039f80
 data_0203a280 kind:data(any) addr:0x0203a280
 data_0203a290 kind:data(any) addr:0x0203a290

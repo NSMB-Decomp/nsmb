@@ -41,31 +41,86 @@ struct Vec3_32 {
 };
 
 // Process
+// TODO: Can we improve these names at all?
 struct ProcessNode {
-    struct ProcessNode *prev;
-    struct ProcessNode *next;
+    ProcessNode *prev;
+    ProcessNode *next;
     struct Base *object;
 };
 
 struct PriorityNode {
-    struct ProcessNode _;
+    ProcessNode _;
     u16 currentPriority;
     u16 sortPriority;
 };
 
 struct SceneNode {
-    struct SceneNode *parent;
-    struct SceneNode *firstChild;
-    struct SceneNode *prev;
-    struct SceneNode *next;
+    SceneNode *parent;
+    SceneNode *firstChild;
+    SceneNode *prev;
+    SceneNode *next;
     struct Base *object;
 };
 
 struct ProcessLink {
-    struct SceneNode connect;
-    struct PriorityNode update;
-    struct PriorityNode render;
-    struct ProcessNode idLookup;
+    SceneNode connect;
+    PriorityNode update;
+    PriorityNode render;
+    ProcessNode idLookup;
+};
+
+struct PTMF { // What is a PTMF?
+    void (*func)(void *, ...);
+    u32 params;
+};
+
+struct SceneGraph {
+    SceneNode *root;
+    PTMF executor;
+};
+
+struct LinkedList {
+    ProcessNode *first;
+    ProcessNode *last;
+};
+
+struct ProcessManager {
+    SceneGraph sceneGraph;
+    ProcessLink updateProcess;
+    ProcessLink deleteProcess;
+    ProcessLink renderProcess;
+    ProcessLink createProcess;
+    LinkedList idLookupProcesses[8];
+};
+
+struct ProcessList {
+    LinkedList _;
+    PTMF executor;
+};
+
+enum ActorType {
+    None = 0,
+    Scene = 1,
+    Actor = 2,
+};
+
+enum ObjectType {
+
+};
+
+enum ProcessType {
+    Null = 0,
+    Connect = 1,
+    Create = 2,
+    Execute = 3,
+    Delete = 4,
+    Draw = 5,
+};
+
+struct ObjectProfile {
+    void *constructor;
+    u16 updatePriority;
+    u16 renderPriority;
 };
 
 // Class: Base
