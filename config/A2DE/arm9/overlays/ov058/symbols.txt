@@ -30,8 +30,8 @@ data_ov058_02173660 kind:data(any) addr:0x02173660
 data_ov058_02173668 kind:data(any) addr:0x02173668
 data_ov058_02173670 kind:data(any) addr:0x02173670
 data_ov058_02173678 kind:data(any) addr:0x02173678
-data_ov058_02173680 kind:data(any) addr:0x02173680 ambiguous
+UnknownProfile::ov058_02173680 kind:data(any) addr:0x02173680 ambiguous
 data_ov058_02173694 kind:data(any) addr:0x02173694
 data_ov058_021737a0 kind:data(any) addr:0x021737a0
-data_ov058_021737a8 kind:data(any) addr:0x021737a8 ambiguous
+UnknownProfile::ov058_021737a8 kind:data(any) addr:0x021737a8 ambiguous
 data_ov058_021737bc kind:data(any) addr:0x021737bc

@@ -6,7 +6,7 @@ func_ov007_020cc454 kind:function(arm,size=0x4) addr:0x020cc454
 func_ov007_020cc458 kind:function(arm,size=0x8) addr:0x020cc458
 func_ov007_020cc460 kind:function(arm,size=0x178) addr:0x020cc460
 func_ov007_020cc5d8 kind:function(arm,size=0x2c) addr:0x020cc5d8
-data_ov007_020cc620 kind:data(any) addr:0x020cc620 ambiguous
+UnknownProfile::ov007_020cc620 kind:data(any) addr:0x020cc620 ambiguous
 data_ov007_020cc628 kind:data(any) addr:0x020cc628
 data_ov007_020cc634 kind:data(any) addr:0x020cc634
 data_ov007_020cc654 kind:data(any) addr:0x020cc654

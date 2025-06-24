@@ -13,5 +13,5 @@ func_ov091_0217e080 kind:function(arm,size=0x34) addr:0x0217e080
 func_ov091_0217e0b4 kind:function(arm,size=0xdc) addr:0x0217e0b4
 func_ov091_0217e190 kind:function(arm,size=0x70) addr:0x0217e190
 data_ov091_0217e228 kind:data(any) addr:0x0217e228
-data_ov091_0217e334 kind:data(any) addr:0x0217e334 ambiguous
+UnknownProfile::ov091_0217e334 kind:data(any) addr:0x0217e334 ambiguous
 data_ov091_0217e348 kind:data(any) addr:0x0217e348

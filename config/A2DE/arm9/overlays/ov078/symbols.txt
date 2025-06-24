@@ -69,10 +69,10 @@ func_ov078_0217b2f0 kind:function(arm,size=0x50) addr:0x0217b2f0
 func_ov078_0217b340 kind:function(arm,size=0x24) addr:0x0217b340
 data_ov078_0217b380 kind:data(any) addr:0x0217b380
 data_ov078_0217b388 kind:data(any) addr:0x0217b388
-data_ov078_0217b390 kind:data(any) addr:0x0217b390 ambiguous
+UnknownProfile::ov078_0217b390 kind:data(any) addr:0x0217b390 ambiguous
 data_ov078_0217b3a4 kind:data(any) addr:0x0217b3a4
 data_ov078_0217b4b8 kind:data(any) addr:0x0217b4b8
-data_ov078_0217b4c0 kind:data(any) addr:0x0217b4c0 ambiguous
+UnknownProfile::ov078_0217b4c0 kind:data(any) addr:0x0217b4c0 ambiguous
 data_ov078_0217b4d4 kind:data(any) addr:0x0217b4d4
 data_ov078_0217b5e0 kind:bss addr:0x0217b5e0
 data_ov078_0217b5e8 kind:bss addr:0x0217b5e8

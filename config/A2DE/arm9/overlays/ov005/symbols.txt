@@ -19,5 +19,5 @@ func_ov005_020cccf0 kind:function(arm,size=0x28) addr:0x020cccf0
 data_ov005_020ccd18 kind:data(any) addr:0x020ccd18
 data_ov005_020ccd28 kind:data(any) addr:0x020ccd28
 data_ov005_020ccd30 kind:data(any) addr:0x020ccd30 ambiguous
-data_ov005_020ccd40 kind:data(any) addr:0x020ccd40 ambiguous
+UnknownProfile::ov005_020ccd40 kind:data(any) addr:0x020ccd40 ambiguous
 data_ov005_020ccd50 kind:data(any) addr:0x020ccd50

@@ -46,7 +46,7 @@ data_ov046_02148528 kind:data(any) addr:0x02148528
 data_ov046_02148530 kind:data(any) addr:0x02148530
 data_ov046_02148538 kind:data(any) addr:0x02148538
 data_ov046_02148540 kind:data(any) addr:0x02148540
-data_ov046_02148548 kind:data(any) addr:0x02148548
+UnknownProfile::ov046_02148548 kind:data(any) addr:0x02148548
 data_ov046_0214855c kind:data(any) addr:0x0214855c
 data_ov046_02148680 kind:bss addr:0x02148680
 data_ov046_02148688 kind:bss addr:0x02148688

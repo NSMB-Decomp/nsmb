@@ -35,7 +35,7 @@ data_ov117_0218deb0 kind:data(any) addr:0x0218deb0 ambiguous
 data_ov117_0218deb8 kind:data(any) addr:0x0218deb8
 data_ov117_0218debc kind:data(any) addr:0x0218debc ambiguous
 data_ov117_0218dec8 kind:data(any) addr:0x0218dec8 ambiguous
-data_ov117_0218dee0 kind:data(any) addr:0x0218dee0 ambiguous
+UnknownProfile::ov117_0218dee0 kind:data(any) addr:0x0218dee0 ambiguous
 data_ov117_0218def4 kind:data(any) addr:0x0218def4
 data_ov117_0218dfa8 kind:data(any) addr:0x0218dfa8 ambiguous
 data_ov117_0218e000 kind:data(any) addr:0x0218e000
@@ -60,7 +60,7 @@ data_ov117_0218e090 kind:data(any) addr:0x0218e090
 data_ov117_0218e098 kind:data(any) addr:0x0218e098
 data_ov117_0218e0a0 kind:data(any) addr:0x0218e0a0
 data_ov117_0218e0a8 kind:data(any) addr:0x0218e0a8
-data_ov117_0218e0b0 kind:data(any) addr:0x0218e0b0 ambiguous
+UnknownProfile::ov117_0218e0b0 kind:data(any) addr:0x0218e0b0 ambiguous
 data_ov117_0218e0c4 kind:data(any) addr:0x0218e0c4
 data_ov117_0218e0d0 kind:data(any) addr:0x0218e0d0 ambiguous
 data_ov117_0218e180 kind:data(any) addr:0x0218e180 ambiguous

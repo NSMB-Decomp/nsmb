@@ -197,13 +197,13 @@ data_ov090_02184c68 kind:data(any) addr:0x02184c68
 data_ov090_02184c70 kind:data(any) addr:0x02184c70
 data_ov090_02184c78 kind:data(any) addr:0x02184c78
 data_ov090_02184c80 kind:data(any) addr:0x02184c80
-data_ov090_02184c88 kind:data(any) addr:0x02184c88 ambiguous
+UnknownProfile::ov090_02184c88 kind:data(any) addr:0x02184c88 ambiguous
 data_ov090_02184c9c kind:data(any) addr:0x02184c9c
 data_ov090_02184da8 kind:data(any) addr:0x02184da8
 data_ov090_02184db0 kind:data(any) addr:0x02184db0
-data_ov090_02184db8 kind:data(any) addr:0x02184db8 ambiguous
+UnknownProfile::ov090_02184db8 kind:data(any) addr:0x02184db8 ambiguous
 data_ov090_02184dcc kind:data(any) addr:0x02184dcc
-data_ov090_02184ed8 kind:data(any) addr:0x02184ed8 ambiguous
+UnknownProfile::ov090_02184ed8 kind:data(any) addr:0x02184ed8 ambiguous
 data_ov090_02184eec kind:data(any) addr:0x02184eec
 data_ov090_02184ff8 kind:data(any) addr:0x02184ff8
 data_ov090_02185000 kind:data(any) addr:0x02185000
@@ -223,7 +223,7 @@ data_ov090_02185068 kind:data(any) addr:0x02185068
 data_ov090_02185070 kind:data(any) addr:0x02185070
 data_ov090_02185078 kind:data(any) addr:0x02185078
 data_ov090_02185080 kind:data(any) addr:0x02185080
-data_ov090_02185088 kind:data(any) addr:0x02185088 ambiguous
+UnknownProfile::ov090_02185088 kind:data(any) addr:0x02185088 ambiguous
 data_ov090_0218509c kind:data(any) addr:0x0218509c
 data_ov090_021851a8 kind:data(any) addr:0x021851a8
 data_ov090_021851b0 kind:data(any) addr:0x021851b0
@@ -242,12 +242,12 @@ data_ov090_02185210 kind:data(any) addr:0x02185210
 data_ov090_02185218 kind:data(any) addr:0x02185218
 data_ov090_02185220 kind:data(any) addr:0x02185220
 data_ov090_02185228 kind:data(any) addr:0x02185228
-data_ov090_02185230 kind:data(any) addr:0x02185230 ambiguous
+UnknownProfile::ov090_02185230 kind:data(any) addr:0x02185230 ambiguous
 data_ov090_02185244 kind:data(any) addr:0x02185244
-data_ov090_02185350 kind:data(any) addr:0x02185350 ambiguous
+UnknownProfile::ov090_02185350 kind:data(any) addr:0x02185350 ambiguous
 data_ov090_02185364 kind:data(any) addr:0x02185364
 data_ov090_02185470 kind:data(any) addr:0x02185470
-data_ov090_02185478 kind:data(any) addr:0x02185478 ambiguous
+UnknownProfile::ov090_02185478 kind:data(any) addr:0x02185478 ambiguous
 data_ov090_02185484 kind:data(any) addr:0x02185484
 data_ov090_021854d4 kind:data(any) addr:0x021854d4
 data_ov090_021855e0 kind:bss addr:0x021855e0

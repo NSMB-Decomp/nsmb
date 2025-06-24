@@ -95,7 +95,7 @@ data_ov016_02133a68 kind:data(any) addr:0x02133a68
 data_ov016_02133a70 kind:data(any) addr:0x02133a70
 data_ov016_02133a78 kind:data(any) addr:0x02133a78
 data_ov016_02133a80 kind:data(any) addr:0x02133a80
-data_ov016_02133a88 kind:data(any) addr:0x02133a88
+UnknownProfile::ov016_02133a88 kind:data(any) addr:0x02133a88
 data_ov016_02133a9c kind:data(any) addr:0x02133a9c
 data_ov016_02133bc0 kind:bss addr:0x02133bc0
 data_ov016_02133bc8 kind:bss addr:0x02133bc8

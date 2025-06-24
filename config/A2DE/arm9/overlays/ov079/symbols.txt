@@ -64,7 +64,7 @@ data_ov079_0217c1a0 kind:data(any) addr:0x0217c1a0
 data_ov079_0217c1a8 kind:data(any) addr:0x0217c1a8
 data_ov079_0217c1b0 kind:data(any) addr:0x0217c1b0
 data_ov079_0217c1b8 kind:data(any) addr:0x0217c1b8
-data_ov079_0217c1c0 kind:data(any) addr:0x0217c1c0 ambiguous
-data_ov079_0217c1cc kind:data(any) addr:0x0217c1cc ambiguous
+UnknownProfile::ov079_0217c1c0 kind:data(any) addr:0x0217c1c0 ambiguous
+UnknownProfile::ov079_0217c1cc kind:data(any) addr:0x0217c1cc ambiguous
 data_ov079_0217c1e0 kind:data(any) addr:0x0217c1e0
 data_ov079_0217c2fc kind:data(any) addr:0x0217c2fc

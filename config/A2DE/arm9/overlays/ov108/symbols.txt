@@ -40,7 +40,7 @@ data_ov108_0218aed0 kind:data(any) addr:0x0218aed0
 data_ov108_0218aed8 kind:data(any) addr:0x0218aed8
 data_ov108_0218aee0 kind:data(any) addr:0x0218aee0
 data_ov108_0218aee8 kind:data(any) addr:0x0218aee8
-data_ov108_0218aef0 kind:data(any) addr:0x0218aef0 ambiguous
+UnknownProfile::ov108_0218aef0 kind:data(any) addr:0x0218aef0 ambiguous
 data_ov108_0218af04 kind:data(any) addr:0x0218af04
 data_ov108_0218b020 kind:bss addr:0x0218b020
 data_ov108_0218b028 kind:bss addr:0x0218b028

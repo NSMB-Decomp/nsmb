@@ -44,5 +44,5 @@ data_ov106_0218ad40 kind:data(any) addr:0x0218ad40
 data_ov106_0218ad48 kind:data(any) addr:0x0218ad48
 data_ov106_0218ad50 kind:data(any) addr:0x0218ad50
 data_ov106_0218ad58 kind:data(any) addr:0x0218ad58
-data_ov106_0218ad60 kind:data(any) addr:0x0218ad60 ambiguous
+UnknownProfile::ov106_0218ad60 kind:data(any) addr:0x0218ad60 ambiguous
 data_ov106_0218ad74 kind:data(any) addr:0x0218ad74

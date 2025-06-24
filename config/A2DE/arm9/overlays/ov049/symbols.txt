@@ -54,5 +54,5 @@ data_ov049_02147fd0 kind:data(any) addr:0x02147fd0
 data_ov049_02147fd8 kind:data(any) addr:0x02147fd8
 data_ov049_02147fe0 kind:data(any) addr:0x02147fe0
 data_ov049_02147fe8 kind:data(any) addr:0x02147fe8
-data_ov049_02147ff0 kind:data(any) addr:0x02147ff0 ambiguous
+UnknownProfile::ov049_02147ff0 kind:data(any) addr:0x02147ff0 ambiguous
 data_ov049_02148004 kind:data(any) addr:0x02148004

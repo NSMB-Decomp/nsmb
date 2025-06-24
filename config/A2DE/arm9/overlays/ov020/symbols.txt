@@ -97,18 +97,18 @@ data_ov020_02133070 kind:data(any) addr:0x02133070
 data_ov020_02133078 kind:data(any) addr:0x02133078
 data_ov020_02133080 kind:data(any) addr:0x02133080
 data_ov020_02133088 kind:data(any) addr:0x02133088
-data_ov020_02133090 kind:data(any) addr:0x02133090 ambiguous
+UnknownProfile::ov020_02133090 kind:data(any) addr:0x02133090 ambiguous
 data_ov020_021330a4 kind:data(any) addr:0x021330a4
 data_ov020_021330e8 kind:data(any) addr:0x021330e8 ambiguous
 data_ov020_021331b0 kind:data(any) addr:0x021331b0
 data_ov020_021331b8 kind:data(any) addr:0x021331b8
 data_ov020_021331c0 kind:data(any) addr:0x021331c0
-data_ov020_021331c8 kind:data(any) addr:0x021331c8 ambiguous
-data_ov020_021331d4 kind:data(any) addr:0x021331d4 ambiguous
+UnknownProfile::ov020_021331c8 kind:data(any) addr:0x021331c8 ambiguous
+UnknownProfile::ov020_021331d4 kind:data(any) addr:0x021331d4 ambiguous
 data_ov020_021331e8 kind:data(any) addr:0x021331e8
-data_ov020_021332f4 kind:data(any) addr:0x021332f4
+UnknownProfile::ov020_021332f4 kind:data(any) addr:0x021332f4
 data_ov020_02133308 kind:data(any) addr:0x02133308
-data_ov020_02133414 kind:data(any) addr:0x02133414
+UnknownProfile::ov020_02133414 kind:data(any) addr:0x02133414
 data_ov020_02133428 kind:data(any) addr:0x02133428
 data_ov020_02133540 kind:bss addr:0x02133540
 data_ov020_02133548 kind:bss addr:0x02133548

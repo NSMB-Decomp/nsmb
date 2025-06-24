@@ -16,6 +16,6 @@ data_ov022_0213c4e8 kind:data(any) addr:0x0213c4e8
 data_ov022_0213c4f8 kind:data(any) addr:0x0213c4f8
 func_ov022_0213c508 kind:function(arm,size=0x24) addr:0x0213c508
 data_ov022_0213c540 kind:data(any) addr:0x0213c540
-data_ov022_0213c548 kind:data(any) addr:0x0213c548 ambiguous
+UnknownProfile::ov022_0213c548 kind:data(any) addr:0x0213c548 ambiguous
 data_ov022_0213c55c kind:data(any) addr:0x0213c55c
 data_ov022_0213c680 kind:bss addr:0x0213c680

@@ -38,7 +38,7 @@ data_ov001_020ceac0 kind:data(any) addr:0x020ceac0 ambiguous
 data_ov001_020ceac4 kind:data(any) addr:0x020ceac4 ambiguous
 data_ov001_020ceac8 kind:data(any) addr:0x020ceac8 ambiguous
 data_ov001_020ceae0 kind:data(any) addr:0x020ceae0 ambiguous
-data_ov001_020ceb24 kind:data(any) addr:0x020ceb24
+UnknownProfile::ov001_020ceb24 kind:data(any) addr:0x020ceb24
 data_ov001_020ceb34 kind:data(any) addr:0x020ceb34
 data_ov001_020ceb64 kind:data(any) addr:0x020ceb64
 data_ov001_020cebc0 kind:bss addr:0x020cebc0

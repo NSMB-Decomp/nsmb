@@ -42,7 +42,7 @@ data_ov036_02143750 kind:data(any) addr:0x02143750
 data_ov036_02143758 kind:data(any) addr:0x02143758
 data_ov036_02143760 kind:data(any) addr:0x02143760
 data_ov036_02143768 kind:data(any) addr:0x02143768
-UnknownProfile::02143770 kind:data(any) addr:0x02143770
+UnknownProfile::ov036_02143770 kind:data(any) addr:0x02143770
 data_ov036_02143784 kind:data(any) addr:0x02143784
 data_ov036_021438a0 kind:bss addr:0x021438a0
 data_ov036_021438a8 kind:bss addr:0x021438a8

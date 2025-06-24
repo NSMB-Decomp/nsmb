@@ -31,7 +31,7 @@ data_ov067_021766d8 kind:data(any) addr:0x021766d8
 func_ov067_021766f4 kind:function(arm,size=0x50) addr:0x021766f4
 data_ov067_02176760 kind:data(any) addr:0x02176760
 data_ov067_02176768 kind:data(any) addr:0x02176768
-data_ov067_02176770 kind:data(any) addr:0x02176770 ambiguous
+UnknownProfile::ov067_02176770 kind:data(any) addr:0x02176770 ambiguous
 data_ov067_02176784 kind:data(any) addr:0x02176784
 data_ov067_021768a0 kind:bss addr:0x021768a0
 data_ov067_021768a4 kind:bss addr:0x021768a4

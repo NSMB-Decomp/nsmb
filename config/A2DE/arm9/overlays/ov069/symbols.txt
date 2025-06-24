@@ -64,7 +64,7 @@ data_ov069_02178418 kind:data(any) addr:0x02178418
 data_ov069_02178420 kind:data(any) addr:0x02178420
 data_ov069_02178428 kind:data(any) addr:0x02178428
 data_ov069_02178430 kind:data(any) addr:0x02178430
-data_ov069_02178438 kind:data(any) addr:0x02178438 ambiguous
+UnknownProfile::ov069_02178438 kind:data(any) addr:0x02178438 ambiguous
 data_ov069_02178444 kind:data(any) addr:0x02178444
 UnknownVtable::02178464 kind:data(any) addr:0x02178464
 data_ov069_02178580 kind:bss addr:0x02178580

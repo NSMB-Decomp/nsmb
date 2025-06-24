@@ -52,7 +52,7 @@ func_ov126_0209a72c kind:function(arm,size=0x2c) addr:0x0209a72c
 data_ov126_0209a758 kind:data(any) addr:0x0209a758
 data_ov126_0209a768 kind:data(any) addr:0x0209a768
 func_ov126_0209a7f8 kind:function(arm,size=0x34) addr:0x0209a7f8
-data_ov126_0209a840 kind:data(any) addr:0x0209a840
+UnknownProfile::ov126_0209a840 kind:data(any) addr:0x0209a840
 data_ov126_0209a850 kind:data(any) addr:0x0209a850
 data_ov126_0209a868 kind:data(any) addr:0x0209a868
 data_ov126_0209a894 kind:data(any) addr:0x0209a894

@@ -42,8 +42,8 @@ data_ov038_02143348 kind:data(any) addr:0x02143348
 data_ov038_02143350 kind:data(any) addr:0x02143350
 data_ov038_02143358 kind:data(any) addr:0x02143358
 data_ov038_02143360 kind:data(any) addr:0x02143360
-data_ov038_02143368 kind:data(any) addr:0x02143368
+UnknownProfile::ov038_02143368 kind:data(any) addr:0x02143368
 data_ov038_0214337c kind:data(any) addr:0x0214337c
 data_ov038_02143488 kind:data(any) addr:0x02143488
-data_ov038_02143490 kind:data(any) addr:0x02143490
+UnknownProfile::ov038_02143490 kind:data(any) addr:0x02143490
 data_ov038_021434a4 kind:data(any) addr:0x021434a4
