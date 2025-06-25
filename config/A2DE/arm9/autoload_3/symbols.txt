@@ -15,9 +15,9 @@ data_0208597c kind:bss addr:0x0208597c
 data_02085980 kind:bss addr:0x02085980
 data_02085984 kind:bss addr:0x02085984
 data_02085988 kind:bss addr:0x02085988
-data_0208598c kind:bss addr:0x0208598c
+ExtraBootParams kind:bss addr:0x0208598c
 SelectedMasterGameMode kind:bss addr:0x02085990
-data_02085994 kind:bss addr:0x02085994
+BootScene kind:bss addr:0x02085994
 data_02085998 kind:bss addr:0x02085998
 data_0208599c kind:bss addr:0x0208599c
 data_020859a0 kind:bss addr:0x020859a0
@@ -115,7 +115,7 @@ data_02085c34 kind:bss addr:0x02085c34
 data_02085c38 kind:bss addr:0x02085c38
 data_02085cf8 kind:bss addr:0x02085cf8
 data_02085cfc kind:bss addr:0x02085cfc
-data_02085d00 kind:bss addr:0x02085d00
+FileCount kind:bss addr:0x02085d00
 data_02085d04 kind:bss addr:0x02085d04
 data_02085d08 kind:bss addr:0x02085d08
 LoadedOverlays kind:bss addr:0x02085d0c
