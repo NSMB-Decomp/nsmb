@@ -2847,7 +2847,7 @@ data_ov010_0212ad58 kind:bss addr:0x0212ad58
 data_ov010_0212ad5c kind:bss addr:0x0212ad5c
 data_ov010_0212ad60 kind:bss addr:0x0212ad60
 data_ov010_0212ad64 kind:bss addr:0x0212ad64
-data_ov010_0212ad68 kind:bss addr:0x0212ad68
+data_ov010_0212ad68 kind:data(word) addr:0x0212ad68
 data_ov010_0212ad70 kind:bss addr:0x0212ad70
 data_ov010_0212adbc kind:bss addr:0x0212adbc
 data_ov010_0212adc0 kind:bss addr:0x0212adc0

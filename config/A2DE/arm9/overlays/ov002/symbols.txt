@@ -34,7 +34,7 @@ data_ov002_020cd290 kind:data(any) addr:0x020cd290
 UnknownProfile::ov002_020cd298 kind:data(any) addr:0x020cd298 ambiguous
 data_ov002_020cd2a0 kind:data(any) addr:0x020cd2a0
 data_ov002_020cd2a8 kind:data(any) addr:0x020cd2a8
-data_ov002_020cd2b8 kind:data(any) addr:0x020cd2b8
+UnknownVtable::ov002_020cd2b8 kind:data(any) addr:0x020cd2b8
 data_ov002_020cd300 kind:bss addr:0x020cd300
 data_ov002_020cd304 kind:bss addr:0x020cd304
 data_ov002_020cd308 kind:bss addr:0x020cd308

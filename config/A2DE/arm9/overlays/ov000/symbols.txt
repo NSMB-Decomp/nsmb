@@ -829,8 +829,8 @@ data_ov000_020c6de4 kind:data(any) addr:0x020c6de4
 data_ov000_020c6de5 kind:data(any) addr:0x020c6de5
 data_ov000_020c6e0c kind:data(any) addr:0x020c6e0c
 data_ov000_020c6e10 kind:data(any) addr:0x020c6e10
-UnknownVtable::020c6e64 kind:data(any) addr:0x020c6e64
-UnknownVtable::020c6eb4 kind:data(any) addr:0x020c6eb4
+UnknownVtable::ov000_020c6e64 kind:data(any) addr:0x020c6e64
+UnknownVtable::ov000_020c6eb4 kind:data(any) addr:0x020c6eb4
 data_ov000_020c6efc kind:data(any) addr:0x020c6efc
 data_ov000_020c6f10 kind:data(any) addr:0x020c6f10
 data_ov000_020c6f18 kind:data(any) addr:0x020c6f18
@@ -1241,7 +1241,7 @@ data_ov000_020ca11c kind:data(any) addr:0x020ca11c
 data_ov000_020ca12c kind:data(any) addr:0x020ca12c
 data_ov000_020ca134 kind:data(any) addr:0x020ca134
 data_ov000_020ca150 kind:data(any) addr:0x020ca150
-data_ov000_020ca180 kind:data(any) addr:0x020ca180
+data_ov000_020ca180 kind:data(word[]) addr:0x020ca180
 data_ov000_020ca1b0 kind:data(any) addr:0x020ca1b0
 data_ov000_020ca1b4 kind:data(any) addr:0x020ca1b4
 data_ov000_020ca210 kind:data(any) addr:0x020ca210

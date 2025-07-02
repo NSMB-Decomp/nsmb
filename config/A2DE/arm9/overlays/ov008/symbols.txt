@@ -670,21 +670,21 @@ func_ov008_020e573c kind:function(arm,size=0x70) addr:0x020e573c
 func_ov008_020e57ac kind:function(arm,size=0x34) addr:0x020e57ac
 func_ov008_020e57e0 kind:function(arm,size=0x4) addr:0x020e57e0
 UnknownProfile::ov008_020e5820 kind:data(any) addr:0x020e5820
-data_ov008_020e5830 kind:data(any) addr:0x020e5830
+UnknownVtable::ov008_020e5830 kind:data(any) addr:0x020e5830
 UnknownProfile::ov008_020e5878 kind:data(any) addr:0x020e5878
-data_ov008_020e5888 kind:data(any) addr:0x020e5888
+UnknownVtable::ov008_020e5888 kind:data(any) addr:0x020e5888
 UnknownProfile::ov008_020e58d0 kind:data(any) addr:0x020e58d0
 data_ov008_020e58d8 kind:data(any) addr:0x020e58d8
 data_ov008_020e58e0 kind:data(any) addr:0x020e58e0
-data_ov008_020e58f0 kind:data(any) addr:0x020e58f0
-data_ov008_020e5940 kind:data(any) addr:0x020e5940
+UnknownVtable::ov008_020e58f0 kind:data(any) addr:0x020e58f0
+UnknownVtable::ov008_020e5940 kind:data(any) addr:0x020e5940
 data_ov008_020e5988 kind:data(any) addr:0x020e5988
 data_ov008_020e5990 kind:data(any) addr:0x020e5990
 data_ov008_020e5998 kind:data(any) addr:0x020e5998
 data_ov008_020e59a0 kind:data(any) addr:0x020e59a0
 UnknownProfile::ov008_020e59a8 kind:data(any) addr:0x020e59a8 ambiguous
 data_ov008_020e59b4 kind:data(any) addr:0x020e59b4
-data_ov008_020e59dc kind:data(any) addr:0x020e59dc
+UnknownVtable::ov008_020e59dc kind:data(any) addr:0x020e59dc
 data_ov008_020e5a2c kind:data(any) addr:0x020e5a2c
 data_ov008_020e5a30 kind:data(any) addr:0x020e5a30
 data_ov008_020e5a34 kind:data(any) addr:0x020e5a34

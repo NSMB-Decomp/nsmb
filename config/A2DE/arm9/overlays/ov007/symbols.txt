@@ -9,4 +9,4 @@ func_ov007_020cc5d8 kind:function(arm,size=0x2c) addr:0x020cc5d8
 UnknownProfile::ov007_020cc620 kind:data(any) addr:0x020cc620 ambiguous
 data_ov007_020cc628 kind:data(any) addr:0x020cc628
 data_ov007_020cc634 kind:data(any) addr:0x020cc634
-data_ov007_020cc654 kind:data(any) addr:0x020cc654
+UnknownVtable::ov007_020cc654 kind:data(any) addr:0x020cc654
