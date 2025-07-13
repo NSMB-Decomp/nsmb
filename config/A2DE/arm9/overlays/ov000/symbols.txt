@@ -107,7 +107,7 @@ func_ov000_0209da0c kind:function(arm,size=0x4c) addr:0x0209da0c
 StageEntity::func_ov000_0209da58 kind:function(arm,size=0x38) addr:0x0209da58
 StageEntity::func_ov000_0209da90 kind:function(arm,size=0x28) addr:0x0209da90
 StageEntity::func_ov000_0209dab8 kind:function(arm,size=0x428) addr:0x0209dab8
-func_ov000_0209dee0 kind:function(arm,size=0x158) addr:0x0209dee0
+StageEntity::StageEntity kind:function(arm,size=0x158) addr:0x0209dee0
 func_ov000_0209e038 kind:function(arm,size=0x104) addr:0x0209e038
 func_ov000_0209e13c kind:function(arm,size=0x128) addr:0x0209e13c
 func_ov000_0209e264 kind:function(arm,size=0x64) addr:0x0209e264
@@ -197,7 +197,7 @@ StageActor::func_ov000_020a1154 kind:function(arm,size=0x54) addr:0x020a1154
 StageActor::func_ov000_020a11a8 kind:function(arm,size=0x44) addr:0x020a11a8
 StageActor::func_ov000_020a11ec kind:function(arm,size=0x4c) addr:0x020a11ec
 StageActor::func_ov000_020a1238 kind:function(arm,size=0x44) addr:0x020a1238
-StageActor::func_ov000_020a127c kind:function(arm,size=0x60) addr:0x020a127c
+StageActor::StageActor kind:function(arm,size=0x60) addr:0x020a127c
 //
 func_ov000_020a12dc kind:function(arm,size=0x94) addr:0x020a12dc
 func_ov000_020a1370 kind:function(arm,size=0x9c) addr:0x020a1370

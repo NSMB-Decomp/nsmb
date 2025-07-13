@@ -158,7 +158,7 @@ struct Base_data
     u8 __2;
     u8 __3;
     u8 __4;
-    ProcessLink unknown;
+    ProcessLink processLink;
     unknown_pointer __5;
     unknown_pointer heap;
 };
@@ -178,23 +178,23 @@ struct Actor_vtable
 struct Actor_data
 {
     Base_data Base;
-    Vec3_32 pos;
-    Vec3_32 lastPos;
-    Vec3_32 __0;
-    Vec3_32 __4;
-    Vec3_16 __8;
-    Vec3_16 __11;
+    Vec3_32C pos;
+    Vec3_32C lastPos;
+    Vec3_32C __0;
+    Vec3_32C __4;
+    Vec3_16C __8;
+    Vec3_16C __11;
     unknown4 __14;
     unknown4 __15;
     unknown4 __16;
     unknown4 __17;
     unknown4 __18;
     unknown4 __19;
-    Vec3_32 __20;
-    Vec3_32 __24;
-    Vec3_32 __28;
-    Vec3_32 __32;
-    Vec3_32 __36;
+    Vec3_32C __20;
+    Vec3_32C __24;
+    Vec3_32C __28;
+    Vec3_32C __32;
+    Vec3_32C __36;
     unknown1 __40;
     unknown1 __41;
     unknown1 __42;
@@ -206,16 +206,79 @@ struct Actor
     Actor_data _;
 };
 
-struct StageActor_vtable
-{
-    Actor_vtable Actor;
+// Class: StageActor
+typedef Actor_vtable StageActor_vtable;
+struct StageActor_data {
+    Actor_data Actor;
+};
+struct StageActor {
+    StageActor_vtable *vtable;
+    StageActor_data _;
 };
 
-// Class: Player
-// Size = 0xBCC
-struct Player_vtable
+// Class: StageEntity
+struct StageEntity_vtable
 {
-    Actor_vtable Actor;
+    StageActor_vtable StageActor;
+    unknown_pointer __0;
+    unknown_pointer __1;
+    unknown_pointer __2;
+    unknown_pointer __3;
+    unknown_pointer __4;
+    unknown_pointer __5;
+    unknown_pointer __6;
+    unknown_pointer __7;
+    unknown_pointer __8;
+    unknown_pointer __9;
+    unknown_pointer __10;
+    unknown_pointer __11;
+    unknown_pointer __12;
+    unknown_pointer __13;
+    unknown_pointer __14;
+    unknown_pointer __15;
+    unknown_pointer __16;
+    unknown_pointer __17;
+    unknown_pointer __18;
+    unknown_pointer __19;
+    unknown_pointer __20;
+    unknown_pointer __21;
+    unknown_pointer __22;
+    unknown_pointer __23;
+    unknown_pointer __24;
+    unknown_pointer __25;
+    unknown_pointer __26;
+    unknown_pointer __27;
+    unknown_pointer __28;
+    unknown_pointer __29;
+    unknown_pointer __30;
+    unknown_pointer __31;
+    unknown_pointer __32;
+    unknown_pointer __33;
+    unknown_pointer __34;
+    unknown_pointer __35;
+    unknown_pointer __36;
+    unknown_pointer __37;
+    unknown_pointer __38;
+    unknown_pointer __39;
+    unknown_pointer __40;
+    unknown_pointer __41;
+    unknown_pointer __42;
+    unknown_pointer __43;
+    unknown_pointer __44;
+    unknown_pointer __45;
+    unknown_pointer __46;
+};
+struct StageEntity_data {
+    StageActor_data StageActor;
+};
+struct StageEntity {
+    StageEntity_vtable *vtable;
+    StageEntity_data _;
+};
+
+// Class: PlayerBase
+struct PlayerBase_vtable {
+    StageActor_vtable StageActor;
     unknown_pointer __0;
     unknown_pointer __1;
     unknown_pointer __2;
@@ -268,114 +331,30 @@ struct Player_vtable
     unknown_pointer __49;
     unknown_pointer __50;
 };
-struct Player_data {
+struct PlayerBase_data {
+    StageEntity_data StageEntity;
+};
+struct PlayerBase {
+    PlayerBase_vtable *vtable;
+    PlayerBase_data _;
+};
 
+// Class: Player
+typedef PlayerBase_vtable Player_vtable;
+struct Player_data {
+    PlayerBase_data PlayerBase;
 };
 struct Player {
     Player_vtable *vtable;
     Player_data _;
 };
 
-struct Coin_vtable
-{
-    Actor_vtable Actor;
-    unknown_pointer __0;
-    unknown_pointer __1;
-    unknown_pointer __2;
-    unknown_pointer __3;
-    unknown_pointer __4;
-    unknown_pointer __5;
-    unknown_pointer __6;
-    unknown_pointer __7;
-    unknown_pointer __8;
-    unknown_pointer __9;
-    unknown_pointer __10;
-    unknown_pointer __11;
-    unknown_pointer __12;
-    unknown_pointer __13;
-    unknown_pointer __14;
-    unknown_pointer __15;
-    unknown_pointer __16;
-    unknown_pointer __17;
-    unknown_pointer __18;
-    unknown_pointer __19;
-    unknown_pointer __20;
-    unknown_pointer __21;
-    unknown_pointer __22;
-    unknown_pointer __23;
-    unknown_pointer __24;
-    unknown_pointer __25;
-    unknown_pointer __26;
-    unknown_pointer __27;
-    unknown_pointer __28;
-    unknown_pointer __29;
-    unknown_pointer __30;
-    unknown_pointer __31;
-    unknown_pointer __32;
-    unknown_pointer __33;
-    unknown_pointer __34;
-    unknown_pointer __35;
-    unknown_pointer __36;
-    unknown_pointer __37;
-    unknown_pointer __38;
-    unknown_pointer __39;
-    unknown_pointer __40;
-    unknown_pointer __41;
-    unknown_pointer __42;
-    unknown_pointer __43;
-    unknown_pointer __44;
-    unknown_pointer __45;
-    unknown_pointer __46;
+// Class: Coin
+typedef StageEntity_vtable Coin_vtable;
+struct Coin_data {
+    StageEntity_data StageEntity;
 };
-
-struct StageEntity_vtable
-{
-    Actor_vtable Actor;
-    unknown_pointer __0;
-    unknown_pointer __1;
-    unknown_pointer __2;
-    unknown_pointer __3;
-    unknown_pointer __4;
-    unknown_pointer __5;
-    unknown_pointer __6;
-    unknown_pointer __7;
-    unknown_pointer __8;
-    unknown_pointer __9;
-    unknown_pointer __10;
-    unknown_pointer __11;
-    unknown_pointer __12;
-    unknown_pointer __13;
-    unknown_pointer __14;
-    unknown_pointer __15;
-    unknown_pointer __16;
-    unknown_pointer __17;
-    unknown_pointer __18;
-    unknown_pointer __19;
-    unknown_pointer __20;
-    unknown_pointer __21;
-    unknown_pointer __22;
-    unknown_pointer __23;
-    unknown_pointer __24;
-    unknown_pointer __25;
-    unknown_pointer __26;
-    unknown_pointer __27;
-    unknown_pointer __28;
-    unknown_pointer __29;
-    unknown_pointer __30;
-    unknown_pointer __31;
-    unknown_pointer __32;
-    unknown_pointer __33;
-    unknown_pointer __34;
-    unknown_pointer __35;
-    unknown_pointer __36;
-    unknown_pointer __37;
-    unknown_pointer __38;
-    unknown_pointer __39;
-    unknown_pointer __40;
-    unknown_pointer __41;
-    unknown_pointer __42;
-    unknown_pointer __43;
-    unknown_pointer __44;
-    unknown_pointer __45;
-    unknown_pointer __46;
+struct Coin {
+    Coin_vtable *vtable;
+    Coin_data _;
 };
