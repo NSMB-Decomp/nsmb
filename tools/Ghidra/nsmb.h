@@ -117,7 +117,9 @@ enum ProcessType {
     Draw = 5,
 };
 
-struct ObjectProfile {
+// TODO: Does this need to be renamed?
+// TODO: Does this have a optioanal 4th function?
+struct ActorProfile {
     void *constructor;
     u16 updatePriority;
     u16 renderPriority;
@@ -209,6 +211,8 @@ struct StageActor_vtable
     Actor_vtable Actor;
 };
 
+// Class: Player
+// Size = 0xBCC
 struct Player_vtable
 {
     Actor_vtable Actor;
@@ -263,6 +267,13 @@ struct Player_vtable
     unknown_pointer __48;
     unknown_pointer __49;
     unknown_pointer __50;
+};
+struct Player_data {
+
+};
+struct Player {
+    Player_vtable *vtable;
+    Player_data _;
 };
 
 struct Coin_vtable

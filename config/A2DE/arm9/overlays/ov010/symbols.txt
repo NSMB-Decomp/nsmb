@@ -1611,7 +1611,7 @@ func_ov010_02120a24 kind:function(arm,size=0x10) addr:0x02120a24
 func_ov010_02120a34 kind:function(arm,size=0x64) addr:0x02120a34
 func_ov010_02120a98 kind:function(arm,size=0x120) addr:0x02120a98
 func_ov010_02120bb8 kind:function(arm,size=0x25c) addr:0x02120bb8
-func_ov010_02120e14 kind:function(arm,size=0x2c) addr:0x02120e14
+Player::__operator_new kind:function(arm,size=0x2c) addr:0x02120e14
 func_ov010_02120e40 kind:function(arm,size=0x78) addr:0x02120e40
 func_ov010_02120eb8 kind:function(arm,size=0xac) addr:0x02120eb8
 func_ov010_02120f64 kind:function(arm,size=0x60) addr:0x02120f64
@@ -2756,7 +2756,7 @@ data_ov010_02128438 kind:data(any) addr:0x02128438
 data_ov010_02128440 kind:data(any) addr:0x02128440
 data_ov010_02128448 kind:data(any) addr:0x02128448
 data_ov010_02128450 kind:data(any) addr:0x02128450
-UnknownProfile::ov010_02128458 kind:data(any) addr:0x02128458
+Player::profile kind:data(any) addr:0x02128458
 data_ov010_0212846c kind:data(any) addr:0x0212846c
 data_ov010_0212847c kind:data(any) addr:0x0212847c
 data_ov010_02128484 kind:data(any) addr:0x02128484
