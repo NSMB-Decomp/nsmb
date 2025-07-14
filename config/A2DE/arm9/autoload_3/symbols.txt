@@ -580,13 +580,13 @@ data_0208e7e0 kind:bss addr:0x0208e7e0
 data_0208f021 kind:bss addr:0x0208f021
 data_0208fae0 kind:bss addr:0x0208fae0
 data_0208fae8 kind:bss addr:0x0208fae8
-data_0208faec kind:bss addr:0x0208faec
+Base::SpawnParam4 kind:bss addr:0x0208faec
 data_0208faf0 kind:bss addr:0x0208faf0
-data_0208faf4 kind:bss addr:0x0208faf4
-data_0208faf8 kind:bss addr:0x0208faf8
+Base::SpawnParam1 kind:bss addr:0x0208faf4
+Base::SpawnParam2 kind:bss addr:0x0208faf8
 data_0208fafc kind:bss addr:0x0208fafc
 data_0208fb00 kind:bss addr:0x0208fb00
-data_0208fb04 kind:bss addr:0x0208fb04
+Base::SpawnParam3 kind:bss addr:0x0208fb04
 data_0208fb08 kind:bss addr:0x0208fb08
 ProcessManager::ConnectTask kind:bss addr:0x0208fb0c
 ProcessManager::ExecuteTask kind:bss addr:0x0208fb18

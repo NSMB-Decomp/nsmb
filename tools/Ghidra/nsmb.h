@@ -6,6 +6,10 @@ typedef unsigned long u32;
 typedef signed char i8;
 typedef signed short i16;
 typedef signed long i32;
+enum bool8 { // 4 bytes long
+    False = 0,
+    True = 1,
+};
 
 // Placeholders
 typedef u8 unknown1;
@@ -177,8 +181,8 @@ struct Actor_vtable
 };
 struct Actor_data
 {
-    Base_data Base;
-    Vec3_32C pos;
+    Base_data Base; // 0x00
+    Vec3_32C pos; // 0x58
     Vec3_32C lastPos;
     Vec3_32C __0;
     Vec3_32C __4;
@@ -198,7 +202,7 @@ struct Actor_data
     unknown1 __40;
     unknown1 __41;
     unknown1 __42;
-    unknown1 __43;
+    unknown1 __43; // 0x11b
 };
 struct Actor
 {
@@ -206,10 +210,158 @@ struct Actor
     Actor_data _;
 };
 
+// Class ActiveCollider
+struct ActiveCollider_vtable {
+    unknown_pointer __0;
+    unknown_pointer __1;
+};
+struct ActiveCollider_data {
+    u32 __00;
+    u32 __04;
+    u32 __08;
+    u32 __0c;
+    u32 __10;
+    u32 __14;
+    u32 __18;
+    u32 __1c;
+    u32 __20;
+    u32 __24;
+    u32 __28;
+    u32 __2c;
+    u32 __30;
+    u32 __34;
+    u32 __38;
+    u32 __3c;
+    u32 __40;
+    u32 __44;
+    u32 __48;
+    u32 __4c;
+    u32 __50;
+    u32 __54;
+    u32 __58;
+    u32 __5c;
+    u32 __60;
+    u32 __64;
+    u32 __68;
+    u32 __6c;
+    u32 __70;
+    u32 __74;
+    u32 __78;
+    u32 __7c;
+    u32 __80;
+    u32 __84;
+    u32 __88;
+    u32 __8c;
+    u32 __90;
+    u32 __94;
+    u32 __98;
+    u32 __9c;
+    u32 __a0;
+    u32 __a4;
+    u32 __a8;
+};
+struct ActiveCollider {
+    ActiveCollider_vtable *vtable;
+    ActiveCollider_data _;
+};
+
+// Class: CollisionManager
+struct CollisionManager_vtable {
+    unknown_pointer __0;
+    unknown_pointer __1;
+};
+struct CollisionManager_data {
+    u32 __00;
+    u32 __04;
+    u32 __08;
+    u32 __0c;
+    u32 __10;
+    u32 __14;
+    u32 __18;
+    u32 __1c;
+    u32 __20;
+    u32 __24;
+    u32 __28;
+    u32 __2c;
+    u32 __30;
+    u32 __34;
+    u32 __38;
+    u32 __3c;
+    u32 __40;
+    u32 __44;
+    u32 __48;
+    u32 __4c;
+    u32 __50;
+    u32 __54;
+    u32 __58;
+    u32 __5c;
+    u32 __60;
+    u32 __64;
+    u32 __68;
+    u32 __6c;
+    u32 __70;
+    u32 __74;
+    u32 __78;
+    u32 __7c;
+    u32 __80;
+    u32 __84;
+    u32 __88;
+    u32 __8c;
+    u32 __90;
+    u32 __94;
+    u32 __98;
+    u32 __9c;
+    u32 __a0;
+    u32 __a4;
+    u32 __a8;
+    u32 __ac;
+    u32 __b0;
+};
+struct CollisionManager {
+    CollisionManager_vtable *vtable;
+    CollisionManager_data _;
+};
+
+// Struct PlatformManager
+struct PlatformManager_vtable {
+
+};
+struct PlatformManager_data {
+    u32 __00;
+    u32 __04;
+    u32 __08;
+    u32 __0c;
+    u32 __10;
+    u32 __14;
+    u32 __18;
+    u32 __1c;
+    u32 __20;
+    u32 __24;
+    u32 __28;
+    u32 __2c;
+};
+struct PlatformManager {
+    PlatformManager_vtable *vtable;
+    PlatformManager_data _;
+};
+
 // Class: StageActor
+enum Direction { // TODO: How do we force this to be 1 byte when importing into Ghidra?
+    Left = 0,
+    Right = 1,
+} __attribute__((packed));
+
 typedef Actor_vtable StageActor_vtable;
 struct StageActor_data {
     Actor_data Actor;
+    ActiveCollider active_collider;
+    CollisionManager collision_manager;
+    PlatformManager platform_manager;
+    u8 __1;
+    Direction __2; // Direction
+    u8 __3;
+    u8 __4;
+    bool8 __5;
 };
 struct StageActor {
     StageActor_vtable *vtable;
