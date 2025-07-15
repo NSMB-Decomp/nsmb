@@ -1,4 +1,6 @@
-wine "/home/umbreon/nsmb/build/compiler/mwccarm/2.0/base/mwccarm.exe" -O4 -proc arm946e -lang=C++ -Cpp_exceptions off -w off -gccinc -nolink -c ./src/Base.cpp 
+#!/bin/bash
+
+wine "/home/umbreon/nsmb/build/compiler/mwccarm/2.0/base/mwccarm.exe" -O4 -proc arm946e -lang=C++ -Cpp_exceptions off -w off -gccinc -nolink -c ./src/Base.cpp -o $PWD/$1
 
 #wine "/home/umbreon/nsmb/build/compiler/mwccarm/2.0/base/mwccarm.exe" -O4,p \
 #    -enum int -char signed -str noreuse -proc arm946e -gccext,on -fp soft -inline \

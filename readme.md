@@ -11,7 +11,7 @@
 Set release region `export NSMB_RELEASE=A2DE`  
 Extract your existing rom using `dsd rom extract -r $NSMB_RELEASE.nds -o extracted`  
 Generate the config for this release using `dsd init -r extracted/config.yaml -o config/$NSMB_RELEASE/ -b build`  
-Generate objdiff config `dsd objdiff --scratch -c config/$NSMB_RELEASE/arm9/config.yaml -m "wine /home/umbreon/nsmb/build/compiler/mwccarm/2.0/base/mwccarm.exe" -C mwcc_20_79 -f "-O4 -proc arm946e -lang=C++ -Cpp_exceptions off -w off -gccinc -nolink -c"`
+Generate objdiff config `dsd objdiff -c config/$NSMB_RELEASE/arm9/config.yaml -m $PWD/build.sh`
 `dsd delink -c config/$NSMB_RELEASE/arm9/config.yaml`  
 Generate lcf info `dsd lcf -c config/$NSMB_RELEASE/arm9/config.yaml`  
 Build a new rom using `dsd rom build -c extracted/config.yaml -o build/NSMB_USA.nds`  
