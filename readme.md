@@ -2,7 +2,7 @@
 |No-Intro Name|Release Code|Support
 |-|-|-|
 |[New Super Mario Bros. (Europe) (En,Fr,De,Es,It)](https://datomatic.no-intro.org/index.php?page=show_record&s=28&n=0479)|A2DP|N/A|
-|[New Super Mario Bros. (USA, Australia)](https://datomatic.no-intro.org/index.php?page=show_record&s=28&n=0434)|A2DE|In Progress|
+|[New Super Mario Bros. (USA, Australia)](5https://datomatic.no-intro.org/index.php?page=show_record&s=28&n=0434)|A2DE|In Progress|
 |[New Super Mario Bros. (Japan)](https://datomatic.no-intro.org/index.php?page=show_record&s=28&n=0442)|A2DJ|N/A|
 |[New Super Mario Bros. (Korea) ](https://datomatic.no-intro.org/index.php?page=show_record&s=28&n=0879)|A2DK|N/A|
 
@@ -11,7 +11,7 @@
 Set release region `export NSMB_RELEASE=A2DE`  
 Extract your existing rom using `dsd rom extract -r $NSMB_RELEASE.nds -o extracted`  
 Generate the config for this release using `dsd init -r extracted/config.yaml -o config/$NSMB_RELEASE/ -b build`  
-<!--Generate objdiff config `dsd objdiff --scratch -c config/$NSMB_RELEASE/arm9/config.yaml -C mwcc_20_79 -p 148`-->
+Generate objdiff config `dsd objdiff --scratch -c config/$NSMB_RELEASE/arm9/config.yaml -m "wine /home/umbreon/nsmb/build/compiler/mwccarm/2.0/base/mwccarm.exe" -C mwcc_20_79 -f "-O4 -proc arm946e -lang=C++ -Cpp_exceptions off -w off -gccinc -nolink -c"`
 `dsd delink -c config/$NSMB_RELEASE/arm9/config.yaml`  
 Generate lcf info `dsd lcf -c config/$NSMB_RELEASE/arm9/config.yaml`  
 Build a new rom using `dsd rom build -c extracted/config.yaml -o build/NSMB_USA.nds`  

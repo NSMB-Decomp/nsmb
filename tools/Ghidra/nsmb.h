@@ -346,11 +346,6 @@ struct PlatformManager {
 };
 
 // Class: StageActor
-enum Direction { // TODO: How do we force this to be 1 byte when importing into Ghidra?
-    Left = 0,
-    Right = 1,
-} __attribute__((packed));
-
 typedef Actor_vtable StageActor_vtable;
 struct StageActor_data {
     Actor_data Actor;
@@ -358,7 +353,7 @@ struct StageActor_data {
     CollisionManager collision_manager;
     PlatformManager platform_manager;
     u8 __1;
-    Direction __2; // Direction
+    u8 direction; // 0 = left, 1 = right
     u8 __3;
     u8 __4;
     bool8 __5;

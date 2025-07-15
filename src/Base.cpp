@@ -2,6 +2,8 @@
 
 char Base::func() {
   this->a = true;
+  this->virt_func();
+  this->virt_func2();
   return 1;
 }
 
@@ -11,6 +13,10 @@ char Base::poly_func() {
 }
 
 char Base::virt_func() {
+  this->a = false;
+  return 0;
+}
+char Base::virt_func2() {
   this->a = false;
   return 0;
 }
@@ -27,7 +33,21 @@ char Based::virt_func() {
   this->b = true;
   return 1;
 }
-
+char Based::virt_func2() {
+  this->a = false;
+  this->virt_func3();
+  return 0;
+}
+char Based::virt_func3() {
+  this->a = false;
+  return 0;
+}
+char Ratio::virt_func3() {
+  this->a = false;
+  return 0;
+}
+ 
+Ratio::Ratio(){}
 Base::Base() {
   this->a = false;
 }
@@ -42,10 +62,12 @@ Based::Based() {
 int main() {
   Base base;
   Based not_base;
+  Ratio ratio;
   base.func();
   base.poly_func();
   base.virt_func();
   not_base.func();
   not_base.poly_func();
   not_base.virt_func();
+  ratio.virt_func2();
 };
