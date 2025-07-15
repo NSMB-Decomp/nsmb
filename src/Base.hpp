@@ -18,7 +18,7 @@ public:
   u8 __2;
   u8 __3;
   u8 __4;
-  /* ProcessLink */
+  /*ProcessLink process_link;*/
 
   Base* spawnParent(u16, u32, u32);
   void spawnChild();
