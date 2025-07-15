@@ -1,20 +1,47 @@
+typedef unsigned char u8;
+typedef unsigned short u16;
+typedef unsigned long u32;
+typedef signed char i8;
+typedef signed short i16;
+typedef signed long i32;
+typedef void* unknown_pointer;
+
+
 class Base {
 public:
-  bool a;
-  char func();
-  char poly_func();
-  virtual char virt_func();
-  virtual char virt_func2();
-  Base();
-  Base(bool);
-};
+  u32 guid;
+  u32 settings;
+  u16 object_id;
+  u8 state;
+  bool destroy;
+  u8 __1;
+  u8 __2;
+  u8 __3;
+  u8 __4;
+  /* ProcessLink */
 
-class Based : public Base {
-public:
-  bool b;
-  char poly_func();
-  virtual char virt_func();
-  virtual char virt_func2();
-  virtual char virt_func3();
-  Based();
+  bool spawnParent(u16, u32, u32);
+  void spawnChild();
+  void unloadSceneOverlay();
+  Base spawn(u16, u32, u32, u32);
+  void setSpawnParams();
+  void hasChildNotCreated();
+  void processDestroy();
+  void processCreate();
+  void __operator_delete();
+  void __operator_new();
+  void onHeapCreated();
+  void prepareResourcesFast();
+  void prepareResourcesSafe();
+  void getParent();
+  void destroySelf();
+  void pendingDestroy();
+  void postDestroy();
+  void preDestroy();
+  void onDestroy();
+  void postCreate();
+  void preCreate();
+  bool onCreate();
+  Base();
+  ~Base();
 };
