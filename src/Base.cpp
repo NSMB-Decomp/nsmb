@@ -1,10 +1,10 @@
 #include "Base.hpp"
 
-bool Base::spawnParent(u16 p1, u32 p2, u32 p3) {
-  this->spawn(p1, 0, p2, p3);
-  return true;
+Base *Base::spawnParent(u16 p1, u32 p2, u32 p3) {
+  return this->spawn(p1, 0, p2, p3);
 }
 
-bool Base::onCreate() {
-  return true;
-}
+void *Base::operator new(u32 count) { return ::operator new(count); }
+
+bool Base::onCreate() { return true; }
+bool Base::preCreate() { return true; }

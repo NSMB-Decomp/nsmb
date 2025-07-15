@@ -20,16 +20,16 @@ public:
   u8 __4;
   /* ProcessLink */
 
-  bool spawnParent(u16, u32, u32);
+  Base* spawnParent(u16, u32, u32);
   void spawnChild();
   void unloadSceneOverlay();
-  Base spawn(u16, u32, u32, u32);
+  Base* spawn(u16, u32, u32, u32);
   void setSpawnParams();
   void hasChildNotCreated();
   void processDestroy();
   void processCreate();
+  void* operator new(u32 count);
   void __operator_delete();
-  void __operator_new();
   void onHeapCreated();
   void prepareResourcesFast();
   void prepareResourcesSafe();
@@ -40,8 +40,9 @@ public:
   void preDestroy();
   void onDestroy();
   void postCreate();
-  void preCreate();
-  bool onCreate();
+  virtual bool onCreate();
+  virtual bool preCreate();
   Base();
   ~Base();
+
 };
