@@ -18,15 +18,3 @@ public:
   virtual char virt_func3();
   Based();
 };
-
-class ThisClassIsNotUsedAtAll {
-public:
-    virtual char zed();
-};
-
-class Ratio : public Based {
-public:
-  virtual char virt_func3();
-  virtual char b(ThisClassIsNotUsedAtAll);
-  Ratio();
-};

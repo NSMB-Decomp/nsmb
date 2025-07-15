@@ -42,12 +42,7 @@ char Based::virt_func3() {
   this->a = false;
   return 0;
 }
-char Ratio::virt_func3() {
-  this->a = false;
-  return 0;
-}
  
-Ratio::Ratio(){}
 Base::Base() {
   this->a = false;
 }
@@ -62,12 +57,10 @@ Based::Based() {
 int main() {
   Base base;
   Based not_base;
-  Ratio ratio;
   base.func();
   base.poly_func();
   base.virt_func();
   not_base.func();
   not_base.poly_func();
   not_base.virt_func();
-  ratio.virt_func2();
 };
