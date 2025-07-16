@@ -5,3 +5,5 @@
     .data       start:0x020c4ec0 end:0x020ca280 kind:data align:32
     .bss        start:0x020ca280 end:0x020cc2e0 kind:bss align:32
 
+src/Actor.cpp:
+    .text       start:0x020a0728 end:0x020a10a0

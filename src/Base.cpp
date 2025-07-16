@@ -48,10 +48,10 @@ void Base::create() {
   if (this->state != 0) {
     return;
   }
-  //if (ProcessManager::CurrentTask != Create) {
-  //  func_020438e8(&ProcessManager::CreateTask,&(this->_).processLink.update);
-  //  return;
-  //}
+  // if (ProcessManager::CurrentTask != Create) {
+  //   func_020438e8(&ProcessManager::CreateTask,&(this->_).processLink.update);
+  //   return;
+  // }
   this->__2 = 0x01;
 }
 
@@ -70,7 +70,7 @@ Base *Base::getParent() {
 };
 
 void Base::destroy() {
-  if (!this->pending_destroy&& this->state != 0x02) {
+  if (!this->pending_destroy && this->state != 0x02) {
     this->pending_destroy = true;
     this->pendingDestroy();
   }
@@ -80,3 +80,20 @@ void Base::pendingDestroy() {}
 bool Base::onDestroy() { return true; }
 bool Base::preCreate() { return true; }
 bool Base::onCreate() { return true; }
+Base::Base() {
+  ProcessLink pl = this->process_link;
+  pl.connect.object = this;
+  pl.update._.prev = (ProcessNode *)0x00;
+  pl.update._.next = (ProcessNode *)0x00;
+  pl.update._.object = this;
+  pl.update.currentPriority = 0;
+  pl.update.sortPriority = 0;
+  pl.render._.prev = (ProcessNode *)0x00;
+  pl.render._.next = (ProcessNode *)0x00;
+  pl.render._.object = this;
+  pl.render.currentPriority = 0;
+  pl.render.sortPriority = 0;
+  pl.idLookup.prev = (ProcessNode *)0x00;
+  pl.idLookup.next = (ProcessNode *)0x00;
+  pl.idLookup.object = this;
+}

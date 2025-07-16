@@ -30,7 +30,7 @@ public:
   void unloadSceneOverlay();
   void loadSceneOverlay(u32);
   Base* spawn(u16, ProcessLink*, u32, u32);
-  void setSpawnParams(u16, u32, u32, u8);
+  static void setSpawnParams(u16, u32, u32, u8);
   void hasChildNotCreated();
   void processDestroy();
   void processCreate();
