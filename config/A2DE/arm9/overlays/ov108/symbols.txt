@@ -33,7 +33,8 @@ func_ov108_0218ad74 kind:function(arm,size=0x30) addr:0x0218ad74
 data_ov108_0218ada4 kind:data(any) addr:0x0218ada4
 data_ov108_0218adac kind:data(any) addr:0x0218adac
 data_ov108_0218adb4 kind:data(any) addr:0x0218adb4
-func_ov108_0218add0 kind:function(arm,size=0xd0) addr:0x0218add0
+__sinit_ov108_0218add0 kind:function(arm,size=0xd0) addr:0x0218add0
+.p__sinit_ov108_0218add0 kind:data(word) addr:0x0218aea0
 data_ov108_0218aec0 kind:data(any) addr:0x0218aec0
 data_ov108_0218aec8 kind:data(any) addr:0x0218aec8
 data_ov108_0218aed0 kind:data(any) addr:0x0218aed0

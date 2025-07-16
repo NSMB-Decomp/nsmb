@@ -28,7 +28,8 @@ data_ov067_021766c0 kind:data(any) addr:0x021766c0
 data_ov067_021766c8 kind:data(any) addr:0x021766c8
 data_ov067_021766d0 kind:data(any) addr:0x021766d0
 data_ov067_021766d8 kind:data(any) addr:0x021766d8
-func_ov067_021766f4 kind:function(arm,size=0x50) addr:0x021766f4
+__sinit_ov067_021766f4 kind:function(arm,size=0x50) addr:0x021766f4
+.p__sinit_ov067_021766f4 kind:data(word) addr:0x02176744
 data_ov067_02176760 kind:data(any) addr:0x02176760
 data_ov067_02176768 kind:data(any) addr:0x02176768
 UnknownProfile::ov067_02176770 kind:data(any) addr:0x02176770 ambiguous

@@ -105,7 +105,8 @@ data_ov071_021792bc kind:data(any) addr:0x021792bc
 data_ov071_021792c0 kind:data(any) addr:0x021792c0 ambiguous
 data_ov071_021792c8 kind:data(any) addr:0x021792c8
 data_ov071_021792d4 kind:data(any) addr:0x021792d4
-func_ov071_021792f0 kind:function(arm,size=0x68) addr:0x021792f0
+__sinit_ov071_021792f0 kind:function(arm,size=0x68) addr:0x021792f0
+.p__sinit_ov071_021792f0 kind:data(word) addr:0x02179358
 data_ov071_02179360 kind:data(any) addr:0x02179360
 data_ov071_02179368 kind:data(any) addr:0x02179368
 data_ov071_02179370 kind:data(any) addr:0x02179370

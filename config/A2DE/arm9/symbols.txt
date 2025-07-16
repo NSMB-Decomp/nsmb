@@ -105,7 +105,7 @@ func_02004c30 kind:function(arm,size=0x88) addr:0x02004c30
 func_02004cb8 kind:function(arm,size=0xd8) addr:0x02004cb8
 func_02004d90 kind:function(arm,size=0x6c) addr:0x02004d90
 func_02004dfc kind:function(arm,size=0x24) addr:0x02004dfc
-SharedGameInit kind:function(arm,size=0x3c) addr:0x02004e20 // TODO: These names here are particularly awful, to rename them
+SharedGameInit kind:function(arm,size=0x3c) addr:0x02004e20
 InitMainGame kind:function(arm,size=0x1c) addr:0x02004e5c
 InitNitroMainGame kind:function(arm,size=0x30) addr:0x02004e78
 StartGameLoop kind:function(arm,size=0x94) addr:0x02004ea8
@@ -188,10 +188,8 @@ func_02006ca4 kind:function(arm,size=0x50) addr:0x02006ca4
 func_02006cf4 kind:function(arm,size=0x1f0) addr:0x02006cf4
 func_02006ee4 kind:function(arm,size=0x4) addr:0x02006ee4
 resetWindows kind:function(arm,size=0x2c) addr:0x02006ee8
-
-// Class: Graphics
 Graphics::FaderStep kind:function(arm,size=0x2c) addr:0x02006f14
-Graphics::UnknownStep kind:function(arm,size=0x2c) addr:0x02006f40 // TODO: Confirm if this is used at all
+Graphics::UnknownStep kind:function(arm,size=0x2c) addr:0x02006f40
 Graphics::2DStep kind:function(arm,size=0x40) addr:0x02006f6c
 Graphics::ResetOAM kind:function(arm,size=0xc) addr:0x02006fac
 Graphics::Step kind:function(arm,size=0x54) addr:0x02006fb8
@@ -203,7 +201,6 @@ Graphics::Reset3D kind:function(arm,size=0x3c) addr:0x02007278
 Graphics::func_020072b4 kind:function(arm,size=0xd8) addr:0x020072b4
 Graphics::func_0200738c kind:function(arm,size=0x290) addr:0x0200738c
 Graphics::__stub kind:function(arm,size=0x4) addr:0x0200761c
-
 func_02007620 kind:function(arm,size=0x3c) addr:0x02007620
 func_0200765c kind:function(arm,size=0x28) addr:0x0200765c
 func_02007684 kind:function(arm,size=0x28) addr:0x02007684
@@ -266,23 +263,17 @@ func_02009190 kind:function(arm,size=0x14) addr:0x02009190
 func_020091a4 kind:function(arm,size=0xe4) addr:0x020091a4
 func_02009288 kind:function(arm,size=0x28) addr:0x02009288
 func_020092b0 kind:function(arm,size=0xbc) addr:0x020092b0
-// FileSystem
 FS::GetFileId kind:function(arm,size=0x28) addr:0x0200936c
 FS::calcFileID kind:function(arm,size=0x64) addr:0x02009394
 FS::SetFileIDOffset kind:function(arm,size=0x18) addr:0x020093f8
 FS::setFileCount kind:function(arm,size=0x14) addr:0x02009410
 FS::init kind:function(arm,size=0x54) addr:0x02009424
 FS::getDecompressedSize kind:function(arm,size=0xc) addr:0x02009478
-
-// Overlay loading
 FS::Overlays::init kind:function(arm,size=0x34) addr:0x02009484
 FS::Overlays::unload kind:function(arm,size=0x58) addr:0x020094b8
-FS::Overlays::load kind:function(arm,size=0x238) addr:0x02009560
 FS::Overlays::loadOverlay kind:function(arm,size=0x50) addr:0x02009510
+FS::Overlays::load kind:function(arm,size=0x238) addr:0x02009560
 FS::Overlays::invalidateRange kind:function(arm,size=0x38) addr:0x02009798
-
-
-//
 func_020097d0 kind:function(arm,size=0x1c) addr:0x020097d0
 func_020097ec kind:function(arm,size=0x14) addr:0x020097ec
 func_02009800 kind:function(arm,size=0x1c) addr:0x02009800
@@ -1362,30 +1353,30 @@ data_020258e4 kind:data(any) addr:0x020258e4
 data_020258f8 kind:data(any) addr:0x020258f8
 data_02025910 kind:data(any) addr:0x02025910
 data_02025924 kind:data(any) addr:0x02025924
-__sinit_math_cpp kind:function(arm,size=0x38) addr:0x02025a44 // TODO: Put these functions under the respective class?
-__stub kind:function(arm,size=0x4) addr:0x02025a7c
+__sinit_math_cpp kind:function(arm,size=0x38) addr:0x02025a44
+__sinit_02025a7c kind:function(arm,size=0x4) addr:0x02025a7c
 __sinit_file_cpp kind:function(arm,size=0x88) addr:0x02025a80
-__stub kind:function(arm,size=0x4) addr:0x02025b08
+__sinit_02025b08 kind:function(arm,size=0x4) addr:0x02025b08
 __sinit_oam_cpp kind:function(arm,size=0x50) addr:0x02025b0c
-func_02025b5c kind:function(arm,size=0x40) addr:0x02025b5c
-func_02025b9c kind:function(arm,size=0x5c) addr:0x02025b9c
+__sinit_02025b5c kind:function(arm,size=0x40) addr:0x02025b5c
+__sinit_02025b9c kind:function(arm,size=0x5c) addr:0x02025b9c
 __sinit_fader_cpp kind:function(arm,size=0x34) addr:0x02025bf8
 __sinit_font_cpp kind:function(arm,size=0x44) addr:0x02025c2c
-func_02025c70 kind:function(arm,size=0x34) addr:0x02025c70
+__sinit_02025c70 kind:function(arm,size=0x34) addr:0x02025c70
 __sinit_platformmgr_cpp kind:function(arm,size=0x1d8) addr:0x02025ca4
-func_02025e7c kind:function(arm,size=0x50) addr:0x02025e7c
-func_02025ecc kind:function(arm,size=0x48) addr:0x02025ecc
-__stub kind:function(arm,size=0x4) addr:0x02025f14
-func_02025f18 kind:function(arm,size=0x38) addr:0x02025f18
-func_02025f50 kind:function(arm,size=0xc4) addr:0x02025f50
-func_02026014 kind:function(arm,size=0x5c) addr:0x02026014
-__stub kind:function(arm,size=0x4) addr:0x02026070
-func_02026074 kind:function(arm,size=0x48) addr:0x02026074
-func_020260bc kind:function(arm,size=0x44) addr:0x020260bc
-func_02026100 kind:function(arm,size=0x48) addr:0x02026100
-__stub kind:function(arm,size=0x4) addr:0x02026148
+__sinit_02025e7c kind:function(arm,size=0x50) addr:0x02025e7c
+__sinit_02025ecc kind:function(arm,size=0x48) addr:0x02025ecc
+__sinit_02025f14 kind:function(arm,size=0x4) addr:0x02025f14
+__sinit_02025f18 kind:function(arm,size=0x38) addr:0x02025f18
+__sinit_02025f50 kind:function(arm,size=0xc4) addr:0x02025f50
+__sinit_02026014 kind:function(arm,size=0x5c) addr:0x02026014
+__sinit_02026070 kind:function(arm,size=0x4) addr:0x02026070
+__sinit_02026074 kind:function(arm,size=0x48) addr:0x02026074
+__sinit_020260bc kind:function(arm,size=0x44) addr:0x020260bc
+__sinit_02026100 kind:function(arm,size=0x48) addr:0x02026100
+__sinit_02026148 kind:function(arm,size=0x4) addr:0x02026148
 __sinit_processmgr_cpp kind:function(arm,size=0xf8) addr:0x0202614c
-__stub kind:function(arm,size=0x4) addr:0x02026244
+__sinit_02026244 kind:function(arm,size=0x4) addr:0x02026244
 data_02026248 kind:data(any) addr:0x02026248
 data_02026258 kind:data(any) addr:0x02026258
 data_02026290 kind:data(any) addr:0x02026290
@@ -1432,7 +1423,30 @@ data_0203267c kind:data(any) addr:0x0203267c
 data_0203501f kind:data(any) addr:0x0203501f
 data_020360c2 kind:data(any) addr:0x020360c2
 data_02037450 kind:data(any) addr:0x02037450
-StaticInitFunctions kind:data(any) addr:0x02039170
+.p__sinit_02025a44 kind:data(word) addr:0x02039170
+.p__sinit_02025a7c kind:data(word) addr:0x02039174
+.p__sinit_02025a80 kind:data(word) addr:0x02039178
+.p__sinit_02025b08 kind:data(word) addr:0x0203917c
+.p__sinit_02025b0c kind:data(word) addr:0x02039180
+.p__sinit_02025b5c kind:data(word) addr:0x02039184
+.p__sinit_02025b9c kind:data(word) addr:0x02039188
+.p__sinit_02025bf8 kind:data(word) addr:0x0203918c
+.p__sinit_02025c2c kind:data(word) addr:0x02039190
+.p__sinit_02025c70 kind:data(word) addr:0x02039194
+.p__sinit_02025ca4 kind:data(word) addr:0x02039198
+.p__sinit_02025e7c kind:data(word) addr:0x0203919c
+.p__sinit_02025ecc kind:data(word) addr:0x020391a0
+.p__sinit_02025f14 kind:data(word) addr:0x020391a4
+.p__sinit_02025f18 kind:data(word) addr:0x020391a8
+.p__sinit_02025f50 kind:data(word) addr:0x020391ac
+.p__sinit_02026014 kind:data(word) addr:0x020391b0
+.p__sinit_02026070 kind:data(word) addr:0x020391b4
+.p__sinit_02026074 kind:data(word) addr:0x020391b8
+.p__sinit_020260bc kind:data(word) addr:0x020391bc
+.p__sinit_02026100 kind:data(word) addr:0x020391c0
+.p__sinit_02026148 kind:data(word) addr:0x020391c4
+.p__sinit_0202614c kind:data(word) addr:0x020391c8
+.p__sinit_02026244 kind:data(word) addr:0x020391cc
 data_020391e8 kind:data(any) addr:0x020391e8
 Vec3_16::vtable kind:data(any) addr:0x020391f8
 Vec3_32::vtable kind:data(any) addr:0x02039208
@@ -1467,7 +1481,7 @@ data_0203981c kind:data(any) addr:0x0203981c
 data_02039820 kind:data(any) addr:0x02039820
 data_02039824 kind:data(any) addr:0x02039824
 MasterGameModeFunction1 kind:data(any) addr:0x02039828
-MasterGameModeFunction2 kind:data(any) addr:0x02039830 // 0 = Main Game, 1 = Mini-Games
+MasterGameModeFunction2 kind:data(any) addr:0x02039830
 data_02039838 kind:data(any) addr:0x02039838
 data_02039898 kind:data(any) addr:0x02039898
 data_020398b0 kind:data(any) addr:0x020398b0

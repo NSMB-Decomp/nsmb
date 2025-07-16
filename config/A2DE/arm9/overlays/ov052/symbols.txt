@@ -239,9 +239,12 @@ data_ov052_0215af18 kind:data(any) addr:0x0215af18
 data_ov052_0215af1c kind:data(any) addr:0x0215af1c
 data_ov052_0215af24 kind:data(any) addr:0x0215af24
 data_ov052_0215af30 kind:data(any) addr:0x0215af30
-func_ov052_0215af88 kind:function(arm,size=0x34) addr:0x0215af88
-func_ov052_0215afbc kind:function(arm,size=0x2b8) addr:0x0215afbc
-func_ov052_0215b274 kind:function(arm,size=0x33c) addr:0x0215b274
+__sinit_ov052_0215af88 kind:function(arm,size=0x34) addr:0x0215af88
+__sinit_ov052_0215afbc kind:function(arm,size=0x2b8) addr:0x0215afbc
+__sinit_ov052_0215b274 kind:function(arm,size=0x33c) addr:0x0215b274
+.p__sinit_ov052_0215af88 kind:data(word) addr:0x0215b5b0
+.p__sinit_ov052_0215afbc kind:data(word) addr:0x0215b5b4
+.p__sinit_ov052_0215b274 kind:data(word) addr:0x0215b5b8
 UnknownProfile::ov052_0215b5c0 kind:data(any) addr:0x0215b5c0
 data_ov052_0215b5d0 kind:data(any) addr:0x0215b5d0
 data_ov052_0215b618 kind:data(any) addr:0x0215b618

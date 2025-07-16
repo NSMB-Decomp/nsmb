@@ -145,10 +145,6 @@ StageEntity::func_ov000_020a0274 kind:function(arm,size=0x90) addr:0x020a0274
 StageEntity::func_ov000_020a0304 kind:function(arm,size=0x98) addr:0x020a0304
 StageEntity::func_ov000_020a039c kind:function(arm,size=0x8) addr:0x020a039c
 StageEntity::func_ov000_020a03a4 kind:function(arm,size=0x8) addr:0x020a03a4
-// Class: Actor
-// Class: StageActor
-Actor::vtable kind:data(any) addr:0x020c6c34
-StageActor::vtable kind:data(any) addr:0x020c6c8c
 StageActor::func_ov000_020a03ac kind:function(arm,size=0x20) addr:0x020a03ac
 StageActor::func_ov000_020a03cc kind:function(arm,size=0x1c) addr:0x020a03cc
 StageActor::func_ov000_020a03e8 kind:function(arm,size=0x4c) addr:0x020a03e8
@@ -162,7 +158,7 @@ StageActor::func_ov000_020a0500 kind:function(arm,size=0xf8) addr:0x020a0500
 StageActor::func_ov000_020a05f8 kind:function(arm,size=0xa4) addr:0x020a05f8
 StageActor::func_ov000_020a069c kind:function(arm,size=0x40) addr:0x020a069c
 StageActor::func_ov000_020a06dc kind:function(arm,size=0x4c) addr:0x020a06dc
-Actor::func_ov000_020a0728 kind:function(arm,size=0x4c) addr:0x020a0728 // TODO: Confirm if this is part of Actor
+Actor::func_ov000_020a0728 kind:function(arm,size=0x4c) addr:0x020a0728
 Actor::func_ov000_020a0774 kind:function(arm,size=0x68) addr:0x020a0774
 Actor::func_ov000_020a07dc kind:function(arm,size=0x18) addr:0x020a07dc
 Actor::stepVelocityClamped kind:function(arm,size=0x20) addr:0x020a07f4
@@ -198,7 +194,6 @@ StageActor::func_ov000_020a11a8 kind:function(arm,size=0x44) addr:0x020a11a8
 StageActor::func_ov000_020a11ec kind:function(arm,size=0x4c) addr:0x020a11ec
 StageActor::func_ov000_020a1238 kind:function(arm,size=0x44) addr:0x020a1238
 StageActor::StageActor kind:function(arm,size=0x60) addr:0x020a127c
-//
 func_ov000_020a12dc kind:function(arm,size=0x94) addr:0x020a12dc
 func_ov000_020a1370 kind:function(arm,size=0x9c) addr:0x020a1370
 func_ov000_020a140c kind:function(arm,size=0x64) addr:0x020a140c
@@ -781,14 +776,22 @@ data_ov000_020c2eb0 kind:data(any) addr:0x020c2eb0
 data_ov000_020c2ef8 kind:data(any) addr:0x020c2ef8
 data_ov000_020c2f40 kind:data(any) addr:0x020c2f40
 data_ov000_020c2f88 kind:data(any) addr:0x020c2f88
-func_ov000_020c2fd8 kind:function(arm,size=0x4) addr:0x020c2fd8
-func_ov000_020c2fdc kind:function(arm,size=0x168) addr:0x020c2fdc
-func_ov000_020c3144 kind:function(arm,size=0x50) addr:0x020c3144
-func_ov000_020c3194 kind:function(arm,size=0x288) addr:0x020c3194
-func_ov000_020c341c kind:function(arm,size=0x150) addr:0x020c341c
-func_ov000_020c356c kind:function(arm,size=0x109c) addr:0x020c356c
-func_ov000_020c4608 kind:function(arm,size=0x75c) addr:0x020c4608
-func_ov000_020c4d64 kind:function(arm,size=0x120) addr:0x020c4d64
+__sinit_ov000_020c2fd8 kind:function(arm,size=0x4) addr:0x020c2fd8
+__sinit_ov000_020c2fdc kind:function(arm,size=0x168) addr:0x020c2fdc
+__sinit_ov000_020c3144 kind:function(arm,size=0x50) addr:0x020c3144
+__sinit_ov000_020c3194 kind:function(arm,size=0x288) addr:0x020c3194
+__sinit_ov000_020c341c kind:function(arm,size=0x150) addr:0x020c341c
+__sinit_ov000_020c356c kind:function(arm,size=0x109c) addr:0x020c356c
+__sinit_ov000_020c4608 kind:function(arm,size=0x75c) addr:0x020c4608
+__sinit_ov000_020c4d64 kind:function(arm,size=0x120) addr:0x020c4d64
+.p__sinit_ov000_020c2fd8 kind:data(word) addr:0x020c4e84
+.p__sinit_ov000_020c2fdc kind:data(word) addr:0x020c4e88
+.p__sinit_ov000_020c3144 kind:data(word) addr:0x020c4e8c
+.p__sinit_ov000_020c3194 kind:data(word) addr:0x020c4e90
+.p__sinit_ov000_020c341c kind:data(word) addr:0x020c4e94
+.p__sinit_ov000_020c356c kind:data(word) addr:0x020c4e98
+.p__sinit_ov000_020c4608 kind:data(word) addr:0x020c4e9c
+.p__sinit_ov000_020c4d64 kind:data(word) addr:0x020c4ea0
 data_ov000_020c4ec0 kind:data(any) addr:0x020c4ec0
 data_ov000_020c4ec4 kind:data(any) addr:0x020c4ec4
 data_ov000_020c4ec8 kind:data(any) addr:0x020c4ec8
@@ -802,6 +805,8 @@ data_ov000_020c5010 kind:data(any) addr:0x020c5010
 data_ov000_020c529c kind:data(any) addr:0x020c529c
 data_ov000_020c6c14 kind:data(any) addr:0x020c6c14
 data_ov000_020c6c20 kind:data(any) addr:0x020c6c20
+Actor::vtable kind:data(any) addr:0x020c6c34
+StageActor::vtable kind:data(any) addr:0x020c6c8c
 data_ov000_020c6cdc kind:data(any) addr:0x020c6cdc
 data_ov000_020c6ce0 kind:data(any) addr:0x020c6ce0
 data_ov000_020c6ce8 kind:data(any) addr:0x020c6ce8

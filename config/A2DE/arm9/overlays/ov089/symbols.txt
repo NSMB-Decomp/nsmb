@@ -52,7 +52,8 @@ func_ov089_0217f860 kind:function(arm,size=0x44) addr:0x0217f860
 func_ov089_0217f8a4 kind:function(arm,size=0x94) addr:0x0217f8a4
 data_ov089_0217f938 kind:data(any) addr:0x0217f938
 data_ov089_0217f93c kind:data(any) addr:0x0217f93c
-func_ov089_0217f958 kind:function(arm,size=0xd0) addr:0x0217f958
+__sinit_ov089_0217f958 kind:function(arm,size=0xd0) addr:0x0217f958
+.p__sinit_ov089_0217f958 kind:data(word) addr:0x0217fa28
 data_ov089_0217fa40 kind:data(any) addr:0x0217fa40
 data_ov089_0217fa48 kind:data(any) addr:0x0217fa48
 UnknownProfile::ov089_0217fa50 kind:data(any) addr:0x0217fa50 ambiguous

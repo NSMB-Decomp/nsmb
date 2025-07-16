@@ -348,8 +348,6 @@ func_0204c568 kind:function(arm,size=0x28c) addr:0x0204c568
 func_0204c7f4 kind:function(arm,size=0xcc) addr:0x0204c7f4
 func_0204c8c0 kind:function(arm,size=0x3c) addr:0x0204c8c0
 func_0204c8fc kind:function(arm,size=0xc) addr:0x0204c8fc
-// Class: Base
-Base::vtable kind:data(any) addr:0x02085260
 Base::spawnParent kind:function(arm,size=0x18) addr:0x0204c908
 Base::spawnChild kind:function(arm,size=0x28) addr:0x0204c920
 Base::unloadSceneOverlay kind:function(arm,size=0x2c) addr:0x0204c948
@@ -377,10 +375,6 @@ Base::onCreate kind:function(arm,size=0x8) addr:0x0204d234
 Base::~Base kind:function(arm,size=0x34) addr:0x0204d23c
 Base::~Base kind:function(arm,size=0x3c) addr:0x0204d270
 Base::Base kind:function(arm,size=0x17c) addr:0x0204d2ac
-// Process Manager
-// These functions handle the running processes;
-// TODO: Write better docs for these
-// TODO: Shalst we put these under a shared namespace "Process"?
 LinkedList::getNodeByGUID kind:function(arm,size=0x44) addr:0x0204d428
 ProcessList::execute kind:function(arm,size=0x78) addr:0x0204d46c
 ProcessSet::add kind:function(arm,size=0x7c) addr:0x0204d4e4
@@ -395,7 +389,6 @@ ProcessManager::getProcessListName kind:function(arm,size=0x10) addr:0x0204d6ec
 ProcessManager::getNextNodeByType kind:function(arm,size=0x5c) addr:0x0204d6fc
 ProcessManager::getNextNodeByObjectID kind:function(arm,size=0x5c) addr:0x0204d758
 SceneGraph::execute kind:function(arm,size=0x78) addr:0x0204d7b4
-//
 func_0204d82c kind:function(arm,size=0x34) addr:0x0204d82c
 func_0204d860 kind:function(arm,size=0xa8) addr:0x0204d860
 func_0204d908 kind:function(arm,size=0x84) addr:0x0204d908
@@ -430,10 +423,6 @@ func_0204eda8 kind:function(arm,size=0x6c) addr:0x0204eda8
 func_0204ee14 kind:function(arm,size=0x70) addr:0x0204ee14
 func_0204ee84 kind:function(arm,size=0x80) addr:0x0204ee84
 func_0204ef04 kind:function(arm,size=0x58) addr:0x0204ef04
-// Nitro SDK
-// Note: These names will not match up with the official Nitro SDK.
-// We do not utilise the Nitro SDK as part of this decompilation
-// TODO: Not sure if the first few (~10-20) are actually Nitro functions?
 Nitro::func_0204ef5c kind:function(arm,size=0x238) addr:0x0204ef5c
 Nitro::func_0204f194 kind:function(arm,size=0x48) addr:0x0204f194
 Nitro::func_0204f1dc kind:function(arm,size=0x30) addr:0x0204f1dc
@@ -1659,9 +1648,6 @@ Nitro::func_0207ccfc kind:function(arm,size=0x9c) addr:0x0207ccfc
 Nitro::func_0207cd98 kind:function(arm,size=0x44) addr:0x0207cd98
 Nitro::func_0207cddc kind:function(arm,size=0x44) addr:0x0207cddc
 Nitro::func_0207ce20 kind:function(arm,size=0xac) addr:0x0207ce20
-
-// Standard Library / Compiler functions
-// TODO: Copied directly from old ghidra project, to double check the names below.
 Std::__exit kind:function(arm,size=0x130) addr:0x0207cecc
 Std::exit kind:function(arm,size=0x50) addr:0x0207cffc
 Std::abort kind:function(arm,size=0x2c) addr:0x0207d04c
@@ -1755,8 +1741,6 @@ Std::__cxa_vec_ctor kind:function(arm,size=0xb4) addr:0x02080050
 Std::__cxa_vec_new kind:function(arm,size=0xc0) addr:0x02080104
 Std::DestroyArrayRange kind:function(arm,size=0x48) addr:0x020801c4
 Std::func_0208020c kind:function(arm,size=0x18) addr:0x0208020c
-
-//
 data_02080224 kind:data(any) addr:0x02080224
 data_0208022c kind:data(any) addr:0x0208022c
 data_0208025c kind:data(any) addr:0x0208025c
@@ -1813,6 +1797,7 @@ data_02085238 kind:data(any) addr:0x02085238
 data_02085240 kind:data(any) addr:0x02085240
 data_02085248 kind:data(any) addr:0x02085248
 data_02085250 kind:data(any) addr:0x02085250
+Base::vtable kind:data(any) addr:0x02085260
 ProcessManager::CurrentTask kind:data(word) addr:0x020852a8
 data_020852ac kind:data(any) addr:0x020852ac
 data_020852b4 kind:data(any) addr:0x020852b4

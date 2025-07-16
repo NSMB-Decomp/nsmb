@@ -31,7 +31,8 @@ data_ov036_02143570 kind:data(any) addr:0x02143570
 data_ov036_02143578 kind:data(any) addr:0x02143578
 data_ov036_02143584 kind:data(any) addr:0x02143584
 data_ov036_02143590 kind:data(any) addr:0x02143590
-func_ov036_021435ac kind:function(arm,size=0x150) addr:0x021435ac
+__sinit_ov036_021435ac kind:function(arm,size=0x150) addr:0x021435ac
+.p__sinit_ov036_021435ac kind:data(word) addr:0x021436fc
 data_ov036_02143720 kind:data(any) addr:0x02143720
 data_ov036_02143728 kind:data(any) addr:0x02143728
 data_ov036_02143730 kind:data(any) addr:0x02143730

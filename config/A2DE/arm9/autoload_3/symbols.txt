@@ -476,7 +476,7 @@ data_0208b634 kind:bss addr:0x0208b634
 data_0208b640 kind:bss addr:0x0208b640
 data_0208b64c kind:bss addr:0x0208b64c
 data_0208b658 kind:bss addr:0x0208b658
-FrameCounter kind:data(word) addr:0x0208b668 // Increments by 1 each frame
+FrameCounter kind:data(word) addr:0x0208b668
 data_0208b66c kind:bss addr:0x0208b66c
 data_0208b670 kind:bss addr:0x0208b670
 data_0208b674 kind:bss addr:0x0208b674

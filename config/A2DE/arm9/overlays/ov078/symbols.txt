@@ -65,8 +65,10 @@ data_ov078_0217b2bc kind:data(any) addr:0x0217b2bc
 data_ov078_0217b2c8 kind:data(any) addr:0x0217b2c8
 data_ov078_0217b2d4 kind:data(any) addr:0x0217b2d4
 data_ov078_0217b2e0 kind:data(any) addr:0x0217b2e0
-func_ov078_0217b2f0 kind:function(arm,size=0x50) addr:0x0217b2f0
-func_ov078_0217b340 kind:function(arm,size=0x24) addr:0x0217b340
+__sinit_ov078_0217b2f0 kind:function(arm,size=0x50) addr:0x0217b2f0
+__sinit_ov078_0217b340 kind:function(arm,size=0x24) addr:0x0217b340
+.p__sinit_ov078_0217b2f0 kind:data(word) addr:0x0217b364
+.p__sinit_ov078_0217b340 kind:data(word) addr:0x0217b368
 data_ov078_0217b380 kind:data(any) addr:0x0217b380
 data_ov078_0217b388 kind:data(any) addr:0x0217b388
 UnknownProfile::ov078_0217b390 kind:data(any) addr:0x0217b390 ambiguous

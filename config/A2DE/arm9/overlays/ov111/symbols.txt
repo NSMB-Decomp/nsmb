@@ -15,7 +15,8 @@ func_ov111_0218a354 kind:function(arm,size=0x64) addr:0x0218a354
 func_ov111_0218a3b8 kind:function(arm,size=0x60) addr:0x0218a3b8
 func_ov111_0218a418 kind:function(arm,size=0x68) addr:0x0218a418
 data_ov111_0218a480 kind:data(any) addr:0x0218a480
-func_ov111_0218a490 kind:function(arm,size=0x68) addr:0x0218a490
+__sinit_ov111_0218a490 kind:function(arm,size=0x68) addr:0x0218a490
+.p__sinit_ov111_0218a490 kind:data(word) addr:0x0218a4f8
 data_ov111_0218a500 kind:data(any) addr:0x0218a500
 data_ov111_0218a508 kind:data(any) addr:0x0218a508
 data_ov111_0218a510 kind:data(any) addr:0x0218a510

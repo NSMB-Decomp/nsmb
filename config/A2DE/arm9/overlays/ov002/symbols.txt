@@ -13,7 +13,8 @@ data_ov002_020cd114 kind:data(any) addr:0x020cd114
 data_ov002_020cd11c kind:data(any) addr:0x020cd11c
 data_ov002_020cd11e kind:data(any) addr:0x020cd11e
 data_ov002_020cd120 kind:data(any) addr:0x020cd120
-func_ov002_020cd1c0 kind:function(arm,size=0x3c) addr:0x020cd1c0
+__sinit_ov002_020cd1c0 kind:function(arm,size=0x3c) addr:0x020cd1c0
+.p__sinit_ov002_020cd1c0 kind:data(word) addr:0x020cd1fc
 data_ov002_020cd220 kind:data(any) addr:0x020cd220
 data_ov002_020cd224 kind:data(any) addr:0x020cd224
 data_ov002_020cd228 kind:data(any) addr:0x020cd228

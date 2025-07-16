@@ -53,7 +53,8 @@ data_ov048_02148700 kind:data(any) addr:0x02148700
 data_ov048_02148704 kind:data(any) addr:0x02148704
 data_ov048_02148720 kind:data(any) addr:0x02148720
 data_ov048_02148740 kind:data(any) addr:0x02148740
-func_ov048_021487a4 kind:function(arm,size=0x24) addr:0x021487a4
+__sinit_ov048_021487a4 kind:function(arm,size=0x24) addr:0x021487a4
+.p__sinit_ov048_021487a4 kind:data(word) addr:0x021487c8
 data_ov048_021487e0 kind:data(any) addr:0x021487e0
 UnknownProfile::ov048_021487e8 kind:data(any) addr:0x021487e8
 data_ov048_021487fc kind:data(any) addr:0x021487fc
