@@ -1,48 +1,57 @@
-typedef unsigned char u8;
-typedef unsigned short u16;
-typedef unsigned long u32;
-typedef signed char i8;
-typedef signed short i16;
-typedef signed long i32;
-typedef void* unknown_pointer;
+#include "base_types.hpp"
+#include "ProcessLink.hpp"
 
 
 class Base {
 public:
+  static u8 data_0208fae8;
+  static u16 data_0208faf0;
+  static u32 data_0208fb00;
+  static u32 data_0208fafc;
+
+  static u8 data_0208faec;
+  static u16 data_0208faf4;
+  static u32 data_0208faf8;
+  static u32 data_0208fb04;
+
   u32 guid;
   u32 settings;
   u16 object_id;
   u8 state;
-  bool destroy;
+  bool pending_destroy;
   u8 __1;
   u8 __2;
   u8 __3;
   u8 __4;
-  /*ProcessLink process_link;*/
+  ProcessLink process_link;
 
   Base* spawnParent(u16, u32, u32);
-  void spawnChild();
+  Base* spawnChild(u16, Base*, u32, u32);
   void unloadSceneOverlay();
-  Base* spawn(u16, u32, u32, u32);
-  void setSpawnParams();
+  void loadSceneOverlay(u32);
+  Base* spawn(u16, ProcessLink*, u32, u32);
+  void setSpawnParams(u16, u32, u32, u8);
   void hasChildNotCreated();
   void processDestroy();
   void processCreate();
+  void create();
   void* operator new(u32 count);
-  void __operator_delete();
-  void onHeapCreated();
-  void prepareResourcesFast();
-  void prepareResourcesSafe();
-  void getParent();
-  void destroySelf();
-  void pendingDestroy();
-  void postDestroy();
-  void preDestroy();
-  void onDestroy();
-  void postCreate();
+  void operator delete(void* ptr);
+  Base* getParent();
+  void destroy();
+
+  Base();
+
   virtual bool onCreate();
   virtual bool preCreate();
-  Base();
-  ~Base();
-
+  virtual bool postCreate();
+  virtual bool onDestroy();
+  virtual void preDestroy();
+  virtual void postDestroy();
+  // Missing some funcs here
+  virtual void pendingDestroy();
+  virtual void prepareResourcesSafe();
+  virtual void prepareResourcesFast();
+  virtual bool onHeapCreated();
+  virtual ~Base(); // There are meant to be 2 destroys? How to we manage that one?
 };
