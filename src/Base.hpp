@@ -9,10 +9,10 @@ public:
   static u32 data_0208fb00;
   static u32 data_0208fafc;
 
-  static u8 data_0208faec;
-  static u16 data_0208faf4;
-  static u32 data_0208faf8;
-  static u32 data_0208fb04;
+  static u8 SpawnParam4;
+  static u16 SpawnParam1;
+  static u32 SpawnParam2;
+  static u32 SpawnParam3;
 
   u32 guid;
   u32 settings;
@@ -27,7 +27,7 @@ public:
 
   Base* spawnParent(u16, u32, u32);
   Base* spawnChild(u16, Base*, u32, u32);
-  void unloadSceneOverlay();
+  static void unloadSceneOverlay();
   void loadSceneOverlay(u32);
   Base* spawn(u16, ProcessLink*, u32, u32);
   static void setSpawnParams(u16, u32, u32, u8);
@@ -49,9 +49,14 @@ public:
   virtual void preDestroy();
   virtual void postDestroy();
   // Missing some funcs here
+  virtual void missing_1();
+  virtual void missing_2();
+  virtual void missing_3();
+  virtual void missing_4();
+  virtual void missing_5();
+  virtual void missing_6();
   virtual void pendingDestroy();
   virtual void prepareResourcesSafe();
   virtual void prepareResourcesFast();
   virtual bool onHeapCreated();
-  virtual ~Base(); // There are meant to be 2 destroys? How to we manage that one?
 };

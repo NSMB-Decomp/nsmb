@@ -1,7 +1,8 @@
 #!/bin/bash
 
 input_file=$(echo "$1" | sed 's|/build/src|/src|; s|\.o$|.cpp|')
-wine "$PWD/build/compiler/mwccarm/2.0/sp1p5/mwccarm.exe" \
+# I believe the compiler nsmb used is either sp3 or sp4 or some unknown version.
+wine "$PWD/build/compiler/mwccarm/1.2/sp3/mwccarm.exe" \
     $PWD/$input_file -o $PWD/$1 \
     -O4,p -interworking -proc arm946e -lang=C++ -Cpp_exceptions off \
     -w off -gccinc -nolink -c -RTTI off

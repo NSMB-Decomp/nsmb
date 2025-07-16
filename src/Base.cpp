@@ -1,42 +1,43 @@
 #include "Base.hpp"
 
-Base *Base::spawnParent(u16 overlay_id, u32 b, u32 c) {
-  return this->spawn(overlay_id, 0, b, c);
+Base::Base() {
+  ProcessLink pl = this->process_link;
+  pl.connect.object = this;
+  pl.update._.prev = (ProcessNode *)0x00;
+  pl.update._.next = (ProcessNode *)0x00;
+  pl.update._.object = this;
+  pl.update.currentPriority = 0;
+  pl.update.sortPriority = 0;
+  pl.render._.prev = (ProcessNode *)0x00;
+  pl.render._.next = (ProcessNode *)0x00;
+  pl.render._.object = this;
+  pl.render.currentPriority = 0;
+  pl.render.sortPriority = 0;
+  pl.idLookup.prev = (ProcessNode *)0x00;
+  pl.idLookup.next = (ProcessNode *)0x00;
+  pl.idLookup.object = this;
 }
-Base *Base::spawnChild(u16 overlay_id, Base *b, u32 c, u32 d) {
-  if (b != (Base *)0x00) {
-    return this->spawn(overlay_id, &b->process_link, c, d);
-  }
-  return (Base *)0x00;
-}
-
-void Base::unloadSceneOverlay() {
-  if (Base::data_0208fb00 != 0x00) {
-    ((void (*)(void))Base::data_0208fb00)();
-  }
-}
-
-void Base::loadSceneOverlay(u32 a) {
-  if (Base::data_0208fafc != 0x00) {
-    ((void (*)(u32))Base::data_0208fafc)(a);
-  }
-}
-
-Base *spawn(u16 overlay_id, ProcessLink *b, u32 c, u32 d) {
-  Base::data_0208fae8 = 0x01;
-  Base::data_0208faf0 = overlay_id;
-  if (overlay_id == 3) {
-    return (Base *)0x00;
+bool Base::onCreate() { return true; }
+bool Base::preCreate() { return true; }
+bool Base::onDestroy() { return true; }
+void Base::pendingDestroy() {}
+void Base::destroy() {
+  if (!this->pending_destroy && this->state != 0x02) {
+    this->pending_destroy = true;
+    this->pendingDestroy();
   }
 }
-
-void Base::setSpawnParams(u16 a, u32 b, u32 c, u8 d) {
-  Base::data_0208fb04 = c;
-  Base::data_0208faf4 = a;
-  Base::data_0208faec = d;
-  Base::data_0208faf8 = b;
-}
-
+Base *Base::getParent() {
+  SceneNode *a = this->process_link.connect.parent;
+  if (a) {
+    return a->object;
+  } else {
+    return (Base *)0x0;
+  }
+};
+bool Base::onHeapCreated() { return true; }
+void *Base::operator new(u32 count) { return ::operator new(count); }
+void Base::operator delete(void *ptr) { return ::operator delete(ptr); }
 void Base::create() {
   processCreate();
   if (this->pending_destroy) {
@@ -54,46 +55,35 @@ void Base::create() {
   // }
   this->__2 = 0x01;
 }
-
-void Base::operator delete(void *ptr) { return ::operator delete(ptr); }
-
-void *Base::operator new(u32 count) { return ::operator new(count); }
-bool Base::onHeapCreated() { return true; }
-
-Base *Base::getParent() {
-  SceneNode *a = this->process_link.connect.parent;
-  if (a) {
-    return a->object;
-  } else {
-    return (Base *)0x0;
-  }
-};
-
-void Base::destroy() {
-  if (!this->pending_destroy && this->state != 0x02) {
-    this->pending_destroy = true;
-    this->pendingDestroy();
+void Base::setSpawnParams(u16 a, u32 b, u32 c, u8 d) {
+  Base::SpawnParam3 = c;
+  Base::SpawnParam1 = a;
+  Base::SpawnParam4 = d;
+  Base::SpawnParam2 = b;
+}
+Base *spawn(u16 overlay_id, ProcessLink *b, u32 c, u32 d) {
+  Base::data_0208fae8 = 0x01;
+  Base::data_0208faf0 = overlay_id;
+  if (overlay_id == 3) {
+    return (Base *)0x00;
   }
 }
-
-void Base::pendingDestroy() {}
-bool Base::onDestroy() { return true; }
-bool Base::preCreate() { return true; }
-bool Base::onCreate() { return true; }
-Base::Base() {
-  ProcessLink pl = this->process_link;
-  pl.connect.object = this;
-  pl.update._.prev = (ProcessNode *)0x00;
-  pl.update._.next = (ProcessNode *)0x00;
-  pl.update._.object = this;
-  pl.update.currentPriority = 0;
-  pl.update.sortPriority = 0;
-  pl.render._.prev = (ProcessNode *)0x00;
-  pl.render._.next = (ProcessNode *)0x00;
-  pl.render._.object = this;
-  pl.render.currentPriority = 0;
-  pl.render.sortPriority = 0;
-  pl.idLookup.prev = (ProcessNode *)0x00;
-  pl.idLookup.next = (ProcessNode *)0x00;
-  pl.idLookup.object = this;
+void Base::loadSceneOverlay(u32 a) {
+  if (Base::data_0208fafc != 0x00) {
+    ((void (*)(u32))Base::data_0208fafc)(a);
+  }
+}
+void Base::unloadSceneOverlay() {
+  if (Base::data_0208fb00 != 0x00) {
+    ((void (*)(void))Base::data_0208fb00)();
+  }
+}
+Base *Base::spawnChild(u16 overlay_id, Base *b, u32 c, u32 d) {
+  if (b != (Base *)0x00) {
+    return this->spawn(overlay_id, &b->process_link, c, d);
+  }
+  return (Base *)0x00;
+}
+Base *Base::spawnParent(u16 overlay_id, u32 b, u32 c) {
+  return this->spawn(overlay_id, 0, b, c);
 }
