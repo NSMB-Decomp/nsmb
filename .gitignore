@@ -7,3 +7,5 @@ build/*
 objdiff.json
 *.nds
 temp
+
+.zig-cache

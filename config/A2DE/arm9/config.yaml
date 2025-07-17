@@ -1,4 +1,4 @@
-rom_config: '../../../extracted/config.yaml'
+rom_config: '../../../extracted/A2DE/config.yaml'
 build_path: '../../../build'
 delinks_path: '../../../build/delinks'
 main_module:
