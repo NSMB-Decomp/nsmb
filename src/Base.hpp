@@ -49,11 +49,12 @@ public:
   virtual void preDestroy();
   virtual void postDestroy();
   // Missing some funcs here
-  virtual void func_01ffd51c();
-  virtual void func_01ffd4f4();
+  virtual bool func_01ffd290();
+  virtual bool func_01ffd51c();
+  virtual bool func_01ffd4f4();
   virtual void func_01ffd4f0();
-  virtual void func_01ffd4e8();
-  virtual void func_01ffd4c0();
+  virtual bool func_01ffd4e8();
+  virtual bool func_01ffd4c0();
   virtual void func_01ffd4bc();
   virtual void pendingDestroy();
   virtual void prepareResourcesSafe();
