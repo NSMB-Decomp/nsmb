@@ -28,7 +28,7 @@ public:
   Base* spawnParent(u16, u32, u32);
   static Base* spawnChild(u16, Base*, u32, u32);
   void unloadSceneOverlay();
-  void loadSceneOverlay(u32);
+  u32 loadSceneOverlay(u32);
   static Base* spawn(u16, ProcessLink*, u32, u32);
   static void setSpawnParams(u16, u32, u32, u8);
   void hasChildNotCreated();

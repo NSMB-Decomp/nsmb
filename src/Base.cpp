@@ -78,9 +78,11 @@ void Base::setSpawnParams(u16 a, u32 b, u32 c, u8 d) {
 //  //  return (Base *)0x00;
 //  //}
 //}
-void Base::loadSceneOverlay(u32 a) {
+u32 Base::loadSceneOverlay(u32 a) {
   if (Base::data_0208fafc != 0x00) {
-    ((void (*)(u32))Base::data_0208fafc)(a);
+    ((void (*)(Base*))Base::data_0208fafc)(this);
+  } else {
+    return 2;
   }
 }
 void Base::unloadSceneOverlay() { // Not sure if the arg this accepts is "this" or arg1
