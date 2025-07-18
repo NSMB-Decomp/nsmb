@@ -29,6 +29,7 @@ public:
   u8 __3;
   u8 __4;
   ProcessLink process_link;
+  u8 __5;
 
   static Base* spawnParent(u16, u32, u32);
   static Base* spawnChild(u16, Base*, u32, u32);
@@ -53,7 +54,7 @@ public:
   virtual bool preCreate();
   virtual bool postCreate();
   virtual bool onDestroy();
-  virtual void preDestroy();
+  virtual bool preDestroy();
   virtual void postDestroy();
   // Missing some funcs here
   virtual bool func_01ffd51c();
