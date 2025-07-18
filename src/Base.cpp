@@ -71,13 +71,13 @@ void Base::setSpawnParams(u16 a, u32 b, u32 c, u8 d) {
   Base::SpawnParam4 = d;
   Base::SpawnParam2 = b;
 }
-Base *spawn(u16 overlay_id, ProcessLink *b, u32 c, u32 d) {
-  Base::data_0208fae8 = 0x01;
-  Base::data_0208faf0 = overlay_id;
-  if (overlay_id == 3) {
-    return (Base *)0x00;
-  }
-}
+//Base *spawn(u16 overlay_id, ProcessLink* b, u32 c, u32 d) {
+//  //Base::data_0208fae8 = 0x01;
+//  //Base::data_0208faf0 = overlay_id;
+//  //if (overlay_id == 3) {
+//  //  return (Base *)0x00;
+//  //}
+//}
 void Base::loadSceneOverlay(u32 a) {
   if (Base::data_0208fafc != 0x00) {
     ((void (*)(u32))Base::data_0208fafc)(a);
@@ -88,12 +88,12 @@ void Base::unloadSceneOverlay() { // Not sure if this accepts a arg or not
     ((void (*)(void))Base::data_0208fb00)();
   }
 }
-Base *Base::spawnChild(u16 overlay_id, Base *b, u32 c, u32 d) {
+Base *Base::spawnChild(u16 overlay_id, Base* b, u32 c, u32 d) {
   if (b != (Base *)0x00) {
-    return this->spawn(overlay_id, &b->process_link, c, d);
+    return b->spawn(overlay_id, &b->process_link, c, d);
   }
   return (Base *)0x00;
 }
 Base *Base::spawnParent(u16 overlay_id, u32 b, u32 c) {
-  return this->spawn(overlay_id, 0, b, c);
+  //return this->spawn(overlay_id, 0, b, c);
 }
