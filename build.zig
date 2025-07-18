@@ -4,7 +4,7 @@ const Roms = enum {
     A2DE,
 };
 
-pub fn build(b: *std.Build) void {
+pub fn build(b: *std.Build) !void {
     const release_enum = b.option(Roms, "Release", "") orelse Roms.A2DE;
 
     const target_options = b.standardTargetOptions(.{});
@@ -46,27 +46,66 @@ pub fn build(b: *std.Build) void {
     objdiff_step.dependOn(&objdiff_cmd.step);
 
     // Single step
+    var json_cmd = b.addSystemCommand(&.{"dsd"});
+    json_cmd.addArgs(&.{ "json", "delinks", "-c" });
+    json_cmd.addFileArg(config_file);
+    _ = json_cmd.captureStdOut();
+
+    var roar = b.step("parse", "b");
+    roar.makeFn = &myTask;
+    roar.dependOn(&json_cmd.step);
+
     const cmd: []const []const u8 = if (target_options.result.os.tag != .windows) &.{ "wine", mwcc_exe.getDisplayName() } else &.{mwcc_exe.getDisplayName()};
     const single_cmd = b.addSystemCommand(cmd);
+    single_cmd.step.dependOn(roar);
+
     if (b.args) |args| {
-        single_cmd.addArg("./src/Base.cpp");
-        single_cmd.addArgs(&.{ "-o", args[0] });
-        single_cmd.addArgs(&.{
-            "-O4,p",
-            "-interworking",
-            "-proc=arm946e",
-            "-lang=C++",
-            "-Cpp_exceptions=off",
-            "-w=off",
-            "-gccinc",
-            "-nolink",
-            "-c",
-            "-RTTI=off",
-        });
+        _ = args;
+        //const output = json_cmd.captureStdOut();
+        //const path = output.getPath3(b, null);
+        //const a = try path.openFile("", .{ .mode = .read_only });
+        //var buffer: [0xfff]u8 = undefined;
+        //const reader = a.reader();
+        //_ = try reader.read(&buffer);
+        //
+        //const B = struct {
+        //    name: []u8,
+        //    delink_file: []u8,
+        //    object_to_link: []u8,
+        //};
+        //const A = struct {
+        //    arm9_lcf_file: []u8,
+        //    arm9_objects_file: []u8,
+        //    files: []B,
+        //};
+        //const azzz = try std.json.parseFromSlice(A, std.heap.page_allocator, &buffer, .{});
+        //std.log.info("{any}", .{azzz});
+
+        //single_cmd.addArg("./src/Base.cpp");
+        //single_cmd.addArgs(&.{ "-o", args[0] });
+        //single_cmd.addArgs(&.{
+        //    "-O4,p",
+        //    "-interworking",
+        //    "-proc=arm946e",
+        //    "-lang=C++",
+        //    "-Cpp_exceptions=off",
+        //    "-w=off",
+        //    "-gccinc",
+        //    "-nolink",
+        //    "-c",
+        //    "-RTTI=off",
+        //});
     }
 
     const single_step = b.step("single", "");
     single_step.dependOn(&single_cmd.step);
+}
+
+fn myTask(self: *std.Build.Step, options: std.Build.Step.MakeOptions) anyerror!void {
+    _ = options;
+    const a = self.dependencies.items[0];
+
+    std.log.info("{any}", .{a});
 }
 
 // Old script
