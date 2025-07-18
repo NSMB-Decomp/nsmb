@@ -83,9 +83,9 @@ void Base::loadSceneOverlay(u32 a) {
     ((void (*)(u32))Base::data_0208fafc)(a);
   }
 }
-void Base::unloadSceneOverlay() { // Not sure if this accepts a arg or not
+void Base::unloadSceneOverlay() { // Not sure if the arg this accepts is "this" or arg1
   if (Base::data_0208fb00 != 0x00) {
-    ((void (*)(void))Base::data_0208fb00)();
+    ((void (*)(Base*))Base::data_0208fb00)(this);
   }
 }
 Base *Base::spawnChild(u16 overlay_id, Base* b, u32 c, u32 d) {
