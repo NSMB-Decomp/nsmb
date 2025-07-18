@@ -1,7 +1,6 @@
 #include "base_types.hpp"
 #include "ProcessLink.hpp"
 
-
 class Base {
 public:
   static u8 data_0208fae8;
@@ -14,10 +13,16 @@ public:
   static u32 SpawnParam2;
   static u32 SpawnParam3;
 
+  enum State {
+    zero,
+    one,
+    two
+  };
+
   u32 guid;
   u32 settings;
   u16 object_id;
-  u8 state;
+  State state;
   bool pending_destroy;
   u8 __1;
   u8 __2;
@@ -42,6 +47,8 @@ public:
 
   Base();
 
+  bool func_01ffd290();
+
   virtual bool onCreate();
   virtual bool preCreate();
   virtual bool postCreate();
@@ -49,7 +56,6 @@ public:
   virtual void preDestroy();
   virtual void postDestroy();
   // Missing some funcs here
-  virtual bool func_01ffd290();
   virtual bool func_01ffd51c();
   virtual bool func_01ffd4f4();
   virtual void func_01ffd4f0();

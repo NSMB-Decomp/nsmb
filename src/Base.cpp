@@ -22,7 +22,8 @@ bool Base::preCreate() { return true; }
 bool Base::onDestroy() { return true; }
 void Base::pendingDestroy() {}
 void Base::destroy() {
-  if (!this->pending_destroy && this->state != 0x02) {
+  bool cond = (this->pending_destroy == false) && this->state == two;
+  if (cond) {
     this->pending_destroy = true;
     this->pendingDestroy();
   }
