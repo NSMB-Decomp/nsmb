@@ -97,6 +97,6 @@ Base *Base::spawnChild(u16 overlay_id, Base* b, u32 c, u32 d) {
   }
   return (Base *)0x00;
 }
-Base *Base::spawnParent(u16 overlay_id, u32 b, u32 c) {
-  //return this->spawn(overlay_id, 0, b, c);
+Base* Base::spawnParent(u16 a, u32 b, u32 c) {
+  return Base::spawn(a, 0, b, c);
 }

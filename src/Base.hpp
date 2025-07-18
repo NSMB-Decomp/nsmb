@@ -30,7 +30,7 @@ public:
   u8 __4;
   ProcessLink process_link;
 
-  Base* spawnParent(u16, u32, u32);
+  static Base* spawnParent(u16, u32, u32);
   static Base* spawnChild(u16, Base*, u32, u32);
   void unloadSceneOverlay();
   u32 loadSceneOverlay(u32);
