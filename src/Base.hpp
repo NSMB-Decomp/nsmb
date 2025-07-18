@@ -32,7 +32,7 @@ public:
   Base* spawn(u16, ProcessLink*, u32, u32);
   static void setSpawnParams(u16, u32, u32, u8);
   void hasChildNotCreated();
-  void processDestroy();
+  u32 processDestroy();
   void processCreate();
   void create();
   void* operator new(u32 count);
@@ -49,12 +49,12 @@ public:
   virtual void preDestroy();
   virtual void postDestroy();
   // Missing some funcs here
-  virtual void missing_1();
-  virtual void missing_2();
-  virtual void missing_3();
-  virtual void missing_4();
-  virtual void missing_5();
-  virtual void missing_6();
+  virtual void func_01ffd51c();
+  virtual void func_01ffd4f4();
+  virtual void func_01ffd4f0();
+  virtual void func_01ffd4e8();
+  virtual void func_01ffd4c0();
+  virtual void func_01ffd4bc();
   virtual void pendingDestroy();
   virtual void prepareResourcesSafe();
   virtual void prepareResourcesFast();

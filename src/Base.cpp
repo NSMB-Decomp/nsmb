@@ -55,6 +55,16 @@ void Base::create() {
   // }
   this->__2 = 0x01;
 }
+u32 Base::processDestroy() {
+  u16 object_id = this->object_id;
+ // u32 ret = process(this,(FunctionPtr *)&PrefetchAbort,1,(FunctionPtr *)&DataAbort,1,
+ //                 (FunctionPtr2 *)&NotUsed,1);
+ u32 ret = 0;
+  if (ret == 1) {
+    unloadSceneOverlay();
+  }
+  return ret;
+}
 void Base::setSpawnParams(u16 a, u32 b, u32 c, u8 d) {
   Base::SpawnParam3 = c;
   Base::SpawnParam1 = a;
@@ -73,7 +83,7 @@ void Base::loadSceneOverlay(u32 a) {
     ((void (*)(u32))Base::data_0208fafc)(a);
   }
 }
-void Base::unloadSceneOverlay() {
+void Base::unloadSceneOverlay() { // Not sure if this accepts a arg or not
   if (Base::data_0208fb00 != 0x00) {
     ((void (*)(void))Base::data_0208fb00)();
   }

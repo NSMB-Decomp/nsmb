@@ -1,0 +1,716 @@
+{
+  "arm9_lcf_file": "build/arm9.lcf",
+  "arm9_objects_file": "build/objects.txt",
+  "files": [
+    {
+      "name": "main_6",
+      "delink_file": "build/delinks/main_6.o",
+      "object_to_link": "build/delinks/main_6.o"
+    },
+    {
+      "name": "itcm_0",
+      "delink_file": "build/delinks/itcm_0.o",
+      "object_to_link": "build/delinks/itcm_0.o"
+    },
+    {
+      "name": "src/Base2.cpp",
+      "delink_file":    "build/delinks/src/Base2.o",
+      "object_to_link": "build/delinks/src/Base2.o"
+    },
+    {
+      "name": "itcm_1",
+      "delink_file": "build/delinks/itcm_1.o",
+      "object_to_link": "build/delinks/itcm_1.o"
+    },
+    {
+      "name": "dtcm_0",
+      "delink_file": "build/delinks/dtcm_0.o",
+      "object_to_link": "build/delinks/dtcm_0.o"
+    },
+    {
+      "name": "autoload_2_3",
+      "delink_file": "build/delinks/autoload_2_3.o",
+      "object_to_link": "build/delinks/autoload_2_3.o"
+    },
+    {
+      "name": "src/Base.cpp",
+      "delink_file": "build/delinks/src/Base.o",
+      "object_to_link": "build/delinks/src/Base.o"
+    },
+    {
+      "name": "autoload_2_4",
+      "delink_file": "build/delinks/autoload_2_4.o",
+      "object_to_link": "build/delinks/autoload_2_4.o"
+    },
+    {
+      "name": "autoload_3_0",
+      "delink_file": "build/delinks/autoload_3_0.o",
+      "object_to_link": "build/delinks/autoload_3_0.o"
+    },
+    {
+      "name": "ov000_6",
+      "delink_file": "build/delinks/ov000_6.o",
+      "object_to_link": "build/delinks/ov000_6.o"
+    },
+    {
+      "name": "src/Actor.cpp",
+      "delink_file": "build/delinks/src/Actor.o",
+      "object_to_link": "build/delinks/src/Actor.o"
+    },
+    {
+      "name": "ov000_1",
+      "delink_file": "build/delinks/ov000_1.o",
+      "object_to_link": "build/delinks/ov000_1.o"
+    },
+    {
+      "name": "ov001_3",
+      "delink_file": "build/delinks/ov001_3.o",
+      "object_to_link": "build/delinks/ov001_3.o"
+    },
+    {
+      "name": "ov002_5",
+      "delink_file": "build/delinks/ov002_5.o",
+      "object_to_link": "build/delinks/ov002_5.o"
+    },
+    {
+      "name": "ov003_0",
+      "delink_file": "build/delinks/ov003_0.o",
+      "object_to_link": "build/delinks/ov003_0.o"
+    },
+    {
+      "name": "ov004_5",
+      "delink_file": "build/delinks/ov004_5.o",
+      "object_to_link": "build/delinks/ov004_5.o"
+    },
+    {
+      "name": "ov005_3",
+      "delink_file": "build/delinks/ov005_3.o",
+      "object_to_link": "build/delinks/ov005_3.o"
+    },
+    {
+      "name": "ov006_2",
+      "delink_file": "build/delinks/ov006_2.o",
+      "object_to_link": "build/delinks/ov006_2.o"
+    },
+    {
+      "name": "ov007_2",
+      "delink_file": "build/delinks/ov007_2.o",
+      "object_to_link": "build/delinks/ov007_2.o"
+    },
+    {
+      "name": "ov008_5",
+      "delink_file": "build/delinks/ov008_5.o",
+      "object_to_link": "build/delinks/ov008_5.o"
+    },
+    {
+      "name": "ov009_5",
+      "delink_file": "build/delinks/ov009_5.o",
+      "object_to_link": "build/delinks/ov009_5.o"
+    },
+    {
+      "name": "ov010_5",
+      "delink_file": "build/delinks/ov010_5.o",
+      "object_to_link": "build/delinks/ov010_5.o"
+    },
+    {
+      "name": "ov011_4",
+      "delink_file": "build/delinks/ov011_4.o",
+      "object_to_link": "build/delinks/ov011_4.o"
+    },
+    {
+      "name": "ov012_5",
+      "delink_file": "build/delinks/ov012_5.o",
+      "object_to_link": "build/delinks/ov012_5.o"
+    },
+    {
+      "name": "ov013_4",
+      "delink_file": "build/delinks/ov013_4.o",
+      "object_to_link": "build/delinks/ov013_4.o"
+    },
+    {
+      "name": "ov014_3",
+      "delink_file": "build/delinks/ov014_3.o",
+      "object_to_link": "build/delinks/ov014_3.o"
+    },
+    {
+      "name": "ov015_3",
+      "delink_file": "build/delinks/ov015_3.o",
+      "object_to_link": "build/delinks/ov015_3.o"
+    },
+    {
+      "name": "ov016_5",
+      "delink_file": "build/delinks/ov016_5.o",
+      "object_to_link": "build/delinks/ov016_5.o"
+    },
+    {
+      "name": "ov017_5",
+      "delink_file": "build/delinks/ov017_5.o",
+      "object_to_link": "build/delinks/ov017_5.o"
+    },
+    {
+      "name": "ov018_3",
+      "delink_file": "build/delinks/ov018_3.o",
+      "object_to_link": "build/delinks/ov018_3.o"
+    },
+    {
+      "name": "ov019_5",
+      "delink_file": "build/delinks/ov019_5.o",
+      "object_to_link": "build/delinks/ov019_5.o"
+    },
+    {
+      "name": "ov020_5",
+      "delink_file": "build/delinks/ov020_5.o",
+      "object_to_link": "build/delinks/ov020_5.o"
+    },
+    {
+      "name": "ov021_0",
+      "delink_file": "build/delinks/ov021_0.o",
+      "object_to_link": "build/delinks/ov021_0.o"
+    },
+    {
+      "name": "ov022_5",
+      "delink_file": "build/delinks/ov022_5.o",
+      "object_to_link": "build/delinks/ov022_5.o"
+    },
+    {
+      "name": "ov023_4",
+      "delink_file": "build/delinks/ov023_4.o",
+      "object_to_link": "build/delinks/ov023_4.o"
+    },
+    {
+      "name": "ov024_5",
+      "delink_file": "build/delinks/ov024_5.o",
+      "object_to_link": "build/delinks/ov024_5.o"
+    },
+    {
+      "name": "ov025_5",
+      "delink_file": "build/delinks/ov025_5.o",
+      "object_to_link": "build/delinks/ov025_5.o"
+    },
+    {
+      "name": "ov026_3",
+      "delink_file": "build/delinks/ov026_3.o",
+      "object_to_link": "build/delinks/ov026_3.o"
+    },
+    {
+      "name": "ov027_3",
+      "delink_file": "build/delinks/ov027_3.o",
+      "object_to_link": "build/delinks/ov027_3.o"
+    },
+    {
+      "name": "ov028_5",
+      "delink_file": "build/delinks/ov028_5.o",
+      "object_to_link": "build/delinks/ov028_5.o"
+    },
+    {
+      "name": "ov029_0",
+      "delink_file": "build/delinks/ov029_0.o",
+      "object_to_link": "build/delinks/ov029_0.o"
+    },
+    {
+      "name": "ov030_0",
+      "delink_file": "build/delinks/ov030_0.o",
+      "object_to_link": "build/delinks/ov030_0.o"
+    },
+    {
+      "name": "ov031_0",
+      "delink_file": "build/delinks/ov031_0.o",
+      "object_to_link": "build/delinks/ov031_0.o"
+    },
+    {
+      "name": "ov032_3",
+      "delink_file": "build/delinks/ov032_3.o",
+      "object_to_link": "build/delinks/ov032_3.o"
+    },
+    {
+      "name": "ov033_3",
+      "delink_file": "build/delinks/ov033_3.o",
+      "object_to_link": "build/delinks/ov033_3.o"
+    },
+    {
+      "name": "ov034_5",
+      "delink_file": "build/delinks/ov034_5.o",
+      "object_to_link": "build/delinks/ov034_5.o"
+    },
+    {
+      "name": "ov035_3",
+      "delink_file": "build/delinks/ov035_3.o",
+      "object_to_link": "build/delinks/ov035_3.o"
+    },
+    {
+      "name": "ov036_5",
+      "delink_file": "build/delinks/ov036_5.o",
+      "object_to_link": "build/delinks/ov036_5.o"
+    },
+    {
+      "name": "ov037_0",
+      "delink_file": "build/delinks/ov037_0.o",
+      "object_to_link": "build/delinks/ov037_0.o"
+    },
+    {
+      "name": "ov038_3",
+      "delink_file": "build/delinks/ov038_3.o",
+      "object_to_link": "build/delinks/ov038_3.o"
+    },
+    {
+      "name": "ov039_0",
+      "delink_file": "build/delinks/ov039_0.o",
+      "object_to_link": "build/delinks/ov039_0.o"
+    },
+    {
+      "name": "ov040_5",
+      "delink_file": "build/delinks/ov040_5.o",
+      "object_to_link": "build/delinks/ov040_5.o"
+    },
+    {
+      "name": "ov041_0",
+      "delink_file": "build/delinks/ov041_0.o",
+      "object_to_link": "build/delinks/ov041_0.o"
+    },
+    {
+      "name": "ov042_5",
+      "delink_file": "build/delinks/ov042_5.o",
+      "object_to_link": "build/delinks/ov042_5.o"
+    },
+    {
+      "name": "ov043_3",
+      "delink_file": "build/delinks/ov043_3.o",
+      "object_to_link": "build/delinks/ov043_3.o"
+    },
+    {
+      "name": "ov044_0",
+      "delink_file": "build/delinks/ov044_0.o",
+      "object_to_link": "build/delinks/ov044_0.o"
+    },
+    {
+      "name": "ov045_0",
+      "delink_file": "build/delinks/ov045_0.o",
+      "object_to_link": "build/delinks/ov045_0.o"
+    },
+    {
+      "name": "ov046_5",
+      "delink_file": "build/delinks/ov046_5.o",
+      "object_to_link": "build/delinks/ov046_5.o"
+    },
+    {
+      "name": "ov047_4",
+      "delink_file": "build/delinks/ov047_4.o",
+      "object_to_link": "build/delinks/ov047_4.o"
+    },
+    {
+      "name": "ov048_5",
+      "delink_file": "build/delinks/ov048_5.o",
+      "object_to_link": "build/delinks/ov048_5.o"
+    },
+    {
+      "name": "ov049_3",
+      "delink_file": "build/delinks/ov049_3.o",
+      "object_to_link": "build/delinks/ov049_3.o"
+    },
+    {
+      "name": "ov050_3",
+      "delink_file": "build/delinks/ov050_3.o",
+      "object_to_link": "build/delinks/ov050_3.o"
+    },
+    {
+      "name": "ov051_0",
+      "delink_file": "build/delinks/ov051_0.o",
+      "object_to_link": "build/delinks/ov051_0.o"
+    },
+    {
+      "name": "ov052_5",
+      "delink_file": "build/delinks/ov052_5.o",
+      "object_to_link": "build/delinks/ov052_5.o"
+    },
+    {
+      "name": "ov053_2",
+      "delink_file": "build/delinks/ov053_2.o",
+      "object_to_link": "build/delinks/ov053_2.o"
+    },
+    {
+      "name": "ov054_5",
+      "delink_file": "build/delinks/ov054_5.o",
+      "object_to_link": "build/delinks/ov054_5.o"
+    },
+    {
+      "name": "ov055_2",
+      "delink_file": "build/delinks/ov055_2.o",
+      "object_to_link": "build/delinks/ov055_2.o"
+    },
+    {
+      "name": "ov056_5",
+      "delink_file": "build/delinks/ov056_5.o",
+      "object_to_link": "build/delinks/ov056_5.o"
+    },
+    {
+      "name": "ov057_3",
+      "delink_file": "build/delinks/ov057_3.o",
+      "object_to_link": "build/delinks/ov057_3.o"
+    },
+    {
+      "name": "ov058_3",
+      "delink_file": "build/delinks/ov058_3.o",
+      "object_to_link": "build/delinks/ov058_3.o"
+    },
+    {
+      "name": "ov059_2",
+      "delink_file": "build/delinks/ov059_2.o",
+      "object_to_link": "build/delinks/ov059_2.o"
+    },
+    {
+      "name": "ov060_3",
+      "delink_file": "build/delinks/ov060_3.o",
+      "object_to_link": "build/delinks/ov060_3.o"
+    },
+    {
+      "name": "ov061_0",
+      "delink_file": "build/delinks/ov061_0.o",
+      "object_to_link": "build/delinks/ov061_0.o"
+    },
+    {
+      "name": "ov062_0",
+      "delink_file": "build/delinks/ov062_0.o",
+      "object_to_link": "build/delinks/ov062_0.o"
+    },
+    {
+      "name": "ov063_0",
+      "delink_file": "build/delinks/ov063_0.o",
+      "object_to_link": "build/delinks/ov063_0.o"
+    },
+    {
+      "name": "ov064_0",
+      "delink_file": "build/delinks/ov064_0.o",
+      "object_to_link": "build/delinks/ov064_0.o"
+    },
+    {
+      "name": "ov065_0",
+      "delink_file": "build/delinks/ov065_0.o",
+      "object_to_link": "build/delinks/ov065_0.o"
+    },
+    {
+      "name": "ov066_5",
+      "delink_file": "build/delinks/ov066_5.o",
+      "object_to_link": "build/delinks/ov066_5.o"
+    },
+    {
+      "name": "ov067_5",
+      "delink_file": "build/delinks/ov067_5.o",
+      "object_to_link": "build/delinks/ov067_5.o"
+    },
+    {
+      "name": "ov068_3",
+      "delink_file": "build/delinks/ov068_3.o",
+      "object_to_link": "build/delinks/ov068_3.o"
+    },
+    {
+      "name": "ov069_5",
+      "delink_file": "build/delinks/ov069_5.o",
+      "object_to_link": "build/delinks/ov069_5.o"
+    },
+    {
+      "name": "ov070_4",
+      "delink_file": "build/delinks/ov070_4.o",
+      "object_to_link": "build/delinks/ov070_4.o"
+    },
+    {
+      "name": "ov071_5",
+      "delink_file": "build/delinks/ov071_5.o",
+      "object_to_link": "build/delinks/ov071_5.o"
+    },
+    {
+      "name": "ov072_0",
+      "delink_file": "build/delinks/ov072_0.o",
+      "object_to_link": "build/delinks/ov072_0.o"
+    },
+    {
+      "name": "ov073_0",
+      "delink_file": "build/delinks/ov073_0.o",
+      "object_to_link": "build/delinks/ov073_0.o"
+    },
+    {
+      "name": "ov074_0",
+      "delink_file": "build/delinks/ov074_0.o",
+      "object_to_link": "build/delinks/ov074_0.o"
+    },
+    {
+      "name": "ov075_0",
+      "delink_file": "build/delinks/ov075_0.o",
+      "object_to_link": "build/delinks/ov075_0.o"
+    },
+    {
+      "name": "ov076_0",
+      "delink_file": "build/delinks/ov076_0.o",
+      "object_to_link": "build/delinks/ov076_0.o"
+    },
+    {
+      "name": "ov077_5",
+      "delink_file": "build/delinks/ov077_5.o",
+      "object_to_link": "build/delinks/ov077_5.o"
+    },
+    {
+      "name": "ov078_5",
+      "delink_file": "build/delinks/ov078_5.o",
+      "object_to_link": "build/delinks/ov078_5.o"
+    },
+    {
+      "name": "ov079_3",
+      "delink_file": "build/delinks/ov079_3.o",
+      "object_to_link": "build/delinks/ov079_3.o"
+    },
+    {
+      "name": "ov080_5",
+      "delink_file": "build/delinks/ov080_5.o",
+      "object_to_link": "build/delinks/ov080_5.o"
+    },
+    {
+      "name": "ov081_3",
+      "delink_file": "build/delinks/ov081_3.o",
+      "object_to_link": "build/delinks/ov081_3.o"
+    },
+    {
+      "name": "ov082_3",
+      "delink_file": "build/delinks/ov082_3.o",
+      "object_to_link": "build/delinks/ov082_3.o"
+    },
+    {
+      "name": "ov083_0",
+      "delink_file": "build/delinks/ov083_0.o",
+      "object_to_link": "build/delinks/ov083_0.o"
+    },
+    {
+      "name": "ov084_0",
+      "delink_file": "build/delinks/ov084_0.o",
+      "object_to_link": "build/delinks/ov084_0.o"
+    },
+    {
+      "name": "ov085_0",
+      "delink_file": "build/delinks/ov085_0.o",
+      "object_to_link": "build/delinks/ov085_0.o"
+    },
+    {
+      "name": "ov086_4",
+      "delink_file": "build/delinks/ov086_4.o",
+      "object_to_link": "build/delinks/ov086_4.o"
+    },
+    {
+      "name": "ov087_3",
+      "delink_file": "build/delinks/ov087_3.o",
+      "object_to_link": "build/delinks/ov087_3.o"
+    },
+    {
+      "name": "ov088_5",
+      "delink_file": "build/delinks/ov088_5.o",
+      "object_to_link": "build/delinks/ov088_5.o"
+    },
+    {
+      "name": "ov089_5",
+      "delink_file": "build/delinks/ov089_5.o",
+      "object_to_link": "build/delinks/ov089_5.o"
+    },
+    {
+      "name": "ov090_5",
+      "delink_file": "build/delinks/ov090_5.o",
+      "object_to_link": "build/delinks/ov090_5.o"
+    },
+    {
+      "name": "ov091_2",
+      "delink_file": "build/delinks/ov091_2.o",
+      "object_to_link": "build/delinks/ov091_2.o"
+    },
+    {
+      "name": "ov092_0",
+      "delink_file": "build/delinks/ov092_0.o",
+      "object_to_link": "build/delinks/ov092_0.o"
+    },
+    {
+      "name": "ov093_0",
+      "delink_file": "build/delinks/ov093_0.o",
+      "object_to_link": "build/delinks/ov093_0.o"
+    },
+    {
+      "name": "ov094_0",
+      "delink_file": "build/delinks/ov094_0.o",
+      "object_to_link": "build/delinks/ov094_0.o"
+    },
+    {
+      "name": "ov095_0",
+      "delink_file": "build/delinks/ov095_0.o",
+      "object_to_link": "build/delinks/ov095_0.o"
+    },
+    {
+      "name": "ov096_3",
+      "delink_file": "build/delinks/ov096_3.o",
+      "object_to_link": "build/delinks/ov096_3.o"
+    },
+    {
+      "name": "ov097_5",
+      "delink_file": "build/delinks/ov097_5.o",
+      "object_to_link": "build/delinks/ov097_5.o"
+    },
+    {
+      "name": "ov098_5",
+      "delink_file": "build/delinks/ov098_5.o",
+      "object_to_link": "build/delinks/ov098_5.o"
+    },
+    {
+      "name": "ov099_4",
+      "delink_file": "build/delinks/ov099_4.o",
+      "object_to_link": "build/delinks/ov099_4.o"
+    },
+    {
+      "name": "ov100_5",
+      "delink_file": "build/delinks/ov100_5.o",
+      "object_to_link": "build/delinks/ov100_5.o"
+    },
+    {
+      "name": "ov101_3",
+      "delink_file": "build/delinks/ov101_3.o",
+      "object_to_link": "build/delinks/ov101_3.o"
+    },
+    {
+      "name": "ov102_0",
+      "delink_file": "build/delinks/ov102_0.o",
+      "object_to_link": "build/delinks/ov102_0.o"
+    },
+    {
+      "name": "ov103_0",
+      "delink_file": "build/delinks/ov103_0.o",
+      "object_to_link": "build/delinks/ov103_0.o"
+    },
+    {
+      "name": "ov104_0",
+      "delink_file": "build/delinks/ov104_0.o",
+      "object_to_link": "build/delinks/ov104_0.o"
+    },
+    {
+      "name": "ov105_0",
+      "delink_file": "build/delinks/ov105_0.o",
+      "object_to_link": "build/delinks/ov105_0.o"
+    },
+    {
+      "name": "ov106_2",
+      "delink_file": "build/delinks/ov106_2.o",
+      "object_to_link": "build/delinks/ov106_2.o"
+    },
+    {
+      "name": "ov107_4",
+      "delink_file": "build/delinks/ov107_4.o",
+      "object_to_link": "build/delinks/ov107_4.o"
+    },
+    {
+      "name": "ov108_5",
+      "delink_file": "build/delinks/ov108_5.o",
+      "object_to_link": "build/delinks/ov108_5.o"
+    },
+    {
+      "name": "ov109_4",
+      "delink_file": "build/delinks/ov109_4.o",
+      "object_to_link": "build/delinks/ov109_4.o"
+    },
+    {
+      "name": "ov110_5",
+      "delink_file": "build/delinks/ov110_5.o",
+      "object_to_link": "build/delinks/ov110_5.o"
+    },
+    {
+      "name": "ov111_5",
+      "delink_file": "build/delinks/ov111_5.o",
+      "object_to_link": "build/delinks/ov111_5.o"
+    },
+    {
+      "name": "ov112_0",
+      "delink_file": "build/delinks/ov112_0.o",
+      "object_to_link": "build/delinks/ov112_0.o"
+    },
+    {
+      "name": "ov113_0",
+      "delink_file": "build/delinks/ov113_0.o",
+      "object_to_link": "build/delinks/ov113_0.o"
+    },
+    {
+      "name": "ov114_0",
+      "delink_file": "build/delinks/ov114_0.o",
+      "object_to_link": "build/delinks/ov114_0.o"
+    },
+    {
+      "name": "ov115_0",
+      "delink_file": "build/delinks/ov115_0.o",
+      "object_to_link": "build/delinks/ov115_0.o"
+    },
+    {
+      "name": "ov116_3",
+      "delink_file": "build/delinks/ov116_3.o",
+      "object_to_link": "build/delinks/ov116_3.o"
+    },
+    {
+      "name": "ov117_3",
+      "delink_file": "build/delinks/ov117_3.o",
+      "object_to_link": "build/delinks/ov117_3.o"
+    },
+    {
+      "name": "ov118_5",
+      "delink_file": "build/delinks/ov118_5.o",
+      "object_to_link": "build/delinks/ov118_5.o"
+    },
+    {
+      "name": "ov119_3",
+      "delink_file": "build/delinks/ov119_3.o",
+      "object_to_link": "build/delinks/ov119_3.o"
+    },
+    {
+      "name": "ov120_5",
+      "delink_file": "build/delinks/ov120_5.o",
+      "object_to_link": "build/delinks/ov120_5.o"
+    },
+    {
+      "name": "ov121_3",
+      "delink_file": "build/delinks/ov121_3.o",
+      "object_to_link": "build/delinks/ov121_3.o"
+    },
+    {
+      "name": "ov122_0",
+      "delink_file": "build/delinks/ov122_0.o",
+      "object_to_link": "build/delinks/ov122_0.o"
+    },
+    {
+      "name": "ov123_5",
+      "delink_file": "build/delinks/ov123_5.o",
+      "object_to_link": "build/delinks/ov123_5.o"
+    },
+    {
+      "name": "ov124_0",
+      "delink_file": "build/delinks/ov124_0.o",
+      "object_to_link": "build/delinks/ov124_0.o"
+    },
+    {
+      "name": "ov125_0",
+      "delink_file": "build/delinks/ov125_0.o",
+      "object_to_link": "build/delinks/ov125_0.o"
+    },
+    {
+      "name": "ov126_5",
+      "delink_file": "build/delinks/ov126_5.o",
+      "object_to_link": "build/delinks/ov126_5.o"
+    },
+    {
+      "name": "ov127_5",
+      "delink_file": "build/delinks/ov127_5.o",
+      "object_to_link": "build/delinks/ov127_5.o"
+    },
+    {
+      "name": "ov128_5",
+      "delink_file": "build/delinks/ov128_5.o",
+      "object_to_link": "build/delinks/ov128_5.o"
+    },
+    {
+      "name": "ov129_5",
+      "delink_file": "build/delinks/ov129_5.o",
+      "object_to_link": "build/delinks/ov129_5.o"
+    },
+    {
+      "name": "ov130_5",
+      "delink_file": "build/delinks/ov130_5.o",
+      "object_to_link": "build/delinks/ov130_5.o"
+    }
+  ]
+}
