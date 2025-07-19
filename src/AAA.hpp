@@ -7,7 +7,11 @@ struct ObjectProfile {
 };
 
 extern ObjectProfile** CurrentProfileTable;
+//
+void func_02044d94(void *, void *);
+extern void * data_0208b720;
 
+//
 bool func_0204d82c();
 u32 func_01ffd524(Base*, u32, u32, u32, u32, u32, u32);
 extern u32 data_02085240[2] = {0, 0};
