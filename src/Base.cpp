@@ -121,17 +121,26 @@ u32 Base::processDestroy()
 bool Base::hasChildPendingCreation()
 {
   SceneNode *next = this->process_link.connect.func_020439f0();
-  SceneNode *cur;
+  SceneNode *cur = this->process_link.connect.firstChild;
 
-  for (cur = this->process_link.connect.firstChild;
-       (cur != (SceneNode *)0x0 && (cur != next));
-       cur = cur->func_02043a2c())
+  while (cur != next || cur != (SceneNode *)0x0)
   {
-    if ((*cur->object).state == zero)
+    if ((*cur->object).state == pendingInit)
     {
       return true;
     }
-  }
+    cur = cur->func_02043a2c();
+  };
+
+  // for (cur = this->process_link.connect.firstChild;
+  //      (cur != (SceneNode *)0x0 && (cur != next));
+  //      cur = cur->func_02043a2c())
+  //{
+  //   if ((*cur->object).state == zero)
+  //   {
+  //     return true;
+  //   }
+  // }
 
   return false;
 }

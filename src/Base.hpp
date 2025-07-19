@@ -4,7 +4,7 @@
 class Base {
 public:
   enum State {
-    zero,
+    pendingInit,
     one,
     two
   };
