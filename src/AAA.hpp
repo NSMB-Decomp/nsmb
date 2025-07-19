@@ -7,3 +7,5 @@ struct ObjectProfile {
 };
 
 ObjectProfile** CurrentProfileTable;
+
+bool func_0204d82c();

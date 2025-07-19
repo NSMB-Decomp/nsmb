@@ -30,7 +30,7 @@ public:
   u8 __3;
   u8 __4;
   ProcessLink process_link;
-  u8 __5;
+  u32 __5;
 
   static Base* spawnParent(u16, u32, u8);
   static Base* spawnChild(u16, Base*, u32, u8);

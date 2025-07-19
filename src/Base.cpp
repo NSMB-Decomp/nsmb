@@ -23,14 +23,14 @@ bool Base::preCreate() { return true; }
 bool Base::onDestroy() { return true; }
 bool Base::preDestroy() {
   if (
-    this->__5 == 0 || 
-    // (iVar1 = func_0204d82c(), iVar1 != 0) &&
-    this->process_link.connect.firstChild == (SceneNode *)0x0
+    !(this->__5 == 0 || 
+    (func_0204d82c() != false) &&
+    this->process_link.connect.firstChild == (SceneNode *)0x0)
   )
   {
-    return false;
+    return true;
   }
-  return true;
+  return false;
 }
 void Base::pendingDestroy() {}
 void Base::destroy() {
