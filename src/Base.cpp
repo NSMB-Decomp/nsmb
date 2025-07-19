@@ -1,4 +1,5 @@
 #include "Base.hpp"
+#include "AAA.hpp"
 
 Base::Base() {
   ProcessLink pl = this->process_link;
@@ -77,23 +78,37 @@ u32 Base::processDestroy() {
   }
   return ret;
 }
-void Base::setSpawnParams(u16 a, u32 b, u32 c, u8 d) {
+void Base::setSpawnParams(u16 a, ProcessLink* b, u32 c, u8 d) {
   Base::SpawnParam3 = c;
   Base::SpawnParam1 = a;
   Base::SpawnParam4 = d;
   Base::SpawnParam2 = b;
 }
-Base* Base::spawn(u16 overlay_id, ProcessLink* b, u32 c, u32 d) {
-  Base::data_0208fae8 = 0x01;
+Base* Base::spawn(u16 overlay_id, ProcessLink* b, u32 c, u8 d) {
   Base::data_0208faf0 = overlay_id;
-  //Base::loadSceneOverlay(overlay_id);
-  if (overlay_id == 3) {
+  Base::data_0208fae8 = 1;
+  u32 new_overlay = Base::loadSceneOverlay(overlay_id);
+  if (new_overlay == 3) {
     return (Base *)0x00;
   }
+  Base::data_0208fae8 = 2;
+  setSpawnParams(overlay_id, b, c, d);
+  Base::data_0208fae8 = 3;
+  Base* ret = (CurrentProfileTable)[overlay_id]->constructor();
+  if (ret == (Base*)0x00) {
+    Base::data_0208faf0 = 0xFFFF;
+    Base::data_0208fae8 = 0;
+    return ret;
+  }
+  Base::data_0208fae8 = 4;
+  ret->create();
+  Base::data_0208fae8 = 0;
+  Base::data_0208faf0 = 0xFFFF;
+  return ret;
 }
-u32 Base::loadSceneOverlay(u32 a) {
+u32 Base::loadSceneOverlay(u16 a) {
   if (Base::data_0208fafc != 0x00) {
-    ((void (*)(Base*))Base::data_0208fafc)(this);
+    ((void (*)(u16))Base::data_0208fafc)(a);
   } else {
     return 2;
   }
@@ -103,12 +118,12 @@ void Base::unloadSceneOverlay() { // Not sure if the arg this accepts is "this" 
     ((void (*)(Base*))Base::data_0208fb00)(this);
   }
 }
-Base* Base::spawnChild(u16 overlay_id, Base* b, u32 c, u32 d) {
+Base* Base::spawnChild(u16 overlay_id, Base* b, u32 c, u8 d) {
   if (b != (Base *)0x00) {
     return b->spawn(overlay_id, &b->process_link, c, d);
   }
   return (Base *)0x00;
 }
-Base* Base::spawnParent(u16 a, u32 b, u32 c) {
+Base* Base::spawnParent(u16 a, u32 b, u8 c) {
   return Base::spawn(a, 0, b, c);
 }

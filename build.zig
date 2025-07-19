@@ -61,6 +61,7 @@ pub fn build(b: *std.Build) void {
             "-gccinc",
             "-nolink",
             "-c",
+            "-sym=on",
             "-RTTI=off",
         });
     }

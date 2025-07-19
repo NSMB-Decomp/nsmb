@@ -3,22 +3,12 @@
 
 class Base {
 public:
-  //static u8 data_0208fae8;
-  //static u16 data_0208faf0;
-  //static u32 data_0208fb00;
-  //static u32 data_0208fafc;
-//
-  //static u8 SpawnParam4;
-  //static u16 SpawnParam1;
-  //static u32 SpawnParam2;
-  //static u32 SpawnParam3;
-
   static u32 data_0208fae0;
-  static u32 data_0208fae8;
+  static u8 data_0208fae8;
   static u8 SpawnParam4;
-  static u32 data_0208faf0;
+  static u16 data_0208faf0;
   static u16 SpawnParam1;
-  static u32 SpawnParam2;
+  static ProcessLink* SpawnParam2;
   static u32 data_0208fafc;
   static u32 data_0208fb00;
   static u32 SpawnParam3;
@@ -42,12 +32,12 @@ public:
   ProcessLink process_link;
   u8 __5;
 
-  static Base* spawnParent(u16, u32, u32);
-  static Base* spawnChild(u16, Base*, u32, u32);
+  static Base* spawnParent(u16, u32, u8);
+  static Base* spawnChild(u16, Base*, u32, u8);
   void unloadSceneOverlay();
-  u32 loadSceneOverlay(u32);
-  static Base* spawn(u16, ProcessLink*, u32, u32);
-  static void setSpawnParams(u16, u32, u32, u8);
+  static u32 loadSceneOverlay(u16);
+  static Base* spawn(u16, ProcessLink*, u32, u8);
+  static void setSpawnParams(u16, ProcessLink*, u32, u8);
   void hasChildNotCreated();
   u32 processDestroy();
   void processCreate();
