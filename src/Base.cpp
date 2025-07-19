@@ -37,8 +37,9 @@ bool Base::preDestroy()
 void Base::pendingDestroy() {}
 void Base::destroy()
 {
-  bool cond = (this->pending_destroy == false) && this->state == two;
-  if (cond)
+  bool cond1 = (this->pending_destroy == false) && 
+    !this->state == two;
+  if (cond1)
   {
     this->pending_destroy = true;
     this->pendingDestroy();
@@ -153,12 +154,13 @@ Base *Base::spawn(u16 overlay_id, ProcessLink *b, u32 c, u8 d)
     data_0208faf0 = 0xFFFF;
     data_0208fae8 = 0;
     return ret;
+  } else {
+    data_0208fae8 = 4;
+    ret->create();
+    data_0208fae8 = 0;
+    data_0208faf0 = 0xFFFF;
+    return ret;
   }
-  data_0208fae8 = 4;
-  ret->create();
-  data_0208fae8 = 0;
-  data_0208faf0 = 0xFFFF;
-  return ret;
 }
 u32 Base::loadSceneOverlay(u16 a)
 {
