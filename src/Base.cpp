@@ -143,7 +143,9 @@ bool Base::hasChildPendingCreation()
 
   while (cur != next || cur != (SceneNode *)0x0)
   {
-    if ((*cur->object).state == pendingInit)
+    if (
+      (u8)((*cur->object).state == pendingInit) != 0
+    )
     {
       return true;
     }
