@@ -72,7 +72,14 @@ bool Base::prepareResourcesFast(u32 a, u32 b)
 {
 }
 bool Base::onHeapCreated() { return true; }
-void *Base::operator new(u32 count) { return ::operator new(count); }
+void *Base::operator new(u32 count) { 
+  Base* ptr = (Base*)func_02045040(data_0208b720, count, -4);
+  if (ptr != (Base*)0x0) {
+    func_02066fe8(ptr, 0, count);
+    return ptr;
+  }
+  return (Base*)0x0;
+}
 void Base::operator delete(void *ptr) { 
   func_02044d94(data_0208b720, ptr);
 }
