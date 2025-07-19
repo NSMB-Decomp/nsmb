@@ -82,15 +82,15 @@ void Base::create()
 }
 void Base::processCreate()
 {
-  //func_01ffd524(
-  //  this, 
-  //  data_02085240[0], 
-  //  data_02085240[1], 
-  //  data_02085238[0], 
-  //  data_02085238[1], 
-  //  data_02085228[0], 
-  //  data_02085228[1]
-  //);
+  func_01ffd524(
+    this, 
+    data_02085240[0], 
+    data_02085240[1], 
+    data_02085238[0], 
+    data_02085238[1], 
+    data_02085228[0], 
+    data_02085228[1]
+  );
 }
 u32 Base::processDestroy()
 {
@@ -147,8 +147,7 @@ Base *Base::spawn(u16 overlay_id, ProcessLink *b, u32 c, u8 d)
   data_0208fae8 = 2;
   setSpawnParams(overlay_id, b, c, d);
   data_0208fae8 = 3;
-  //Base *ret = (CurrentProfileTable)[overlay_id]->constructor();
-  Base* ret = (Base*)0x00;
+  Base *ret = (CurrentProfileTable)[overlay_id]->constructor();
   if (ret == (Base *)0x00)
   {
     data_0208faf0 = 0xFFFF;
