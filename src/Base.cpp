@@ -72,15 +72,18 @@ bool Base::prepareResourcesFast(u32 a, u32 b)
 {
 }
 bool Base::onHeapCreated() { return true; }
-void *Base::operator new(u32 count) { 
-  Base* ptr = (Base*)func_02045040(data_0208b720, count, -4);
-  if (ptr != (Base*)0x0) {
+void *Base::operator new(u32 count)
+{
+  Base *ptr = (Base *)func_02045040(data_0208b720, count, -4);
+  if (ptr != (Base *)0x0)
+  {
     func_02066fe8(ptr, 0, count);
     return ptr;
   }
-  return (Base*)0x0;
+  return (Base *)0x0;
 }
-void Base::operator delete(void *ptr) { 
+void Base::operator delete(void *ptr)
+{
   func_02044d94(data_0208b720, ptr);
 }
 void Base::create()
@@ -98,11 +101,12 @@ void Base::create()
   {
     return;
   }
-  if (CurrentTask == &CreateTask) { // This seems to need the same compiler bug as enums "!enum== enum_value. Can we make this a enum?"
-    func_020438e8(&CreateTask,&this->process_link.update);
+  if ((bool)(CurrentTask == 2) ? 1 : 0)
+  {
+    this->__2 = 0x01;
     return;
   }
-  this->__2 = 0x01;
+  func_020438e8(&CreateTask, &this->process_link.update);
   return;
 }
 void Base::processCreate()
@@ -120,14 +124,13 @@ u32 Base::processDestroy()
 {
   u16 object_id = this->object_id;
   u32 ret = func_01ffd524(
-    this, 
-    data_02085230[0], 
-    data_02085230[1], 
-    data_02085248[0], 
-    data_02085248[1], 
-    data_02085250[0], 
-    data_02085250[1]
-  );
+      this,
+      data_02085230[0],
+      data_02085230[1],
+      data_02085248[0],
+      data_02085248[1],
+      data_02085250[0],
+      data_02085250[1]);
   if (ret == 1)
   {
     unloadSceneOverlay();

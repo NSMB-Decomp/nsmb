@@ -51,6 +51,14 @@ class ProcessList
     PTMF executer;
 };
 
-extern ProcessList* CurrentTask;
+enum ProcessType {
+    Null,
+    Connect,
+    Create,
+    Execute,
+    Delete,
+    Draw
+};
+extern u32 CurrentTask;
 extern ProcessList CreateTask;
 void func_020438e8(ProcessList*, PriorityNode*);
