@@ -25,20 +25,23 @@ bool Base::preCreate() { return true; }
 bool Base::onDestroy() { return true; }
 bool Base::preDestroy()
 {
-  if (
-      !(this->__5 == 0 ||
-        (func_0204d82c() != false) &&
-            this->process_link.connect.firstChild == (SceneNode *)0x0))
+  if (!(
+          (this->__5 == 0 || func_0204d82c()) &&
+          this->process_link.connect.firstChild == (SceneNode *)0x0))
+
+  {
+    return false;
+  }
+  else
   {
     return true;
-  }
-  return false;
+  };
 }
 void Base::pendingDestroy() {}
 void Base::destroy()
 {
-  bool cond1 = (this->pending_destroy == false) && 
-    !this->state == two;
+  bool cond1 = (this->pending_destroy == false) &&
+               !this->state == two;
   if (cond1)
   {
     this->pending_destroy = true;
@@ -84,14 +87,13 @@ void Base::create()
 void Base::processCreate()
 {
   func_01ffd524(
-    this, 
-    data_02085240[0], 
-    data_02085240[1], 
-    data_02085238[0], 
-    data_02085238[1], 
-    data_02085228[0], 
-    data_02085228[1]
-  );
+      this,
+      data_02085240[0],
+      data_02085240[1],
+      data_02085238[0],
+      data_02085238[1],
+      data_02085228[0],
+      data_02085228[1]);
 }
 u32 Base::processDestroy()
 {
@@ -154,7 +156,9 @@ Base *Base::spawn(u16 overlay_id, ProcessLink *b, u32 c, u8 d)
     data_0208faf0 = 0xFFFF;
     data_0208fae8 = 0;
     return ret;
-  } else {
+  }
+  else
+  {
     data_0208fae8 = 4;
     ret->create();
     data_0208fae8 = 0;
