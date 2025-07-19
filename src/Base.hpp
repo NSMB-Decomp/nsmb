@@ -68,4 +68,5 @@ public:
   virtual void prepareResourcesSafe();
   virtual void prepareResourcesFast();
   virtual bool onHeapCreated();
+  virtual ~Base();
 };
