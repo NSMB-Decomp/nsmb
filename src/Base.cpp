@@ -81,15 +81,15 @@ void Base::create()
 }
 void Base::processCreate()
 {
-  func_01ffd524(
-    this, 
-    data_02085240[0], 
-    data_02085240[1], 
-    data_02085238[0], 
-    data_02085238[1], 
-    data_02085228[0], 
-    data_02085228[1]
-  );
+  //func_01ffd524(
+  //  this, 
+  //  data_02085240[0], 
+  //  data_02085240[1], 
+  //  data_02085238[0], 
+  //  data_02085238[1], 
+  //  data_02085228[0], 
+  //  data_02085228[1]
+  //);
 }
 u32 Base::processDestroy()
 {
@@ -129,41 +129,42 @@ bool Base::hasChildNotCreated()
 }
 void Base::setSpawnParams(u16 a, ProcessLink *b, u32 c, u8 d)
 {
-  Base::SpawnParam3 = c;
-  Base::SpawnParam1 = a;
-  Base::SpawnParam4 = d;
-  Base::SpawnParam2 = b;
+  SpawnParam3 = c;
+  SpawnParam1 = a;
+  SpawnParam4 = d;
+  SpawnParam2 = b;
 }
 Base *Base::spawn(u16 overlay_id, ProcessLink *b, u32 c, u8 d)
 {
-  Base::data_0208faf0 = overlay_id;
-  Base::data_0208fae8 = 1;
+  data_0208faf0 = overlay_id;
+  data_0208fae8 = 1;
   u32 new_overlay = Base::loadSceneOverlay(overlay_id);
   if (new_overlay == 3)
   {
     return (Base *)0x00;
   }
-  Base::data_0208fae8 = 2;
+  data_0208fae8 = 2;
   setSpawnParams(overlay_id, b, c, d);
-  Base::data_0208fae8 = 3;
-  Base *ret = (CurrentProfileTable)[overlay_id]->constructor();
+  data_0208fae8 = 3;
+  //Base *ret = (CurrentProfileTable)[overlay_id]->constructor();
+  Base* ret = (Base*)0x00;
   if (ret == (Base *)0x00)
   {
-    Base::data_0208faf0 = 0xFFFF;
-    Base::data_0208fae8 = 0;
+    data_0208faf0 = 0xFFFF;
+    data_0208fae8 = 0;
     return ret;
   }
-  Base::data_0208fae8 = 4;
+  data_0208fae8 = 4;
   ret->create();
-  Base::data_0208fae8 = 0;
-  Base::data_0208faf0 = 0xFFFF;
+  data_0208fae8 = 0;
+  data_0208faf0 = 0xFFFF;
   return ret;
 }
 u32 Base::loadSceneOverlay(u16 a)
 {
-  if (Base::data_0208fafc != 0x00)
+  if (data_0208fafc != 0x00)
   {
-    ((void (*)(u16))Base::data_0208fafc)(a);
+    ((void (*)(u16))data_0208fafc)(a);
   }
   else
   {
@@ -172,9 +173,9 @@ u32 Base::loadSceneOverlay(u16 a)
 }
 void Base::unloadSceneOverlay()
 { // Not sure if the arg this accepts is "this" or arg1
-  if (Base::data_0208fb00 != 0x00)
+  if (data_0208fb00 != 0x00)
   {
-    ((void (*)(Base *))Base::data_0208fb00)(this);
+    ((void (*)(Base *))data_0208fb00)(this);
   }
 }
 Base *Base::spawnChild(u16 overlay_id, Base *b, u32 c, u8 d)

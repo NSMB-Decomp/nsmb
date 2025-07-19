@@ -6,10 +6,10 @@ struct ObjectProfile {
     u16 renderPriority;
 };
 
-ObjectProfile** CurrentProfileTable;
+//ObjectProfile** CurrentProfileTable;
 
 bool func_0204d82c();
 void func_01ffd524(Base*, u32, u32, u32, u32, u32, u32);
-u32* data_02085240;
-u32* data_02085238;
-u32* data_02085228;
+//u32* data_02085240;
+//u32* data_02085238;
+//u32* data_02085228;

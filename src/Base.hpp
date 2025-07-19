@@ -1,19 +1,19 @@
 #include "base_types.hpp"
 #include "ProcessLink.hpp"
 
+static u32 data_0208fae0;
+static u8 data_0208fae8;
+static u8 SpawnParam4;
+static u16 data_0208faf0;
+static u16 SpawnParam1;
+static ProcessLink* SpawnParam2;
+static u32 data_0208fafc;
+static u32 data_0208fb00;
+static u32 SpawnParam3;
+static u32 data_0208fb08;
+
 class Base {
 public:
-  static u32 data_0208fae0;
-  static u8 data_0208fae8;
-  static u8 SpawnParam4;
-  static u16 data_0208faf0;
-  static u16 SpawnParam1;
-  static ProcessLink* SpawnParam2;
-  static u32 data_0208fafc;
-  static u32 data_0208fb00;
-  static u32 SpawnParam3;
-  static u32 data_0208fb08;
-
   enum State {
     zero,
     one,
