@@ -27,7 +27,7 @@ public:
   static u32 loadSceneOverlay(u16);
   static Base* spawn(u16, ProcessLink*, u32, u8);
   static void setSpawnParams(u16, ProcessLink*, u32, u8);
-  bool hasChildNotCreated();
+  bool hasChildPendingCreation();
   u32 processDestroy();
   void processCreate();
   void create();
@@ -35,9 +35,7 @@ public:
   void operator delete(void*);
   Base* getParent();
   void destroy();
-
   Base();
-
   bool func_01ffd290();
 
   virtual bool onCreate();
@@ -54,8 +52,8 @@ public:
   virtual bool func_01ffd4c0();
   virtual void func_01ffd4bc();
   virtual void pendingDestroy();
-  virtual void prepareResourcesSafe();
-  virtual void prepareResourcesFast();
+  virtual bool prepareResourcesSafe(u32, u32);
+  virtual bool prepareResourcesFast(u32, u32);
   virtual bool onHeapCreated();
   virtual ~Base();
 };

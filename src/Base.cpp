@@ -2,7 +2,7 @@
 #include "Base_bss.hpp"
 #include "AAA.hpp"
 
-Base::Base()
+Base::Base() // why are there two Base::Base created as a result of this?
 {
   ProcessLink pl = this->process_link;
   pl.connect.object = this;
@@ -20,8 +20,10 @@ Base::Base()
   pl.idLookup.next = (ProcessNode *)0x00;
   pl.idLookup.object = this;
 }
+Base::~Base() {} // Why does this one create 3???
 bool Base::onCreate() { return true; }
 bool Base::preCreate() { return true; }
+bool Base::postCreate() {}
 bool Base::onDestroy() { return true; }
 bool Base::preDestroy()
 {
@@ -36,6 +38,9 @@ bool Base::preDestroy()
   {
     return true;
   };
+}
+void Base::postDestroy()
+{
 }
 void Base::pendingDestroy() {}
 void Base::destroy()
@@ -60,6 +65,12 @@ Base *Base::getParent()
     return (Base *)0x0;
   }
 };
+bool Base::prepareResourcesSafe(u32 a, u32 b)
+{
+}
+bool Base::prepareResourcesFast(u32 a, u32 b)
+{
+}
 bool Base::onHeapCreated() { return true; }
 void *Base::operator new(u32 count) { return ::operator new(count); }
 void Base::operator delete(void *ptr) { return ::operator delete(ptr); }
@@ -107,17 +118,10 @@ u32 Base::processDestroy()
   }
   return ret;
 }
-bool Base::hasChildNotCreated()
+bool Base::hasChildPendingCreation()
 {
   SceneNode *next = this->process_link.connect.func_020439f0();
   SceneNode *cur;
-
-  // while (cur != (SceneNode *)0x0 && next != cur) {
-  //   if ((*cur->object).state == zero) {
-  //     return true;
-  //   }
-  //   cur = cur->func_02043a2c();
-  // }
 
   for (cur = this->process_link.connect.firstChild;
        (cur != (SceneNode *)0x0 && (cur != next));
