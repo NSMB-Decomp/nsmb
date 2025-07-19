@@ -76,7 +76,7 @@ void *Base::operator new(u32 count) { return ::operator new(count); }
 void Base::operator delete(void *ptr) { return ::operator delete(ptr); }
 void Base::create()
 {
-  // processCreate();
+  processCreate();
   if (this->pending_destroy)
   {
     return;
@@ -85,15 +85,16 @@ void Base::create()
   {
     return;
   }
-  if (this->state != 0)
+  if (!this->state == pendingInit)
   {
     return;
   }
-  // if (ProcessManager::CurrentTask != Create) {
-  //   func_020438e8(&ProcessManager::CreateTask,&(this->_).processLink.update);
-  //   return;
-  // }
+  if (CurrentTask == &CreateTask) { // This seems to need the same compiler bug as enums "!enum== enum_value. Can we make this a enum?"
+    func_020438e8(&CreateTask,&this->process_link.update);
+    return;
+  }
   this->__2 = 0x01;
+  return;
 }
 void Base::processCreate()
 {
