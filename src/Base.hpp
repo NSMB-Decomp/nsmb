@@ -3,15 +3,26 @@
 
 class Base {
 public:
-  static u8 data_0208fae8;
-  static u16 data_0208faf0;
-  static u32 data_0208fb00;
-  static u32 data_0208fafc;
+  //static u8 data_0208fae8;
+  //static u16 data_0208faf0;
+  //static u32 data_0208fb00;
+  //static u32 data_0208fafc;
+//
+  //static u8 SpawnParam4;
+  //static u16 SpawnParam1;
+  //static u32 SpawnParam2;
+  //static u32 SpawnParam3;
 
+  static u32 data_0208fae0;
+  static u32 data_0208fae8;
   static u8 SpawnParam4;
+  static u32 data_0208faf0;
   static u16 SpawnParam1;
   static u32 SpawnParam2;
+  static u32 data_0208fafc;
+  static u32 data_0208fb00;
   static u32 SpawnParam3;
+  static u32 data_0208fb08;
 
   enum State {
     zero,
@@ -41,8 +52,8 @@ public:
   u32 processDestroy();
   void processCreate();
   void create();
-  void* operator new(u32 count);
-  void operator delete(void* ptr);
+  void* operator new(u32);
+  void operator delete(void*);
   Base* getParent();
   void destroy();
 

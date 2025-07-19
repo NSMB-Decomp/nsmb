@@ -27,9 +27,9 @@ bool Base::preDestroy() {
     this->process_link.connect.firstChild == (SceneNode *)0x0
   )
   {
-    return true;
+    return false;
   }
-  return false;
+  return true;
 }
 void Base::pendingDestroy() {}
 void Base::destroy() {
@@ -39,7 +39,7 @@ void Base::destroy() {
     this->pendingDestroy();
   }
 }
-Base *Base::getParent() {
+Base* Base::getParent() {
   SceneNode *a = this->process_link.connect.parent;
   if (a) {
     return a->object;
@@ -83,13 +83,14 @@ void Base::setSpawnParams(u16 a, u32 b, u32 c, u8 d) {
   Base::SpawnParam4 = d;
   Base::SpawnParam2 = b;
 }
-//Base *spawn(u16 overlay_id, ProcessLink* b, u32 c, u32 d) {
-//  //Base::data_0208fae8 = 0x01;
-//  //Base::data_0208faf0 = overlay_id;
-//  //if (overlay_id == 3) {
-//  //  return (Base *)0x00;
-//  //}
-//}
+Base* Base::spawn(u16 overlay_id, ProcessLink* b, u32 c, u32 d) {
+  Base::data_0208fae8 = 0x01;
+  Base::data_0208faf0 = overlay_id;
+  //Base::loadSceneOverlay(overlay_id);
+  if (overlay_id == 3) {
+    return (Base *)0x00;
+  }
+}
 u32 Base::loadSceneOverlay(u32 a) {
   if (Base::data_0208fafc != 0x00) {
     ((void (*)(Base*))Base::data_0208fafc)(this);
@@ -102,7 +103,7 @@ void Base::unloadSceneOverlay() { // Not sure if the arg this accepts is "this" 
     ((void (*)(Base*))Base::data_0208fb00)(this);
   }
 }
-Base *Base::spawnChild(u16 overlay_id, Base* b, u32 c, u32 d) {
+Base* Base::spawnChild(u16 overlay_id, Base* b, u32 c, u32 d) {
   if (b != (Base *)0x00) {
     return b->spawn(overlay_id, &b->process_link, c, d);
   }
