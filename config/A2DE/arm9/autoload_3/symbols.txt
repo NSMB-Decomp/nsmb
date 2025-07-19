@@ -580,7 +580,7 @@ data_0208e7e0 kind:bss addr:0x0208e7e0
 data_0208f021 kind:bss addr:0x0208f021
 Base::data_0208fae0 kind:bss addr:0x0208fae0
 Base::data_0208fae8 kind:bss addr:0x0208fae8
-Base::SpawnParam4 kind:data(byte) addr:0x0208faec
+Base::SpawnParam4 kind:bss addr:0x0208faec
 Base::data_0208faf0 kind:bss addr:0x0208faf0
 Base::SpawnParam1 kind:bss addr:0x0208faf4
 Base::SpawnParam2 kind:bss addr:0x0208faf8

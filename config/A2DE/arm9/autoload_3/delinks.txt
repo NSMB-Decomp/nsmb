@@ -1,1 +1,4 @@
     .bss        start:0x02085880 end:0x020986e0 kind:bss align:32
+
+src/Base3.hpp:
+    .bss        start:0x0208fae0 end:0x0208fb0c
