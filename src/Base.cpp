@@ -78,6 +78,27 @@ u32 Base::processDestroy() {
   }
   return ret;
 }
+bool Base::hasChildNotCreated() {
+  SceneNode* next = this->process_link.connect.func_020439f0();
+  SceneNode* cur;
+
+  //while (cur != (SceneNode *)0x0 && next != cur) {
+  //  if ((*cur->object).state == zero) {
+  //    return true;
+  //  }
+  //  cur = cur->func_02043a2c();
+  //}
+
+  for (cur = this->process_link.connect.firstChild; 
+      (cur != (SceneNode *)0x0 && (cur != next));
+       cur = cur->func_02043a2c()) {
+    if ((*cur->object).state == zero) {
+      return true;
+    }
+  }
+  
+  return false;
+}
 void Base::setSpawnParams(u16 a, ProcessLink* b, u32 c, u8 d) {
   Base::SpawnParam3 = c;
   Base::SpawnParam1 = a;

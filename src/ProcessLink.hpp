@@ -1,4 +1,5 @@
-#import "base_types.hpp"
+#include "base_types.hpp"
+
 class Base;
 
 class SceneNode   {
@@ -8,6 +9,9 @@ public:
     SceneNode* prev;
     SceneNode* next;
     Base* object;
+
+    SceneNode* func_020439f0();
+    SceneNode* func_02043a2c();
 };
 
 class ProcessNode {
