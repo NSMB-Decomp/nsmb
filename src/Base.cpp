@@ -45,9 +45,8 @@ void Base::postDestroy()
 void Base::pendingDestroy() {}
 void Base::destroy()
 {
-  bool cond1 = (this->pending_destroy == false) &&
-               !this->state == two;
-  if (cond1)
+  if ((this->pending_destroy == false) &&
+               (u8)(this->state == two) == 0 ? true : false) // Todo, is there a better syntax for this compiler bug?
   {
     this->pending_destroy = true;
     this->pendingDestroy();
