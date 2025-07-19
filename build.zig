@@ -41,11 +41,14 @@ pub fn build(b: *std.Build) void {
     objdiff_cmd.addFileArg(config_file);
     objdiff_cmd.addArgs(&.{ "-m", "zig" });
     objdiff_cmd.addArgs(&.{ "-M", "build", "-M", "single", "-M", "--" });
+    objdiff_cmd.addArgs(&.{ "-s", "-C", "mwcc_20_84" });
+    objdiff_cmd.addArgs(&.{ "-f", "-O4,p -interworking -proc=arm946e -lang=C++ -Cpp_exceptions=off -w=off -gccinc -nolink -c -sym=on -RTTI=off" });
 
     const objdiff_step = b.step("objdiff", "");
     objdiff_step.dependOn(&objdiff_cmd.step);
 
     // Single step
+    // If single step is compled with the extension .ctx.cpp then we need to call m2ctx.py instead of m2cc
     const cmd: []const []const u8 = if (target_options.result.os.tag != .windows) &.{ "wine", mwcc_exe.getDisplayName() } else &.{mwcc_exe.getDisplayName()};
     const single_cmd = b.addSystemCommand(cmd);
     if (b.args) |args| {
