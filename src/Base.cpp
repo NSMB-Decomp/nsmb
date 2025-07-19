@@ -109,9 +109,15 @@ void Base::processCreate()
 u32 Base::processDestroy()
 {
   u16 object_id = this->object_id;
-  // u32 ret = process(this,(FunctionPtr *)&PrefetchAbort,1,(FunctionPtr *)&DataAbort,1,
-  //                 (FunctionPtr2 *)&NotUsed,1);
-  u32 ret = 0;
+  u32 ret = func_01ffd524(
+    this, 
+    data_02085230[0], 
+    data_02085230[1], 
+    data_02085248[0], 
+    data_02085248[1], 
+    data_02085250[0], 
+    data_02085250[1]
+  );
   if (ret == 1)
   {
     unloadSceneOverlay();
