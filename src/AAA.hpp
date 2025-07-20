@@ -7,6 +7,7 @@ struct ObjectProfile {
 };
 
 extern ObjectProfile** CurrentProfileTable;
+extern u8 Stage_actorFreezeFlag;
 
 //
 void func_02066fe8(void *, u32, u32);

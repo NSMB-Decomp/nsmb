@@ -178,11 +178,11 @@ Actor::getActorCount kind:function(arm,size=0x44) addr:0x020a0bf8
 Actor::postRender kind:function(arm,size=0xc) addr:0x020a0c3c
 Actor::preRender kind:function(arm,size=0x58) addr:0x020a0c48
 Actor::postUpdate kind:function(arm,size=0xc) addr:0x020a0ca0
-Actor::preUpdate kind:function(arm,size=0x98) addr:0x020a0cac
-Actor::postDestroy kind:function(arm,size=0xc) addr:0x020a0d44
+_ZN5Actor9preUpdateEv kind:function(arm,size=0x98) addr:0x020a0cac
+_ZN5Actor11postDestroyEm kind:function(arm,size=0xc) addr:0x020a0d44
 _ZN5Actor10preDestroyEv kind:function(arm,size=0x20) addr:0x020a0d50
 Actor::postCreate kind:function(arm,size=0xc) addr:0x020a0d70
-Actor::preCreate kind:function(arm,size=0x20) addr:0x020a0d7c
+_ZN5Actor9preCreateEv kind:function(arm,size=0x20) addr:0x020a0d7c
 Actor::~Actor kind:function(arm,size=0x68) addr:0x020a0d9c
 Actor::~Actor kind:function(arm,size=0x70) addr:0x020a0e04
 Actor::~Actor kind:function(arm,size=0x68) addr:0x020a0e74
@@ -1292,7 +1292,7 @@ data_ov000_020ca4cc kind:bss addr:0x020ca4cc
 data_ov000_020ca4d0 kind:bss addr:0x020ca4d0
 data_ov000_020ca64c kind:bss addr:0x020ca64c
 data_ov000_020ca84c kind:bss addr:0x020ca84c
-data_ov000_020ca850 kind:bss addr:0x020ca850
+Stage::actorFreezeFlag kind:bss addr:0x020ca850
 data_ov000_020ca854 kind:bss addr:0x020ca854
 data_ov000_020ca858 kind:bss addr:0x020ca858
 data_ov000_020ca85c kind:bss addr:0x020ca85c
