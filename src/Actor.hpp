@@ -9,6 +9,8 @@ public:
     Vec3 position;
     Vec3 lastStep;
     Vec3 lastPosition;
+    bool visible;
+    u8 actorType;
     
     // TODO: Do we need to define these as virtual?
     bool preDestroy();
@@ -16,6 +18,8 @@ public:
     bool postCreate();
     void postDestroy(u32);
     bool preUpdate();
+    void postUpdate();
+    bool preRender();
 
 
     virtual void setPosX(u32);

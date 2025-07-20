@@ -11,6 +11,7 @@ extern u8 Stage_actorFreezeFlag;
 
 //
 void func_02066fe8(void *, u32, u32);
+u32 data_0v000_020ca84c;
 
 //
 void func_02044d94(void *, void *);
