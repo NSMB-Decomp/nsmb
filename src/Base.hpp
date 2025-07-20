@@ -1,6 +1,11 @@
 #include "base_types.hpp"
 #include "ProcessManager.hpp"
 
+struct a {
+  u32 a;
+  u32 b;
+};
+
 u32 data_02085224 = 1;
 u32 data_02085248[2] = {0x10, 1};
 u32 data_02085240[2] = {0x00, 1};
@@ -32,7 +37,7 @@ public:
 
   static Base* spawnParent(u16, u32, u8);
   static Base* spawnChild(u16, Base*, u32, u8);
-  void unloadSceneOverlay();
+  static void unloadSceneOverlay(u16);
   static u32 loadSceneOverlay(u16);
   static Base* spawn(u16, ProcessLink*, u32, u8);
   static void setSpawnParams(u16, ProcessLink*, u32, u8);

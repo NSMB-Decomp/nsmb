@@ -134,17 +134,20 @@ void Base::processCreate()
 u32 Base::processDestroy()
 {
   u16 object_id = this->object_id;
+  u32* a = (u32*)&data_02085230;
+  u32* b = (u32*)&data_02085248;
+  u32* c = (u32*)&data_02085250;
   u32 ret = func_01ffd524(
       this,
-      data_02085230[0],
-      data_02085230[1],
-      data_02085248[0],
-      data_02085248[1],
-      data_02085250[0],
-      data_02085250[1]);
+      (u32)(a),
+      (u32)(a + 1),
+      (u32)(b),
+      (u32)(b + 1),
+      (u32)(c),
+      (u32)(c + 1));
   if (ret == 1)
   {
-    unloadSceneOverlay();
+    unloadSceneOverlay(object_id);
   }
   return ret;
 }
@@ -222,11 +225,10 @@ u32 Base::loadSceneOverlay(u16 a)
     return 2;
   }
 }
-void Base::unloadSceneOverlay()
-{ // Not sure if the arg this accepts is "this" or arg1
+void Base::unloadSceneOverlay(u16 a) {
   if (data_0208fb00 != 0x00)
   {
-    ((void (*)(Base *))data_0208fb00)(this);
+    ((void (*)(u16))data_0208fb00)(a);
   }
 }
 Base *Base::spawnChild(u16 overlay_id, Base *b, u32 c, u8 d)
