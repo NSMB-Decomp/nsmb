@@ -20,6 +20,8 @@ public:
     ProcessNode *prev;
     ProcessNode *next;
     Base *object;
+
+    void unlink();
 };
 
 class PriorityNode
@@ -28,6 +30,8 @@ public:
     ProcessNode _;
     u16 currentPriority;
     u16 sortPriority;
+
+    void unlink();
 };
 
 class ProcessLink

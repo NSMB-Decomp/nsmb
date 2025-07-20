@@ -20,7 +20,11 @@ Base::Base() // why are there two Base::Base created as a result of this?
   pl.idLookup.next = (ProcessNode *)0x00;
   pl.idLookup.object = this;
 }
-Base::~Base() {} // Why does this one create 3???
+Base::~Base() {
+  this->process_link.idLookup.unlink();
+  this->process_link.render.unlink();
+  this->process_link.update.unlink(); 
+} // Why does this one create 3???
 bool Base::onCreate() { return true; }
 bool Base::preCreate() { return true; }
 bool Base::postCreate() {}
@@ -39,8 +43,11 @@ bool Base::preDestroy()
     return true;
   };
 }
-void Base::postDestroy()
+void Base::postDestroy(u32 a)
 {
+  if (a != 2) {
+    return;
+  }
 }
 void Base::pendingDestroy() {}
 void Base::destroy()
@@ -69,6 +76,11 @@ bool Base::prepareResourcesSafe(u32 a, u32 b)
 }
 bool Base::prepareResourcesFast(u32 a, u32 b)
 {
+  if (this->heap == (void*)0x0) {
+    return true;
+  }
+  this->destroy();
+  return false;
 }
 bool Base::onHeapCreated() { return true; }
 void *Base::operator new(u32 count)
