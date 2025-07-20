@@ -18,7 +18,13 @@ bool Actor::preUpdate() {
         return false;
     }
 
-    if (Stage_actorFreezeFlag & this->actorCategory) {
+    if (!(Stage_actorFreezeFlag & this->actorCategory)) {
+        Vec3 step;
+        step.sub(this->position, this->lastPosition);
+        
+        // These need to also set the vtable
+        this->lastStep = step;
+        this->lastPosition = this->position;
         return true;
     }
     return false;
