@@ -52,3 +52,11 @@ bool Actor::preRender()
     }
     return false;
 }
+
+void Actor::postRender() {
+    Base::postRender();
+}
+
+void Actor::linkPlayer(u8 player_id) {
+    this->linked_player = player_id;
+}
