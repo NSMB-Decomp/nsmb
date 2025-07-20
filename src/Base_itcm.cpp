@@ -1,31 +1,31 @@
 #include "Base.hpp"
 
-bool Base::func_01ffd51c() {
+bool Base::onUpdate() {
     return true;
 }
 
-bool Base::func_01ffd4f4() {
+bool Base::preUpdate() {
     if (this->pending_destroy != false || (this->__4 & 2) != 0) {
         return false;
     }
     return true;
 }
 
-void Base::func_01ffd4f0() {}
+void Base::postUpdate() {}
 
 
-bool Base::func_01ffd4e8() {
+bool Base::onRender() {
     return true;
 }
 
-bool Base::func_01ffd4c0() {
+bool Base::preRender() {
     if (this->pending_destroy != false || (this->__4 & 8) != 0) {
         return false;
     }
     return true;
 }
 
-void Base::func_01ffd4bc() {}
+void Base::postRender() {}
 
 bool Base::func_01ffd290() {
 

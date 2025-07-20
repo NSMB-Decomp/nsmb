@@ -1,5 +1,5 @@
 #include "Actor.hpp"
 
-void Actor::setPosX(u32 value) {
-    this->x = value;
+bool Actor::preDestroy() {
+    return Base::preDestroy() != false;
 }
