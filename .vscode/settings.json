@@ -1,5 +1,9 @@
 {
     "terminal.integrated.env.linux": {
         "NSMB_RELEASE": "A2DE"
+    },
+    "files.associations": {
+        "memory_resource": "cpp",
+        "coroutine": "cpp"
     }
 }

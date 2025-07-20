@@ -1,5 +1,6 @@
 #include "Base.hpp"
 #include "Base_bss.hpp"
+#include "Heap.hpp"
 #include "AAA.hpp"
 
 Base::Base() // why are there two Base::Base created as a result of this?
@@ -76,8 +77,37 @@ bool Base::prepareResourcesSafe(u32 a, u32 b)
 }
 bool Base::prepareResourcesFast(u32 a, u32 b)
 {
-  if (this->heap == (void*)0x0) {
+  Heap* user;
+  Heap* heap;
+  void* z;
+
+  if (this->heap != (void*)0x0) {
     return true;
+  }
+  if (
+    a != 0 &&
+    (user = func_02045240(a, b, 0x20), user != (Heap*)0x0)
+  ) {
+    void * heap_ptr = (void *)((u32)(user->start) & 0x10);
+    if (heap_ptr != (void*)0x0) {
+      user->allocate(0x10, 0x10);
+    }
+    heap = user->setCurrent();
+    u32 result = this->onHeapCreated();
+    heap->setCurrent();
+    if (
+      heap_ptr == (void*)0x0 && 
+      (z = user->allocate(0x10,0x10), z == (void*)0x0)
+    ) {
+      result = 0;
+    }
+    user->maxAllocationUnitSize();
+    if (result == 0) {
+      user->destroy();
+    } else {
+      this->heap = user;
+      return true;
+    }
   }
   this->destroy();
   return false;
@@ -166,16 +196,6 @@ bool Base::hasChildPendingCreation()
     }
     cur = cur->func_02043a2c();
   };
-
-  // for (cur = this->process_link.connect.firstChild;
-  //      (cur != (SceneNode *)0x0 && (cur != next));
-  //      cur = cur->func_02043a2c())
-  //{
-  //   if ((*cur->object).state == zero)
-  //   {
-  //     return true;
-  //   }
-  // }
 
   return false;
 }
