@@ -6,3 +6,6 @@
     .ctor       start:0x02039170 end:0x020391d4 kind:rodata align:4
     .data       start:0x020391e0 end:0x02043380 kind:data align:32
     .bss        start:0x02043380 end:0x02043380 kind:bss align:32
+
+src/main.cpp:
+    .text       start:0x02003000 end:0x02003070
