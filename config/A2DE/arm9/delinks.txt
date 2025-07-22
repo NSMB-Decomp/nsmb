@@ -8,4 +8,4 @@
     .bss        start:0x02043380 end:0x02043380 kind:bss align:32
 
 src/main.cpp:
-    .text       start:0x02003000 end:0x02003070
+    .text       start:0x02003000 end:0x02025878

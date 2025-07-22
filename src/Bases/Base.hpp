@@ -1,5 +1,5 @@
-#include "base_types.hpp"
-#include "ProcessManager.hpp"
+#include "../base_types.hpp"
+#include "../ProcessManager.hpp"
 
 struct a {
   u32 a;

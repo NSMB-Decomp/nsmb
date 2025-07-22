@@ -1,7 +1,7 @@
 #include "Base.hpp"
 #include "Base_bss.hpp"
-#include "Heap.hpp"
-#include "AAA.hpp"
+#include "../Heap.hpp"
+#include "../AAA.hpp"
 
 Base::Base() // why are there two Base::Base created as a result of this?
 {
