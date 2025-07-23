@@ -23,6 +23,11 @@ void func_02014a30();
 void Graphics_2DStep();
 void func_020123d8();
 
+inline void Nitro_Graphics_SwapBuffer(u32 a, u32 b) {
+    u32 *GFX_FIFO_SWAP_BUFFERS = (u32*)0x04000540;
+    *GFX_FIFO_SWAP_BUFFERS = (a << 1) | b;
+}
+
 void InitGame() {
 
 }
@@ -49,7 +54,7 @@ u32 *GFX_FIFO_SWAP_BUFFERS = (u32*)0x04000540;
         }
         FrameCounter +=1;
         func_01ff9010();
-        *GFX_FIFO_SWAP_BUFFERS = (data_02085a78 << 1) | data_02085a74;
+        Nitro_Graphics_SwapBuffer(data_02085a78, data_02085a74);
         func_0201031c();
         func_020058c0();
         func_02010094();
