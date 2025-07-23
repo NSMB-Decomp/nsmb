@@ -52,7 +52,7 @@ pub fn build(b: *std.Build) void {
     const cmd: []const []const u8 = if (target_options.result.os.tag != .windows) &.{ "wine", mwcc_exe.getDisplayName() } else &.{mwcc_exe.getDisplayName()};
     const single_cmd = b.addSystemCommand(cmd);
     if (b.args) |args| {
-        single_cmd.addArg("./src/main.cpp");
+        single_cmd.addArg("./src/init.cpp");
         single_cmd.addArgs(&.{ "-o", args[0] });
         single_cmd.addArgs(&.{
             "-O4,p",
