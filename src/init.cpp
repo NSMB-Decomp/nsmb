@@ -80,3 +80,15 @@ void InitMainGame() {
     InitGame();
     StartGameLoop();
 }
+
+void SharedGameInit() {
+
+}
+
+void initExtedIds() {
+
+}
+
+void sceneBaseInit() {
+    
+}
