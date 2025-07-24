@@ -56,7 +56,7 @@ pub fn build(b: *std.Build) void {
 
 const Struct = struct {
     units: []struct {
-        target_path: []u8,
+        base_path: []u8 = "",
         metadata: struct {
             source_path: ?[]u8 = null,
         },
@@ -74,7 +74,7 @@ fn getSourceByDest(destination: []const u8) ![]u8 {
     });
 
     for (result.value.units) |r| {
-        if (std.mem.eql(u8, r.target_path, destination)) {
+        if (std.mem.eql(u8, r.base_path, destination)) {
             if (r.metadata.source_path) |source| {
                 return source;
             }
