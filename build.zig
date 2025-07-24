@@ -113,7 +113,14 @@ fn myTask(self: *std.Build.Step, options: std.Build.Step.MakeOptions) anyerror!v
     };
     var child = std.process.Child.init(&command, std.heap.page_allocator);
     const b = try child.spawnAndWait();
-    _ = b;
+    switch (b) {
+        .Exited => |id| {
+            if (id > 0) @panic("Failed to build");
+        },
+        .Signal => |_| {},
+        .Stopped => |_| {},
+        .Unknown => |_| {},
+    }
 }
 
 // Old script
