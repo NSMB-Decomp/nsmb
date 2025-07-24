@@ -8,12 +8,14 @@ pub fn build(b: *std.Build) void {
     const release_enum = b.option(Roms, "Release", "") orelse Roms.A2DE;
 
     const target_options = b.standardTargetOptions(.{});
+    _ = target_options;
 
     const release = @tagName(release_enum);
     const rom_file = b.path("A2DE.nds");
     const extract_directory = b.path(b.pathJoin(&.{ "extracted", release }));
     const config_file = b.path(b.pathJoin(&.{ "config", release, "arm9/config.yaml" }));
     const mwcc_exe = b.path("./build/compiler/mwccarm/1.2/sp3/mwccarm.exe");
+    _ = mwcc_exe;
 
     // Extract Step
     const extract_cmd = b.addSystemCommand(&.{"dsd"});
@@ -44,33 +46,74 @@ pub fn build(b: *std.Build) void {
     objdiff_cmd.addArgs(&.{ "-s", "-C", "mwcc_20_84" });
     objdiff_cmd.addArgs(&.{ "-f", "-O4,p -interworking -proc=arm946e -lang=C++ -Cpp_exceptions=off -w=off -gccinc -nolink -c -sym=on -RTTI=off" });
 
-    const objdiff_step = b.step("objdiff", "");
+    var objdiff_step = b.step("objdiff", "");
     objdiff_step.dependOn(&objdiff_cmd.step);
 
-    // Single step
-    // If single step is compled with the extension .ctx.cpp then we need to call m2ctx.py instead of m2cc
-    const cmd: []const []const u8 = if (target_options.result.os.tag != .windows) &.{ "wine", mwcc_exe.getDisplayName() } else &.{mwcc_exe.getDisplayName()};
-    const single_cmd = b.addSystemCommand(cmd);
-    if (b.args) |args| {
-        single_cmd.addArg("./src/init.cpp");
-        single_cmd.addArgs(&.{ "-o", args[0] });
-        single_cmd.addArgs(&.{
-            "-O4,p",
-            "-interworking",
-            "-proc=arm946e",
-            "-lang=C++",
-            "-Cpp_exceptions=off",
-            "-w=off",
-            "-gccinc",
-            "-nolink",
-            "-c",
-            "-sym=on",
-            "-RTTI=off",
-        });
+    var roar = b.step("single", "");
+    roar.makeFn = &myTask;
+    config_file.addStepDependencies(roar);
+}
+
+const Struct = struct {
+    units: []struct {
+        target_path: []u8,
+        metadata: struct {
+            source_path: ?[]u8 = null,
+        },
+    },
+};
+fn getSourceByDest(destination: []const u8) ![]u8 {
+    const cwd = std.fs.cwd();
+    const objdiff = try cwd.openFile("objdiff.json", .{ .mode = .read_only });
+    var buffer: [1024 * 64]u8 = undefined;
+    const buffer_length = try objdiff.read(&buffer);
+    const buffer_slice = buffer[0..buffer_length];
+
+    const result = try std.json.parseFromSlice(Struct, std.heap.page_allocator, buffer_slice, .{
+        .ignore_unknown_fields = true,
+    });
+
+    for (result.value.units) |r| {
+        if (std.mem.eql(u8, r.target_path, destination)) {
+            if (r.metadata.source_path) |source| {
+                return source;
+            }
+        }
     }
 
-    const single_step = b.step("single", "");
-    single_step.dependOn(&single_cmd.step);
+    @panic("Could not find something");
+}
+
+fn myTask(self: *std.Build.Step, options: std.Build.Step.MakeOptions) anyerror!void {
+    _ = options;
+    //self.owner.user_input_options.get();
+    const args = self.owner.args orelse @panic("Missing argument?");
+    const destination_file = args[0];
+
+    //const destination_file = "config/A2DE/arm9/../../../build/delinks/src/main.o";
+    const source_file = try getSourceByDest(destination_file);
+    std.log.info("{s}", .{source_file});
+    const command = .{
+        "wine",
+        "./build/compiler/mwccarm/1.2/sp3/mwccarm.exe",
+        source_file,
+        "-o",
+        destination_file,
+        "-O4,p",
+        "-interworking",
+        "-proc=arm946e",
+        "-lang=C++",
+        "-Cpp_exceptions=off",
+        "-w=off",
+        "-gccinc",
+        "-nolink",
+        "-c",
+        "-sym=on",
+        "-RTTI=off",
+    };
+    var child = std.process.Child.init(&command, std.heap.page_allocator);
+    const b = try child.spawnAndWait();
+    _ = b;
 }
 
 // Old script
