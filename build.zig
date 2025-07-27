@@ -92,7 +92,6 @@ fn myTask(self: *std.Build.Step, options: std.Build.Step.MakeOptions) anyerror!v
 
     //const destination_file = "config/A2DE/arm9/../../../build/delinks/src/main.o";
     const source_file = try getSourceByDest(destination_file);
-    std.log.info("{s}", .{source_file});
     const command = .{
         "wine",
         "./build/compiler/mwccarm/1.2/sp3/mwccarm.exe",

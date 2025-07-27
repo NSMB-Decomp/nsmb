@@ -1,6 +1,6 @@
-#include "base_types.hpp"
+#include "../base_types.hpp"
+#include "../Vec.hpp"
 #include "Base.hpp"
-#include "Vec.hpp"
 
 class Actor: public Base {
 public:
