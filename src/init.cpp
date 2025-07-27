@@ -12,8 +12,11 @@ void Nitro_func_01ffa5ec(u32, u16);
 void Nitro_func_02060e38(u32);
 void Nitro_Math___stub();
 void Nitro_func_0206d554();
+void Nitro_MainInit();
 void func_0204c7f4(u32, void *);
+void Nitro_func_0206f3cc(void(*)());
 
+void func_02005098();
 void SystemThreadsSleep();
 void func_02005230();
 void func_02021654();
@@ -33,6 +36,8 @@ bool Wifi_isMultiBootCart();
 void func_020046d8();
 void func_02013100();
 void FS_init();
+void FS_Overlays_loadOverlay(u32);
+void FS_Overlays_unload(u32);
 void func_020097d0();
 void func_01ff80e0(u32);
 void func_02012744();
@@ -55,9 +60,22 @@ void func_0200e040();
 void func_02014a58();
 void __stub_1();
 void __stub_2();
+void __stub_3();
+void func_020455d8();
+void __stub_4();
+void func_0200a0b4();
+void func_020050ec();
+void func_020050d8();
+void func_020050c0();
+
+void func_ov001_020cceb4();
 
 u32 *CurrentProfileTable;
 u32 MainProfileTable;
+u16 data_020850e8;
+void (*data_0203981c)();
+void (*data_02039820)();
+void (*data_02039824)();
 
 inline void Nitro_Graphics_SwapBuffer(u32 a, u32 b) {
   u32 *GFX_FIFO_SWAP_BUFFERS = (u32 *)0x04000540;
@@ -172,8 +190,32 @@ void InitMainGame() {
   StartGameLoop();
 }
 
-void SharedGameInit() {}
+void SharedGameInit() {
+  Nitro_MainInit();
+  __stub_3();
+  Nitro_func_0206f3cc(*func_02005098);
+  data_020850e8 = 1;
+  func_020455d8();
+  __stub_4();
+}
 
-void initExtedIds() {}
+void initExtendedIds() {
+  u32 overlay_id = 1; // This need to be a pooled at the bottom
+  FS_Overlays_loadOverlay(overlay_id);
+  func_ov001_020cceb4();
+  FS_Overlays_unload(overlay_id);
+}
 
-void sceneBaseInit() {}
+void sceneBaseInit() {
+  u32 overlay_id = 0;
+  bool a = Wifi_isMultiBootCart();
+  if (a != false) {
+    func_020125e8();
+  }
+  FS_Overlays_loadOverlay(overlay_id);
+  initExtendedIds();
+  func_0200a0b4();
+  data_0203981c = func_020050ec;
+  data_02039820 = func_020050d8;
+  data_02039824 = func_020050c0;
+}

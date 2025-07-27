@@ -4,6 +4,7 @@
     },
     "files.associations": {
         "memory_resource": "cpp",
-        "coroutine": "cpp"
+        "coroutine": "cpp",
+        "random": "cpp"
     }
 }
