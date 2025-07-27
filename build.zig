@@ -1,11 +1,11 @@
 const std = @import("std");
 
-const Roms = enum {
+const Release = enum {
     A2DE,
 };
 
 pub fn build(b: *std.Build) void {
-    const release_enum = b.option(Roms, "Release", "") orelse Roms.A2DE;
+    const release_enum = b.option(Release, "Release", "") orelse Release.A2DE;
 
     const target_options = b.standardTargetOptions(.{});
     _ = target_options;
