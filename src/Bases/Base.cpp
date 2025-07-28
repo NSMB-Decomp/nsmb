@@ -32,9 +32,9 @@ Base::Base()
   this->object_id = SpawnParam1;
   this->__3 = SpawnParam4;
 
-  func_02043acc(&ConnectTask, &process_link, SpawnParam2);
-  u32 id_index = getIDIndex(&process_link);
-  func_020438b0(&data_0208fb58[id_index], &process_link.idLookup);
+  ProcessManager::func_02043acc(&ProcessManager::ConnectTask, &process_link, SpawnParam2);
+  u32 id_index = ProcessManager::getIDIndex(&process_link);
+  ProcessManager::func_020438b0(&ProcessManager::data_0208fb58[id_index], &process_link.idLookup);
   ObjectProfile* profile = CurrentProfileTable[this->object_id];
   
   u32 update_priority = profile->updatePriority;
@@ -89,10 +89,10 @@ void Base::postDestroy(u32 a)
   if (a != 2) {
     return;
   }
-  func_02043a54(&ConnectTask, &this->process_link);
-  u32 id_index = getIDIndex(&this->process_link);
-  func_02043920(&data_0208fb58[id_index], &this->process_link.idLookup);
-  func_02043920(&DestroyTask,&this->process_link.update);
+  ProcessManager::func_02043a54(&ProcessManager::ConnectTask, &this->process_link);
+  u32 id_index = ProcessManager::getIDIndex(&this->process_link);
+  ProcessManager::func_02043920(&ProcessManager::data_0208fb58[id_index], &this->process_link.idLookup);
+  ProcessManager::func_02043920(&ProcessManager::DestroyTask,&this->process_link.update);
   if (this->heap != (void*)0x0) {
     func_02045128();
   }
@@ -194,12 +194,12 @@ void Base::create()
   {
     return;
   }
-  if ((bool)(CurrentTask == 2) ? 1 : 0)
+  if ((bool)(ProcessManager::CurrentTask == 2) ? 1 : 0)
   {
     this->__2 = 0x01;
     return;
   }
-  func_020438e8(&CreateTask, &this->process_link.update);
+  ProcessManager::func_020438e8(&ProcessManager::CreateTask, &this->process_link.update);
   return;
 }
 void Base::processCreate()
