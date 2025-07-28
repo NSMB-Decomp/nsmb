@@ -14,6 +14,11 @@ u32 data_02085230[2] = {0x0C, 1};
 u32 data_02085228[2] = {0x08, 1};
 u32 data_02085250[2] = {0x14, 1};
 
+a func_test_param;
+a func_test_param_2;
+a func_test_param_3;
+u32 func_test(a, a, a);
+
 class Base {
 public:
   enum State {
@@ -51,6 +56,7 @@ public:
   void destroy();
   Base();
   bool func_01ffd290();
+  i32 func_01ffd524(u32, u32, u32, u32, u32, u32);
 
   virtual bool onCreate();
   virtual bool preCreate();

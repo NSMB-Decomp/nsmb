@@ -168,29 +168,33 @@ void Base::create()
 }
 void Base::processCreate()
 {
-  func_01ffd524(
-      this,
+  this->func_01ffd524(
       data_02085240[0],
       data_02085240[1],
       data_02085238[0],
       data_02085238[1],
       data_02085228[0],
-      data_02085228[1]);
+      data_02085228[1]
+    );
 }
 u32 Base::processDestroy()
 {
   u16 object_id = this->object_id;
-  u32* a = (u32*)&data_02085230;
-  u32* b = (u32*)&data_02085248;
-  u32* c = (u32*)&data_02085250;
-  u32 ret = func_01ffd524(
-      this,
-      (u32)(a),
-      (u32)(a + 1),
-      (u32)(b),
-      (u32)(b + 1),
-      (u32)(c),
-      (u32)(c + 1));
+
+  u32 a1 = data_02085230[0];
+  u32 a2 = data_02085230[1];
+  u32 b1 = data_02085248[0];
+  u32 b2 = data_02085248[1];
+  u32 c1 = data_02085250[0];
+  u32 c2 = data_02085250[1];
+  u32 ret = this->func_01ffd524(
+      a1,
+      a2,
+      b1,
+      b2,
+      c1,
+      c2
+  );
   if (ret == 1)
   {
     unloadSceneOverlay(object_id);
@@ -236,6 +240,7 @@ Base *Base::spawn(u16 overlay_id, ProcessLink *b, u32 c, u8 d)
   setSpawnParams(overlay_id, b, c, d);
   data_0208fae8 = 3;
   Base *ret = (CurrentProfileTable)[overlay_id]->constructor();
+  //TODO: What should be using r1 here?
   if (ret == (Base *)0x00)
   {
     data_0208faf0 = 0xFFFF;

@@ -20,4 +20,3 @@ extern void* data_0208b720;
 
 //
 bool func_0204d82c();
-u32 func_01ffd524(Base*, u32, u32, u32, u32, u32, u32);
