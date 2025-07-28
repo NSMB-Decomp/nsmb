@@ -1,11 +1,6 @@
 #include "../base_types.hpp"
 #include "../ProcessManager.hpp"
 
-struct a {
-  u32 a;
-  u32 b;
-};
-
 u32 data_02085224 = 1;
 u32 data_02085248[2] = {0x10, 1};
 u32 data_02085240[2] = {0x00, 1};
@@ -13,11 +8,6 @@ u32 data_02085238[2] = {0x04, 1};
 u32 data_02085230[2] = {0x0C, 1};
 u32 data_02085228[2] = {0x08, 1};
 u32 data_02085250[2] = {0x14, 1};
-
-a func_test_param;
-a func_test_param_2;
-a func_test_param_3;
-u32 func_test(a, a, a);
 
 class Base {
 public:
