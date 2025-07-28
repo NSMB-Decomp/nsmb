@@ -46,9 +46,25 @@ bool Base::preDestroy()
 }
 void Base::postDestroy(u32 a)
 {
+  void func_02045128();
+  void func_0204d908();
+  void func_02044ab0(Base*, void*);
+
   if (a != 2) {
     return;
   }
+  func_02043a54(&ConnectTask, &this->process_link);
+  u32 id_index = getIDIndex(&this->process_link);
+  func_02043920(&data_0208fb58[id_index], &this->process_link.idLookup);
+  func_02043920(&DestroyTask,&this->process_link.update);
+  if (this->heap != (void*)0x0) {
+    func_02045128();
+  }
+  if (this->__5 != (void*)0x0) {
+    func_0204d908();
+  }
+  this->~Base();
+  func_02044ab0(this, data_0208b720);
 }
 void Base::pendingDestroy() {}
 void Base::destroy()
@@ -183,10 +199,11 @@ u32 Base::processDestroy()
 }
 bool Base::hasChildPendingCreation()
 {
-  SceneNode *next = this->process_link.connect.func_020439f0();
-  SceneNode *cur = this->process_link.connect.firstChild;
+  SceneNode *connect = &this->process_link.connect;
+  SceneNode *next = connect->func_020439f0();
+  SceneNode *cur = connect->firstChild;
 
-  while (cur != next || cur != (SceneNode *)0x0)
+  while (cur == (SceneNode *)0x0 || cur != next)
   {
     if (
       (u8)((*cur->object).state == pendingInit) != 0

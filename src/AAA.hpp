@@ -14,9 +14,9 @@ void func_02066fe8(void *, u32, u32);
 extern u8 data_0v000_020ca84c;
 
 //
-void func_02044d94(void *, void *);
+void func_02044d94(void*, void *);
 void* func_02045040(void*, u32, i32);
-extern void * data_0208b720;
+extern void* data_0208b720;
 
 //
 bool func_0204d82c();
