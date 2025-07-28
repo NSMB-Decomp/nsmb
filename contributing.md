@@ -12,7 +12,7 @@
 7. Run `zig build delink`, this will create delinked files which are used within objdiff
 8. Run `zig build objdiff` this will generate a new objdiff configuration to allow comparing your code with the games code
 
-## Decompiling a function
+## Creating a new delink
 
 
 ## Importing nsmb.h into Ghidra
