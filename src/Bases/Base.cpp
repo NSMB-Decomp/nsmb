@@ -3,23 +3,59 @@
 #include "../Heap.hpp"
 #include "../AAA.hpp"
 
-Base::Base() // why are there two Base::Base created as a result of this?
+Base::Base()
 {
-  ProcessLink pl = this->process_link;
-  pl.connect.object = this;
-  pl.update._.prev = (ProcessNode *)0x00;
-  pl.update._.next = (ProcessNode *)0x00;
-  pl.update._.object = this;
-  pl.update.currentPriority = 0;
-  pl.update.sortPriority = 0;
-  pl.render._.prev = (ProcessNode *)0x00;
-  pl.render._.next = (ProcessNode *)0x00;
-  pl.render._.object = this;
-  pl.render.currentPriority = 0;
-  pl.render.sortPriority = 0;
-  pl.idLookup.prev = (ProcessNode *)0x00;
-  pl.idLookup.next = (ProcessNode *)0x00;
-  pl.idLookup.object = this;
+  void func_02043b58(ProcessLink*);
+
+  ProcessLink *pl = &this->process_link;
+  func_02043b58(pl);
+  pl->connect.object = this;
+  PriorityNode *update_node = &pl->update;
+  update_node->_.prev = (ProcessNode *)0x00;
+  update_node->_.next = (ProcessNode *)0x00;
+  update_node->_.object = this;
+  update_node->currentPriority = 0;
+  update_node->sortPriority = 0;
+  PriorityNode *render_node = &pl->render;
+  render_node->_.prev = (ProcessNode *)0x00;
+  render_node->_.next = (ProcessNode *)0x00;
+  render_node->_.object = this;
+  render_node->currentPriority = 0;
+  render_node->sortPriority = 0;
+  pl->idLookup.prev = (ProcessNode *)0x00;
+  pl->idLookup.next = (ProcessNode *)0x00;
+  pl->idLookup.object = this;
+
+  this->guid = data_02085224;
+  data_02085224 += 1;
+  this->settings = SpawnParam3;
+  this->object_id = SpawnParam1;
+  this->__3 = SpawnParam4;
+
+  func_02043acc(&ConnectTask, &process_link, SpawnParam2);
+  u32 id_index = getIDIndex(&process_link);
+  func_020438b0(&data_0208fb58[id_index], &process_link.idLookup);
+  ObjectProfile* profile = CurrentProfileTable[this->object_id];
+  
+  u32 update_priority = profile->updatePriority;
+  update_node->currentPriority = update_priority;
+  update_node->sortPriority = update_priority;
+
+  u32 render_priority = profile->renderPriority;
+  render_node->currentPriority = render_priority;
+  render_node->sortPriority = render_priority;
+
+  Base* parent = this->getParent();
+  if (parent != (void*)0x0) {
+    u32 bVar1 = parent->__4;
+    if (((bVar1 & 1) != 0) || ((bVar1 & 2) != 0)) {
+      this->__4 = this->__4 | 2;
+    }
+    bVar1 = parent->__4;
+    if (((bVar1 & 4) != 0) || ((bVar1 & 8) != 0)) {
+      this->__4 = this->__4 | 8;
+    }
+  }
 }
 Base::~Base() {
   this->process_link.idLookup.unlink();
@@ -28,7 +64,7 @@ Base::~Base() {
 } // Why does this one create 3???
 bool Base::onCreate() { return true; }
 bool Base::preCreate() { return true; }
-bool Base::postCreate() {}
+void Base::postCreate() {}
 bool Base::onDestroy() { return true; }
 bool Base::preDestroy()
 {
