@@ -1,0 +1,36 @@
+# Copied from: https://github.com/LagoLunatic/ooe/blob/main/.github/workflows/build.yml
+name: Build
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  build:
+    runs-on: self-hosted
+
+    strategy:
+      fail-fast: false
+      matrix:
+        version: [A2DE]
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v4
+
+    - name: Prepare
+      run: |
+        cp /orig/* .
+
+    - name: Build
+      run: |
+        zig build extract
+        zig build delink
+        zig build objdiff
+        zig build all
+
+    - name: Upload report
+      uses: actions/upload-artifact@v4
+      with:
+        name: ${{ matrix.version }}_report
+        path: build/objdiff_report.json
