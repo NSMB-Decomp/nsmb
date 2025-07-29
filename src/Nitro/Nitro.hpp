@@ -40,4 +40,8 @@ namespace Nitro
     void MainInit();
     void func_0206f3cc(void(*)());
     void func_02063fd4();
+    void func_02066fe8(void *, u32, u32);
+    void func_01ff9010();
+    void func_01ff80e0(u32);
+    void func_01ff9010();
 }

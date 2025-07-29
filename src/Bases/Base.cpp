@@ -1,6 +1,6 @@
 #include "Base_bss.cpp"
 #include "../Heap.hpp"
-#include "../AAA.hpp"
+#include "../Nitro/Nitro.hpp"
 
 Base::Base()
 {
@@ -31,9 +31,9 @@ Base::Base()
   this->object_id = SpawnParam1;
   this->__3 = SpawnParam4;
 
-  ProcessManager::func_02043acc(&ProcessManager::ConnectTask, &process_link, SpawnParam2);
+  SceneGraph_addChild(&ProcessManager::ConnectTask, &process_link, SpawnParam2);
   u32 id_index = ProcessManager::getIDIndex(&process_link);
-  ProcessManager::func_020438b0(&ProcessManager::data_0208fb58[id_index], &process_link.idLookup);
+  LinkedList_Prepend(&ProcessManager::idLookupProcesses[id_index], &process_link.idLookup);
   ObjectProfile* profile = CurrentProfileTable[this->object_id];
   
   u32 update_priority = profile->updatePriority;
@@ -88,10 +88,10 @@ void Base::postDestroy(u32 a)
   if (a != 2) {
     return;
   }
-  ProcessManager::func_02043a54(&ProcessManager::ConnectTask, &this->process_link);
+  SceneGraph_removeChild(&ProcessManager::ConnectTask, &this->process_link);
   u32 id_index = ProcessManager::getIDIndex(&this->process_link);
-  ProcessManager::func_02043920(&ProcessManager::data_0208fb58[id_index], &this->process_link.idLookup);
-  ProcessManager::func_02043920(&ProcessManager::DestroyTask,&this->process_link.update);
+  LinkedList_Remove(&ProcessManager::idLookupProcesses[id_index], &this->process_link.idLookup);
+  LinkedList_Remove(&ProcessManager::DestroyTask,&this->process_link.update);
   if (this->heap != (void*)0x0) {
     func_02045128();
   }
@@ -166,17 +166,17 @@ bool Base::prepareResourcesFast(u32 a, u32 b)
 bool Base::onHeapCreated() { return true; }
 void *Base::operator new(u32 count)
 {
-  Base *ptr = (Base *)func_02045040(data_0208b720, count, -4);
+  Base *ptr = (Base *)Heap_allocate(data_0208b720, count, -4);
   if (ptr != (Base *)0x0)
   {
-    func_02066fe8(ptr, 0, count);
+    Nitro::func_02066fe8(ptr, 0, count);
     return ptr;
   }
   return (Base *)0x0;
 }
 void Base::operator delete(void *ptr)
 {
-  func_02044d94(data_0208b720, ptr);
+  Heap_deallocate(data_0208b720, ptr);
 }
 void Base::create()
 {
@@ -198,7 +198,7 @@ void Base::create()
     this->__2 = 0x01;
     return;
   }
-  ProcessManager::func_020438e8(&ProcessManager::CreateTask, &this->process_link.update);
+  LinkedList_append(&ProcessManager::CreateTask, &this->process_link.update);
   return;
 }
 void Base::processCreate()

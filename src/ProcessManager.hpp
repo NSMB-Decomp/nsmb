@@ -1,5 +1,3 @@
-#include "base_types.hpp"
-
 class Base;
 class SceneNode
 {
@@ -69,11 +67,7 @@ namespace ProcessManager {
     extern ProcessList CreateTask;
     extern ProcessList ConnectTask;
     extern ProcessList DestroyTask;
-    extern ProcessList data_0208fb58[8];
-    void func_020438e8(ProcessList*, PriorityNode*);
-    void func_02043a54(ProcessList*, ProcessLink*);
+
+    extern ProcessList idLookupProcesses[8];
     u32 getIDIndex(ProcessLink*);
-    void func_02043920(ProcessList*, void*); // TODO: Confirm these paramaters, is it ProcessList or PTMF, and what is void*?
-    void func_020438b0(ProcessList*, ProcessNode*);
-    void func_02043acc(ProcessList*, ProcessLink*, ProcessLink*);
 }

@@ -593,7 +593,7 @@ ProcessManager::ExecuteTask kind:bss addr:0x0208fb18
 ProcessManager::DestroyTask kind:bss addr:0x0208fb28
 ProcessManager::DrawTask kind:bss addr:0x0208fb38
 ProcessManager::CreateTask kind:bss addr:0x0208fb48
-data_0208fb58 kind:bss addr:0x0208fb58
+idLookupProcesses kind:bss addr:0x0208fb58
 CurrentProfileTable kind:bss addr:0x0208fb98
 data_0208fb9c kind:bss addr:0x0208fb9c
 data_0208fba0 kind:bss addr:0x0208fba0
