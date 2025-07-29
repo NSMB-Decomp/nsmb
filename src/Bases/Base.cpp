@@ -1,5 +1,4 @@
-#include "Base.hpp"
-#include "Base_bss.hpp"
+#include "Base_bss.cpp"
 #include "../Heap.hpp"
 #include "../AAA.hpp"
 

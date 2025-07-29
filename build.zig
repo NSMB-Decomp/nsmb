@@ -14,10 +14,8 @@ pub fn build(b: *std.Build) void {
     const rom_file = b.path("A2DE.nds");
     const extract_directory = b.path(b.pathJoin(&.{ "extracted", release }));
     const config_file = b.path(b.pathJoin(&.{ "config", release, "arm9/config.yaml" }));
-    const mwcc_exe = b.path("./build/compiler/mwccarm/1.2/sp3/mwccarm.exe");
-    _ = mwcc_exe;
 
-    // Extract Step
+    // step - extract
     const extract_cmd = b.addSystemCommand(&.{"dsd"});
     extract_cmd.addArgs(&.{ "rom", "extract" });
     extract_cmd.addArg("-o");
@@ -28,7 +26,7 @@ pub fn build(b: *std.Build) void {
     const extract_step = b.step("extract", "");
     extract_step.dependOn(&extract_cmd.step);
 
-    // Delink Step
+    // Step - delink
     const delink_cmd = b.addSystemCommand(&.{"dsd"});
     delink_cmd.addArgs(&.{ "delink", "-c" });
     delink_cmd.addFileArg(config_file);
@@ -36,7 +34,7 @@ pub fn build(b: *std.Build) void {
     const delink_step = b.step("delink", "");
     delink_step.dependOn(&delink_cmd.step);
 
-    // Objdiff step
+    // Step - objdiff
     const objdiff_cmd = b.addSystemCommand(&.{"dsd"});
     // dsd objdiff -c config/$NSMB_RELEASE/arm9/config.yaml -m $PWD/build.sh
     objdiff_cmd.addArgs(&.{ "objdiff", "-c" });
@@ -49,12 +47,15 @@ pub fn build(b: *std.Build) void {
     var objdiff_step = b.step("objdiff", "");
     objdiff_step.dependOn(&objdiff_cmd.step);
 
-    var roar = b.step("single", "");
-    roar.makeFn = &myTask;
-    config_file.addStepDependencies(roar);
+    // Step - single
+    var single_step = b.step("single", "");
+    single_step.dependOn(objdiff_step);
+    single_step.makeFn = &taskSingle;
+    config_file.addStepDependencies(single_step);
 }
 
-const Struct = struct {
+// Read ObjDiff
+const OBJDiff = struct {
     units: []struct {
         base_path: []u8 = "",
         metadata: struct {
@@ -62,16 +63,19 @@ const Struct = struct {
         },
     },
 };
-fn getSourceByDest(destination: []const u8) ![]u8 {
+fn read_objdiff() !std.json.Parsed(OBJDiff) {
     const cwd = std.fs.cwd();
     const objdiff = try cwd.openFile("objdiff.json", .{ .mode = .read_only });
     var buffer: [1024 * 64]u8 = undefined;
     const buffer_length = try objdiff.read(&buffer);
     const buffer_slice = buffer[0..buffer_length];
 
-    const result = try std.json.parseFromSlice(Struct, std.heap.page_allocator, buffer_slice, .{
+    return try std.json.parseFromSlice(OBJDiff, std.heap.page_allocator, buffer_slice, .{
         .ignore_unknown_fields = true,
     });
+}
+fn getSourceByDest(destination: []const u8) ![]u8 {
+    const result = try read_objdiff();
 
     for (result.value.units) |r| {
         if (std.mem.eql(u8, r.base_path, destination)) {
@@ -84,14 +88,8 @@ fn getSourceByDest(destination: []const u8) ![]u8 {
     @panic("Could not find something");
 }
 
-fn myTask(self: *std.Build.Step, options: std.Build.Step.MakeOptions) anyerror!void {
-    _ = options;
-    //self.owner.user_input_options.get();
-    const args = self.owner.args orelse @panic("Missing argument?");
-    const destination_file = args[0];
-
-    //const destination_file = "config/A2DE/arm9/../../../build/delinks/src/main.o";
-    const source_file = try getSourceByDest(destination_file);
+// Signle
+fn compileFile(source_file: []const u8, destination_file: []const u8) !void {
     const command = .{
         "wine",
         "./build/compiler/mwccarm/1.2/sp3/mwccarm.exe",
@@ -114,10 +112,19 @@ fn myTask(self: *std.Build.Step, options: std.Build.Step.MakeOptions) anyerror!v
     const b = try child.spawnAndWait();
     switch (b) {
         .Exited => |id| {
-            if (id > 0) @panic("Failed to build");
+            if (id > 0) return error.BUILD_ERROR;
         },
         .Signal => |_| {},
         .Stopped => |_| {},
         .Unknown => |_| {},
     }
+}
+fn taskSingle(self: *std.Build.Step, _: std.Build.Step.MakeOptions) anyerror!void {
+    const args = self.owner.args orelse @panic("Missing argument?");
+    const destination_file = args[0];
+    const source_file = try getSourceByDest(destination_file);
+
+    compileFile(source_file, destination_file) catch {
+        @panic("Failed to build");
+    };
 }

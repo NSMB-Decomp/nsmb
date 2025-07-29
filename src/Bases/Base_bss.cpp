@@ -1,3 +1,5 @@
+#include "Base.hpp"
+
 extern u32 data_0208fae0;
 extern u8 data_0208fae8;
 extern u8 SpawnParam4;
