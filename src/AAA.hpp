@@ -1,3 +1,6 @@
+// This file is used solely as a placeholder for functions with a currently unknown location.
+// We should avoid using this file.
+
 #include "base_types.hpp"
 
 struct ObjectProfile {
