@@ -20,7 +20,7 @@ jobs:
 
     - name: Prepare
       run: |
-        cp /orig/* .
+        cp -R /orig/* .
 
     - name: Build
       run: |
