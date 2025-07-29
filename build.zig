@@ -60,7 +60,7 @@ pub fn build(b: *std.Build) void {
 
     // Step - report
     const report_cmd = b.addSystemCommand(&.{"objdiff-cli"});
-    report_cmd.addArgs(&.{ "report", "generate", "-o", "build/objdiff_report.json" });
+    report_cmd.addArgs(&.{ "report", "generate", "-o", "build/report.json" });
 
     var report_step = b.step("report", "");
     report_step.dependOn(&report_cmd.step);
