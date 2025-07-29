@@ -10,7 +10,7 @@
 -->
 | No-Intro Name                                                                                                                                        | Release Code | Support       | Build Date          |
 | ---------------------------------------------------------------------------------------------------------------------------------------------------- | ------------ | ------------- | ------------------- |
-| [0434 - New Super Mario Bros. (USA, Australia)](5https://datomatic.no-intro.org/index.php?page=show_record&s=28&n=0434)                              | A2DE         | ➖ In Progress | 2006-03-29 09:48:19 |
+| [0434 - New Super Mario Bros. (USA, Australia)](https://datomatic.no-intro.org/index.php?page=show_record&s=28&n=0434)                              | A2DE         | ➖ In Progress | 2006-03-29 09:48:19 |
 | [0442 - New Super Mario Bros. (Japan)](https://datomatic.no-intro.org/index.php?page=show_record&s=28&n=0442)                                        | A2DJ         | ❌ None        | 2006-04-04 19:07:45 |
 | [z054 - New Super Mario Bros. (Japan) (Demo) (Kiosk, A85J)](https://datomatic.no-intro.org/index.php?page=show_record&s=28&n=z054)                   | A85J         | ❌ None        | 2006-04-07 11:17:21 |
 | [x100 - New Super Mario Bros. (USA) (Demo) (Kiosk)](https://datomatic.no-intro.org/index.php?page=show_record&s=28&n=x100)                           | A85E         | ❌ None        | 2006-04-07 11:29:13 |
