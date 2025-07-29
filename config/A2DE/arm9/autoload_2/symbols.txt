@@ -1797,7 +1797,7 @@ data_02085238 kind:data(word[2]) addr:0x02085238
 data_02085240 kind:data(word[2]) addr:0x02085240
 data_02085248 kind:data(word[2]) addr:0x02085248
 data_02085250 kind:data(word[2]) addr:0x02085250
-_ZTV4Base kind:data(word[16]) addr:0x02085260
+_ZTV4Base kind:data(word[20]) addr:0x02085258
 ProcessManager::CurrentTask kind:data(word) addr:0x020852a8
 data_020852ac kind:data(any) addr:0x020852ac
 data_020852b4 kind:data(any) addr:0x020852b4
