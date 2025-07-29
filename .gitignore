@@ -2,6 +2,7 @@ extracted/*
 build/*
 
 objdiff.json
+objdiff_report.json
 *.nds
 temp
 

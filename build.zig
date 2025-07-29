@@ -52,8 +52,19 @@ pub fn build(b: *std.Build) void {
     single_step.dependOn(objdiff_step);
     single_step.makeFn = &taskSingle;
     config_file.addStepDependencies(single_step);
-}
 
+    // Step - all
+    var all_step = b.step("all", "");
+    all_step.dependOn(objdiff_step);
+    all_step.makeFn = &taskAll;
+
+    // Step - report
+    const report_cmd = b.addSystemCommand(&.{"objdiff-cli"});
+    report_cmd.addArgs(&.{ "report", "generate", "-o", "objdiff_report.json" });
+
+    var report_step = b.step("report", "");
+    report_step.dependOn(&report_cmd.step);
+}
 // Read ObjDiff
 const OBJDiff = struct {
     units: []struct {
@@ -119,7 +130,7 @@ fn compileFile(source_file: []const u8, destination_file: []const u8) !void {
         .Unknown => |_| {},
     }
 }
-fn taskSingle(self: *std.Build.Step, _: std.Build.Step.MakeOptions) anyerror!void {
+fn taskSingle(self: *std.Build.Step, _: std.Build.Step.MakeOptions) !void {
     const args = self.owner.args orelse @panic("Missing argument?");
     const destination_file = args[0];
     const source_file = try getSourceByDest(destination_file);
@@ -127,4 +138,14 @@ fn taskSingle(self: *std.Build.Step, _: std.Build.Step.MakeOptions) anyerror!voi
     compileFile(source_file, destination_file) catch {
         @panic("Failed to build");
     };
+}
+fn taskAll(_: *std.Build.Step, _: std.Build.Step.MakeOptions) !void {
+    const result = try read_objdiff();
+
+    for (result.value.units) |r| {
+        if (r.metadata.source_path) |source| {
+            std.log.info("Compiling {s}", .{source});
+            try compileFile(source, r.base_path);
+        }
+    }
 }
