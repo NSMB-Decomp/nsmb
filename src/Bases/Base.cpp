@@ -138,6 +138,11 @@ Base *Base::getParent()
 };
 bool Base::prepareResourcesSafe(u32 a, u32 b)
 {
+  if (this->heap == (void*)0x0) {
+    return true;
+  }
+  
+  return false;
 }
 bool Base::prepareResourcesFast(u32 a, u32 b)
 {
@@ -291,9 +296,9 @@ Base *Base::spawn(u16 overlay_id, ProcessLink *b, u32 c, u8 d)
   //TODO: What should be using r1 here?
   if (ret == (Base *)0x00)
   {
-    data_0208faf0 = 0xFFFF;
     data_0208fae8 = 0;
-    return ret;
+    data_0208faf0 = 0xFFFF;
+    return (Base*)0x0;
   }
   else
   {
