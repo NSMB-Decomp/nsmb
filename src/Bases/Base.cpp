@@ -260,7 +260,7 @@ bool Base::hasChildPendingCreation()
   SceneNode *next = connect->func_020439f0();
   SceneNode *cur = connect->firstChild;
 
-  while (cur == (SceneNode *)0x0 || cur != next)
+  while (!(cur == (SceneNode *)0x0 || cur == next))
   {
     if (
       (u8)((*cur->object).state == pendingInit) != 0
