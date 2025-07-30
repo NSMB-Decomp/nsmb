@@ -31,6 +31,7 @@ void SceneGraph_addChild(ProcessList*, ProcessLink*, ProcessLink*);
 void LinkedList_append(ProcessList*, PriorityNode*);
 void LinkedList_Remove(ProcessList*, void*); // TODO: Confirm these paramaters, is it ProcessList or PTMF, and what is void*?
 void LinkedList_Prepend(ProcessList*, ProcessNode*);
+void ProcessSet_add(ProcessList*, PriorityNode*);
 
 void Save_setupBackup(u32, void *);
 void CardPulledOutCallback();

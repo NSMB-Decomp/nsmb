@@ -63,7 +63,20 @@ Base::~Base() {
 } // Why does this one create 3???
 bool Base::onCreate() { return true; }
 bool Base::preCreate() { return true; }
-void Base::postCreate() {}
+void Base::postCreate(u32 a) {
+  if (a != 2) {
+    return;
+  }
+  LinkedList_Remove(&ProcessManager::CreateTask, &this->process_link.update);
+  if ((bool)(ProcessManager::CurrentTask == Execute) ? 1 : 0) {
+      this->__1 = 1;
+  return;
+  }
+    ProcessSet_add(&ProcessManager::ExecuteTask,&this->process_link.update);
+    ProcessSet_add(&ProcessManager::DrawTask,&this->process_link.render);
+    this->state = one;
+    return;
+}
 bool Base::onDestroy() { return true; }
 bool Base::preDestroy()
 {

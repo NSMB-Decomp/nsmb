@@ -50,7 +50,7 @@ public:
 
   virtual bool onCreate();
   virtual bool preCreate();
-  virtual void postCreate();
+  virtual void postCreate(u32);
   virtual bool onDestroy();
   virtual bool preDestroy();
   virtual void postDestroy(u32);

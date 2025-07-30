@@ -66,6 +66,8 @@ namespace ProcessManager {
     extern u32 CurrentTask;
     extern ProcessList CreateTask;
     extern ProcessList ConnectTask;
+    extern ProcessList ExecuteTask;
+    extern ProcessList DrawTask;
     extern ProcessList DestroyTask;
 
     extern ProcessList idLookupProcesses[8];

@@ -34,7 +34,7 @@ public:
     // TODO: Do we need to define these as virtual?
     bool preDestroy();
     bool preCreate();
-    void postCreate();
+    void postCreate(u32);
     void postDestroy(u32);
     bool preUpdate();
     void postUpdate();
