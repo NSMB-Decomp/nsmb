@@ -46,13 +46,13 @@ Base::Base()
 
   Base* parent = this->getParent();
   if (parent != (void*)0x0) {
-    u32 bVar1 = parent->__4;
-    if (((bVar1 & 1) != 0) || ((bVar1 & 2) != 0)) {
-      this->__4 = this->__4 | 2;
+    u32 bVar1 = parent->skipFlags;
+    if (((bVar1 & UpdateChildren) != 0) || ((bVar1 & Update) != 0)) {
+      this->skipFlags = (SkipFlags)(this->skipFlags | Update);
     }
-    bVar1 = parent->__4;
-    if (((bVar1 & 4) != 0) || ((bVar1 & 8) != 0)) {
-      this->__4 = this->__4 | 8;
+    bVar1 = parent->skipFlags;
+    if (((bVar1 & RenderChildren) != 0) || ((bVar1 & Render) != 0)) {
+      this->skipFlags = (SkipFlags)(this->skipFlags | Render);
     }
   }
 }
@@ -69,7 +69,7 @@ void Base::postCreate(u32 a) {
   }
   LinkedList_Remove(&ProcessManager::CreateTask, &this->process_link.update);
   if ((bool)(ProcessManager::CurrentTask == Execute) ? 1 : 0) {
-      this->__1 = 1;
+      this->pending_update = 1;
   return;
   }
     ProcessSet_add(&ProcessManager::ExecuteTask,&this->process_link.update);
@@ -203,7 +203,7 @@ void Base::create()
   {
     return;
   }
-  if (this->__1 != 0)
+  if (this->pending_update != 0)
   {
     return;
   }
@@ -213,7 +213,7 @@ void Base::create()
   }
   if ((bool)(ProcessManager::CurrentTask == 2) ? 1 : 0)
   {
-    this->__2 = 0x01;
+    this->pending_create = 0x01;
     return;
   }
   LinkedList_append(&ProcessManager::CreateTask, &this->process_link.update);

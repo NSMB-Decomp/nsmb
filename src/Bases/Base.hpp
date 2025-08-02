@@ -28,8 +28,8 @@ public:
   u16 object_id;
   State state;
   bool pending_destroy;
-  bool pending_update;
-  bool pending_create;
+  u8 pending_update;
+  u8 pending_create;
   u8 __3;
   SkipFlags skipFlags;
   ProcessLink process_link;
