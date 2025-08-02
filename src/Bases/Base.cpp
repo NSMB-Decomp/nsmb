@@ -74,7 +74,7 @@ void Base::postCreate(u32 a) {
   }
     ProcessSet_add(&ProcessManager::ExecuteTask,&this->process_link.update);
     ProcessSet_add(&ProcessManager::DrawTask,&this->process_link.render);
-    this->state = one;
+    this->state = Active;
     return;
 }
 bool Base::onDestroy() { return true; }
@@ -118,7 +118,7 @@ void Base::pendingDestroy() {}
 void Base::destroy()
 {
   if ((this->pending_destroy == false) &&
-               (u8)(this->state == two) == 0 ? true : false) // Todo, is there a better syntax for this compiler bug?
+               (u8)(this->state == Inactive) == 0 ? true : false) // Todo, is there a better syntax for this compiler bug?
   {
     this->pending_destroy = true;
     this->pendingDestroy();
@@ -207,7 +207,7 @@ void Base::create()
   {
     return;
   }
-  if (!this->state == pendingInit)
+  if (!this->state == PendingInit)
   {
     return;
   }
@@ -263,7 +263,7 @@ bool Base::hasChildPendingCreation()
   while (!(cur == (SceneNode *)0x0 || cur == next))
   {
     if (
-      (u8)((*cur->object).state == pendingInit) != 0
+      (u8)((*cur->object).state == PendingInit) != 0
     )
     {
       return true;

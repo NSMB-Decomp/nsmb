@@ -12,9 +12,15 @@ u32 data_02085250[2] = {0x14, 1};
 class Base {
 public:
   enum State {
-    pendingInit,
-    one,
-    two
+    PendingInit,
+    Active,
+    Inactive
+  };
+  enum SkipFlags {
+    UpdateChildren = 1,
+    Update = 2,
+    RenderChildren = 4,
+    Render = 8
   };
 
   u32 guid;
@@ -22,10 +28,10 @@ public:
   u16 object_id;
   State state;
   bool pending_destroy;
-  u8 __1;
-  u8 __2;
+  bool pending_update;
+  bool pending_create;
   u8 __3;
-  u8 __4;
+  SkipFlags skipFlags;
   ProcessLink process_link;
   void* __5;
   void* heap;
