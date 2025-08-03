@@ -2,6 +2,14 @@
 #include "../Heap.hpp"
 #include "../Nitro/Nitro.hpp"
 
+u32 data_02085224 = 1;
+u32 data_02085248[2] = {0x10, 1};
+u32 data_02085240[2] = {0x00, 1};
+u32 data_02085238[2] = {0x04, 1};
+u32 data_02085230[2] = {0x0C, 1};
+u32 data_02085228[2] = {0x08, 1};
+u32 data_02085250[2] = {0x14, 1};
+
 Base::Base()
 {
   void func_02043b58(ProcessLink*);
