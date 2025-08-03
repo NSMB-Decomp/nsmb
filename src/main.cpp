@@ -12,7 +12,7 @@ void main() {
   u32 *DAT_0200306c = (u32 *)0x027FFC20;
 
   if (isMultiBootCart()) {
-    game_mode = (u32)func_020109c8() != 0;
+    game_mode = (u8)(func_020109c8()) != (u8) 0;
     boot_scene = 0;
   } else {
     game_mode = *DAT_0200306c & 0xf;

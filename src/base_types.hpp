@@ -5,3 +5,5 @@ typedef signed char i8;
 typedef signed short i16;
 typedef signed long i32;
 typedef void* unknown_pointer;
+
+#define NULL (void*)0x0

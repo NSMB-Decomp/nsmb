@@ -5,6 +5,7 @@ objdiff.json
 objdiff_report.json
 *.nds
 temp
+.vscode
 
 # Build System
 .zig-cache

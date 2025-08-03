@@ -68,6 +68,37 @@ if ((bool)(CurrentTask == 2) ? 1 : 0) {}
 ```
 </td>
 </td>
+<tr>
+<td>
+
+```cpp
+if (CurrentTask == 2) {}
+```
+</td>
+<td>
+
+```asm
+cmp     r0, #0x0
+moveq   r0, #0x1
+movne   r0, #0x0
+```
+</td>
+
+<td>
+
+```asm
+cmp     r0, #0x0
+moveq   r0, #0x0
+movne   r0, #0x1
+```
+</td>
+<td>
+
+```cpp
+
+```
+</td>
+</td>
 </tr>
 </table>
 

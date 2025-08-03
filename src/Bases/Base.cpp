@@ -53,7 +53,7 @@ Base::Base()
   render_node->sortPriority = render_priority;
 
   Base* parent = this->getParent();
-  if (parent != (void*)0x0) {
+  if (parent != NULL) {
     u32 bVar1 = parent->skipFlags;
     if (((bVar1 & UpdateChildren) != 0) || ((bVar1 & Update) != 0)) {
       this->skipFlags = (SkipFlags)(this->skipFlags | Update);
@@ -113,10 +113,10 @@ void Base::postDestroy(u32 a)
   u32 id_index = ProcessManager::getIDIndex(&this->process_link);
   LinkedList_Remove(&ProcessManager::idLookupProcesses[id_index], &this->process_link.idLookup);
   LinkedList_Remove(&ProcessManager::DestroyTask,&this->process_link.update);
-  if (this->heap != (void*)0x0) {
+  if (this->heap != NULL) {
     func_02045128();
   }
-  if (this->__5 != (void*)0x0) {
+  if (this->__5 != NULL) {
     func_0204d908();
   }
   this->~Base();
@@ -146,7 +146,7 @@ Base *Base::getParent()
 };
 bool Base::prepareResourcesSafe(u32 a, u32 b)
 {
-  if (this->heap == (void*)0x0) {
+  if (this->heap == NULL) {
     return true;
   }
   
@@ -158,7 +158,7 @@ bool Base::prepareResourcesFast(u32 a, u32 b)
   Heap* heap;
   void* z;
 
-  if (this->heap != (void*)0x0) {
+  if (this->heap != NULL) {
     return true;
   }
   if (
@@ -166,15 +166,15 @@ bool Base::prepareResourcesFast(u32 a, u32 b)
     (user = func_02045240(a, b, 0x20), user != (Heap*)0x0)
   ) {
     void * heap_ptr = (void *)((u32)(user->start) & 0x10);
-    if (heap_ptr != (void*)0x0) {
+    if (heap_ptr != NULL) {
       user->allocate(0x10, 0x10);
     }
     heap = user->setCurrent();
     u32 result = this->onHeapCreated();
     heap->setCurrent();
     if (
-      heap_ptr == (void*)0x0 && 
-      (z = user->allocate(0x10,0x10), z == (void*)0x0)
+      heap_ptr == NULL && 
+      (z = user->allocate(0x10,0x10), z == NULL)
     ) {
       result = 0;
     }

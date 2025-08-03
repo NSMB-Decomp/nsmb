@@ -6,7 +6,7 @@ Actor::Actor() {
     i32 *piRam020ca868 = (i32*)0x020ca868;
     i32 *pcRam020ca864 = (i32*)0x020ca864;
     // Set Position
-    if (iRam020ca85c != (void*)0x0) {
+    if (iRam020ca85c != NULL) {
         this->position.x = iRam020ca85c->x;
         this->position.y = iRam020ca85c->y;
         this->position.z = iRam020ca85c->z;
@@ -18,7 +18,7 @@ Actor::Actor() {
         this->lastStep.z = 0;
     }
     // Set Rotation
-    if (iRam020ca860 != (void*)0x0) {
+    if (iRam020ca860 != NULL) {
         this->rotation.x = iRam020ca860->x;
         this->rotation.y = iRam020ca860->y;
         this->rotation.z = iRam020ca860->z;
@@ -27,7 +27,7 @@ Actor::Actor() {
         this->lastRotation.z = iRam020ca860->z;
     }
     // Set Scale
-    if (piRam020ca868 != (void*)0x0) {
+    if (piRam020ca868 != NULL) {
         i32 a = *piRam020ca868;
         this->scale.x = a;
         this->scale.y = a;
