@@ -24,8 +24,8 @@ namespace Nitro
         void ResetOAM();
         bool Step();
         inline void SwapBuffer(u32 a, u32 b) {
-        u32 *GFX_FIFO_SWAP_BUFFERS = (u32 *)0x04000540;
-        *GFX_FIFO_SWAP_BUFFERS = (a << 1) | b;
+            u32 *GFX_FIFO_SWAP_BUFFERS = (u32 *)0x04000540;
+            *GFX_FIFO_SWAP_BUFFERS = (a << 1) | b;
         }
     }
     namespace Math {
