@@ -1,5 +1,4 @@
 #include "Base_bss.cpp"
-#include "../Heap.hpp"
 #include "../Nitro/Nitro.hpp"
 
 u32 data_02085224 = 1;
@@ -165,7 +164,7 @@ bool Base::prepareResourcesFast(u32 a, u32 b)
     a != 0 &&
     (user = func_02045240(a, b, 0x20), user != (Heap*)0x0)
   ) {
-    void * heap_ptr = (void *)((u32)(user->start) & 0x10);
+    void * heap_ptr = (void *)((u32)(user->size) & 0x10);
     if (heap_ptr != NULL) {
       user->allocate(0x10, 0x10);
     }
@@ -192,7 +191,7 @@ bool Base::prepareResourcesFast(u32 a, u32 b)
 bool Base::onHeapCreated() { return true; }
 void *Base::operator new(u32 count)
 {
-  Base *ptr = (Base *)Heap_allocate(data_0208b720, count, -4);
+  Base *ptr = (Base *)data_0208b720->allocate(count, -4);
   if (ptr != (Base *)0x0)
   {
     Nitro::func_02066fe8(ptr, 0, count);

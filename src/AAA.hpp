@@ -3,6 +3,7 @@
 
 #include "base_types.hpp"
 #include "ProcessManager.hpp"
+#include "Heap.hpp"
 
 struct ObjectProfile {
     Base* (*constructor)() ;
@@ -18,9 +19,8 @@ extern u8 Stage_actorFreezeFlag;
 extern u8 data_0v000_020ca84c;
 
 //
-void Heap_deallocate(void*, void *);
-void* Heap_allocate(void*, u32, i32);
-extern void* data_0208b720;
+void Heap_deallocate(Heap*, void *);
+extern Heap* data_0208b720;
 
 //
 bool func_0204d82c();

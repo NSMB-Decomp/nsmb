@@ -588,12 +588,12 @@ data_0208fafc kind:bss addr:0x0208fafc
 data_0208fb00 kind:bss addr:0x0208fb00
 SpawnParam3 kind:bss addr:0x0208fb04
 data_0208fb08 kind:bss addr:0x0208fb08
-ProcessManager::ConnectTask kind:bss addr:0x0208fb0c
-ProcessManager::ExecuteTask kind:bss addr:0x0208fb18
-ProcessManager::DestroyTask kind:bss addr:0x0208fb28
-ProcessManager::DrawTask kind:bss addr:0x0208fb38
+_ZN14ProcessManager11ConnectTaskE kind:bss addr:0x0208fb0c
+_ZN14ProcessManager11ExecuteTaskE kind:bss addr:0x0208fb18
+_ZN14ProcessManager11DestroyTaskE kind:bss addr:0x0208fb28
+_ZN14ProcessManager8DrawTaskE kind:bss addr:0x0208fb38
 _ZN14ProcessManager10CreateTaskE kind:bss addr:0x0208fb48
-idLookupProcesses kind:bss addr:0x0208fb58
+_ZN14ProcessManager17idLookupProcessesE kind:bss addr:0x0208fb58
 CurrentProfileTable kind:bss addr:0x0208fb98
 data_0208fb9c kind:bss addr:0x0208fb9c
 data_0208fba0 kind:bss addr:0x0208fba0
