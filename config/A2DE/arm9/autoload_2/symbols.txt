@@ -15,7 +15,7 @@ func_02043790 kind:function(arm,size=0x14) addr:0x02043790
 func_020437a4 kind:function(arm,size=0x50) addr:0x020437a4
 func_020437f4 kind:function(arm,size=0xbc) addr:0x020437f4
 LinkedList_Prepend kind:function(arm,size=0x38) addr:0x020438b0
-LinkedList_append kind:function(arm,size=0x38) addr:0x020438e8
+_Z17LinkedList_appendP11ProcessListP12PriorityNode kind:function(arm,size=0x38) addr:0x020438e8
 LinkedList_Remove kind:function(arm,size=0x70) addr:0x02043920
 func_02043990 kind:function(arm,size=0x60) addr:0x02043990
 _ZN9SceneNode13func_020439f0Ev kind:function(arm,size=0x3c) addr:0x020439f0
@@ -1798,7 +1798,7 @@ data_02085240 kind:data(word[2]) addr:0x02085240
 data_02085248 kind:data(word[2]) addr:0x02085248
 data_02085250 kind:data(word[2]) addr:0x02085250
 _ZTV4Base kind:data(word[20]) addr:0x02085258
-ProcessManager::CurrentTask kind:data(word) addr:0x020852a8
+_ZN14ProcessManager11CurrentTaskE kind:data(word) addr:0x020852a8
 data_020852ac kind:data(any) addr:0x020852ac
 data_020852b4 kind:data(any) addr:0x020852b4
 data_020852bc kind:data(any) addr:0x020852bc

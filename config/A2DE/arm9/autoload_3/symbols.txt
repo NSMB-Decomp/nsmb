@@ -592,7 +592,7 @@ ProcessManager::ConnectTask kind:bss addr:0x0208fb0c
 ProcessManager::ExecuteTask kind:bss addr:0x0208fb18
 ProcessManager::DestroyTask kind:bss addr:0x0208fb28
 ProcessManager::DrawTask kind:bss addr:0x0208fb38
-ProcessManager::CreateTask kind:bss addr:0x0208fb48
+_ZN14ProcessManager10CreateTaskE kind:bss addr:0x0208fb48
 idLookupProcesses kind:bss addr:0x0208fb58
 CurrentProfileTable kind:bss addr:0x0208fb98
 data_0208fb9c kind:bss addr:0x0208fb9c
