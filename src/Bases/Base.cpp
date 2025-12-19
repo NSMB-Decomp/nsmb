@@ -11,7 +11,7 @@ u32 data_02085250[2] = {0x14, 1};
 
 Base::Base()
 {
-  void func_02043b58(ProcessLink*);
+  void func_02043b58(ProcessLink *);
 
   ProcessLink *pl = &this->process_link;
   func_02043b58(pl);
@@ -41,8 +41,8 @@ Base::Base()
   SceneGraph_addChild(&ProcessManager::ConnectTask, &process_link, SpawnParam2);
   u32 id_index = ProcessManager::getIDIndex(&process_link);
   LinkedList_Prepend(&ProcessManager::idLookupProcesses[id_index], &process_link.idLookup);
-  ObjectProfile* profile = CurrentProfileTable[this->object_id];
-  
+  ObjectProfile *profile = CurrentProfileTable[this->object_id];
+
   u32 update_priority = profile->updatePriority;
   update_node->currentPriority = update_priority;
   update_node->sortPriority = update_priority;
@@ -51,38 +51,45 @@ Base::Base()
   render_node->currentPriority = render_priority;
   render_node->sortPriority = render_priority;
 
-  Base* parent = this->getParent();
-  if (parent != NULL) {
+  Base *parent = this->getParent();
+  if (parent != NULL)
+  {
     u32 bVar1 = parent->skipFlags;
-    if (((bVar1 & UpdateChildren) != 0) || ((bVar1 & Update) != 0)) {
+    if (((bVar1 & UpdateChildren) != 0) || ((bVar1 & Update) != 0))
+    {
       this->skipFlags = (SkipFlags)(this->skipFlags | Update);
     }
     bVar1 = parent->skipFlags;
-    if (((bVar1 & RenderChildren) != 0) || ((bVar1 & Render) != 0)) {
+    if (((bVar1 & RenderChildren) != 0) || ((bVar1 & Render) != 0))
+    {
       this->skipFlags = (SkipFlags)(this->skipFlags | Render);
     }
   }
 }
-Base::~Base() {
+Base::~Base()
+{
   this->process_link.idLookup.unlink();
   this->process_link.render.unlink();
-  this->process_link.update.unlink(); 
+  this->process_link.update.unlink();
 } // Why does this one create 3???
 bool Base::onCreate() { return true; }
 bool Base::preCreate() { return true; }
-void Base::postCreate(u32 a) {
-  if (a != 2) {
+void Base::postCreate(u32 a)
+{
+  if (a != 2)
+  {
     return;
   }
   LinkedList_Remove(&ProcessManager::CreateTask, &this->process_link.update);
-  if ((bool)(ProcessManager::CurrentTask == Execute) ? 1 : 0) {
-      this->pending_update = 1;
-  return;
-  }
-    ProcessSet_add(&ProcessManager::ExecuteTask,&this->process_link.update);
-    ProcessSet_add(&ProcessManager::DrawTask,&this->process_link.render);
-    this->state = Active;
+  if ((bool)(ProcessManager::CurrentTask == Execute) ? 1 : 0)
+  {
+    this->pending_update = 1;
     return;
+  }
+  ProcessSet_add(&ProcessManager::ExecuteTask, &this->process_link.update);
+  ProcessSet_add(&ProcessManager::DrawTask, &this->process_link.render);
+  this->state = Active;
+  return;
 }
 bool Base::onDestroy() { return true; }
 bool Base::preDestroy()
@@ -103,19 +110,22 @@ void Base::postDestroy(u32 a)
 {
   void func_02045128();
   void func_0204d908();
-  void func_02044ab0(Base*, void*);
+  void func_02044ab0(Base *, void *);
 
-  if (a != 2) {
+  if (a != 2)
+  {
     return;
   }
   SceneGraph_removeChild(&ProcessManager::ConnectTask, &this->process_link);
   u32 id_index = ProcessManager::getIDIndex(&this->process_link);
   LinkedList_Remove(&ProcessManager::idLookupProcesses[id_index], &this->process_link.idLookup);
-  LinkedList_Remove(&ProcessManager::DestroyTask,&this->process_link.update);
-  if (this->heap != NULL) {
+  LinkedList_Remove(&ProcessManager::DestroyTask, &this->process_link.update);
+  if (this->heap != NULL)
+  {
     func_02045128();
   }
-  if (this->__5 != NULL) {
+  if (this->__5 != NULL)
+  {
     func_0204d908();
   }
   this->~Base();
@@ -125,7 +135,9 @@ void Base::pendingDestroy() {}
 void Base::destroy()
 {
   if ((this->pending_destroy == false) &&
-               (u8)(this->state == Inactive) == 0 ? true : false) // Todo, is there a better syntax for this compiler bug?
+              (u8)(this->state == Inactive) == 0
+          ? true
+          : false) // Todo, is there a better syntax for this compiler bug?
   {
     this->pending_destroy = true;
     this->pendingDestroy();
@@ -145,42 +157,48 @@ Base *Base::getParent()
 };
 bool Base::prepareResourcesSafe(u32 a, u32 b)
 {
-  if (this->heap == NULL) {
+  if (this->heap == NULL)
+  {
     return true;
   }
-  
+
   return false;
 }
 bool Base::prepareResourcesFast(u32 a, u32 b)
 {
-  Heap* user;
-  Heap* heap;
-  void* z;
+  Heap *user;
+  Heap *heap;
+  void *z;
 
-  if (this->heap != NULL) {
+  if (this->heap != NULL)
+  {
     return true;
   }
   if (
-    a != 0 &&
-    (user = func_02045240(a, b, 0x20), user != (Heap*)0x0)
-  ) {
-    void * heap_ptr = (void *)((u32)(user->size) & 0x10);
-    if (heap_ptr != NULL) {
+      a != 0 &&
+      (user = func_02045240(a, b, 0x20), user != (Heap *)0x0))
+  {
+    void *heap_ptr = (void *)((u32)(user->size) & 0x10);
+    if (heap_ptr != NULL)
+    {
       user->allocate(0x10, 0x10);
     }
     heap = user->setCurrent();
     u32 result = this->onHeapCreated();
     heap->setCurrent();
     if (
-      heap_ptr == NULL && 
-      (z = user->allocate(0x10,0x10), z == NULL)
-    ) {
+        heap_ptr == NULL &&
+        (z = user->allocate(0x10, 0x10), z == NULL))
+    {
       result = 0;
     }
     user->maxAllocationUnitSize();
-    if (result == 0) {
+    if (result == 0)
+    {
       user->destroy();
-    } else {
+    }
+    else
+    {
       this->heap = user;
       return true;
     }
@@ -228,14 +246,21 @@ void Base::create()
 }
 void Base::processCreate()
 {
+  u32 c0 = data_02085228[0];
+  u32 c1 = data_02085228[1];
+  u32 b0 = data_02085238[0];
+  u32 b1 = data_02085238[1];
+  u32 a0 = data_02085240[0];
+  u32 a1 = data_02085240[1];
+
   this->func_01ffd524(
-      data_02085240[0],
-      data_02085240[1],
-      data_02085238[0],
-      data_02085238[1],
-      data_02085228[0],
-      data_02085228[1]
-    );
+    c0,
+    a0,
+    a1,
+    b0,
+    c1,
+    b1
+  );
 }
 u32 Base::processDestroy()
 {
@@ -253,8 +278,7 @@ u32 Base::processDestroy()
       b1,
       b2,
       c1,
-      c2
-  );
+      c2);
   if (ret == 1)
   {
     unloadSceneOverlay(object_id);
@@ -270,8 +294,7 @@ bool Base::hasChildPendingCreation()
   while (!(cur == (SceneNode *)0x0 || cur == next))
   {
     if (
-      (u8)((*cur->object).state == PendingInit) != 0
-    )
+        (u8)((*cur->object).state == PendingInit) != 0)
     {
       return true;
     }
@@ -300,12 +323,12 @@ Base *Base::spawn(u16 overlay_id, ProcessLink *b, u32 c, u8 d)
   setSpawnParams(overlay_id, b, c, d);
   data_0208fae8 = 3;
   Base *ret = (CurrentProfileTable)[overlay_id]->constructor();
-  //TODO: What should be using r1 here?
+  // TODO: What should be using r1 here?
   if (ret == (Base *)0x00)
   {
     data_0208fae8 = 0;
     data_0208faf0 = 0xFFFF;
-    return (Base*)0x0;
+    return (Base *)0x0;
   }
   else
   {
@@ -327,7 +350,8 @@ u32 Base::loadSceneOverlay(u16 a)
     return 2;
   }
 }
-void Base::unloadSceneOverlay(u16 a) {
+void Base::unloadSceneOverlay(u16 a)
+{
   if (data_0208fb00 != 0x00)
   {
     ((void (*)(u16))data_0208fb00)(a);
