@@ -1638,7 +1638,7 @@ data_0203aeb0 kind:data(any) addr:0x0203aeb0
 data_0203aeb4 kind:data(any) addr:0x0203aeb4
 data_0203bcc8 kind:data(any) addr:0x0203bcc8
 data_0203bcd4 kind:data(any) addr:0x0203bcd4
-{vtable(Object)} kind:data(any) addr:0x0203bce0
+_ZTV6Object kind:data(any) addr:0x0203bcd8
 data_0203bd28 kind:data(any) addr:0x0203bd28
 data_0203bd2c kind:data(any) addr:0x0203bd2c
 data_0203bd30 kind:data(any) addr:0x0203bd30

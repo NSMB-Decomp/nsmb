@@ -160,7 +160,7 @@ from:0x021432f0 kind:arm_call to:0x020a0444 module:overlay(0)
 from:0x02143340 kind:arm_call to:0x02143474 module:overlay(36)
 from:0x02143368 kind:load to:0x021438e0 module:overlay(36)
 from:0x0214336c kind:load to:0x021438c0 module:overlay(36)
-from:0x02143370 kind:load to:0x02039208 module:main
+from:0x02143370 kind:load to:0x02039208 add:0x8 module:main
 from:0x02143374 kind:load to:0x021438c8 module:overlay(36)
 from:0x02143378 kind:load to:0x020c4ec8 module:overlay(0)
 from:0x0214337c kind:load to:0x021438b8 module:overlay(36)

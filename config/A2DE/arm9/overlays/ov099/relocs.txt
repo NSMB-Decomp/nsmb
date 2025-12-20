@@ -4,7 +4,7 @@ from:0x02185654 kind:arm_call to:0x020a11a8 module:overlay(0)
 from:0x02185660 kind:load to:0x02186384 module:overlay(99)
 from:0x02185664 kind:load to:0x020c4f04 module:overlay(0)
 from:0x02185668 kind:load to:0x020391e8 module:main
-from:0x0218566c kind:load to:0x02039208 module:main
+from:0x0218566c kind:load to:0x02039208 add:0x8 module:main
 from:0x02185684 kind:arm_call to:0x02018c1c module:main
 from:0x0218568c kind:arm_call to:0x020ab8b8 module:overlay(0)
 from:0x021856c4 kind:arm_call to:0x020a11a8 module:overlay(0)
@@ -12,7 +12,7 @@ from:0x021856cc kind:arm_call to:0x0204cc7c module:autoload(2)
 from:0x021856d8 kind:load to:0x02186384 module:overlay(99)
 from:0x021856dc kind:load to:0x020c4f04 module:overlay(0)
 from:0x021856e0 kind:load to:0x020391e8 module:main
-from:0x021856e4 kind:load to:0x02039208 module:main
+from:0x021856e4 kind:load to:0x02039208 add:0x8 module:main
 from:0x021856f8 kind:arm_call to:0x02009c64 module:main
 from:0x021857b0 kind:load to:0x02186600 module:overlay(99)
 from:0x021857b4 kind:load to:0x02186360 module:overlay(99)
@@ -47,13 +47,13 @@ from:0x02185e34 kind:arm_call to:0x020a11a8 module:overlay(0)
 from:0x02185e40 kind:load to:0x021864e4 module:overlay(99)
 from:0x02185e44 kind:load to:0x020c4f04 module:overlay(0)
 from:0x02185e48 kind:load to:0x020391e8 module:main
-from:0x02185e4c kind:load to:0x02039208 module:main
+from:0x02185e4c kind:load to:0x02039208 add:0x8 module:main
 from:0x02185e90 kind:arm_call to:0x020a11a8 module:overlay(0)
 from:0x02185e98 kind:arm_call to:0x0204cc7c module:autoload(2)
 from:0x02185ea4 kind:load to:0x021864e4 module:overlay(99)
 from:0x02185ea8 kind:load to:0x020c4f04 module:overlay(0)
 from:0x02185eac kind:load to:0x020391e8 module:main
-from:0x02185eb0 kind:load to:0x02039208 module:main
+from:0x02185eb0 kind:load to:0x02039208 add:0x8 module:main
 from:0x02185f2c kind:load to:0x02186614 module:overlay(99)
 from:0x02185f58 kind:load to:0x02186634 module:overlay(99)
 from:0x02185fa8 kind:arm_call to:0x02185f30 module:overlay(99)
