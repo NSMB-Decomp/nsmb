@@ -805,7 +805,7 @@ data_ov000_020c5010 kind:data(any) addr:0x020c5010
 data_ov000_020c529c kind:data(any) addr:0x020c529c
 data_ov000_020c6c14 kind:data(any) addr:0x020c6c14
 data_ov000_020c6c20 kind:data(any) addr:0x020c6c20
-_ZTV5Actor kind:data(any) addr:0x020c6c2c
+_ZTV5Actor kind:data(any) addr:0x020c6c34
 StageActor::vtable kind:data(any) addr:0x020c6c8c
 data_ov000_020c6cdc kind:data(any) addr:0x020c6cdc
 data_ov000_020c6ce0 kind:data(any) addr:0x020c6ce0

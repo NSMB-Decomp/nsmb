@@ -19,7 +19,7 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v4
 
-    - name: Prepare
+    - name: Copy files to working directory
       run: cp -R /orig/* .
 
     - name: Extract ROM
