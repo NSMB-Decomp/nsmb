@@ -171,7 +171,7 @@ Actor::applyDirectionalVelocity kind:function(arm,size=0xc4) addr:0x020a09ac
 Actor::applyVelocity kind:function(arm,size=0x3c) addr:0x020a0a70
 Actor::applyVelocityToPosition kind:function(arm,size=0x20) addr:0x020a0aac
 Actor::applyAcceleration kind:function(arm,size=0x90) addr:0x020a0acc
-_ZN5Actor10linkPlayerEh kind:function(arm,size=0x8) addr:0x020a0b5c
+_ZN5Actor10linkPlayerEl kind:function(arm,size=0x8) addr:0x020a0b5c
 Actor::spawnActor kind:function(arm,size=0x54) addr:0x020a0b64
 Actor::setSpawnParams kind:function(arm,size=0x40) addr:0x020a0bb8
 Actor::getActorCount kind:function(arm,size=0x44) addr:0x020a0bf8
@@ -181,11 +181,11 @@ _ZN5Actor10postUpdateEv kind:function(arm,size=0xc) addr:0x020a0ca0
 _ZN5Actor9preUpdateEv kind:function(arm,size=0x98) addr:0x020a0cac
 _ZN5Actor11postDestroyEm kind:function(arm,size=0xc) addr:0x020a0d44
 _ZN5Actor10preDestroyEv kind:function(arm,size=0x20) addr:0x020a0d50
-Actor::postCreate kind:function(arm,size=0xc) addr:0x020a0d70
+_ZN5Actor10postCreateEm kind:function(arm,size=0xc) addr:0x020a0d70
 _ZN5Actor9preCreateEv kind:function(arm,size=0x20) addr:0x020a0d7c
 Actor::~Actor kind:function(arm,size=0x68) addr:0x020a0d9c
-Actor::~Actor kind:function(arm,size=0x70) addr:0x020a0e04
-Actor::~Actor kind:function(arm,size=0x68) addr:0x020a0e74
+_ZN5ActorD0Ev kind:function(arm,size=0x70) addr:0x020a0e04
+_ZN5ActorD1Ev kind:function(arm,size=0x68) addr:0x020a0e74
 _ZN5ActorC1Ev kind:function(arm,size=0x1c4) addr:0x020a0edc
 StageActor::isInActiveView kind:function(arm,size=0x50) addr:0x020a10a0
 StageActor::postUpdate kind:function(arm,size=0x64) addr:0x020a10f0
@@ -805,7 +805,7 @@ data_ov000_020c5010 kind:data(any) addr:0x020c5010
 data_ov000_020c529c kind:data(any) addr:0x020c529c
 data_ov000_020c6c14 kind:data(any) addr:0x020c6c14
 data_ov000_020c6c20 kind:data(any) addr:0x020c6c20
-Actor::vtable kind:data(any) addr:0x020c6c34
+_ZTV5Actor kind:data(any) addr:0x020c6c2c
 StageActor::vtable kind:data(any) addr:0x020c6c8c
 data_ov000_020c6cdc kind:data(any) addr:0x020c6cdc
 data_ov000_020c6ce0 kind:data(any) addr:0x020c6ce0

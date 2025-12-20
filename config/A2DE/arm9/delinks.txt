@@ -12,3 +12,6 @@ src/main.cpp:
 
 src/init.cpp:
     .text       start:0x02004d90 end:0x02005098
+
+src/Bases/Object.cpp:
+    .text       start:0x02013168 end:0x020131d8

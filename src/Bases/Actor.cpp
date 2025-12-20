@@ -73,6 +73,11 @@ void Actor::postDestroy(u32 a)
     Base::postDestroy(a);
 }
 
+void Actor::postCreate(u32 a)
+{
+    Object::postCreate(a);
+}
+
 bool Actor::preUpdate()
 {
     if (!Base::preCreate())
