@@ -123,3 +123,17 @@ void Actor::postRender() {
 void Actor::linkPlayer(i32 player_id) {
     this->linked_player = player_id;
 }
+u32 Actor::getActorCount(u8 a) {
+    Base* prev;
+    u32 i = 0;
+
+    for (
+        prev = ProcessManager::getNextObjectByObjectID(a, (Base*)NULL);
+        prev != NULL;
+        prev = ProcessManager::getNextObjectByObjectID(a, prev)
+    ) {
+        i += 1;
+    }
+
+    return i;
+}

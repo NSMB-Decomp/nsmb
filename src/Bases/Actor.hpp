@@ -1,6 +1,5 @@
 #include "../base_types.hpp"
 #include "../Vec.hpp"
-//#include "Base.hpp"
 #include "Object.hpp"
 
 class Actor: public Object {
@@ -28,6 +27,7 @@ public:
     u8 actorCategory;
 
     void linkPlayer(i32);
+    u32 getActorCount(u8);
     Actor();
     
     
