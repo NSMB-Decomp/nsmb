@@ -20,16 +20,22 @@ jobs:
       uses: actions/checkout@v4
 
     - name: Prepare
-      run: |
-        cp -R /orig/* .
+      run: cp -R /orig/* .
 
-    - name: Generate Report
-      run: |
-        zig build extract
-        zig build delink
-        zig build objdiff
-        zig build all
-        zig build report
+    - name: Extract ROM
+      run: zig build extract
+
+    - name: Delink ROM
+      run: zig build delink
+        
+    - name: Generate objdiff config
+      run: zig build objdiff
+    
+    - name: Compile all files
+      run: zig build all
+
+    - name: Generate objdiff report
+      run: zig build report
 
     - name: Upload Report
       uses: actions/upload-artifact@v4
