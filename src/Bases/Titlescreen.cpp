@@ -9,7 +9,7 @@ void func_ov009_020cc6d4(i32 *a,i32 b,i32 c) {
 
 u32 _CurrentWindow = (*(u32*)0x02085b10);
 void func_ov009_020cc6b4(u8 *a) {
-    _CurrentWindow = (u32)&a;
+    _CurrentWindow = (u32)a;
     a[0] = 0;
     a[1] = 0;
     a[2] = 0;
