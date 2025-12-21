@@ -92,7 +92,7 @@ data_02085ad4 kind:bss addr:0x02085ad4
 data_02085adc kind:bss addr:0x02085adc
 data_02085ae4 kind:bss addr:0x02085ae4
 data_02085af0 kind:bss addr:0x02085af0
-CurrentWindow kind:bss addr:0x02085b10
+_CurrentWindow kind:bss addr:0x02085b10
 Fader::current kind:data(word) addr:0x02085b14
 data_02085b18 kind:data(word) addr:0x02085b18
 data_02085b1c kind:bss addr:0x02085b1c
