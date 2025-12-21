@@ -1,7 +1,7 @@
 #include "../base_types.hpp"
 
-void func_ov009_020cc6d4(u32 *a,u32 b,u32 c) {
-  if (*a < b) {
+void func_ov009_020cc6d4(i32 *a,i32 b,i32 c) {
+  if (b > *a) {
     a[0] = b;
     a[1] = c;
   }
