@@ -1,8 +1,7 @@
-#include "../base_types.hpp"
+#include "base_types.hpp"
 
+// Titlescreen Logo
 class Logo {
-    // I believe this is the titlescreen logo as these functions are only called while it is loaded.
-    // ParticleHandler particles
 public: 
     u32 _00;
     u32 _04;
@@ -22,7 +21,7 @@ public:
     void func_ov009_020ccf38();
 };
 
-// func_0200421c- render sprite. Nitro Function?
+// func_0200421c - render sprite. Nitro Function?
 void Logo::func_ov009_020cd014() { // render static logo segments
     /*
       if (*(int *)(param_1 + 0x78) != 0) {

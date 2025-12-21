@@ -1,4 +1,4 @@
-#include "Base.hpp"
+#include "../Bases/Base.hpp"
 
 class Scene: public Base {
 public:

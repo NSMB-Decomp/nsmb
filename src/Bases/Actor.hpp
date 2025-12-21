@@ -41,7 +41,6 @@ public:
     bool preRender();
     void postRender();
 
-
     virtual void setPosX(u32);
     virtual void incPosX(u32);
 };
