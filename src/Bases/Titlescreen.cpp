@@ -1,7 +1,28 @@
 #include "../base_types.hpp"
 
+class Logo {
+    // I believe this is the titlescreen logo as these functions are only called while it is loaded.
+    // ParticleHandler particles
+public:
+    void func_ov009_020cc8ac() {
+
+    }
+};
+
+void func_ov009_020cc8a8() {
+
+}
+
+void func_ov009_020cc87c() {
+
+}
+
+void func_ov009_020cc85c() {
+
+}
+
 void func_ov009_020cc858() {
-    
+
 }
 
 void func_ov009_020cc854() {
