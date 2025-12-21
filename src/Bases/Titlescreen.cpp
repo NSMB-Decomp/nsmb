@@ -3,17 +3,52 @@
 class Logo {
     // I believe this is the titlescreen logo as these functions are only called while it is loaded.
     // ParticleHandler particles
-public:
-    void func_ov009_020cc8ac() {
+public: 
+    u8 _0[0x10];
+    i32 _10;
+    i32 _14;
+    i32 _18;
+    i16 _1c;
+    i16 _1e;
+    i16 _20;
 
-    }
+    void func_ov009_020cc914();
+    void func_ov009_020cc8ac();
+    void func_ov009_020cc87c(u32);
 };
+
+
+void Logo::func_ov009_020cc914() {
+
+}
+
+void Logo::func_ov009_020cc8ac() {
+    if (0 <= this->_1e) {
+        if (this->_14 > 0) {
+            this->_20 = 0x11;
+        }
+        else {
+            this ->_1e = 0;
+            this ->_20 = 0;
+        }
+    }
+
+    if (0 <= this->_10) {
+        this->_14 = 0;
+        this->_18 = 0;
+        this->_1c = 0;
+        this->_1e = 0;
+        this->_20 = 0;
+        Logo::func_ov009_020cc87c(0xf);
+    }
+}
+
 
 void func_ov009_020cc8a8() {
 
 }
 
-void func_ov009_020cc87c() {
+void Logo::func_ov009_020cc87c(u32) {
 
 }
 
