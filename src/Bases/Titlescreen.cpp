@@ -18,8 +18,51 @@ public:
     void func_ov009_020cc914();
     void func_ov009_020cc8ac();
     void func_ov009_020cc87c(u32);
+    void func_ov009_020cd014();
+    void func_ov009_020ccf38();
 };
 
+// func_0200421c- render sprite. Nitro Function?
+void Logo::func_ov009_020cd014() { // render static logo segments
+    /*
+      if (*(int *)(param_1 + 0x78) != 0) {
+                    // Unknown TODO: What does this render?
+        func_0200421c(3,&data_ov009_020db9f4,0,0,0,0,0,0,0,1,-*(int *)(_DAT_020dbbb0 + 200) >> 0xc);
+                        // Copyright
+        func_0200421c(4,&data_ov009_020dba70,0,0,0,0,0,0,0,0,-*(int *)(_DAT_020dbbb0 + 200) >> 0xc);
+                        // Logo with Shadow + Trademark
+        func_0200421c(5,&data_ov009_020dba98,0,0,0,0,0,0,0,3,-*(int *)(_DAT_020dbbb0 + 200) >> 0xc);
+    }
+    iVar1 = 0;
+    do {
+        func_ov009_020ccf38(param_1,iVar1);
+        iVar1 = iVar1 + 1;
+        param_1 = param_1 + 0x28;
+    } while (iVar1 < 3);
+  */
+}
+
+void Logo::func_ov009_020ccf38() { // Render dynamic Logo
+    /*
+
+    {
+    undefined4 *puVar1;
+    undefined2 uVar2;
+    
+    puVar1 = (undefined4 *)(&data_ov009_020d9684 + *(int *)(param_1 + 0x24) * 0xc + param_2 * 0x18);
+    if (*(int *)(param_1 + 0x24) == 0) {
+        uVar2 = *(undefined2 *)(param_1 + 0x1c);
+    }
+    else {
+        uVar2 = 0;
+    }
+                        // Main Logo
+    func_0200421c(*puVar1,puVar1[1],0x10,*(undefined1 *)(puVar1 + 2),0,0,uVar2,0,0,
+                    (int)*(char *)((int)puVar1 + 9),
+                    (int)*(char *)((int)puVar1 + 10) +
+                    (*(int *)(param_1 + 0x10) - *(int *)(_DAT_020dbbb0 + 200) >> 0xc));
+    */
+}
 
 void Logo::func_ov009_020cc914() {
 
