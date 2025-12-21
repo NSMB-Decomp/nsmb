@@ -2471,7 +2471,7 @@ from:0x02013834 kind:arm_call to:0x0200f3d8 module:main
 from:0x02013838 kind:arm_call to:0x02009b64 module:main
 from:0x02013868 kind:arm_call to:0x02152bf0 module:overlay(52)
 from:0x020138ac kind:arm_call to:0x0204d23c module:autoload(2)
-from:0x020138b8 kind:load to:0x0203bd40 module:main
+from:0x020138b8 kind:load to:0x0203bd38 add:0x8 module:main
 from:0x020138bc kind:load to:0x02088f34 module:autoload(3)
 from:0x020138c0 kind:load to:0x020887fc module:autoload(3)
 from:0x020138c4 kind:load to:0x02088bdc module:autoload(3)
@@ -2487,7 +2487,7 @@ from:0x0201395c kind:arm_call to:0x02009b64 module:main
 from:0x0201398c kind:arm_call to:0x02152bf0 module:overlay(52)
 from:0x020139d0 kind:arm_call to:0x0204d23c module:autoload(2)
 from:0x020139d8 kind:arm_call to:0x0204cc7c module:autoload(2)
-from:0x020139e4 kind:load to:0x0203bd40 module:main
+from:0x020139e4 kind:load to:0x0203bd38 add:0x8 module:main
 from:0x020139e8 kind:load to:0x02088f34 module:autoload(3)
 from:0x020139ec kind:load to:0x020887fc module:autoload(3)
 from:0x020139f0 kind:load to:0x02088bdc module:autoload(3)
@@ -2502,7 +2502,7 @@ from:0x02013a84 kind:arm_call to:0x0200f3d8 module:main
 from:0x02013a88 kind:arm_call to:0x02009b64 module:main
 from:0x02013ab8 kind:arm_call to:0x02152bf0 module:overlay(52)
 from:0x02013afc kind:arm_call to:0x0204d23c module:autoload(2)
-from:0x02013b08 kind:load to:0x0203bd40 module:main
+from:0x02013b08 kind:load to:0x0203bd38 add:0x8 module:main
 from:0x02013b0c kind:load to:0x02088f34 module:autoload(3)
 from:0x02013b10 kind:load to:0x020887fc module:autoload(3)
 from:0x02013b14 kind:load to:0x02088bdc module:autoload(3)
@@ -2513,7 +2513,7 @@ from:0x02013b24 kind:load to:0x02088f48 module:autoload(3)
 from:0x02013b28 kind:load to:0x0203bcd8 add:0x8 module:main
 from:0x02013b34 kind:arm_call to:0x0204d2ac module:autoload(2)
 from:0x02013b84 kind:load to:0x0203bcd8 add:0x8 module:main
-from:0x02013b88 kind:load to:0x0203bd40 module:main
+from:0x02013b88 kind:load to:0x0203bd38 add:0x8 module:main
 from:0x02013b8c kind:load to:0x020ca850 module:overlays(0,129)
 from:0x02013b90 kind:load to:0x020ca84c module:overlay(0)
 from:0x02013b94 kind:load to:0x02088f34 module:autoload(3)

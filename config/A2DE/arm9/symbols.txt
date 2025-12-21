@@ -581,8 +581,8 @@ func_020134f4 kind:function(arm,size=0xc) addr:0x020134f4
 func_02013500 kind:function(arm,size=0x1c8) addr:0x02013500
 func_020136c8 kind:function(arm,size=0x20) addr:0x020136c8
 func_020136e8 kind:function(arm,size=0x30) addr:0x020136e8
-func_02013718 kind:function(arm,size=0x4c) addr:0x02013718
-func_02013764 kind:function(arm,size=0x54) addr:0x02013764
+_ZN4Base10postCreateEm kind:function(arm,size=0x4c) addr:0x02013718
+_ZN5Scene9preCreateEv kind:function(arm,size=0x54) addr:0x02013764
 func_020137b8 kind:function(arm,size=0x124) addr:0x020137b8
 func_020138dc kind:function(arm,size=0x12c) addr:0x020138dc
 func_02013a08 kind:function(arm,size=0x124) addr:0x02013a08
@@ -1643,9 +1643,9 @@ data_0203bd28 kind:data(any) addr:0x0203bd28
 data_0203bd2c kind:data(any) addr:0x0203bd2c
 data_0203bd30 kind:data(any) addr:0x0203bd30
 data_0203bd34 kind:data(any) addr:0x0203bd34
-Scene::vtable kind:data(any) addr:0x0203bd40
+_ZTV5Scene kind:data(any) addr:0x0203bd38
 data_0203bd88 kind:data(any) addr:0x0203bd88
-FadeMask::vtable kind:data(any) addr:0x0203bd94
+_ZTV8FadeMask kind:data(any) addr:0x0203bd94
 data_0203bd9c kind:data(any) addr:0x0203bd9c
 data_0203bddc kind:data(any) addr:0x0203bddc
 data_0203be1c kind:data(any) addr:0x0203be1c
