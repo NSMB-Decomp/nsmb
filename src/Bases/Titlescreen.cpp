@@ -1,5 +1,13 @@
 #include "../base_types.hpp"
 
+void func_02007c44(void*);
+void func_02007bfc(void*);
+void* data_02088f48 = (void*)0x1234;
+void func_ov009_020cc6e8() {
+    func_02007c44(&data_02088f48);
+    func_02007bfc(&data_02088f48);
+}
+
 void func_ov009_020cc6d4(i32 *a,i32 b,i32 c) {
   if (b > *a) {
     a[0] = b;
@@ -13,6 +21,10 @@ void func_ov009_020cc6b4(u8 *a) {
     a[0] = 0;
     a[1] = 0;
     a[2] = 0;
+}
+
+void func_ov009_020cc5f8() {
+
 }
 
 void func_ov009_020cc5e8(u8 *a, u8 b) {

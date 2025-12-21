@@ -101,8 +101,8 @@ void StartGameLoop() {
 
 void InitNitroMainGame() {
   // Temp values
-  u32 a = 0x1234; // arm9_mainCODE
-  u32 b = 0x4321; // autoload_3.bss
+  void* a = (void*)0x020046c0; // arm9_mainCODE
+  void* b = (void*)0x02094384; // autoload_3.bss
   Nitro::Tick::Init();
   Nitro::Timer::Init();
   Nitro::MultiThread::Init();
@@ -132,7 +132,7 @@ void initExtendedIds() {
 }
 
 void sceneBaseInit() {
-  u32 overlay_id = 0;
+  u32 overlay_id = 0; // This need to be a pooled at the bottom
   bool a = Wifi_isMultiBootCart();
   if (a != false) {
     func_020125e8();

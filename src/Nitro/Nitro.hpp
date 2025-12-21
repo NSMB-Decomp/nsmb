@@ -17,7 +17,7 @@ namespace Nitro
     }
     namespace Exception
     {
-        void SetHandler(u32, u32);
+        void SetHandler(void*, void*);
     }
     namespace Graphics
     {

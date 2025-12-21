@@ -1473,7 +1473,7 @@ data_0203975c kind:data(any) addr:0x0203975c
 data_02039774 kind:data(any) addr:0x02039774
 data_0203978c kind:data(any) addr:0x0203978c
 data_020397a8 kind:data(any) addr:0x020397a8
-data_02039808 kind:data(any) addr:0x02039808
+GAME_NAME kind:data(any) addr:0x02039808
 data_02039810 kind:data(any) addr:0x02039810
 data_02039814 kind:data(any) addr:0x02039814
 data_02039818 kind:data(any) addr:0x02039818
