@@ -1,5 +1,21 @@
 #include "../base_types.hpp"
 
+void func_ov009_020cc858() {
+    
+}
+
+void func_ov009_020cc854() {
+
+}
+
+void func_ov009_020cc810(u32* a) {
+
+}
+
+void func_ov009_020cc70c(u32* a) {
+
+}
+
 void func_02007c44(void*);
 void func_02007bfc(void*);
 void* data_02088f48 = (void*)0x1234;
