@@ -2,11 +2,9 @@
 
 class Object: public Base {
 public:
-    void* spawnObject() {
+    void* spawnObject();
+    void* spawnScene();
 
-    }
-    void* spawnScene() {
-        
-    }
     void postCreate(u32);
+    ~Object();
 };
