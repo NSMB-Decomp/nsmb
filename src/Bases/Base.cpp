@@ -39,7 +39,7 @@ Base::Base()
   this->__3 = SpawnParam4;
 
   SceneGraph_addChild(&ProcessManager::ConnectTask, pl, SpawnParam2);
-  u32 id_index = ProcessManager::getIDIndex(pl);
+  u32 id_index = ProcessManager::getIDIndex(&this->process_link);
   LinkedList_Prepend(&ProcessManager::idLookupProcesses[id_index], &this->process_link.idLookup);
   ObjectProfile *profile = CurrentProfileTable[this->object_id];
 
@@ -170,7 +170,7 @@ bool Base::prepareResourcesFast(u32 a, u32 b)
   Heap *heap;
   void *z;
 
-  if (this->heap != NULL)
+  if (this->heap == NULL)
   {
     return true;
   }
