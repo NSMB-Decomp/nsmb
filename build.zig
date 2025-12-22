@@ -101,6 +101,9 @@ fn getSourceByDest(destination: []const u8) ![]u8 {
 
 // Signle
 fn compileFile(source_file: []const u8, destination_file: []const u8) !void {
+    const i = std.mem.lastIndexOf(u8, destination_file, &[_]u8{'/'}) orelse 0;
+    std.fs.cwd().makeDir(destination_file[0..i]) catch undefined;
+
     const command = .{
         "wine",
         "./build/compiler/mwccarm/1.2/sp3/mwccarm.exe",
