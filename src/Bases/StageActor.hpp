@@ -3,4 +3,5 @@
 class StageActor : Actor {
 public:
     StageActor();
+    ~StageActor();
 };

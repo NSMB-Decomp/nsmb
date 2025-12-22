@@ -800,7 +800,7 @@ data_ov000_020c4ed0 kind:data(any) addr:0x020c4ed0
 data_ov000_020c4ed4 kind:data(any) addr:0x020c4ed4
 data_ov000_020c4ed8 kind:data(any) addr:0x020c4ed8
 data_ov000_020c4ee0 kind:data(any) addr:0x020c4ee0
-_ZTV11StageEntity::vtable kind:data(any) addr:0x020c4f04
+_ZTV11StageEntity kind:data(any) addr:0x020c4f04
 data_ov000_020c5010 kind:data(any) addr:0x020c5010
 data_ov000_020c529c kind:data(any) addr:0x020c529c
 data_ov000_020c6c14 kind:data(any) addr:0x020c6c14

@@ -29,7 +29,7 @@ public:
     void linkPlayer(i32);
     u32 getActorCount(u8);
     Actor();
-    
+    ~Actor();
     
     // TODO: Do we need to define these as virtual?
     bool preDestroy();

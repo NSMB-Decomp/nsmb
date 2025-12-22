@@ -127,6 +127,7 @@ struct ActorProfile {
     void *constructor;
     u16 updatePriority;
     u16 renderPriority;
+    void *_unknownFunc;
 };
 
 // Class: Base
