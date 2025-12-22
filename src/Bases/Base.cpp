@@ -38,18 +38,18 @@ Base::Base()
   this->object_id = SpawnParam1;
   this->__3 = SpawnParam4;
 
-  SceneGraph_addChild(&ProcessManager::ConnectTask, &process_link, SpawnParam2);
-  u32 id_index = ProcessManager::getIDIndex(&process_link);
-  LinkedList_Prepend(&ProcessManager::idLookupProcesses[id_index], &process_link.idLookup);
+  SceneGraph_addChild(&ProcessManager::ConnectTask, pl, SpawnParam2);
+  u32 id_index = ProcessManager::getIDIndex(pl);
+  LinkedList_Prepend(&ProcessManager::idLookupProcesses[id_index], &this->process_link.idLookup);
   ObjectProfile *profile = CurrentProfileTable[this->object_id];
 
   u32 update_priority = profile->updatePriority;
-  update_node->currentPriority = update_priority;
-  update_node->sortPriority = update_priority;
+  this->process_link.update.currentPriority = update_priority;
+  this->process_link.update.sortPriority = update_priority;
 
   u32 render_priority = profile->renderPriority;
-  render_node->currentPriority = render_priority;
-  render_node->sortPriority = render_priority;
+  this->process_link.render.currentPriority = render_priority;
+  this->process_link.render.sortPriority = render_priority;
 
   Base *parent = this->getParent();
   if (parent != NULL)
