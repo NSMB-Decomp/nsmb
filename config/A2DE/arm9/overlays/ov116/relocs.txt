@@ -22,7 +22,7 @@ from:0x0218cc38 kind:arm_call to:0x020a11a8 module:overlay(0)
 from:0x0218cc48 kind:load to:0x0218efd4 module:overlay(116)
 from:0x0218cc4c kind:load to:0x020030d8 module:main
 from:0x0218cc5c kind:load to:0x020030a4 module:main
-from:0x0218cc60 kind:load to:0x020c4f04 module:overlay(0)
+from:0x0218cc60 kind:load to:0x020c4efc add:0x8 module:overlay(0)
 from:0x0218cc64 kind:load to:0x020391e8 module:main
 from:0x0218cc68 kind:load to:0x02039208 add:0x8 module:main
 from:0x0218cc90 kind:arm_call to:0x0207ff4c module:autoload(2)
@@ -35,7 +35,7 @@ from:0x0218cd20 kind:arm_call to:0x0204cc7c module:autoload(2)
 from:0x0218cd30 kind:load to:0x0218efd4 module:overlay(116)
 from:0x0218cd34 kind:load to:0x020030d8 module:main
 from:0x0218cd44 kind:load to:0x020030a4 module:main
-from:0x0218cd48 kind:load to:0x020c4f04 module:overlay(0)
+from:0x0218cd48 kind:load to:0x020c4efc add:0x8 module:overlay(0)
 from:0x0218cd4c kind:load to:0x020391e8 module:main
 from:0x0218cd50 kind:load to:0x02039208 add:0x8 module:main
 from:0x0218cd60 kind:arm_call to:0x01ff9010 module:itcm
@@ -92,7 +92,7 @@ from:0x0218d7dc kind:load to:0x0218f17c module:overlay(116)
 from:0x0218d7e0 kind:load to:0x020391f8 add:0x8 module:main
 from:0x0218d7e4 kind:load to:0x02039208 add:0x8 module:main
 from:0x0218d7e8 kind:load to:0x02019a10 module:main
-from:0x0218d7ec kind:load to:0x020c4f04 module:overlay(0)
+from:0x0218d7ec kind:load to:0x020c4efc add:0x8 module:overlay(0)
 from:0x0218d7f0 kind:load to:0x020391e8 module:main
 from:0x0218d834 kind:arm_call to:0x0207ff4c module:autoload(2)
 from:0x0218d86c kind:arm_call to:0x020a11a8 module:overlay(0)
@@ -101,7 +101,7 @@ from:0x0218d880 kind:load to:0x0218f17c module:overlay(116)
 from:0x0218d884 kind:load to:0x020391f8 add:0x8 module:main
 from:0x0218d888 kind:load to:0x02039208 add:0x8 module:main
 from:0x0218d88c kind:load to:0x02019a10 module:main
-from:0x0218d890 kind:load to:0x020c4f04 module:overlay(0)
+from:0x0218d890 kind:load to:0x020c4efc add:0x8 module:overlay(0)
 from:0x0218d894 kind:load to:0x020391e8 module:main
 from:0x0218d8f0 kind:arm_call to:0x0205a2d8 module:autoload(2)
 from:0x0218d900 kind:arm_call to:0x0205a2d8 module:autoload(2)

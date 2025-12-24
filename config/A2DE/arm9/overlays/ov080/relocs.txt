@@ -240,13 +240,13 @@ from:0x0217b914 kind:load to:0x02039208 add:0x8 module:main
 from:0x0217b95c kind:arm_call to:0x020a11a8 module:overlay(0)
 from:0x0217b968 kind:load to:0x0217d824 module:overlay(80)
 from:0x0217b96c kind:load to:0x02039208 add:0x8 module:main
-from:0x0217b970 kind:load to:0x020c4f04 module:overlay(0)
+from:0x0217b970 kind:load to:0x020c4efc add:0x8 module:overlay(0)
 from:0x0217b974 kind:load to:0x020391e8 module:main
 from:0x0217b9bc kind:arm_call to:0x020a11a8 module:overlay(0)
 from:0x0217b9c4 kind:arm_call to:0x0204cc7c module:autoload(2)
 from:0x0217b9d0 kind:load to:0x0217d824 module:overlay(80)
 from:0x0217b9d4 kind:load to:0x02039208 add:0x8 module:main
-from:0x0217b9d8 kind:load to:0x020c4f04 module:overlay(0)
+from:0x0217b9d8 kind:load to:0x020c4efc add:0x8 module:overlay(0)
 from:0x0217b9dc kind:load to:0x020391e8 module:main
 from:0x0217b9e8 kind:arm_call to:0x0217bec8 module:overlay(80)
 from:0x0217b9f0 kind:arm_call to:0x0217b9fc module:overlay(80)

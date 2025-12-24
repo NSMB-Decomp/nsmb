@@ -1,5 +1,5 @@
-StageEntity::func_ov000_020986e0 kind:function(arm,size=0x50) addr:0x020986e0
-StageEntity::func_ov000_02098730 kind:function(arm,size=0x58) addr:0x02098730
+_ZN11StageEntityD2Ev kind:function(arm,size=0x50) addr:0x020986e0
+_ZN11StageEntityD0Ev kind:function(arm,size=0x58) addr:0x02098730
 func_ov000_02098788 kind:function(arm,size=0x10) addr:0x02098788
 func_ov000_02098798 kind:function(arm,size=0x7c) addr:0x02098798
 func_ov000_02098814 kind:function(arm,size=0x98) addr:0x02098814
@@ -800,7 +800,7 @@ data_ov000_020c4ed0 kind:data(any) addr:0x020c4ed0
 data_ov000_020c4ed4 kind:data(any) addr:0x020c4ed4
 data_ov000_020c4ed8 kind:data(any) addr:0x020c4ed8
 data_ov000_020c4ee0 kind:data(any) addr:0x020c4ee0
-_ZTV11StageEntity kind:data(any) addr:0x020c4f04
+_ZTV11StageEntity kind:data(any) addr:0x020c4efc
 data_ov000_020c5010 kind:data(any) addr:0x020c5010
 data_ov000_020c529c kind:data(any) addr:0x020c529c
 data_ov000_020c6c14 kind:data(any) addr:0x020c6c14

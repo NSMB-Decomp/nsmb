@@ -118,7 +118,7 @@ from:0x0218d85c kind:load to:0x0218f564 module:overlay(123)
 from:0x0218d860 kind:load to:0x02039208 add:0x8 module:main
 from:0x0218d864 kind:load to:0x0218f678 module:overlay(123)
 from:0x0218d868 kind:load to:0x020391e8 module:main
-from:0x0218d86c kind:load to:0x020c4f04 module:overlay(0)
+from:0x0218d86c kind:load to:0x020c4efc add:0x8 module:overlay(0)
 from:0x0218d890 kind:arm_call to:0x020ab8b8 module:overlay(0)
 from:0x0218d8d4 kind:arm_call to:0x020a11a8 module:overlay(0)
 from:0x0218d8dc kind:arm_call to:0x0204cc7c module:autoload(2)
@@ -126,7 +126,7 @@ from:0x0218d8e8 kind:load to:0x0218f564 module:overlay(123)
 from:0x0218d8ec kind:load to:0x02039208 add:0x8 module:main
 from:0x0218d8f0 kind:load to:0x0218f678 module:overlay(123)
 from:0x0218d8f4 kind:load to:0x020391e8 module:main
-from:0x0218d8f8 kind:load to:0x020c4f04 module:overlay(0)
+from:0x0218d8f8 kind:load to:0x020c4efc add:0x8 module:overlay(0)
 from:0x0218d908 kind:arm_call to:0x020ab350 module:overlay(0)
 from:0x0218d990 kind:arm_call to:0x0200d578 module:main
 from:0x0218d9f0 kind:arm_call to:0x0200d578 module:main
@@ -257,13 +257,13 @@ from:0x0218f044 kind:load to:0x02039208 add:0x8 module:main
 from:0x0218f08c kind:arm_call to:0x020a11a8 module:overlay(0)
 from:0x0218f098 kind:load to:0x0218f678 module:overlay(123)
 from:0x0218f09c kind:load to:0x020391e8 module:main
-from:0x0218f0a0 kind:load to:0x020c4f04 module:overlay(0)
+from:0x0218f0a0 kind:load to:0x020c4efc add:0x8 module:overlay(0)
 from:0x0218f0a4 kind:load to:0x02039208 add:0x8 module:main
 from:0x0218f0ec kind:arm_call to:0x020a11a8 module:overlay(0)
 from:0x0218f0f4 kind:arm_call to:0x0204cc7c module:autoload(2)
 from:0x0218f100 kind:load to:0x0218f678 module:overlay(123)
 from:0x0218f104 kind:load to:0x020391e8 module:main
-from:0x0218f108 kind:load to:0x020c4f04 module:overlay(0)
+from:0x0218f108 kind:load to:0x020c4efc add:0x8 module:overlay(0)
 from:0x0218f10c kind:load to:0x02039208 add:0x8 module:main
 from:0x0218f22c kind:load to:0x0218f3a0 module:overlay(123)
 from:0x0218f230 kind:load to:0x0218f3e0 module:overlay(123)
