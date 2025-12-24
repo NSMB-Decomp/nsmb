@@ -63,14 +63,15 @@ enum ProcessType {
 };
 
 namespace ProcessManager {
-    u32 CurrentTask;
-    ProcessList CreateTask;
-    ProcessList ConnectTask;
-    ProcessList ExecuteTask;
-    ProcessList DrawTask;
-    ProcessList DestroyTask;
+    // TODO: Switch these from extern
+    extern u32 CurrentTask;
+    extern ProcessList CreateTask;
+    extern ProcessList ConnectTask;
+    extern ProcessList ExecuteTask;
+    extern ProcessList DrawTask;
+    extern ProcessList DestroyTask;
 
-    ProcessList idLookupProcesses[8];
+    extern ProcessList idLookupProcesses[8];
     u32 getIDIndex(ProcessLink*);
     Base* getNextObjectByObjectID(u8 class_id, Base* prev);
 }
