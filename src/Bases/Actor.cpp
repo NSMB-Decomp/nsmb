@@ -58,6 +58,7 @@ Actor::Actor() {
     this->velocitylimit.z = 0x8000;
     this->actorCategory = 0x80;
 }
+Actor::~Actor() {}
 bool Actor::preDestroy()
 {
     return Base::preDestroy() != false;

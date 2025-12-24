@@ -9,3 +9,5 @@ bool Coin::__00() {
 void Coin::__11() {}
 
 void Coin::__34() {}
+
+Coin::~Coin() {}
