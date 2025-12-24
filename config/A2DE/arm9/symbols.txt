@@ -1447,7 +1447,7 @@ data_02037450 kind:data(any) addr:0x02037450
 .p__sinit_02026148 kind:data(word) addr:0x020391c4
 .p__sinit_0202614c kind:data(word) addr:0x020391c8
 .p__sinit_02026244 kind:data(word) addr:0x020391cc
-Vec2_32::vtable kind:data(any) addr:0x020391e8
+_ZTV7Vec2_32 kind:data(any) addr:0x020391e0
 _ZTV7Vec3_16 kind:data(any) addr:0x020391f8
 _ZTV7Vec3_32 kind:data(any) addr:0x02039208
 data_02039210 kind:data(any) addr:0x02039210

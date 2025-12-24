@@ -5,7 +5,7 @@ from:0x02179a2c kind:arm_call to:0x020a11a8 module:overlay(0)
 from:0x02179a38 kind:load to:0x0217b728 module:overlay(81)
 from:0x02179a40 kind:load to:0x02039208 add:0x8 module:main
 from:0x02179a48 kind:load to:0x020c4efc add:0x8 module:overlay(0)
-from:0x02179a4c kind:load to:0x020391e8 module:main
+from:0x02179a4c kind:load to:0x020391e0 add:0x8 module:main
 from:0x02179a70 kind:arm_call to:0x020a484c module:overlay(0)
 from:0x02179a7c kind:arm_call to:0x02019a10 module:main
 from:0x02179a84 kind:arm_call to:0x02019624 module:main
@@ -14,7 +14,7 @@ from:0x02179ac4 kind:arm_call to:0x0204cc7c module:autoload(2)
 from:0x02179ad0 kind:load to:0x0217b728 module:overlay(81)
 from:0x02179ad8 kind:load to:0x02039208 add:0x8 module:main
 from:0x02179ae0 kind:load to:0x020c4efc add:0x8 module:overlay(0)
-from:0x02179ae4 kind:load to:0x020391e8 module:main
+from:0x02179ae4 kind:load to:0x020391e0 add:0x8 module:main
 from:0x02179b48 kind:arm_call to:0x0200ae9c module:main
 from:0x02179b64 kind:load to:0x02085a7c module:autoload(3)
 from:0x02179bd0 kind:arm_call to:0x020a0b64 module:overlay(0)
@@ -96,7 +96,7 @@ from:0x0217a410 kind:arm_call to:0x0201fe34 module:main
 from:0x0217a428 kind:arm_call to:0x0201feb8 module:main
 from:0x0217a464 kind:arm_call to:0x02012398 module:main
 from:0x0217a474 kind:arm_call to:0x02012398 module:main
-from:0x0217a48c kind:load to:0x020391e8 module:main
+from:0x0217a48c kind:load to:0x020391e0 add:0x8 module:main
 from:0x0217a4ac kind:arm_call to:0x0201972c module:main
 from:0x0217a4d0 kind:arm_call to:0x01ffbcac module:itcm
 from:0x0217a4dc kind:load to:0x0217b644 module:overlay(81)
@@ -130,7 +130,7 @@ from:0x0217a828 kind:arm_call to:0x020a11a8 module:overlay(0)
 from:0x0217a834 kind:load to:0x0217b8a4 module:overlay(81)
 from:0x0217a83c kind:load to:0x02039208 add:0x8 module:main
 from:0x0217a840 kind:load to:0x020c4efc add:0x8 module:overlay(0)
-from:0x0217a844 kind:load to:0x020391e8 module:main
+from:0x0217a844 kind:load to:0x020391e0 add:0x8 module:main
 from:0x0217a86c kind:arm_call to:0x020a484c module:overlay(0)
 from:0x0217a874 kind:arm_call to:0x02019624 module:main
 from:0x0217a8ac kind:arm_call to:0x020a11a8 module:overlay(0)
@@ -138,7 +138,7 @@ from:0x0217a8b4 kind:arm_call to:0x0204cc7c module:autoload(2)
 from:0x0217a8c0 kind:load to:0x0217b8a4 module:overlay(81)
 from:0x0217a8c8 kind:load to:0x02039208 add:0x8 module:main
 from:0x0217a8cc kind:load to:0x020c4efc add:0x8 module:overlay(0)
-from:0x0217a8d0 kind:load to:0x020391e8 module:main
+from:0x0217a8d0 kind:load to:0x020391e0 add:0x8 module:main
 from:0x0217a934 kind:arm_call to:0x0200ae9c module:main
 from:0x0217a950 kind:load to:0x02085a7c module:autoload(3)
 from:0x0217a978 kind:arm_call to:0x0209ab90 module:overlay(0)

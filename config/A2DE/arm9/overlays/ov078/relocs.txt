@@ -92,13 +92,13 @@ from:0x0217aa8c kind:arm_call to:0x020a11a8 module:overlay(0)
 from:0x0217aa98 kind:load to:0x0217b4d4 module:overlay(78)
 from:0x0217aa9c kind:load to:0x02039208 add:0x8 module:main
 from:0x0217aaa0 kind:load to:0x020c4efc add:0x8 module:overlay(0)
-from:0x0217aaa4 kind:load to:0x020391e8 module:main
+from:0x0217aaa4 kind:load to:0x020391e0 add:0x8 module:main
 from:0x0217aaec kind:arm_call to:0x020a11a8 module:overlay(0)
 from:0x0217aaf4 kind:arm_call to:0x0204cc7c module:autoload(2)
 from:0x0217ab00 kind:load to:0x0217b4d4 module:overlay(78)
 from:0x0217ab04 kind:load to:0x02039208 add:0x8 module:main
 from:0x0217ab08 kind:load to:0x020c4efc add:0x8 module:overlay(0)
-from:0x0217ab0c kind:load to:0x020391e8 module:main
+from:0x0217ab0c kind:load to:0x020391e0 add:0x8 module:main
 from:0x0217ab18 kind:arm_call to:0x0217b0d0 module:overlay(78)
 from:0x0217ab20 kind:arm_call to:0x0217afac module:overlay(78)
 from:0x0217ab28 kind:arm_call to:0x0217ab34 module:overlay(78)

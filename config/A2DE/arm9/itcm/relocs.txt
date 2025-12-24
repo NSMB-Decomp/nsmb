@@ -334,7 +334,7 @@ from:0x01ffef38 kind:load to:0x020c29d8 module:overlay(0)
 from:0x01ffef3c kind:load to:0x020c285c module:overlay(0)
 from:0x01ffef40 kind:load to:0x020c2860 module:overlay(0)
 from:0x01ffef44 kind:load to:0x020c2614 module:overlay(0)
-from:0x01ffef48 kind:load to:0x020391e8 module:main
+from:0x01ffef48 kind:load to:0x020391e0 add:0x8 module:main
 from:0x01ffefe8 kind:load to:0x020c26ac module:overlay(0)
 from:0x01ffefec kind:load to:0x020c26b0 module:overlay(0)
 from:0x01ffeff0 kind:load to:0x020c26b1 module:overlay(0)

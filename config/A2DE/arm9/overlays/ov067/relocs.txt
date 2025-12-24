@@ -48,7 +48,7 @@ from:0x0217610c kind:arm_call to:0x02019440 module:main
 from:0x02176118 kind:arm_call to:0x0201feb8 module:main
 from:0x0217613c kind:load to:0x02039208 add:0x8 module:main
 from:0x02176140 kind:load to:0x021766a0 module:overlay(67)
-from:0x02176144 kind:load to:0x020391e8 module:main
+from:0x02176144 kind:load to:0x020391e0 add:0x8 module:main
 from:0x02176148 kind:load to:0x021766c8 module:overlay(67)
 from:0x0217624c kind:arm_call to:0x02098814 module:overlay(0)
 from:0x02176280 kind:arm_call to:0x02043b6c module:autoload(2)

@@ -10,6 +10,15 @@ public:
     virtual ~Vec3_32();
 };
 
+class Vec2_32 {
+public:
+    i32 x;
+    i32 y;
+
+    //Vec3();
+    virtual ~Vec2_32();
+};
+
 class Vec3_16 {
 public:
     i16 x;

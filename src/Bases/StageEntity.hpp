@@ -2,6 +2,18 @@
 
 class StageEntity : StageActor {
 public:
+    u8 _pad1[0x4c];
+    Vec3_32 __1;
+    Vec3_32 __2;
+    Vec3_32 __3;
+    u8 _pad2[0x30];
+    Vec2_32 __4;
+    Vec2_32 __5;
+    Vec2_32 __6;
+    Vec2_32 __7;
+    Vec2_32 __8;
+    Vec2_32 __9;
+
     StageEntity();
     ~StageEntity();
 

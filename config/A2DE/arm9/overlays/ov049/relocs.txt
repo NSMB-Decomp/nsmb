@@ -31,7 +31,7 @@ from:0x02147264 kind:load to:0x02148004 module:overlay(49)
 from:0x0214726c kind:load to:0x020030e8 module:main
 from:0x02147270 kind:load to:0x021256bc module:overlays(10,130)
 from:0x02147274 kind:load to:0x020c4efc add:0x8 module:overlay(0)
-from:0x02147278 kind:load to:0x020391e8 module:main
+from:0x02147278 kind:load to:0x020391e0 add:0x8 module:main
 from:0x0214727c kind:load to:0x02039208 add:0x8 module:main
 from:0x02147298 kind:arm_call to:0x02018c1c module:main
 from:0x021472a4 kind:arm_call to:0x02018c1c module:main
@@ -42,7 +42,7 @@ from:0x02147310 kind:load to:0x02148004 module:overlay(49)
 from:0x02147318 kind:load to:0x020030e8 module:main
 from:0x0214731c kind:load to:0x021256bc module:overlays(10,130)
 from:0x02147320 kind:load to:0x020c4efc add:0x8 module:overlay(0)
-from:0x02147324 kind:load to:0x020391e8 module:main
+from:0x02147324 kind:load to:0x020391e0 add:0x8 module:main
 from:0x02147328 kind:load to:0x02039208 add:0x8 module:main
 from:0x02147334 kind:arm_call to:0x02147ce4 module:overlay(49)
 from:0x02147390 kind:arm_call to:0x0209adb0 module:overlay(0)
@@ -59,7 +59,7 @@ from:0x0214769c kind:arm_call to:0x02147da4 module:overlay(49)
 from:0x021476bc kind:arm_call to:0x02147da4 module:overlay(49)
 from:0x021476d0 kind:arm_call to:0x02147da4 module:overlay(49)
 from:0x021476e0 kind:load to:0x0208b720 module:autoload(3)
-from:0x021476f4 kind:load to:0x020391e8 module:main
+from:0x021476f4 kind:load to:0x020391e0 add:0x8 module:main
 from:0x021476fc kind:load to:0x02147f5c module:overlay(49)
 from:0x02147700 kind:load to:0x02147f90 module:overlay(49)
 from:0x02147704 kind:load to:0x020848dc module:autoload(2)
@@ -110,7 +110,7 @@ from:0x02147b30 kind:arm_call to:0x02022134 module:main
 from:0x02147b3c kind:arm_call to:0x02022134 module:main
 from:0x02147b50 kind:load to:0x02039208 add:0x8 module:main
 from:0x02147c7c kind:arm_call to:0x02147c94 module:overlay(49)
-from:0x02147c90 kind:load to:0x020391e8 module:main
+from:0x02147c90 kind:load to:0x020391e0 add:0x8 module:main
 from:0x02147cf0 kind:arm_call to:0x0201c01c module:main
 from:0x02147cf8 kind:arm_call to:0x0201c01c module:main
 from:0x02147d00 kind:arm_call to:0x0201c01c module:main
