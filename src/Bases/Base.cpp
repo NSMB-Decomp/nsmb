@@ -172,7 +172,7 @@ bool Base::prepareResourcesFast(u32 a, u32 b)
   Heap *heap;
   void *z;
 
-  if (this->heap == NULL)
+  if (this->heap != NULL)
   {
     return true;
   }
