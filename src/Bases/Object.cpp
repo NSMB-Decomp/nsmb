@@ -6,3 +6,5 @@ void Object::postCreate(u32 a) {
     }
     Base::postCreate(a);
 }
+
+Object::~Object() {}

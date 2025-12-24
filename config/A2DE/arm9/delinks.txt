@@ -14,7 +14,7 @@ src/init.cpp:
     .text       start:0x02004d90 end:0x02005098
 
 src/Bases/Object.cpp:
-    .text       start:0x02013168 end:0x020131d8
+    .text       start:0x0201311c end:0x020131d8
 
 src/Scenes/Scene.cpp:
     .data       start:0x0203bd38 end:0x0203bd88
