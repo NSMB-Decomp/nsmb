@@ -25,7 +25,7 @@ public:
   u8 _12; // 0x12
   SkipFlags skipFlags; //0x13
   ProcessLink process_link; //0x14
-  void* __50; // 0x54
+  void* _50; // 0x54
   void* heap; //0x58
 
   static Base* spawnParent(u16, u32, u8);
