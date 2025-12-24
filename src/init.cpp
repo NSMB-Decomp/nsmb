@@ -99,14 +99,14 @@ void StartGameLoop() {
   } while (true);
 }
 
+void (*func_020046c0)();
+u32* data_02094384;
+
 void InitNitroMainGame() {
-  // Temp values
-  void* a = (void*)0x020046c0; // arm9_mainCODE
-  void* b = (void*)0x02094384; // autoload_3.bss
-  Nitro::Tick_Init();
-  Nitro::Timer_Init();
+  Nitro::OS_InitTick();
+  Nitro::OS_InitAlarm();
   Nitro::MultiThread_Init();
-  Nitro::Exception_SetHandler(a, b);
+  Nitro::Exception_SetHandler(&func_020046c0, &data_02094384);
 }
 
 void InitMainGame() {
