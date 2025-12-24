@@ -75,7 +75,10 @@ bool StageEntity::_05() {
     return true;
 }
 bool StageEntity::_06() {}
-bool StageEntity::_07() {}
+bool StageEntity::_07() {
+    this->_11();
+    return true;
+}
 bool StageEntity::_08() {}
 bool StageEntity::_09() {}
 bool StageEntity::_10() {}

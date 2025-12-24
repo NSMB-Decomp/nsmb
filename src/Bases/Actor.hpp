@@ -6,7 +6,7 @@ class Actor: public Object {
 public:
     Vec3_32 position;
     Vec3_32 lastPosition;
-    Vec3_32 lastStep;
+    Vec3_32 lastStep; // 0x78
     Vec3_32 centerOffset;
     Vec3_16 rotation;
     Vec3_16 lastRotation;
@@ -14,17 +14,17 @@ public:
     i32 minVelH;
     i32 accelV;
     i32 minVelV;
-    i32 accelH; // 0xc4
-    u32 _c8; //0xc8
-    Vec3_32 velocity; // 0xca
+    i32 accelH; // 0xC4
+    u32 _c8; //0xC8
+    Vec3_32 velocity; // 0xCA
     Vec3_32 minVelocity;
     Vec3_32 scale;
     Vec3_32 acceleration;
     Vec3_32 velocitylimit;
-    u8 actorType; // 0x11c
+    u8 actorType; // 0x11C
     bool visible;
     u8 linked_player;
-    u8 actorCategory; //0x11f
+    u8 actorCategory; //0x11F
 
     void linkPlayer(i32);
     u32 getActorCount(u8);
