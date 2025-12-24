@@ -5,6 +5,11 @@ public:
     StageEntity();
     ~StageEntity();
 
+    bool onUpdate();
+    bool preUpdate();
+    void postUpdate();
+    bool preRender();
+
     virtual bool __00();
     virtual void __01();
     virtual void __02();
