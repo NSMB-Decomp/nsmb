@@ -6,9 +6,10 @@
 #include "Heap.hpp"
 
 struct ObjectProfile {
-    Base* (*constructor)() ;
+    Base* (*constructor)();
     u16 updatePriority;
     u16 renderPriority;
+    void* _8;
 };
 
 extern ObjectProfile** CurrentProfileTable;

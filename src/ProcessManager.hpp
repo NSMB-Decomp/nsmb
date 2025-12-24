@@ -35,7 +35,7 @@ public:
 class ProcessLink
 {
 public:
-    SceneNode connect;
+    SceneNode connect; // 0x00
     PriorityNode update;
     PriorityNode render;
     ProcessNode idLookup;
