@@ -67,5 +67,5 @@ bool StageEntity::_01() {
 }
 
 bool StageEntity::_02() {
-
+    return true;
 }
