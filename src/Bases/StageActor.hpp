@@ -29,4 +29,6 @@ public:
 
     StageActor();
     ~StageActor();
+    bool preUpdate();
+    void postUpdate();
 };
