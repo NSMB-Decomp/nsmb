@@ -69,3 +69,13 @@ bool StageEntity::_01() {
 bool StageEntity::_02() {
     return true;
 }
+bool StageEntity::_03() {}
+bool StageEntity::_04() {}
+bool StageEntity::_05() {
+    return true;
+}
+bool StageEntity::_06() {}
+bool StageEntity::_07() {}
+bool StageEntity::_08() {}
+bool StageEntity::_09() {}
+bool StageEntity::_10() {}
