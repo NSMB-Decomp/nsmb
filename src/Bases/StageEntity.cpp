@@ -82,3 +82,4 @@ bool StageEntity::_07() {
 bool StageEntity::_08() {}
 bool StageEntity::_09() {}
 bool StageEntity::_10() {}
+void StageEntity::_11() {}
