@@ -30,34 +30,42 @@ StageEntity::~StageEntity() {
     
 }
 
-bool StageEntity::__00() {
+bool StageEntity::_00() {
     return true;
 }
 
 bool StageEntity::onUpdate() {
-    this->__20();
+    this->_20();
     i32 state = this->_340;
     if (state == 0) {
-        return this->__00();
+        return this->_00();
     }if (state == 1) {
-        return this->__02();
+        return this->_02();
     }if (state == 2) {
-        return this->__03();
+        return this->_03();
     }if (state == 3) {
-        return this->__04();
+        return this->_04();
     }if (state == 4) {
-        return this->__05();
+        return this->_05();
     }if (state == 5) {
-        return this->__06();
+        return this->_06();
     }if (state == 6) {
-        return this->__07();
+        return this->_07();
     }if (state == 7) {
-        return this->__08();
+        return this->_08();
     }if (state == 8) {
-        return this->__09();
+        return this->_09();
     }if (state == 9) {
-        return this->__10();
+        return this->_10();
     }
     this->_340 = 0;
-    return this->__00();
+    return this->_00();
+}
+
+bool StageEntity::_01() {
+
+}
+
+bool StageEntity::_02() {
+
 }
