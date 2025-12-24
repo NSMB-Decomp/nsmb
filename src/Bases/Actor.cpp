@@ -2,34 +2,27 @@
 
 Vec3_32 *data_ov000_020ca85c;
 Vec3_16 *data_ov000_020ca860;
+i32 *data_ov000_020ca868;
+i8 *data_ov000_020ca864;
 
 Actor::Actor() {
-    i32 *piRam020ca868 = (i32*)0x020ca868;
-    i32 *pcRam020ca864 = (i32*)0x020ca864;
+
     // Set Position
     if (data_ov000_020ca85c != NULL) {
-        this->position.x = data_ov000_020ca85c->x;
-        this->position.y = data_ov000_020ca85c->y;
-        this->position.z = data_ov000_020ca85c->z;
-        this->lastPosition.x = data_ov000_020ca85c->x;
-        this->lastPosition.y = data_ov000_020ca85c->y;
-        this->lastPosition.z = data_ov000_020ca85c->z;
+        this->position = *data_ov000_020ca85c;
+        this->lastPosition = *data_ov000_020ca85c;
         this->lastStep.x = 0;
         this->lastStep.y = 0;
         this->lastStep.z = 0;
     }
     // Set Rotation
     if (data_ov000_020ca860 != NULL) {
-        this->rotation.x = data_ov000_020ca860->x;
-        this->rotation.y = data_ov000_020ca860->y;
-        this->rotation.z = data_ov000_020ca860->z;
-        this->lastRotation.x = data_ov000_020ca860->x;
-        this->lastRotation.y = data_ov000_020ca860->y;
-        this->lastRotation.z = data_ov000_020ca860->z;
+        this->rotation = *data_ov000_020ca860;
+        this->lastRotation = *data_ov000_020ca860;
     }
     // Set Scale
-    if (piRam020ca868 != NULL) {
-        i32 a = *piRam020ca868;
+    if (data_ov000_020ca868 != NULL) {
+        i32 a = *data_ov000_020ca868;
         this->scale.x = a;
         this->scale.y = a;
         this->scale.z = a;
@@ -39,8 +32,8 @@ Actor::Actor() {
         this->scale.z = 0x1000;
     }
     // Set Linked Player 
-    if ( *pcRam020ca864 != 0x0) {
-        this->linkPlayer(*pcRam020ca864);
+    if ( data_ov000_020ca864 != 0x0) {
+        this->linkPlayer(*data_ov000_020ca864);
     }
     else {
         this->linkPlayer(-1);
