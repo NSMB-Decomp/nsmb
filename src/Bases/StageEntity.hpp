@@ -7,7 +7,9 @@ public:
     u8 _pad1[0x38];
     Vec3_32 _30c; // 0x30c
     Vec3_32 _31c; // 0x31c
-    u8 _pad2[0x30];
+    u8 _pad2[0x14];
+    i32 _340; // 0x340
+    u8 _pad6[0x18];
     Vec3_32 _35c; // 0x35c
     Vec2_32 _36c; // 0x36c
     Vec2_32 _378; // 0x378
@@ -31,16 +33,16 @@ public:
     bool preRender();
 
     virtual bool __00();
-    virtual void __01();
-    virtual void __02();
-    virtual void __03();
-    virtual void __04();
-    virtual void __05();
-    virtual void __06();
-    virtual void __07();
-    virtual void __08();
-    virtual void __09();
-    virtual void __10();
+    virtual bool __01();
+    virtual bool __02();
+    virtual bool __03();
+    virtual bool __04();
+    virtual bool __05();
+    virtual bool __06();
+    virtual bool __07();
+    virtual bool __08();
+    virtual bool __09();
+    virtual bool __10();
     virtual void __11();
     virtual void __12();
     virtual void __13();

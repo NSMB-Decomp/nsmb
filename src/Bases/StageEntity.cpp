@@ -33,3 +33,31 @@ StageEntity::~StageEntity() {
 bool StageEntity::__00() {
     return true;
 }
+
+bool StageEntity::onUpdate() {
+    this->__20();
+    i32 state = this->_340;
+    if (state == 0) {
+        return this->__00();
+    }if (state == 1) {
+        return this->__02();
+    }if (state == 2) {
+        return this->__03();
+    }if (state == 3) {
+        return this->__04();
+    }if (state == 4) {
+        return this->__05();
+    }if (state == 5) {
+        return this->__06();
+    }if (state == 6) {
+        return this->__07();
+    }if (state == 7) {
+        return this->__08();
+    }if (state == 8) {
+        return this->__09();
+    }if (state == 9) {
+        return this->__10();
+    }
+    this->_340 = 0;
+    return this->__00();
+}
