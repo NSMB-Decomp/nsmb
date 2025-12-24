@@ -1,18 +1,23 @@
 #include "StageActor.hpp"
 
-class StageEntity : StageActor {
+class StageEntity : public StageActor {
 public:
-    u8 _pad1[0x4c];
-    Vec3_32 __1;
-    Vec3_32 __2;
-    Vec3_32 __3;
+    u8 _pad0[0x10];
+    u32 _2d0; // 0x2d0
+    u8 _pad1[0x38];
+    Vec3_32 _30c; // 0x30c
+    Vec3_32 _31c; // 0x31c
     u8 _pad2[0x30];
-    Vec2_32 __4;
-    Vec2_32 __5;
-    Vec2_32 __6;
-    Vec2_32 __7;
-    Vec2_32 __8;
-    Vec2_32 __9;
+    Vec3_32 _35c; // 0x35c
+    Vec2_32 _36c; // 0x36c
+    Vec2_32 _378; // 0x378
+    Vec2_32 _384; // 0x384
+    Vec2_32 _390; // 0x390
+    Vec2_32 _39c; // 0x39c
+    u8 _pad3[0xc];
+    u32 _3b4;
+    u8 _pad4[0x2f];
+    u8 _3e7; //0x3e7
 
     StageEntity();
     ~StageEntity();

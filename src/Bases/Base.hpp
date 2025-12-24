@@ -15,18 +15,18 @@ public:
     Render = 8
   };
 
-  u32 guid;
-  u32 settings;
-  u16 object_id;
-  State state;
-  bool pending_destroy;
-  u8 pending_update;
-  u8 pending_create;
-  u8 __3;
-  SkipFlags skipFlags;
-  ProcessLink process_link;
-  void* __5;
-  void* heap;
+  u32 guid; // 0x04
+  u32 settings; // 0x08
+  u16 object_id; // 0x0c
+  State state; // 0x0e
+  bool pending_destroy; // 0x0f
+  bool pending_update; // 0x10
+  bool pending_create; // 0x11
+  u8 _12; // 0x12
+  SkipFlags skipFlags; //0x13
+  ProcessLink process_link; //0x14
+  void* __50; // 0x54
+  void* heap; //0x58
 
   static Base* spawnParent(u16, u32, u8);
   static Base* spawnChild(u16, Base*, u32, u8);

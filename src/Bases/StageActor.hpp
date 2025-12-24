@@ -31,7 +31,7 @@ public:
     ~CollisionManager();
 };
 
-class StageActor : Actor {
+class StageActor : public Actor {
 public:
     ActiveCollider active_collider;
     CollisionManager collision_manager;

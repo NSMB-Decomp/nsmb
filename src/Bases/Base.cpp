@@ -36,7 +36,7 @@ Base::Base()
   data_02085224 += 1;
   this->settings = SpawnParam3;
   this->object_id = SpawnParam1;
-  this->__3 = SpawnParam4;
+  this->_12 = SpawnParam4;
 
   SceneGraph_addChild(&ProcessManager::ConnectTask, pl, SpawnParam2);
   u32 id_index = ProcessManager::getIDIndex(&this->process_link);

@@ -21,10 +21,10 @@ public:
     Vec3_32 scale;
     Vec3_32 acceleration;
     Vec3_32 velocitylimit;
-    u8 actorType;
+    u8 actorType; // 0x11c
     bool visible;
     u8 linked_player;
-    u8 actorCategory;
+    u8 actorCategory; //0x11f
 
     void linkPlayer(i32);
     u32 getActorCount(u8);
