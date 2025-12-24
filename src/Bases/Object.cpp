@@ -7,4 +7,6 @@ void Object::postCreate(u32 a) {
     Base::postCreate(a);
 }
 
+void Object::__stub() {}
+
 Object::~Object() {}

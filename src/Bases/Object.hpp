@@ -4,6 +4,7 @@ class Object: public Base {
 public:
     void* spawnObject();
     void* spawnScene();
+    void __stub();
 
     void postCreate(u32);
     ~Object();
