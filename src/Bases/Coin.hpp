@@ -5,8 +5,14 @@ public:
     Coin();
     ~Coin();
 
-    bool __00();
-    void __11();
-    void __21();
-    void __34();
+    void* operator new(u32);
+
+    bool onCreate();
+    bool onDestroy();
+    bool onRender();
+
+    bool _00();
+    void _11();
+    void _21();
+    void _34();
 };

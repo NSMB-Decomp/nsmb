@@ -1,13 +1,17 @@
 #include "Coin.hpp"
 
-void Coin::__21() {}
+void* Coin::operator new(u32 a) {
 
-bool Coin::__00() {
+}
+
+void Coin::_21() {}
+
+bool Coin::_00() {
     return true;
 }
 
-void Coin::__11() {}
+void Coin::_11() {}
 
-void Coin::__34() {}
+void Coin::_34() {}
 
 Coin::~Coin() {}
