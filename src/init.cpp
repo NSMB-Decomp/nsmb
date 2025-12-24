@@ -19,7 +19,7 @@ void InitGame() {
   Nitro::func_01ffa5ec(1, ime);
   Nitro::func_02060e38(1);
   bool is_multiboot_cart = Wifi_isMultiBootCart();
-  Nitro::Math::__stub();
+  Nitro::Math__stub();
   setupGraphicsForDebugScreen();
   Nitro::func_0206d554();
   Save_setupBackup(0xd01, GAME_NAME);
@@ -80,8 +80,8 @@ void StartGameLoop() {
     doFadingTransition();
     TouchPad_update();
     Input_update();
-    Nitro::Graphics::ResetOAM();
-    bool rendered_frame = Nitro::Graphics::Step();
+    Nitro::Graphics_ResetOAM();
+    bool rendered_frame = Nitro::Graphics_Step();
     if (rendered_frame) {
       Scene_tryChangeScene();
       ProcessManager_ExecuteTasks();
@@ -89,7 +89,7 @@ void StartGameLoop() {
     }
     FrameCounter += 1;
     Nitro::func_01ff9010();
-    Nitro::Graphics::SwapBuffer(data_02085a78, data_02085a74);
+    Nitro::Graphics_SwapBuffer(data_02085a78, data_02085a74);
     Wifi_updatePackets();
     System_waitForVBlank();
     Wifi_update();
@@ -103,10 +103,10 @@ void InitNitroMainGame() {
   // Temp values
   void* a = (void*)0x020046c0; // arm9_mainCODE
   void* b = (void*)0x02094384; // autoload_3.bss
-  Nitro::Tick::Init();
-  Nitro::Timer::Init();
-  Nitro::MultiThread::Init();
-  Nitro::Exception::SetHandler(a, b);
+  Nitro::Tick_Init();
+  Nitro::Timer_Init();
+  Nitro::MultiThread_Init();
+  Nitro::Exception_SetHandler(a, b);
 }
 
 void InitMainGame() {

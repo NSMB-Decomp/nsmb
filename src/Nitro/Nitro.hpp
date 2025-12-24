@@ -1,36 +1,18 @@
 #include "../base_types.hpp"
 
 // TODO: Seperate out files.
-namespace Nitro
-{
-    namespace Tick
-    {
-        void Init();
+namespace Nitro {
+    void Tick_Init();
+    void Timer_Init();
+    void MultiThread_Init();
+    void Exception_SetHandler(void*, void*);
+    void Graphics_ResetOAM();
+    bool Graphics_Step();
+    inline void Graphics_SwapBuffer(u32 a, u32 b) {
+        u32 *GFX_FIFO_SWAP_BUFFERS = (u32 *)0x04000540;
+        *GFX_FIFO_SWAP_BUFFERS = (a << 1) | b;
     }
-    namespace Timer
-    {
-        void Init();
-    }
-    namespace MultiThread
-    {
-        void Init();
-    }
-    namespace Exception
-    {
-        void SetHandler(void*, void*);
-    }
-    namespace Graphics
-    {
-        void ResetOAM();
-        bool Step();
-        inline void SwapBuffer(u32 a, u32 b) {
-            u32 *GFX_FIFO_SWAP_BUFFERS = (u32 *)0x04000540;
-            *GFX_FIFO_SWAP_BUFFERS = (a << 1) | b;
-        }
-    }
-    namespace Math {
-        void __stub();
-    }
+    void Math__stub();
     void func_02061588(u32);
     void EnableDisplay();
     void func_01ff8128(u32);
