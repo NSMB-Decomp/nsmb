@@ -62,8 +62,19 @@ bool StageEntity::onUpdate() {
     return this->_00();
 }
 
+bool (func_0200ae9c)(Vec3_32*);
 bool StageEntity::_01() {
-
+    if (this->_3e9 != 0) {
+        return false;
+    }
+    if (this->_340 != 5) {
+        i32 a = this->_384.x << 0xc;
+        i32 b = this->_384.y << 0xc;
+        i32 c = this->_378.x;
+        i32 d = this->_378.y;
+        return func_0200ae9c(&this->position);
+    }
+    return false;
 }
 
 bool StageEntity::_02() {
