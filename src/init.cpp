@@ -125,19 +125,18 @@ void SharedGameInit() {
 }
 
 void initExtendedIds() {
-  u32 overlay_id = 1; // This need to be a pooled at the bottom
+  u32 overlay_id = OverlayId_Secondd; // This need to be a pooled at the bottom
   FS_Overlays_loadOverlay(overlay_id);
   func_ov001_020cceb4();
   FS_Overlays_unload(overlay_id);
 }
 
 void sceneBaseInit() {
-  u32 overlay_id = 0; // This need to be a pooled at the bottom
   bool a = Wifi_isMultiBootCart();
   if (a != false) {
     func_020125e8();
   }
-  FS_Overlays_loadOverlay(overlay_id);
+  FS_Overlays_loadOverlay(OverlayId_Second);
   initExtendedIds();
   func_0200a0b4();
   data_0203981c = func_020050ec;
