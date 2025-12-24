@@ -12,11 +12,11 @@ public:
     Vec3_16 lastRotation;
     i32 velH; // TODO: These names are awful, fix them D:<.
     i32 minVelH;
-    i32 accelH;
     i32 accelV;
     i32 minVelV;
-    u32 __unknown;
-    Vec3_32 velocity;
+    i32 accelH; // 0xc4
+    u32 _c8; //0xc8
+    Vec3_32 velocity; // 0xca
     Vec3_32 minVelocity;
     Vec3_32 scale;
     Vec3_32 acceleration;

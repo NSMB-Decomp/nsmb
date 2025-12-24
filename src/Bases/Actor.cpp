@@ -1,30 +1,31 @@
 #include "Actor.hpp"
 
+Vec3_32 *data_ov000_020ca85c;
+Vec3_16 *data_ov000_020ca860;
+
 Actor::Actor() {
-    Vec3_32 *iRam020ca85c = (Vec3_32*)0x020ca85c;
-    Vec3_16 *iRam020ca860 = (Vec3_16*)0x020ca85c;
     i32 *piRam020ca868 = (i32*)0x020ca868;
     i32 *pcRam020ca864 = (i32*)0x020ca864;
     // Set Position
-    if (iRam020ca85c != NULL) {
-        this->position.x = iRam020ca85c->x;
-        this->position.y = iRam020ca85c->y;
-        this->position.z = iRam020ca85c->z;
-        this->lastPosition.x = iRam020ca85c->x;
-        this->lastPosition.y = iRam020ca85c->y;
-        this->lastPosition.z = iRam020ca85c->z;
+    if (data_ov000_020ca85c != NULL) {
+        this->position.x = data_ov000_020ca85c->x;
+        this->position.y = data_ov000_020ca85c->y;
+        this->position.z = data_ov000_020ca85c->z;
+        this->lastPosition.x = data_ov000_020ca85c->x;
+        this->lastPosition.y = data_ov000_020ca85c->y;
+        this->lastPosition.z = data_ov000_020ca85c->z;
         this->lastStep.x = 0;
         this->lastStep.y = 0;
         this->lastStep.z = 0;
     }
     // Set Rotation
-    if (iRam020ca860 != NULL) {
-        this->rotation.x = iRam020ca860->x;
-        this->rotation.y = iRam020ca860->y;
-        this->rotation.z = iRam020ca860->z;
-        this->lastRotation.x = iRam020ca860->x;
-        this->lastRotation.y = iRam020ca860->y;
-        this->lastRotation.z = iRam020ca860->z;
+    if (data_ov000_020ca860 != NULL) {
+        this->rotation.x = data_ov000_020ca860->x;
+        this->rotation.y = data_ov000_020ca860->y;
+        this->rotation.z = data_ov000_020ca860->z;
+        this->lastRotation.x = data_ov000_020ca860->x;
+        this->lastRotation.y = data_ov000_020ca860->y;
+        this->lastRotation.z = data_ov000_020ca860->z;
     }
     // Set Scale
     if (piRam020ca868 != NULL) {

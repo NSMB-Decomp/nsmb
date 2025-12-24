@@ -14,10 +14,13 @@ public:
     Vec2_32 _384; // 0x384
     Vec2_32 _390; // 0x390
     Vec2_32 _39c; // 0x39c
-    u8 _pad3[0xc];
-    u32 _3b4;
-    u8 _pad4[0x2f];
-    u8 _3e7; //0x3e7
+    u32 _3a8; // 0x3a8
+    u8 _pad3[0x8];
+    u32 _3b4; // 0x3b4
+    u8 Pad5[0x20];
+    u32 _3d8; // 0x3d8
+    u8 _pad4[0xb];
+    i8 _3e7; //0x3e7
 
     StageEntity();
     ~StageEntity();
