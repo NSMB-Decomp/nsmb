@@ -1,5 +1,6 @@
 #include "StageEntity.hpp"
 
+bool (func_0201f000)(Vec3_32*);
 StageEntity::StageEntity() {
     //this->_40 = 0x2;
     this->actorType = 0x2;
@@ -23,7 +24,19 @@ StageEntity::StageEntity() {
     this->_31c.x = 0;
     this->_31c.y = 0;
     this->_31c.z = 0;
-    this->velocity.x = 0;
+    this->_2ca = 0;
+    this->_3c6 = 0;
+    this->_3c8 = 0;
+    this->_3d2 = 0;
+    this->_3e8 = 0;
+    this->_3ea = 0;
+    this->_3e4 = 0;
+    this->_3eb = 0;
+    this->_358 = 0;
+    this->_3ec = 0;
+    this->_2c4 = 0;
+    this->_34c = 0x6e;
+    func_0201f000(&this->position);
 }
 
 StageEntity::~StageEntity() {

@@ -26,9 +26,11 @@ public:
 
 class CollisionManager {
 public:
-    u8 padding[0x23];
+    u8 _pad1[0x23];
     void *__1;
-    u8 padding2[0x90];
+    u8 _pad2[0x8];
+    CollisionManager *__2;
+    u8 padding3[0x84];
 
     CollisionManager();
     ~CollisionManager();

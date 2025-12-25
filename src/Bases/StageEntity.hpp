@@ -2,14 +2,21 @@
 
 class StageEntity : public StageActor {
 public:
-    u8 _pad0[0x10];
+    u8 _pad0[0x04]; // 0x2C0
+    u8 _2c4; //0x2C4
+    u8 _pad13[0x05]; // 0x2C0
+    u16 _2ca; // 0x2CA
+    u8 _pad9[0x2];
     u32 _2d0; // 0x2D0
     u8 _pad1[0x38];
     Vec3_32 _30c; // 0x30C
     Vec3_32 _31c; // 0x31C
     u8 _pad2[0x14];
     i32 _340; // 0x340
-    u8 _pad6[0x18];
+    u8 _pad14[0x8];
+    u32 _34c; //0x34C
+    u8 _pad6[0x8];
+    u32 _358; //0x358
     Vec3_32 _35c; // 0x35C
     Vec2_32 _36c; // 0x36C
     Vec2_32 _378; // 0x378
@@ -19,14 +26,22 @@ public:
     u32 _3a8; // 0x3A8
     u8 _pad3[0x8];
     u32 _3b4; // 0x3B4
-    u8 Pad5[0x20];
+    u8 _pad11[0xe];
+    u16 _3c6; // 0x3C6
+    u16 _3c8; // 0x3CA
+    u8 pad12[0x8];
+    u8 _3d2; // 0x3D2
+    u8 Pad5[0x5];
     u32 _3d8; // 0x3D8
     u8 _pad4[0x8];
     u8 _3e4; // 0x3E4
     u8 _pad8[2];
     i8 _3e7; //0x3E7
-    u8 _pad7[0x1];
+    u8 _3e8; // 0x3E8
     u8 _3e9; //0x3E9
+    u8 _3ea; //0x3EA
+    u8 _3eb; //0x3EB
+    u8 _3ec; //0x3EC
 
     StageEntity();
     ~StageEntity();
