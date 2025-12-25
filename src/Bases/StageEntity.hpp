@@ -15,7 +15,8 @@ public:
     i32 _340; // 0x340
     u8 _pad14[0x8];
     u32 _34c; //0x34C
-    u8 _pad6[0x8];
+    i32 _350; // 0x350
+    u8 _pad6[0x4];
     u32 _358; //0x358
     Vec3_32 _35c; // 0x35C
     Vec2_32 _36c; // 0x36C
@@ -29,11 +30,16 @@ public:
     u8 _pad11[0xe];
     u16 _3c6; // 0x3C6
     u16 _3c8; // 0x3CA
-    u8 pad12[0x8];
+    u8 pad12[0x6];
+    u8 _3d0; //0x3D0
+    u8 _pad15[0x1];
     u8 _3d2; // 0x3D2
     u8 Pad5[0x5];
     u32 _3d8; // 0x3D8
-    u8 _pad4[0x8];
+    u8 _pad4[0x2];
+    u8 _3de; // 0x3DE
+    u8 _3df; // 0x3DF
+    u8 _pad16[0x4];
     u8 _3e4; // 0x3E4
     u8 _pad8[2];
     i8 _3e7; //0x3E7
@@ -42,6 +48,11 @@ public:
     u8 _3ea; //0x3EA
     u8 _3eb; //0x3EB
     u8 _3ec; //0x3EC
+    u8 _3ed; //0x3ED
+    u8 _3ee; //0x3EE
+    u8 _3ef; //0x3EF
+    u8 _3f0; //0x3F0
+    u8 _3f1; //0x3F1
 
     StageEntity();
     ~StageEntity();

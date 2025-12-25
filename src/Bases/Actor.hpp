@@ -23,7 +23,7 @@ public:
     Vec3_32 velocitylimit;
     u8 actorType; // 0x11C
     bool visible;
-    u8 linked_player;
+    i8 linked_player;
     u8 actorCategory; //0x11F
 
     void linkPlayer(i32);

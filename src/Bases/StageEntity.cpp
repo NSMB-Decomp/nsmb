@@ -36,7 +36,15 @@ StageEntity::StageEntity() {
     this->_3ec = 0;
     this->_2c4 = 0;
     this->_34c = 0x6e;
-    func_0201f000(&this->position);
+    this->__4 = func_0201f000(&this->position);
+    this->_3ed = 0;
+    this->_3ef = 0;
+    this->linked_player = ~0;
+    this->_3df = 0;
+    this->_3d0 = 0;
+    this->_3de = 0;
+    this->_350 = 1;
+    this->_3f1 = 0;
 }
 
 StageEntity::~StageEntity() {
