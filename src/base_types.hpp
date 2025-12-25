@@ -14,5 +14,5 @@ typedef void* unknown_pointer;
 EXTERN_OVERLAY_ID(0);
 EXTERN_OVERLAY_ID(1);
 
-#define OverlayId_Second OVERLAY_ID(0)
-#define OverlayId_Secondd OVERLAY_ID(1)
+#define OVERLAY_MISC OVERLAY_ID(0)
+#define OVERLAY_BOOT OVERLAY_ID(1)

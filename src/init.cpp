@@ -18,14 +18,14 @@ void InitGame() {
   *REG_IME = 1;
   Nitro::func_01ffa5ec(1, ime);
   Nitro::func_02060e38(1);
-  bool is_multiboot_cart = Wifi_isMultiBootCart();
+  bool is_multiboot_cart = Nitro::Wifi_isMultiBootCart();
   Nitro::Math__stub();
   setupGraphicsForDebugScreen();
   Nitro::func_0206d554();
   Save_setupBackup(0xd01, GAME_NAME);
   Save_clearLoadedSaves();
-  FS_init();
-  FS_Archive_loadMainGameArchives();
+  Nitro::FS_init();
+  Nitro::FS_Archive_loadMainGameArchives();
   if (is_multiboot_cart != false) {
     Nitro::func_01ff80e0(0x100000);
   } 
@@ -125,18 +125,18 @@ void SharedGameInit() {
 }
 
 void initExtendedIds() {
-  u32 overlay_id = OverlayId_Secondd; // This need to be a pooled at the bottom
-  FS_Overlays_loadOverlay(overlay_id);
+  u32 overlay_id = OVERLAY_BOOT;
+  Nitro::FS_Overlays_loadOverlay(overlay_id);
   func_ov001_020cceb4();
-  FS_Overlays_unload(overlay_id);
+  Nitro::FS_Overlays_unload(overlay_id);
 }
 
 void sceneBaseInit() {
-  bool a = Wifi_isMultiBootCart();
-  if (a != false) {
+  u32 overlay_id = OVERLAY_MISC;
+  if (Nitro::Wifi_isMultiBootCart() != false) {
     func_020125e8();
   }
-  FS_Overlays_loadOverlay(OverlayId_Second);
+  Nitro::FS_Overlays_loadOverlay(overlay_id);
   initExtendedIds();
   func_0200a0b4();
   data_0203981c = func_020050ec;

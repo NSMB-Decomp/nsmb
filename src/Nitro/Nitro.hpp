@@ -126,4 +126,9 @@ namespace Nitro {
     void func_01ff9010();
     void func_01ff80e0(u32);
     void func_01ff9010();
+    void FS_init();
+    bool Wifi_isMultiBootCart();
+    void FS_Overlays_loadOverlay(u32);
+    void FS_Overlays_unload(u32);
+    void FS_Archive_loadMainGameArchives();
 }
