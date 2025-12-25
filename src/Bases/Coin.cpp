@@ -68,4 +68,8 @@ void Coin::func_ov010_020d81dc(u32 a) {
     }
 }
 
+void Coin::func_ov010_020d823c(u32 a) {
+    this->_3f4 = a;
+}
+
 Coin::~Coin() {}
