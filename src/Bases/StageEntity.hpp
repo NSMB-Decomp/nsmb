@@ -21,7 +21,9 @@ public:
     u32 _3b4; // 0x3B4
     u8 Pad5[0x20];
     u32 _3d8; // 0x3D8
-    u8 _pad4[0xb];
+    u8 _pad4[0x8];
+    u8 _3e4; // 0x3E4
+    u8 _pad8[2];
     i8 _3e7; //0x3E7
     u8 _pad7[0x1];
     u8 _3e9; //0x3E9

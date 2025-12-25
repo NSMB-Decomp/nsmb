@@ -2,6 +2,11 @@
 
 class Coin : StageEntity {
 public:
+    u8 _pad0[0x55];
+    i32 _444;
+    u8 _pad1[0x7c];
+    u32 _4c0;
+
     Coin();
     ~Coin();
 
