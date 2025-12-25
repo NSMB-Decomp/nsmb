@@ -6,7 +6,6 @@ i32 *data_ov000_020ca868;
 i8 *data_ov000_020ca864;
 
 Actor::Actor() {
-
     // Set Position
     if (data_ov000_020ca85c != NULL) {
         this->position = *data_ov000_020ca85c;

@@ -8,5 +8,3 @@ void Object::postCreate(u32 a) {
 }
 
 void Object::__stub() {}
-
-Object::~Object() {}

@@ -7,5 +7,6 @@ public:
     void __stub();
 
     void postCreate(u32);
-    ~Object();
+    inline ~Object();
 };
+Object::~Object() {}

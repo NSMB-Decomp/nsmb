@@ -30,3 +30,4 @@ public:
     //Vec3s();
     virtual inline ~Vec3_16();
 };
+Vec3_16::~Vec3_16() {}
