@@ -72,4 +72,8 @@ void Coin::func_ov010_020d823c(u32 a) {
     this->_3f4 = a;
 }
 
+bool Coin::onDestroy() {
+    return true;
+}
+
 Coin::~Coin() {}

@@ -6,7 +6,7 @@
     .bss        start:0x020ca280 end:0x020cc2e0 kind:bss align:32
 
 src/Scenes/StageScene.cpp:
-    .text       start:0x020a3310 end:0x020c500c
+    .text       start:0x020a3310 end:0x020a34a4
 
 src/Bases/Actor.cpp:
     .text       start:0x020a0728 end:0x020a10a0
@@ -19,3 +19,8 @@ src/Bases/StageActor.cpp:
 src/Bases/StageEntity.cpp:
     .text       start:0x020986e0 end:0x020a03ac
     .data       start:0x020c4efc end:0x020c5010
+
+src/Collision/Collider.cpp:
+    .text       start:0x020ab18c end:0x020ab918
+    .init       start:0x020c341c end:0x020c356c
+    .ctor       start:0x020c4e94 end:0x020c4e98

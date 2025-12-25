@@ -1,15 +1,15 @@
 #include "Actor.hpp"
 
-class CollisionManager;
-
 class ActiveCollider {
 public:
     u8 padding[0x18];
     void *__1;
     u8 padding2[0x94];
-    static void delink(void*);
+
     ActiveCollider();
     ~ActiveCollider();
+
+    static void delink(void*);
 };
 
 class PlatformManager {
@@ -17,9 +17,11 @@ public:
     u8 padding[0x18];
     void *__1;
     u8 padding2[0x18];
-    void init(void*, void*);
+
     PlatformManager();
     ~PlatformManager();
+
+    void init(void*, void*);
 };
 
 class CollisionManager {
@@ -27,8 +29,11 @@ public:
     u8 padding[0x23];
     void *__1;
     u8 padding2[0x90];
+
     CollisionManager();
     ~CollisionManager();
+
+    void func_ov000_020ab350();
 };
 
 class StageActor : public Actor {
@@ -43,6 +48,7 @@ public:
 
     StageActor();
     ~StageActor();
+
     bool preUpdate();
     void postUpdate();
 };
