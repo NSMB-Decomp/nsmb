@@ -9,6 +9,7 @@ public:
     //Vec3();
     virtual inline ~Vec3_32();
 };
+Vec3_32::~Vec3_32() {}
 
 class Vec2_32 {
 public:
