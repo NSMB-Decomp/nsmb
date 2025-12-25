@@ -27,5 +27,5 @@ public:
     i16 z;
 
     //Vec3s();
-    virtual ~Vec3_16();
+    virtual inline ~Vec3_16();
 };
