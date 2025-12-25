@@ -58,4 +58,14 @@ bool Coin::onRender() {
     return true;
 }
 
+PTMF data_ov010_021293f4;
+u32 *data_ov010_0212163c;
+void Coin::func_ov010_020d81dc(u32 a) {
+    if ((this->_430 != &data_ov010_021293f4) != 0 ? true : false) {
+        this->func_ov010_020d9dcc(&data_ov010_021293f4);
+        this->velocity.x = data_ov010_0212163c[a];
+        this->velocity.y = 0;
+    }
+}
+
 Coin::~Coin() {}

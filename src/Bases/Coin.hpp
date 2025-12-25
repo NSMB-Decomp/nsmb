@@ -2,20 +2,21 @@
 
 class Coin : StageEntity {
 public:
-    u8 _pad0[0x55];
+    PTMF* _430;
     i32 _444;
-    u8 _pad1[0x7c];
     u32 _4c0;
     u32 _4c4;
-    u8 _pad2[0x4];
     u32 _4ce;
-    u32 _4d8;
+    u8 _4d8;
     u32 _4d9;
     u32 _4df;
     u32 _4e0;
 
     Coin();
     ~Coin();
+
+    void func_ov010_020d81dc(u32);
+    void func_ov010_020d9dcc(PTMF*);
 
     void* operator new(u32);
 
