@@ -27,10 +27,10 @@ extern Heap* data_0208b720;
 bool func_0204d82c();
 
 //
-void SceneGraph_removeChild(ProcessList*, ProcessLink*);
+bool SceneGraph_removeChild(ProcessList*, ProcessLink*);
 bool SceneGraph_addChild(ProcessList*, ProcessLink*, ProcessLink*);
-void LinkedList_append(ProcessList*, PriorityNode*);
-void LinkedList_Remove(ProcessList*, void*); // TODO: Confirm these paramaters, is it ProcessList or PTMF, and what is void*?
+bool LinkedList_append(ProcessList*, PriorityNode*);
+bool LinkedList_Remove(ProcessList*, void*); // TODO: Confirm these paramaters, is it ProcessList or PTMF, and what is void*?
 bool LinkedList_Prepend(ProcessList*, ProcessNode*);
 void ProcessSet_add(ProcessList*, PriorityNode*);
 

@@ -9,12 +9,11 @@ u32 data_02085230[2] = {0x0C, 1};
 u32 data_02085228[2] = {0x08, 1};
 u32 data_02085250[2] = {0x14, 1};
 
+ProcessLink* func_02043b58(ProcessLink *);
 Base::Base()
 {
-  void func_02043b58(ProcessLink *);
-
   ProcessLink *pl = &this->process_link;
-  func_02043b58(pl);
+  func_02043b58(&this->process_link);
   pl->connect.object = this;
   PriorityNode *update_node = &pl->update;
   update_node->_.prev = (ProcessNode *)0x00;
@@ -171,6 +170,8 @@ bool Base::prepareResourcesFast(u32 a, u32 b)
   Heap *user;
   Heap *heap;
   void *z;
+  u32 result;
+  void* heap_ptr;
 
   if (this->heap != NULL)
   {
@@ -180,13 +181,13 @@ bool Base::prepareResourcesFast(u32 a, u32 b)
       a != 0 &&
       (user = func_02045240(a, b, 0x20), user != (Heap *)0x0))
   {
-    void *heap_ptr = (void *)((u32)(user->size) & 0x10);
+    heap_ptr = (void *)((u32)(user->size) & 0x10);
     if (heap_ptr != NULL)
     {
       user->allocate(0x10, 0x10);
     }
     heap = user->setCurrent();
-    u32 result = this->onHeapCreated();
+    result = this->onHeapCreated();
     heap->setCurrent();
     if (
         heap_ptr == NULL &&
