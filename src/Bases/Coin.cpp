@@ -31,4 +31,31 @@ void Coin::_11() {}
 
 void Coin::_34() {}
 
+u32 (func_ov000_02098798)(void*, u32);
+void (func_ov010_020d8488)();
+void (func_0200d578)();
+u32 data_ov010_02129438;
+bool Coin::onRender() {
+    if (this->_4ce == 0) {
+        if (this->_4df == 0) {
+            u32 a = data_ov010_02129438;
+            if (this->_4c0 != 0) {
+                a = this->_4e0;
+            }
+            u32 b = func_ov000_02098798(this, 0);
+            if ((this->_4c0 == 0) && (this->_4c4 != 0)) {
+                b = 0x20;
+            }
+        }
+        return true;
+    } else if (this->_4d8 == 0) {
+        u32 a = func_ov000_02098798(this, 0);
+    } else {
+        if (this->_4d9 != 0) {
+
+        }
+    }
+    return true;
+}
+
 Coin::~Coin() {}
