@@ -7,7 +7,7 @@ public:
     void sub(Vec3_32 a, Vec3_32 b);
 
     //Vec3();
-    virtual ~Vec3_32();
+    virtual inline ~Vec3_32();
 };
 
 class Vec2_32 {
@@ -16,8 +16,9 @@ public:
     i32 y;
 
     //Vec3();
-    virtual ~Vec2_32();
+    virtual inline ~Vec2_32();
 };
+Vec2_32::~Vec2_32() {}
 
 class Vec3_16 {
 public:

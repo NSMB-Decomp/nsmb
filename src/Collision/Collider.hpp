@@ -15,5 +15,6 @@ public:
 
     void func_ov000_020ab18c();
     void Reset();
+    void unlink();
     void updatePosition();
 };
