@@ -49,7 +49,7 @@ pub fn build(b: *std.Build) void {
 
     // Step - single
     var single_step = b.step("single", "");
-    single_step.dependOn(objdiff_step);
+    //single_step.dependOn(objdiff_step);
     single_step.makeFn = &taskSingle;
     config_file.addStepDependencies(single_step);
 
