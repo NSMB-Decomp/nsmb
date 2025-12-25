@@ -5,6 +5,7 @@ Vec3_16 *data_ov000_020ca860;
 i32 *data_ov000_020ca868;
 i8 *data_ov000_020ca864;
 
+// TODO: Some of this may be a part of inline Object::Object(). To comapre Actor::Actor() to Scene::Scene() and confirm if any comparisons
 Actor::Actor() {
     // Set Position
     if (data_ov000_020ca85c != NULL) {
