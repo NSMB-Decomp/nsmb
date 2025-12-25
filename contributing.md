@@ -2,6 +2,9 @@
 > [!CAUTION]
 > Do not use NitroSDK libraries when contributing to this project. If it is suspected you relied on the NitroSDK in a pull request it will be rejected.
 
+> [!INFO]
+> To speed up compiling on linux run "wineserver -p" after each reboot, this will start a persistent wineserver so it does not need to start wine up every time you compile.
+
 ## Setting up this repository
 1. Dump a copy of your DS game onto your computer, you can find guides for this on the internet
 2. Rename the file to the release code in the table below, for example the USA rom will bnecome A2DE.nds and place it in the root of this repository
