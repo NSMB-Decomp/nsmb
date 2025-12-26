@@ -28,7 +28,7 @@ public:
   void* _50; // 0x54
   void* heap; //0x58
 
-  Base* spawnParent(u16, u32, u8);
+  static Base* spawnParent(u32, u32, u32);
   Base* spawnChild(u32, u32, u32);
   static void unloadSceneOverlay(u16);
   static u32 loadSceneOverlay(u16);
