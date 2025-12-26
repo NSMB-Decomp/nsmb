@@ -49,8 +49,8 @@ pub fn build(b: *std.Build) void {
     objdiff_cmd.addFileArg(config_file);
     objdiff_cmd.addArgs(&.{ "-m", "zig" });
     objdiff_cmd.addArgs(&.{ "-M", "build", "-M", "single", "-M", "--" });
-    objdiff_cmd.addArgs(&.{ "-s", "-C", "mwcc_20_84" });
-    objdiff_cmd.addArgs(&.{ "-f", "-O4,p -interworking -proc=arm946e -lang=C++ -Cpp_exceptions=off -w=off -gccinc -nolink -c -sym=on -RTTI=off" });
+    objdiff_cmd.addArgs(&.{ "-s", "-C", "mwcc_20_84", "-p", "201" });
+    objdiff_cmd.addArgs(&.{ "-f", "-O4,p -interworking -proc=arm946e -w=off -gccinc -nolink -c -Cpp_exceptions off -lang=c++ -RTTI off -sym on" });
 
     var objdiff_step = b.step("objdiff", "");
     objdiff_step.dependOn(&objdiff_cmd.step);
