@@ -19,11 +19,11 @@ Object* Object::spawnObject(u16 a, Base* b, u32 c, u8 d)
   return child;
 }
 
-Scene* Object::spawnScene(u16 a, u32 b, u8 c)
+Object* Object::spawnScene(u16 a, u32 b, u8 c)
 {  
-  Scene* scene = (Scene*)Base::spawnParent(a,b,c);
+  Object* scene = (Object*)Base::spawnParent(a,b,c);
   if (scene->pending_destroy != false) {
-    scene = (Scene *)0x0;
+    scene = (Object *)0x0;
   }
   return scene;
 }

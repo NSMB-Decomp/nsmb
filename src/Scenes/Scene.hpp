@@ -1,7 +1,10 @@
-#include "../Bases/Base.hpp"
+#include "../Bases/Object.hpp"
 
-class Scene: public Base {
+class Scene: public Object {
 public:
+  ~Scene();
+  Scene();
+
   bool preCreate();
   void postCreate(u32);
   bool preDestroy();

@@ -23,7 +23,7 @@ public:
   bool pending_update; // 0x10
   bool pending_create; // 0x11
   u8 _12; // 0x12
-  SkipFlags skipFlags; //0x13
+  u8 skipFlags; //0x13
   ProcessLink process_link; //0x14
   void* _50; // 0x54
   void* heap; //0x58
