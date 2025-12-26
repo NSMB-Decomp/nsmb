@@ -13,7 +13,9 @@ public:
     Collider _444; // 0x444
     u8 _pad0[9];
     u8 _4ad;
-    u8 _pad5[18];
+    u8 _pad5[1];
+    u32 _4b0;
+    u8 _pad7[12];
     u32 _4c0;
     u32 _4c4;
     u16 _4ce;
@@ -27,7 +29,8 @@ public:
     u8 _4ea;
     u8 _4eb;
     u8 _4ec;
-    u8 _pad1[0x2];
+    u8 _4ed;
+    u8 _4ee;
     u8 _4ef;
     u8 _pad3[0x3];
     u8 _4e3;
@@ -39,6 +42,7 @@ public:
     void func_ov010_020d81dc(u32);
     void func_ov010_020d9dcc(PTMF*);
     void func_ov010_020d823c(u32 a);
+    void func_ov010_020d99a8();
 
     void* operator new(u32);
 
@@ -46,7 +50,7 @@ public:
     bool onDestroy();
     bool onRender();
 
-    bool _00();
+    bool onUpdate_0();
     void _11();
     void _21();
     void _34();

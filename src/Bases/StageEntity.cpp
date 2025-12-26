@@ -47,36 +47,36 @@ StageEntity::StageEntity() {
     this->_3f1 = 0;
 }
 
-bool StageEntity::_00() {
+bool StageEntity::onUpdate_0() {
     return true;
 }
 
 bool StageEntity::onUpdate() {
-    this->_20();
+    this->onUpdate_xx();
     i32 state = this->_340;
     if (state == 0) {
-        return this->_00();
+        return this->onUpdate_0();
     }if (state == 1) {
-        return this->_02();
+        return this->onUpdate_1();
     }if (state == 2) {
-        return this->_03();
+        return this->onUpdate_2();
     }if (state == 3) {
-        return this->_04();
+        return this->onUpdate_3();
     }if (state == 4) {
-        return this->_05();
+        return this->onUpdate_4();
     }if (state == 5) {
-        return this->_06();
+        return this->onUpdate_5();
     }if (state == 6) {
-        return this->_07();
+        return this->onUpdate_6();
     }if (state == 7) {
-        return this->_08();
+        return this->onUpdate_7();
     }if (state == 8) {
-        return this->_09();
+        return this->onUpdate_8();
     }if (state == 9) {
-        return this->_10();
+        return this->onUpdate_9();
     }
     this->_340 = 0;
-    return this->_00();
+    return this->onUpdate_0();
 }
 
 bool (func_0200ae9c)(Vec3_32*);
@@ -94,20 +94,20 @@ bool StageEntity::_01() {
     return false;
 }
 
-bool StageEntity::_02() {
+bool StageEntity::onUpdate_1() {
     return true;
 }
-bool StageEntity::_03() {}
-bool StageEntity::_04() {}
-bool StageEntity::_05() {
+bool StageEntity::onUpdate_2() {}
+bool StageEntity::onUpdate_3() {}
+bool StageEntity::onUpdate_4() {
     return true;
 }
-bool StageEntity::_06() {}
-bool StageEntity::_07() {
+bool StageEntity::onUpdate_5() {}
+bool StageEntity::onUpdate_6() {
     this->_11();
     return true;
 }
-bool StageEntity::_08() {}
-bool StageEntity::_09() {}
-bool StageEntity::_10() {}
+bool StageEntity::onUpdate_7() {}
+bool StageEntity::onUpdate_8() {}
+bool StageEntity::onUpdate_9() {}
 void StageEntity::_11() {}

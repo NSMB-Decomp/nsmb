@@ -63,17 +63,17 @@ public:
     void postUpdate();
     bool preRender();
 
-    virtual bool _00();
+    virtual bool onUpdate_0();
     virtual bool _01();
-    virtual bool _02();
-    virtual bool _03();
-    virtual bool _04();
-    virtual bool _05();
-    virtual bool _06();
-    virtual bool _07();
-    virtual bool _08();
-    virtual bool _09();
-    virtual bool _10();
+    virtual bool onUpdate_1();
+    virtual bool onUpdate_2();
+    virtual bool onUpdate_3();
+    virtual bool onUpdate_4();
+    virtual bool onUpdate_5();
+    virtual bool onUpdate_6();
+    virtual bool onUpdate_7();
+    virtual bool onUpdate_8();
+    virtual bool onUpdate_9();
     virtual void _11();
     virtual void _12();
     virtual void _13();
@@ -83,7 +83,7 @@ public:
     virtual void _17();
     virtual void _18();
     virtual void _19();
-    virtual void _20();
+    virtual void onUpdate_xx();
     virtual void _21();
     virtual void _22();
     virtual void _23();
@@ -91,7 +91,7 @@ public:
     virtual void _25();
     virtual void _26();
     virtual void _27();
-    virtual void _28f();
+    virtual void _28();
     virtual void _29();
     virtual void _30();
     virtual void _31();

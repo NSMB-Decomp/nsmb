@@ -563,7 +563,11 @@ struct Coin_data {
     PTMF* _430; // 0x430
     Vec3_32 _434; // 0x434
     Collider _444; // 0x444
-    u8 _pad0[0x1c];
+    u8 _pad0[9];
+    u8 _4ad;
+    u8 _pad5[1];
+    u32 _4b0;
+    u8 _pad7[12];
     u32 _4c0;
     u32 _4c4;
     u16 _4ce;
@@ -577,7 +581,8 @@ struct Coin_data {
     u8 _4ea;
     u8 _4eb;
     u8 _4ec;
-    u8 _pad1[0x2];
+    u8 _4ed;
+    u8 _4ee;
     u8 _4ef;
     u8 _pad3[0x3];
     u8 _4e3;
