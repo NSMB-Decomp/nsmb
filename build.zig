@@ -3,6 +3,13 @@ const std = @import("std");
 const Release = enum {
     A2DE,
     A2DJ,
+
+    pub fn toRomName(self: Release) []const u8 {
+        return switch (self) {
+            .A2DE => "A2DE.nds",
+            .A2DJ => "A2DJ.nds",
+        };
+    }
 };
 
 pub fn build(b: *std.Build) void {
@@ -12,7 +19,7 @@ pub fn build(b: *std.Build) void {
     _ = target_options;
 
     const release = @tagName(release_enum);
-    const rom_file = b.path("A2DE.nds");
+    const rom_file = b.path(release_enum.toRomName());
     const extract_directory = b.path(b.pathJoin(&.{ "extracted", release }));
     const config_file = b.path(b.pathJoin(&.{ "config", release, "arm9/config.yaml" }));
 

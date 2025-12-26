@@ -13,7 +13,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        version: [A2DE]
+        version: [A2DE, A2DJ]
 
     steps:
     - name: Checkout
@@ -23,22 +23,22 @@ jobs:
       run: cp -R /orig/* .
 
     - name: Extract ROM
-      run: zig build extract
+      run: zig build extract -DRelease=${{ matrix.version }}
 
     - name: Delink ROM
-      run: zig build delink
+      run: zig build delink -DRelease=${{ matrix.version }}
         
     - name: Generate objdiff config
-      run: zig build objdiff
+      run: zig build objdiff -DRelease=${{ matrix.version }}
     
     - name: Compile all files
-      run: zig build all
+      run: zig build all -DRelease=${{ matrix.version }}
 
     - name: Generate objdiff report
-      run: zig build report
+      run: zig build report -DRelease=${{ matrix.version }}
 
     - name: Upload Report
       uses: actions/upload-artifact@v4
       with:
         name: ${{ matrix.version }}_report
-        path: build/report.json
+        path: build/${{ matrix.version }}/report.json
