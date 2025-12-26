@@ -146,7 +146,91 @@ void Actor::setSpawnParams(Vec3_32 *a, Vec3_16 *b, i32 *c, i8 *d)
     ActorSpawnPlayer = d;
 }
 
+Vec3_32 Actor::applyAcceleration(Vec3_32 *acceleration)
+{
+    Vec3_32 result;
+    result.x = acceleration->x + this->acceleration.x;
+    i32 iVar1;
+    i32 iVar2 = result.x;
+    if (iVar2 < 0)
+    {
+        iVar1 = -this->velocitylimit.x;
+        if (iVar2 < iVar1)
+        {
+            result.x = iVar1;
+        }
+    }
+    else
+    {
+        iVar1 = this->velocitylimit.x;
+        if (iVar2 > iVar1)
+        {
+            result.x = iVar1;
+        }
+    }
+    result.y = acceleration->y + this->acceleration.y;
+    iVar2 = result.y;
+    if (iVar2 < 0)
+    {
+        iVar1 = -this->velocitylimit.y;
+        if (iVar2 < iVar1)
+        {
+            result.y = iVar1;
+        }
+    }
+    else
+    {
+        iVar1 = this->velocitylimit.y;
+        if (iVar2 > iVar1)
+        {
+            result.y = iVar1;
+        }
+    }
+    result.z = acceleration->z;
+    return result;
+    /*  int iVar1;
+      int iVar2;
+
+      result.vtable = (unknown_vtable *)&{vtable(Vec3_32)};
+      result.x = param_1->x + (this->_).acceleration.x;
+      iVar2 = result.x;
+      if (iVar2 < 0) {
+        iVar1 = -(this->_).velocitylimit.x;
+        if (iVar2 < iVar1) {
+          result.x = iVar1;
+        }
+      }
+      else {
+        iVar1 = (this->_).velocitylimit.x;
+        if (iVar1 < iVar2) {
+          result.x = iVar1;
+        }
+      }
+      result.y = param_1->y + (this->_).acceleration.y;
+      iVar2 = result.y;
+      if (iVar2 < 0) {
+        iVar1 = -(this->_).velocitylimit.y;
+        if (iVar2 < iVar1) {
+          result.y = iVar1;
+        }
+      }
+      else {
+        iVar1 = (this->_).velocitylimit.y;
+        if (iVar1 < iVar2) {
+          result.y = iVar1;
+        }
+      }
+      result.z = param_1->z;
+      return result;*/
+}
+
 void Actor::applyVelocity()
+{
+    Vec3_32 newVelocity = this->applyAcceleration(&this->velocity);
+    this->applyVelocityToPosition(&newVelocity);
+}
+
+void Actor::applyVelocityToPosition(Vec3_32 *)
 {
 }
 
