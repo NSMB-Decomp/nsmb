@@ -1,4 +1,5 @@
 #include "../base_types.hpp"
+#include "../Bases/Base.hpp"
 #include "../Vec.hpp"
 
 class Collider {
