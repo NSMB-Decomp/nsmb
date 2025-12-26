@@ -17,4 +17,5 @@ public:
     void Reset();
     void unlink();
     void updatePosition();
+    void init(Base*, void*, u32, u32, u32);
 };

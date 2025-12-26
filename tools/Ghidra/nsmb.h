@@ -19,29 +19,23 @@ typedef void* unknown_pointer;
 struct unknown_vtable {};
 
 // Math
-struct Vec3_16C {
-    unknown_vtable *vtable;
-    i16 x;
-    i16 y;
-    i16 z;
-    i16 __padding;
-};
-struct Vec3_32C {
-    unknown_vtable *vtable;
-    i32 x;
-    i32 y;
-    i32 z;
-};
-
 struct Vec3_16 {
+    unknown_vtable *vtable;
     i16 x;
     i16 y;
     i16 z;
+    u8 _pad0[2];
 };
 struct Vec3_32 {
+    unknown_vtable *vtable;
     i32 x;
     i32 y;
     i32 z;
+};
+struct Vec2_32 {
+    unknown_vtable *vtable;
+    i32 x;
+    i32 y;
 };
 
 // Process
@@ -130,6 +124,16 @@ struct ActorProfile {
     void *_unknownFunc;
 };
 
+// Class: Collider
+struct Collider {
+    u8 _pad[0x23];
+    Vec2_32 a;
+    Vec2_32 b;
+    Vec2_32 c;
+    Vec2_32 d;
+    Vec2_32 e;
+};
+
 // Class: Base
 struct Base_vtable
 {
@@ -183,27 +187,27 @@ struct Actor_vtable
 struct Actor_data
 {
     Base_data Base; // 0x00
-    Vec3_32C pos; // 0x58
-    Vec3_32C lastPos;
-    Vec3_32C __0;
-    Vec3_32C __4;
-    Vec3_16C __8;
-    Vec3_16C __11;
-    unknown4 __14;
-    unknown4 __15;
-    unknown4 __16;
-    unknown4 __17;
-    unknown4 __18;
-    unknown4 __19;
-    Vec3_32C __20;
-    Vec3_32C __24;
-    Vec3_32C __28;
-    Vec3_32C __32;
-    Vec3_32C __36;
-    unknown1 __40;
-    unknown1 __41;
-    unknown1 __42;
-    unknown1 __43; // 0x11b
+    Vec3_32 position;
+    Vec3_32 lastPosition;
+    Vec3_32 lastStep; // 0x78
+    Vec3_32 centerOffset;
+    Vec3_16 rotation;
+    Vec3_16 lastRotation;
+    i32 velH; // TODO: These names are awful, fix them D:<.
+    i32 minVelH;
+    i32 accelV;
+    i32 minVelV;
+    i32 accelH; // 0xC4
+    u32 _c8; //0xC8
+    Vec3_32 velocity; // 0xCA
+    Vec3_32 minVelocity;
+    Vec3_32 scale;
+    Vec3_32 acceleration;
+    Vec3_32 velocitylimit;
+    u8 actorType; // 0x11C
+    bool visible;
+    i8 linked_player;
+    u8 actorCategory; //0x11F
 };
 struct Actor
 {
@@ -357,7 +361,6 @@ struct StageActor_data {
     u8 direction; // 0 = left, 1 = right
     u8 __3;
     u8 __4;
-    bool8 __5;
 };
 struct StageActor {
     StageActor_vtable *vtable;
@@ -418,6 +421,57 @@ struct StageEntity_vtable
 };
 struct StageEntity_data {
     StageActor_data StageActor;
+    u8 _pad0[0x04]; // 0x2C0
+    u8 _2c4; //0x2C4
+    u8 _pad13[0x05]; // 0x2C0
+    u16 _2ca; // 0x2CA
+    u8 _pad9[0x2];
+    u32 _2d0; // 0x2D0
+    u8 _pad1[0x38];
+    Vec3_32 _30c; // 0x30C
+    Vec3_32 _31c; // 0x31C
+    u8 _pad2[0x14];
+    i32 _340; // 0x340
+    u8 _pad14[0x8];
+    u32 _34c; //0x34C
+    i32 _350; // 0x350
+    u8 _pad6[0x4];
+    u32 _358; //0x358
+    Vec3_32 _35c; // 0x35C
+    Vec2_32 _36c; // 0x36C
+    Vec2_32 _378; // 0x378
+    Vec2_32 _384; // 0x384
+    Vec2_32 _390; // 0x390
+    Vec2_32 _39c; // 0x39C
+    u32 _3a8; // 0x3A8
+    u8 _pad3[0x8];
+    u32 _3b4; // 0x3B4
+    u8 _pad11[0xe];
+    u16 _3c6; // 0x3C6
+    u16 _3c8; // 0x3CA
+    u8 pad12[0x6];
+    u8 _3d0; //0x3D0
+    u8 _pad15[0x1];
+    u8 _3d2; // 0x3D2
+    u8 Pad5[0x5];
+    u32 _3d8; // 0x3D8
+    u8 _pad4[0x2];
+    u8 _3de; // 0x3DE
+    u8 _3df; // 0x3DF
+    u8 _pad16[0x4];
+    u8 _3e4; // 0x3E4
+    u8 _pad8[2];
+    i8 _3e7; //0x3E7
+    u8 _3e8; // 0x3E8
+    u8 _3e9; //0x3E9
+    u8 _3ea; //0x3EA
+    u8 _3eb; //0x3EB
+    u8 _3ec; //0x3EC
+    u8 _3ed; //0x3ED
+    u8 _3ee; //0x3EE
+    u8 _3ef; //0x3EF
+    u8 _3f0; //0x3F0
+    u8 _3f1; //0x3F1
 };
 struct StageEntity {
     StageEntity_vtable *vtable;
@@ -501,6 +555,33 @@ struct Player {
 typedef StageEntity_vtable Coin_vtable;
 struct Coin_data {
     StageEntity_data StageEntity;
+    u32 _3f4; // 0x3F4
+    Vec3_32 _3f8; // 0x3F8
+    Vec3_32 _408; // 0x408
+    Vec2_32 _418; // 0x418
+    Vec2_32 _424; // 0x424
+    PTMF* _430; // 0x430
+    Vec3_32 _434; // 0x434
+    Collider _444; // 0x444
+    u8 _pad0[0x1c];
+    u32 _4c0;
+    u32 _4c4;
+    u16 _4ce;
+    u16 _4d0;
+    u16 _4d8;
+    u16 _4da;
+    u8 _pad2[1];
+    u32 _4df;
+    u8 _4e8; // 0x4E8
+    u8 _4e9;
+    u8 _4ea;
+    u8 _4eb;
+    u8 _4ec;
+    u8 _pad1[0x2];
+    u8 _4ef;
+    u8 _pad3[0x3];
+    u8 _4e3;
+    u8 _pad4[0x1];
 };
 struct Coin {
     Coin_vtable *vtable;

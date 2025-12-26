@@ -11,15 +11,27 @@ public:
     PTMF* _430; // 0x430
     Vec3_32 _434; // 0x434
     Collider _444; // 0x444
-    u8 _pad0[0x1c];
+    u8 _pad0[9];
+    u8 _4ad;
+    u8 _pad5[18];
     u32 _4c0;
     u32 _4c4;
-    u32 _4ce;
-    u8 _4d8;
-    u32 _4d9;
+    u16 _4ce;
+    u16 _4d0;
+    u16 _4d8;
+    u16 _4da;
+    u8 _pad2[1];
     u32 _4df;
-    u32 _4e0;
-    u8 _pad1[0xc];
+    u8 _4e8; // 0x4E8
+    u8 _4e9;
+    u8 _4ea;
+    u8 _4eb;
+    u8 _4ec;
+    u8 _pad1[0x2];
+    u8 _4ef;
+    u8 _pad3[0x3];
+    u8 _4e3;
+    u8 _pad4[0x1];
 
     inline Coin();
     ~Coin();

@@ -57,6 +57,7 @@ public:
     StageEntity();
     inline ~StageEntity();
 
+    void func_ov000_0209c820(u32);
     bool onUpdate();
     bool preUpdate();
     void postUpdate();
@@ -90,7 +91,7 @@ public:
     virtual void _25();
     virtual void _26();
     virtual void _27();
-    virtual void _28();
+    virtual void _28f();
     virtual void _29();
     virtual void _30();
     virtual void _31();

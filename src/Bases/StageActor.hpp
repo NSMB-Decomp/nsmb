@@ -44,7 +44,7 @@ public:
     CollisionManager collision_manager;
     PlatformManager platform_manager;
     u8 __1;
-    u8 __3;
+    u8 direction;
     u8 __4;
     u8 __2;
 
