@@ -121,6 +121,7 @@ fn compileFile(source_file: []const u8, destination_file: []const u8) !void {
         "-c",
         "-sym=on",
         "-RTTI=off",
+        "-once",
     };
     var child = std.process.Child.init(&command, std.heap.page_allocator);
     const b = try child.spawnAndWait();
