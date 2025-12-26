@@ -82,7 +82,7 @@ void Base::postCreate(u32 a)
     return;
   }
   LinkedList_Remove(&ProcessManager::CreateTask, &this->process_link.update);
-  if ((bool)(ProcessManager::CurrentTask == Execute) ? 1 : 0)
+  if ((BOOL)(ProcessManager::CurrentTask == Execute) != FALSE)
   {
     this->pending_update = 1;
     return;
@@ -135,10 +135,9 @@ void Base::postDestroy(u32 a)
 void Base::pendingDestroy() {}
 void Base::destroy()
 {
-  if ((this->pending_destroy == false) &&
-              (u8)(this->state == Inactive) == 0
-          ? true
-          : false) // Todo, is there a better syntax for this compiler bug?
+  if (
+    (this->pending_destroy == false) &&
+    (BOOL)(this->state == Inactive) == FALSE)
   {
     this->pending_destroy = true;
     this->pendingDestroy();
@@ -239,7 +238,7 @@ void Base::create()
   {
     return;
   }
-  if ((bool)(ProcessManager::CurrentTask == 2) ? 1 : 0)
+  if ((BOOL)(ProcessManager::CurrentTask == 2) != FALSE)
   {
     this->pending_create = 0x01;
     return;

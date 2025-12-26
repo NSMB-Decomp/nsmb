@@ -63,9 +63,9 @@ bool Coin::onRender() {
 }
 
 PTMF data_ov010_021293f4;
-u32 *data_ov010_0212163c;
+u32 data_ov010_0212163c[2];
 void Coin::func_ov010_020d81dc(u32 a) {
-    if ((this->_430 != &data_ov010_021293f4) != 0 ? true : false) {
+    if ((BOOL)(this->_430 == &data_ov010_021293f4) == FALSE) {
         this->func_ov010_020d9dcc(&data_ov010_021293f4);
         this->velocity.x = data_ov010_0212163c[a];
         this->velocity.y = 0;
