@@ -1295,10 +1295,10 @@ data_ov000_020ca84c kind:bss addr:0x020ca84c
 Stage::actorFreezeFlag kind:bss addr:0x020ca850
 data_ov000_020ca854 kind:bss addr:0x020ca854
 data_ov000_020ca858 kind:bss addr:0x020ca858
-data_ov000_020ca85c kind:bss addr:0x020ca85c
-data_ov000_020ca860 kind:bss addr:0x020ca860
-data_ov000_020ca864 kind:bss addr:0x020ca864
-data_ov000_020ca868 kind:bss addr:0x020ca868
+ActorSpawnPosition kind:bss addr:0x020ca85c
+ActorSpawnRotation kind:bss addr:0x020ca860
+ActorSpawnPlayer kind:bss addr:0x020ca864
+ActorSpawnScale kind:bss addr:0x020ca868
 data_ov000_020ca86c kind:bss addr:0x020ca86c
 data_ov000_020ca870 kind:bss addr:0x020ca870
 data_ov000_020ca874 kind:bss addr:0x020ca874

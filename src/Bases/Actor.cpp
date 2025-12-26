@@ -1,28 +1,23 @@
 #include "Actor.hpp"
 
-Vec3_32 *data_ov000_020ca85c;
-Vec3_16 *data_ov000_020ca860;
-i32 *data_ov000_020ca868;
-i8 *data_ov000_020ca864;
-
 // TODO: Some of this may be a part of inline Object::Object(). To comapre Actor::Actor() to Scene::Scene() and confirm if any comparisons
 Actor::Actor() {
     // Set Position
-    if (data_ov000_020ca85c != NULL) {
-        this->position = *data_ov000_020ca85c;
-        this->lastPosition = *data_ov000_020ca85c;
+    if (ActorSpawnPosition != NULL) {
+        this->position = *ActorSpawnPosition;
+        this->lastPosition = *ActorSpawnPosition;
         this->lastStep.x = 0;
         this->lastStep.y = 0;
         this->lastStep.z = 0;
     }
     // Set Rotation
-    if (data_ov000_020ca860 != NULL) {
-        this->rotation = *data_ov000_020ca860;
-        this->lastRotation = *data_ov000_020ca860;
+    if (ActorSpawnRotation != NULL) {
+        this->rotation = *ActorSpawnRotation;
+        this->lastRotation = *ActorSpawnRotation;
     }
     // Set Scale
-    if (data_ov000_020ca868 != NULL) {
-        i32 a = *data_ov000_020ca868;
+    if (ActorSpawnScale != NULL) {
+        i32 a = *ActorSpawnScale;
         this->scale.x = a;
         this->scale.y = a;
         this->scale.z = a;
@@ -32,8 +27,8 @@ Actor::Actor() {
         this->scale.z = 0x1000;
     }
     // Set Linked Player 
-    if ( data_ov000_020ca864 != 0x0) {
-        this->linkPlayer(*data_ov000_020ca864);
+    if ( ActorSpawnPlayer != 0x0) {
+        this->linkPlayer(*ActorSpawnPlayer);
     }
     else {
         this->linkPlayer(-1);
@@ -134,8 +129,8 @@ u32 Actor::getActorCount(u8 a) {
 }
 
 void Actor::setSpawnParams(Vec3_32 *a, Vec3_16* b, i32 *c, i8 *d) {
-    data_ov000_020ca85c = a;
-    data_ov000_020ca860 = b;
-    data_ov000_020ca868 = c;
-    data_ov000_020ca864 = d;
+    ActorSpawnPosition = a;
+    ActorSpawnRotation = b;
+    ActorSpawnScale = c;
+    ActorSpawnPlayer = d;
 }

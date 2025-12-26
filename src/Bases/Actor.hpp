@@ -2,6 +2,11 @@
 #include "../Vec.hpp"
 #include "Object.hpp"
 
+Vec3_32 *ActorSpawnPosition;
+Vec3_16 *ActorSpawnRotation;
+i8 *ActorSpawnPlayer;
+i32 *ActorSpawnScale;
+
 class Actor: public Object {
 public:
     Vec3_32 position;
