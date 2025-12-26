@@ -43,6 +43,7 @@ public:
     void func_ov010_020d9dcc(PTMF*);
     void func_ov010_020d823c(u32 a);
     void func_ov010_020d99a8();
+    void func_ov010_020d8b40();
 
     void* operator new(u32);
 

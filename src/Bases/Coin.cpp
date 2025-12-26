@@ -178,6 +178,23 @@ bool Coin::onCreate()
     }
 }
 
+u32 func_0200e6f4();
+void Coin::func_ov010_020d8b40()
+{
+    this->_4e8 = 1;
+    this->_4ef = 1;
+    this->_4ec = 1;
+    this->_4ed = 0;
+    this->_4b0 = 0;
+    this->_418.x = 0x1000;
+    this->_418.y = 0x1000;
+    this->_424.x = 0x1000;
+    this->_424.y = 0x1000;
+    u32 uVar1 = func_0200e6f4();
+    // TODO: Is this a typecast? Can we make the syntax better?
+    this->_4ee = ((((uVar1 & 0x7fff) << 1) >> 0xf) << 1);
+}
+
 void Coin::func_ov010_020d823c(u32 a)
 {
     this->_3f4 = a;
