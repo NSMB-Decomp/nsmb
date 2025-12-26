@@ -3,8 +3,8 @@
 
 class Object: public Base {
 public:
-    Object* spawnObject(u32, u32, u32);
-    static Scene* spawnScene(u32, u32, u32);
+    static Object* spawnObject(u16, Base*, u32, u8);
+    static Scene* spawnScene(u16, u32, u8);
     void __stub();
 
     void postCreate(u32);

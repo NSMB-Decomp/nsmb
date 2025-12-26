@@ -33,11 +33,11 @@ Base::Base()
 
   this->guid = data_02085224;
   data_02085224 += 1;
-  this->settings = SpawnParam3;
-  this->object_id = SpawnParam1;
-  this->_12 = SpawnParam4;
+  this->settings = SpawnParam_Settings;
+  this->object_id = SpawnParam_ObjectId;
+  this->_12 = SpawnParam_Type;
 
-  SceneGraph_addChild(&ProcessManager::ConnectTask, pl, SpawnParam2);
+  SceneGraph_addChild(&ProcessManager::ConnectTask, pl, SpawnParam_Parent);
   u32 id_index = ProcessManager::getIDIndex(&this->process_link);
   LinkedList_Prepend(&ProcessManager::idLookupProcesses[id_index], &this->process_link.idLookup);
   ObjectProfile *profile = CurrentProfileTable[this->object_id];
@@ -307,10 +307,10 @@ bool Base::hasChildPendingCreation()
 }
 void Base::setSpawnParams(u16 a, ProcessLink *b, u32 c, u8 d)
 {
-  SpawnParam3 = c;
-  SpawnParam1 = a;
-  SpawnParam4 = d;
-  SpawnParam2 = b;
+  SpawnParam_Settings = c;
+  SpawnParam_ObjectId = a;
+  SpawnParam_Type = d;
+  SpawnParam_Parent = b;
 }
 Base *Base::spawn(u16 overlay_id, ProcessLink *b, u32 c, u8 d)
 {
@@ -325,7 +325,7 @@ Base *Base::spawn(u16 overlay_id, ProcessLink *b, u32 c, u8 d)
   setSpawnParams(overlay_id, b, c, d);
   data_0208fae8 = 3;
   Base *ret = (CurrentProfileTable)[overlay_id]->constructor();
-  // TODO: What should be using r1 here?
+  
   if (ret == (Base *)0x00)
   {
     data_0208fae8 = 0;
@@ -359,15 +359,15 @@ void Base::unloadSceneOverlay(u16 a)
     ((void (*)(u16))data_0208fb00)(a);
   }
 }
-Base *Base::spawnChild(u16 overlay_id, Base *b, u32 c, u8 d)
+Base *Base::spawnChild(u16 overlay_id, Base *parent, u32 c, u8 d)
 {
-  if (b != (Base *)0x00)
+  if (parent != (Base *)0x00)
   {
-    return b->spawn(overlay_id, &b->process_link, c, d);
+    return parent->spawn(overlay_id, &parent->process_link, c, d);
   }
   return (Base *)0x00;
 }
-Base *Base::spawnParent(u32 a, u32 b, u32 c)
+Base *Base::spawnParent(u16 a, u32 b, u8 c)
 {
-  return Base::spawn(a, 0, b, c);
+  return Base::spawn(a, (ProcessLink*)NULL, b, c);
 }

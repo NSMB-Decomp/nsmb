@@ -584,8 +584,8 @@ SpawnParam4 kind:bss(size=0x1) addr:0x0208faec
 data_0208faf0 kind:bss(size=0x2) addr:0x0208faf0
 SpawnParam1 kind:bss(size=0x2) addr:0x0208faf4
 SpawnParam2 kind:bss addr:0x0208faf8
-data_0208fafc kind:bss addr:0x0208fafc
-data_0208fb00 kind:bss addr:0x0208fb00
+spawnFunctionCtor kind:bss addr:0x0208fafc
+spawnFunctionDtor kind:bss addr:0x0208fb00
 SpawnParam3 kind:bss addr:0x0208fb04
 data_0208fb08 kind:bss addr:0x0208fb08
 _ZN14ProcessManager11ConnectTaskE kind:bss addr:0x0208fb0c
