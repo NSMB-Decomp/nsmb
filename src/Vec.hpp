@@ -1,10 +1,16 @@
+struct Vec3_32s {
+    i32 x;
+    i32 y;
+    i32 z;
+};
+
 class Vec3_32 {
 public:
     i32 x;
     i32 y;
     i32 z;
 
-    void sub(Vec3_32 a, Vec3_32 b);
+    void sub(Vec3_32 *b);
 
     //Vec3();
     virtual inline ~Vec3_32();

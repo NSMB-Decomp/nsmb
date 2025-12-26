@@ -78,9 +78,7 @@ bool Actor::preUpdate()
     if (!(Stage_actorFreezeFlag & this->actorCategory))
     {
         Vec3_32 step;
-        step.sub(this->position, this->lastPosition);
-
-        // These need to also set the vtable
+        this->position.sub(&this->lastPosition);
         this->lastStep = step;
         this->lastPosition = this->position;
         return true;
@@ -100,7 +98,7 @@ bool Actor::preRender()
         (data_0v000_020ca84c & (1 << (this->actorType & 0xffU | 0x80)))   
     )
     {
-        return this->visible != 0;
+        return !this->visible;
     } else {
         return false;
     }
