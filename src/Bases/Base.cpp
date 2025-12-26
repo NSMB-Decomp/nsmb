@@ -1,4 +1,4 @@
-#include "Base_bss.cpp"
+#include "Base_autoload.cpp"
 #include "../Nitro/Nitro.hpp"
 
 u32 data_02085224 = 1;

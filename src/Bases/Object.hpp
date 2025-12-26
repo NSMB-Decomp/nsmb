@@ -1,9 +1,10 @@
 #include "Base.hpp"
+#include "../Scenes/Scene.hpp"
 
 class Object: public Base {
 public:
-    void* spawnObject();
-    void* spawnScene();
+    Object* spawnObject(u32, u32, u32);
+    Scene* spawnScene(u32, u32, u32);
     void __stub();
 
     void postCreate(u32);
