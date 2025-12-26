@@ -1,0 +1,38 @@
+func_ov110_021807a0 kind:function(arm,size=0x64) addr:0x021807a0
+func_ov110_02180804 kind:function(arm,size=0x6c) addr:0x02180804
+func_ov110_02180870 kind:function(arm,size=0xe0) addr:0x02180870
+func_ov110_02180950 kind:function(arm,size=0x20) addr:0x02180950
+func_ov110_02180970 kind:function(arm,size=0x150) addr:0x02180970
+func_ov110_02180ac0 kind:function(arm,size=0x38) addr:0x02180ac0
+func_ov110_02180af8 kind:function(arm,size=0x98) addr:0x02180af8
+func_ov110_02180b90 kind:function(arm,size=0x84) addr:0x02180b90
+func_ov110_02180c14 kind:function(arm,size=0x94) addr:0x02180c14
+func_ov110_02180ca8 kind:function(arm,size=0x1b8) addr:0x02180ca8
+func_ov110_02180e60 kind:function(arm,size=0x164) addr:0x02180e60
+func_ov110_02180fc4 kind:function(arm,size=0x40) addr:0x02180fc4
+func_ov110_02181004 kind:function(arm,size=0xac) addr:0x02181004
+func_ov110_021810b0 kind:function(arm,size=0x4) addr:0x021810b0
+func_ov110_021810b4 kind:function(arm,size=0x4) addr:0x021810b4
+func_ov110_021810b8 kind:function(arm,size=0x4) addr:0x021810b8
+func_ov110_021810bc kind:function(arm,size=0x4) addr:0x021810bc
+func_ov110_021810c0 kind:function(arm,size=0x3c) addr:0x021810c0
+func_ov110_021810fc kind:function(arm,size=0x15c) addr:0x021810fc
+func_ov110_02181258 kind:function(arm,size=0x48) addr:0x02181258
+func_ov110_021812a0 kind:function(arm,size=0x8c) addr:0x021812a0
+func_ov110_0218132c kind:function(arm,size=0x24) addr:0x0218132c
+func_ov110_02181350 kind:function(arm,size=0x78) addr:0x02181350
+data_ov110_021813c8 kind:data(any) addr:0x021813c8
+__sinit_ov110_021813e4 kind:function(arm,size=0x90) addr:0x021813e4
+.p__sinit_ov110_021813e4 kind:data(word) addr:0x02181474
+data_ov110_02181480 kind:data(any) addr:0x02181480
+data_ov110_02181488 kind:data(any) addr:0x02181488
+data_ov110_02181490 kind:data(any) addr:0x02181490
+data_ov110_02181498 kind:data(any) addr:0x02181498
+data_ov110_021814a0 kind:data(any) addr:0x021814a0 ambiguous
+data_ov110_021814b4 kind:data(any) addr:0x021814b4
+data_ov110_02181530 kind:data(any) addr:0x02181530 ambiguous
+data_ov110_02181544 kind:data(any) addr:0x02181544 ambiguous
+data_ov110_021815e0 kind:bss addr:0x021815e0
+data_ov110_021815e8 kind:bss addr:0x021815e8
+data_ov110_021815f0 kind:bss addr:0x021815f0
+data_ov110_021815f8 kind:bss addr:0x021815f8

@@ -2,6 +2,7 @@ const std = @import("std");
 
 const Release = enum {
     A2DE,
+    A2DJ,
 };
 
 pub fn build(b: *std.Build) void {

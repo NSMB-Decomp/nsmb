@@ -1,0 +1,2 @@
+    .bss        start:0x02084ec0 end:0x02097ce0 kind:bss align:32
+
