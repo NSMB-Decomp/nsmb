@@ -132,3 +132,10 @@ u32 Actor::getActorCount(u8 a) {
 
     return i;
 }
+
+void Actor::setSpawnParams(Vec3_32 *a, Vec3_16* b, i32 *c, i8 *d) {
+    data_ov000_020ca85c = a;
+    data_ov000_020ca860 = b;
+    data_ov000_020ca868 = c;
+    data_ov000_020ca864 = d;
+}

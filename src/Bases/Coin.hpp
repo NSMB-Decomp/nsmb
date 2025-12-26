@@ -22,8 +22,10 @@ public:
     u16 _4d0;
     u16 _4d8;
     u16 _4da;
-    u8 _pad2[1];
-    u32 _4df;
+    u16 _4dc;
+    u16 _4de;
+    u16 _4e0;
+    u16 _4e2;
     u8 _4e8; // 0x4E8
     u8 _4e9;
     u8 _4ea;
@@ -34,7 +36,7 @@ public:
     u8 _4ef;
     u8 _pad3[0x3];
     u8 _4e3;
-    u8 _pad4[0x1];
+    u8 _4e4;
 
     inline Coin();
     ~Coin();
