@@ -1,5 +1,4 @@
 #include "Base.hpp"
-#include "../Scenes/Scene.hpp"
 
 class Object: public Base {
 public:
