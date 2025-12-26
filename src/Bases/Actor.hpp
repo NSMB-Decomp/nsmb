@@ -33,6 +33,8 @@ public:
 
     void linkPlayer(i32);
     u32 getActorCount(u8);
+    void applyVelocity();
+    void updateVerticalVelocity();
     static void setSpawnParams(Vec3_32*, Vec3_16*, i32*, i8*);
     Actor();
     ~Actor();

@@ -1,9 +1,11 @@
 #include "Actor.hpp"
 
 // TODO: Some of this may be a part of inline Object::Object(). To comapre Actor::Actor() to Scene::Scene() and confirm if any comparisons
-Actor::Actor() {
+Actor::Actor()
+{
     // Set Position
-    if (ActorSpawnPosition != NULL) {
+    if (ActorSpawnPosition != NULL)
+    {
         this->position = *ActorSpawnPosition;
         this->lastPosition = *ActorSpawnPosition;
         this->lastStep.x = 0;
@@ -11,26 +13,32 @@ Actor::Actor() {
         this->lastStep.z = 0;
     }
     // Set Rotation
-    if (ActorSpawnRotation != NULL) {
+    if (ActorSpawnRotation != NULL)
+    {
         this->rotation = *ActorSpawnRotation;
         this->lastRotation = *ActorSpawnRotation;
     }
     // Set Scale
-    if (ActorSpawnScale != NULL) {
+    if (ActorSpawnScale != NULL)
+    {
         i32 a = *ActorSpawnScale;
         this->scale.x = a;
         this->scale.y = a;
         this->scale.z = a;
-    } else {
+    }
+    else
+    {
         this->scale.x = 0x1000;
         this->scale.y = 0x1000;
         this->scale.z = 0x1000;
     }
-    // Set Linked Player 
-    if ( ActorSpawnPlayer != 0x0) {
+    // Set Linked Player
+    if (ActorSpawnPlayer != 0x0)
+    {
         this->linkPlayer(*ActorSpawnPlayer);
     }
-    else {
+    else
+    {
         this->linkPlayer(-1);
     }
     this->lastPosition.x = this->position.x;
@@ -94,41 +102,62 @@ void Actor::postUpdate()
 bool Actor::preRender()
 {
     if (
-        (Base::preRender()) && 
-        (data_0v000_020ca84c & (1 << (this->actorType & 0xffU | 0x80)))   
-    )
+        (Base::preRender()) &&
+        (data_0v000_020ca84c & (1 << (this->actorType & 0xffU | 0x80))))
     {
         return !this->visible;
-    } else {
+    }
+    else
+    {
         return false;
     }
 }
 
-void Actor::postRender() {
+void Actor::postRender()
+{
     Base::postRender();
 }
 
-void Actor::linkPlayer(i32 player_id) {
+void Actor::linkPlayer(i32 player_id)
+{
     this->linked_player = player_id;
 }
-u32 Actor::getActorCount(u8 a) {
-    Base* prev;
+u32 Actor::getActorCount(u8 a)
+{
+    Base *prev;
     u32 i = 0;
 
     for (
-        prev = ProcessManager::getNextObjectByObjectID(a, (Base*)NULL);
+        prev = ProcessManager::getNextObjectByObjectID(a, (Base *)NULL);
         prev != NULL;
-        prev = ProcessManager::getNextObjectByObjectID(a, prev)
-    ) {
+        prev = ProcessManager::getNextObjectByObjectID(a, prev))
+    {
         i += 1;
     }
 
     return i;
 }
 
-void Actor::setSpawnParams(Vec3_32 *a, Vec3_16* b, i32 *c, i8 *d) {
+void Actor::setSpawnParams(Vec3_32 *a, Vec3_16 *b, i32 *c, i8 *d)
+{
     ActorSpawnPosition = a;
     ActorSpawnRotation = b;
     ActorSpawnScale = c;
     ActorSpawnPlayer = d;
+}
+
+void Actor::applyVelocity()
+{
+}
+
+void Actor::updateVerticalVelocity()
+{
+    int iVar1 = this->minVelocity.y;
+    int iVar2 = this->velocity.y + this->accelV;
+    if (iVar2 < iVar1)
+    {
+        iVar2 = iVar1;
+    }
+    this->velocity.y = iVar2;
+    return;
 }
