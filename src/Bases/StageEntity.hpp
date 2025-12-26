@@ -55,7 +55,7 @@ public:
     u8 _3f1; //0x3F1
 
     StageEntity();
-    ~StageEntity();
+    inline ~StageEntity();
 
     bool onUpdate();
     bool preUpdate();
@@ -110,3 +110,4 @@ public:
     virtual void _45();
     virtual void _46();
 };
+StageEntity::~StageEntity() {}

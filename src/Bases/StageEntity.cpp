@@ -47,10 +47,6 @@ StageEntity::StageEntity() {
     this->_3f1 = 0;
 }
 
-StageEntity::~StageEntity() {
-    
-}
-
 bool StageEntity::_00() {
     return true;
 }
