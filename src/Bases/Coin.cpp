@@ -77,6 +77,7 @@ void Coin::func_ov010_020d823c(u32 a) {
 }
 
 bool Coin::onDestroy() {
+    this->_444.unlink();
     return true;
 }
 
