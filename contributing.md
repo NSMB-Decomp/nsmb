@@ -2,7 +2,7 @@
 > [!CAUTION]
 > Do not use NitroSDK libraries when contributing to this project. If it is suspected you relied on the NitroSDK in a pull request it will be rejected.
 
-> [!INFO]
+> [!NOTE]
 > To speed up compiling on linux run "wineserver -p" after each reboot, this will start a persistent wineserver so it does not need to start wine up every time you compile.
 
 ## Setting up this repository
@@ -15,9 +15,6 @@
 7. Run `zig build extract`, this will extract all the files in the rom to the extracted/ directory
 8. Run `zig build delink`, this will create delinked files which are used within objdiff
 9. Run `zig build objdiff` this will generate a new objdiff configuration to allow comparing your code with the games code
-
-## Creating a new delink
-
 
 ## Importing nsmb.h into Ghidra
 1. Open Ghidra
@@ -33,81 +30,3 @@
 11. Click the **Parse to Program** button on the bottom left
 12. Click **Continue**
 13. Click **Use Open Archives**
-
-## Common decompiler patterns
-> [!NOTE]
-> If there are any obscure C++ -> ASM patterns put them here.  
-> This gives us a reference for any weird patterns to keep an eye out for and to look for improvements.
-
-<table>
-<tr> <td> Code </td> <td> Result </td> <td> Expected </td> <td>Corrected Code </td> </tr>
-<tr>
-<td>
-
-```cpp
-if (CurrentTask == 2) {}
-```
-</td>
-<td>
-
-```asm
-moveq   r0, #0x01
-```
-</td>
-
-<td>
-
-```asm
-moveq   r0, #0x1
-movne   r0, #0x0
-cmp     r0, #0x0
-movne   r0, #0x1
-```
-</td>
-<td>
-
-```cpp
-if ((bool)(CurrentTask == 2) ? 1 : 0) {}
-```
-</td>
-</td>
-<tr>
-<td>
-
-```cpp
-if (CurrentTask == 2) {}
-```
-</td>
-<td>
-
-```asm
-cmp     r0, #0x0
-moveq   r0, #0x1
-movne   r0, #0x0
-```
-</td>
-
-<td>
-
-```asm
-cmp     r0, #0x0
-moveq   r0, #0x0
-movne   r0, #0x1
-```
-</td>
-<td>
-
-```cpp
-
-```
-</td>
-</td>
-</tr>
-</table>
-
-
-## Style
-### Casing
-* **variables** - snake_case
-* **functions** - camelCase
-* **class** - PascalCase
