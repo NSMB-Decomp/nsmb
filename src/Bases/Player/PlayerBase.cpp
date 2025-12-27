@@ -4,6 +4,15 @@ PlayerBase::PlayerBase()
 {
 }
 
+u8 data_ov000_020ca880;
+u8 data_ov000_020ca898;
+void PlayerBase::func_ov011_0212b8bc() {
+  data_ov000_020ca880 &=~ 0x10;
+  data_ov000_020ca898 &=~ 0x40;
+  this->_7b0 = 0;
+  this->active_collider._1c6 &=~ 1;
+}
+
 u16 data_0208b350[2];
 void PlayerBase::func_ov011_0212b878(u16 a) {
   if (this->_7ac == 3) {

@@ -8,6 +8,8 @@ class PlayerBase : public StageActor {
     u32 _798;
     u8 _pad2[0x10];
     i8 _7ac;
+    u8 _pad3[0x3];
+    i8 _7b0;
 
     i8 func_ov011_0212b1d4();
     u16 func_ov011_0212b210(u16);
@@ -25,6 +27,7 @@ class PlayerBase : public StageActor {
     void func_ov011_0212b84c(u32, u32, u32);
     void func_ov011_0212b864(u32, u32);
     void func_ov011_0212b878(u16);
+    void func_ov011_0212b8bc();
     PlayerBase();
 
     /**/

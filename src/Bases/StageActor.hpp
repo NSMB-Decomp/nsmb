@@ -2,9 +2,11 @@
 
 class ActiveCollider {
 public:
-    u8 padding[0x18];
+    u8 _pad0[0x18];
     void *__1;
-    u8 padding2[0x94];
+    u8 _pad1[138];
+    u8 _1c6;
+    u8 _pad2[9];
 
     ActiveCollider();
     ~ActiveCollider();
@@ -14,9 +16,9 @@ public:
 
 class PlatformManager {
 public:
-    u8 padding[0x18];
+    u8 _pad0[0x18];
     void *__1;
-    u8 padding2[0x18];
+    u8 _pad1[0x18];
 
     PlatformManager();
     ~PlatformManager();
@@ -26,11 +28,11 @@ public:
 
 class CollisionManager {
 public:
-    u8 _pad1[0x23];
+    u8 _pad0[0x23];
     void *__1;
-    u8 _pad2[0x8];
+    u8 _pad1[0x8];
     CollisionManager *__2;
-    u8 padding3[0x84];
+    u8 _pad2[0x84];
 
     CollisionManager();
     ~CollisionManager();
