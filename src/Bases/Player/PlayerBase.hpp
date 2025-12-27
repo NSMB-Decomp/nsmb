@@ -9,11 +9,11 @@ class PlayerBase : public StageActor {
     u32 _780;
     u8 _pad7[0x4];
     u32 _788;
-    u8 _pad2[0x08];
+    u8 _pad2[0x0b];
     u32 _798;
     u8 _pad3[0xd];
     u8 _7a9;
-    u8 _pad4[0x1];
+    u8 _pad4[1];
     i8 _7ab;
     i8 _7ac;
     u8 _pad5[0x3];
@@ -53,5 +53,6 @@ class PlayerBase : public StageActor {
     bool func_ov011_0212bc50(i32);
     u32 func_ov011_0212bca4();
     u32 func_ov011_0212bd68(u32, u32, u32);
+    u32 func_ov011_0212bdb8(u32);
     PlayerBase();
 };
