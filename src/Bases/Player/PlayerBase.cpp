@@ -4,8 +4,17 @@ PlayerBase::PlayerBase()
 {
 }
 
+bool PlayerBase::func_ov011_0212bde0(u32 a) {
+  this->_77c = this->_77c & ~0x1;
+  if ((BOOL)(this->_688 == a) == FALSE) {
+    return false;
+  }
+  this->func_ov011_0212b26c(0);
+  return true;
+}
+
 u32 PlayerBase::func_ov011_0212bdb8(u32 a) {
-  
+
 }
 
 u32 PlayerBase::func_ov011_0212bd68(u32 a, u32 b, u32 c) {
