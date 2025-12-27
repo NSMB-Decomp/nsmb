@@ -4,6 +4,10 @@ PlayerBase::PlayerBase()
 {
 }
 
+bool PlayerBase::func_ov011_0212bb90() {
+  return this->_7bf == TRUE;
+}
+
 u16 data_0208b344[2];
 void func_02020150(u32, u32);
 void func_02020128(u32);
