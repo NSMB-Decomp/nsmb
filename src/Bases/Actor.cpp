@@ -147,6 +147,12 @@ void Actor::setSpawnParams(Vec3_32 *a, Vec3_16 *b, i32 *c, i8 *d)
     ActorSpawnPlayer = d;
 }
 
+void Actor::applyVelocity()
+{
+    Vec3_32 newVelocity = this->applyAcceleration(&this->velocity);
+    this->applyVelocityToPosition(&newVelocity);
+}
+
 Vec3_32 Actor::applyAcceleration(Vec3_32 *acceleration)
 {
     Vec3_32 result;
@@ -223,12 +229,6 @@ Vec3_32 Actor::applyAcceleration(Vec3_32 *acceleration)
       }
       result.z = param_1->z;
       return result;*/
-}
-
-void Actor::applyVelocity()
-{
-    Vec3_32 newVelocity = this->applyAcceleration(&this->velocity);
-    this->applyVelocityToPosition(&newVelocity);
 }
 
 // TODO: Is there a better sytax?
