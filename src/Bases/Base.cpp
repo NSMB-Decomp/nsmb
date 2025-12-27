@@ -3,10 +3,10 @@
 
 u32 data_02085224 = 1;
 u32 data_02085248[2] = {0x10, 1};
-u32 data_02085240[2] = {0x00, 1};
-u32 data_02085238[2] = {0x04, 1};
+PTMF data_02085240;
+PTMF data_02085238;
 u32 data_02085230[2] = {0x0C, 1};
-u32 data_02085228[2] = {0x08, 1};
+PTMF data_02085228;
 u32 data_02085250[2] = {0x14, 1};
 
 ProcessLink* func_02043b58(ProcessLink *);
@@ -248,44 +248,34 @@ void Base::create()
 }
 void Base::processCreate()
 {
-  u32 c0 = data_02085228[0];
-  u32 c1 = data_02085228[1];
-  u32 b0 = data_02085238[0];
-  u32 b1 = data_02085238[1];
-  u32 a0 = data_02085240[0];
-  u32 a1 = data_02085240[1];
-
   this->func_01ffd524(
-    c0,
-    a0,
-    a1,
-    b0,
-    c1,
-    b1
+    data_02085228,
+    data_02085238,
+    data_02085240
   );
 }
 u32 Base::processDestroy()
 {
-  u16 object_id = this->object_id;
-
-  u32 a1 = data_02085230[0];
-  u32 a2 = data_02085230[1];
-  u32 b1 = data_02085248[0];
-  u32 b2 = data_02085248[1];
-  u32 c1 = data_02085250[0];
-  u32 c2 = data_02085250[1];
-  u32 ret = this->func_01ffd524(
-      a1,
-      a2,
-      b1,
-      b2,
-      c1,
-      c2);
-  if (ret == 1)
-  {
-    unloadSceneOverlay(object_id);
-  }
-  return ret;
+  //u16 object_id = this->object_id;
+//
+  //u32 a1 = data_02085230[0];
+  //u32 a2 = data_02085230[1];
+  //u32 b1 = data_02085248[0];
+  //u32 b2 = data_02085248[1];
+  //u32 c1 = data_02085250[0];
+  //u32 c2 = data_02085250[1];
+  //u32 ret = this->func_01ffd524(
+  //    a1,
+  //    a2,
+  //    b1,
+  //    b2,
+  //    c1,
+  //    c2);
+  //if (ret == 1)
+  //{
+  //  unloadSceneOverlay(object_id);
+  //}
+  //return ret;
 }
 bool Base::hasChildPendingCreation()
 {
