@@ -4,6 +4,14 @@ PlayerBase::PlayerBase()
 {
 }
 
+void func_02011d94(u32);
+void PlayerBase::func_ov011_0212b710() {
+  if ((this->_77c & 0x800000) != 0) {
+    this->_77c &= 0xff7fffff;
+    func_02011d94(this->_798);
+  }
+}
+
 void PlayerBase::func_ov011_0212b384(i16) {
 
 }
