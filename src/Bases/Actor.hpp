@@ -40,6 +40,7 @@ public:
     Vec3_32 applyAcceleration(Vec3_32*);
     void StepVelocityYClamped();
     void StepVelocityXClamped();
+    void stepVelocityClamped();
     Actor();
     ~Actor();
     

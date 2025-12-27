@@ -319,3 +319,10 @@ void Actor::StepVelocityXClamped()
     this->velH = minVelH;
     return;
 }
+
+void Actor::stepVelocityClamped()
+{
+    this->StepVelocityXClamped();
+    this->velocity.x = this->velH;
+    this->StepVelocityYClamped();
+}
