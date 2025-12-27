@@ -13,7 +13,7 @@ ProcessLink* func_02043b58(ProcessLink *);
 Base::Base()
 {
   ProcessLink *pl = &this->process_link;
-  func_02043b58(&this->process_link);
+  func_02043b58(pl);
   pl->connect.object = this;
   PriorityNode *update_node = &pl->update;
   update_node->_.prev = (ProcessNode *)0x00;
@@ -40,14 +40,14 @@ Base::Base()
   SceneGraph_addChild(&ProcessManager::ConnectTask, pl, SpawnParam_Parent);
   u32 id_index = ProcessManager::getIDIndex(&this->process_link);
   LinkedList_Prepend(&ProcessManager::idLookupProcesses[id_index], &this->process_link.idLookup);
-  ObjectProfile *profile = CurrentProfileTable[this->object_id];
 
+  ObjectProfile *profile = CurrentProfileTable[this->object_id];
   u32 update_priority = profile->updatePriority;
   PriorityNode* update = &this->process_link.update;
+  PriorityNode* render = &this->process_link.render;
+
   update->currentPriority = update_priority;
   update->sortPriority = update_priority;
-
-  PriorityNode* render = &this->process_link.render;
   u32 render_priority = profile->renderPriority;
   render->currentPriority = render_priority;
   render->sortPriority = render_priority;
