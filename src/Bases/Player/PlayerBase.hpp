@@ -7,6 +7,7 @@ class PlayerBase : public StageActor {
     u8 _pad1[0x18];
     u32 _798;
     i8 _7ac;
+
     i8 func_ov011_0212b1d4();
     u16 func_ov011_0212b210(u16);
     void setPosition(Vec3_32*);
@@ -14,5 +15,6 @@ class PlayerBase : public StageActor {
     bool func_ov011_0212b2bc();
     void func_ov011_0212b384(i16);
     void func_ov011_0212b710();
+    void func_ov011_0212b740(u32);
     PlayerBase();
 };

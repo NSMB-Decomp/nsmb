@@ -534,7 +534,12 @@ struct PlayerBase_vtable {
     unknown_pointer __50;
 };
 struct PlayerBase_data {
-    StageEntity_data StageEntity;
+    StageActor_data StageActor;
+    u8 _pad0[0x4bc];
+    u32 _77c;
+    u8 _pad1[0x18];
+    u32 _798;
+    i8 _7ac;
 };
 struct PlayerBase {
     PlayerBase_vtable *vtable;
