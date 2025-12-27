@@ -1,9 +1,3 @@
-struct Vec3_32s {
-    i32 x;
-    i32 y;
-    i32 z;
-};
-
 class Vec3_32 {
 public:
     i32 x;

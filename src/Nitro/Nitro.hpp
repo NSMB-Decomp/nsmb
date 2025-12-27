@@ -1,5 +1,11 @@
 #include "../base_types.hpp"
 
+struct Vec3_32s {
+    i32 x;
+    i32 y;
+    i32 z;
+};
+
 // TODO: Seperate out files.
 namespace Nitro {
     // FS - FileSystem
@@ -104,6 +110,7 @@ namespace Nitro {
     void MI_CpuClearFast();
 
     //
+    void Math_AddVec3_32s(Vec3_32s*, Vec3_32s*, Vec3_32s*);
     void MultiThread_Init();
     void Exception_SetHandler(void*, void*);
     void Graphics_ResetOAM();

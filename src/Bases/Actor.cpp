@@ -1,4 +1,5 @@
 #include "Actor.hpp"
+#include "../Nitro/Nitro.hpp"
 
 // TODO: Some of this may be a part of inline Object::Object(). To comapre Actor::Actor() to Scene::Scene() and confirm if any comparisons
 Actor::Actor()
@@ -230,8 +231,28 @@ void Actor::applyVelocity()
     this->applyVelocityToPosition(&newVelocity);
 }
 
-void Actor::applyVelocityToPosition(Vec3_32 *)
+// TODO: Is there a better sytax?
+void Actor::applyVelocityToPosition(Vec3_32 *velocity)
 {
+    u32 c = ((u32)this + 0x5c);
+    if (c > 0)
+    {
+        c+=4;
+    }
+
+    u32 a = ((i32)this + 0x5c);
+    if (a > 0)
+    {
+        a+=4;
+    }
+
+    u32 b = ((u32)velocity + 4);
+
+    Nitro::Math_AddVec3_32s(
+        (Vec3_32s *) a,
+        (Vec3_32s *) b,
+        (Vec3_32s *) c
+    );
 }
 
 void Actor::updateVerticalVelocity()
