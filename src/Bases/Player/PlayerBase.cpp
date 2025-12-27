@@ -4,6 +4,19 @@ PlayerBase::PlayerBase()
 {
 }
 
+bool PlayerBase::func_ov011_0212b9ac(u8 a) {
+  if (BOOL(this->_7a9 == 0x5) != FALSE) {
+    return false;
+  }
+  if (this->_7ab == a) {
+    return false;
+  }
+  this->_7ab = a;
+  return this->_7ac != this->_7ab;
+}
+
+void PlayerBase::func_ov011_0212b9a8() {}
+
 void PlayerBase::func_ov011_0212b998() {
   this->_780 |= 0x20;
 }
