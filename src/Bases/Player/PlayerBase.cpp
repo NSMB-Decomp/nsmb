@@ -5,6 +5,14 @@ PlayerBase::PlayerBase()
 }
 
 u32 data_02085a7c;
+void PlayerBase::func_ov011_0212b7bc(u32 a)
+{
+  if (this->linked_player == data_02085a7c)
+  {
+    this->func_ov011_0212b7f0(a);
+  }
+}
+
 u32 data_02085a84;
 void func_02011dc4(u32);
 void PlayerBase::func_ov011_0212b740(u32 a)
