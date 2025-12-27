@@ -56,25 +56,27 @@ Actor::Actor()
     this->velocitylimit.z = 0x8000;
     this->actorCategory = 0x80;
 }
+
 Actor::~Actor() {}
+
+bool Actor::preCreate()
+
+{
+    return Base::preCreate() != false;
+}
+void Actor::postCreate(u32 a)
+{
+    Object::postCreate(a);
+}
+
 bool Actor::preDestroy()
 {
     return Base::preDestroy() != false;
 }
 
-bool Actor::preCreate()
-{
-    return Base::preCreate() != false;
-}
-
 void Actor::postDestroy(u32 a)
 {
     Base::postDestroy(a);
-}
-
-void Actor::postCreate(u32 a)
-{
-    Object::postCreate(a);
 }
 
 bool Actor::preUpdate()
@@ -119,10 +121,6 @@ void Actor::postRender()
     Base::postRender();
 }
 
-void Actor::linkPlayer(i32 player_id)
-{
-    this->linked_player = player_id;
-}
 u32 Actor::getActorCount(u8 a)
 {
     Base *prev;
@@ -147,10 +145,19 @@ void Actor::setSpawnParams(Vec3_32 *a, Vec3_16 *b, i32 *c, i8 *d)
     ActorSpawnPlayer = d;
 }
 
-void Actor::applyVelocity()
+u16 data_0203bd34;
+void Actor::spawnActor(u16 a, u32 b, Vec3_32 *c, Vec3_16 *d, i32 *e, i8 *f)
 {
-    Vec3_32 newVelocity = this->applyAcceleration(&this->velocity);
-    this->applyVelocityToPosition(&newVelocity);
+    Base *pBVar1;
+
+    setSpawnParams(c, d, e, f);
+    pBVar1 = ProcessManager::getNextObjectByObjectID(data_0203bd34, (Base *)0x0);
+    Object::spawnObject(a, pBVar1, b, 2);
+}
+
+void Actor::linkPlayer(i32 player_id)
+{
+    this->linked_player = player_id;
 }
 
 Vec3_32 Actor::applyAcceleration(Vec3_32 *acceleration)
@@ -220,17 +227,15 @@ void Actor::applyVelocityToPosition(Vec3_32 *velocity)
         (Vec3_32s *)c);
 }
 
-void Actor::updateVerticalVelocity()
+void Actor::applyVelocity()
 {
-    i32 iVar2 = this->velocity.y + this->accelV;
-    i32 iVar1 = this->minVelocity.y;
-    if (iVar2 < iVar1)
-    {
-        iVar2 = iVar1;
-    }
-    this->velocity.y = iVar2;
-    return;
+    Vec3_32 newVelocity = this->applyAcceleration(&this->velocity);
+    this->applyVelocityToPosition(&newVelocity);
 }
+
+void Actor::applyDirectionalVelocity() {}
+
+void Actor::setDirectionalVelocity3D() {}
 
 void Actor::updateHorizontalVelocity()
 {
@@ -251,29 +256,16 @@ void Actor::updateHorizontalVelocity()
     this->velocity.x = velX;
 }
 
-void Actor::applyDirectionalVelocity3D()
+void Actor::updateVerticalVelocity()
 {
-    this->setDirectionalVelocity3D();
-    this->applyVelocity();
-}
-void Actor::applyDirectionalVelocity()
-{
-}
-
-void Actor::attenuateAcceleration()
-{
-}
-void Actor::setDirectionalVelocity3D()
-{
-}
-u16 data_0203bd34;
-void Actor::spawnActor(u16 a, u32 b, Vec3_32 *c, Vec3_16 *d, i32 *e, i8 *f)
-{
-    Base *pBVar1;
-
-    setSpawnParams(c, d, e, f);
-    pBVar1 = ProcessManager::getNextObjectByObjectID(data_0203bd34, (Base *)0x0);
-    Object::spawnObject(a, pBVar1, b, 2);
+    i32 iVar2 = this->velocity.y + this->accelV;
+    i32 iVar1 = this->minVelocity.y;
+    if (iVar2 < iVar1)
+    {
+        iVar2 = iVar1;
+    }
+    this->velocity.y = iVar2;
+    return;
 }
 
 void Actor::StepVelocityYClamped()
@@ -336,6 +328,14 @@ void Actor::stepVelocityClamped()
     this->velocity.x = this->velH;
     this->StepVelocityYClamped();
 }
+
+void Actor::applyDirectionalVelocity3D()
+{
+    this->setDirectionalVelocity3D();
+    this->applyVelocity();
+}
+
+void Actor::attenuateAcceleration() {}
 
 Vec3_32 Actor::getCenteredPosition()
 {
