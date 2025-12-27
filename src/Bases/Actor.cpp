@@ -251,6 +251,11 @@ void Actor::updateHorizontalVelocity()
     this->velocity.x = velX;
 }
 
+void Actor::applyDirectionalVelocity3D() {
+    this->setDirectionalVelocity3D();
+    this->applyVelocity();
+}
+
 void Actor::StepVelocityYClamped()
 {
 

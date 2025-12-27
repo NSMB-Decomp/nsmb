@@ -36,6 +36,9 @@ public:
     void applyVelocity();
     void updateVerticalVelocity();
     void updateHorizontalVelocity();
+    void setDirectionalVelocity3D();
+    void applyDirectionalVelocity3D();
+    void applyDirectionalVelocity();
     static void setSpawnParams(Vec3_32*, Vec3_16*, i32*, i8*);
     void applyVelocityToPosition(Vec3_32*);
     Vec3_32 applyAcceleration(Vec3_32*);
