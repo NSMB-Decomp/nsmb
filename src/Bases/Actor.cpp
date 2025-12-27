@@ -102,14 +102,20 @@ void Actor::postUpdate()
 bool Actor::preRender()
 {
     if (
-        (Base::preRender()) &&
-        (data_0v000_020ca84c & (1 << (this->actorType & 0xffU | 0x80))))
-    {
-        return !this->visible;
-    }
-    else
+        (!Base::preRender()) ||
+        (
+            data_0v000_020ca84c & 
+            (
+                1 << (
+                    0x80 | this->actorType & 0xff
+                )
+            )
+        )
+        )
     {
         return false;
+    } else {
+        return !!this->visible;
     }
 }
 
