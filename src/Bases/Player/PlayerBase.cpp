@@ -4,6 +4,16 @@ PlayerBase::PlayerBase()
 {
 }
 
+void func_ov011_0212cfe4(void*);
+void PlayerBase::func_ov011_0212b954()
+{
+  if ((this->_77c & 0x40) != 0)
+  {
+    this->_77c &= 0xffffffbf;
+    func_ov011_0212cfe4(&this->_2c4);
+  }
+}
+
 u8 data_ov000_020ca880;
 u8 data_ov000_020ca898;
 void PlayerBase::func_ov011_0212b908()
