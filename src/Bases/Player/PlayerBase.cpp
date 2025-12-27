@@ -4,11 +4,58 @@ PlayerBase::PlayerBase()
 {
 }
 
-bool PlayerBase::func_ov011_0212b9ac(u8 a) {
-  if (BOOL(this->_7a9 == 0x5) != FALSE) {
+bool PlayerBase::func_ov011_0212b9f8(u8 a)
+{
+  bool bVar2;
+
+  i8 _7ac = this->_7ac;
+  if (_7ac == 3)
+  {
     return false;
   }
-  if (this->_7ab == a) {
+  switch (a)
+  {
+  case 3:
+    return this->func_ov011_0212b9ac(a);
+  case 2:
+    if (((_7ac == 0) || (_7ac == 1)) || (_7ac == 4))
+    {
+      return this->func_ov011_0212b9ac(a);
+    }
+    break;
+  case 5:
+    if (_7ac != 5)
+    {
+      return this->func_ov011_0212b9ac(a);
+    }
+    break;
+  case 4:
+    if (_7ac != 4)
+    {
+      return this->func_ov011_0212b9ac(a);
+    }
+    break;
+  case 1:
+    if ((_7ac == 0) || (_7ac == 4))
+    {
+      return this->func_ov011_0212b9ac(a);
+    }
+    break;
+  case 0:
+  default:
+    return this->func_ov011_0212b9ac(a);
+  }
+  return false;
+}
+
+bool PlayerBase::func_ov011_0212b9ac(u8 a)
+{
+  if (BOOL(this->_7a9 == 0x5) != FALSE)
+  {
+    return false;
+  }
+  if (this->_7ab == a)
+  {
     return false;
   }
   this->_7ab = a;
@@ -17,7 +64,8 @@ bool PlayerBase::func_ov011_0212b9ac(u8 a) {
 
 void PlayerBase::func_ov011_0212b9a8() {}
 
-void PlayerBase::func_ov011_0212b998() {
+void PlayerBase::func_ov011_0212b998()
+{
   this->_780 |= 0x20;
 }
 

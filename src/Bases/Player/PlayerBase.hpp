@@ -40,5 +40,6 @@ class PlayerBase : public StageActor {
     void func_ov011_0212b998();
     void func_ov011_0212b9a8();
     bool func_ov011_0212b9ac(u8);
+    bool func_ov011_0212b9f8(u8);
     PlayerBase();
 };
