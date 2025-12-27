@@ -4,7 +4,27 @@ PlayerBase::PlayerBase()
 {
 }
 
-bool PlayerBase::func_ov011_0212bb90() {
+u32 PlayerBase::func_ov011_0212bba4()
+{
+  u32 result;
+
+  if (this->_7bf == 0)
+  {
+    return 0;
+  }
+  if (this->minVelH == 0)
+  {
+    result = 1;
+  }
+  else
+  {
+    result = 2;
+  }
+  return result;
+}
+
+bool PlayerBase::func_ov011_0212bb90()
+{
   return this->_7bf == TRUE;
 }
 
