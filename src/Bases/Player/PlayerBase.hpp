@@ -4,9 +4,10 @@
 class PlayerBase : public StageActor {
     u8 _pad0[0x4];
     u8 _2c4;
-    u8 _pad1[0x4ba];
+    u8 _pad1[0x4b4];
     u32 _77c;
-    u8 _pad2[0x18];
+    u32 _780;
+    u8 _pad2[0x14];
     u32 _798;
     u8 _pad3[0x10];
     i8 _7ac;
