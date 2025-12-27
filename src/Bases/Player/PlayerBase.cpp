@@ -4,6 +4,10 @@ PlayerBase::PlayerBase()
 {
 }
 
+void PlayerBase::func_ov011_0212bbdc(u32 a) {
+
+}
+
 void PlayerBase::func_ov011_0212bbcc() {
   this->_780 &=~ 0x200;
 }
