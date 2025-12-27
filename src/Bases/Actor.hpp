@@ -7,7 +7,8 @@ Vec3_16 *ActorSpawnRotation;
 i8 *ActorSpawnPlayer;
 i32 *ActorSpawnScale;
 
-class Actor: public Object {
+class Actor : public Object
+{
 public:
     Vec3_32 position;
     Vec3_32 lastPosition;
@@ -19,8 +20,8 @@ public:
     i32 minVelH;
     i32 accelV;
     i32 minVelV;
-    i32 accelH; // 0xC4
-    u32 _c8; //0xC8
+    i32 accelH;       // 0xC4
+    u32 _c8;          // 0xC8
     Vec3_32 velocity; // 0xCA
     Vec3_32 minVelocity;
     Vec3_32 scale;
@@ -29,7 +30,7 @@ public:
     u8 actorType; // 0x11C
     bool visible;
     i8 linked_player;
-    u8 actorCategory; //0x11F
+    u8 actorCategory; // 0x11F
 
     void linkPlayer(i32);
     u32 getActorCount(u8);
@@ -38,17 +39,19 @@ public:
     void updateHorizontalVelocity();
     void setDirectionalVelocity3D();
     void applyDirectionalVelocity3D();
+    void attenuateAcceleration();
+    static void spawnActor(u16, u32, Vec3_32 *, Vec3_16 *, i32 *, i8 *);
     void applyDirectionalVelocity();
-    static void setSpawnParams(Vec3_32*, Vec3_16*, i32*, i8*);
-    void applyVelocityToPosition(Vec3_32*);
-    Vec3_32 applyAcceleration(Vec3_32*);
+    static void setSpawnParams(Vec3_32 *, Vec3_16 *, i32 *, i8 *);
+    void applyVelocityToPosition(Vec3_32 *);
+    Vec3_32 applyAcceleration(Vec3_32 *);
     void StepVelocityYClamped();
     void StepVelocityXClamped();
     void stepVelocityClamped();
     Vec3_32 getCenteredPosition();
     Actor();
     ~Actor();
-    
+
     // TODO: Do we need to define these as virtual?
     bool preDestroy();
     bool preCreate();

@@ -251,9 +251,29 @@ void Actor::updateHorizontalVelocity()
     this->velocity.x = velX;
 }
 
-void Actor::applyDirectionalVelocity3D() {
+void Actor::applyDirectionalVelocity3D()
+{
     this->setDirectionalVelocity3D();
     this->applyVelocity();
+}
+void Actor::applyDirectionalVelocity()
+{
+}
+
+void Actor::attenuateAcceleration()
+{
+}
+void Actor::setDirectionalVelocity3D()
+{
+}
+u16 data_0203bd34;
+void Actor::spawnActor(u16 a, u32 b, Vec3_32 *c, Vec3_16 *d, i32 *e, i8 *f)
+{
+    Base *pBVar1;
+
+    setSpawnParams(c, d, e, f);
+    pBVar1 = ProcessManager::getNextObjectByObjectID(data_0203bd34, (Base *)0x0);
+    Object::spawnObject(a, pBVar1, b, 2);
 }
 
 void Actor::StepVelocityYClamped()
