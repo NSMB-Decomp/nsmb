@@ -4,6 +4,10 @@ PlayerBase::PlayerBase()
 {
 }
 
+u32 PlayerBase::func_ov011_0212bca4() {
+
+}
+
 bool PlayerBase::func_ov011_0212bc50(i32 a) {
   if (a < 0) {
     if (this->_788 == 0) {
