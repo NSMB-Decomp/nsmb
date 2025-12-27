@@ -103,18 +103,13 @@ bool Actor::preRender()
 {
     if (
         (!Base::preRender()) ||
-        (
-            data_0v000_020ca84c & 
-            (
-                1 << (
-                    0x80 | this->actorType & 0xff
-                )
-            )
-        )
-        )
+        (data_0v000_020ca84c &
+         (1 << (0x80 | this->actorType & 0xff))))
     {
         return false;
-    } else {
+    }
+    else
+    {
         return !!this->visible;
     }
 }
@@ -198,30 +193,30 @@ Vec3_32 Actor::applyAcceleration(Vec3_32 *acceleration)
       int iVar2;
 
       result.vtable = (unknown_vtable *)&{vtable(Vec3_32)};
-      result.x = param_1->x + (this->_).acceleration.x;
+      result.x = param_1->x + this->acceleration.x;
       iVar2 = result.x;
       if (iVar2 < 0) {
-        iVar1 = -(this->_).velocitylimit.x;
+        iVar1 = -this->velocitylimit.x;
         if (iVar2 < iVar1) {
           result.x = iVar1;
         }
       }
       else {
-        iVar1 = (this->_).velocitylimit.x;
+        iVar1 = this->velocitylimit.x;
         if (iVar1 < iVar2) {
           result.x = iVar1;
         }
       }
-      result.y = param_1->y + (this->_).acceleration.y;
+      result.y = param_1->y + this->acceleration.y;
       iVar2 = result.y;
       if (iVar2 < 0) {
-        iVar1 = -(this->_).velocitylimit.y;
+        iVar1 = -this->velocitylimit.y;
         if (iVar2 < iVar1) {
           result.y = iVar1;
         }
       }
       else {
-        iVar1 = (this->_).velocitylimit.y;
+        iVar1 = this->velocitylimit.y;
         if (iVar1 < iVar2) {
           result.y = iVar1;
         }
@@ -242,22 +237,21 @@ void Actor::applyVelocityToPosition(Vec3_32 *velocity)
     u32 c = ((u32)this + 0x5c);
     if (c != 0)
     {
-        c+=4;
+        c += 4;
     }
 
     u32 a = ((i32)this + 0x5c);
     if (a != 0)
     {
-        a+=4;
+        a += 4;
     }
 
     u32 b = ((u32)velocity + 4);
 
     Nitro::Math_AddVec3_32s(
-        (Vec3_32s *) a,
-        (Vec3_32s *) b,
-        (Vec3_32s *) c
-    );
+        (Vec3_32s *)a,
+        (Vec3_32s *)b,
+        (Vec3_32s *)c);
 }
 
 void Actor::updateVerticalVelocity()
@@ -270,4 +264,31 @@ void Actor::updateVerticalVelocity()
     }
     this->velocity.y = iVar2;
     return;
+}
+
+void Actor::StepVelocityYClamped()
+{
+
+    i32 minVelV = this->minVelV;
+    i32 velX = this->velocity.y;
+    if (velX < minVelV)
+    {
+        velX -= this->accelV;
+        if (velX <= minVelV)
+        {
+            minVelV = velX;
+        }
+        this->velocity.y = minVelV;
+        return;
+    }
+    if (velX <= minVelV)
+    {
+        return;
+    }
+    velX += this->accelV;
+    if (velX >= minVelV)
+    {
+        minVelV = velX;
+    }
+    this->velocity.y = minVelV;
 }
