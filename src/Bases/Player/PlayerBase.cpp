@@ -4,6 +4,10 @@ PlayerBase::PlayerBase()
 {
 }
 
+void PlayerBase::func_ov011_0212b998() {
+  this->_780 |= 0x20;
+}
+
 void PlayerBase::func_ov011_0212b984()
 {
   if ((this->_780 & 0x20) != 0)
