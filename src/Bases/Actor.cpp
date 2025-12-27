@@ -195,40 +195,6 @@ Vec3_32 Actor::applyAcceleration(Vec3_32 *acceleration)
     }
     result.z = acceleration->z;
     return result;
-    /*  int iVar1;
-      int iVar2;
-
-      result.vtable = (unknown_vtable *)&{vtable(Vec3_32)};
-      result.x = param_1->x + this->acceleration.x;
-      iVar2 = result.x;
-      if (iVar2 < 0) {
-        iVar1 = -this->velocitylimit.x;
-        if (iVar2 < iVar1) {
-          result.x = iVar1;
-        }
-      }
-      else {
-        iVar1 = this->velocitylimit.x;
-        if (iVar1 < iVar2) {
-          result.x = iVar1;
-        }
-      }
-      result.y = param_1->y + this->acceleration.y;
-      iVar2 = result.y;
-      if (iVar2 < 0) {
-        iVar1 = -this->velocitylimit.y;
-        if (iVar2 < iVar1) {
-          result.y = iVar1;
-        }
-      }
-      else {
-        iVar1 = this->velocitylimit.y;
-        if (iVar1 < iVar2) {
-          result.y = iVar1;
-        }
-      }
-      result.z = param_1->z;
-      return result;*/
 }
 
 // TODO: Is there a better sytax?
@@ -264,6 +230,25 @@ void Actor::updateVerticalVelocity()
     }
     this->velocity.y = iVar2;
     return;
+}
+
+void Actor::updateHorizontalVelocity()
+{
+    i32 velX = this->velocity.x;
+    i32 minVelX = this->minVelocity.x;
+    if (velX < minVelX)
+    {
+        velX += this->accelH;
+        if (velX > minVelX)
+        {
+            velX = minVelX;
+        }
+    }
+    else if ((velX > minVelX) && (velX -= this->accelH, velX < minVelX))
+    {
+        velX = minVelX;
+    }
+    this->velocity.x = velX;
 }
 
 void Actor::StepVelocityYClamped()
