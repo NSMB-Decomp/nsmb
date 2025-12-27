@@ -4,6 +4,15 @@ PlayerBase::PlayerBase()
 {
 }
 
+void PlayerBase::func_ov011_0212b26c(u32 a) {
+
+}
+
+void PlayerBase::setPosition(Vec3_32* newPos){
+  this->position.x = newPos->x;
+  this->position.y = newPos->y;
+}
+
 u16 PlayerBase::func_ov011_0212b210(u16 a) {
   if (this->_7ac == 4) {
     return (u16)(a * 0xd00 + 0x800 >> 0xc);
