@@ -4,6 +4,20 @@ PlayerBase::PlayerBase()
 {
 }
 
+bool PlayerBase::func_ov011_0212bc50(i32 a) {
+  if (a < 0) {
+    if (this->_788 == 0) {
+      this->position.y += a;
+      return true;
+    }
+  }
+  else if ((0 < a) && (this->_788 <= 0)) {
+    this->position.y += a;
+    return true;
+  }
+  return false;
+}
+
 void PlayerBase::func_ov011_0212bbdc(u32 a) {
 
 }
