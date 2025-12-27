@@ -4,7 +4,7 @@ public:
     i32 y;
     i32 z;
 
-    void sub(Vec3_32 *b);
+    Vec3_32 sub(Vec3_32 *a);
 
     //Vec3();
     virtual inline ~Vec3_32();
