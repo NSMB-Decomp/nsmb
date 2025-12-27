@@ -33,6 +33,7 @@ class PlayerBase : public StageActor {
     void func_ov011_0212b8bc();
     void func_ov011_0212b908();
     void func_ov011_0212b954();
+    void func_ov011_0212b984();
     PlayerBase();
 
     /**/
