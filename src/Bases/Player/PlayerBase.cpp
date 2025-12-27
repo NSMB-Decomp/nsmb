@@ -5,7 +5,10 @@ PlayerBase::PlayerBase()
 }
 
 u16 PlayerBase::func_ov011_0212b210(u16 a) {
-
+  if (this->_7ac == 4) {
+    return (u16)(a * 0xd00 + 0x800 >> 0xc);
+  }
+  return a;
 }
 
 i8 PlayerBase::func_ov011_0212b1d4()
