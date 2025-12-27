@@ -270,25 +270,52 @@ void Actor::StepVelocityYClamped()
 {
 
     i32 minVelV = this->minVelV;
-    i32 velX = this->velocity.y;
-    if (velX < minVelV)
+    i32 velY = this->velocity.y;
+    if (velY < minVelV)
     {
-        velX -= this->accelV;
-        if (velX <= minVelV)
+        velY -= this->accelV;
+        if (velY <= minVelV)
         {
-            minVelV = velX;
+            minVelV = velY;
         }
         this->velocity.y = minVelV;
         return;
     }
-    if (velX <= minVelV)
+    if (velY <= minVelV)
     {
         return;
     }
-    velX += this->accelV;
-    if (velX >= minVelV)
+    velY += this->accelV;
+    if (velY >= minVelV)
     {
-        minVelV = velX;
+        minVelV = velY;
     }
     this->velocity.y = minVelV;
+}
+
+void Actor::StepVelocityXClamped()
+{
+    i32 minVelH = this->minVelH;
+    i32 velH = this->velH;
+    if (velH < minVelH)
+    {
+        velH += this->accelH;
+        if (velH <= minVelH)
+        {
+            minVelH = velH;
+        }
+        this->velH = minVelH;
+        return;
+    }
+    if (velH <= minVelH)
+    {
+        return;
+    }
+    velH -= this->accelH;
+    if (velH >= minVelH)
+    {
+        minVelH = velH;
+    }
+    this->velH = minVelH;
+    return;
 }
