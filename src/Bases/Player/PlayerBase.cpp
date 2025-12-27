@@ -6,16 +6,27 @@ PlayerBase::PlayerBase()
 
 u8 data_ov000_020ca880;
 u8 data_ov000_020ca898;
-void PlayerBase::func_ov011_0212b8bc() {
-  data_ov000_020ca880 &=~ 0x10;
-  data_ov000_020ca898 &=~ 0x40;
+void PlayerBase::func_ov011_0212b908()
+{
+  data_ov000_020ca880 |= 0x10;
+  data_ov000_020ca898 |= 0x40;
+  this->_7b0 = 1;
+  this->active_collider._1c6 |= 1;
+}
+
+void PlayerBase::func_ov011_0212b8bc()
+{
+  data_ov000_020ca880 &= ~0x10;
+  data_ov000_020ca898 &= ~0x40;
   this->_7b0 = 0;
-  this->active_collider._1c6 &=~ 1;
+  this->active_collider._1c6 &= ~1;
 }
 
 u16 data_0208b350[2];
-void PlayerBase::func_ov011_0212b878(u16 a) {
-  if (this->_7ac == 3) {
+void PlayerBase::func_ov011_0212b878(u16 a)
+{
+  if (this->_7ac == 3)
+  {
     return;
   }
   data_0208b350[this->linked_player] = a;
@@ -23,35 +34,41 @@ void PlayerBase::func_ov011_0212b878(u16 a) {
   this->func_ov011_0212b998();
 }
 
-void  func_02012314(u32, u32);
-void PlayerBase::func_ov011_0212b864(u32 a, u32 b) {
-  func_02012314(a,b);
+void func_02012314(u32, u32);
+void PlayerBase::func_ov011_0212b864(u32 a, u32 b)
+{
+  func_02012314(a, b);
 }
 
 void func_020122d0(u32, u32, u32);
-void PlayerBase::func_ov011_0212b84c(u32 a, u32 b, u32 c) {
-  func_020122d0(a,b,c);
+void PlayerBase::func_ov011_0212b84c(u32 a, u32 b, u32 c)
+{
+  func_020122d0(a, b, c);
 }
 
 void func_02012290(u32, u32);
-void PlayerBase::func_ov011_0212b838(u32 a, u32 b) {
-  func_02012290(a,b);
+void PlayerBase::func_ov011_0212b838(u32 a, u32 b)
+{
+  func_02012290(a, b);
 }
 
 void func_0201224c(u32, u32, u32);
-void PlayerBase::func_ov011_0212b820(u32 a, u32 b, u32 c) {
-  func_0201224c(a,b,c);
+void PlayerBase::func_ov011_0212b820(u32 a, u32 b, u32 c)
+{
+  func_0201224c(a, b, c);
 }
 
 void func_020121e4(u32);
-void PlayerBase::func_ov011_0212b810(u32 a) {
+void PlayerBase::func_ov011_0212b810(u32 a)
+{
   func_020121e4(a);
 }
 
 void func_0204e87c(u32, u32);
 void func_02011e3c(u32);
-void PlayerBase::func_ov011_0212b7f0(u32 a) {
-  func_0204e87c(a,0x1e);
+void PlayerBase::func_ov011_0212b7f0(u32 a)
+{
+  func_0204e87c(a, 0x1e);
   func_02011e3c(a);
 }
 

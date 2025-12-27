@@ -28,6 +28,7 @@ class PlayerBase : public StageActor {
     void func_ov011_0212b864(u32, u32);
     void func_ov011_0212b878(u16);
     void func_ov011_0212b8bc();
+    void func_ov011_0212b908();
     PlayerBase();
 
     /**/
