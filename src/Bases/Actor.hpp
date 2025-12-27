@@ -41,6 +41,7 @@ public:
     void StepVelocityYClamped();
     void StepVelocityXClamped();
     void stepVelocityClamped();
+    Vec3_32 getCenteredPosition();
     Actor();
     ~Actor();
     

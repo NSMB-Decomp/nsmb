@@ -326,3 +326,18 @@ void Actor::stepVelocityClamped()
     this->velocity.x = this->velH;
     this->StepVelocityYClamped();
 }
+
+Vec3_32 Actor::getCenteredPosition()
+{
+    Vec3_32 result;
+
+    i32 x = this->position.x + this->centerOffset.x;
+    i32 z = this->position.z + this->centerOffset.z;
+    i32 y = this->position.y + this->centerOffset.y;
+
+    result.x = x;
+    result.y = y;
+    result.z = z;
+
+    return result;
+}
