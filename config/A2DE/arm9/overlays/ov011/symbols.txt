@@ -1,8 +1,8 @@
 func_ov011_0212b160 kind:function(arm,size=0x2c) addr:0x0212b160
 func_ov011_0212b18c kind:function(arm,size=0x1c) addr:0x0212b18c
 func_ov011_0212b1a8 kind:function(arm,size=0x2c) addr:0x0212b1a8
-PlayerBase::func_ov011_0212b1d4 kind:function(arm,size=0x3c) addr:0x0212b1d4
-PlayerBase::func_ov011_0212b210 kind:function(arm,size=0x48) addr:0x0212b210
+_ZN10PlayerBase19func_ov011_0212b1d4Ev kind:function(arm,size=0x3c) addr:0x0212b1d4
+_ZN10PlayerBase19func_ov011_0212b210Et kind:function(arm,size=0x48) addr:0x0212b210
 PlayerBase::func_ov011_0212b258 kind:function(arm,size=0x14) addr:0x0212b258
 PlayerBase::func_ov011_0212b26c kind:function(arm,size=0x50) addr:0x0212b26c
 PlayerBase::func_ov011_0212b2bc kind:function(arm,size=0xc8) addr:0x0212b2bc
@@ -450,7 +450,7 @@ data_ov011_0212f62c kind:data(any) addr:0x0212f62c
 data_ov011_0212f630 kind:data(any) addr:0x0212f630
 data_ov011_0212f714 kind:data(any) addr:0x0212f714
 data_ov011_0212f724 kind:data(any) addr:0x0212f724
-_ZTV10PlayerBase kind:data(any) addr:0x0212f734
+_ZTV10PlayerBase kind:data(any) addr:0x0212f72c
 data_ov011_0212f850 kind:data(any) addr:0x0212f850
 data_ov011_0212f868 kind:data(any) addr:0x0212f868
 data_ov011_0212f870 kind:data(any) addr:0x0212f870
