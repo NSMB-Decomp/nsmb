@@ -4,6 +4,16 @@ PlayerBase::PlayerBase()
 {
 }
 
+u16 data_0208b350[2];
+void PlayerBase::func_ov011_0212b878(u16 a) {
+  if (this->_7ac == 3) {
+    return;
+  }
+  data_0208b350[this->linked_player] = a;
+  this->func_ov011_0212b740(2);
+  this->func_ov011_0212b998();
+}
+
 void  func_02012314(u32, u32);
 void PlayerBase::func_ov011_0212b864(u32 a, u32 b) {
   func_02012314(a,b);

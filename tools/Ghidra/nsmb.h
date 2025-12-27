@@ -539,6 +539,7 @@ struct PlayerBase_data {
     u32 _77c;
     u8 _pad1[0x18];
     u32 _798;
+    u8 _pad2[0x10];
     i8 _7ac;
 };
 struct PlayerBase {
