@@ -4,6 +4,31 @@ PlayerBase::PlayerBase()
 {
 }
 
+u16 data_0208b344[2];
+void func_02020150(u32, u32);
+void func_02020128(u32);
+void PlayerBase::func_ov011_0212bac8()
+{
+  i32 _7ac = this->_7ac;
+  if (_7ac != 3)
+  {
+    if (_7ac != 4)
+    {
+      func_02020150(this->linked_player, 0);
+      data_0208b344[this->linked_player] = 0x168;
+      this->func_ov011_0212b838(0x167, &this->position);
+      return;
+    }
+    func_02020150(this->linked_player, 0);
+    data_0208b344[this->linked_player] = 0;
+    return;
+  }
+  func_02020150(this->linked_player, 0x348);
+  data_0208b344[this->linked_player] = 0;
+  func_02020128(this->linked_player);
+  return;
+}
+
 bool PlayerBase::func_ov011_0212b9f8(u8 a)
 {
   bool bVar2;
@@ -129,8 +154,8 @@ void PlayerBase::func_ov011_0212b84c(u32 a, u32 b, u32 c)
   func_020122d0(a, b, c);
 }
 
-void func_02012290(u32, u32);
-void PlayerBase::func_ov011_0212b838(u32 a, u32 b)
+void func_02012290(u32, Vec3_32 *);
+void PlayerBase::func_ov011_0212b838(u32 a, Vec3_32 *b)
 {
   func_02012290(a, b);
 }

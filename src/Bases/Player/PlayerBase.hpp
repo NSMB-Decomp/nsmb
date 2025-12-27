@@ -29,7 +29,7 @@ class PlayerBase : public StageActor {
     void func_ov011_0212b7f0(u32);
     void func_ov011_0212b810(u32);
     void func_ov011_0212b820(u32, u32, u32);
-    void func_ov011_0212b838(u32, u32);
+    void func_ov011_0212b838(u32, Vec3_32*);
     void func_ov011_0212b84c(u32, u32, u32);
     void func_ov011_0212b864(u32, u32);
     void func_ov011_0212b878(u16);
@@ -41,5 +41,6 @@ class PlayerBase : public StageActor {
     void func_ov011_0212b9a8();
     bool func_ov011_0212b9ac(u8);
     bool func_ov011_0212b9f8(u8);
+    void func_ov011_0212bac8();
     PlayerBase();
 };
