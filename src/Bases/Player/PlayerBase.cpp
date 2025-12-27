@@ -4,6 +4,11 @@ PlayerBase::PlayerBase()
 {
 }
 
+void func_020121e4(u32);
+void PlayerBase::func_ov011_0212b810(u32 a) {
+  func_020121e4(a);
+}
+
 void func_0204e87c(u32, u32);
 void func_02011e3c(u32);
 void PlayerBase::func_ov011_0212b7f0(u32 a) {
