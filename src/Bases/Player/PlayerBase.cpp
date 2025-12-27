@@ -4,6 +4,10 @@ PlayerBase::PlayerBase()
 {
 }
 
+u32 PlayerBase::func_ov011_0212bd68(u32 a, u32 b, u32 c) {
+  
+}
+
 u32 PlayerBase::func_ov011_0212bca4() {
 
 }
