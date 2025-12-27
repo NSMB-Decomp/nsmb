@@ -235,13 +235,13 @@ void Actor::applyVelocity()
 void Actor::applyVelocityToPosition(Vec3_32 *velocity)
 {
     u32 c = ((u32)this + 0x5c);
-    if (c > 0)
+    if (c != 0)
     {
         c+=4;
     }
 
     u32 a = ((i32)this + 0x5c);
-    if (a > 0)
+    if (a != 0)
     {
         a+=4;
     }
