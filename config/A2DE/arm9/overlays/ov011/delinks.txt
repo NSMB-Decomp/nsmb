@@ -4,3 +4,6 @@
     .data       start:0x0212e6c0 end:0x0212f8e0 kind:data align:32
     .bss        start:0x0212f8e0 end:0x0212f900 kind:bss align:32
 
+src/Bases/PlayerBase.cpp:
+    .text       start:0x0212b1d4 end:0x0212c4ec
+    .data       start:0x0212f734 end:0x0212f850
