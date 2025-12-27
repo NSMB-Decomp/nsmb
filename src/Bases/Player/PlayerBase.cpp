@@ -4,6 +4,10 @@ PlayerBase::PlayerBase()
 {
 }
 
+bool PlayerBase::func_ov011_0212b2bc() {
+  
+}
+
 void PlayerBase::func_ov011_0212b26c(u32 a) {
 
 }
