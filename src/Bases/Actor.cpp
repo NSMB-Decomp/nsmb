@@ -257,8 +257,8 @@ void Actor::applyVelocityToPosition(Vec3_32 *velocity)
 
 void Actor::updateVerticalVelocity()
 {
-    int iVar1 = this->minVelocity.y;
-    int iVar2 = this->velocity.y + this->accelV;
+    i32 iVar2 = this->velocity.y + this->accelV;
+    i32 iVar1 = this->minVelocity.y;
     if (iVar2 < iVar1)
     {
         iVar2 = iVar1;
