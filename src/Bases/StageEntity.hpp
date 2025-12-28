@@ -65,6 +65,7 @@ public:
     static u16 * getObjectBank(u32);
     u32 getSpritePriority(u32, u32, u32);
     Vec3_32 tryNormalizeVec3(Vec3_32*);
+    void func_ov000_020988ac(u32);
 
     virtual bool onUpdate_0();
     virtual bool _01();

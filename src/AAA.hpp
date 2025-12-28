@@ -88,3 +88,5 @@ void func_020050c0();
 void func_ov001_020cceb4();
 bool (func_0200ae9c)(Vec3_32*);
 bool (func_0201f000)(Vec3_32*);
+
+u32 data_ov000_020ca2b8;

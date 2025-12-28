@@ -110,11 +110,9 @@ bool StageEntity::onUpdate_8() {}
 bool StageEntity::onUpdate_9() {}
 void StageEntity::_11() {}
 
-u16 * StageEntity::getObjectBank(u32 sprite_id) {
-    return &Stage::ObjectBankTable[sprite_id];
+void func_ov000_020988ac(u32 bit) {
+    data_ov000_020ca2b8 &= ~(1 << (0x1f & bit));
 }
-
-u32 StageEntity::getSpritePriority(u32 a, u32 b, u32 c) {}
 
 Vec3_32 StageEntity::tryNormalizeVec3(Vec3_32* input) {
     if (input->x == 0 && input->x == 0 && input->z == 0) {
@@ -123,4 +121,11 @@ Vec3_32 StageEntity::tryNormalizeVec3(Vec3_32* input) {
     Vec3_32 result;
 
     return result;
+}
+
+u32 StageEntity::getSpritePriority(u32 a, u32 b, u32 c) {}
+
+
+u16 * StageEntity::getObjectBank(u32 sprite_id) {
+    return &Stage::ObjectBankTable[sprite_id];
 }
