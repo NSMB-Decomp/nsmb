@@ -66,6 +66,7 @@ public:
     u32 getSpritePriority(u32, u32, u32);
     Vec3_32 tryNormalizeVec3(Vec3_32*);
     void func_ov000_020988ac(u32);
+    void func_ov000_020988d0(u32);
 
     virtual bool onUpdate_0();
     virtual bool _01();
