@@ -226,19 +226,18 @@ u32 PlayerBase::func_ov011_0212bba4()
 {
 	u32 result;
 
-	if (this->_7bf == 0)
+	if ((this->_778 & 0x400000) != 0)
 	{
-		return 0;
+		if (this->minVelH != 0)
+		{
+			return 2;
+		}
+		else
+		{
+			return 1;
+		}
 	}
-	if (this->minVelH == 0)
-	{
-		result = 1;
-	}
-	else
-	{
-		result = 2;
-	}
-	return result;
+	return 0;
 }
 
 bool PlayerBase::func_ov011_0212bb90()
@@ -464,12 +463,12 @@ void PlayerBase::func_ov011_0212b384(i16)
 {
 	Vec3_16 rotation = this->rotation;
 	Vec3_32 position = this->position;
-	//switch (this->_7b2) {
+	// switch (this->_7b2) {
 	//	case 0:
 	//		break;
 	//	case 1:
-	//		
-	//}
+	//
+	// }
 }
 
 u32 func_020204e0(i8);
@@ -478,7 +477,7 @@ u8 data_02088f34;
 u8 data_02089508[2];
 void func_ov000_020a189c(u32);
 void func_ov000_020a183c(u32, u32);
-void func_02012d6c(u32, u32*);
+void func_02012d6c(u32, u32 *);
 u32 data_02088bdc;
 u32 uRam02088f28; // data_02088bdc + 0x34c
 
@@ -499,7 +498,7 @@ bool PlayerBase::func_ov011_0212b2bc()
 		{
 			if (b != 0)
 			{
-	 			func_ov000_020a189c(0);
+				func_ov000_020a189c(0);
 			}
 			else
 			{
