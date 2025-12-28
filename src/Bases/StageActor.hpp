@@ -6,21 +6,23 @@ struct Rect {
     i32 halfWidth;
     i32 halfHeight;
 };
+size_assert(Rect, 0x10);
 
 class ActiveCollider {
 public:
     u8 _pad0[0x14];
     Rect rect;
     void *__1;
-    u8 _pad1[120];
+    u8 _pad1[126];
     u8 _1c6;
-    u8 _pad2[9];
+    u8 _pad2[7];
 
     ActiveCollider();
     ~ActiveCollider();
 
     static void delink(void*);
 };
+size_assert(ActiveCollider, 0xb0);
 
 class PlatformManager {
 public:

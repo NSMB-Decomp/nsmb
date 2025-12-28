@@ -8,6 +8,9 @@ typedef void* unknown_pointer;
 
 #define NULL (void*)0x0
 
+// https://forum.vcfed.org/index.php?threads/c-item-size-check-at-compile-time.1244920/
+#define size_assert( what, howmuch ) typedef char what##_size_wrong_[( !!(sizeof(what) == howmuch) )*2-1 ]
+
 // To fix code that has weird bool logic
 #define BOOL i32
 #define TRUE 1
