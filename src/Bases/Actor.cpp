@@ -1,5 +1,6 @@
 #include "Actor.hpp"
 #include "../Nitro/Nitro.hpp"
+#include "../Math.hpp"
 
 // TODO: Some of this may be a part of inline Object::Object(). To comapre Actor::Actor() to Scene::Scene() and confirm if any comparisons
 Actor::Actor()
@@ -336,7 +337,11 @@ void Actor::applyDirectionalVelocity3D()
     this->applyVelocity();
 }
 
-void Actor::attenuateAcceleration() {}
+void Actor::attenuateAcceleration() {
+  Math::expLerp(&this->acceleration.x,0,0x200,0x4000,0x100);
+  Math::expLerp(&this->acceleration.y,0,0x200,0x4000,0x100);
+  Math::expLerp(&this->acceleration.z,0,0x200,0x4000,0x100);
+}
 
 Vec3_32 Actor::getCenteredPosition()
 {
