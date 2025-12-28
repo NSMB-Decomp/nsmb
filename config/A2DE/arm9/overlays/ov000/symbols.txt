@@ -1,8 +1,8 @@
 _ZN11StageEntityD1Ev kind:function(arm,size=0x50) addr:0x020986e0
 _ZN11StageEntityD0Ev kind:function(arm,size=0x58) addr:0x02098730
 _ZN11StageEntity13getObjectBankEm kind:function(arm,size=0x10) addr:0x02098788
-func_ov000_02098798 kind:function(arm,size=0x7c) addr:0x02098798
-func_ov000_02098814 kind:function(arm,size=0x98) addr:0x02098814
+_ZN11StageEntity17getSpritePriorityEmmm kind:function(arm,size=0x7c) addr:0x02098798
+_ZN11StageEntity16tryNormalizeVec3EP7Vec3_32 kind:function(arm,size=0x98) addr:0x02098814
 func_ov000_020988ac kind:function(arm,size=0x24) addr:0x020988ac
 func_ov000_020988d0 kind:function(arm,size=0x20) addr:0x020988d0
 func_ov000_020988f0 kind:function(arm,size=0x18) addr:0x020988f0

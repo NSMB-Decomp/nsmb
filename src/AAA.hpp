@@ -16,6 +16,10 @@ namespace Stage {
     u16 ObjectBankTable[2];
 }
 
+namespace Game {
+
+}
+
 extern ObjectProfile** CurrentProfileTable;
 extern ObjectProfile* MainProfileTable;
 extern u8 Stage_actorFreezeFlag;
@@ -81,5 +85,6 @@ void func_0200a0b4();
 void func_020050ec();
 void func_020050d8();
 void func_020050c0();
-
 void func_ov001_020cceb4();
+bool (func_0200ae9c)(Vec3_32*);
+bool (func_0201f000)(Vec3_32*);

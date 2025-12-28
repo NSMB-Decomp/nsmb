@@ -1,6 +1,5 @@
 #include "StageEntity.hpp"
 
-bool (func_0201f000)(Vec3_32*);
 StageEntity::StageEntity() {
     //this->_40 = 0x2;
     this->actorType = 0x2;
@@ -79,7 +78,6 @@ bool StageEntity::onUpdate() {
     return this->onUpdate_0();
 }
 
-bool (func_0200ae9c)(Vec3_32*);
 bool StageEntity::_01() {
     if (this->_3e9 != 0) {
         return false;
@@ -114,4 +112,15 @@ void StageEntity::_11() {}
 
 u16 * StageEntity::getObjectBank(u32 sprite_id) {
     return &Stage::ObjectBankTable[sprite_id];
+}
+
+u32 StageEntity::getSpritePriority(u32 a, u32 b, u32 c) {}
+
+Vec3_32 StageEntity::tryNormalizeVec3(Vec3_32* input) {
+    if (input->x == 0 && input->x == 0 && input->z == 0) {
+        return *input;
+    }
+    Vec3_32 result;
+
+    return result;
 }
