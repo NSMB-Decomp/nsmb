@@ -166,10 +166,10 @@ bool PlayerBase::func_ov011_0212be28()
   return iVar1;
 }
 
-bool PlayerBase::func_ov011_0212bde0(u32 a)
+bool PlayerBase::func_ov011_0212bde0(Actor* a)
 {
   this->_77c = this->_77c & ~0x1;
-  if ((BOOL)(this->_688 == a) == FALSE)
+  if ((BOOL)(this->linkedActor == a) == FALSE)
   {
     return false;
   }
@@ -462,8 +462,16 @@ bool PlayerBase::func_ov011_0212b2bc()
 {
 }
 
-void PlayerBase::func_ov011_0212b26c(u32 a)
+void PlayerBase::func_ov011_0212b26c(Actor* a)
 {
+  this->linkedActor = a;
+  Actor* linkedActor = this->linkedActor;
+  if (linkedActor == NULL) {
+    return;
+  }
+  if ((BOOL)(linkedActor->actorType == 1) == FALSE) {
+    linkedActor->linkPlayer(this->linked_player);
+  }
 }
 
 void PlayerBase::setPosition(Vec3_32 *newPos)
@@ -472,13 +480,25 @@ void PlayerBase::setPosition(Vec3_32 *newPos)
   this->position.y = newPos->y;
 }
 
-u16 PlayerBase::func_ov011_0212b210(u16 a)
+u16 PlayerBase::func_ov011_0212b210(u16 r1)
 {
   if (this->_7ac == 4)
   {
-    return (u16)(a * 0xd00 + 0x800 >> 0xc);
+    //u32 r0 = 0xd00; // mov r0, 0xd00
+    //u32 r2 = 0x0; // mov r2, 0x0
+    //u64 r3_12 = (r1 * r2); // umull r12, r3, r1, r0
+    //u32 r3 = r3_12 >> 0x32;
+    //i32 r12 = r3_12;
+    //r3 = (r1 * r2) + r3; // mla r3, r1, r2, r3
+    //r2 = r1 >> 0x1f; // mov r2, r1, asr #0x1f
+    //u32 r1 = 0x800; // // mov r1, #0x800
+    //r3 = (r2 * r0) + r3; // mla r3, r2, r0, r3
+    //r12 += r1; // adds r12, r12, r1
+//
+    //return r1;
+    //return (u16)(a * 0xd00 + 0x800 >> 0xc);
   }
-  return a;
+  return r1;
 }
 
 u8 PlayerBase::func_ov011_0212b1d4()

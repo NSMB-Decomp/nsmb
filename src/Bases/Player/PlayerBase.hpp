@@ -11,7 +11,7 @@ class PlayerBase : public StageActor
     BlendColor _488;
     u8 _2c4;
     u8 _pad1[0x3c0];
-    u32 _688;
+    Actor* linkedActor;
     u8 _pad8[0x98];
     Vec3_32 _724;
     Vec3_32 _734;
@@ -37,7 +37,7 @@ class PlayerBase : public StageActor
     u8 func_ov011_0212b1d4();
     u16 func_ov011_0212b210(u16);
     void setPosition(Vec3_32 *);
-    void func_ov011_0212b26c(u32);
+    void func_ov011_0212b26c(Actor*);
     bool func_ov011_0212b2bc();
     void func_ov011_0212b384(i16);
     void func_ov011_0212b710();
@@ -67,7 +67,7 @@ class PlayerBase : public StageActor
     u32 func_ov011_0212bca4();
     u32 func_ov011_0212bd68(u32, u32, u32);
     u32 func_ov011_0212bdb8(u32);
-    bool func_ov011_0212bde0(u32);
+    bool func_ov011_0212bde0(Actor*);
     bool func_ov011_0212be28();
     bool func_ov011_0212be70();
     bool func_ov011_0212beb8();
