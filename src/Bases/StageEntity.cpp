@@ -110,6 +110,10 @@ bool StageEntity::onUpdate_8() {}
 bool StageEntity::onUpdate_9() {}
 void StageEntity::_11() {}
 
+bool StageEntity::playerCollision(ActiveCollider* collider, ActiveCollider* other) {}
+
+void StageEntity::entityCollision() {}
+
 void StageEntity::damagePlayer(ActiveCollider* collider, PlayerBase* player) {
     bool check;
     if ((player->_79c == 0) && (player->_7c1 == 0) ) {

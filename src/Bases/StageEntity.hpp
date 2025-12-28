@@ -110,8 +110,8 @@ public:
     virtual void _36();
     virtual void _37();
     virtual void _38();
-    virtual void _39();
-    virtual void _40();
+    virtual bool playerCollision(ActiveCollider*, ActiveCollider*);
+    virtual void entityCollision();
     virtual void damagePlayer(ActiveCollider*, PlayerBase*);
     virtual void _42();
     virtual void _43();
