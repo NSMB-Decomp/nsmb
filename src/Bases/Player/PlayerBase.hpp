@@ -1,7 +1,8 @@
 #include "../StageActor.hpp"
 #include "PlayerModel.hpp"
 
-class PlayerBase : public StageActor {
+class PlayerBase : public StageActor
+{
     u8 _pad0[0x4];
     u8 _2c4;
     u8 _pad1[0x3c0];
@@ -26,7 +27,7 @@ class PlayerBase : public StageActor {
 
     i8 func_ov011_0212b1d4();
     u16 func_ov011_0212b210(u16);
-    void setPosition(Vec3_32*);
+    void setPosition(Vec3_32 *);
     void func_ov011_0212b26c(u32);
     bool func_ov011_0212b2bc();
     void func_ov011_0212b384(i16);
@@ -36,7 +37,7 @@ class PlayerBase : public StageActor {
     void func_ov011_0212b7f0(u32);
     void func_ov011_0212b810(u32);
     void func_ov011_0212b820(u32, u32, u32);
-    void func_ov011_0212b838(u32, Vec3_32*);
+    void func_ov011_0212b838(u32, Vec3_32 *);
     void func_ov011_0212b84c(u32, u32, u32);
     void func_ov011_0212b864(u32, u32);
     void func_ov011_0212b878(u16);
@@ -62,25 +63,6 @@ class PlayerBase : public StageActor {
     bool func_ov011_0212be70();
     bool func_ov011_0212beb8();
     void func_ov011_0212bf00();
-    void func_ov011_0212bf24();
-    void func_ov011_0212bf28();
-    bool func_ov011_0212bf50();
-    bool func_ov011_0212bf58();
-    void func_ov011_0212bf60();
-    bool func_ov011_0212bf64();
-    bool func_ov011_0212bf6c();
-    bool func_ov011_0212bfb0();
-    void func_ov011_0212bfb8();
-    void func_ov011_0212bfbc();
-    void func_ov011_0212bfc0();
-    bool func_ov011_0212bfc4();
-    bool func_ov011_0212bfcc();
-    bool func_ov011_0212bfd4();
-    bool func_ov011_0212bfdc();
-    void func_ov011_0212bfe4();
-    void func_ov011_0212bfe8();
-    void func_ov011_0212bfec();
-    Vec3_32 func_ov011_0212bff0();
     virtual bool virt_20();
     virtual bool virt_21();
     virtual bool virt_22();
@@ -113,13 +95,32 @@ class PlayerBase : public StageActor {
     virtual u32 virt_49();
     virtual bool virt_50();
     virtual bool virt_51();
+    virtual Vec3_32 func_ov011_0212bff0();
+    virtual void func_ov011_0212bfec();
+    virtual void func_ov011_0212bfe8();
+    virtual void func_ov011_0212bfe4();
+    virtual bool func_ov011_0212bfdc();
+    virtual bool func_ov011_0212bfd4();
+    virtual bool func_ov011_0212bfcc();
+    virtual bool func_ov011_0212bfc4();
+    virtual void func_ov011_0212bfc0();
+    virtual void func_ov011_0212bfbc();
+    virtual void func_ov011_0212bfb8();
+    virtual bool func_ov011_0212bfb0();
+    virtual bool func_ov011_0212bf6c();
+    virtual bool func_ov011_0212bf64();
+    virtual void func_ov011_0212bf60();
+    virtual bool func_ov011_0212bf58();
+    virtual bool func_ov011_0212bf50();
+    virtual void func_ov011_0212bf28();
+    virtual void func_ov011_0212bf24();
     void func_ov011_0212c110(u32);
     void func_ov011_0212c130();
     void func_ov011_0212c170(u32);
     void func_ov011_0212c1b8();
     void func_ov011_0212c200();
     u32 func_ov011_0212c27c(u32);
-    PlayerBase* func_ov011_0212c2e4();
+    PlayerBase *func_ov011_0212c2e4();
     ~PlayerBase();
     PlayerBase();
 };
