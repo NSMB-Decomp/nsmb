@@ -4,6 +4,7 @@
 #include "base_types.hpp"
 #include "ProcessManager.hpp"
 #include "Heap.hpp"
+#include "Vec.hpp"
 
 struct ObjectProfile {
     Base* (*constructor)();
