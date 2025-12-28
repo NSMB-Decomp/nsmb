@@ -4,7 +4,9 @@
 class StageEntity : public StageActor {
 public:
     u8 _2c4; //0x2C4
-    u8 _pad13[0x05]; // 0x2C0
+    u8 _2c5; //0x2C5
+    u16 _2c6; //0x2C6
+    u8 _pad13[0x02]; // 0x2C0
     u16 _2ca; // 0x2CA
     u8 _pad9[0x2];
     u32 _2d0; // 0x2D0
@@ -27,7 +29,9 @@ public:
     u32 _3a8; // 0x3A8
     u8 _pad3[0x8];
     u32 _3b4; // 0x3B4
-    u8 _pad11[0xe];
+    u32 _3b8; // 0x3B8
+    u16 _3bc; // 0x3BC
+    u8 _pad11[0x7];
     u16 _3c6; // 0x3C6
     u16 _3c8; // 0x3CA
     u8 pad12[0x6];
@@ -111,7 +115,7 @@ public:
     virtual void _26();
     virtual void _27();
     virtual void stopVelocity();
-    virtual void _29();
+    virtual void onStomped();
     virtual void _30();
     virtual void _31();
     virtual void _32();

@@ -1,7 +1,8 @@
 #include "StageEntity.hpp"
 
-StageEntity::StageEntity() {
-    //this->_40 = 0x2;
+StageEntity::StageEntity()
+{
+    // this->_40 = 0x2;
     this->actorType = 0x2;
     this->actorCategory = (1 << this->actorType) | 0x80;
     this->actorCategory = this->actorCategory | 0x20;
@@ -46,43 +47,67 @@ StageEntity::StageEntity() {
     this->_3f1 = 0;
 }
 
-bool StageEntity::onUpdate_0() {
+bool StageEntity::onUpdate_0()
+{
     return true;
 }
 
-bool StageEntity::onUpdate() {
+bool StageEntity::onUpdate()
+{
     this->onUpdate_xx();
     i32 state = this->_340;
-    if (state == 0) {
+    if (state == 0)
+    {
         return this->onUpdate_0();
-    }if (state == 1) {
+    }
+    if (state == 1)
+    {
         return this->onUpdate_1();
-    }if (state == 2) {
+    }
+    if (state == 2)
+    {
         return this->onUpdate_2();
-    }if (state == 3) {
+    }
+    if (state == 3)
+    {
         return this->onUpdate_3();
-    }if (state == 4) {
+    }
+    if (state == 4)
+    {
         return this->onUpdate_4();
-    }if (state == 5) {
+    }
+    if (state == 5)
+    {
         return this->onUpdate_5();
-    }if (state == 6) {
+    }
+    if (state == 6)
+    {
         return this->onUpdate_6();
-    }if (state == 7) {
+    }
+    if (state == 7)
+    {
         return this->onUpdate_7();
-    }if (state == 8) {
+    }
+    if (state == 8)
+    {
         return this->onUpdate_8();
-    }if (state == 9) {
+    }
+    if (state == 9)
+    {
         return this->onUpdate_9();
     }
     this->_340 = 0;
     return this->onUpdate_0();
 }
 
-bool StageEntity::_01() {
-    if (this->_3e9 != 0) {
+bool StageEntity::_01()
+{
+    if (this->_3e9 != 0)
+    {
         return false;
     }
-    if (this->_340 != 5) {
+    if (this->_340 != 5)
+    {
         i32 a = this->_384.x << 0xc;
         i32 b = this->_384.y << 0xc;
         i32 c = this->_378.x;
@@ -92,16 +117,19 @@ bool StageEntity::_01() {
     return false;
 }
 
-bool StageEntity::onUpdate_1() {
+bool StageEntity::onUpdate_1()
+{
     return true;
 }
 bool StageEntity::onUpdate_2() {}
 bool StageEntity::onUpdate_3() {}
-bool StageEntity::onUpdate_4() {
+bool StageEntity::onUpdate_4()
+{
     return true;
 }
 bool StageEntity::onUpdate_5() {}
-bool StageEntity::onUpdate_6() {
+bool StageEntity::onUpdate_6()
+{
     this->_11();
     return true;
 }
@@ -111,19 +139,53 @@ bool StageEntity::onUpdate_9() {}
 void StageEntity::_11() {}
 
 u16 data_ov000_020c22b8[2];
-u16 getActorID(u8 sprite_id) {
+u16 getActorID(u8 sprite_id)
+{
     return data_ov000_020c22b8[sprite_id];
+}
+
+void StageEntity::onUpdate_xx()
+{
+    if ((this->_2c6 & 0x4000) != 0)
+    {
+        return;
+    }
+
+    if ((u32)((this->active_collider._1c0 & 0x80) << 0x10) >> 0x10)
+    {
+        this->_3bc = 0x18;
+        this->_3a8 = 0x1000;
+    }
+
+    if (this->_3bc == 0)
+    {
+        this->_35c.x = this->scale.x;
+        this->_35c.y = this->scale.y;
+        this->_35c.z = this->scale.z;
+        this->_3a8 = 0x1000;
+        return;
+    }
+    this->_3bc -= 1;
+    if (this->_3bc & 0x4)
+    {
+        this->_3a8 += 0x100;
+    }
+    else
+    {
+        this->_3a8 -= 0x100;
+    }
 }
 
 bool StageEntity::checkPlayersInOffset(i32 x) {}
 
 bool StageEntity::checkPlayersInOffset(i32 x, i32 y) {}
 
-u32 StageEntity::updateCollisionSensors(){}
+u32 StageEntity::updateCollisionSensors() {}
 
-bool StageEntity::checkLavaCollision(Vec3_32* pos) {}
+bool StageEntity::checkLavaCollision(Vec3_32 *pos) {}
 
-void StageEntity::stopVelocity() {
+void StageEntity::stopVelocity()
+{
     this->velocity.x = 0;
     this->velocity.y = 0;
     this->accelV = 0;
@@ -133,64 +195,78 @@ u32 StageEntity::updateBottomSensors() {}
 
 u32 StageEntity::updateSideSensors() {}
 
-void StageEntity::onMegaGroundPound() {
+void StageEntity::onMegaGroundPound()
+{
     this->active_collider.delink();
-    this->_42(0,0x2000,0xfffffd00,0);
+    this->_42(0, 0x2000, 0xfffffd00, 0);
 }
 
-bool StageEntity::checkSquished() {
+bool StageEntity::checkSquished()
+{
     u32 _2bf = this->empty;
-    if (_2bf != 0) {
+    if (_2bf != 0)
+    {
         return true;
     }
 }
 
-void StageEntity::onStageComplete(PlayerActor* player) {}
+void StageEntity::onStageComplete(PlayerActor *player) {}
 
-bool StageEntity::setGroundPoundCollision(PlayerActor* player) {}
+bool StageEntity::setGroundPoundCollision(PlayerActor *player) {}
 
-bool StageEntity::isBelowPlayer(i32 posY, ActiveCollider* collider, u8 player_id) {
+bool StageEntity::isBelowPlayer(i32 posY, ActiveCollider *collider, u8 player_id)
+{
     return -((posY + collider->rect.y) - collider->rect.halfHeight) < (int)Game::cameraY[player_id];
 }
 
-void StageEntity::damagePlayerCallback(ActiveCollider* collider, ActiveCollider* other) {}
+void StageEntity::damagePlayerCallback(ActiveCollider *collider, ActiveCollider *other) {}
 
-bool StageEntity::playerCollision(ActiveCollider* collider, ActiveCollider* other) {}
+bool StageEntity::playerCollision(ActiveCollider *collider, ActiveCollider *other) {}
 
 void StageEntity::entityCollision() {}
 
-void StageEntity::damagePlayer(ActiveCollider* collider, PlayerBase* player) {
+void StageEntity::damagePlayer(ActiveCollider *collider, PlayerBase *player)
+{
     bool check;
-    if ((player->_79c == 0) && (player->_7c1 == 0) ) {
+    if ((player->_79c == 0) && (player->_7c1 == 0))
+    {
         check = true;
-    } else {
+    }
+    else
+    {
         check = false;
     }
 
-    if (!check) {
+    if (!check)
+    {
         u32 shell_status = player->getShellStatus();
-        if (shell_status != 1) {
+        if (shell_status != 1)
+        {
             player->virt_25(this, 0, 0x4000);
         }
     }
 }
 
-u32 StageEntity::stopPlayerInShell(ActiveCollider* collider, PlayerActor* player) {}
+u32 StageEntity::stopPlayerInShell(ActiveCollider *collider, PlayerActor *player) {}
 
-void StageEntity::isPlayerInZone(PlayerActor* player, u32 id) {}
+void StageEntity::isPlayerInZone(PlayerActor *player, u32 id) {}
 
-void StageEntity::assignView(Vec3_32* position) {}
+void StageEntity::assignView(Vec3_32 *position) {}
 
-void StageEntity::func_ov000_020988d0(u32 bit) {
+void StageEntity::func_ov000_020988d0(u32 bit)
+{
     data_ov000_020ca2b8 |= 1 << (bit & 0x1f);
 }
 
-void StageEntity::func_ov000_020988ac(u32 bit) {
+void StageEntity::func_ov000_020988ac(u32 bit)
+{
     data_ov000_020ca2b8 &= ~(1 << (0x1f & bit));
 }
 
-Vec3_32 StageEntity::tryNormalizeVec3(Vec3_32* input) {
-    if (input->x == 0 && input->x == 0 && input->z == 0) {
+Vec3_32 StageEntity::tryNormalizeVec3(Vec3_32 *input)
+{
+    if (input->x == 0 && input->x == 0 && input->z == 0)
+    {
         return *input;
     }
     Vec3_32 result;
@@ -200,7 +276,7 @@ Vec3_32 StageEntity::tryNormalizeVec3(Vec3_32* input) {
 
 u32 StageEntity::getSpritePriority(u32 a, u32 b, u32 c) {}
 
-
-u16 * StageEntity::getObjectBank(u32 sprite_id) {
+u16 *StageEntity::getObjectBank(u32 sprite_id)
+{
     return &Stage::ObjectBankTable[sprite_id];
 }
