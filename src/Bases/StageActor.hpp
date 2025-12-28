@@ -20,7 +20,7 @@ public:
     ActiveCollider();
     ~ActiveCollider();
 
-    static void delink(void*);
+    void delink();
 };
 size_assert(ActiveCollider, 0xb0);
 
@@ -59,7 +59,7 @@ public:
     u8 direction;
     u8 __4;
     u8 __2;
-    u32 __5;
+    u32 empty; // TODO: what does empty mean?
 
     StageActor();
     ~StageActor();

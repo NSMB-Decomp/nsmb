@@ -55,5 +55,6 @@ public:
     bool onUpdate_0();
     void _11();
     void _21();
-    void _34();
+    void onStageComplete(PlayerActor* player);
 };
+size_assert(Coin, 0x4e8);

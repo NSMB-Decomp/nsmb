@@ -73,6 +73,7 @@ public:
     void damagePlayerCallback(ActiveCollider*, ActiveCollider*);
     static bool isBelowPlayer(i32, ActiveCollider*, u8);
     bool setGroundPoundCollision(PlayerActor*);
+    bool checkSquished();
 
     virtual bool onUpdate_0();
     virtual bool _01();

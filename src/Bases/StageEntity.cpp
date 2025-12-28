@@ -111,8 +111,15 @@ bool StageEntity::onUpdate_9() {}
 void StageEntity::_11() {}
 
 void StageEntity::onMegaGroundPound() {
-    this->active_collider.delink(&this->active_collider);
+    this->active_collider.delink();
     this->_42(0,0x2000,0xfffffd00,0);
+}
+
+bool StageEntity::checkSquished() {
+    u32 _2bf = this->__5;
+    if (_2bf != 0) {
+        return true;
+    }
 }
 
 void StageEntity::onStageComplete(PlayerActor* player) {}

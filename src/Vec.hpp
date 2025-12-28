@@ -1,13 +1,13 @@
-class Vec3_32p {
+class Vec3_32s {
 public:
     i32 x;
     i32 y;
     i32 z;
 };
 
-class Vec3_32 : public Vec3_32p {
+class Vec3_32 : public Vec3_32s {
 public:
-    Vec3_32 sub(Vec3_32p *a);
+    Vec3_32 sub(Vec3_32s *a);
 
     //Vec3();
     virtual inline ~Vec3_32();
