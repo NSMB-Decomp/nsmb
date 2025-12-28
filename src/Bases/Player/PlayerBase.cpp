@@ -87,7 +87,7 @@ bool PlayerBase::func_ov011_0212bfb0()
 	return false;
 }
 
-bool PlayerBase::func_ov011_0212bf6c()\
+bool PlayerBase::func_ov011_0212bf6c()
 {
 	// TODO: Is this possible without goto?
 	switch (this->_7a9)
@@ -196,18 +196,21 @@ u32 PlayerBase::func_ov011_0212bca4()
 
 bool PlayerBase::func_ov011_0212bc50(i32 a)
 {
-	if (a < 0)
+	if ((a < 0))
 	{
-		if (this->_788 == 0)
+		if ((this->_788 & 1) == 0)
 		{
 			this->position.y += a;
 			return true;
 		}
 	}
-	else if ((0 < a) && (this->_788 <= 0))
+	else if (0 < a)
 	{
-		this->position.y += a;
-		return true;
+		if ((this->_788 & 2) == 0)
+		{
+			this->position.y += a;
+			return true;
+		}
 	}
 	return false;
 }
