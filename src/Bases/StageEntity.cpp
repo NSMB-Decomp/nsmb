@@ -230,11 +230,11 @@ void StageEntity::damagePlayer(ActiveCollider *collider, PlayerBase *player)
     bool check;
     if ((player->_79c == 0) && (player->_7c1 == 0))
     {
-        check = true;
+        check = 0;
     }
     else
     {
-        check = false;
+        check = 1;
     }
 
     if (!check)
@@ -242,7 +242,7 @@ void StageEntity::damagePlayer(ActiveCollider *collider, PlayerBase *player)
         u32 shell_status = player->getShellStatus();
         if (shell_status != 1)
         {
-            player->virt_25(this, 0, 0x4000);
+            player->virt_25(this, 0, 0x4000, 0);
         }
     }
 }

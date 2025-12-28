@@ -87,7 +87,7 @@ public:
     virtual bool virt_22();
     virtual bool virt_23();
     virtual bool virt_24();
-    virtual bool virt_25(void*, u32, u32);
+    virtual bool virt_25(void*, u32, u32, u32);
     virtual bool virt_26();
     virtual bool virt_27();
     virtual bool virt_28();

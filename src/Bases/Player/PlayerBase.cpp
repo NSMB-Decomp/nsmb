@@ -16,7 +16,7 @@ bool PlayerBase::virt_21() { return false; }
 bool PlayerBase::virt_22() { return false; }
 bool PlayerBase::virt_23() { return false; }
 bool PlayerBase::virt_24() { return false; }
-bool PlayerBase::virt_25(void* a, u32 b, u32 c) { return false; }
+bool PlayerBase::virt_25(void* a, u32 b, u32 c, u32 c) { return false; }
 bool PlayerBase::virt_26() { return false; }
 bool PlayerBase::virt_27() { return false; }
 bool PlayerBase::virt_28() { return false; }
