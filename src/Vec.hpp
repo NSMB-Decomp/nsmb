@@ -1,9 +1,12 @@
-class Vec3_32 {
+class Vec3_32p {
 public:
     i32 x;
     i32 y;
     i32 z;
+};
 
+class Vec3_32 : public Vec3_32p {
+public:
     Vec3_32 sub(Vec3_32 *a);
 
     //Vec3();

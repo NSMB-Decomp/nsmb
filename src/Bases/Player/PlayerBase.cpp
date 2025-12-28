@@ -462,6 +462,14 @@ void PlayerBase::func_ov011_0212b710()
 
 void PlayerBase::func_ov011_0212b384(i16)
 {
+	Vec3_16 rotation = this->rotation;
+	Vec3_32 position = this->position;
+	//switch (this->_7b2) {
+	//	case 0:
+	//		break;
+	//	case 1:
+	//		
+	//}
 }
 
 u32 func_020204e0(i8);

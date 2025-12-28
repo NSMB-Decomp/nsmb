@@ -34,7 +34,7 @@ class PlayerBase : public StageActor
     i8 _7b1;
     i8 _7b2;
     u8 _7b3;
-    u8 _pad6[0xa];
+    u8 _pad6[0xb];
     u8 _7bf;
 
     u8 func_ov011_0212b1d4();
