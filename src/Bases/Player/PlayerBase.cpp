@@ -4,47 +4,171 @@ PlayerBase::PlayerBase()
 {
 }
 
-bool PlayerBase::func_ov011_0212bde0(u32 a) {
+void PlayerBase::func_ov011_0212bfec() {}
+
+void PlayerBase::func_ov011_0212bfe8() {}
+
+void PlayerBase::func_ov011_0212bfe4() {}
+
+bool PlayerBase::func_ov011_0212bfdc() {
+  return false;
+}
+
+bool PlayerBase::func_ov011_0212bfd4() {
+  return false;
+}
+
+bool PlayerBase::func_ov011_0212bfcc() {
+  return false;
+}
+
+bool PlayerBase::func_ov011_0212bfc4() {
+  return false;
+}
+
+void PlayerBase::func_ov011_0212bfc0() {}
+
+void PlayerBase::func_ov011_0212bfbc() {}
+
+void PlayerBase::func_ov011_0212bfb8() {}
+
+bool PlayerBase::func_ov011_0212bfb0() {
+  return false;
+}
+
+bool PlayerBase::func_ov011_0212bf6c()
+{
+  switch (this->_7a9)
+  {
+  case 0:
+    break;
+  case 1:
+    break;
+  case 2:
+    break;
+  case 3:
+  case 4:
+  case 5:
+    return false;
+  case 6:
+    break;
+  default:
+    goto LAB_arm9_ov011__0212bfa8;
+  }
+  if (this->_7b0 == 0)
+  {
+    return true;
+  }
+LAB_arm9_ov011__0212bfa8:
+  return false;
+}
+
+bool PlayerBase::func_ov011_0212bf64()
+{
+  return false;
+}
+
+void PlayerBase::func_ov011_0212bf60() {}
+
+bool PlayerBase::func_ov011_0212bf58()
+{
+  return false;
+}
+
+bool PlayerBase::func_ov011_0212bf50()
+{
+  return false;
+}
+
+void PlayerBase::func_ov011_0212bf28() {}
+
+void PlayerBase::func_ov011_0212bf24() {}
+
+void func_02022b64(u32, Vec3_32 *);
+void PlayerBase::func_ov011_0212bf00()
+{
+  func_02022b64(0xaa, &this->position);
+  func_02022b64(0xab, &this->position);
+}
+
+bool PlayerBase::func_ov011_0212beb8()
+{
+  u32 iVar1 = this->virt_20();
+  if (iVar1 != 0)
+  {
+    this->_77c |= 0x40000;
+  }
+  return iVar1 != 0;
+}
+
+bool PlayerBase::func_ov011_0212be70()
+{
+  u32 iVar1 = this->virt_20();
+  if (iVar1 != 0)
+  {
+    this->_77c |= 0x40000;
+  }
+  return iVar1 != 0;
+}
+
+bool PlayerBase::func_ov011_0212be28()
+{
+  u32 iVar1 = this->virt_20();
+  if (iVar1 != 0)
+  {
+    this->_778 |= 0x80000;
+  }
+  return iVar1 != 0;
+}
+
+bool PlayerBase::func_ov011_0212bde0(u32 a)
+{
   this->_77c = this->_77c & ~0x1;
-  if ((BOOL)(this->_688 == a) == FALSE) {
+  if ((BOOL)(this->_688 == a) == FALSE)
+  {
     return false;
   }
   this->func_ov011_0212b26c(0);
   return true;
 }
 
-u32 PlayerBase::func_ov011_0212bdb8(u32 a) {
-
+u32 PlayerBase::func_ov011_0212bdb8(u32 a)
+{
 }
 
-u32 PlayerBase::func_ov011_0212bd68(u32 a, u32 b, u32 c) {
-
+u32 PlayerBase::func_ov011_0212bd68(u32 a, u32 b, u32 c)
+{
 }
 
-u32 PlayerBase::func_ov011_0212bca4() {
-
+u32 PlayerBase::func_ov011_0212bca4()
+{
 }
 
-bool PlayerBase::func_ov011_0212bc50(i32 a) {
-  if (a < 0) {
-    if (this->_788 == 0) {
+bool PlayerBase::func_ov011_0212bc50(i32 a)
+{
+  if (a < 0)
+  {
+    if (this->_788 == 0)
+    {
       this->position.y += a;
       return true;
     }
   }
-  else if ((0 < a) && (this->_788 <= 0)) {
+  else if ((0 < a) && (this->_788 <= 0))
+  {
     this->position.y += a;
     return true;
   }
   return false;
 }
 
-void PlayerBase::func_ov011_0212bbdc(u32 a) {
-
+void PlayerBase::func_ov011_0212bbdc(u32 a)
+{
 }
 
-void PlayerBase::func_ov011_0212bbcc() {
-  this->_780 &=~ 0x200;
+void PlayerBase::func_ov011_0212bbcc()
+{
+  this->_780 &= ~0x200;
 }
 
 u32 PlayerBase::func_ov011_0212bba4()
