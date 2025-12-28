@@ -213,8 +213,11 @@ bool PlayerBase::func_ov011_0212bc50(i32 a)
 	return false;
 }
 
-void PlayerBase::func_ov011_0212bbdc(u32 a)
+Vec3_32 PlayerBase::func_ov011_0212bbdc()
 {
+	Vec3_32 result;
+
+	return result;
 }
 
 void PlayerBase::func_ov011_0212bbcc()

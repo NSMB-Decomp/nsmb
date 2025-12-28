@@ -5,14 +5,18 @@
 
 class PlayerBase : public StageActor
 {
+    u8 _pad0[4];
     PlayerModel _000;
-    SpinClass _40c;
-    BlendColor _430;
-    BlendColor _488;
     u8 _2c4;
     u8 _pad1[0x3c0];
     Actor* linkedActor;
-    u8 _pad8[0x98];
+    u8 _pad10[0x44];
+    SpinClass _40c;
+    u8 _pad11[0x23];
+    BlendColor _430;
+    u8 _pad12[0x17];
+    BlendColor _488;
+    u8 _pad8[0x16];
     Vec3_32 _724;
     Vec3_32 _734;
     Vec3_32 _744;
@@ -65,7 +69,7 @@ class PlayerBase : public StageActor
     bool func_ov011_0212bb90();
     u32 func_ov011_0212bba4();
     void func_ov011_0212bbcc();
-    void func_ov011_0212bbdc(u32);
+    Vec3_32 func_ov011_0212bbdc();
     bool func_ov011_0212bc50(i32);
     u32 func_ov011_0212bca4();
     u32 func_ov011_0212bd68(u32, u32, u32);
