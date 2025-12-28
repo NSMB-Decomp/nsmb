@@ -110,6 +110,8 @@ bool StageEntity::onUpdate_8() {}
 bool StageEntity::onUpdate_9() {}
 void StageEntity::_11() {}
 
+void StageEntity::isPlayerInZone(void* player, u32 id) {}
+
 void StageEntity::assignView(Vec3_32* position) {}
 
 void StageEntity::func_ov000_020988d0(u32 bit) {

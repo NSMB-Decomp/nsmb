@@ -67,6 +67,7 @@ public:
     void func_ov000_020988ac(u32);
     void func_ov000_020988d0(u32);
     void assignView(Vec3_32*);
+    void isPlayerInZone(void*, u32); // TODO: 1st Arg should be Player* but this does not exist yet
 
     virtual bool onUpdate_0();
     virtual bool _01();
