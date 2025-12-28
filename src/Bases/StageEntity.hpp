@@ -1,4 +1,5 @@
 #include "StageActor.hpp"
+#include "Player/PlayerActor.hpp"
 
 class StageEntity : public StageActor {
 public:
@@ -67,7 +68,8 @@ public:
     void func_ov000_020988ac(u32);
     void func_ov000_020988d0(u32);
     void assignView(Vec3_32*);
-    void isPlayerInZone(void*, u32); // TODO: 1st Arg should be Player* but this does not exist yet
+    void isPlayerInZone(PlayerActor*, u32);
+    u32 stopPlayerInShell(ActiveCollider*, PlayerActor*);
 
     virtual bool onUpdate_0();
     virtual bool _01();
@@ -110,7 +112,7 @@ public:
     virtual void _38();
     virtual void _39();
     virtual void _40();
-    virtual void _41();
+    virtual void damagePlayer(ActiveCollider*, PlayerBase*);
     virtual void _42();
     virtual void _43();
     virtual void _44();

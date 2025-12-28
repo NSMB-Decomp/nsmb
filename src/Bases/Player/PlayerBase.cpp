@@ -1,4 +1,5 @@
 #include "PlayerBase.hpp"
+#include "../StageEntity.hpp"
 
 PlayerBase::PlayerBase() {}
 
@@ -15,7 +16,7 @@ bool PlayerBase::virt_21() { return false; }
 bool PlayerBase::virt_22() { return false; }
 bool PlayerBase::virt_23() { return false; }
 bool PlayerBase::virt_24() { return false; }
-bool PlayerBase::virt_25() { return false; }
+bool PlayerBase::virt_25(void* a, u32 b, u32 c) { return false; }
 bool PlayerBase::virt_26() { return false; }
 bool PlayerBase::virt_27() { return false; }
 bool PlayerBase::virt_28() { return false; }
@@ -227,7 +228,7 @@ void PlayerBase::func_ov011_0212bbcc()
 	this->_780 &= ~0x200;
 }
 
-u32 PlayerBase::func_ov011_0212bba4()
+u32 PlayerBase::getShellStatus()
 {
 	u32 result;
 

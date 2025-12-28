@@ -5,6 +5,7 @@
 
 class PlayerBase : public StageActor
 {
+public:
     PlayerModel _000;
     u8 _2c4;
     u8 _pad1[0x3c0];
@@ -26,8 +27,9 @@ class PlayerBase : public StageActor
     u8 _pad7[0x4];
     u32 _788;
     u8 _pad2[0x0b];
-    u32 _798;
-    u8 _pad3[0xd];
+    i32 _798;
+    i16 _79c;
+    u8 _pad3[0xb];
     u8 _7a9;
     u8 _pad4[1];
     i8 _7ab;
@@ -39,6 +41,8 @@ class PlayerBase : public StageActor
     u8 _7b3;
     u8 _pad6[0xb];
     u8 _7bf;
+    u8 _7c0;
+    u8 _7c1;
 
     u8 func_ov011_0212b1d4();
     u16 func_ov011_0212b210(u16);
@@ -66,7 +70,7 @@ class PlayerBase : public StageActor
     bool func_ov011_0212b9f8(u8);
     void func_ov011_0212bac8();
     bool func_ov011_0212bb90();
-    u32 func_ov011_0212bba4();
+    u32 getShellStatus();
     void func_ov011_0212bbcc();
     Vec3_32 func_ov011_0212bbdc();
     bool func_ov011_0212bc50(i32);
@@ -83,7 +87,7 @@ class PlayerBase : public StageActor
     virtual bool virt_22();
     virtual bool virt_23();
     virtual bool virt_24();
-    virtual bool virt_25();
+    virtual bool virt_25(void*, u32, u32);
     virtual bool virt_26();
     virtual bool virt_27();
     virtual bool virt_28();

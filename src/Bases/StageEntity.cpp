@@ -110,7 +110,25 @@ bool StageEntity::onUpdate_8() {}
 bool StageEntity::onUpdate_9() {}
 void StageEntity::_11() {}
 
-void StageEntity::isPlayerInZone(void* player, u32 id) {}
+void StageEntity::damagePlayer(ActiveCollider* collider, PlayerBase* player) {
+    bool check;
+    if ((player->_79c == 0) && (player->_7c1 == 0) ) {
+        check = true;
+    } else {
+        check = false;
+    }
+
+    if (!check) {
+        u32 shell_status = player->getShellStatus();
+        if (shell_status != 1) {
+            player->virt_25(this, 0, 0x4000);
+        }
+    }
+}
+
+u32 StageEntity::stopPlayerInShell(ActiveCollider* collider, PlayerActor* player) {}
+
+void StageEntity::isPlayerInZone(PlayerActor* player, u32 id) {}
 
 void StageEntity::assignView(Vec3_32* position) {}
 
