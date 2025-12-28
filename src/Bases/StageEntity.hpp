@@ -70,6 +70,8 @@ public:
     void assignView(Vec3_32*);
     void isPlayerInZone(PlayerActor*, u32);
     u32 stopPlayerInShell(ActiveCollider*, PlayerActor*);
+    void damagePlayerCallback(ActiveCollider*, ActiveCollider*);
+    static bool isBelowPlayer(i32, ActiveCollider*, u8);
 
     virtual bool onUpdate_0();
     virtual bool _01();

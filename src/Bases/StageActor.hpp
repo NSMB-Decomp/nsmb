@@ -1,10 +1,18 @@
 #include "Actor.hpp"
 
+struct Rect {
+    i32 x;
+    i32 y;
+    i32 halfWidth;
+    i32 halfHeight;
+};
+
 class ActiveCollider {
 public:
-    u8 _pad0[0x18];
+    u8 _pad0[0x14];
+    Rect rect;
     void *__1;
-    u8 _pad1[138];
+    u8 _pad1[120];
     u8 _1c6;
     u8 _pad2[9];
 

@@ -110,6 +110,12 @@ bool StageEntity::onUpdate_8() {}
 bool StageEntity::onUpdate_9() {}
 void StageEntity::_11() {}
 
+bool StageEntity::isBelowPlayer(i32 posY, ActiveCollider* collider, u8 player_id) {
+    return -((posY + collider->rect.y) - collider->rect.halfHeight) < (int)Game::cameraY[player_id];
+}
+
+void StageEntity::damagePlayerCallback(ActiveCollider* collider, ActiveCollider* other) {}
+
 bool StageEntity::playerCollision(ActiveCollider* collider, ActiveCollider* other) {}
 
 void StageEntity::entityCollision() {}

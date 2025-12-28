@@ -18,7 +18,7 @@ namespace Stage {
 }
 
 namespace Game {
-
+    u32 cameraY[2];
 }
 
 extern ObjectProfile** CurrentProfileTable;
