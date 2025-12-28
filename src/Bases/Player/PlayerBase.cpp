@@ -1,7 +1,52 @@
 #include "PlayerBase.hpp"
 
-PlayerBase::PlayerBase()
-{
+PlayerBase::PlayerBase(){}
+
+PlayerBase::~PlayerBase() {}
+
+u32 PlayerBase::func_ov011_0212c27c(u32) {}
+void PlayerBase::func_ov011_0212c200() {}
+void PlayerBase::func_ov011_0212c1b8() {}
+void PlayerBase::func_ov011_0212c170(u32 a) {}
+void PlayerBase::func_ov011_0212c130() {}
+void PlayerBase::func_ov011_0212c110(u32 a) {} 
+bool PlayerBase::virt_20() {return false;}
+bool PlayerBase::virt_21() {return false;}
+bool PlayerBase::virt_22() {return false;}
+bool PlayerBase::virt_23() {return false;}
+bool PlayerBase::virt_24() {return false;}
+bool PlayerBase::virt_25() {return false;}
+bool PlayerBase::virt_26() {return false;}
+bool PlayerBase::virt_27() {return false;}
+bool PlayerBase::virt_28() {return false;}
+bool PlayerBase::virt_29() {return false;}
+bool PlayerBase::virt_30() {return false;}
+bool PlayerBase::virt_31() {return false;}
+bool PlayerBase::virt_32() {return false;}
+bool PlayerBase::virt_33() {return false;}
+bool PlayerBase::virt_34() {return false;}
+bool PlayerBase::virt_35() {return false;}
+bool PlayerBase::virt_36() {return false;}
+bool PlayerBase::virt_37() {return false;}
+bool PlayerBase::virt_38() {return false;}
+bool PlayerBase::virt_39() {return false;}
+bool PlayerBase::virt_40() {return false;}
+bool PlayerBase::virt_41() {return false;}
+bool PlayerBase::virt_42() {}
+bool PlayerBase::virt_43() {}
+bool PlayerBase::virt_44() {return false;}
+bool PlayerBase::virt_45() {return false;}
+bool PlayerBase::virt_46() {return true;}
+bool PlayerBase::virt_47() {}
+u32 PlayerBase::virt_48() {return ~0;}
+u32 PlayerBase::virt_49() {return ~0;}
+bool PlayerBase::virt_50() {}
+bool PlayerBase::virt_51() {}
+
+Vec3_32 PlayerBase::func_ov011_0212bff0() {
+  Vec3_32 result;
+
+  return result;
 }
 
 void PlayerBase::func_ov011_0212bfec() {}
