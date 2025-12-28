@@ -228,13 +228,13 @@ void StageEntity::entityCollision() {}
 void StageEntity::damagePlayer(ActiveCollider *collider, PlayerBase *player)
 {
     bool check;
-    if ((player->_79c == 0) && (player->_7c1 == 0))
+    if ((player->_79c != 0) || (player->_7c1 != 0))
     {
-        check = 0;
+        check = 1;
     }
     else
     {
-        check = 1;
+        check = 0;
     }
 
     if (!check)
