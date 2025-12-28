@@ -5,7 +5,6 @@
 
 class PlayerBase : public StageActor
 {
-    u8 _pad0[4];
     PlayerModel _000;
     u8 _2c4;
     u8 _pad1[0x3c0];

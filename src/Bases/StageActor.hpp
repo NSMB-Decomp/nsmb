@@ -49,6 +49,7 @@ public:
     u8 direction;
     u8 __4;
     u8 __2;
+    u32 __5;
 
     StageActor();
     ~StageActor();

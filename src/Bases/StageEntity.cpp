@@ -110,11 +110,13 @@ bool StageEntity::onUpdate_8() {}
 bool StageEntity::onUpdate_9() {}
 void StageEntity::_11() {}
 
-void func_ov000_020988d0(u32 bit) {
+void StageEntity::assignView(Vec3_32* position) {}
+
+void StageEntity::func_ov000_020988d0(u32 bit) {
     data_ov000_020ca2b8 |= 1 << (bit & 0x1f);
 }
 
-void func_ov000_020988ac(u32 bit) {
+void StageEntity::func_ov000_020988ac(u32 bit) {
     data_ov000_020ca2b8 &= ~(1 << (0x1f & bit));
 }
 

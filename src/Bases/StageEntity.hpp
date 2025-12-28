@@ -2,7 +2,6 @@
 
 class StageEntity : public StageActor {
 public:
-    u8 _pad0[0x04]; // 0x2C0
     u8 _2c4; //0x2C4
     u8 _pad13[0x05]; // 0x2C0
     u16 _2ca; // 0x2CA
@@ -67,6 +66,7 @@ public:
     Vec3_32 tryNormalizeVec3(Vec3_32*);
     void func_ov000_020988ac(u32);
     void func_ov000_020988d0(u32);
+    void assignView(Vec3_32*);
 
     virtual bool onUpdate_0();
     virtual bool _01();
