@@ -74,6 +74,8 @@ public:
     static bool isBelowPlayer(i32, ActiveCollider*, u8);
     bool setGroundPoundCollision(PlayerActor*);
     bool checkSquished();
+    u32 updateSideSensors();
+    u32 updateBottomSensors();
 
     virtual bool onUpdate_0();
     virtual bool _01();
@@ -103,7 +105,7 @@ public:
     virtual void _25();
     virtual void _26();
     virtual void _27();
-    virtual void _28();
+    virtual void stopVelocity();
     virtual void _29();
     virtual void _30();
     virtual void _31();

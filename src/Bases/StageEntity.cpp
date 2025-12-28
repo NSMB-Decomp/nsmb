@@ -110,6 +110,16 @@ bool StageEntity::onUpdate_8() {}
 bool StageEntity::onUpdate_9() {}
 void StageEntity::_11() {}
 
+void StageEntity::stopVelocity() {
+    this->velocity.x = 0;
+    this->velocity.y = 0;
+    this->accelV = 0;
+}
+
+u32 StageEntity::updateBottomSensors() {}
+
+u32 StageEntity::updateSideSensors() {}
+
 void StageEntity::onMegaGroundPound() {
     this->active_collider.delink();
     this->_42(0,0x2000,0xfffffd00,0);
