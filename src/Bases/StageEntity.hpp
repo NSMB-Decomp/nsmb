@@ -76,6 +76,11 @@ public:
     bool checkSquished();
     u32 updateSideSensors();
     u32 updateBottomSensors();
+    bool checkLavaCollision(Vec3_32*);
+    u32 updateCollisionSensors();
+    bool checkPlayersInOffset(i32, i32);
+    bool checkPlayersInOffset(i32);
+    u16 getActorID(u8);
 
     virtual bool onUpdate_0();
     virtual bool _01();

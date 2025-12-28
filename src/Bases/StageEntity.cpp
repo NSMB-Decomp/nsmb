@@ -110,6 +110,19 @@ bool StageEntity::onUpdate_8() {}
 bool StageEntity::onUpdate_9() {}
 void StageEntity::_11() {}
 
+u16 data_ov000_020c22b8[2];
+u16 getActorID(u8 sprite_id) {
+    return data_ov000_020c22b8[sprite_id];
+}
+
+bool StageEntity::checkPlayersInOffset(i32 x) {}
+
+bool StageEntity::checkPlayersInOffset(i32 x, i32 y) {}
+
+u32 StageEntity::updateCollisionSensors(){}
+
+bool StageEntity::checkLavaCollision(Vec3_32* pos) {}
+
 void StageEntity::stopVelocity() {
     this->velocity.x = 0;
     this->velocity.y = 0;
