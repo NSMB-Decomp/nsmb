@@ -110,6 +110,15 @@ bool StageEntity::onUpdate_8() {}
 bool StageEntity::onUpdate_9() {}
 void StageEntity::_11() {}
 
+void StageEntity::onMegaGroundPound() {
+    this->active_collider.delink(&this->active_collider);
+    this->_42(0,0x2000,0xfffffd00,0);
+}
+
+void StageEntity::onStageComplete(PlayerActor* player) {}
+
+bool StageEntity::setGroundPoundCollision(PlayerActor* player) {}
+
 bool StageEntity::isBelowPlayer(i32 posY, ActiveCollider* collider, u8 player_id) {
     return -((posY + collider->rect.y) - collider->rect.halfHeight) < (int)Game::cameraY[player_id];
 }

@@ -72,6 +72,7 @@ public:
     u32 stopPlayerInShell(ActiveCollider*, PlayerActor*);
     void damagePlayerCallback(ActiveCollider*, ActiveCollider*);
     static bool isBelowPlayer(i32, ActiveCollider*, u8);
+    bool setGroundPoundCollision(PlayerActor*);
 
     virtual bool onUpdate_0();
     virtual bool _01();
@@ -106,8 +107,8 @@ public:
     virtual void _30();
     virtual void _31();
     virtual void _32();
-    virtual void _33();
-    virtual void _34();
+    virtual void onMegaGroundPound();
+    virtual void onStageComplete(PlayerActor*);
     virtual void _35();
     virtual void _36();
     virtual void _37();
@@ -115,7 +116,7 @@ public:
     virtual bool playerCollision(ActiveCollider*, ActiveCollider*);
     virtual void entityCollision();
     virtual void damagePlayer(ActiveCollider*, PlayerBase*);
-    virtual void _42();
+    virtual void _42(u32, u32, u32, u32);
     virtual void _43();
     virtual void _44();
     virtual void _45();
