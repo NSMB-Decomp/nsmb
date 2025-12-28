@@ -7,7 +7,7 @@ public:
 
 class Vec3_32 : public Vec3_32p {
 public:
-    Vec3_32 sub(Vec3_32 *a);
+    Vec3_32 sub(Vec3_32p *a);
 
     //Vec3();
     virtual inline ~Vec3_32();
