@@ -1,6 +1,6 @@
 _ZN11StageEntityD1Ev kind:function(arm,size=0x50) addr:0x020986e0
 _ZN11StageEntityD0Ev kind:function(arm,size=0x58) addr:0x02098730
-func_ov000_02098788 kind:function(arm,size=0x10) addr:0x02098788
+_ZN11StageEntity13getObjectBankEm kind:function(arm,size=0x10) addr:0x02098788
 func_ov000_02098798 kind:function(arm,size=0x7c) addr:0x02098798
 func_ov000_02098814 kind:function(arm,size=0x98) addr:0x02098814
 func_ov000_020988ac kind:function(arm,size=0x24) addr:0x020988ac
@@ -187,7 +187,7 @@ _ZN5ActorD2Ev kind:function(arm,size=0x68) addr:0x020a0d9c
 _ZN5ActorD0Ev kind:function(arm,size=0x70) addr:0x020a0e04
 _ZN5ActorD1Ev kind:function(arm,size=0x68) addr:0x020a0e74
 _ZN5ActorC2Ev kind:function(arm,size=0x1c4) addr:0x020a0edc
-StageActor::isInActiveView kind:function(arm,size=0x50) addr:0x020a10a0
+_ZN10StageActor14isInActiveViewEv kind:function(arm,size=0x50) addr:0x020a10a0
 _ZN10StageActor10postUpdateEv kind:function(arm,size=0x64) addr:0x020a10f0
 _ZN10StageActor9preUpdateEv kind:function(arm,size=0x54) addr:0x020a1154
 _ZN10StageActorD2Ev kind:function(arm,size=0x44) addr:0x020a11a8
@@ -801,7 +801,7 @@ data_ov000_020c4ed4 kind:data(any) addr:0x020c4ed4
 data_ov000_020c4ed8 kind:data(any) addr:0x020c4ed8
 data_ov000_020c4ee0 kind:data(any) addr:0x020c4ee0
 _ZTV11StageEntity kind:data(any) addr:0x020c4efc
-data_ov000_020c5010 kind:data(any) addr:0x020c5010
+Stage::objectBankTable kind:data(any) addr:0x020c5010
 data_ov000_020c529c kind:data(any) addr:0x020c529c
 data_ov000_020c6c14 kind:data(any) addr:0x020c6c14
 data_ov000_020c6c20 kind:data(any) addr:0x020c6c20

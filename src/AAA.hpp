@@ -12,6 +12,10 @@ struct ObjectProfile {
     void* _8;
 };
 
+namespace Stage {
+    u16 ObjectBankTable[2];
+}
+
 extern ObjectProfile** CurrentProfileTable;
 extern ObjectProfile* MainProfileTable;
 extern u8 Stage_actorFreezeFlag;

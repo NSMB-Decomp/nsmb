@@ -111,3 +111,7 @@ bool StageEntity::onUpdate_7() {}
 bool StageEntity::onUpdate_8() {}
 bool StageEntity::onUpdate_9() {}
 void StageEntity::_11() {}
+
+u16 * StageEntity::getObjectBank(u32 sprite_id) {
+    return &Stage::ObjectBankTable[sprite_id];
+}

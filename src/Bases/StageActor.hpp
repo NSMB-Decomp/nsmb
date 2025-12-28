@@ -55,4 +55,5 @@ public:
 
     bool preUpdate();
     void postUpdate();
+    bool isInActiveView();
 };

@@ -62,6 +62,7 @@ public:
     bool preUpdate();
     void postUpdate();
     bool preRender();
+    static u16 * getObjectBank(u32);
 
     virtual bool onUpdate_0();
     virtual bool _01();

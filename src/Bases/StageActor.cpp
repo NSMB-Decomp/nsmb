@@ -23,3 +23,8 @@ bool StageActor::preUpdate() {
 void StageActor::postUpdate() {
     Actor::postUpdate();
 }
+
+bool StageActor::isInActiveView() {
+    u32 i = 0;
+    return true;
+}
