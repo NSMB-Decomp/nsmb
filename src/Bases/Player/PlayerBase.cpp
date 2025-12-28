@@ -87,20 +87,19 @@ bool PlayerBase::func_ov011_0212bfb0()
 	return false;
 }
 
-bool PlayerBase::func_ov011_0212bf6c()
+bool PlayerBase::func_ov011_0212bf6c()\
 {
+	// TODO: Is this possible without goto?
 	switch (this->_7a9)
 	{
 	case 0:
-		break;
 	case 1:
-		break;
 	case 2:
 		break;
 	case 3:
 	case 4:
 	case 5:
-		return false;
+		goto LAB_arm9_ov011__0212bfa8;
 	case 6:
 		break;
 	default:
