@@ -106,7 +106,8 @@ bool Actor::preRender()
     if (
         (!Base::preRender()) ||
         (data_0v000_020ca84c &
-         (1 << (0x80 | this->actorType & 0xff))))
+         (((1 << this->actorType) | 0x80) & 0xff)) &
+            0xff)
     {
         return false;
     }
