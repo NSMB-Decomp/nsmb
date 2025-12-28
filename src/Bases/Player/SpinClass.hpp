@@ -1,0 +1,4 @@
+class SpinClass {
+public:
+    SpinClass();
+};

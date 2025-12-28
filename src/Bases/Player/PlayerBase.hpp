@@ -1,13 +1,22 @@
 #include "../StageActor.hpp"
 #include "PlayerModel.hpp"
+#include "SpinClass.hpp"
+#include "BlendColor.hpp"
 
 class PlayerBase : public StageActor
 {
-    u8 _pad0[0x4];
+    PlayerModel _000;
+    SpinClass _40c;
+    BlendColor _430;
+    BlendColor _488;
     u8 _2c4;
     u8 _pad1[0x3c0];
     u32 _688;
-    u8 _pad8[0xec];
+    u8 _pad8[0x98];
+    Vec3_32 _724;
+    Vec3_32 _734;
+    Vec3_32 _744;
+    u8 _pad9[0x24];
     u32 _778;
     u32 _77c;
     u32 _780;
@@ -25,7 +34,7 @@ class PlayerBase : public StageActor
     u8 _pad6[0xe];
     u8 _7bf;
 
-    i8 func_ov011_0212b1d4();
+    u8 func_ov011_0212b1d4();
     u16 func_ov011_0212b210(u16);
     void setPosition(Vec3_32 *);
     void func_ov011_0212b26c(u32);

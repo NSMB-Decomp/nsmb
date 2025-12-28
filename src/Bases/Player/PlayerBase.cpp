@@ -158,12 +158,12 @@ bool PlayerBase::func_ov011_0212be70()
 
 bool PlayerBase::func_ov011_0212be28()
 {
-  u32 iVar1 = this->virt_20();
-  if (iVar1 != 0)
+  bool iVar1 = this->virt_20();
+  if (iVar1)
   {
     this->_778 |= 0x80000;
   }
-  return iVar1 != 0;
+  return iVar1;
 }
 
 bool PlayerBase::func_ov011_0212bde0(u32 a)
@@ -481,22 +481,23 @@ u16 PlayerBase::func_ov011_0212b210(u16 a)
   return a;
 }
 
-i8 PlayerBase::func_ov011_0212b1d4()
+u8 PlayerBase::func_ov011_0212b1d4()
 
 {
   int scale = this->scale.y;
-  if (scale < 0xacc)
-  {
-    return 0;
+  if (scale < 0xacc) {
+    i32 a = 0; 
+    return a;
   }
 
-  if (0x1599 <= scale)
+  if (0x1599 > scale)
   {
-    if (scale < 0x2000)
-    {
-      return 2;
-    }
-    return 3;
+    return 1;
   }
-  return 1;
+  
+  if (scale < 0x2000)
+  {
+    return 2;
+  }
+  return 3;
 }
