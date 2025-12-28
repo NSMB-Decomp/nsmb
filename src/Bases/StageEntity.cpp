@@ -116,7 +116,7 @@ void StageEntity::onMegaGroundPound() {
 }
 
 bool StageEntity::checkSquished() {
-    u32 _2bf = this->__5;
+    u32 _2bf = this->empty;
     if (_2bf != 0) {
         return true;
     }

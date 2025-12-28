@@ -1,9 +1,4 @@
-class Vec3_32s {
-public:
-    i32 x;
-    i32 y;
-    i32 z;
-};
+#include "Nitro/Nitro.hpp"
 
 class Vec3_32 : public Vec3_32s {
 public:

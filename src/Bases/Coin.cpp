@@ -36,7 +36,7 @@ void Coin::_11() {}
 
 void Coin::onStageComplete(PlayerActor* player) {
     Vec3_32 vec = this->position;
-    this->destroy(true);
+    //this->destroy();
 }
 
 u32(func_ov000_02098798)(void *, u32);

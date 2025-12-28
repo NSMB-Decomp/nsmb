@@ -1,6 +1,7 @@
 #include "../base_types.hpp"
 
-struct Vec3_32s {
+class Vec3_32s {
+public:
     i32 x;
     i32 y;
     i32 z;
