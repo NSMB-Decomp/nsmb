@@ -1,6 +1,14 @@
 #include "Base_autoload.cpp"
 #include "../Nitro/Nitro.hpp"
 
+PTMF data_02085248 = {16,1};
+PTMF data_02085228 = {8, 1};
+u32 data_02085224 = 1;
+PTMF data_02085238 = {4, 1};
+PTMF data_02085250 = {20, 1};
+PTMF data_02085230 = {12, 1};
+PTMF data_02085240 = {0, 1};
+
 ProcessLink* func_02043b58(ProcessLink *);
 Base::Base()
 {
