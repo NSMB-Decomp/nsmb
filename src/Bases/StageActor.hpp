@@ -17,7 +17,7 @@ public:
     i32 _3c;
     u8 _pad1[96];
     u16 _1c0; // 0x1C0
-    u8 _pad3[3];
+    u8 _pad3[4];
     u8 _1c6;
     u8 _pad2[7];
 

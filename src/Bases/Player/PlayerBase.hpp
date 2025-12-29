@@ -7,7 +7,6 @@ class PlayerBase : public StageActor
 {
 public:
     PlayerModel _000;
-    u8 _2c4;
     u8 _pad1[0x3c0];
     Actor* linkedActor;
     u8 _pad10[0x44];
