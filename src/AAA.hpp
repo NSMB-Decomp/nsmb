@@ -24,9 +24,13 @@ namespace Game {
 
 class Fader {
 public:
+    u8 _pad0[0x5ac];
+    i32 brightnessFactor[2];
+    u8 _pad1[0x8];
+    u8 fadingTarget[2];
     bool isComplete();
 };
-Fader GlobalFader;
+Fader GlobalFader; 
 
 extern ObjectProfile** CurrentProfileTable;
 extern ObjectProfile* MainProfileTable;
@@ -34,6 +38,17 @@ u8 data_02088f34;
 
 //
 extern u8 data_ov000_020ca84c;
+u8 data_020887fc;
+u32 data_02085ad4[2];
+struct SaveOptions {
+    u32 header;
+    u32 flags;
+    u32 soundMode;
+    u32 controlOptions;
+    u32 currentSlot;
+};
+SaveOptions data_02088bdc;
+
 
 //
 void Heap_deallocate(Heap*, void *);

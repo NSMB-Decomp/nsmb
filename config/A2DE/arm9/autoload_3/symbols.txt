@@ -278,7 +278,7 @@ data_02088f30 kind:bss addr:0x02088f30
 data_02088f34 kind:bss addr:0x02088f34
 data_02088f38 kind:bss addr:0x02088f38
 data_02088f3c kind:bss addr:0x02088f3c
-data_02088f48 kind:bss addr:0x02088f48
+Fader::fader kind:bss addr:0x02088f48
 data_02089504 kind:bss addr:0x02089504
 data_02089506 kind:bss addr:0x02089506
 data_02089508 kind:bss addr:0x02089508

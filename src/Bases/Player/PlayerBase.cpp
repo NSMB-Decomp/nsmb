@@ -493,12 +493,10 @@ void PlayerBase::func_ov011_0212b384(i16)
 
 u32 func_020204e0(i8);
 void func_0202048c(u8);
-u8 data_02088f34;
 u8 data_02089508[2];
 void func_ov000_020a189c(u32);
 void func_ov000_020a183c(u32, u32);
 void func_02012d6c(u32, u32 *);
-u32 data_02088bdc;
 u32 uRam02088f28; // data_02088bdc + 0x34c
 
 bool PlayerBase::func_ov011_0212b2bc()
@@ -522,7 +520,7 @@ bool PlayerBase::func_ov011_0212b2bc()
 			}
 			else
 			{
-				func_02012d6c(uRam02088f28, &data_02088bdc);
+				func_02012d6c(uRam02088f28, (u32*)&data_02088bdc);
 				func_ov000_020a183c(0xe, 0);
 			}
 		}
