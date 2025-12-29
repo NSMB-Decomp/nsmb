@@ -34,12 +34,13 @@ public:
     u8 _pad11[0x7];
     u16 _3c6; // 0x3C6
     u16 _3c8; // 0x3CA
-    u8 pad12[0x6];
+    u8 pad12[0x2];
+    u16* _3cc; // 0x3CC
     u8 _3d0; //0x3D0
     u8 _pad15[0x1];
     u8 _3d2; // 0x3D2
-    u8 Pad5[0x5];
-    u32 _3d8; // 0x3D8
+    u8 Pad5[0x3];
+    u8* _3d8; // 0x3D8
     u8 _pad4[0x2];
     u8 _3de; // 0x3DE
     u8 _3df; // 0x3DF
@@ -84,7 +85,11 @@ public:
     u32 updateCollisionSensors();
     bool checkPlayersInOffset(i32, i32);
     bool checkPlayersInOffset(i32);
+    bool rotateToTarget(i16[2], i16[2]);
+    void applyFireballWiggle();
     u16 getActorID(u8);
+    void setTimedEvent(u32, i32, bool, bool, bool);
+    void destroy(bool);
 
     virtual bool onUpdate_0();
     virtual bool _01();

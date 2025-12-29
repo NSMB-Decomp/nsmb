@@ -176,6 +176,38 @@ void StageEntity::onUpdate_xx()
     }
 }
 
+void StageEntity::destroy(bool permanent)
+{
+    Base::destroy();
+    u8* _3d8 = this->_3d8;
+    u16* _3cc = this->_3cc;
+    if (!permanent)
+    {
+        if (_3d8 != 0)
+        {
+            *_3d8 &= ~1;
+        }
+    }
+    else
+    {
+        if (_3d8 != 0)
+        {
+            *_3d8 |= 8;
+        }
+        if (_3cc != 0)
+        {
+            *_3cc = 300;
+        }
+        return;
+    }
+}
+
+void StageEntity::setTimedEvent(u32 event_id, i32 time, bool enable, bool switch_event, bool play_sfx) {}
+
+void StageEntity::applyFireballWiggle() {}
+
+bool StageEntity::rotateToTarget(i16 a[2], i16 b[2]) {}
+
 bool StageEntity::checkPlayersInOffset(i32 x) {}
 
 bool StageEntity::checkPlayersInOffset(i32 x, i32 y) {}
