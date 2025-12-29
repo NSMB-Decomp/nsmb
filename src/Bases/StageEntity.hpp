@@ -90,6 +90,11 @@ public:
     u16 getActorID(u8);
     void setTimedEvent(u32, i32, bool, bool, bool);
     void destroy(bool);
+    void updateBounce(i32, i32, i32);
+    void damageEntityCallback(ActiveCollider*);
+    void shellCallback(ActiveCollider *);
+    void simpleCallback(ActiveCollider *);
+    static bool spawnBrokenPipe(i32, i32, u32, u32, u8, u8, i8);
 
     virtual bool onUpdate_0();
     virtual bool _01();

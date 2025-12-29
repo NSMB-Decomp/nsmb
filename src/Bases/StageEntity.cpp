@@ -176,6 +176,28 @@ void StageEntity::onUpdate_xx()
     }
 }
 
+bool StageEntity::spawnBrokenPipe(i32 a, i32 b, u32 c, u32 d, u8 e, u8 f, i8 g) {
+    Vec3_32 vec;
+    vec.z = 0;
+    vec.x = a;
+    vec.y = b;
+    Actor * actor = Actor::spawnActor(0xd3, d | e << 8 | c << 0x10 |f << 0x1c | g << 0x1f, &vec, 0,0,0);
+
+    if (actor == NULL) {
+        return false;
+    } else {
+        return true;
+    }
+}
+
+void StageEntity::simpleCallback(ActiveCollider* collider) {}
+
+void StageEntity::shellCallback(ActiveCollider* collider) {}
+
+void StageEntity::damageEntityCallback(ActiveCollider* collider) {}
+
+void StageEntity::updateBounce(i32 a, i32 b, i32 c) {}
+
 void StageEntity::destroy(bool permanent)
 {
     Base::destroy();
