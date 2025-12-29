@@ -87,7 +87,7 @@ bool Actor::preUpdate()
         return false;
     }
 
-    if (!(Stage_actorFreezeFlag & this->actorCategory))
+    if (!(Stage::actorFreezeFlag & this->actorCategory))
     {
         Vec3_32 step = this->position.sub(&this->lastPosition);
         this->lastStep = step;
@@ -106,7 +106,7 @@ bool Actor::preRender()
 {
     if (
         (!Base::preRender()) ||
-        (data_0v000_020ca84c &
+        (data_ov000_020ca84c &
          (((1 << this->actorType) | 0x80) & 0xff)) &
             0xff)
     {

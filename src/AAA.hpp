@@ -15,6 +15,7 @@ struct ObjectProfile {
 
 namespace Stage {
     u16 ObjectBankTable[2];
+    u8 actorFreezeFlag;
 }
 
 namespace Game {
@@ -29,10 +30,10 @@ Fader GlobalFader;
 
 extern ObjectProfile** CurrentProfileTable;
 extern ObjectProfile* MainProfileTable;
-extern u8 Stage_actorFreezeFlag;
+u8 data_02088f34;
 
 //
-extern u8 data_0v000_020ca84c;
+extern u8 data_ov000_020ca84c;
 
 //
 void Heap_deallocate(Heap*, void *);

@@ -4,9 +4,9 @@ Scene::Scene()
 {
     this->skipFlags |= 1;
     this->skipFlags |= 4;
-    //<conflict> _SceneRelated = (code)0x0;
-    //inited1 = 0;
-    //hasSceneSwitched = false;
+    Stage::actorFreezeFlag = 0;
+    data_ov000_020ca84c = 0;
+    data_02088f34 = 0;
 }
 
 Scene::~Scene()
