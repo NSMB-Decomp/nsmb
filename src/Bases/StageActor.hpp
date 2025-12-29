@@ -13,8 +13,10 @@ public:
     u8 _pad0[0x14];
     Rect rect;
     void *__1;
-    u8 _pad1[120];
-    u16 _1c0;
+    u8 _pad4[18];
+    i32 _3c;
+    u8 _pad1[98];
+    u16 _1c0; // 0x1C0
     u8 _pad3[3];
     u8 _1c6;
     u8 _pad2[7];

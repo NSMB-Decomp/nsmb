@@ -247,7 +247,21 @@ void StageEntity::damagePlayer(ActiveCollider *collider, PlayerBase *player)
     }
 }
 
-u32 StageEntity::stopPlayerInShell(ActiveCollider *collider, PlayerActor *player) {}
+u32 StageEntity::stopPlayerInShell(ActiveCollider *collider, PlayerActor *player)
+{
+    if (player->getShellStatus() == 1)
+    {
+        if (
+            (collider->_3c > 0 && player->velH > 0) ||
+            (collider->_3c < 0 && player->velH < 0))
+        {
+            player->velH = 0;
+            return 2;
+        }
+        return 1;
+    }
+    return 0;
+}
 
 void StageEntity::isPlayerInZone(PlayerActor *player, u32 id) {}
 
