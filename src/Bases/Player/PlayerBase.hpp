@@ -130,7 +130,7 @@ public:
     virtual void func_ov011_0212bf60();
     virtual bool func_ov011_0212bf58();
     virtual bool func_ov011_0212bf50();
-    virtual void func_ov011_0212bf28();
+    virtual Vec3_32 func_ov011_0212bf28();
     virtual void func_ov011_0212bf24();
     void func_ov011_0212c110(u32);
     void func_ov011_0212c130();

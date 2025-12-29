@@ -131,7 +131,11 @@ bool PlayerBase::func_ov011_0212bf50()
 	return false;
 }
 
-void PlayerBase::func_ov011_0212bf28() {}
+Vec3_32 PlayerBase::func_ov011_0212bf28() {
+	Vec3_32 result;
+	result = this->position;
+	return result;
+}
 
 void PlayerBase::func_ov011_0212bf24() {}
 
