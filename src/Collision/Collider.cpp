@@ -22,26 +22,47 @@ void func_ov000_020ac21c();
 void func_ov000_020aba68();
 void func_ov000_020abc90();
 
-PTMF data_ov000_020cac0c[3] = {
-    PTMF(func_ov000_020ac7bc, 0),
-    PTMF(func_ov000_020acc78, 0),
-    PTMF(func_ov000_020acc78, 0),
+PTMF __1[3] = {
+    {(u32)func_ov000_020ac7bc, 0},
+    {(u32)func_ov000_020acc78, 0},
+    {(u32)func_ov000_020acc78, 0}
 };
 PTMF __2[3] = {
-    PTMF(func_ov000_020ac288, 0),
-    PTMF(func_ov000_020ac750, 0),
-    PTMF(func_ov000_020ac750, 0),
+    {(u32)func_ov000_020ac288, 0},
+    {(u32)func_ov000_020ac750, 0},
+    {(u32)func_ov000_020ac750, 0}
 };
 PTMF __3[3] = {
-    PTMF(func_ov000_020abcfc, 0),
-    PTMF(func_ov000_020ac21c, 0),
-    PTMF(func_ov000_020ac21c, 0),
+    {(u32)func_ov000_020abcfc, 0},
+    {(u32)func_ov000_020ac21c, 0},
+    {(u32)func_ov000_020ac21c, 0}
 };
 PTMF __4[3] = {
-    PTMF(func_ov000_020aba68, 0),
-    PTMF(func_ov000_020abc90, 0),
-    PTMF(func_ov000_020abc90, 0),
+    {(u32)func_ov000_020aba68, 0},
+    {(u32)func_ov000_020abc90, 0},
+    {(u32)func_ov000_020abc90, 0}
 };
+
+//PTMF data_ov000_020cac0c[3] = {
+//    PTMF(func_ov000_020ac7bc, 0),
+//    PTMF(func_ov000_020acc78, 0),
+//    PTMF(func_ov000_020acc78, 0),
+//};
+//PTMF __2[3] = {
+//    PTMF(func_ov000_020ac288, 0),
+//    PTMF(func_ov000_020ac750, 0),
+//    PTMF(func_ov000_020ac750, 0),
+//};
+//PTMF __3[3] = {
+//    PTMF(func_ov000_020abcfc, 0),
+//    PTMF(func_ov000_020ac21c, 0),
+//    PTMF(func_ov000_020ac21c, 0),
+//};
+//PTMF __4[3] = {
+//    PTMF(func_ov000_020aba68, 0),
+//    PTMF(func_ov000_020abc90, 0),
+//    PTMF(func_ov000_020abc90, 0),
+//};
 
 
 Collider::Collider() {
