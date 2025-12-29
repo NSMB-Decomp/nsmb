@@ -1,6 +1,14 @@
 #include "../base_types.hpp"
 #include "../AAA.hpp"
 
+u32 data_02085224 = 1;
+PTMF data_02085248;
+PTMF data_02085240;
+PTMF data_02085238;
+PTMF data_02085230;
+PTMF data_02085228;
+PTMF data_02085250;
+
 class Base {
 public:
   enum State {
