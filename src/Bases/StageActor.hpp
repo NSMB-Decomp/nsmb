@@ -15,7 +15,7 @@ public:
     void *__1;
     u8 _pad4[18];
     i32 _3c;
-    u8 _pad1[98];
+    u8 _pad1[96];
     u16 _1c0; // 0x1C0
     u8 _pad3[3];
     u8 _1c6;
