@@ -44,6 +44,8 @@ public:
     u8 _7bf;
     u8 _7c0;
     u8 _7c1;
+    u32 _7c4;
+    u32 _7c8;
 
     u8 func_ov011_0212b1d4();
     u16 func_ov011_0212b210(u16);
