@@ -11,6 +11,13 @@ class Unknown
 public:
     Vec3_32 a;
     Unknown();
+    ~Unknown();
+};
+
+class Unknown2
+{
+public:
+    ~Unknown2();
 };
 
 class PlayerActor : public PlayerBase
