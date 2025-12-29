@@ -176,6 +176,10 @@ void StageEntity::onUpdate_xx()
     }
 }
 
+u32 StageEntity::random() {
+    return WiFi::random();   
+}
+
 bool StageEntity::spawnBrokenPipe(i32 a, i32 b, u32 c, u32 d, u8 e, u8 f, i8 g) {
     Vec3_32 vec;
     vec.z = 0;

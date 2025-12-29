@@ -95,6 +95,7 @@ public:
     void shellCallback(ActiveCollider *);
     void simpleCallback(ActiveCollider *);
     static bool spawnBrokenPipe(i32, i32, u32, u32, u8, u8, i8);
+    u32 random();
 
     virtual bool onUpdate_0();
     virtual bool _01();

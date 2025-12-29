@@ -13,6 +13,10 @@ struct ObjectProfile {
     void* _8;
 };
 
+namespace WiFi {
+    u32 random();
+}
+
 namespace Stage {
     u16 ObjectBankTable[2];
     u8 actorFreezeFlag;
