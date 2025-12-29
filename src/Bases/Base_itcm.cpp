@@ -71,7 +71,7 @@ bool Base::func_01ffd290()
             u32 skip_flags = parent->skipFlags;
             if (
                 (skip_flags & Update) == 0 && 
-                (skip_flags & UpdateChildren) == 0)
+                (skip_flags & UpdateChildren) != 0)
             {
                 if ((this->skipFlags & Update) != 0)
                 {
@@ -132,4 +132,11 @@ bool Base::func_01ffd290()
         }
     }
     return true;
+}
+
+void Base::func_01ffd22c() {
+    PTMF a = {0x18, 1};
+    PTMF b = {0x1c, 1};
+    PTMF c = {0x20, 1};
+    Base::func_01ffd524(a,b,c);
 }
