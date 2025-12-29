@@ -1,7 +1,17 @@
 #include "PlayerBase.hpp"
 #include "../StageEntity.hpp"
 
-PlayerBase::PlayerBase() {}
+PlayerBase::PlayerBase() {
+	this->actorType = 1;
+	this->actorCategory = (1 << this->actorType) | 0x80;
+	this->_7aa = (this->settings & 0xf0) >> 4;
+	this->_7b0 = 0;
+	i8 a = this->settings & 0xf;
+	this->linkPlayer(a);
+	this->_7b4 = a;
+	this->collision_manager._25e = a;
+	this->_7a8 = 0;
+}
 
 PlayerBase::~PlayerBase() {}
 

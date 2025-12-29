@@ -28,9 +28,10 @@ public:
     u8 _pad2[0x0b];
     i32 _798;
     i16 _79c;
-    u8 _pad3[0xb];
+    u8 _pad3[0xa];
+    i8 _7a8;
     u8 _7a9;
-    u8 _pad4[1];
+    u8 _7aa;
     i8 _7ab;
     i8 _7ac;
     u8 _pad5[0x3];
@@ -38,7 +39,8 @@ public:
     i8 _7b1;
     i8 _7b2;
     u8 _7b3;
-    u8 _pad6[0xb];
+    i8 _7b4;
+    u8 _pad6[0xa];
     u8 _7bf;
     u8 _7c0;
     u8 _7c1;

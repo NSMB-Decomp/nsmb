@@ -46,7 +46,9 @@ public:
     void *__1;
     u8 _pad1[0x8];
     CollisionManager *__2;
-    u8 _pad2[0x84];
+    u8 _pad2[0x5a];
+    i8 _25e;
+    u8 _pad3[0x27];
 
     CollisionManager();
     ~CollisionManager();
