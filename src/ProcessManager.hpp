@@ -41,18 +41,22 @@ public:
     ProcessNode idLookup;
 };
 
-class PTMF
-{
-public:
-    void (*func)();
+struct PTMF {
+    u32 func;
     u32 params;
-    inline PTMF(void(*func)(), u32);
-    PTMF();
 };
-PTMF::PTMF(void(*func)(), u32 params) {
-    this->func = func;
-    this->params = params;
-}
+//class PTMF
+//{
+//public:
+//    u32 func;
+//    u32 params;
+//    inline PTMF(void(*func)(), u32);
+//    PTMF();
+//};
+//PTMF::PTMF(void(*func)(), u32 params) {
+//    this->func = (u32)func;
+//    this->params = params;
+//}
 
 class ProcessList
 {

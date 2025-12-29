@@ -2,10 +2,10 @@
 
 i32 Base::func_01ffd524(PTMF a, PTMF b, PTMF c) {
     void** vtable = *((void***)this);
-    if ((b.params & 1) != 0) {
-        b.func = (void(*)())vtable[b.params];
-    }
-    b.func();
+    //if ((b.params & 1) != 0) {
+    //    b.func = (void(*)())vtable[b.params];
+    //}
+    //b.func();
 }
 
 bool Base::onUpdate()
