@@ -44,9 +44,14 @@ public:
 class PTMF
 {
 public:
-    void *a;
+    void (*func)();
     u32 params;
+    inline PTMF(void(*func)(), u32);
 };
+PTMF::PTMF(void(*func)(), u32 params) {
+    this->func = func;
+    this->params = params;
+}
 
 class ProcessList
 {
