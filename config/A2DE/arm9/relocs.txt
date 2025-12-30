@@ -4554,11 +4554,11 @@ from:0x020249c8 kind:thumb_call to:0x0202486c module:main
 from:0x020249d0 kind:load to:0x0208b608 module:autoload(3)
 from:0x020249d8 kind:load to:0x0208b604 module:autoload(3)
 from:0x020249f4 kind:arm_call to:0x0204d23c module:autoload(2)
-from:0x02024a00 kind:load to:0x0203d2d0 module:main
+from:0x02024a00 kind:load to:0x0203d2c8 add:0x8 module:main
 from:0x02024a04 kind:load to:0x0203bcd8 add:0x8 module:main
 from:0x02024a20 kind:arm_call to:0x0204d23c module:autoload(2)
 from:0x02024a28 kind:arm_call to:0x0204cc7c module:autoload(2)
-from:0x02024a34 kind:load to:0x0203d2d0 module:main
+from:0x02024a34 kind:load to:0x0203d2c8 add:0x8 module:main
 from:0x02024a38 kind:load to:0x0203bcd8 add:0x8 module:main
 from:0x02024a46 kind:thumb_call_arm to:0x021352d4 module:overlay(130)
 from:0x02024a52 kind:thumb_call_arm to:0x02122e5c module:overlay(130)
@@ -4643,17 +4643,17 @@ from:0x02024ee4 kind:load to:0x02004be0 module:main
 from:0x02024eec kind:load to:0x020046d8 module:main
 from:0x02024ef4 kind:thumb_call_arm to:0x0204d2ac module:autoload(2)
 from:0x02024f14 kind:load to:0x0203bcd8 add:0x8 module:main
-from:0x02024f18 kind:load to:0x0203d2d0 module:main
+from:0x02024f18 kind:load to:0x0203d2c8 add:0x8 module:main
 from:0x02024f38 kind:load to:0x0203d318 module:main
 from:0x02024f3c kind:load to:0x0203d31c module:main
 from:0x02024f60 kind:arm_call to:0x0204d23c module:autoload(2)
 from:0x02024f6c kind:load to:0x0203d330 module:main
-from:0x02024f70 kind:load to:0x0203d2d0 module:main
+from:0x02024f70 kind:load to:0x0203d2c8 add:0x8 module:main
 from:0x02024f74 kind:load to:0x0203bcd8 add:0x8 module:main
 from:0x02024f98 kind:arm_call to:0x0204d23c module:autoload(2)
 from:0x02024fa0 kind:arm_call to:0x0204cc7c module:autoload(2)
 from:0x02024fac kind:load to:0x0203d330 module:main
-from:0x02024fb0 kind:load to:0x0203d2d0 module:main
+from:0x02024fb0 kind:load to:0x0203d2c8 add:0x8 module:main
 from:0x02024fb4 kind:load to:0x0203bcd8 add:0x8 module:main
 from:0x02024fd8 kind:arm_call to:0x0207ff0c module:autoload(2)
 from:0x02024fe4 kind:arm_call to:0x0212b9b0 module:overlay(130)
