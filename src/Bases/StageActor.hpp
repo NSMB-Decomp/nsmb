@@ -24,6 +24,7 @@ public:
     ActiveCollider();
     ~ActiveCollider();
 
+    bool resetCollisionState(bool);
     void delink();
 };
 size_assert(ActiveCollider, 0xb0);
@@ -37,6 +38,7 @@ public:
     PlatformManager();
     ~PlatformManager();
 
+    void func_0201d730();
     void init(void*, void*);
 };
 
@@ -53,6 +55,7 @@ public:
     CollisionManager();
     ~CollisionManager();
 
+    void func_ov000_020ab9ac();
     void func_ov000_020ab350();
 };
 

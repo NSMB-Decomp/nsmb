@@ -6,7 +6,8 @@ void * BootScene::operator new(u32 a) {
 }
 
 bool BootScene::onCreate() {
-    
+
+    return true;
 }
 
 bool BootScene::onDestroy() {

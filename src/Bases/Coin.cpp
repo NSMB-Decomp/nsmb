@@ -35,7 +35,7 @@ bool Coin::onUpdate_0()
 void Coin::_11() {}
 
 void Coin::onStageComplete(PlayerActor* player) {
-    Vec3_32 vec = this->position;
+    //Vec3_32 vec = this->position;
     //this->destroy();
 }
 
