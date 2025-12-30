@@ -11,7 +11,7 @@ bool Scene_2::onCreate()
     return true;
 }
 
-bool Scene_2::onPrepareResources()
+bool Scene_2::onHeapCreated()
 {
     return true;
 }
@@ -49,18 +49,8 @@ void Scene_2::func_ov002_020cc328()
 
 Scene_2::~Scene_2() {}
 
-struct Profile
-{
-    u32 constructor;
-    u16 a;
-    u16 b;
-};
-
-Profile Scene2_Profile[2] = {
-    (u32)Scene_2::operator new,
-    2,
-    9,
-};
+struct Profile{u32 constructor;u16 a;u16 b;};
+Profile Scene2_Profile[2] = {(u32)Scene_2::operator new,2,9};
 
 u8 data_ov002_020cd220[4] = {1, 1, 3, 0};
 char data_ov002_020cd224[4] = "KEY";
@@ -83,6 +73,6 @@ struct LPTMF
     void (Scene_2::*a)();
     u32 b;
 };
-LPTMF a[2] = {
-    {Scene_2::func_ov002_020cc328, 0},
-    {Scene_2::func_ov002_020cc514, 0}};
+LPTMF data_ov002_020cd308[2] = {
+    {Scene_2::func_ov002_020cc514, 0},
+    {Scene_2::func_ov002_020cc328, 0}};

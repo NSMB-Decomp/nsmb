@@ -17,5 +17,5 @@ public:
     bool onUpdate();
     bool onRender();
     void pendingDestroy();
-    bool onPrepareResources();
+    bool onHeapCreated();
 };

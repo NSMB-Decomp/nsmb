@@ -1,4 +1,4 @@
-_ZN7Scene_2D2Ev kind:function(arm,size=0x20) addr:0x020cc2e0
+_ZN7Scene_2D1Ev kind:function(arm,size=0x20) addr:0x020cc2e0
 _ZN7Scene_2D0Ev kind:function(arm,size=0x28) addr:0x020cc300
 _ZN7Scene_219func_ov002_020cc328Ev kind:function(arm,size=0x1ec) addr:0x020cc328
 _ZN7Scene_219func_ov002_020cc514Ev kind:function(arm,size=0xb84) addr:0x020cc514
@@ -6,7 +6,7 @@ _ZN7Scene_28onUpdateEv kind:function(arm,size=0x8) addr:0x020cd098
 _ZN7Scene_28onRenderEv kind:function(arm,size=0x8) addr:0x020cd0a0
 _ZN7Scene_214pendingDestroyEv kind:function(arm,size=0x4) addr:0x020cd0a8
 _ZN7Scene_29onDestroyEv kind:function(arm,size=0x2c) addr:0x020cd0ac
-_ZN7Scene_218onPrepareResourcesEv kind:function(arm,size=0x8) addr:0x020cd0d8
+_ZN7Scene_213onHeapCreatedEv kind:function(arm,size=0x8) addr:0x020cd0d8
 _ZN7Scene_28onCreateEv kind:function(arm,size=0x8) addr:0x020cd0e0
 _ZN7Scene_2nwEm kind:function(arm,size=0x2c) addr:0x020cd0e8
 data_ov002_020cd114 kind:data(any) addr:0x020cd114
@@ -32,7 +32,7 @@ data_ov002_020cd278 kind:data(any) addr:0x020cd278
 data_ov002_020cd280 kind:data(any) addr:0x020cd280
 data_ov002_020cd288 kind:data(any) addr:0x020cd288
 data_ov002_020cd290 kind:data(any) addr:0x020cd290
-UnknownProfile::ov002_020cd298 kind:data(any) addr:0x020cd298 ambiguous
+Scene2_Profile kind:data(any) addr:0x020cd298 ambiguous
 @91 kind:data(any) addr:0x020cd2a0
 @89 kind:data(any) addr:0x020cd2a8
 _ZTV7Scene_2 kind:data(any) addr:0x020cd2b0

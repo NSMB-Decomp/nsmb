@@ -62,3 +62,7 @@ bool Scene::preCreate()
 void Scene::postCreate(u32 a)
 {
 }
+
+void Scene::postUpdate() {
+}
+void Scene::postRender() {}
