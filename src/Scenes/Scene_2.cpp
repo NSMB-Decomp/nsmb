@@ -1,19 +1,23 @@
 #include "Scene_2.hpp"
 
 Scene_2::Scene_2() {}
-void * Scene_2::operator new(u32 a) {
+void *Scene_2::operator new(u32 a)
+{
     return new Scene_2();
 }
 
-bool Scene_2::onCreate() {
+bool Scene_2::onCreate()
+{
     return true;
 }
 
-bool Scene_2::onPrepareResources() {
+bool Scene_2::onPrepareResources()
+{
     return true;
 }
 
-bool Scene_2::onDestroy() {
+bool Scene_2::onDestroy()
+{
     u16 a[1];
     FS::Cache::clear();
     a[0] = 0;
@@ -21,29 +25,32 @@ bool Scene_2::onDestroy() {
     return true;
 }
 
-void Scene_2::pendingDestroy() {
-    
+void Scene_2::pendingDestroy()
+{
 }
 
-bool Scene_2::onRender() {
+bool Scene_2::onRender()
+{
     return true;
 }
 
-bool Scene_2::onUpdate() {
+bool Scene_2::onUpdate()
+{
     return true;
 }
 
-void Scene_2::func_ov002_020cc514() {
-    
+void Scene_2::func_ov002_020cc514()
+{
 }
 
-void Scene_2::func_ov002_020cc328() {
-
+void Scene_2::func_ov002_020cc328()
+{
 }
 
 Scene_2::~Scene_2() {}
 
-struct Profile {
+struct Profile
+{
     u32 constructor;
     u16 a;
     u16 b;
@@ -55,7 +62,7 @@ Profile Scene2_Profile[2] = {
     9,
 };
 
-u8 data_ov002_020cd220[4] = {1,1,3,0};
+u8 data_ov002_020cd220[4] = {1, 1, 3, 0};
 char data_ov002_020cd224[4] = "KEY";
 char data_ov002_020cd228[8] = "SAVE";
 char data_ov002_020cd230[8] = "MGVS";
@@ -70,4 +77,12 @@ char data_ov002_020cd278[8] = "ERROR";
 char data_ov002_020cd280[8] = "WORLD";
 char data_ov002_020cd288[8] = "KINO2";
 char data_ov002_020cd290[8] = "ENDIN";
-//void* Scene2_func1 = (void*)&Scene_2::func_ov002_020cc514;
+
+struct LPTMF
+{
+    void (Scene_2::*a)();
+    u32 b;
+};
+LPTMF a[2] = {
+    {Scene_2::func_ov002_020cc328, 0},
+    {Scene_2::func_ov002_020cc514, 0}};

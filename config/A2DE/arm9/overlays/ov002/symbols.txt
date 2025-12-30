@@ -13,8 +13,8 @@ data_ov002_020cd114 kind:data(any) addr:0x020cd114
 data_ov002_020cd11c kind:data(any) addr:0x020cd11c
 data_ov002_020cd11e kind:data(any) addr:0x020cd11e
 data_ov002_020cd120 kind:data(any) addr:0x020cd120
-__sinit_ov002_020cd1c0 kind:function(arm,size=0x3c) addr:0x020cd1c0
-.p__sinit_ov002_020cd1c0 kind:data(word) addr:0x020cd1fc
+__sinit_Scene_2.cpp kind:function(arm,size=0x3c) addr:0x020cd1c0
+.p__sinit_Scene_2.cpp kind:data(word) addr:0x020cd1fc
 data_ov002_020cd220 kind:data(any) addr:0x020cd220
 data_ov002_020cd224 kind:data(any) addr:0x020cd224
 data_ov002_020cd228 kind:data(any) addr:0x020cd228
@@ -33,8 +33,8 @@ data_ov002_020cd280 kind:data(any) addr:0x020cd280
 data_ov002_020cd288 kind:data(any) addr:0x020cd288
 data_ov002_020cd290 kind:data(any) addr:0x020cd290
 UnknownProfile::ov002_020cd298 kind:data(any) addr:0x020cd298 ambiguous
-data_ov002_020cd2a0 kind:data(any) addr:0x020cd2a0
-data_ov002_020cd2a8 kind:data(any) addr:0x020cd2a8
+@91 kind:data(any) addr:0x020cd2a0
+@89 kind:data(any) addr:0x020cd2a8
 _ZTV7Scene_2 kind:data(any) addr:0x020cd2b0
 data_ov002_020cd300 kind:bss addr:0x020cd300
 data_ov002_020cd304 kind:bss addr:0x020cd304
