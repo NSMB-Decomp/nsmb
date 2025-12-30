@@ -5,6 +5,7 @@ public:
     u8 _pad0[0x24];
 
     inline BootScene();
+    ~BootScene();
     void* operator new(u32);
 
     bool onCreate();  

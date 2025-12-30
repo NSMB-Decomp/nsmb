@@ -1,5 +1,5 @@
-BootScene::func_ov001_020cc2e0 kind:function(arm,size=0x20) addr:0x020cc2e0
-BootScene::func_ov001_020cc300 kind:function(arm,size=0x28) addr:0x020cc300
+_ZN9BootSceneD2Ev kind:function(arm,size=0x20) addr:0x020cc2e0
+_ZN9BootSceneD0Ev kind:function(arm,size=0x28) addr:0x020cc300
 BootScene::func_ov001_020cc328 kind:function(arm,size=0x18c) addr:0x020cc328
 BootScene::func_ov001_020cc4b4 kind:function(arm,size=0xcc) addr:0x020cc4b4
 BootScene::func_ov001_020cc580 kind:function(arm,size=0x59c) addr:0x020cc580
@@ -24,7 +24,7 @@ func_ov001_020cd084 kind:function(arm,size=0x10) addr:0x020cd084
 func_ov001_020cd094 kind:function(arm,size=0x4) addr:0x020cd094
 func_ov001_020cd098 kind:function(arm,size=0x3c) addr:0x020cd098
 BootScene::profile kind:data(any) addr:0x020cd0e0 ambiguous
-BootScene::vtable kind:data(any) addr:0x020cd0f0
+_ZTV9BootScene kind:data(any) addr:0x020cd0f0
 data_ov001_020cd138 kind:data(any) addr:0x020cd138
 data_ov001_020cd144 kind:data(any) addr:0x020cd144
 data_ov001_020cd298 kind:data(any) addr:0x020cd298 ambiguous
