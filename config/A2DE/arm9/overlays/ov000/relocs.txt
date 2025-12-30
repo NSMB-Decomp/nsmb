@@ -1171,11 +1171,11 @@ from:0x020a3a50 kind:load to:0x0207ff4c module:autoload(2)
 from:0x020a3a54 kind:load to:0x020ca928 module:overlay(0)
 from:0x020a3a58 kind:load to:0x02003080 module:main
 from:0x020a3a74 kind:arm_call to:0x0204d23c module:autoload(2)
-from:0x020a3a80 kind:load to:0x020c6eb4 module:overlay(0)
+from:0x020a3a80 kind:load to:0x020c6eac add:0x8 module:overlay(0)
 from:0x020a3a84 kind:load to:0x0203bcd8 add:0x8 module:main
 from:0x020a3aa0 kind:arm_call to:0x0204d23c module:autoload(2)
 from:0x020a3aa8 kind:arm_call to:0x0204cc7c module:autoload(2)
-from:0x020a3ab4 kind:load to:0x020c6eb4 module:overlay(0)
+from:0x020a3ab4 kind:load to:0x020c6eac add:0x8 module:overlay(0)
 from:0x020a3ab8 kind:load to:0x0203bcd8 add:0x8 module:main
 from:0x020a3ac8 kind:arm_call to:0x02007238 module:main
 from:0x020a3af4 kind:arm_call to:0x0205808c module:autoload(2)

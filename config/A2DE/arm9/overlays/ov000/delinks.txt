@@ -6,7 +6,8 @@
     .bss        start:0x020ca280 end:0x020cc2e0 kind:bss align:32
 
 src/Scenes/StageScene.cpp:
-    .text       start:0x020a3310 end:0x020a34a4
+    .text       start:0x020a12dc end:0x020a3a38
+    .data       start:0x020c6d28 end:0x020c6eac
 
 src/Bases/Actor.cpp:
     .text       start:0x020a0728 end:0x020a10a0

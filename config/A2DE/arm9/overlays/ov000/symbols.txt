@@ -194,8 +194,8 @@ _ZN10StageActorD2Ev kind:function(arm,size=0x44) addr:0x020a11a8
 _ZN10StageActorD0Ev kind:function(arm,size=0x4c) addr:0x020a11ec
 _ZN10StageActorD1Ev kind:function(arm,size=0x44) addr:0x020a1238
 _ZN10StageActorC2Ev kind:function(arm,size=0x60) addr:0x020a127c
-func_ov000_020a12dc kind:function(arm,size=0x94) addr:0x020a12dc
-func_ov000_020a1370 kind:function(arm,size=0x9c) addr:0x020a1370
+_ZN10StageSceneD1Ev kind:function(arm,size=0x94) addr:0x020a12dc
+_ZN10StageSceneD0Ev kind:function(arm,size=0x9c) addr:0x020a1370
 func_ov000_020a140c kind:function(arm,size=0x64) addr:0x020a140c
 func_ov000_020a1470 kind:function(arm,size=0xac) addr:0x020a1470
 func_ov000_020a151c kind:function(arm,size=0x64) addr:0x020a151c
@@ -222,10 +222,10 @@ func_ov000_020a30f4 kind:function(arm,size=0x20) addr:0x020a30f4
 func_ov000_020a3114 kind:function(arm,size=0x54) addr:0x020a3114
 func_ov000_020a3168 kind:function(arm,size=0x1a8) addr:0x020a3168
 func_ov000_020a3310 kind:function(arm,size=0x194) addr:0x020a3310
-func_ov000_020a34a4 kind:function(arm,size=0xc4) addr:0x020a34a4
+_ZN10StageSceneC1Ev kind:function(arm,size=0xc4) addr:0x020a34a4
 func_ov000_020a3568 kind:function(arm,size=0x1a8) addr:0x020a3568
 func_ov000_020a3710 kind:function(arm,size=0x2fc) addr:0x020a3710
-func_ov000_020a3a0c kind:function(arm,size=0x2c) addr:0x020a3a0c
+_ZN10StageScenenwEm kind:function(arm,size=0x2c) addr:0x020a3a0c
 func_ov000_020a3a38 kind:function(arm,size=0x24) addr:0x020a3a38
 func_ov000_020a3a5c kind:function(arm,size=0x2c) addr:0x020a3a5c
 func_ov000_020a3a88 kind:function(arm,size=0x34) addr:0x020a3a88
@@ -817,7 +817,7 @@ data_ov000_020c6d08 kind:data(any) addr:0x020c6d08
 data_ov000_020c6d10 kind:data(any) addr:0x020c6d10
 data_ov000_020c6d18 kind:data(any) addr:0x020c6d18
 data_ov000_020c6d20 kind:data(any) addr:0x020c6d20
-UnknownProfile::ov000_020c6d28 kind:data(any) addr:0x020c6d28
+StageScene_Profile kind:data(any) addr:0x020c6d28
 data_ov000_020c6d30 kind:data(any) addr:0x020c6d30
 data_ov000_020c6d38 kind:data(any) addr:0x020c6d38
 data_ov000_020c6d44 kind:data(any) addr:0x020c6d44
@@ -834,8 +834,8 @@ data_ov000_020c6de4 kind:data(any) addr:0x020c6de4
 data_ov000_020c6de5 kind:data(any) addr:0x020c6de5
 data_ov000_020c6e0c kind:data(any) addr:0x020c6e0c
 data_ov000_020c6e10 kind:data(any) addr:0x020c6e10
-UnknownVtable::ov000_020c6e64 kind:data(any) addr:0x020c6e64
-UnknownVtable::ov000_020c6eb4 kind:data(any) addr:0x020c6eb4
+_ZTV10StageScene kind:data(any) addr:0x020c6e64
+UnknownVtable::ov000_020c6eb4 kind:data(any) addr:0x020c6eac
 data_ov000_020c6efc kind:data(any) addr:0x020c6efc
 data_ov000_020c6f10 kind:data(any) addr:0x020c6f10
 data_ov000_020c6f18 kind:data(any) addr:0x020c6f18

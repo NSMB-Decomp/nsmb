@@ -6,11 +6,11 @@
 #include "Heap.hpp"
 #include "Vec.hpp"
 
-struct ObjectProfile {
-    Base* (*constructor)();
-    u16 updatePriority;
-    u16 renderPriority;
-    void* _8;
+struct ObjectProfile
+{
+    void* (*constructor)(u32);
+    u16 a;
+    u16 b;
 };
 
 namespace FS {
