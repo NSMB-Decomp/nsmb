@@ -3,3 +3,6 @@
     .data       start:0x020cd0e0 end:0x020cebc0 kind:data align:32
     .bss        start:0x020cebc0 end:0x020cebe0 kind:bss align:32
 
+src/Scenes/BootScene.cpp:
+    .text       start:0x020cc2e0 end:0x020cceb4
+    .data       start:0x020cd0e0 end:0x020cd138
