@@ -1,7 +1,7 @@
 #include "BootScene.hpp"
 
 BootScene::BootScene() {}
-void * BootScene::operator new(u32 a) {
+void * BootScene::create() {
     return new BootScene();
 }
 

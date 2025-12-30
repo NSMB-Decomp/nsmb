@@ -4,7 +4,7 @@ Coin::Coin()
 {
 }
 
-void *Coin::operator new(u32 a)
+void *Coin::create()
 {
     return new Coin();
 }

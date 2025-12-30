@@ -14,7 +14,7 @@ public:
 
     inline DebugScene();
     ~DebugScene();
-    void *operator new(u32);
+    static void *create();
 
     void func_ov002_020cc328();
     void func_ov002_020cc514();

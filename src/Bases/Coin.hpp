@@ -40,7 +40,7 @@ public:
 
     inline Coin();
     ~Coin();
-    void* operator new(u32);
+    static void* create();
 
     void func_ov010_020d81dc(u32);
     void func_ov010_020d9dcc(PTMF*);

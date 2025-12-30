@@ -6,7 +6,7 @@ bool Goomba::onCreate() {
 
 }
 
-void *Goomba::operator new(u32 a)
+void *Goomba::create()
 {
     return new Goomba();
 }

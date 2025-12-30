@@ -8,7 +8,7 @@ _ZN10DebugScene14pendingDestroyEv kind:function(arm,size=0x4) addr:0x020cd0a8
 _ZN10DebugScene9onDestroyEv kind:function(arm,size=0x2c) addr:0x020cd0ac
 _ZN10DebugScene13onHeapCreatedEv kind:function(arm,size=0x8) addr:0x020cd0d8
 _ZN10DebugScene8onCreateEv kind:function(arm,size=0x8) addr:0x020cd0e0
-_ZN10DebugScenenwEm kind:function(arm,size=0x2c) addr:0x020cd0e8
+_ZN10DebugScene6createEv kind:function(arm,size=0x2c) addr:0x020cd0e8
 data_ov002_020cd114 kind:data(any) addr:0x020cd114
 data_ov002_020cd11c kind:data(any) addr:0x020cd118
 __sinit_DebugScene.cpp kind:function(arm,size=0x3c) addr:0x020cd1c0

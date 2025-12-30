@@ -1,7 +1,7 @@
 #include "DebugScene.hpp"
 
 DebugScene::DebugScene() {}
-void *DebugScene::operator new(u32 a)
+void *DebugScene::create()
 {
     return new DebugScene();
 }
@@ -176,7 +176,7 @@ u8 data_ov002_020cd240[4][2] = {
     {0, 0},
 };
 
-//ObjectProfile Scene2_Profile = {DebugScene::operator new, 2, 9};
+ObjectProfile Scene2_Profile = {DebugScene::create, 2, 9};
 
 struct LPTMF
 {

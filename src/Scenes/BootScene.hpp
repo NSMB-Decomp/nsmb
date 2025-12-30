@@ -11,7 +11,7 @@ public:
 
     inline BootScene();
     ~BootScene();
-    void *operator new(u32);
+    void *create();
 
     bool onCreate();
     bool onDestroy();
