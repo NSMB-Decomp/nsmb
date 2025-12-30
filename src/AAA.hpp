@@ -13,6 +13,16 @@ struct ObjectProfile {
     void* _8;
 };
 
+namespace FS {
+    namespace Cache {
+        void clear();
+    }
+}
+
+namespace Nitro_ {
+    void func_02063af0(u16[1], u32, u32);
+}
+
 namespace WiFi {
     u32 random();
 }

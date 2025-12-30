@@ -8,4 +8,14 @@ public:
     inline Scene_2();
     ~Scene_2();
     void *operator new(u32);
+
+    void func_ov002_020cc328();
+    void func_ov002_020cc514();
+
+    bool onCreate();
+    bool onDestroy();
+    bool onUpdate();
+    bool onRender();
+    void pendingDestroy();
+    bool onPrepareResources();
 };
