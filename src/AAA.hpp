@@ -28,12 +28,21 @@ namespace WiFi {
 }
 
 namespace Stage {
-    u16 ObjectBankTable[2];
-    u8 actorFreezeFlag;
+    extern u16 ObjectBankTable[2];
+    extern u8 actorFreezeFlag;
+    extern u8 stageGroup;
+    extern u8 stageID;
+    extern u8 stageAreaID;
 }
 
 namespace Game {
-    u32 cameraY[2];
+    extern u32 cameraY[2];
+}
+
+namespace Input {
+    extern u8 localConsoleID;
+    extern u32 consoleKeys[4][2];
+    extern u32 consoleKeysRepeated[4];
 }
 
 class Fader {
@@ -44,16 +53,16 @@ public:
     u8 fadingTarget[2];
     bool isComplete();
 };
-Fader GlobalFader; 
+extern Fader GlobalFader; 
 
 extern ObjectProfile** CurrentProfileTable;
 extern ObjectProfile* MainProfileTable;
-u8 data_02088f34;
+extern u8 data_02088f34;
 
 //
 extern u8 data_ov000_020ca84c;
-u8 data_020887fc;
-u32 data_02085ad4[2];
+extern u8 data_020887fc;
+extern u32 data_02085ad4[2];
 struct SaveOptions {
     u32 header;
     u32 flags;
@@ -61,8 +70,7 @@ struct SaveOptions {
     u32 controlOptions;
     u32 currentSlot;
 };
-SaveOptions data_02088bdc;
-
+extern SaveOptions data_02088bdc;
 
 //
 void Heap_deallocate(Heap*, void *);
@@ -131,13 +139,13 @@ void InitGame();
 void SetMasterGameMode(u32);
 void SetBootScene(u32);
 void SetExtraBootParam(u32);
-u16 data_020850e8;
-void (*data_0203981c)();
-void (*data_02039820)();
-void (*data_02039824)();
-char GAME_NAME[8] = "Mario2d";
-u32 FrameCounter;
-u32 data_02085a78;
-u32 data_02085a74;
+extern u16 data_020850e8;
+extern void (*data_0203981c)();
+extern void (*data_02039820)();
+extern void (*data_02039824)();
+extern char GAME_NAME[8];// = "Mario2d";
+extern u32 FrameCounter;
+extern u32 data_02085a78;
+extern u32 data_02085a74;
 
-u32 data_ov000_020ca2b8;
+extern u32 data_ov000_020ca2b8;

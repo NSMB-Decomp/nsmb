@@ -3,7 +3,14 @@
 class Scene_2 : public Scene
 {
 public:
-    u8 _pad0[0x1d4];
+    u8 _pad0[0x17c];
+    u32 _1d8;
+    u32 _1dc;
+    u32 _1e0;
+    u32 _1e4;
+    i32 _1fc;
+    i32 _204;
+    u8 _pad2[0x40];
 
     inline Scene_2();
     ~Scene_2();

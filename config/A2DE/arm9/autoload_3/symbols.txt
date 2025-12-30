@@ -127,12 +127,12 @@ data_02085e24 kind:bss addr:0x02085e24
 data_02085e30 kind:bss addr:0x02085e30
 data_02086a30 kind:bss addr:0x02086a30
 data_02087630 kind:bss addr:0x02087630
-data_02087634 kind:bss addr:0x02087634
+Input::localConsoleID kind:bss addr:0x02087634
 data_02087638 kind:bss addr:0x02087638
 data_02087640 kind:bss addr:0x02087640
 data_02087648 kind:bss addr:0x02087648
 data_02087650 kind:bss addr:0x02087650
-data_02087652 kind:bss addr:0x02087652
+Input::ButtonsPressed kind:bss addr:0x02087652
 data_02087660 kind:bss addr:0x02087660
 data_02087664 kind:bss addr:0x02087664
 data_02087668 kind:bss addr:0x02087668
