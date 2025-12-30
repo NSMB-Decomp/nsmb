@@ -2,12 +2,6 @@
 #include "base_types.hpp"
 #include "AAA.hpp"
 
-u16 data_020850e8;
-void (*data_0203981c)();
-void (*data_02039820)();
-void (*data_02039824)();
-char GAME_NAME[8] = "Mario2d";
-
 void InitGame() {
   u16 *REG_IME = (u16 *)0x04000208;
 
@@ -67,9 +61,6 @@ void InitGame() {
   __stub_2();
 }
 
-u32 FrameCounter;
-u32 data_02085a78;
-u32 data_02085a74;
 void StartGameLoop() {
   u32 *GFX_FIFO_SWAP_BUFFERS = (u32 *)0x04000540;
 
@@ -124,7 +115,7 @@ void SharedGameInit() {
   __stub_4();
 }
 
-void initExtendedIds() {
+void initExtendedIds(bool) {
   u32 overlay_id = OVERLAY_BOOT;
   Nitro::FS_Overlays_loadOverlay(overlay_id);
   func_ov001_020cceb4();
@@ -132,12 +123,12 @@ void initExtendedIds() {
 }
 
 void sceneBaseInit() {
-  u32 overlay_id = OVERLAY_MISC;
-  if (Nitro::Wifi_isMultiBootCart() != false) {
+  bool a = Nitro::Wifi_isMultiBootCart();
+  if (a) {
     func_020125e8();
   }
-  Nitro::FS_Overlays_loadOverlay(overlay_id);
-  initExtendedIds();
+  Nitro::FS_Overlays_loadOverlay(OVERLAY_MISC);
+  initExtendedIds(a);
   func_0200a0b4();
   data_0203981c = func_020050ec;
   data_02039820 = func_020050d8;

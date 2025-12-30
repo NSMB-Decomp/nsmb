@@ -96,11 +96,13 @@ public:
     void simpleCallback(ActiveCollider *);
     static bool spawnBrokenPipe(i32, i32, u32, u32, u8, u8, i8);
     u32 random();
+    i32 tryAttachToPlayerHands(i32, i32, i32);
+    i32 attachToPlayerHands(i32, i32, i32);
 
     virtual bool onUpdate_0();
     virtual bool _01();
     virtual bool onUpdate_1();
-    virtual bool onUpdate_2();
+    virtual bool onUpdate_defeated();
     virtual bool onUpdate_3();
     virtual bool onUpdate_4();
     virtual bool onUpdate_5();

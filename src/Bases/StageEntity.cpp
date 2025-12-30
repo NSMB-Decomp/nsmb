@@ -66,7 +66,7 @@ bool StageEntity::onUpdate()
     }
     if (state == 2)
     {
-        return this->onUpdate_2();
+        return this->onUpdate_defeated();
     }
     if (state == 3)
     {
@@ -121,7 +121,7 @@ bool StageEntity::onUpdate_1()
 {
     return true;
 }
-bool StageEntity::onUpdate_2() {}
+bool StageEntity::onUpdate_defeated() {}
 bool StageEntity::onUpdate_3() {}
 bool StageEntity::onUpdate_4()
 {
@@ -175,6 +175,10 @@ void StageEntity::onUpdate_xx()
         this->_3a8 -= 0x100;
     }
 }
+
+i32 StageEntity::attachToPlayerHands(i32 z, i32 y, i32 x) {}
+
+i32 StageEntity::tryAttachToPlayerHands(i32 z, i32 y, i32 x) {}
 
 u32 StageEntity::random() {
     return WiFi::random();   

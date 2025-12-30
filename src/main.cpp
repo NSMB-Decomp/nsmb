@@ -1,10 +1,5 @@
 #include "./base_types.hpp"
-bool isMultiBootCart();
-bool func_020109c8();
-void InitGame();
-void SetMasterGameMode(u32);
-void SetBootScene(u32);
-void SetExtraBootParam(u32);
+#include "AAA.hpp"
 
 void main() {
   u8 game_mode;
