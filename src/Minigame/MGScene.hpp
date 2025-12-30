@@ -1,4 +1,4 @@
-#include "../..//Bases/Object.hpp"
+#include "../Bases/Object.hpp"
 
 class MGScene: public Object {
 public:
