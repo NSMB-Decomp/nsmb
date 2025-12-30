@@ -465,7 +465,7 @@ func_ov130_02134f6c kind:function(arm,size=0x6c) addr:0x02134f6c
 func_ov130_02134fd8 kind:function(arm,size=0x1d0) addr:0x02134fd8
 func_ov130_021351a8 kind:function(arm,size=0x44) addr:0x021351a8
 func_ov130_021351ec kind:function(arm,size=0xc) addr:0x021351ec
-func_ov130_021351f8 kind:function(arm,size=0x38) addr:0x021351f8
+Scene_388::create kind:function(arm,size=0x38) addr:0x021351f8
 func_ov130_02135230 kind:function(arm,size=0x58) addr:0x02135230
 func_ov130_02135288 kind:function(arm,size=0xc) addr:0x02135288
 func_ov130_02135294 kind:function(arm,size=0xc) addr:0x02135294
@@ -732,7 +732,7 @@ data_ov130_021390dc kind:data(any) addr:0x021390dc
 data_ov130_021390e8 kind:data(any) addr:0x021390e8
 data_ov130_021390f4 kind:data(any) addr:0x021390f4
 data_ov130_02139100 kind:data(any) addr:0x02139100
-data_ov130_02139140 kind:data(any) addr:0x02139140
+Scene_338::vtable kind:data(any) addr:0x02139140
 data_ov130_02139194 kind:data(any) addr:0x02139194
 data_ov130_02139198 kind:data(any) addr:0x02139198
 data_ov130_021391a4 kind:data(any) addr:0x021391a4
