@@ -8,9 +8,9 @@
 
 struct ObjectProfile
 {
-    void* (*constructor)(u32);
-    u16 a;
-    u16 b;
+    void* (*constructor)();
+    u16 updatePriority;
+    u16 renderPriority;
 };
 
 namespace FS {

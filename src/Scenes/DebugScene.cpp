@@ -176,7 +176,7 @@ u8 data_ov002_020cd240[4][2] = {
     {0, 0},
 };
 
-Profile Scene2_Profile = {(u32)DebugScene::operator new, 2, 9};
+//ObjectProfile Scene2_Profile = {DebugScene::operator new, 2, 9};
 
 struct LPTMF
 {

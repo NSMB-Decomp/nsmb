@@ -298,7 +298,7 @@ Base *Base::spawn(u16 overlay_id, ProcessLink *b, u32 c, u8 d)
   data_0208fae8 = 2;
   setSpawnParams(overlay_id, b, c, d);
   data_0208fae8 = 3;
-  Base *ret = (CurrentProfileTable)[overlay_id]->constructor();
+  Base *ret = (Base*)(CurrentProfileTable)[overlay_id]->constructor();
   
   if (ret == (Base *)0x00)
   {
