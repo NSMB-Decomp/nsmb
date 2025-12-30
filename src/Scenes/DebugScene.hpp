@@ -1,6 +1,6 @@
 #include "Scene.hpp"
 
-class Scene_2 : public Scene
+class DebugScene : public Scene
 {
 public:
     u8 _pad0[0x17c];
@@ -12,8 +12,8 @@ public:
     i32 _204;
     u8 _pad2[0x40];
 
-    inline Scene_2();
-    ~Scene_2();
+    inline DebugScene();
+    ~DebugScene();
     void *operator new(u32);
 
     void func_ov002_020cc328();

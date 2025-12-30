@@ -1,22 +1,22 @@
-#include "Scene_2.hpp"
+#include "DebugScene.hpp"
 
-Scene_2::Scene_2() {}
-void *Scene_2::operator new(u32 a)
+DebugScene::DebugScene() {}
+void *DebugScene::operator new(u32 a)
 {
-    return new Scene_2();
+    return new DebugScene();
 }
 
-bool Scene_2::onCreate()
-{
-    return true;
-}
-
-bool Scene_2::onHeapCreated()
+bool DebugScene::onCreate()
 {
     return true;
 }
 
-bool Scene_2::onDestroy()
+bool DebugScene::onHeapCreated()
+{
+    return true;
+}
+
+bool DebugScene::onDestroy()
 {
     u16 a[1];
     FS::Cache::clear();
@@ -25,25 +25,25 @@ bool Scene_2::onDestroy()
     return true;
 }
 
-void Scene_2::pendingDestroy()
+void DebugScene::pendingDestroy()
 {
 }
 
-bool Scene_2::onRender()
-{
-    return true;
-}
-
-bool Scene_2::onUpdate()
+bool DebugScene::onRender()
 {
     return true;
 }
 
-void Scene_2::func_ov002_020cc514()
+bool DebugScene::onUpdate()
+{
+    return true;
+}
+
+void DebugScene::func_ov002_020cc514()
 {
 }
 
-void Scene_2::func_ov002_020cc328()
+void DebugScene::func_ov002_020cc328()
 {
     u8 a = Input::localConsoleID;
     if ((Input::consoleKeys[a][0] & 4) != 0)
@@ -141,7 +141,7 @@ void Scene_2::func_ov002_020cc328()
     // }
 }
 
-Scene_2::~Scene_2() {}
+DebugScene::~DebugScene() {}
 
 struct SomethingElse
 {
@@ -182,16 +182,16 @@ struct Profile
     u16 a;
     u16 b;
 };
-Profile Scene2_Profile = {(u32)Scene_2::operator new, 2, 9};
+Profile Scene2_Profile = {(u32)DebugScene::operator new, 2, 9};
 
 struct LPTMF
 {
-    void (Scene_2::*a)();
+    void (DebugScene::*a)();
     u8 b;
 };
 LPTMF data_ov002_020cd308[] = {
-    {Scene_2::func_ov002_020cc514, 0},
-    {Scene_2::func_ov002_020cc328, 0}};
+    {DebugScene::func_ov002_020cc514, 0},
+    {DebugScene::func_ov002_020cc328, 0}};
 
 u8 data_ov002_020cd220[4] = {1, 1, 3, 0};
 
