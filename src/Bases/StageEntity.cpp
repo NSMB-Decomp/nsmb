@@ -261,6 +261,15 @@ void StageEntity::_44() {
     this->active_collider._2c = (void *)0x0;
 }
 
+i16 data_ov000_020c4ed4[2];
+void StageEntity::_21() {
+  this->active_collider.delink();
+  (this->minVelocity).y = -0x4000;
+  func_02012398(0x70,&this->position);
+  this->direction = this->_pad16[2];
+  this->_42(data_ov000_020c4ed4[this->direction],0x3000,0xfffffd00,0);
+}
+
 bool StageEntity::onUpdate_1()
 {
     return true;
