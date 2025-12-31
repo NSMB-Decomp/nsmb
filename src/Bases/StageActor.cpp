@@ -1,4 +1,5 @@
 #include "StageActor.hpp"
+#include "Player/PlayerActor.hpp"
 
 StageActor::StageActor()
 {
@@ -38,9 +39,8 @@ bool StageActor::preUpdate()
 void StageActor::postUpdate(u32 a)
 {
     if (
-            ((Stage::actorFreezeFlag & this->actorCategory & 0xff) == 0) &&
-            (this->active_collider.resetCollisionState(), !this->pending_destroy)
-        )
+        ((Stage::actorFreezeFlag & this->actorCategory & 0xff) == 0) &&
+        (this->active_collider.resetCollisionState(), !this->pending_destroy))
     {
         this->collision_manager.func_ov000_020ab9ac();
         this->platform_manager.func_0201d730();
@@ -48,8 +48,23 @@ void StageActor::postUpdate(u32 a)
     Actor::postUpdate(a);
 }
 
+PlayerActor* GAME_getPlayer(u8);
 bool StageActor::isInActiveView()
 {
-    u32 i = 0;
+    PlayerActor* iVar1;
+
+    u8 i = 0;
+    while 
+        (
+            (iVar1 = GAME_getPlayer(i), iVar1 == NULL) ||
+            (iVar1->__4 != this->__4)
+        )
+    {
+        i += 1;
+        if (1 < i)
+        {
+            return false;
+        }
+    }
     return true;
 }
