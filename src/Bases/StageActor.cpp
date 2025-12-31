@@ -6,8 +6,8 @@ StageActor::StageActor()
     this->collision_manager.__1 = &this->platform_manager;
     this->platform_manager.init(this, NULL);
     this->platform_manager.__1 = &this->collision_manager;
-    this->__1 = 0;
-    this->__2 = 0;
+    this->_2bc = 0;
+    this->_2bf = 0;
 }
 StageActor::~StageActor()
 {
@@ -57,7 +57,7 @@ bool StageActor::isInActiveView()
     while 
         (
             (iVar1 = GAME_getPlayer(i), iVar1 == NULL) ||
-            (iVar1->__4 != this->__4)
+            (iVar1->_2be != this->_2be)
         )
     {
         i += 1;

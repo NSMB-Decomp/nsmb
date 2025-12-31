@@ -25,8 +25,8 @@ StageEntity::StageEntity()
     this->_31c.y = 0;
     this->_31c.z = 0;
     this->_2ca = 0;
-    this->_3c6 = 0;
-    this->_3c8 = 0;
+    this->_3c6[0] = 0;
+    this->_3c6[1] = 0;
     this->_3d2 = 0;
     this->_3e8 = 0;
     this->_3ea = 0;
@@ -36,7 +36,7 @@ StageEntity::StageEntity()
     this->_3ec = 0;
     this->_2c4 = 0;
     this->_34c = 0x6e;
-    this->__4 = func_0201f000(&this->position);
+    this->_2be = func_0201f000(&this->position);
     this->_3ed = 0;
     this->_3ef = 0;
     this->linked_player = ~0;
@@ -115,6 +115,15 @@ bool StageEntity::_01()
         return func_0200ae9c(&this->position);
     }
     return false;
+}
+
+void StageEntity::_12() {
+  this->_3c6[this->linked_player] = 0xc;
+  (this->active_collider)._26 = (this->active_collider)._26 | 0x140;
+  if (this->_3c2 != 0) {
+    (this->active_collider)._25 = 0xa;
+    (this->active_collider)._2c = (void*)shellCallback;
+  }
 }
 
 bool StageEntity::onUpdate_1()

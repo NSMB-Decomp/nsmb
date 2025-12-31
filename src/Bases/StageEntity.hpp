@@ -3,61 +3,62 @@
 
 class StageEntity : public StageActor {
 public:
-    u8 _2c4; //0x2C4
-    u8 _2c5; //0x2C5
-    u16 _2c6; //0x2C6
-    u8 _pad13[0x02]; // 0x2C0
-    u16 _2ca; // 0x2CA
+    u8 _2c4; /* 0x2C4 */
+    u8 _2c5; /* 0x2C5 */
+    u16 _2c6; /* 0x2C6 */
+    u8 _pad13[0x02]; /* 0x2C0 */
+    u16 _2ca; /* 0x2CA */
     u8 _pad9[0x2];
-    u32 _2d0; // 0x2D0
+    u32 _2d0; /* 0x2D0 */
     u8 _pad1[0x38];
-    Vec3_32 _30c; // 0x30C
-    Vec3_32 _31c; // 0x31C
+    Vec3_32 _30c; /* 0x30C */
+    Vec3_32 _31c; /* 0x31C */
     u8 _pad2[0x14];
-    i32 _340; // 0x340
+    i32 _340; /* 0x340 */
     u8 _pad14[0x8];
-    u32 _34c; //0x34C
-    i32 _350; // 0x350
+    u32 _34c; /* 0x34C */
+    i32 _350; /* 0x350 */
     u8 _pad6[0x4];
-    u32 _358; //0x358
-    Vec3_32 _35c; // 0x35C
-    Vec2_32 _36c; // 0x36C
-    Vec2_32 _378; // 0x378
-    Vec2_32 _384; // 0x384
-    Vec2_32 _390; // 0x390
-    Vec2_32 _39c; // 0x39C
-    u32 _3a8; // 0x3A8
+    u32 _358; /* 0x358 */
+    Vec3_32 _35c; /* 0x35C */
+    Vec2_32 _36c; /* 0x36C */
+    Vec2_32 _378; /* 0x378 */
+    Vec2_32 _384; /* 0x384 */
+    Vec2_32 _390; /* 0x390 */
+    Vec2_32 _39c; /* 0x39C */
+    u32 _3a8; /* 0x3A8 */
     u8 _pad3[0x8];
-    u32 _3b4; // 0x3B4
-    u32 _3b8; // 0x3B8
-    u16 _3bc; // 0x3BC
-    u8 _pad11[0x7];
-    u16 _3c6; // 0x3C6
-    u16 _3c8; // 0x3CA
-    u8 pad12[0x2];
-    u16* _3cc; // 0x3CC
-    u8 _3d0; //0x3D0
+    u32 _3b4; /* 0x3B4 */
+    u32 _3b8; /* 0x3B8 */
+    u16 _3bc; /* 0x3BC */
+    u8 _pad11[0x4];
+    u16 _3c2; /* 0x3C2 */
+    u8 _pad_3c4[2];
+    u16 _3c6[2]; /* 0x3C6 */
+    u8 _pad_3ca[1];
+    u16* _3cc; /* 0x3CC */
+    u8 _3d0; /* 0x3D0 */
     u8 _pad15[0x1];
-    u8 _3d2; // 0x3D2
+    u8 _3d2; /* 0x3D2 */
     u8 Pad5[0x3];
-    u8* _3d8; // 0x3D8
+    u8* _3d8; /* 0x3D8 */
     u8 _pad4[0x2];
-    u8 _3de; // 0x3DE
-    u8 _3df; // 0x3DF
+    u8 _3de; /* 0x3DE */
+    u8 _3df; /* 0x3DF */
     u8 _pad16[0x4];
-    u8 _3e4; // 0x3E4
+    u8 _3e4; /* 0x3E4 */
     u8 _pad8[2];
-    i8 _3e7; //0x3E7
-    u8 _3e8; // 0x3E8
-    u8 _3e9; //0x3E9
-    u8 _3ea; //0x3EA
-    u8 _3eb; //0x3EB
-    u8 _3ec; //0x3EC
-    u8 _3ed; //0x3ED
-    u8 _3ee; //0x3EE
-    u8 _3ef; //0x3EF
-    u8 _3f0; //0x3F0
-    u8 _3f1; //0x3F1
+    i8 _3e7; /* 0x3E7 */
+    u8 _3e8; /* 0x3E8 */
+    u8 _3e9; /* 0x3E9 */
+    u8 _3ea; /* 0x3EA */
+    u8 _3eb; /* 0x3EB */
+    u8 _3ec; /* 0x3EC */
+    u8 _3ed; /* 0x3ED */
+    u8 _3ee; /* 0x3EE */
+    u8 _3ef; /* 0x3EF */
+    u8 _3f0; /* 0x3F0 */
+    u8 _3f1; /* 0x3F1 */
 
     StageEntity();
     inline ~StageEntity();
@@ -92,7 +93,7 @@ public:
     void destroy(bool);
     void updateBounce(i32, i32, i32);
     void damageEntityCallback(ActiveCollider*);
-    void shellCallback(ActiveCollider *);
+    static void shellCallback(ActiveCollider *);
     void simpleCallback(ActiveCollider *);
     static bool spawnBrokenPipe(i32, i32, u32, u32, u8, u8, i8);
     u32 random();

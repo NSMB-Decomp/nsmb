@@ -96,7 +96,7 @@ bool Base::onDestroy() { return true; }
 bool Base::preDestroy()
 {
   if (!(
-          (this->_50 == 0 || func_0204d82c()) &&
+          (this->_54 == 0 || func_0204d82c()) &&
           this->process_link.connect.firstChild == (SceneNode *)0x0))
 
   {
@@ -125,7 +125,7 @@ void Base::postDestroy(u32 a)
   {
     func_02045128();
   }
-  if (this->_50 != NULL)
+  if (this->_54 != NULL)
   {
     func_0204d908();
   }
