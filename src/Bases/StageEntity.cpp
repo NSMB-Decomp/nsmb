@@ -257,6 +257,10 @@ void StageEntity::_45()
     this->active_collider._2c = damagePlayerCallback;
 }
 
+void StageEntity::_44() {
+    this->active_collider._2c = (void *)0x0;
+}
+
 bool StageEntity::onUpdate_1()
 {
     return true;
