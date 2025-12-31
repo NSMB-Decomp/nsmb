@@ -102,6 +102,11 @@ public:
     void func_ov000_0209c85c();
     void func_ov000_0209adb0(u32);
     void func_ov000_0209e264(u32, u32, u32);
+    bool func_ov000_0209ccd0(PlayerBase*);
+    void func_ov000_0209da00();
+    void func_ov000_0209da0c();
+    void func_ov000_0209e5a8(u32, u32);
+    void func_ov000_020a020c();
 
     virtual bool onUpdate_0();
     virtual bool _01();

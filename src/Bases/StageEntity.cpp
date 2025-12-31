@@ -192,21 +192,86 @@ void StageEntity::_16()
     return;
 }
 
+void StageEntity::_37() {}
 
+void StageEntity::_36()
 
-void func_ov010_020e657c(i8, Vec3_32*, u32);
-i8 data_ov000_020c1f50[2];
-void StageEntity::func_ov000_0209e264(u32 x,u32 y,u32 param_3)
 {
-  Vec3_32 vec;
-  vec.x = 0;
-  vec.y = 0;
-  vec.z = 0;
-  
-  vec.x = x + this->position.x;
-  vec.y = y + this->position.y;
-  func_ov010_020e657c(data_ov000_020c1f50[param_3],&vec,~0);
-  return;
+    this->velocity.y = 0x2000;
+    return;
+}
+
+bool StageEntity::func_ov000_0209ccd0(PlayerBase *player)
+
+{
+    if ((this->_2c6 & 0x400) == 0)
+    {
+        i32 tp = this->position.x;
+        i32 tpc = this->centerOffset.x;
+        i32 pp = player->position.x;
+        i32 pps = player->centerOffset.x;
+        this->linked_player = player->linked_player;
+        this->_3ee = ((u32)((tp + tpc) - (pp + pps))) >> 0x1f;
+        this->_3b4 |= 0x8000;
+        return true;
+    }
+    return false;
+}
+
+void StageEntity::func_ov000_0209da00()
+{
+    StageEntity::func_ov000_0209da0c();
+}
+
+u32 data_02085aa4;
+u32 uRam020cad40;
+void func_ov000_020af30c(u32, u32, u32, u32, u32);
+void StageEntity::func_ov000_0209e5a8(u32 param_1, u32 param_2)
+{
+    u32 uVar1;
+
+    uVar1 = (u32)this & data_02085aa4 & 0xfffff000;
+    if (param_2 == ~0)
+    {
+        param_2 = 3;
+    }
+    func_ov000_020af30c(uRam020cad40, (uVar1 << 4) >> 0x10,
+                        (u32)(((i32)param_1 >> 0xc) * -0x10000) >> 0x10, 0, 0);
+
+    Vec3_32 vec;
+
+    vec.z = 0;
+    vec.x = uVar1;
+    vec.y = param_1 & 0xfffff000;
+    Actor::spawnActor(0x42, (param_2 & 0xf) << 0xc | 9, &vec, 0, 0, 0);
+    return;
+}
+
+void func_ov010_020e657c(i8, Vec3_32 *, u32);
+i8 data_ov000_020c1f50[2];
+void StageEntity::func_ov000_0209e264(u32 x, u32 y, u32 param_3)
+{
+    Vec3_32 vec;
+    vec.x = 0;
+    vec.y = 0;
+    vec.z = 0;
+
+    vec.x = x + this->position.x;
+    vec.y = y + this->position.y;
+    func_ov010_020e657c(data_ov000_020c1f50[param_3], &vec, ~0);
+    return;
+}
+
+void StageEntity::func_ov000_020a020c()
+
+{
+    if (this->_340 == 0)
+    {
+        this->_340 = 4;
+        this->_44();
+        return;
+    }
+    return;
 }
 
 void func_02012398(u32, Vec3_32 *);
