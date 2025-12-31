@@ -59,9 +59,11 @@ public:
     void *__1;
     u8 _pad1[0x8];
     CollisionManager *__2;
-    u8 _pad2[0x5a];
+    u8 _pad2[0x46];
+    u32 _rawr;
+    u8 _pad3[0xe];
     i8 _25e;
-    u8 _pad3[40];
+    u8 _pad4[40];
     u8 _b7;
 
     CollisionManager();

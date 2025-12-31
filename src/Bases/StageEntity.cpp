@@ -165,22 +165,42 @@ void StageEntity::_19()
 bool StageEntity::_14()
 
 {
-  this->active_collider._25 = 0xa;
-  this->active_collider._26 = 0x113;
-  return 0;
+    this->active_collider._25 = 0xa;
+    this->active_collider._26 = 0x113;
+    return 0;
 }
 
-void func_02012398(u32, Vec3_32*);
-void StageEntity::_43(u32 param_1,u32 param_2,u32 param_3)
+PlayerActor *GAME_getPlayer(u32);
+void func_0201d954(PlatformManager*, u32);
+void StageEntity::_16()
 {
-  this->_42(param_1, param_2, param_3, 0);
-  this->_340 = 3;
-  func_02012398(0x178,&this->position);
-  return;
+    PlayerBase *player;
+
+    if (this->linked_player == ~0)
+    {
+        return;
+    }
+    player = GAME_getPlayer(this->linked_player);
+    player->func_ov011_0212bde0(this);
+    this->active_collider._26 &= ~0x100;
+    this->active_collider._25 = 0x0;
+    this->active_collider._2c = damagePlayerCallback;
+    this->linked_player = -1;
+    func_0201d954(&this->platform_manager, 0);
+    this->collision_manager._rawr = 0x0;
+    this->_2c6 = this->_2c6 & 0xfffe;
+    return;
 }
 
+void func_02012398(u32, Vec3_32 *);
+void StageEntity::_43(u32 param_1, u32 param_2, u32 param_3)
+{
+    this->_42(param_1, param_2, param_3, 0);
+    this->_340 = 3;
+    func_02012398(0x178, &this->position);
+    return;
+}
 
-PlayerActor *GAME_getPlayer(u8);
 u16 data_ov000_020c1f44[2];
 bool func_ov000_020a76d4();
 void StageEntity::_18()
