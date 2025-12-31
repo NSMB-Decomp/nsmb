@@ -1341,7 +1341,7 @@ func_0202509c kind:function(arm,size=0x34c) addr:0x0202509c
 func_020253e8 kind:function(arm,size=0x3f8) addr:0x020253e8
 func_020257e0 kind:function(arm,size=0x28) addr:0x020257e0
 func_02025808 kind:function(arm,size=0x44) addr:0x02025808
-func_0202584c kind:function(arm,size=0x2c) addr:0x0202584c
+MGVsMenu::func_0202584c kind:function(arm,size=0x2c) addr:0x0202584c
 data_02025878 kind:data(any) addr:0x02025878
 data_02025880 kind:data(any) addr:0x02025880
 data_02025888 kind:data(any) addr:0x02025888

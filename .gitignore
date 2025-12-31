@@ -1,14 +1,14 @@
-extracted/*
-build/*
-
 objdiff.json
 objdiff_report.json
 *.nds
+*.sav
 temp
 .vscode
 
 # Build System
 .zig-cache
+extracted/*
+build/*
 
 # Keep .gitkeep files
 !/**/.gitkeep
