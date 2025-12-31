@@ -162,6 +162,24 @@ void StageEntity::_19()
     return;
 }
 
+bool StageEntity::_14()
+
+{
+  this->active_collider._25 = 0xa;
+  this->active_collider._26 = 0x113;
+  return 0;
+}
+
+void func_02012398(u32, Vec3_32*);
+void StageEntity::_43(u32 param_1,u32 param_2,u32 param_3)
+{
+  this->_42(param_1, param_2, param_3, 0);
+  this->_340 = 3;
+  func_02012398(0x178,&this->position);
+  return;
+}
+
+
 PlayerActor *GAME_getPlayer(u8);
 u16 data_ov000_020c1f44[2];
 bool func_ov000_020a76d4();

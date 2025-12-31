@@ -116,7 +116,7 @@ public:
     virtual void _11();
     virtual void _12();
     virtual void _13();
-    virtual void _14();
+    virtual bool _14();
     virtual void _15();
     virtual void _16();
     virtual void _17();
@@ -145,7 +145,7 @@ public:
     virtual void entityCollision();
     virtual void damagePlayer(ActiveCollider*, PlayerBase*);
     virtual void _42(u32, u32, u32, u32);
-    virtual void _43();
+    virtual void _43(u32, u32, u32);
     virtual void _44();
     virtual void _45();
     virtual void _46();
