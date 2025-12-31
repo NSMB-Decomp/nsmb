@@ -98,6 +98,8 @@ public:
     u32 random();
     i32 tryAttachToPlayerHands(i32, i32, i32);
     i32 attachToPlayerHands(i32, i32, i32);
+    void func_ov000_0209c85c();
+    void func_ov000_0209adb0(u32);
 
     virtual bool onUpdate_0();
     virtual bool _01();

@@ -121,7 +121,30 @@ bool StageEntity::onUpdate_1()
 {
     return true;
 }
-bool StageEntity::onUpdate_defeated() {}
+bool StageEntity::onUpdate_defeated()
+{
+    if (this->_3e8 != 0x0)
+    {
+        if (this->direction != '\0')
+        {
+            this->rotation.x += -0x300;
+        }
+        else
+        {
+            this->rotation.x += 0x300;
+        }
+    }
+    else
+    {
+        this->rotation.x += 0x300;
+    }
+    this->updateVerticalVelocity();
+    this->func_ov000_0209c85c();
+    this->func_ov000_0209c820(0xfffffd00);
+    this->_11();
+    this->func_ov000_0209adb0(((u32)(this->_2c6 & 2) << 0xf) >> 0x10);
+    return true;
+}
 bool StageEntity::onUpdate_3() {}
 bool StageEntity::onUpdate_4()
 {
@@ -180,37 +203,42 @@ i32 StageEntity::attachToPlayerHands(i32 z, i32 y, i32 x) {}
 
 i32 StageEntity::tryAttachToPlayerHands(i32 z, i32 y, i32 x) {}
 
-u32 StageEntity::random() {
-    return WiFi::random();   
+u32 StageEntity::random()
+{
+    return WiFi::random();
 }
 
-bool StageEntity::spawnBrokenPipe(i32 a, i32 b, u32 c, u32 d, u8 e, u8 f, i8 g) {
+bool StageEntity::spawnBrokenPipe(i32 a, i32 b, u32 c, u32 d, u8 e, u8 f, i8 g)
+{
     Vec3_32 vec;
     vec.z = 0;
     vec.x = a;
     vec.y = b;
-    Actor * actor = Actor::spawnActor(0xd3, d | e << 8 | c << 0x10 |f << 0x1c | g << 0x1f, &vec, 0,0,0);
+    Actor *actor = Actor::spawnActor(0xd3, d | e << 8 | c << 0x10 | f << 0x1c | g << 0x1f, &vec, 0, 0, 0);
 
-    if (actor == NULL) {
+    if (actor == NULL)
+    {
         return false;
-    } else {
+    }
+    else
+    {
         return true;
     }
 }
 
-void StageEntity::simpleCallback(ActiveCollider* collider) {}
+void StageEntity::simpleCallback(ActiveCollider *collider) {}
 
-void StageEntity::shellCallback(ActiveCollider* collider) {}
+void StageEntity::shellCallback(ActiveCollider *collider) {}
 
-void StageEntity::damageEntityCallback(ActiveCollider* collider) {}
+void StageEntity::damageEntityCallback(ActiveCollider *collider) {}
 
 void StageEntity::updateBounce(i32 a, i32 b, i32 c) {}
 
 void StageEntity::destroy(bool permanent)
 {
     Base::destroy();
-    u8* _3d8 = this->_3d8;
-    u16* _3cc = this->_3cc;
+    u8 *_3d8 = this->_3d8;
+    u16 *_3cc = this->_3cc;
     if (!permanent)
     {
         if (_3d8 != 0)
