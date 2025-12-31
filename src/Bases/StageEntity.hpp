@@ -107,6 +107,7 @@ public:
     void func_ov000_0209da0c();
     void func_ov000_0209e5a8(u32, u32);
     void func_ov000_020a020c();
+    void func_ov000_020a01b4();
 
     virtual bool onUpdate_0();
     virtual bool _01();

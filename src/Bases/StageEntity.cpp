@@ -262,6 +262,19 @@ void StageEntity::func_ov000_0209e264(u32 x, u32 y, u32 param_3)
     return;
 }
 
+u8 data_ov000_020c1f38[2];
+i32 data_ov000_020c1f58[2];
+void StageEntity::func_ov000_020a01b4()
+
+{
+    this->_340 = 0;
+    this->_3f0 = this->_3f0 ^ 1;
+    this->active_collider._pad_a2[2] = data_ov000_020c1f38[this->_3f0];
+    this->position.z = data_ov000_020c1f58[this->_3f0];
+    this->_45();
+    return;
+}
+
 void StageEntity::func_ov000_020a020c()
 
 {
