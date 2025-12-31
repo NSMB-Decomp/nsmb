@@ -171,7 +171,7 @@ bool StageEntity::_14()
 }
 
 PlayerActor *GAME_getPlayer(u32);
-void func_0201d954(PlatformManager*, u32);
+void func_0201d954(PlatformManager *, u32);
 void StageEntity::_16()
 {
     PlayerBase *player;
@@ -248,6 +248,13 @@ void StageEntity::_18()
     (this->minVelocity).x = (this->velocity).x;
     (this->minVelocity).y = -0x4000;
     (this->minVelocity).z = 0;
+}
+
+void StageEntity::_45()
+{
+    this->direction ^= 1;
+    this->velocity.x = -(this->velocity).x;
+    this->active_collider._2c = damagePlayerCallback;
 }
 
 bool StageEntity::onUpdate_1()
