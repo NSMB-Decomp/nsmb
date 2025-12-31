@@ -17,7 +17,7 @@ void MGScene::postCreate(u32) {
 bool MGScene::preDestroy() {}
 void MGScene::postDestroy(u32) {}
 bool MGScene::preUpdate() {}
-void MGScene::postUpdate() {}
+void MGScene::postUpdate(u32) {}
 bool MGScene::preRender() {}
 void MGScene::postRender() {}
 

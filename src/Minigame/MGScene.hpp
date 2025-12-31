@@ -14,7 +14,7 @@ public:
   bool preDestroy();
   void postDestroy(u32);
   bool preUpdate();
-  void postUpdate();
+  void postUpdate(u32);
   bool preRender();
   void postRender();
 };

@@ -65,7 +65,7 @@ public:
     void func_ov000_0209c820(u32);
     bool onUpdate();
     bool preUpdate();
-    void postUpdate();
+    void postUpdate(u32);
     bool preRender();
     static u16 * getObjectBank(u32);
     u32 getSpritePriority(u32, u32, u32);

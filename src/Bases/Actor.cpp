@@ -97,9 +97,9 @@ bool Actor::preUpdate()
     return false;
 }
 
-void Actor::postUpdate(u32)
+void Actor::postUpdate(u32 a)
 {
-    Base::postUpdate();
+    Base::postUpdate(a);
 }
 
 bool Actor::preRender()
