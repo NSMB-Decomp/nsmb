@@ -282,6 +282,17 @@ void StageEntity::postUpdate(u32 a)
     StageActor::postUpdate(a);
 }
 
+bool StageEntity::preRender()
+{
+    bool result = Actor::preRender();
+    if (result == 0)
+    {
+        return false;
+    }
+    result = this->_01();
+    return result == 0;
+}
+
 bool StageEntity::onUpdate_1()
 {
     return true;
