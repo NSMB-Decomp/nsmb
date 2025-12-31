@@ -24,7 +24,7 @@ public:
     ActiveCollider();
     ~ActiveCollider();
 
-    bool resetCollisionState(bool);
+    bool resetCollisionState();
     void delink();
 };
 size_assert(ActiveCollider, 0xb0);
@@ -74,6 +74,6 @@ public:
     ~StageActor();
 
     bool preUpdate();
-    void postUpdate();
+    void postUpdate(u32);
     bool isInActiveView();
 };

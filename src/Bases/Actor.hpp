@@ -58,7 +58,7 @@ public:
     void postCreate(u32);
     void postDestroy(u32);
     bool preUpdate();
-    void postUpdate();
+    void postUpdate(u32);
     bool preRender();
     void postRender();
 

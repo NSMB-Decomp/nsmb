@@ -35,16 +35,17 @@ bool StageActor::preUpdate()
     return false;
 }
 
-void StageActor::postUpdate()
+void StageActor::postUpdate(u32 a)
 {
     if (
-        (Stage::actorFreezeFlag & this->actorCategory) == 0 &&
-        this->active_collider.resetCollisionState(this->pending_destroy))
+            ((Stage::actorFreezeFlag & this->actorCategory & 0xff) == 0) &&
+            (this->active_collider.resetCollisionState(), !this->pending_destroy)
+        )
     {
         this->collision_manager.func_ov000_020ab9ac();
         this->platform_manager.func_0201d730();
     }
-    Actor::postUpdate();
+    Actor::postUpdate(a);
 }
 
 bool StageActor::isInActiveView()
