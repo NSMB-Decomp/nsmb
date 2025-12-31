@@ -14,7 +14,6 @@ void Coin::_21() {}
 void(func_ov000_020ab350)(Collider *);
 void(func_ov010_020d9d84)(Coin *);
 void(func_ov010_020d9b40)(Coin *);
-void(func_ov000_0209adb0)(Coin *, i32);
 void(func_ov000_020ab2cc)(Collider *);
 bool Coin::onUpdate_0()
 {
@@ -27,7 +26,7 @@ bool Coin::onUpdate_0()
     }
     func_ov010_020d9b40(this);
     this->func_ov010_020d99a8();
-    func_ov000_0209adb0(this, 0);
+    this->func_ov000_0209adb0(0);
     func_ov000_020ab2cc(&this->_444);
     return true;
 }

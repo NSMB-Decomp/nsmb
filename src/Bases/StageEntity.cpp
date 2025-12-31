@@ -145,7 +145,31 @@ bool StageEntity::onUpdate_defeated()
     this->func_ov000_0209adb0(((u32)(this->_2c6 & 2) << 0xf) >> 0x10);
     return true;
 }
-bool StageEntity::onUpdate_3() {}
+bool StageEntity::onUpdate_3()
+{
+    if (this->_3e8 != 0x0)
+    {
+        u16 rotation = this->rotation.x;
+        if (this->direction != '\0')
+        {
+            rotation -= 0xc00;
+        }
+        else
+        {
+            rotation += 0xc00;
+        }
+        this->rotation.x = rotation;
+    }
+    else
+    {
+        this->rotation.x += 0xc00;
+    }
+    this->updateVerticalVelocity();
+    this->func_ov000_0209c85c();
+    this->_11();
+    this->func_ov000_0209adb0(((u32)(this->_2c6 & 2) << 0xf) >> 0x10);
+    return true;
+}
 bool StageEntity::onUpdate_4()
 {
     return true;
