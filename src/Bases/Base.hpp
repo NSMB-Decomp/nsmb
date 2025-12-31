@@ -46,6 +46,7 @@ public:
   bool func_01ffd290();
   i32 func_01ffd524(PTMF, PTMF, PTMF);
   void func_01ffd22c();
+  void func_01ffd1c8();
 
   virtual bool onCreate();
   virtual bool preCreate();

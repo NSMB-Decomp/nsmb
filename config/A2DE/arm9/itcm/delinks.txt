@@ -2,4 +2,4 @@
     .bss        start:0x01ffffa0 end:0x01ffffa0 kind:bss align:32
 
 src/Bases/Base_itcm.cpp:
-    .text       start:0x01ffd0b4 end:0x01ffd5e4
+    .text       start:0x01ffd1c8 end:0x01ffd5e4

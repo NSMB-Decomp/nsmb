@@ -85,7 +85,7 @@ bool Base::func_01ffd290()
                 }
             }
 
-            skip_flags = parent->skipFlags;
+            skip_flags = this->skipFlags;
             // Check to see if this object should be rendered
             if (
                 ((skip_flags & RenderChildren) != 0) ||
@@ -150,5 +150,13 @@ void Base::func_01ffd22c()
     PTMF a = {0x18, 1};
     PTMF b = {0x1c, 1};
     PTMF c = {0x20, 1};
+    Base::func_01ffd524(a, b, c);
+}
+
+void Base::func_01ffd1c8()
+{
+    PTMF a = {0x24, 1};
+    PTMF b = {0x28, 1};
+    PTMF c = {0x2c, 1};
     Base::func_01ffd524(a, b, c);
 }
