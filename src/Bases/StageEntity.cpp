@@ -192,6 +192,23 @@ void StageEntity::_16()
     return;
 }
 
+
+
+void func_ov010_020e657c(i8, Vec3_32*, u32);
+i8 data_ov000_020c1f50[2];
+void StageEntity::func_ov000_0209e264(u32 x,u32 y,u32 param_3)
+{
+  Vec3_32 vec;
+  vec.x = 0;
+  vec.y = 0;
+  vec.z = 0;
+  
+  vec.x = x + this->position.x;
+  vec.y = y + this->position.y;
+  func_ov010_020e657c(data_ov000_020c1f50[param_3],&vec,~0);
+  return;
+}
+
 void func_02012398(u32, Vec3_32 *);
 void StageEntity::_43(u32 param_1, u32 param_2, u32 param_3)
 {

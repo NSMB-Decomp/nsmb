@@ -101,6 +101,7 @@ public:
     i32 attachToPlayerHands(i32, i32, i32);
     void func_ov000_0209c85c();
     void func_ov000_0209adb0(u32);
+    void func_ov000_0209e264(u32, u32, u32);
 
     virtual bool onUpdate_0();
     virtual bool _01();
