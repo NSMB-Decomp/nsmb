@@ -117,13 +117,25 @@ bool StageEntity::_01()
     return false;
 }
 
-void StageEntity::_12() {
-  this->_3c6[this->linked_player] = 0xc;
-  (this->active_collider)._26 = (this->active_collider)._26 | 0x140;
-  if (this->_3c2 != 0) {
-    (this->active_collider)._25 = 0xa;
-    (this->active_collider)._2c = (void*)shellCallback;
-  }
+void StageEntity::_12()
+{
+    this->_3c6[this->linked_player] = 0xc;
+    (this->active_collider)._26 = (this->active_collider)._26 | 0x140;
+    if (this->_3c2 != 0)
+    {
+        (this->active_collider)._25 = 0xa;
+        (this->active_collider)._2c = (void *)shellCallback;
+    }
+}
+
+void StageEntity::_13()
+{
+    (this->active_collider)._26 &= ~0x140;
+    (this->active_collider)._25 = 0x0;
+    (this->active_collider)._2c = (void*)damagePlayerCallback;
+    this->accelH = 0;
+    (this->minVelocity).x = 0;
+    this->_2c6 = this->_2c6 & 0xfffe;
 }
 
 bool StageEntity::onUpdate_1()

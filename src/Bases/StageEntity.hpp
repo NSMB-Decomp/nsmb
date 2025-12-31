@@ -76,7 +76,6 @@ public:
     void assignView(Vec3_32*);
     void isPlayerInZone(PlayerActor*, u32);
     u32 stopPlayerInShell(ActiveCollider*, PlayerActor*);
-    void damagePlayerCallback(ActiveCollider*, ActiveCollider*);
     static bool isBelowPlayer(i32, ActiveCollider*, u8);
     bool setGroundPoundCollision(PlayerActor*);
     bool checkSquished();
@@ -92,9 +91,10 @@ public:
     void setTimedEvent(u32, i32, bool, bool, bool);
     void destroy(bool);
     void updateBounce(i32, i32, i32);
-    void damageEntityCallback(ActiveCollider*);
+    static void damagePlayerCallback(ActiveCollider*, ActiveCollider*);  // These callbacks should not be static, set as static temporarily to match code.
+    static void damageEntityCallback(ActiveCollider*);
     static void shellCallback(ActiveCollider *);
-    void simpleCallback(ActiveCollider *);
+    static void simpleCallback(ActiveCollider *);
     static bool spawnBrokenPipe(i32, i32, u32, u32, u8, u8, i8);
     u32 random();
     i32 tryAttachToPlayerHands(i32, i32, i32);
