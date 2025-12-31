@@ -109,6 +109,9 @@ namespace Nitro {
     // MI
     void MI_CpuFillFast();
     void MI_CpuClearFast();
+    void MI_CpuCopy8(void*, void*, u32); // std::copy
+    void MI_CpuCopy16(void*, void*, u32);
+    void MI_CpuCopy32(void*, void*, u32);
 
     //
     void Math_AddVec3_32s(Vec3_32s*, Vec3_32s*, Vec3_32s*);
