@@ -57,7 +57,7 @@ public:
   // Missing some funcs here
   virtual bool onUpdate();
   virtual bool preUpdate();
-  virtual void postUpdate();
+  virtual void postUpdate(u32);
   virtual bool onRender();
   virtual bool preRender();
   virtual void postRender();
