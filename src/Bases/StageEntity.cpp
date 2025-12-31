@@ -257,17 +257,29 @@ void StageEntity::_45()
     this->active_collider._2c = damagePlayerCallback;
 }
 
-void StageEntity::_44() {
+void StageEntity::_44()
+{
     this->active_collider._2c = (void *)0x0;
 }
 
 i16 data_ov000_020c4ed4[2];
-void StageEntity::_21() {
-  this->active_collider.delink();
-  (this->minVelocity).y = -0x4000;
-  func_02012398(0x70,&this->position);
-  this->direction = this->_pad16[2];
-  this->_42(data_ov000_020c4ed4[this->direction],0x3000,0xfffffd00,0);
+void StageEntity::_21()
+{
+    this->active_collider.delink();
+    (this->minVelocity).y = -0x4000;
+    func_02012398(0x70, &this->position);
+    this->direction = this->_pad16[2];
+    this->_42(data_ov000_020c4ed4[this->direction], 0x3000, 0xfffffd00, 0);
+}
+
+u8 DAT_020ca850;
+void StageEntity::postUpdate(u32 a)
+{
+    if ((u8)(DAT_020ca850 & 0xa6) == 0)
+    {
+        this->_2bf = 0x0;
+    }
+    StageActor::postUpdate(a);
 }
 
 bool StageEntity::onUpdate_1()
