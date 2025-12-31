@@ -23,7 +23,7 @@ bool Base::preUpdate()
     return true;
 }
 
-void Base::postUpdate(u32) {}
+void Base::postUpdate() {}
 
 bool Base::onRender()
 {
