@@ -61,7 +61,8 @@ public:
     CollisionManager *__2;
     u8 _pad2[0x5a];
     i8 _25e;
-    u8 _pad3[0x26];
+    u8 _pad3[40];
+    u8 _b7;
 
     CollisionManager();
     ~CollisionManager();

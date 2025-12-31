@@ -120,7 +120,7 @@ bool StageEntity::_01()
 void StageEntity::_12()
 {
     this->_3c6[this->linked_player] = 0xc;
-    (this->active_collider)._26 = (this->active_collider)._26 | 0x140;
+    (this->active_collider)._26 |= 0x140;
     if (this->_3c2 != 0)
     {
         (this->active_collider)._25 = 0xa;
@@ -132,10 +132,84 @@ void StageEntity::_13()
 {
     (this->active_collider)._26 &= ~0x140;
     (this->active_collider)._25 = 0x0;
-    (this->active_collider)._2c = (void*)damagePlayerCallback;
+    (this->active_collider)._2c = (void *)damagePlayerCallback;
     this->accelH = 0;
     (this->minVelocity).x = 0;
+    this->_2c6 &= 0xfffe;
+}
+
+u32 data_ov000_020c1f60[2];
+void StageEntity::_19()
+{
+    if (this->_3f1 != 0x0)
+    {
+        (this->velocity).x = data_ov000_020c1f60[this->direction];
+    }
+    else
+    {
+        this->_pad4[1] = 0x0;
+    }
+    this->active_collider._26 &= ~0x140;
+    this->active_collider._25 = 0x0;
+    this->active_collider._2c = damagePlayerCallback;
+    this->_3f1 = 0x0;
+    this->accelH = 0;
+    this->minVelocity.x = 0;
+    this->minVelocity.y = -0x4000;
+    this->minVelocity.z = 0;
     this->_2c6 = this->_2c6 & 0xfffe;
+    this->_340 = 0;
+    return;
+}
+
+PlayerActor *GAME_getPlayer(u8);
+u16 data_ov000_020c1f44[2];
+bool func_ov000_020a76d4();
+void StageEntity::_18()
+{
+    PlayerBase *player;
+    i32 iVar1;
+    u32 uVar1;
+    i32 iVar2;
+
+    player = GAME_getPlayer((int)this->linked_player);
+    (this->active_collider)._pad_a2[2] = (player->active_collider)._pad_a2[2];
+    (this->collision_manager)._b7 = (player->active_collider)._pad_a2[2];
+    if (((
+             //((*(uint *)player->_pad2 & 1) == 0) &&
+             ((player->velocity).y < 0)) &&
+         (iVar1 = func_ov000_020a76d4(), iVar1 != 0)) &&
+        ((uVar1 = (this->position).x + (this->centerOffset).x & 0xffff, 0x400 < uVar1 &&
+                                                                            (uVar1 < 0x8001))))
+    {
+        iVar2 = (this->velocity).x;
+        if (iVar2 < 0)
+        {
+            iVar2 = -iVar2;
+        }
+        if (iVar2 < 0x2c00)
+        {
+            this->_3f1 = 0x1;
+        }
+    }
+    if (this->_3f1 == 0x0)
+    {
+        this->_3c6[this->linked_player] = 0x10;
+    }
+    else
+    {
+        this->_3b8 = 0;
+        (this->velocity).x = (int)(short)data_ov000_020c1f44[this->direction];
+        this->_3c6[this->linked_player] = 5;
+    }
+    (this->active_collider)._26 = (this->active_collider)._26 | 0x140;
+    (this->active_collider)._25 = 0xa;
+    (this->active_collider)._2c = shellCallback;
+    this->accelH = 0x100;
+    this->accelV = -0x300;
+    (this->minVelocity).x = (this->velocity).x;
+    (this->minVelocity).y = -0x4000;
+    (this->minVelocity).z = 0;
 }
 
 bool StageEntity::onUpdate_1()

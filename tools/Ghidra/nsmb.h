@@ -258,7 +258,8 @@ struct CollisionManager
     CollisionManager *__2;
     u8 _pad2[0x5a];
     i8 _25e;
-    u8 _pad3[0x26];
+    u8 _pad3[40];
+    u8 _b7;
 };
 
 // Struct PlatformManager
@@ -464,37 +465,67 @@ struct PlayerBase_vtable
     unknown_pointer virt_69;
     unknown_pointer virt_70;
 };
-struct PlayerBase_data
-{
-    D_StageActor_Data
-        u8 _pad0[0x4];
+struct PlayerModel {
     u8 _2c4;
-    u8 _pad1[0x4b4];
-    u32 _77c;
-    u32 _780;
-    u8 _pad2[0x14];
-    u32 _798;
-    u8 _pad3[0x10];
-    i8 _7ac;
-    u8 _pad4[0x3];
-    i8 _7b0;
 };
+struct SpinClass {};
+struct BlendColor{};
 struct PlayerBase
 {
     PlayerBase_vtable *vtable;
-    PlayerBase_data _;
+        D_StageActor_Data
+    PlayerModel _000;
+    u8 _pad1[0x3c0];
+    Actor* linkedActor;
+    u8 _pad10[0x44];
+    SpinClass _40c;
+    u8 _pad11[0x23];
+    BlendColor _430;
+    u8 _pad12[0x17];
+    BlendColor _488;
+    u8 _pad8[0x16];
+    Vec3_32 _724;
+    Vec3_32 _734;
+    Vec3_32 _744;
+    u8 _pad9[0x24];
+    u32 _778;
+    u32 _77c;
+    u32 _780;
+    u8 _pad7[0x4];
+    u32 _788;
+    u8 _pad2[0x0b];
+    i32 _798;
+    i16 _79c;
+    u8 _pad3[0xa];
+    i8 _7a8;
+    u8 _7a9;
+    u8 _7aa;
+    i8 _7ab;
+    i8 _7ac;
+    u8 _pad5[0x3];
+    u8 _7b0;
+    i8 _7b1;
+    i8 _7b2;
+    u8 _7b3;
+    i8 _7b4;
+    u8 _pad6[0xa];
+    u8 _7bf;
+    u8 _7c0;
+    u8 _7c1;
+    u32 _7c4;
+    u32 _7c8;
 };
 
 // Class: Player
-typedef PlayerBase_vtable Player_vtable;
-struct Player_data
+typedef PlayerBase_vtable PlayerActor_vtable;
+struct PlayerActor_data
 {
-    PlayerBase_data PlayerBase;
+    PlayerBase PlayerBase;
 };
-struct Player
+struct PlayerActor
 {
-    Player_vtable *vtable;
-    Player_data _;
+    PlayerActor_data *vtable;
+    PlayerActor_data _;
 };
 
 // Class: Coin
