@@ -10,12 +10,12 @@ public:
     u8 _pad1[0x3c0];
     Actor* linkedActor;
     u8 _pad10[0x44];
-    SpinClass _40c;
+    SpinClass _6d0;
     u8 _pad11[0x23];
-    BlendColor _430;
+    BlendColor _6f4;
     u8 _pad12[0x17];
-    BlendColor _488;
-    u8 _pad8[0x16];
+    BlendColor _70c;
+    u8 _pad_70a[22];
     Vec3_32 _724;
     Vec3_32 _734;
     Vec3_32 _744;

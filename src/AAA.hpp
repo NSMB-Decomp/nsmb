@@ -13,6 +13,10 @@ struct ObjectProfile
     u16 renderPriority;
 };
 
+struct ActorProfile : ObjectProfile {
+    void* (*loadResources)();
+};
+
 namespace FS {
     namespace Cache {
         void clear();

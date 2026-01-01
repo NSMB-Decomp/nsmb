@@ -187,7 +187,7 @@ func_ov009_020d3570 kind:function(arm,size=0x280) addr:0x020d3570
 func_ov009_020d37f0 kind:function(arm,size=0x44) addr:0x020d37f0
 func_ov009_020d3834 kind:function(arm,size=0x3c) addr:0x020d3834
 func_ov009_020d3870 kind:function(arm,size=0x38) addr:0x020d3870
-func_ov009_020d38a8 kind:function(arm,size=0x2c) addr:0x020d38a8
+Object_4::create kind:function(arm,size=0x2c) addr:0x020d38a8
 func_ov009_020d38d4 kind:function(arm,size=0x64) addr:0x020d38d4
 func_ov009_020d3938 kind:function(arm,size=0x6c) addr:0x020d3938
 func_ov009_020d39a4 kind:function(arm,size=0xac) addr:0x020d39a4
@@ -515,7 +515,7 @@ data_ov009_020da7f4 kind:data(any) addr:0x020da7f4
 data_ov009_020da7fc kind:data(any) addr:0x020da7fc
 data_ov009_020da804 kind:data(any) addr:0x020da804
 data_ov009_020da80c kind:data(any) addr:0x020da80c
-UnknownProfile::ov009_020da814 kind:data(any) addr:0x020da814
+Object_4::profile kind:data(any) addr:0x020da814
 data_ov009_020da81c kind:data(any) addr:0x020da81c
 data_ov009_020da824 kind:data(any) addr:0x020da824
 data_ov009_020da82c kind:data(any) addr:0x020da82c
@@ -583,7 +583,7 @@ data_ov009_020daa34 kind:data(any) addr:0x020daa34
 data_ov009_020daa44 kind:data(any) addr:0x020daa44
 data_ov009_020daa54 kind:data(any) addr:0x020daa54
 data_ov009_020daa6c kind:data(any) addr:0x020daa6c
-UnknownVtable::ov009_020daa94 kind:data(any) addr:0x020daa94
+Object_4::vtable kind:data(any) addr:0x020daa94
 UnknownProfile::ov009_020daadc kind:data(any) addr:0x020daadc
 UnknownVtable::ov009_020daaec kind:data(any) addr:0x020daaec
 UnknownVtable::ov009_020dab3c kind:data(any) addr:0x020dab3c

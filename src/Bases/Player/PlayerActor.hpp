@@ -37,7 +37,9 @@ public:
     Vec2_32 _95c;
     Vec2_32 _968;
     Vec2_32 _974;
+    u8 _pad3[588];
 
     PlayerActor();
     ~PlayerActor();
 };
+size_assert(PlayerActor, 0xbcc);

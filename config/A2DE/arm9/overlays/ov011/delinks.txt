@@ -5,5 +5,5 @@
     .bss        start:0x0212f8e0 end:0x0212f900 kind:bss align:32
 
 src/Bases/Player/PlayerBase.cpp:
-    .text       start:0x0212b1d4 end:0x0212c4ec
+    .text       start:0x0212b1d4 end:0x0212c98c
     .data       start:0x0212f72c end:0x0212f850
