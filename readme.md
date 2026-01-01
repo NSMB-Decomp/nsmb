@@ -6,15 +6,15 @@
 
 | No-Intro Name                                                                                                                                  | Release Code | Progress    | Build Date          |
 | ---------------------------------------------------------------------------------------------------------------------------------------------- | ------------ | ----------- | ------------------- |
-| [0434 - New Super Mario Bros. (USA, Australia)](https://datomatic.no-intro.org/index.php?page=show_record&s=28&n=0434)                         | A2DE         | <a href="https://decomp.dev/NSMB-Decomp/nsmb"><img width=53 height=20 src="https://decomp.dev/projects/950858906.svg?mode=shield&label"></a> | 2006-03-29 09:48:19 |
-| [0442 - New Super Mario Bros. (Japan)](https://datomatic.no-intro.org/index.php?page=show_record&s=28&n=0442)                                  | A2DJ         | None        | 2006-04-04 19:07:45 |
-| [z054 - New Super Mario Bros. (Japan) (Demo) (Kiosk, A85J)](https://datomatic.no-intro.org/index.php?page=show_record&s=28&n=z054)             | A85J         | None        | 2006-04-07 11:17:21 |
-| [x100 - New Super Mario Bros. (USA) (Demo) (Kiosk)](https://datomatic.no-intro.org/index.php?page=show_record&s=28&n=x100)                     | A85E         | None        | 2006-04-07 11:29:13 |
-| [0479 - New Super Mario Bros. (Europe) (En,Fr,De,Es,It)](https://datomatic.no-intro.org/index.php?page=show_record&s=28&n=0479)                | A2DP         | None        | 2006-04-26 14:20:08 |
-| [x039 - New Super Mario Bros. (Europe) (En,Fr,De,Es,It) (Demo) (Kiosk)](https://datomatic.no-intro.org/index.php?page=show_record&s=28&n=x039) | A85P         | None        | 2006-04-27 11:13:34 |
-| [0879 - New Super Mario Bros. (Korea) ](https://datomatic.no-intro.org/index.php?page=show_record&s=28&n=0879)                                 | A2DK         | None        | 2006-12-27 14:32:43 |
-| [x142 - New Chaoji Maliou Xiongdi (China) (iDS)](https://datomatic.no-intro.org/index.php?page=show_record&s=28&n=x142)                        | A2DC         | None        | 2009-04-27 20:29:28 |
-| [z393 - New Super Mario Bros. (Japan) (Demo) (Kiosk, Y7QJ)](https://datomatic.no-intro.org/index.php?page=show_record&s=28&n=z393)             | Y7QJ         | None        | 2009-10-23 16:23:25 |
+| [New Super Mario Bros. (USA, Australia)](https://datomatic.no-intro.org/index.php?page=show_record&s=28&n=0434)                         | A2DE         | <a href="https://decomp.dev/NSMB-Decomp/nsmb"><img width=53 height=20 src="https://decomp.dev/projects/950858906.svg?mode=shield&label"></a> | 2006-03-29 09:48:19 |
+| [New Super Mario Bros. (Japan)](https://datomatic.no-intro.org/index.php?page=show_record&s=28&n=0442)                                  | A2DJ         | None        | 2006-04-04 19:07:45 |
+| [New Super Mario Bros. (Japan) (Demo) (Kiosk, A85J)](https://datomatic.no-intro.org/index.php?page=show_record&s=28&n=z054)             | A85J         | None        | 2006-04-07 11:17:21 |
+| [New Super Mario Bros. (USA) (Demo) (Kiosk)](https://datomatic.no-intro.org/index.php?page=show_record&s=28&n=x100)                     | A85E         | None        | 2006-04-07 11:29:13 |
+| [New Super Mario Bros. (Europe) (En,Fr,De,Es,It)](https://datomatic.no-intro.org/index.php?page=show_record&s=28&n=0479)                | A2DP         | None        | 2006-04-26 14:20:08 |
+| [New Super Mario Bros. (Europe) (En,Fr,De,Es,It) (Demo) (Kiosk)](https://datomatic.no-intro.org/index.php?page=show_record&s=28&n=x039) | A85P         | None        | 2006-04-27 11:13:34 |
+| [New Super Mario Bros. (Korea) ](https://datomatic.no-intro.org/index.php?page=show_record&s=28&n=0879)                                 | A2DK         | None        | 2006-12-27 14:32:43 |
+| [New Chaoji Maliou Xiongdi (China) (iDS)](https://datomatic.no-intro.org/index.php?page=show_record&s=28&n=x142)                        | A2DC         | None        | 2009-04-27 20:29:28 |
+| [New Super Mario Bros. (Japan) (Demo) (Kiosk, Y7QJ)](https://datomatic.no-intro.org/index.php?page=show_record&s=28&n=z393)             | Y7QJ         | None        | 2009-10-23 16:23:25 |
 
 <!--
 This build is identical to A85P above but it also includes a autoboot flag 
