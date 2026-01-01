@@ -11,4 +11,5 @@ src/Minigame/MGDebugScene.cpp:
 
 src/Minigame/MGScene_338.cpp:
     .text       start:0x02134e90 end:0x02135230
-    .data       start:0x02139138 end:0x02139194
+    .rodata     start:0x02137cc0 end:0x02137d2c
+    .data       start:0x02139000 end:0x02139194
