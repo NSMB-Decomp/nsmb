@@ -36,7 +36,8 @@ namespace Stage {
 }
 
 namespace Game {
-    extern u32 cameraY[2];
+    extern i32 cameraY[2];
+    extern i32 cameraZoomY[2];
 }
 
 namespace Input {

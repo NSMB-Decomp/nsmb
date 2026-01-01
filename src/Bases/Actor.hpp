@@ -7,6 +7,15 @@ Vec3_16 *ActorSpawnRotation;
 i8 *ActorSpawnPlayer;
 i32 *ActorSpawnScale;
 
+struct Rect
+{
+    i32 x;
+    i32 y;
+    i32 halfWidth;
+    i32 halfHeight;
+};
+size_assert(Rect, 0x10);
+
 class Actor : public Object
 {
 public:
@@ -40,7 +49,7 @@ public:
     void setDirectionalVelocity3D();
     void applyDirectionalVelocity3D();
     void attenuateAcceleration();
-    static Actor* spawnActor(u16, u32, Vec3_32 *, Vec3_16 *, i32 *, i8 *);
+    static Actor *spawnActor(u16, u32, Vec3_32 *, Vec3_16 *, i32 *, i8 *);
     void applyDirectionalVelocity();
     static void setSpawnParams(Vec3_32 *, Vec3_16 *, i32 *, i8 *);
     void applyVelocityToPosition(Vec3_32 *);
@@ -49,6 +58,9 @@ public:
     void StepVelocityXClamped();
     void stepVelocityClamped();
     Vec3_32 getCenteredPosition();
+    bool isOutOfViewVertical(Rect *, int);
+    static void setCalcPositionToPlayerFunction(u32);
+    static void wrapPosition(u32, u32, u32);
     Actor();
     ~Actor();
 

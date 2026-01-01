@@ -1,14 +1,5 @@
 #include "Actor.hpp"
 
-struct Rect
-{
-    i32 x;
-    i32 y;
-    i32 halfWidth;
-    i32 halfHeight;
-};
-size_assert(Rect, 0x10);
-
 class ActiveCollider
 {
 public:

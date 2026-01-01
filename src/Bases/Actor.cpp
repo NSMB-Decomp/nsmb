@@ -357,3 +357,27 @@ Vec3_32 Actor::getCenteredPosition()
 
     return result;
 }
+
+// TODO: Are the below a part of Actor or StageActor?
+// Actor & StageActor may use the same file.
+bool Actor::isOutOfViewVertical(Rect *rect,int player_id)
+
+{
+  return rect->y  + rect->halfHeight + this->position.y + 0x18000 <
+         -Game::cameraY[player_id] + Game::cameraZoomY[player_id];
+}
+
+
+u32 data_ov000_020ca858;
+u32 data_ov000_020c6c14[3] = {};
+void Actor::setCalcPositionToPlayerFunction(u32 param_1)
+{
+    data_ov000_020ca858 = data_ov000_020c6c14[param_1];
+}
+
+void* data_02039968;
+void Actor::wrapPosition(u32 param_1,u32 param_2,u32 param_3)
+
+{  
+    //(*data_02039968)(param_1,param_3);
+}
