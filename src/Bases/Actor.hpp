@@ -61,6 +61,7 @@ public:
     bool isOutOfViewVertical(Rect *, int);
     static void setCalcPositionToPlayerFunction(u32);
     static void wrapPosition(u32, u32, u32);
+    static bool isBehindTargetNoWrap(i32, i32);
     Actor();
     ~Actor();
 

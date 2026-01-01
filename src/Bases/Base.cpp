@@ -1,5 +1,5 @@
 #include "Base_autoload.cpp"
-#include "../Nitro/Nitro.hpp"
+#include "Nitro.hpp"
 
 PTMF data_02085248 = {16,1};
 PTMF data_02085228 = {8, 1};

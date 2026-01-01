@@ -1,5 +1,5 @@
 #include "Actor.hpp"
-#include "../Nitro/Nitro.hpp"
+#include "Nitro.hpp"
 #include "../Math.hpp"
 
 // TODO: Some of this may be a part of inline Object::Object(). To comapre Actor::Actor() to Scene::Scene() and confirm if any comparisons
@@ -361,7 +361,6 @@ Vec3_32 Actor::getCenteredPosition()
 // TODO: Are the below a part of Actor or StageActor?
 // Actor & StageActor may use the same file.
 bool Actor::isOutOfViewVertical(Rect *rect,int player_id)
-
 {
   return rect->y  + rect->halfHeight + this->position.y + 0x18000 <
          -Game::cameraY[player_id] + Game::cameraZoomY[player_id];
@@ -380,4 +379,10 @@ void Actor::wrapPosition(u32 param_1,u32 param_2,u32 param_3)
 
 {  
     //(*data_02039968)(param_1,param_3);
+}
+
+
+bool Actor::isBehindTargetNoWrap(i32 param_1,i32 param_2)
+{
+  return param_1 < param_2;
 }

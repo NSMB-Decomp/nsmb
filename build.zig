@@ -130,6 +130,8 @@ fn compileFile(source_file: []const u8, destination_file: []const u8) !void {
         "-sym=on",
         "-RTTI=off",
         "-once",
+        "-i",
+        "lib/Nitro/",
     };
     var child = std.process.Child.init(&command, std.heap.page_allocator);
     const b = try child.spawnAndWait();

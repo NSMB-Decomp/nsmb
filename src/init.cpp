@@ -1,4 +1,4 @@
-#include "Nitro/Nitro.hpp"
+#include "Nitro.hpp"
 #include "base_types.hpp"
 #include "AAA.hpp"
 

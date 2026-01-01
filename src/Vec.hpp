@@ -1,4 +1,4 @@
-#include "Nitro/Nitro.hpp"
+#include "Nitro.hpp"
 
 class Vec3_32 : public Vec3_32s {
 public:
