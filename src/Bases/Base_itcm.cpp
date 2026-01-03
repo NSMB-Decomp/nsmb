@@ -1,12 +1,7 @@
 #include "Base.hpp"
 
-i32 Base::func_01ffd524(PTMF a, PTMF b, PTMF c)
+i32 Base::process(PTMF, PTMF, PTMF)
 {
-    void **vtable = *((void ***)this);
-    // if ((b.params & 1) != 0) {
-    //     b.func = (void(*)())vtable[b.params];
-    // }
-    // b.func();
 }
 
 bool Base::onUpdate()
@@ -41,7 +36,7 @@ bool Base::preRender()
 
 void Base::postRender() {}
 
-bool Base::func_01ffd290()
+bool Base::doOrderProc()
 {
     if (this->pending_destroy)
     {
@@ -75,13 +70,13 @@ bool Base::func_01ffd290()
                 ((skip_flags & Update) != 0))
             {
 
-                this->skipFlags = (SkipFlags)(this->skipFlags | Update);
+                this->skipFlags = (this->skipFlags | Update);
             }
             else
             {
                 if ((this->skipFlags & Update) != 0)
                 {
-                    this->skipFlags = (SkipFlags)(this->skipFlags & ~Update);
+                    this->skipFlags = (this->skipFlags & ~Update);
                 }
             }
 
@@ -92,7 +87,7 @@ bool Base::func_01ffd290()
                 ((skip_flags & Render) != 0))
             {
 
-                this->skipFlags = (SkipFlags)(this->skipFlags | Render);
+                this->skipFlags = (this->skipFlags | Render);
             }
             else
             {
@@ -150,7 +145,7 @@ void Base::func_01ffd22c()
     PTMF a = {0x18, 1};
     PTMF b = {0x1c, 1};
     PTMF c = {0x20, 1};
-    Base::func_01ffd524(a, b, c);
+    Base::process(a, b, c);
 }
 
 void Base::func_01ffd1c8()
@@ -158,5 +153,7 @@ void Base::func_01ffd1c8()
     PTMF a = {0x24, 1};
     PTMF b = {0x28, 1};
     PTMF c = {0x2c, 1};
-    Base::func_01ffd524(a, b, c);
+    Base::process(a, b, c);
+    //Base::process(Base::onRender, Base::preRender, Base::postRender);
+    
 }

@@ -248,13 +248,13 @@ void Base::create()
 }
 void Base::processCreate()
 {
-  this->func_01ffd524(data_02085228,data_02085238,data_02085240);
+  this->process(data_02085228,data_02085238,data_02085240);
 }
 u32 Base::processDestroy()
 {
   u16 object_id = this->object_id;
 
-  u32 ret = this->func_01ffd524(data_02085230,data_02085248,data_02085250);
+  u32 ret = this->process(data_02085230,data_02085248,data_02085250);
   if (ret == 1)
   {
     unloadSceneOverlay(object_id);

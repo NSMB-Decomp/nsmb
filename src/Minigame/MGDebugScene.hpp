@@ -10,7 +10,7 @@ public:
   bool preCreate();
   bool preUpdate();
   virtual void virt_18();
-  virtual u32 virt_19(u32);
+  virtual char* virt_19(u32);
   virtual void virt_20(u32);
 };
 inline MGDebugScene::MGDebugScene(){}

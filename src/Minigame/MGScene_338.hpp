@@ -14,6 +14,6 @@ public:
   bool onCreate();
   bool onDestroy();
   void virt_18();
-  u32 virt_19(u32);
+  char* virt_19(u32);
   void virt_20(u32);
 };

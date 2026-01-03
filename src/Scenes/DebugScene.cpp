@@ -151,6 +151,8 @@ struct SomethingElse
     u32 d;
 };
 
+u32 data_ov002_020cd304;
+u32 data_ov002_020cd300;
 const SomethingElse data_ov002_020cd11c[] = {
     {"KINOK", 0x9, 0x9, 0xA000},
     {"KINO2", 0x9, 0x9, 0xC000},
@@ -175,12 +177,11 @@ u8 data_ov002_020cd240[4][2] = {
     {0, 1},
     {0, 0},
 };
-
-ObjectProfile Scene2_Profile = {DebugScene::create, 2, 9};
+ObjectProfile DebugScene_Profile = {DebugScene::create, 2, 9};
 
 struct LPTMF
 {
-    void (DebugScene::*a)();
+    void (DebugScene::*func)();
 };
 LPTMF data_ov002_020cd308[] = {
     {DebugScene::func_ov002_020cc514},

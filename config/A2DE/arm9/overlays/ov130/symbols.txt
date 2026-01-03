@@ -703,34 +703,34 @@ data_ov130_02138f8c kind:data(any) addr:0x02138f8c
 UnknownProfile::ov130_02138f90 kind:data(any) addr:0x02138f90
 data_ov130_02138fa0 kind:data(any) addr:0x02138fa0
 data_ov130_02138fb8 kind:data(any) addr:0x02138fb8
-@ kind:data(byte[5]) addr:0x02139000
-@ kind:data(byte[5]) addr:0x02139008
-@ kind:data(byte[5]) addr:0x02139010
-@ kind:data(byte[6]) addr:0x02139018
-@ kind:data(byte[6]) addr:0x02139020
-@ kind:data(byte[6]) addr:0x02139028
-@ kind:data(byte[6]) addr:0x02139030
-@ kind:data(byte[6]) addr:0x02139038
-@ kind:data(byte[6]) addr:0x02139040
-@ kind:data(byte[7]) addr:0x02139048
-@ kind:data(byte[7]) addr:0x02139050
-@ kind:data(byte[7]) addr:0x02139058
-@ kind:data(byte[7]) addr:0x02139060
-@ kind:data(byte[7]) addr:0x02139068
-@ kind:data(byte[8]) addr:0x02139070
-@ kind:data(byte[8]) addr:0x02139078
-@ kind:data(byte[8]) addr:0x02139080
-@ kind:data(byte[8]) addr:0x02139088
-@ kind:data(byte[8]) addr:0x02139090
+@ kind:data(byte[5]) addr:0x02139000 local
+@ kind:data(byte[5]) addr:0x02139008 local
+@ kind:data(byte[5]) addr:0x02139010 local
+@ kind:data(byte[6]) addr:0x02139018 local
+@ kind:data(byte[6]) addr:0x02139020 local
+@ kind:data(byte[6]) addr:0x02139028 local
+@ kind:data(byte[6]) addr:0x02139030 local
+@ kind:data(byte[6]) addr:0x02139038 local
+@ kind:data(byte[6]) addr:0x02139040 local
+@ kind:data(byte[7]) addr:0x02139048 local
+@ kind:data(byte[7]) addr:0x02139050 local
+@ kind:data(byte[7]) addr:0x02139058 local
+@ kind:data(byte[7]) addr:0x02139060 local
+@ kind:data(byte[7]) addr:0x02139068 local
+@ kind:data(byte[8]) addr:0x02139070 local
+@ kind:data(byte[8]) addr:0x02139078 local
+@ kind:data(byte[8]) addr:0x02139080 local
+@ kind:data(byte[8]) addr:0x02139088 local
+@ kind:data(byte[8]) addr:0x02139090 local
 MGScene_338::profile kind:data(any) addr:0x02139098
-@ kind:data(byte[9]) addr:0x021390a0
-@ kind:data(byte[9]) addr:0x021390ac
-@ kind:data(byte[9]) addr:0x021390b8
-@ kind:data(byte[9]) addr:0x021390c4
-@ kind:data(byte[9]) addr:0x021390d0
-@ kind:data(byte[10]) addr:0x021390dc
-@ kind:data(byte[11]) addr:0x021390e8
-@ kind:data(byte[12]) addr:0x021390f4
+@ kind:data(byte[9]) addr:0x021390a0 local
+@ kind:data(byte[9]) addr:0x021390ac local
+@ kind:data(byte[9]) addr:0x021390b8 local
+@ kind:data(byte[9]) addr:0x021390c4 local
+@ kind:data(byte[9]) addr:0x021390d0 local
+@ kind:data(byte[10]) addr:0x021390dc local
+@ kind:data(byte[11]) addr:0x021390e8 local
+@ kind:data(byte[12]) addr:0x021390f4 local
 data_ov130_02139100 kind:data(short[27]) addr:0x02139100
 _ZTV11MGScene_338 kind:data(any) addr:0x02139138
 data_ov130_02139194 kind:data(any) addr:0x02139194
