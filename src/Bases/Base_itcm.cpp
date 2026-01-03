@@ -1,7 +1,34 @@
 #include "Base.hpp"
 
-i32 Base::process(PTMF, PTMF, PTMF)
+i32 Base::process(bool (Base::*on)(), bool (Base::*pre)(), void (Base::*post)(u32))
 {
+    u32 state;
+    u32 result;
+    i32 callResult;
+    callResult = (this->*pre)();
+    if (callResult)
+    {
+        callResult = (this->*on)();
+        if (callResult == -1)
+        {
+            state = 3;
+        }
+        else if (callResult == 1)
+        {
+            state = 2;
+        }
+        else
+        {
+            state = 1;
+        }
+    }
+    else
+    {
+        state = 0;
+        result = 0;
+    }
+    (this->*post)(state);
+    return callResult;
 }
 
 bool Base::onUpdate()
@@ -34,7 +61,7 @@ bool Base::preRender()
     return true;
 }
 
-void Base::postRender() {}
+void Base::postRender(u32) {}
 
 bool Base::doOrderProc()
 {
@@ -140,20 +167,12 @@ bool Base::doOrderProc()
     return true;
 }
 
-void Base::func_01ffd22c()
+void Base::processUpdate()
 {
-    PTMF a = {0x18, 1};
-    PTMF b = {0x1c, 1};
-    PTMF c = {0x20, 1};
-    Base::process(a, b, c);
+    Base::process(Base::onUpdate, Base::preUpdate, Base::postUpdate);
 }
 
-void Base::func_01ffd1c8()
+void Base::procesRender()
 {
-    PTMF a = {0x24, 1};
-    PTMF b = {0x28, 1};
-    PTMF c = {0x2c, 1};
-    Base::process(a, b, c);
-    //Base::process(Base::onRender, Base::preRender, Base::postRender);
-    
+    Base::process(Base::onRender, Base::preRender, Base::postRender);
 }

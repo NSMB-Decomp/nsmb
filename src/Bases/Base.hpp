@@ -44,9 +44,9 @@ public:
   void destroy();
   Base();
   bool doOrderProc();
-  i32 process(PTMF, PTMF, PTMF);
-  void func_01ffd22c();
-  void func_01ffd1c8();
+  i32 process(bool (Base::*)(), bool (Base::*)(), void (Base::*)(u32));
+  void processUpdate();
+  void procesRender();
 
   virtual bool onCreate();
   virtual bool preCreate();
@@ -60,7 +60,7 @@ public:
   virtual void postUpdate(u32);
   virtual bool onRender();
   virtual bool preRender();
-  virtual void postRender();
+  virtual void postRender(u32);
   virtual void pendingDestroy();
   virtual bool prepareResourcesSafe(u32, u32);
   virtual bool prepareResourcesFast(u32, u32);
