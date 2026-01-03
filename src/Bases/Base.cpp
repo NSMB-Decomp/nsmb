@@ -31,17 +31,17 @@ Base::Base()
   this->object_id = SpawnParam_ObjectId;
   this->_12 = SpawnParam_Type;
 
-  SceneGraph_addChild(&ProcessManager::ConnectTask, pl, SpawnParam_Parent);
+  SceneGraph_addChild(&ProcessManager::ConnectTask, &this->process_link, SpawnParam_Parent);
   u32 id_index = ProcessManager::getIDIndex(&this->process_link);
   LinkedList_Prepend(&ProcessManager::idLookupProcesses[id_index], &this->process_link.idLookup);
 
   ObjectProfile *profile = CurrentProfileTable[this->object_id];
+  
   u32 update_priority = profile->updatePriority;
   PriorityNode* update = &this->process_link.update;
-  PriorityNode* render = &this->process_link.render;
-
   update->currentPriority = update_priority;
   update->sortPriority = update_priority;
+  PriorityNode* render = &this->process_link.render;
   u32 render_priority = profile->renderPriority;
   render->currentPriority = render_priority;
   render->sortPriority = render_priority;
