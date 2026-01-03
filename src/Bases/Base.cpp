@@ -1,13 +1,7 @@
 #include "Base_autoload.cpp"
 #include "Nitro.hpp"
 
-PTMF data_02085248 = {16,1};
-PTMF data_02085228 = {8, 1};
 u32 data_02085224 = 1;
-PTMF data_02085238 = {4, 1};
-PTMF data_02085250 = {20, 1};
-PTMF data_02085230 = {12, 1};
-PTMF data_02085240 = {0, 1};
 
 ProcessLink* func_02043b58(ProcessLink *);
 Base::Base()
@@ -248,13 +242,13 @@ void Base::create()
 }
 void Base::processCreate()
 {
-  this->process(data_02085228,data_02085238,data_02085240);
+  this->process(Base::onCreate,Base::preCreate,Base::postCreate);
 }
 u32 Base::processDestroy()
 {
   u16 object_id = this->object_id;
 
-  u32 ret = this->process(data_02085230,data_02085248,data_02085250);
+  u32 ret = this->process(Base::onDestroy,Base::preDestroy,Base::postDestroy);
   if (ret == 1)
   {
     unloadSceneOverlay(object_id);

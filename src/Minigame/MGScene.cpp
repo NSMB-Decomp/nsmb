@@ -19,6 +19,6 @@ void MGScene::postDestroy(u32) {}
 bool MGScene::preUpdate() {}
 void MGScene::postUpdate(u32) {}
 bool MGScene::preRender() {}
-void MGScene::postRender() {}
+void MGScene::postRender(u32) {}
 
 #pragma thumb off

@@ -12,5 +12,5 @@ public:
   bool preUpdate();
   void postUpdate(u32);
   bool preRender();
-  void postRender();
+  void postRender(u32);
 };

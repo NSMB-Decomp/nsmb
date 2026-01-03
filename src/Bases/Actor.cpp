@@ -118,9 +118,9 @@ bool Actor::preRender()
     }
 }
 
-void Actor::postRender()
+void Actor::postRender(u32 a)
 {
-    Base::postRender();
+    Base::postRender(a);
 }
 
 u32 Actor::getActorCount(u8 a)

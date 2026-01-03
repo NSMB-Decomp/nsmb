@@ -65,4 +65,4 @@ void Scene::postCreate(u32 a)
 
 void Scene::postUpdate(u32) {
 }
-void Scene::postRender() {}
+void Scene::postRender(u32) {}
