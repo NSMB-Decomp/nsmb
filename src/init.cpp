@@ -1,6 +1,7 @@
 #include "Nitro.hpp"
 #include "base_types.hpp"
 #include "AAA.hpp"
+#include "Scenes/Scene.hpp"
 
 void InitGame() {
   u16 *REG_IME = (u16 *)0x04000208;
