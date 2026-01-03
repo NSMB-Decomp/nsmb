@@ -36,7 +36,7 @@ Scene::~Scene()
             bool c = func_02046c5c();
             if (c != 0 && !Wifi_isMultiBootCart())
             {
-                data_02085ad4[0] = *((u32*)&data_02088bdc+0xd2); // TODO: Do not offset using pointers
+                data_02085ad4[0] = *((u32 *)&data_02088bdc + 0xd2); // TODO: Do not offset using pointers
             }
             func_0200f3d8();
         }
@@ -46,10 +46,10 @@ Scene::~Scene()
             func_ov052_02152bf0();
             data_0208ae58 = 0;
         }
-        
+
         GlobalFader.fadingTarget[0] |= 2;
         GlobalFader.fadingTarget[1] |= 2;
-        GlobalFader.brightnessFactor[ 0] = 0x1000;
+        GlobalFader.brightnessFactor[0] = 0x1000;
         GlobalFader.brightnessFactor[1] = 0x1000;
     }
 }
@@ -63,6 +63,41 @@ void Scene::postCreate(u32 a)
 {
 }
 
-void Scene::postUpdate(u32) {
+bool Scene::preDestroy()
+{
 }
-void Scene::postRender(u32) {}
+
+void Scene::postDestroy(u32 a)
+{
+}
+
+bool Scene::preUpdate()
+{
+}
+
+void Scene::postUpdate(u32 a)
+{
+    Base::postUpdate(a);
+}
+
+bool Scene::preRender()
+{
+    if (Base::preRender())
+    {
+        return true;
+    }
+    return false;
+}
+
+void Scene::postRender(u32 a)
+{
+    Base::postRender(a);
+}
+
+void Scene::prepareFirstScreen() {
+
+}
+
+Scene* Scene::tryChangeScene() {
+
+}

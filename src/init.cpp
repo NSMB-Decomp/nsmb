@@ -74,7 +74,7 @@ void StartGameLoop() {
     Nitro::Graphics_ResetOAM();
     bool rendered_frame = Nitro::Graphics_Step();
     if (rendered_frame) {
-      Scene_tryChangeScene();
+      Scene::tryChangeScene();
       ProcessManager_ExecuteTasks();
       Font_updateFont();
     }

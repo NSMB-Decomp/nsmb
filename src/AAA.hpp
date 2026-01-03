@@ -98,7 +98,6 @@ void SystemThreadsSleep();
 void doFadingTransition();
 void TouchPad_update();
 void Input_update();
-void Scene_tryChangeScene();
 void Font_updateFont();
 void Wifi_updatePackets();
 void System_waitForVBlank();

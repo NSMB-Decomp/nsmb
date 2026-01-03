@@ -5,6 +5,9 @@ public:
   ~Scene();
   Scene();
 
+  static void prepareFirstScreen();
+  static Scene* tryChangeScene();
+
   bool preCreate();
   void postCreate(u32);
   bool preDestroy();
