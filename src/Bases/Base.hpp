@@ -47,6 +47,7 @@ public:
   i32 process(bool (Base::*)(), bool (Base::*)(), void (Base::*)(u32));
   void processUpdate();
   void procesRender();
+  void func_01ffd290();
 
   virtual bool onCreate();
   virtual bool preCreate();

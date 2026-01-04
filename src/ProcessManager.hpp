@@ -1,3 +1,5 @@
+#include "base_types.hpp"
+
 class Base;
 class SceneNode
 {
@@ -41,7 +43,7 @@ public:
     ProcessNode idLookup;
 };
 
-struct PTMF {
+struct PTMF { // Pointer To Member
     u32 func;
     u32 params;
 };
@@ -60,8 +62,15 @@ struct PTMF {
 
 class ProcessList
 {
+    //LinkedList linked_list;
     PTMF executer;
 };
+//class ProcessListN
+//{
+//    //LinkedList linked_list;
+//    u32 a;
+//    void (Base::*executer)();
+//};
 
 enum ProcessType {
     Null,
