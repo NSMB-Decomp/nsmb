@@ -240,11 +240,11 @@ void Base::create()
   LinkedList_append(&ProcessManager::CreateTask, &this->process_link.update);
   return;
 }
-void Base::processCreate()
+i32 Base::processCreate()
 {
-  this->process(Base::onCreate,Base::preCreate,Base::postCreate);
+  return this->process(Base::onCreate,Base::preCreate,Base::postCreate);
 }
-u32 Base::processDestroy()
+i32 Base::processDestroy()
 {
   u16 object_id = this->object_id;
 

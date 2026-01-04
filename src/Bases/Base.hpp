@@ -35,18 +35,18 @@ public:
   static Base* spawn(u16, ProcessLink*, u32, u8);
   static void setSpawnParams(u16, ProcessLink*, u32, u8);
   bool hasChildPendingCreation();
-  u32 processDestroy();
-  void processCreate();
   void create();
   void* operator new(u32);
   void operator delete(void*);
   Base* getParent();
   void destroy();
   Base();
-  bool doOrderProc();
+  i32 processDestroy();
+  i32 processCreate();
+  i32 doOrderProc();
+  i32 processUpdate();
+  i32 procesRender();
   i32 process(bool (Base::*)(), bool (Base::*)(), void (Base::*)(u32));
-  void processUpdate();
-  void procesRender();
   void func_01ffd290();
 
   virtual bool onCreate();

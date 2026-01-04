@@ -1,4 +1,9 @@
 #include "ProcessManager.hpp"
 #include "Bases/Base.hpp"
 
-//ProcessListN ConnectTask = {0,Base::func_01ffd290};
+// This file uses autoload_2, autload_3 & main sections.
+ProcessListN CreateTask = {{NULL,NULL},Base::processCreate};
+SceneGraph ConnectTask = {(SceneNode*)NULL,Base::doOrderProc};
+ProcessListN ExecuteTask = {{NULL,NULL},Base::processUpdate};
+ProcessListN DrawTask = {{NULL,NULL},Base::procesRender};
+ProcessListN DestroyTask = {{NULL,NULL},Base::processDestroy};

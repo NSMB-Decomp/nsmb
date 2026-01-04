@@ -65,12 +65,20 @@ class ProcessList
     //LinkedList linked_list;
     PTMF executer;
 };
-//class ProcessListN
-//{
-//    //LinkedList linked_list;
-//    u32 a;
-//    void (Base::*executer)();
-//};
+struct LinkedList{
+    void* first;
+    void* last;
+};
+struct ProcessListN
+{
+    LinkedList linked_list;
+    i32 (Base::*executer)();
+};
+struct SceneGraph
+{
+    SceneNode* root;
+    i32 (Base::*executer)();
+};
 
 enum ProcessType {
     Null,

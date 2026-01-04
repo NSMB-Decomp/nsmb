@@ -63,7 +63,7 @@ bool Base::preRender()
 
 void Base::postRender(u32) {}
 
-bool Base::doOrderProc()
+i32 Base::doOrderProc()
 {
     if (this->pending_destroy)
     {
@@ -167,12 +167,12 @@ bool Base::doOrderProc()
     return true;
 }
 
-void Base::processUpdate()
+i32 Base::processUpdate()
 {
-    Base::process(Base::onUpdate, Base::preUpdate, Base::postUpdate);
+    return this->process(Base::onUpdate, Base::preUpdate, Base::postUpdate);
 }
 
-void Base::procesRender()
+i32 Base::procesRender()
 {
-    Base::process(Base::onRender, Base::preRender, Base::postRender);
+    return this->process(Base::onRender, Base::preRender, Base::postRender);
 }
