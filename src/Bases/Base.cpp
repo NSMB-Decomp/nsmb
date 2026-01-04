@@ -151,12 +151,12 @@ Base *Base::getParent()
 };
 bool Base::prepareResourcesSafe(u32 size, Heap* parent)
 {
-  Heap *user;
-  Heap *heap;
-  void *z;
+  Heap *user = (Heap*)NULL;
   u32 result;
+  void *z;
   void* heap_ptr;
   u32 user_remaining;
+  Heap *heap;
 
   if (this->heap != NULL)
   {
@@ -166,7 +166,7 @@ bool Base::prepareResourcesSafe(u32 size, Heap* parent)
       size != 0 &&
       (user = FrameHeap::create(size, parent, 0x20), user != NULL))
   {
-    heap_ptr = (void *)((u32)(user->size) & 0x10);
+    heap_ptr = (void *)((u32)(user->start) & 0x10);
     if (heap_ptr != NULL)
     {
       user->allocate(0x10, 0x10);
@@ -184,6 +184,7 @@ bool Base::prepareResourcesSafe(u32 size, Heap* parent)
     if (result == 0)
     {
       user->destroy();
+      user = (Heap*)NULL;
     }
     else
     {
@@ -195,15 +196,13 @@ bool Base::prepareResourcesSafe(u32 size, Heap* parent)
         this->heap = user;
         return true;
       }
-      
-      this->heap = user;
-      return true;
+    
     }
   }
 
   if (user == NULL) {
     user = FrameHeap::create(~0, parent, 0x20);
-    heap_ptr = (void *)((u32)(user->size) & 0x10);
+    heap_ptr = (void *)((u32)(user->start) & 0x10);
     if (heap_ptr != NULL)
     {
       user->allocate(0x10, 0x10);
@@ -230,8 +229,8 @@ bool Base::prepareResourcesSafe(u32 size, Heap* parent)
   }
 
   if (user != NULL) {
-    u32 user_size = user->size;
     Heap* old_00 = (Heap*)NULL;
+    u32 user_size = user->size;
     u32 parent_max_size = parent->maxAllocationUnitSize();
     u32 max_user_size = user->maxAllocationUnitSize();
     if (((user_size - max_user_size) + 0xf & 0xfffffff0) + 0x30 < (u32)heap_ptr) {
@@ -286,7 +285,7 @@ bool Base::prepareResourcesFast(u32 size, Heap* parent)
       size != 0 &&
       (user = FrameHeap::create(size, parent, 0x20), user != NULL))
   {
-    heap_ptr = (void *)((u32)(user->size) & 0x10);
+    heap_ptr = (void *)((u32)(user->start) & 0x10);
     if (heap_ptr != NULL)
     {
       user->allocate(0x10, 0x10);
