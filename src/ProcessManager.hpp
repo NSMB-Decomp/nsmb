@@ -71,12 +71,12 @@ namespace ProcessManager {
     // TODO: Switch these from extern
     extern u32 CurrentTask;
     extern ProcessList CreateTask;
-    extern ProcessList ConnectTask;
+    extern SceneGraph ConnectTask;
     extern ProcessList ExecuteTask;
     extern ProcessList DrawTask;
     extern ProcessList DestroyTask;
 
-    extern ProcessList idLookupProcesses[8];
+    extern LinkedList idLookupProcesses[8];
     u32 getIDIndex(ProcessLink*);
     Base* getNextObjectByObjectID(u16 class_id, Base* prev);
 }

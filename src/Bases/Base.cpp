@@ -75,7 +75,7 @@ void Base::postCreate(u32 a)
   {
     return;
   }
-  LinkedList_Remove(&ProcessManager::CreateTask, &this->process_link.update);
+  LinkedList_Remove(&ProcessManager::CreateTask.linked_list, &this->process_link.update);
   if ((BOOL)(ProcessManager::CurrentTask == Execute) != FALSE)
   {
     this->pending_update = 1;
@@ -114,7 +114,7 @@ void Base::postDestroy(u32 a)
   SceneGraph_removeChild(&ProcessManager::ConnectTask, &this->process_link);
   u32 id_index = ProcessManager::getIDIndex(&this->process_link);
   LinkedList_Remove(&ProcessManager::idLookupProcesses[id_index], &this->process_link.idLookup);
-  LinkedList_Remove(&ProcessManager::DestroyTask, &this->process_link.update);
+  LinkedList_Remove(&ProcessManager::DestroyTask.linked_list, &this->process_link.update);
   if (this->heap != NULL)
   {
     func_02045128();
@@ -237,7 +237,7 @@ void Base::create()
     this->pending_create = 0x01;
     return;
   }
-  LinkedList_append(&ProcessManager::CreateTask, &this->process_link.update);
+  LinkedList_append(&ProcessManager::CreateTask.linked_list, &this->process_link.update);
   return;
 }
 i32 Base::processCreate()

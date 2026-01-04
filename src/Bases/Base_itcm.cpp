@@ -70,14 +70,14 @@ i32 Base::doOrderProc()
         this->pending_destroy = false;
         if ((BOOL)(this->state == Active) != FALSE)
         {
-            LinkedList_Remove(&ProcessManager::ExecuteTask, &this->process_link.update);
-            LinkedList_Remove(&ProcessManager::DrawTask, &this->process_link.render);
+            LinkedList_Remove(&ProcessManager::ExecuteTask.linked_list, &this->process_link.update);
+            LinkedList_Remove(&ProcessManager::DrawTask.linked_list, &this->process_link.render);
         }
         else
         {
-            LinkedList_Remove(&ProcessManager::CreateTask, &this->process_link.update);
+            LinkedList_Remove(&ProcessManager::CreateTask.linked_list, &this->process_link.update);
         }
-        LinkedList_Remove(&ProcessManager::DestroyTask, &this->process_link.update);
+        LinkedList_Remove(&ProcessManager::DestroyTask.linked_list, &this->process_link.update);
         this->state = Inactive;
         for (SceneNode *first_child = this->process_link.connect.firstChild; first_child != (void *)0x0;
              first_child = first_child->next)
@@ -129,7 +129,7 @@ i32 Base::doOrderProc()
             PriorityNode *u = &this->process_link.update;
             if (BOOL(u->sortPriority != u->currentPriority) != FALSE)
             {
-                LinkedList_Remove(&ProcessManager::ExecuteTask, &this->process_link.update);
+                LinkedList_Remove(&ProcessManager::ExecuteTask.linked_list, &this->process_link.update);
                 PriorityNode *update = &this->process_link.update;
                 update->currentPriority = update->sortPriority;
                 ProcessSet_add(&ProcessManager::ExecuteTask, update);
@@ -137,7 +137,7 @@ i32 Base::doOrderProc()
             PriorityNode *r = &this->process_link.render;
             if (BOOL(r->sortPriority != r->currentPriority) != FALSE)
             {
-                LinkedList_Remove(&ProcessManager::DrawTask, &this->process_link.render);
+                LinkedList_Remove(&ProcessManager::DrawTask.linked_list, &this->process_link.render);
                 PriorityNode *render = &this->process_link.render;
                 render->currentPriority = render->sortPriority;
                 ProcessSet_add(&ProcessManager::DrawTask, render);
@@ -148,7 +148,7 @@ i32 Base::doOrderProc()
             if (this->pending_create)
             {
                 this->pending_create = 0;
-                LinkedList_append(&ProcessManager::CreateTask, &this->process_link.update);
+                LinkedList_append(&ProcessManager::CreateTask.linked_list, &this->process_link.update);
             }
             else
             {

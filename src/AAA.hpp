@@ -85,11 +85,11 @@ extern Heap* data_0208b720;
 bool func_0204d82c();
 
 //
-bool SceneGraph_removeChild(ProcessList*, ProcessLink*);
-bool SceneGraph_addChild(ProcessList*, ProcessLink*, ProcessLink*);
-bool LinkedList_append(ProcessList*, PriorityNode*);
-bool LinkedList_Remove(ProcessList*, void*); // TODO: Confirm these paramaters?
-bool LinkedList_Prepend(ProcessList*, ProcessNode*);
+bool SceneGraph_removeChild(SceneGraph*, ProcessLink*);
+bool SceneGraph_addChild(SceneGraph*, ProcessLink*, ProcessLink*);
+bool LinkedList_append(LinkedList*, PriorityNode*);
+bool LinkedList_Remove(LinkedList*, void*); // TODO: Confirm these paramaters?
+bool LinkedList_Prepend(LinkedList*, ProcessNode*);
 void ProcessSet_add(ProcessList*, PriorityNode*);
 
 void Save_setupBackup(u32, void *);
