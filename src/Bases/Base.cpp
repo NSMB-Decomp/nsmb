@@ -151,10 +151,10 @@ Base *Base::getParent()
 };
 bool Base::prepareResourcesSafe(u32 size, Heap* parent)
 {
-  void *z;
-  Heap *heap2;
-  Heap *heap;
   Heap *user = (Heap*)NULL;
+  void *z;
+  Heap *heap;
+  Heap *heap2;
   u32 user_remaining;
   u32 result;
   void* heap_ptr;
@@ -191,8 +191,9 @@ bool Base::prepareResourcesSafe(u32 size, Heap* parent)
     {
       u32 user_size = user->size;
       u32 max_user_size = user->maxAllocationUnitSize();
+      user_remaining = (user_size - max_user_size) + 0x1f & ~0x1f;
             
-      if (size == ((user_size - max_user_size) + 0x1f & ~0x1f)) {
+      if (size == user_remaining) {
         user->resizeToFit();
         this->heap = user;
         return true;
@@ -228,12 +229,12 @@ bool Base::prepareResourcesSafe(u32 size, Heap* parent)
       u32 max_user_size = user->maxAllocationUnitSize();
       user_remaining = (user_size - max_user_size) + 0x1f & ~0x1f;
   }
-Heap* old_00 ;
   if (user != NULL) {
     u32 user_size = user->size;
-    old_00= (Heap*)NULL;
+    Heap* old_00= (Heap*)NULL;
+    u32 max_user_size;
 
-    u32 max_user_size = user->maxAllocationUnitSize();
+    max_user_size = user->maxAllocationUnitSize();
     u32 z = (user_size - max_user_size);
     u32 y = parent->maxAllocationUnitSize();
     z = ((z + 0xf & ~0xf) + 0x30);
@@ -247,7 +248,7 @@ Heap* old_00 ;
         user->destroy();
         user = (Heap*)NULL;
         heap2 = old_00->setCurrent();
-        this->onHeapCreated();
+        result = this->onHeapCreated();
         heap2->setCurrent();
         if (!result) {
           old_00->destroy();
