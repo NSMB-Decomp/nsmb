@@ -91,36 +91,34 @@ i32 Base::doOrderProc()
         if (parent != (void *)0x0)
         {
             // Check to see if this object should be updated
-            u32 skip_flags = parent->skipFlags;
             if (
-                ((skip_flags & UpdateChildren) != 0) ||
-                ((skip_flags & Update) != 0))
+                ((parent->skipFlags & UpdateChildren) != 0) ||
+                ((parent->skipFlags & Update) != 0))
             {
 
                 this->skipFlags = (this->skipFlags | Update);
             }
             else
             {
-                if ((this->skipFlags & Update) != 0)
+                if (this->skipFlags & Update)
                 {
-                    this->skipFlags = (this->skipFlags & ~Update);
+                    this->skipFlags &= ~Update;
                 }
             }
 
-            skip_flags = this->skipFlags;
             // Check to see if this object should be rendered
             if (
-                ((skip_flags & RenderChildren) != 0) ||
-                ((skip_flags & Render) != 0))
+                ((parent->skipFlags & RenderChildren) != 0) ||
+                ((parent->skipFlags & Render) != 0))
             {
 
                 this->skipFlags = (this->skipFlags | Render);
             }
             else
             {
-                if ((this->skipFlags & Render) != 0)
+                if (this->skipFlags & Render)
                 {
-                    this->skipFlags = this->skipFlags & ~Render;
+                    this->skipFlags &= ~Render;
                 }
             }
         }
