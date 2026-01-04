@@ -179,13 +179,9 @@ u8 data_ov002_020cd240[4][2] = {
 };
 ObjectProfile DebugScene_Profile = {DebugScene::create, 2, 9};
 
-struct LPTMF
-{
-    void (DebugScene::*func)();
-};
-LPTMF data_ov002_020cd308[] = {
-    {DebugScene::func_ov002_020cc514},
-    {DebugScene::func_ov002_020cc328}
+void (DebugScene::*data_ov002_020cd308[])() = {
+    DebugScene::func_ov002_020cc514,
+    DebugScene::func_ov002_020cc328
 };
 
 u8 data_ov002_020cd220[4] = {1, 1, 3, 0};

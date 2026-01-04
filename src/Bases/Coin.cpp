@@ -66,7 +66,7 @@ bool Coin::onRender()
     //    return true;
 }
 
-PTMF data_ov010_021293f4;
+i32 (Base::*data_ov010_021293f4)();
 u32 data_ov010_0212163c[2];
 void Coin::func_ov010_020d81dc(u32 a)
 {

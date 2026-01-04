@@ -74,8 +74,8 @@ struct ProcessLink
     ProcessNode idLookup;
 };
 
-struct PTMF
-{ // What is a PTMF?
+struct PTMF // Pointer To Member Function
+{
     void (*func)(void *, ...);
     u32 params;
 };

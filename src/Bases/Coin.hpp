@@ -8,7 +8,7 @@ public:
     Vec3_32 _408; // 0x408
     Vec2_32 _418; // 0x418
     Vec2_32 _424; // 0x424
-    PTMF* _430; // 0x430
+    i32 (Base::**_430)(); // 0x430
     Vec3_32 _434; // 0x434
     Collider _444; // 0x444
     u8 _pad0[9];
@@ -43,7 +43,7 @@ public:
     static void* create();
 
     void func_ov010_020d81dc(u32);
-    void func_ov010_020d9dcc(PTMF*);
+    void func_ov010_020d9dcc(i32 (Base::**)());
     void func_ov010_020d823c(u32 a);
     void func_ov010_020d99a8();
     void func_ov010_020d8b40();

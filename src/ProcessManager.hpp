@@ -43,33 +43,11 @@ public:
     ProcessNode idLookup;
 };
 
-struct PTMF { // Pointer To Member
-    u32 func;
-    u32 params;
-};
-//class PTMF
-//{
-//public:
-//    u32 func;
-//    u32 params;
-//    inline PTMF(void(*func)(), u32);
-//    PTMF();
-//};
-//PTMF::PTMF(void(*func)(), u32 params) {
-//    this->func = (u32)func;
-//    this->params = params;
-//}
-
-class ProcessList
-{
-    //LinkedList linked_list;
-    PTMF executer;
-};
 struct LinkedList{
     void* first;
     void* last;
 };
-struct ProcessListN
+struct ProcessList
 {
     LinkedList linked_list;
     i32 (Base::*executer)();
