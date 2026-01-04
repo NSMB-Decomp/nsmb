@@ -37,14 +37,14 @@ Base::Base()
 
   ObjectProfile *profile = CurrentProfileTable[this->object_id];
   
-  u32 update_priority = profile->updatePriority;
-  PriorityNode* update = &this->process_link.update;
-  update->currentPriority = update_priority;
-  update->sortPriority = update_priority;
-  PriorityNode* render = &this->process_link.render;
-  u32 render_priority = profile->renderPriority;
+  u32 render_priority = profile->updatePriority;
+  PriorityNode* render = &this->process_link.update;
   render->currentPriority = render_priority;
   render->sortPriority = render_priority;
+  u32 update_priority = profile->renderPriority;
+  PriorityNode* update = &this->process_link.render;
+  update->currentPriority = update_priority;
+  update->sortPriority = update_priority;
 
   Base *parent = this->getParent();
   if (parent != NULL)

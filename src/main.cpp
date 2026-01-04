@@ -1,8 +1,6 @@
 #include "./base_types.hpp"
 #include "AAA.hpp"
 
-enum GAME_MODE { A, B };
-
 u32 DAT_027FFC20;
 int main() {
   u32 game_mode;
@@ -10,9 +8,9 @@ int main() {
 
   if (isMultiBootCart()) {
     if ((func_020109c8() != 0)) {
-      game_mode = A;
+      game_mode = 0;
     } else {
-      game_mode = B;
+      game_mode = 1;
     }
     boot_scene = 0;
   } else {
