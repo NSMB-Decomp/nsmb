@@ -41,6 +41,14 @@ struct Vec2_32
     i32 y;
 };
 
+struct Heap {
+    unknown_vtable *vtable;
+    void *start;
+    u32 size;
+    Heap *parent;
+    u32 flags;
+};
+
 // Process
 // TODO: Can we improve these names at all?
 struct ProcessNode

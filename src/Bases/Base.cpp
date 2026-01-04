@@ -149,16 +149,128 @@ Base *Base::getParent()
     return (Base *)0x0;
   }
 };
-bool Base::prepareResourcesSafe(u32 a, u32 b)
+bool Base::prepareResourcesSafe(u32 size, Heap* parent)
 {
-  if (this->heap == NULL)
+  Heap *user;
+  Heap *heap;
+  void *z;
+  u32 result;
+  void* heap_ptr;
+  u32 user_remaining;
+
+  if (this->heap != NULL)
   {
     return true;
   }
+  if (
+      size != 0 &&
+      (user = FrameHeap::create(size, parent, 0x20), user != NULL))
+  {
+    heap_ptr = (void *)((u32)(user->size) & 0x10);
+    if (heap_ptr != NULL)
+    {
+      user->allocate(0x10, 0x10);
+    }
+    heap = user->setCurrent();
+    result = this->onHeapCreated();
+    heap->setCurrent();
+    if (
+        heap_ptr == NULL &&
+        (z = user->allocate(0x10, 0x10), z == NULL))
+    {
+      result = 0;
+    }
 
+    if (result == 0)
+    {
+      user->destroy();
+    }
+    else
+    {
+      u32 user_size = user->size;
+      u32 max_user_size = user->maxAllocationUnitSize();
+            
+      if (size == ((user_size - max_user_size) + 0x1f & ~0x1f)) {
+        user->resizeToFit();
+        this->heap = user;
+        return true;
+      }
+      
+      this->heap = user;
+      return true;
+    }
+  }
+
+  if (user == NULL) {
+    user = FrameHeap::create(~0, parent, 0x20);
+    heap_ptr = (void *)((u32)(user->size) & 0x10);
+    if (heap_ptr != NULL)
+    {
+      user->allocate(0x10, 0x10);
+    }
+    heap = user->setCurrent();
+    result = this->onHeapCreated();
+    heap->setCurrent();
+    if (
+        heap_ptr == NULL &&
+        (z = user->allocate(0x10, 0x10), z == NULL))
+    {
+      result = 0;
+    }
+
+    if (result == 0)
+    {
+      user->destroy();
+      this->destroy();
+      return false;
+    }
+      u32 user_size = user->size;
+      u32 max_user_size = user->maxAllocationUnitSize();
+      user_remaining = (user_size - max_user_size) + 0x1f & 0xffffffe0;
+  }
+
+  if (user != NULL) {
+    u32 user_size = user->size;
+    Heap* old_00 = (Heap*)NULL;
+    u32 parent_max_size = parent->maxAllocationUnitSize();
+    u32 max_user_size = user->maxAllocationUnitSize();
+    if (((user_size - max_user_size) + 0xf & 0xfffffff0) + 0x30 < (u32)heap_ptr) {
+      old_00 = FrameHeap::create(user_remaining,parent,0x20);
+    }
+
+    if (old_00 != NULL) {
+      if (old_00 < user) {
+        user->destroy();
+        user = (Heap*)NULL;
+        heap = old_00->setCurrent();
+        this->onHeapCreated();
+        heap->setCurrent();
+        if (!result) {
+          old_00->destroy();
+          old_00 = (Heap*)NULL;
+        }
+      } else {
+                  old_00->destroy();
+          old_00 = (Heap*)NULL;
+      }
+    }
+
+    if (old_00 != NULL) {
+      old_00->resizeToFit();
+      this->heap = old_00;
+      return true;
+    }
+    if (user != NULL) {
+      user->resizeToFit();
+      this->heap = user;
+      return true;
+    }
+  }
+
+  this->destroy();
   return false;
 }
-bool Base::prepareResourcesFast(u32 a, u32 b)
+bool Base::prepareResourcesFast(u32 size, Heap* parent)
 {
   Heap *user;
   Heap *heap;
@@ -171,8 +283,8 @@ bool Base::prepareResourcesFast(u32 a, u32 b)
     return true;
   }
   if (
-      a != 0 &&
-      (user = func_02045240(a, b, 0x20), user != (Heap *)0x0))
+      size != 0 &&
+      (user = FrameHeap::create(size, parent, 0x20), user != NULL))
   {
     heap_ptr = (void *)((u32)(user->size) & 0x10);
     if (heap_ptr != NULL)

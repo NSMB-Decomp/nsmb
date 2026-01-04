@@ -63,8 +63,8 @@ public:
   virtual bool preRender();
   virtual void postRender(u32);
   virtual void pendingDestroy();
-  virtual bool prepareResourcesSafe(u32, u32);
-  virtual bool prepareResourcesFast(u32, u32);
+  virtual bool prepareResourcesSafe(u32, Heap*);
+  virtual bool prepareResourcesFast(u32, Heap*);
   virtual bool onHeapCreated();
   virtual ~Base();
 };

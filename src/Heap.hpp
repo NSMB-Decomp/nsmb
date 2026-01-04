@@ -6,10 +6,16 @@ public:
     Heap *parent;
     u32 flags;
 
+    void resizeToFit();
     void destroy();
     void* allocate(u32, u32);
     Heap* setCurrent();
-    void maxAllocationUnitSize();
+    u32 maxAllocationUnitSize();
+
+    virtual _(); // Temp function to create vtable
 };
 
-Heap *func_02045240(u32, u32, u32);
+class FrameHeap {
+public:
+    static Heap *create(u32, Heap*, u32);
+};
