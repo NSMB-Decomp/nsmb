@@ -697,7 +697,7 @@ Vec3_32 StageEntity::tryNormalizeVec3(Vec3_32 *input)
     {
         return *input;
     }
-    Vec3_32 result = *input;
+    Vec3_32 result;
 
     return result;
 }
