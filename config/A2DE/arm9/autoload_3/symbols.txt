@@ -27,7 +27,7 @@ data_020859b0 kind:bss addr:0x020859b0
 data_020859b8 kind:bss addr:0x020859b8
 data_020859c8 kind:bss addr:0x020859c8
 data_020859d8 kind:bss addr:0x020859d8
-data_020859dc kind:bss addr:0x020859dc
+ExceptionHandlerState kind:bss addr:0x020859dc
 data_020859e0 kind:bss addr:0x020859e0
 data_020859e4 kind:bss addr:0x020859e4
 data_020859e8 kind:bss addr:0x020859e8

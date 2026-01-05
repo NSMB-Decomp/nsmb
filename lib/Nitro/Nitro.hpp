@@ -1,5 +1,7 @@
 #include "../../src/base_types.hpp"
 
+#define REG_IME *((u32*)0x4000208)
+
 class Vec3_32s {
 public:
     i32 x;
