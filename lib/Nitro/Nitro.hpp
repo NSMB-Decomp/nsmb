@@ -1,6 +1,32 @@
 #include "../../src/base_types.hpp"
 
-#define REG_IME *((u32*)0x4000208)
+#define REG_DISPCNT     *((u32*)0x04000000)
+#define REG_BG1CNT      *((u16*)0x0400000a)
+#define REG_BLDCNT      *((u16*)0x04000050)
+#define REG_KEYINPUT    *((u16*)0x04000130)
+#define REG_IME         *((u16*)0x04000208)
+#define REG_POWER_CNT   *((u16*)0x04000304)
+#define REG_DISPCNT_SUB *((u32*)0x04001000)
+#define REG_BG1CNT_SUB  *((u16*)0x0400100a)
+#define REG_BLDCNT_SUB  *((u16*)0x04001050)
+
+#define KEY_A        0 << 1
+#define KEY_B        1 << 1
+#define KEY_SELECT   2 << 1
+#define KEY_START    3 << 1
+#define KEY_RIGHT    4 << 1
+#define KEY_LEFT     5 << 1
+#define KEY_UP       6 << 1
+#define KEY_DOWN     7 << 1
+#define KEY_R        8 << 1
+#define KEY_L        9 << 1
+#define KEY_X       10 << 1
+#define KEY_Y       11 << 1
+#define KEY_DEBUG   12 << 1
+#define KEY_FOLD    13 << 1
+
+// All inputs other than FOLD
+#define KEYS_ALL (KEY_A|KEY_B|KEY_SELECT|KEY_START|KEY_RIGHT|KEY_LEFT|KEY_UP|KEY_DOWN|KEY_R|KEY_L|KEY_X|KEY_Y|KEY_DEBUG)
 
 class Vec3_32s {
 public:
@@ -144,4 +170,6 @@ namespace Nitro {
     void FS_Overlays_loadOverlay(u32);
     void FS_Overlays_unload(u32);
     void FS_Archive_loadMainGameArchives();
+    void func_02061ac4(u32);
+    void func_020613c8(u32);
 }

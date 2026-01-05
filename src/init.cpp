@@ -4,13 +4,11 @@
 #include "Scenes/Scene.hpp"
 
 void InitGame() {
-  u16 *REG_IME = (u16 *)0x04000208;
-
   Nitro::func_02063fd4();
   func_02005ab0();
   Nitro::func_01ff8128(1);
-  u16 ime = *REG_IME;
-  *REG_IME = 1;
+  u16 ime = REG_IME;
+  REG_IME = 1;
   Nitro::func_01ffa5ec(1, ime);
   Nitro::func_02060e38(1);
   bool is_multiboot_cart = Nitro::Wifi_isMultiBootCart();
@@ -55,8 +53,7 @@ void InitGame() {
   u32 *GFX_FIFO_MATERIAL_SPECULAR_EMISSION = (u32 *)0x040004c4;
   *GFX_FIFO_MATERIAL_SPECULAR_EMISSION = 0;
   func_0200e040();
-  u16 *REG_POWER_CNT = (u16 *)0x04000304;
-  *REG_POWER_CNT = *REG_POWER_CNT | 0x8000;
+  REG_POWER_CNT = REG_POWER_CNT | 0x8000;
   func_02014a58();
   __stub_1();
   __stub_2();
