@@ -496,7 +496,16 @@ void StageEntity::onUpdate_xx()
 
 i32 StageEntity::attachToPlayerHands(i32 z, i32 y, i32 x) {}
 
-i32 StageEntity::tryAttachToPlayerHands(i32 z, i32 y, i32 x) {}
+i32 StageEntity::tryAttachToPlayerHands(i32 z, i32 y, i32 x)
+{
+    if (this->_340 == 5 && this->linked_player != -1 && (this->_354 & 1) == 0)
+    {
+        this->attachToPlayerHands(z, y, x);
+        return 2;
+    }
+
+    return 0;
+}
 
 u32 StageEntity::random()
 {
