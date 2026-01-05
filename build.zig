@@ -1,27 +1,12 @@
 const std = @import("std");
 
-const Release = enum {
-    A2DE,
-    A2DJ,
-
-    pub fn toRomName(self: Release) []const u8 {
-        return switch (self) {
-            .A2DE => "A2DE.nds",
-            .A2DJ => "A2DJ.nds",
-        };
-    }
-};
-
 pub fn build(b: *std.Build) void {
-    const release_enum = b.option(Release, "Release", "") orelse Release.A2DE;
+    const release = b.option(Release, "Release", "") orelse Release.A2DE;
 
-    const target_options = b.standardTargetOptions(.{});
-    _ = target_options;
-
-    const release = @tagName(release_enum);
-    const rom_file = b.path(release_enum.toRomName());
-    const extract_directory = b.path(b.pathJoin(&.{ "extracted", release }));
-    const config_file = b.path(b.pathJoin(&.{ "config", release, "arm9/config.yaml" }));
+    // Define paths that are used in the build steps
+    const rom_file = b.path(release.fileName());
+    const extract_directory = b.path(b.pathJoin(&.{ "extracted", release.name() }));
+    const config_file = b.path(b.pathJoin(&.{ "config", release.name(), "arm9/config.yaml" }));
 
     // step - extract
     const extract_cmd = b.addSystemCommand(&.{"dsd"});
@@ -49,8 +34,8 @@ pub fn build(b: *std.Build) void {
     objdiff_cmd.addFileArg(config_file);
     objdiff_cmd.addArgs(&.{ "-m", "zig" });
     objdiff_cmd.addArgs(&.{ "-M", "build", "-M", "single", "-M", "--" });
-    objdiff_cmd.addArgs(&.{ "-s", "-C", "mwcc_20_84", "-p", "201" });
-    objdiff_cmd.addArgs(&.{ "-f", "-O4,p -interworking -proc=arm946e -w=off -gccinc -nolink -c -Cpp_exceptions off -lang=c++ -RTTI off -sym on" });
+    //objdiff_cmd.addArgs(&.{ "-s", "-C", "mwcc_20_84", "-p", "201" });
+    //objdiff_cmd.addArgs(&.{ "-f", "-O4,p -interworking -proc=arm946e -w=off -gccinc -nolink -c -Cpp_exceptions off -lang=c++ -RTTI off -sym on" });
 
     var objdiff_step = b.step("objdiff", "");
     objdiff_step.dependOn(&objdiff_cmd.step);
@@ -73,15 +58,7 @@ pub fn build(b: *std.Build) void {
     var report_step = b.step("report", "");
     report_step.dependOn(&report_cmd.step);
 }
-// Read ObjDiff
-const OBJDiff = struct {
-    units: []struct {
-        base_path: []u8 = "",
-        metadata: struct {
-            source_path: ?[]u8 = null,
-        },
-    },
-};
+
 fn read_objdiff() !std.json.Parsed(OBJDiff) {
     const cwd = std.fs.cwd();
     const objdiff = try cwd.openFile("objdiff.json", .{ .mode = .read_only });
@@ -89,12 +66,14 @@ fn read_objdiff() !std.json.Parsed(OBJDiff) {
     const buffer_length = try objdiff.read(&buffer);
     const buffer_slice = buffer[0..buffer_length];
 
-    return try std.json.parseFromSlice(OBJDiff, std.heap.page_allocator, buffer_slice, .{
+    return try std.json.parseFromSlice(OBJDiff, std.heap.smp_allocator, buffer_slice, .{
         .ignore_unknown_fields = true,
     });
 }
+
 fn getSourceByDest(destination: []const u8) ![]u8 {
     const result = try read_objdiff();
+    defer result.deinit();
 
     for (result.value.units) |r| {
         if (std.mem.eql(u8, r.base_path, destination)) {
@@ -107,7 +86,6 @@ fn getSourceByDest(destination: []const u8) ![]u8 {
     @panic("Could not find something");
 }
 
-// Signle
 fn compileFile(source_file: []const u8, destination_file: []const u8) !void {
     const i = std.mem.lastIndexOf(u8, destination_file, &[_]u8{'/'}) orelse 0;
     std.fs.cwd().makeDir(destination_file[0..i]) catch undefined;
@@ -133,26 +111,24 @@ fn compileFile(source_file: []const u8, destination_file: []const u8) !void {
         "-i",
         "lib/Nitro/",
     };
-    var child = std.process.Child.init(&command, std.heap.page_allocator);
-    const b = try child.spawnAndWait();
-    switch (b) {
+    var child = std.process.Child.init(&command, std.heap.smp_allocator);
+    const exit_code = try child.spawnAndWait();
+    switch (exit_code) {
         .Exited => |id| {
             if (id > 0) return error.BUILD_ERROR;
         },
-        .Signal => |_| {},
-        .Stopped => |_| {},
-        .Unknown => |_| {},
+        else => {},
     }
 }
+
 fn taskSingle(self: *std.Build.Step, _: std.Build.Step.MakeOptions) !void {
     const args = self.owner.args orelse @panic("Missing argument?");
     const destination_file = args[0];
     const source_file = try getSourceByDest(destination_file);
 
-    compileFile(source_file, destination_file) catch {
-        @panic("Failed to build");
-    };
+    compileFile(source_file, destination_file) catch @panic("");
 }
+
 fn taskAll(_: *std.Build.Step, _: std.Build.Step.MakeOptions) !void {
     const result = try read_objdiff();
 
@@ -163,3 +139,57 @@ fn taskAll(_: *std.Build.Step, _: std.Build.Step.MakeOptions) !void {
         }
     }
 }
+
+// Data types
+const Release = enum {
+    A2DE,
+    A2DJ,
+    //    A85J,
+    //    A85E,
+    //    A2DP,
+    //    A85P,
+    //    A2DK,
+    //    A2DC,
+    //    Y7QJ,
+
+    // Returns the enum name with .nds appended (e.g. A2DE.nds)
+    pub fn fileName(self: Release) []const u8 {
+        var buffer: [0xf]u8 = undefined;
+        return std.fmt.bufPrint(&buffer, "{s}{s}", .{ @tagName(self), ".nds" }) catch unreachable;
+    }
+
+    // Returns the enum name (e.g. A2DE)
+    pub fn name(self: Release) []const u8 {
+        return @tagName(self);
+    }
+};
+
+const OBJDiff = struct {
+    units: []struct {
+        base_path: []u8 = "",
+        metadata: struct {
+            source_path: ?[]u8 = null,
+        },
+    },
+};
+const OBJDiff_Full = struct {
+    min_version: []u8,
+    custom_make: []u8,
+    custom_args: [][]u8,
+    target_dir: []u8,
+    base_dir: []u8,
+    build_base: bool,
+    build_target: bool,
+    watch_patterns: [][]u8,
+    units: []struct {
+        name: []u8,
+        target_path: []u8,
+        base_path: []u8 = "",
+        metadata: struct {
+            complete: bool,
+            reverse_fn_order: bool,
+            auto_generated: bool,
+            source_path: ?[]u8 = null,
+        },
+    },
+};
