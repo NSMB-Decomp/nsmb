@@ -566,7 +566,27 @@ void StageEntity::destroy(bool permanent)
 
 void StageEntity::setTimedEvent(u32 event_id, i32 time, bool enable, bool switch_event, bool play_sfx) {}
 
-void StageEntity::applyFireballWiggle() {}
+void StageEntity::applyFireballWiggle()
+{
+    if (this->_2c6 & 0x4000)
+    {
+        this->_35c.x = this->scale.x;
+        this->_35c.y = this->scale.y;
+        this->_35c.z = this->scale.z;
+    }
+    else if (this->_3a8 == 0x1000)
+    {
+        this->_35c.x = this->scale.x;
+        this->_35c.y = this->scale.y;
+        this->_35c.z = this->scale.z;
+    }
+    else
+    {
+        this->_35c.x = ((i64)(i32)this->_3a8 * (i64)this->scale.x + 0x800) >> 12;
+        this->_35c.y = ((i64)(i32)this->_3a8 * (i64)this->scale.y + 0x800) >> 12;
+        this->_35c.z = ((i64)(i32)this->_3a8 * (i64)this->scale.z + 0x800) >> 12;
+    }
+}
 
 bool StageEntity::rotateToTarget(i16 a[2], i16 b[2]) {}
 
@@ -677,7 +697,7 @@ Vec3_32 StageEntity::tryNormalizeVec3(Vec3_32 *input)
     {
         return *input;
     }
-    Vec3_32 result;
+    Vec3_32 result = *input;
 
     return result;
 }
