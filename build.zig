@@ -5,8 +5,10 @@ pub fn build(b: *std.Build) void {
 
     // Define paths that are used in the build steps
     const rom_file = b.path(release.fileName());
-    const extract_directory = b.path(b.pathJoin(&.{ "extracted", release.name() }));
+    const extract_directory = b.path(b.pathJoin(&.{ "extracted", release.name(), "" }));
     const config_file = b.path(b.pathJoin(&.{ "config", release.name(), "arm9/config.yaml" }));
+
+    //std.log.info("{s}", .{rom_file});
 
     // step - extract
     const extract_cmd = b.addSystemCommand(&.{"dsd"});
@@ -144,18 +146,19 @@ fn taskAll(_: *std.Build.Step, _: std.Build.Step.MakeOptions) !void {
 const Release = enum {
     A2DE,
     A2DJ,
-    //    A85J,
-    //    A85E,
-    //    A2DP,
-    //    A85P,
-    //    A2DK,
-    //    A2DC,
-    //    Y7QJ,
+    A85J,
+    A85E,
+    A2DP,
+    A85P,
+    A2DK,
+    A2DC,
+    Y7QJ,
 
     // Returns the enum name with .nds appended (e.g. A2DE.nds)
     pub fn fileName(self: Release) []const u8 {
-        var buffer: [0xf]u8 = undefined;
-        return std.fmt.bufPrint(&buffer, "{s}{s}", .{ @tagName(self), ".nds" }) catch unreachable;
+        return switch (self) {
+            inline .A2DE, .A2DJ, .A85J, .A85E, .A2DP, .A85P, .A2DK, .A2DC, .Y7QJ => |en| @tagName(en) ++ ".nds",
+        };
     }
 
     // Returns the enum name (e.g. A2DE)
