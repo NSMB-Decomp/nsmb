@@ -157,7 +157,7 @@ const Release = enum {
     // Returns the enum name with .nds appended (e.g. A2DE.nds)
     pub fn fileName(self: Release) []const u8 {
         return switch (self) {
-            inline .A2DE, .A2DJ, .A85J, .A85E, .A2DP, .A85P, .A2DK, .A2DC, .Y7QJ => |en| @tagName(en) ++ ".nds",
+            inline else => |en| @tagName(en) ++ ".nds",
         };
     }
 
