@@ -1,3 +1,4 @@
+    categories: minigames
     .text       start:0x02043380 end:0x02080224 kind:code align:32
     .rodata     start:0x02080224 end:0x02080240 kind:rodata align:4
     .data       start:0x02080240 end:0x02085880 kind:data align:32
