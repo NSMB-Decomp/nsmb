@@ -12,9 +12,13 @@
 | [New Super Mario Bros. (USA) (Demo) (Kiosk)](https://datomatic.no-intro.org/index.php?page=show_record&s=28&n=x100)                     | A85E         | None        | 2006-04-07 11:29:13 |
 | [New Super Mario Bros. (Europe) (En,Fr,De,Es,It)](https://datomatic.no-intro.org/index.php?page=show_record&s=28&n=0479)                | A2DP         | None        | 2006-04-26 14:20:08 |
 | [New Super Mario Bros. (Europe) (En,Fr,De,Es,It) (Demo) (Kiosk)](https://datomatic.no-intro.org/index.php?page=show_record&s=28&n=x039) | A85P         | None        | 2006-04-27 11:13:34 |
+| [2006-Nen 10-Gatsu Taikenban Soft (Japan) (Demo) (Kiosk)](https://datomatic.no-intro.org/index.php?page=show_record&s=28&n=z126)[^1]    | A85J_2[^2]   | None        | 2006-09-01 20:30:18 |
 | [New Super Mario Bros. (Korea) ](https://datomatic.no-intro.org/index.php?page=show_record&s=28&n=0879)                                 | A2DK         | None        | 2006-12-27 14:32:43 |
 | [New Chaoji Maliou Xiongdi (China) (iDS)](https://datomatic.no-intro.org/index.php?page=show_record&s=28&n=x142)                        | A2DC         | None        | 2009-04-27 20:29:28 |
 | [New Super Mario Bros. (Japan) (Demo) (Kiosk, Y7QJ)](https://datomatic.no-intro.org/index.php?page=show_record&s=28&n=z393)             | Y7QJ         | None        | 2009-10-23 16:23:25 |
+
+[^1]: This New Super Mario Bros Rom is a part of a Trial Cart.  
+[^2]: This New SUper Mario Bros Rom has the same Release ID as another Rom, It has been apphended with a number to differentiate.
 
 <!--
 This build is identical to A85P above but it also includes a autoboot flag 
