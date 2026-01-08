@@ -150,6 +150,7 @@ const Release = enum {
     A85E,
     A2DP,
     A85P,
+    A85J_1,
     A2DK,
     A2DC,
     Y7QJ,
