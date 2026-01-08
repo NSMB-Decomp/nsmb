@@ -1,6 +1,6 @@
 Nitro::func_01ff8000 kind:function(arm,size=0x6c) addr:0x01ff8000
 Nitro::func_01ff806c kind:function(arm,size=0x74) addr:0x01ff806c
-Nitro::func_01ff80e0 kind:function(arm,size=0x48) addr:0x01ff80e0
+Nitro::_EnableInterrupt kind:function(arm,size=0x48) addr:0x01ff80e0
 Nitro::func_01ff8128 kind:function(arm,size=0x38) addr:0x01ff8128
 Nitro::func_01ff8160 kind:function(arm,size=0x4) addr:0x01ff8160
 Nitro::func_01ff8164 kind:function(arm,size=0x44) addr:0x01ff8164

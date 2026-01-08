@@ -187,7 +187,7 @@ data_02088800 kind:bss addr:0x02088800
 data_02088804 kind:bss addr:0x02088804
 data_02088808 kind:bss addr:0x02088808
 data_0208880c kind:bss addr:0x0208880c
-data_02088810 kind:bss addr:0x02088810
+IS_MULTIBOOT kind:bss addr:0x02088810
 data_02088814 kind:bss addr:0x02088814
 data_02088818 kind:bss addr:0x02088818
 data_0208881c kind:bss addr:0x0208881c
@@ -476,8 +476,8 @@ data_0208b634 kind:bss addr:0x0208b634
 data_0208b640 kind:bss addr:0x0208b640
 data_0208b64c kind:bss addr:0x0208b64c
 data_0208b658 kind:bss addr:0x0208b658
-FrameCounter kind:data(word) addr:0x0208b668
-data_0208b66c kind:bss addr:0x0208b66c
+FrameCounter kind:bss addr:0x0208b668
+FrameCounter2 kind:bss addr:0x0208b66c
 data_0208b670 kind:bss addr:0x0208b670
 data_0208b674 kind:bss addr:0x0208b674
 data_0208b678 kind:bss addr:0x0208b678
