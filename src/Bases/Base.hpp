@@ -66,5 +66,5 @@ public:
   virtual bool prepareResourcesSafe(u32, Heap*);
   virtual bool prepareResourcesFast(u32, Heap*);
   virtual bool onHeapCreated();
-  virtual ~Base();
+  virtual ~Base() = 0;
 };
