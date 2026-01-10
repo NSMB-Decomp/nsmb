@@ -367,8 +367,14 @@ bool Actor::isOutOfViewVertical(Rect *rect,int player_id)
 }
 
 
-u32 data_ov000_020ca858;
-u32 data_ov000_020c6c14[3] = {};
+//u32 data_ov000_020ca858;
+//u32 data_ov000_020c6c14[3] = {};
+bool(*data_ov000_020ca858)(i32, i32);
+bool(*data_ov000_020c6c14[3])(i32, i32) = {
+    Actor::calcDistanceToPlayerNoWrap,
+    Actor::calcDistanceToPlayerWrap,
+    Actor::calcDistanceToPlayerWrap,
+};
 void Actor::setCalcPositionToPlayerFunction(u32 param_1)
 {
     data_ov000_020ca858 = data_ov000_020c6c14[param_1];
@@ -381,8 +387,34 @@ void Actor::wrapPosition(u32 param_1,u32 param_2,u32 param_3)
     //(*data_02039968)(param_1,param_3);
 }
 
+void Actor::setWrapPositionFunction() {
+
+}
+
 
 bool Actor::isBehindTargetNoWrap(i32 param_1,i32 param_2)
 {
   return param_1 < param_2;
 }
+
+bool(*data_ov000_020ca854)(i32, i32);
+bool(*data_ov000_020c6c20[3])(i32, i32) = {
+    Actor::isBehindTargetNoWrap,
+    Actor::isBehindTargetWrap,
+    Actor::isBehindTargetWrap,
+};
+bool Actor::isBehindTargetWrap(i32, i32) {
+
+}
+
+void Actor::setIsBehindTargetFunction(u32 a) {
+    data_ov000_020ca854 = data_ov000_020c6c20[a];
+}
+
+void Actor::initWrapFunctions(u32 a) {
+    Actor::setWrapPositionFunction();
+    Actor::setCalcPositionToPlayerFunction(a);
+    Actor::setIsBehindTargetFunction(a);
+}
+
+//bool ()

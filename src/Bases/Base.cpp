@@ -360,13 +360,20 @@ void Base::create()
 }
 i32 Base::processCreate()
 {
-  return this->process(Base::onCreate,Base::preCreate,Base::postCreate);
+  bool (Base::*on)() = Base::onCreate;
+  bool (Base::*pre)() = Base::preCreate;
+  void (Base::*post)(u32) = Base::postCreate;
+  return this->process(on,pre,post);
 }
+
 i32 Base::processDestroy()
 {
   u16 object_id = this->object_id;
+  bool (Base::*on)() = Base::onDestroy;
+  bool (Base::*pre)() = Base::preDestroy;
+  void (Base::*post)(u32) = Base::postDestroy;
 
-  u32 ret = this->process(Base::onDestroy,Base::preDestroy,Base::postDestroy);
+  u32 ret = this->process(on,pre,post);
   if (ret == 1)
   {
     unloadSceneOverlay(object_id);

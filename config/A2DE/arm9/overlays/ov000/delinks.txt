@@ -12,6 +12,7 @@ src/Scenes/StageScene.cpp:
 src/Bases/Actor.cpp:
     .text       start:0x020a03ac end:0x020a10a0
     .data       start:0x020c6c14 end:0x020c6c84
+    .bss        start:0x020ca854 end:0x020ca858
 
 src/Bases/StageActor.cpp:
     .text       start:0x020a10a0 end:0x020a12dc
