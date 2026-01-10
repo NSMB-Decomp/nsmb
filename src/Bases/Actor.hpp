@@ -59,6 +59,8 @@ public:
     void stepVelocityClamped();
     Vec3_32 getCenteredPosition();
     bool isOutOfViewVertical(Rect *, int);
+    bool isInFrontOfTarget(Actor*);
+    bool isBehindTarget(Actor*);
     static bool calcDistanceToPlayerNoWrap(i32, i32);
     static bool calcDistanceToPlayerWrap(i32, i32);
     static bool isBehindTargetWrap(i32, i32);

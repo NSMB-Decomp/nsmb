@@ -366,9 +366,6 @@ bool Actor::isOutOfViewVertical(Rect *rect,int player_id)
          -Game::cameraY[player_id] + Game::cameraZoomY[player_id];
 }
 
-
-//u32 data_ov000_020ca858;
-//u32 data_ov000_020c6c14[3] = {};
 bool(*data_ov000_020ca858)(i32, i32);
 bool(*data_ov000_020c6c14[3])(i32, i32) = {
     Actor::calcDistanceToPlayerNoWrap,
@@ -387,22 +384,39 @@ void Actor::wrapPosition(u32 param_1,u32 param_2,u32 param_3)
     //(*data_02039968)(param_1,param_3);
 }
 
-void Actor::setWrapPositionFunction() {
-
-}
-
-
-bool Actor::isBehindTargetNoWrap(i32 param_1,i32 param_2)
-{
-  return param_1 < param_2;
-}
-
 bool(*data_ov000_020ca854)(i32, i32);
 bool(*data_ov000_020c6c20[3])(i32, i32) = {
     Actor::isBehindTargetNoWrap,
     Actor::isBehindTargetWrap,
     Actor::isBehindTargetWrap,
 };
+
+void Actor::setWrapPositionFunction() {
+
+}
+
+
+bool Actor::isBehindTarget(Actor* other) {
+    return (*data_ov000_020ca854)(
+        this->position.x + this->centerOffset.x,
+        other->position.x + other->centerOffset.x
+    );
+}
+
+bool Actor::isInFrontOfTarget(Actor* other) {
+    return (*data_ov000_020ca854)(
+        other->position.x + other->centerOffset.x,
+        this->position.x + this->centerOffset.x
+    );
+}
+
+//bool Actor::
+
+bool Actor::isBehindTargetNoWrap(i32 param_1,i32 param_2)
+{
+  return param_1 < param_2;
+}
+
 bool Actor::isBehindTargetWrap(i32, i32) {
 
 }
