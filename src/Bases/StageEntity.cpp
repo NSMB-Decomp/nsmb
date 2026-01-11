@@ -223,7 +223,6 @@ void StageEntity::func_ov000_0209da00()
     StageEntity::func_ov000_0209da0c();
 }
 
-u32 data_02085aa4;
 u32 uRam020cad40;
 void func_ov000_020af30c(u32, u32, u32, u32, u32);
 void StageEntity::func_ov000_0209e5a8(u32 param_1, u32 param_2)
