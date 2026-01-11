@@ -6,6 +6,7 @@
 #include "Heap.hpp"
 #include "Vec.hpp"
 
+
 struct ObjectProfile
 {
     void* (*constructor)();
@@ -83,6 +84,8 @@ extern Heap* data_0208b720;
 
 //
 bool func_0204d82c();
+void func_020067dc();
+extern i32 data_02085aa4;
 
 //
 bool SceneGraph_removeChild(SceneGraph*, ProcessLink*);
@@ -153,3 +156,4 @@ extern u32 data_02085a78;
 extern u32 data_02085a74;
 
 extern u32 data_ov000_020ca2b8;
+extern void (*data_02039968)(i32, i32);

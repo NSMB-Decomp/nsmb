@@ -61,8 +61,9 @@ public:
     bool isOutOfViewVertical(Rect *, int);
     bool isInFrontOfTarget(Actor*);
     bool isBehindTarget(Actor*);
-    static bool calcDistanceToPlayerNoWrap(i32, i32);
-    static bool calcDistanceToPlayerWrap(i32, i32);
+    i32 getDistanceToPlayer(i32, i32);
+    static i32 calcDistanceToPlayerNoWrap(i32, i32, i32, i32);
+    static i32 calcDistanceToPlayerWrap(i32, i32, i32, i32);
     static bool isBehindTargetWrap(i32, i32);
     static void setCalcPositionToPlayerFunction(u32);
     static void wrapPosition(u32, u32, u32);
