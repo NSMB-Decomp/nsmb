@@ -202,12 +202,12 @@ func_ov130_02127744 kind:function(arm,size=0x50) addr:0x02127744
 func_ov130_02127794 kind:function(arm,size=0x284) addr:0x02127794
 func_ov130_02127a18 kind:function(arm,size=0x43c) addr:0x02127a18
 func_ov130_02127e54 kind:function(arm,size=0x4c) addr:0x02127e54
-func_ov130_02127ea0 kind:function(arm,size=0x44) addr:0x02127ea0
-func_ov130_02127ee4 kind:function(arm,size=0x4c) addr:0x02127ee4
-func_ov130_02127f30 kind:function(arm,size=0x100) addr:0x02127f30
-func_ov130_02128030 kind:function(arm,size=0x10) addr:0x02128030
-func_ov130_02128040 kind:function(arm,size=0xc) addr:0x02128040
-func_ov130_0212804c kind:function(arm,size=0x38) addr:0x0212804c
+_ZN16MGDebugMenuSceneD2Ev kind:function(arm,size=0x44) addr:0x02127ea0
+_ZN16MGDebugMenuSceneD0Ev kind:function(arm,size=0x4c) addr:0x02127ee4
+_ZN16MGDebugMenuScene7virt_20Em kind:function(arm,size=0x100) addr:0x02127f30
+_ZN16MGDebugMenuScene7virt_19Em kind:function(arm,size=0x10) addr:0x02128030
+_ZN16MGDebugMenuScene7virt_18Ev kind:function(arm,size=0xc) addr:0x02128040
+_ZN16MGDebugMenuSceneC1Ev kind:function(arm,size=0x38) addr:0x0212804c
 func_ov130_02128084 kind:function(arm,size=0x54) addr:0x02128084
 func_ov130_021280d8 kind:function(arm,size=0x5c) addr:0x021280d8
 func_ov130_02128134 kind:function(arm,size=0x40) addr:0x02128134
@@ -636,7 +636,7 @@ data_ov130_0213896c kind:data(any) addr:0x0213896c
 data_ov130_02138980 kind:data(any) addr:0x02138980
 data_ov130_02138994 kind:data(any) addr:0x02138994
 data_ov130_021389ac kind:data(any) addr:0x021389ac
-Scene_329::vtable kind:data(any) addr:0x021389d0
+_ZTV16MGDebugMenuScene kind:data(any) addr:0x021389d0
 data_ov130_02138a24 kind:data(any) addr:0x02138a24
 data_ov130_02138a25 kind:data(any) addr:0x02138a25
 UnknownProfile::ov130_02138a28 kind:data(any) addr:0x02138a28

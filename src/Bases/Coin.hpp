@@ -34,7 +34,8 @@ public:
     u8 _4ed;
     u8 _4ee;
     u8 _4ef;
-    u8 _pad3[0x3];
+    u8 _4f0;
+    u8 _pad3[0x2];
     u8 _4e3;
     u8 _4e4;
 

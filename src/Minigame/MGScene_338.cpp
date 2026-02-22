@@ -124,7 +124,7 @@ void MGScene_338::virt_20(u32 param_1)
         //if ((u64)data_ov130_02137bf0 * (u64)0xcccccccd >> 3) {
         //    return;
         //}
-        u32 z = u32((u64)data_ov130_02137bf0 * 0xcccccccd) >> 0x3;
+        u32 z = u32((u64)data_ov130_02137bf0 * 0xcccccccd) >> 3;
         if (z) {
             do
             {

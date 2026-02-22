@@ -9,6 +9,10 @@ src/Minigame/MGDebugScene.cpp:
     .text       start:0x02126a38 end:0x02126c7c
     .data       start:0x02138868 end:0x021388c4
 
+src/Minigame/MGDebugMenuScene.cpp:
+    .text       start:0x02127ea0 end:0x02128084
+    .data       start:0x021389d0 end:0x02138a24
+
 src/Minigame/MGScene_338.cpp:
     .text       start:0x02134e90 end:0x02135230
     .rodata     start:0x02137cc0 end:0x02137d2c

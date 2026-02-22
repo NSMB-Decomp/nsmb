@@ -64,7 +64,7 @@ bool Coin::onRender()
             b = data_ov010_02129438;
         }
         else {
-            b = this->_pad3[0];
+            b = this->_4f0;
         }
 
         sprite_priority = this->getSpritePriority(0, 0, 0);

@@ -4,8 +4,8 @@
 
 # Supported releases
 
-| No-Intro Name                                                                                                                                  | Release Code | Progress    | Build Date          |
-| ---------------------------------------------------------------------------------------------------------------------------------------------- | ------------ | ----------- | ------------------- |
+| No-Intro Name                                                                                                                           | Product Code | Progress    | Build Date          |
+| --------------------------------------------------------------------------------------------------------------------------------------- | ------------ | ----------- | ------------------- |
 | [New Super Mario Bros. (USA, Australia)](https://datomatic.no-intro.org/index.php?page=show_record&s=28&n=0434)                         | A2DE         | <a href="https://decomp.dev/NSMB-Decomp/nsmb"><img width=53 height=20 src="https://decomp.dev/projects/950858906.svg?mode=shield&label"></a> | 2006-03-29 09:48:19 |
 | [New Super Mario Bros. (Japan)](https://datomatic.no-intro.org/index.php?page=show_record&s=28&n=0442)                                  | A2DJ         | None        | 2006-04-04 19:07:45 |
 | [New Super Mario Bros. (Japan) (Demo) (Kiosk, A85J)](https://datomatic.no-intro.org/index.php?page=show_record&s=28&n=z054)             | A85J         | None        | 2006-04-07 11:17:21 |
@@ -18,7 +18,7 @@
 | [New Super Mario Bros. (Japan) (Demo) (Kiosk, Y7QJ)](https://datomatic.no-intro.org/index.php?page=show_record&s=28&n=z393)             | Y7QJ         | None        | 2009-10-23 16:23:25 |
 
 [^1]: Multi-demo cart
-[^2]: The NSMB ROM inside the multi-demo cart ROM has the same Release Code as the standard JP demo, so "_2" is appended here.
+[^2]: The NSMB ROM inside the multi-demo cart ROM has the same Product Code as the standard JP demo, so "_1" is appended here.
 <!--
 This build is identical to A85P above but it also includes a autoboot flag 
 | [x168 - New Super Mario Bros. (Europe) (En,Fr,De,Es,It) (Demo) (Kiosk, Y78P)](https://datomatic.no-intro.org/index.php?page=show_record&s=28&n=x168) | A85P         | None        | 2006-04-27 11:13:34 |

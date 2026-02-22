@@ -2,8 +2,8 @@
 
 class MGDebugScene: public MGScene {
 public:
-  ~MGDebugScene();
-  MGDebugScene();
+  inline ~MGDebugScene();
+  inline MGDebugScene();
   
   bool func_ov130_02126ab0();
 
