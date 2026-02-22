@@ -38,32 +38,62 @@ void Coin::onStageComplete(PlayerActor* player) {
     //this->destroy();
 }
 
-u32(func_ov000_02098798)(void *, u32);
-void(func_ov010_020d8488)();
-void(func_0200d578)();
-u32 data_ov010_02129438;
 bool Coin::onRender()
 {
-    //    if (this->_4ce == 0) {
-    //        if (this->_4df == 0) {
-    //            u32 a = data_ov010_02129438;
-    //            if (this->_4c0 != 0) {
-    //                a = this->_4e0;
-    //            }
-    //            u32 b = func_ov000_02098798(this, 0);
-    //            if ((this->_4c0 == 0) && (this->_4c4 != 0)) {
-    //                b = 0x20;
-    //            }
-    //        }
-    //        return true;
-    //    } else if (this->_4d8 == 0) {
-    //        u32 a = func_ov000_02098798(this, 0);
-    //    } else {
-    //        if (this->_4d9 != 0) {
-    //
-    //        }
-    //    }
-    //    return true;
+    u32 a;
+    u8 b;
+    u32 sprite_priority;
+    i32 d;
+    if (this->_4da != 0) {
+        return true;
+    }
+    
+    if (this->_4ef != 0) {
+        sprite_priority = this->getSpritePriority(0, 0, 0);
+        drawSprite(data_ov011_0212f180[b + 0xf], this->position.x, this->position.y + 0x8000, sprite_priority, 0, 3, 0, 0, 0, 0);
+    } else if (this->_4e8 != 0) {
+        if (this->_4e9 != 0) {
+            this->func_ov010_020d8488();
+        }
+        drawSprite(data_ov011_0212f180[b + 0xf], this->position.x, this->position.y + 0x8000, sprite_priority, 0, 3, 0, 0, 0, 2);
+        if (this->_4e9 == 0) {
+            this->func_ov010_020d8488();
+        }
+    } else {
+        if (this->_4c0 == 0) {
+            b = data_ov010_02129438;
+        }
+        else {
+            b = this->_pad3[0];
+        }
+
+        sprite_priority = this->getSpritePriority(0, 0, 0);
+        if ((this->_4c0 == 0) && (this->_4c4 != 0)) {
+            sprite_priority = 0x20;
+        }
+
+        drawSprite(data_ov011_0212f180[b + 0xf], this->position.x, this->position.y + 0x8000, sprite_priority, 0, 3, 0, 0, 0, 0);
+
+        if (data_02085a98 == 1) {
+            d = this->position.x;
+            if (d < 0x8000) {
+                d += 0x100000;
+            } else if (0xf8000 < d) {
+                d += -0x100000;
+                a = true;
+            }
+            if (a) {
+                drawSprite(data_ov011_0212f180[b + 0xf], this->position.x, this->position.y + 0x8000, sprite_priority, 0, 3, (u32*)&this->_418, 0, 0, 0);
+                // sp[0x18] = Vec3_32::vtable
+            }
+        }
+    }
+    return true;
+}
+
+void Coin::func_ov010_020d8488() {
+  //drawSprite(*(undefined4 *)(DAT_arm9_ov010__020d84e8 + (this->_4e9 + 0x15) * 4),(this->position).x,
+  //           (this->position).y + 0x8000,0,0,3,(int)&this->vtable + DAT_arm9_ov010__020d84e4,0,0,0);
 }
 
 i32 (Base::*data_ov010_021293f4)();

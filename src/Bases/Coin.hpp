@@ -56,5 +56,6 @@ public:
     void _11();
     void _21();
     void onStageComplete(PlayerActor* player);
+    void func_ov010_020d8488();
 };
 size_assert(Coin, 0x4e8);
