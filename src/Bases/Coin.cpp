@@ -80,8 +80,8 @@ bool Coin::onRender()
         drawSprite(data_ov011_0212f180[b + 0xf], this->position.x, this->position.y + 0x8000, sprite_priority, 0, 3, (Vec2_32*)NULL, 0, 0, 0);
 
         if (data_02085a98 == 1) {
-            Vec3_32 d;
             bool a = false;
+            Vec3_32 d;
             d.x = this->position.x;
             d.y = this->position.y;
             d.z = this->position.z;
@@ -94,7 +94,6 @@ bool Coin::onRender()
             }
             if (a) {
                 drawSprite(data_ov011_0212f180[b + 0xf], d.x, d.y + 0x8000, sprite_priority, 0, 3, (Vec2_32*)NULL, 0, 0, 2);
-                //drawSprite(*(int *)((bVar2 + 0xf) * 4 + 0x212f180),d.x,(this->position).y + 0x8000, sprite_priority, 0, 3, 0,              0, 0, 2);
             }
         }
     } 
@@ -102,8 +101,7 @@ bool Coin::onRender()
 }
 
 void Coin::func_ov010_020d8488() {
-  //drawSprite(*(undefined4 *)(DAT_arm9_ov010__020d84e8 + (this->_4e9 + 0x15) * 4),(this->position).x,
-  //           (this->position).y + 0x8000,0,0,3,(int)&this->vtable + DAT_arm9_ov010__020d84e4,0,0,0);
+    drawSprite(data_ov011_0212f180[this->_4e9 + 0x15], this->position.x, this->position.y + 0x8000, 0, 0, 3, &this->_424, 0, 0, 0);
 }
 
 i32 (Base::*data_ov010_021293f4)();
