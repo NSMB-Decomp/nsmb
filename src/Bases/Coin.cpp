@@ -44,15 +44,13 @@ void Coin::onStageComplete(PlayerActor* player) {
 
 bool Coin::onRender()
 {
-    u8 b;
-    u32 sprite_priority;
     if (this->_4da != 0) {
         return true;
     }
     
     if (this->_4ef != 0) {
         if (this->_4e8 == 0) {
-            sprite_priority = this->getSpritePriority(0);
+            u32 sprite_priority = this->getSpritePriority(0);
             drawSprite(data_ov011_0212f180[this->_4f0 + 0xf], this->position.x, this->position.y + 0x8000, sprite_priority, 0, 3, &this->_418, 0, 0, 0);
         } else {
             if (this->_4e9 != 0) {
@@ -66,6 +64,7 @@ bool Coin::onRender()
             }
         }
     } else {
+        u8 b;
         if (this->_4c0 == 0) {
             b = data_ov010_02129438;
         }
@@ -73,7 +72,7 @@ bool Coin::onRender()
             b = this->_4f0;
         }
 
-        sprite_priority = this->getSpritePriority(0);
+        u32 sprite_priority = this->getSpritePriority(0);
         if ((this->_4c0 == 0) && (this->_4c4 != 0)) {
             sprite_priority = 0x20;
         }
