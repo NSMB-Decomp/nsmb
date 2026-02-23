@@ -87,6 +87,7 @@ u32 data_02085a98;
 void drawSprite(u32, u32, u32, u32, u32, u32, u32*, u32, u32, u32);
 void Heap_deallocate(Heap*, void *);
 extern Heap* data_0208b720;
+void func_02020354(i8);
 
 //
 bool func_0204d82c();

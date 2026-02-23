@@ -34,8 +34,12 @@ bool Coin::onUpdate_0()
 void Coin::_11() {}
 
 void Coin::onStageComplete(PlayerActor* player) {
-    //Vec3_32 vec = this->position;
-    //this->destroy();
+    Vec3_32 vec = this->position;
+    //StageEntity::func_ov000_0209ab90((StageEntity *)this,0,0,0x18000,(int)player->linked_player);
+    func_02020354(player->linked_player);
+    //Nitro::Math_AddVec3_32s((Vec3_32 *)&vec.x,(Vec3_32 *)&(this->centerOffset).x,(Vec3_32 *)&vec.x);
+    //func_02012398(0x70,&vec);
+    this->destroy(1);
 }
 
 bool Coin::onRender()
@@ -43,7 +47,6 @@ bool Coin::onRender()
     u32 a;
     u8 b;
     u32 sprite_priority;
-    i32 d;
     if (this->_4da != 0) {
         return true;
     }
@@ -75,15 +78,17 @@ bool Coin::onRender()
         drawSprite(data_ov011_0212f180[b + 0xf], this->position.x, this->position.y + 0x8000, sprite_priority, 0, 3, 0, 0, 0, 0);
 
         if (data_02085a98 == 1) {
-            d = this->position.x;
-            if (d < 0x8000) {
-                d += 0x100000;
-            } else if (0xf8000 < d) {
-                d += -0x100000;
+    Vec3_32  d;
+
+            d.x = this->position.x;
+            if (d.x < 0x8000) {
+                d.x += 0x100000;
+            } else if (0xf8000 < d.x) {
+                d.x += -0x100000;
                 a = true;
             }
             if (a) {
-                drawSprite(data_ov011_0212f180[b + 0xf], this->position.x, this->position.y + 0x8000, sprite_priority, 0, 3, (u32*)&this->_418, 0, 0, 0);
+                drawSprite(data_ov011_0212f180[b + 0xf], d.x, this->position.y + 0x8000, sprite_priority, 0, 3, (u32*)&this->_418, 0, 0, 0);
                 // sp[0x18] = Vec3_32::vtable
             }
         }
