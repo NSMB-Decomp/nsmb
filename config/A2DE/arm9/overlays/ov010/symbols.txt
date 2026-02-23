@@ -694,9 +694,9 @@ func_ov010_020e92c4 kind:function(arm,size=0x8) addr:0x020e92c4
 func_ov010_020e92cc kind:function(arm,size=0x1c) addr:0x020e92cc
 func_ov010_020e92e8 kind:function(arm,size=0x28) addr:0x020e92e8
 func_ov010_020e9310 kind:function(arm,size=0x2c) addr:0x020e9310
-func_ov010_020e933c kind:function(arm,size=0x2c) addr:0x020e933c
-func_ov010_020e9368 kind:function(arm,size=0x5c) addr:0x020e9368
-func_ov010_020e93c4 kind:function(arm,size=0x64) addr:0x020e93c4
+_ZN8Actor_226createEv kind:function(arm,size=0x2c) addr:0x020e933c
+_ZN8Actor_22D1Ev kind:function(arm,size=0x5c) addr:0x020e9368
+_ZN8Actor_22D0Ev kind:function(arm,size=0x64) addr:0x020e93c4
 func_ov010_020e9428 kind:function(arm,size=0xa4) addr:0x020e9428
 func_ov010_020e94cc kind:function(arm,size=0x9c) addr:0x020e94cc
 func_ov010_020e9568 kind:function(arm,size=0x30) addr:0x020e9568
@@ -2277,7 +2277,7 @@ data_ov010_02126b74 kind:data(any) addr:0x02126b74
 UnknownProfile::ov010_02126b7c kind:data(any) addr:0x02126b7c
 data_ov010_02126b90 kind:data(any) addr:0x02126b90
 UnknownProfile::ov010_02126be0 kind:data(any) addr:0x02126be0
-data_ov010_02126bf4 kind:data(any) addr:0x02126bf4
+_ZTV8Actor_22 kind:data(any) addr:0x02126bec
 data_ov010_02126d00 kind:data(any) addr:0x02126d00
 data_ov010_02126d08 kind:data(any) addr:0x02126d08
 data_ov010_02126d18 kind:data(any) addr:0x02126d18
