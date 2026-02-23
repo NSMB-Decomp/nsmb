@@ -29,23 +29,7 @@ public:
     void init(Base*, void*, u32, u32, u32);
 };
 
-void (Collider::*__1[])() = {
-    Collider::func_ov000_020ac7bc,
-    Collider::func_ov000_020acc78,
-    Collider::func_ov000_020acc78
-};
-void (Collider::*__2[])() = {
-    Collider::func_ov000_020ac288,
-    Collider::func_ov000_020ac750,
-    Collider::func_ov000_020ac750
-};
-void (Collider::*__3[])() = {
-    Collider::func_ov000_020abcfc,
-    Collider::func_ov000_020ac21c,
-    Collider::func_ov000_020ac21c
-};
-void (Collider::*__4[])() = {
-    Collider::func_ov000_020aba68,
-    Collider::func_ov000_020abc90,
-    Collider::func_ov000_020abc90
-};
+extern void (Collider::*__1[3])();
+extern void (Collider::*__2[3])();
+extern void (Collider::*__3[3])();
+extern void (Collider::*__4[3])();

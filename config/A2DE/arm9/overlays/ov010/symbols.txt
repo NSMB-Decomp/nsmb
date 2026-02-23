@@ -1859,7 +1859,7 @@ __sinit_ov010_02123414 kind:function(arm,size=0x4) addr:0x02123414
 __sinit_ov010_02123418 kind:function(arm,size=0x80) addr:0x02123418
 __sinit_ov010_02123498 kind:function(arm,size=0x90) addr:0x02123498
 __sinit_ov010_02123528 kind:function(arm,size=0x170) addr:0x02123528
-__sinit_ov010_02123698 kind:function(arm,size=0x150) addr:0x02123698
+__sinit_Coin.cpp kind:function(arm,size=0x150) addr:0x02123698
 __sinit_ov010_021237e8 kind:function(arm,size=0x24) addr:0x021237e8
 __sinit_ov010_0212380c kind:function(arm,size=0x58) addr:0x0212380c
 __sinit_ov010_02123864 kind:function(arm,size=0xb4) addr:0x02123864
@@ -1875,7 +1875,7 @@ __sinit_ov010_02123ad0 kind:function(arm,size=0xec) addr:0x02123ad0
 .p__sinit_ov010_02123418 kind:data(word) addr:0x02123bc0
 .p__sinit_ov010_02123498 kind:data(word) addr:0x02123bc4
 .p__sinit_ov010_02123528 kind:data(word) addr:0x02123bc8
-.p__sinit_ov010_02123698 kind:data(word) addr:0x02123bcc
+.p__sinit_Coin.cpp kind:data(word) addr:0x02123bcc
 .p__sinit_ov010_021237e8 kind:data(word) addr:0x02123bd0
 .p__sinit_ov010_0212380c kind:data(word) addr:0x02123bd4
 .p__sinit_ov010_02123864 kind:data(word) addr:0x02123bd8

@@ -246,3 +246,24 @@ bool Coin::onDestroy()
 }
 
 Coin::~Coin() {}
+
+void (Coin::*__5[3])() = {
+    Coin::func_ov010_020d9890,
+    Coin::func_ov010_020d9890,
+    Coin::func_ov010_020d9890,
+};
+void (Coin::*__6[3])() = {
+    Coin::func_ov010_020d9890,
+    Coin::func_ov010_020d9890,
+    Coin::func_ov010_020d9890,
+};
+void (Coin::*__7[3])() = {
+    Coin::func_ov010_020d9890,
+    Coin::func_ov010_020d9890,
+    Coin::func_ov010_020d9890,
+};
+void (Coin::*__8[3])() = {
+    Coin::func_ov010_020d9890,
+    Coin::func_ov010_020d9890,
+    Coin::func_ov010_020d9890,
+};

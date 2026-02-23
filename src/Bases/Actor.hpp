@@ -2,10 +2,10 @@
 #include "../Vec.hpp"
 #include "Object.hpp"
 
-Vec3_32 *ActorSpawnPosition;
-Vec3_16 *ActorSpawnRotation;
-i8 *ActorSpawnPlayer;
-i32 *ActorSpawnScale;
+extern Vec3_32 *ActorSpawnPosition;
+extern Vec3_16 *ActorSpawnRotation;
+extern i8 *ActorSpawnPlayer;
+extern i32 *ActorSpawnScale;
 
 struct Rect
 {
