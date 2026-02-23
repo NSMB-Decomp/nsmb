@@ -701,7 +701,7 @@ Vec3_32 StageEntity::tryNormalizeVec3(Vec3_32 *input)
     return result;
 }
 
-u32 StageEntity::getSpritePriority(u32 a, u32 b, u32 c) {}
+u32 StageEntity::getSpritePriority(u32 a) {}
 
 u16 *StageEntity::getObjectBank(u32 sprite_id)
 {

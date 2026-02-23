@@ -44,7 +44,6 @@ void Coin::onStageComplete(PlayerActor* player) {
 
 bool Coin::onRender()
 {
-    u32 a;
     u8 b;
     u32 sprite_priority;
     if (this->_4da != 0) {
@@ -52,15 +51,19 @@ bool Coin::onRender()
     }
     
     if (this->_4ef != 0) {
-        sprite_priority = this->getSpritePriority(0, 0, 0);
-        drawSprite(data_ov011_0212f180[b + 0xf], this->position.x, this->position.y + 0x8000, sprite_priority, 0, 3, 0, 0, 0, 0);
-    } else if (this->_4e8 != 0) {
-        if (this->_4e9 != 0) {
-            this->func_ov010_020d8488();
-        }
-        drawSprite(data_ov011_0212f180[b + 0xf], this->position.x, this->position.y + 0x8000, sprite_priority, 0, 3, 0, 0, 0, 2);
-        if (this->_4e9 == 0) {
-            this->func_ov010_020d8488();
+        if (this->_4e8 == 0) {
+            sprite_priority = this->getSpritePriority(0);
+            drawSprite(data_ov011_0212f180[this->_4f0 + 0xf], this->position.x, this->position.y + 0x8000, sprite_priority, 0, 3, &this->_418, 0, 0, 0);
+        } else {
+            if (this->_4e9 != 0) {
+                this->func_ov010_020d8488();
+            }
+            drawSprite(data_ov011_0212f180[this->_4f0 + 0xf], this->position.x, this->position.y + 0x8000, 0, 0, 3, (Vec2_32*)NULL, 0, 0, 0);
+            // drawSprite(*(int *)((this->_4f0 + 0xf) * 4 + 0x212f180),(this->position).x,
+                 //(this->position).y + 0x8000,0,0,3,0,0,(undefined2 *)0x0,0);
+            if (this->_4e9 == 0) {
+                this->func_ov010_020d8488();
+            }
         }
     } else {
         if (this->_4c0 == 0) {
@@ -70,29 +73,32 @@ bool Coin::onRender()
             b = this->_4f0;
         }
 
-        sprite_priority = this->getSpritePriority(0, 0, 0);
+        sprite_priority = this->getSpritePriority(0);
         if ((this->_4c0 == 0) && (this->_4c4 != 0)) {
             sprite_priority = 0x20;
         }
 
-        drawSprite(data_ov011_0212f180[b + 0xf], this->position.x, this->position.y + 0x8000, sprite_priority, 0, 3, 0, 0, 0, 0);
+        drawSprite(data_ov011_0212f180[b + 0xf], this->position.x, this->position.y + 0x8000, sprite_priority, 0, 3, (Vec2_32*)NULL, 0, 0, 0);
 
         if (data_02085a98 == 1) {
-    Vec3_32  d;
-
+            Vec3_32 d;
+            bool a = false;
             d.x = this->position.x;
+            d.y = this->position.y;
+            d.z = this->position.z;
             if (d.x < 0x8000) {
                 d.x += 0x100000;
+                a = true;
             } else if (0xf8000 < d.x) {
-                d.x += -0x100000;
+                d.x -= 0x100000;
                 a = true;
             }
             if (a) {
-                drawSprite(data_ov011_0212f180[b + 0xf], d.x, this->position.y + 0x8000, sprite_priority, 0, 3, (u32*)&this->_418, 0, 0, 0);
-                // sp[0x18] = Vec3_32::vtable
+                drawSprite(data_ov011_0212f180[b + 0xf], d.x, d.y + 0x8000, sprite_priority, 0, 3, (Vec2_32*)NULL, 0, 0, 2);
+                //drawSprite(*(int *)((bVar2 + 0xf) * 4 + 0x212f180),d.x,(this->position).y + 0x8000, sprite_priority, 0, 3, 0,              0, 0, 2);
             }
         }
-    }
+    } 
     return true;
 }
 
