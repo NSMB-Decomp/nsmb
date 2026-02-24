@@ -446,8 +446,8 @@ u32 data_ov010_021216ec[3];
 i32 data_ov010_021216c4[3];
 i32 data_ov010_0212164c[2];
 u8 *data_ov000_020ca2ac;
-void *data_ov010_02125204;
-bool func_ov000_020af790(u32, u32, u32);
+Collider* data_ov010_02125204;
+bool func_ov000_020af790(u32, u16, u16);
 bool Coin::onCreate()
 {
 	this->_408 = this->position;
@@ -455,12 +455,12 @@ bool Coin::onCreate()
 	this->position.y -= 0x10000;
 	u32 settings = this->settings;
 	this->_4c0 = settings & 0xf;
-	this->direction = this->settings >> 0x1c;
+	this->direction = (settings >> 0x1c) & 0xf;
 	this->_4c4 = 0;
 	if (this->_4c0 == 0) {
-		this->_4c0 = this->settings >> 8 & 0xf;
+		this->_4c4 = (settings >> 8) & 0xf;
 	}
-	this->_4eb = (this->settings >> 8) & 0xf;
+	this->_4eb = (settings >> 8) & 0xf;
 	this->_4d0 = 0x1c2;
 	this->_4d8 = 4;
 	this->_4da = 0;
@@ -474,31 +474,31 @@ bool Coin::onCreate()
 	this->scale.x = 0x1200;
 	this->scale.y = 0x1200;
 	this->scale.z = 0x1200;
-	this->_3b4 &= 0xfffffff9;
-	Collider *collider = &this->_444;
-	collider->init(this, data_ov010_02125204, 0x20000, 0, 0);
-	if (this->_4c4 == 0) {
-		this->_4ac = 0;
+	this->_3b4 &= ~6;
+	this->_444.init(this, &data_ov010_02125204, 0x20000, 0, 0);
+	if (this->_4c4 != 0) {
+		this->_4ad = data_ov000_020c4ec0[this->_4c4];
 	} else {
-		this->_4ac = data_ov000_020c4ec0[this->_4c4];
+		this->_4ad = 0;
+
 	}
 	this->func_ov000_0209c820(0xfffffd80);
 
 	u32 _4c0 = this->_4c0;
-	if (_4c0 != 0) {
+	if (_4c0 == 0) {
 		if ((settings >> 0x14 & 0xf) != 0) {
 			this->position.y -= 0x8000;
 		}
 		if ((settings >> 0x18 & 0xf) != 0) {
 			this->position.x += 0x8000;
 		}
-		if (this->_3c0 != 0) {
+		if (this->_3be != 0) {
 			this->_4ef = 1;
 			this->_4ed = 0;
 			this->_418.x = 0x1000;
 			this->_418.y = 0x1000;
 		}
-		bool iVar2 = func_ov000_020af790(data_ov000_020cad40, this->_408.x, this->_408.y);
+		bool iVar2 = func_ov000_020af790(data_ov000_020cad40, this->_408.x >> 0xc, -(this->_408.y>>0xc));
 		if (iVar2 != 0) {
 			*data_ov000_020ca2ac |= 1;
 			return false;
@@ -539,7 +539,7 @@ bool Coin::onCreate()
 			this->velocity.x = data_ov010_021216ec[settings >> 4 & 0xf];
 			this->velocity.y = data_ov010_021216c4[settings >> 4 & 0xf];
 			this->visible = false;
-			this->_3c0 = 0;
+			this->_3be = 0;
 			this->_3ea = 1;
 			this->func_ov010_020d9dcc(&data_ov010_021293ec);
 		} else if (_4c0 == 9) {
@@ -555,7 +555,7 @@ bool Coin::onCreate()
 			Coin::onRender();
 		} else if (_4c0 == 0xb) {
 			(this->position).y = (this->position).y + 0x11000;
-			// this->_4b4 = uVar3;
+			this->_4b4 = 0xFFF;
 			this->_4bc = 0x1000;
 			this->_4b8 = 0;
 			this->func_ov010_020d9dcc(&data_ov010_02129414);

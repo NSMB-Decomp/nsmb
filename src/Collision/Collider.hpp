@@ -27,7 +27,7 @@ public:
     void unlink();
     void updatePosition();
     void link();
-    void init(Base*, void*, u32, u32, u32);
+    void init(Base*, Collider**, u32, u32, u32);
 };
 
 extern void (Collider::*__1[3])();
