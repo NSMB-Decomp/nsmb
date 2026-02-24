@@ -505,3 +505,25 @@ void Coin::func_ov010_020d9b40()
 	}
 	this->_4e9 ^= 1;
 }
+
+void Coin::func_ov010_020d9b84()
+
+{
+	if (this->_4d0 != 0) {
+		this->_4d0 -= 1;
+	}
+	if (this->_4d0 < 0x78) {
+		if (this->_4d0 == 0) {
+			Base::destroy();
+			return;
+		}
+		if (this->_4d8 != 0) {
+			this->_4d8 -= 1;
+		} else {
+			this->_4d8 = 4;
+			this->_4da ^= 1;
+		}
+		return;
+	}
+	return;
+}
