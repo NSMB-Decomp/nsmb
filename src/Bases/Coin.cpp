@@ -360,3 +360,30 @@ bool Coin::func_ov010_020d8d9c()
 	}
 	return true;
 }
+
+bool Coin::func_ov010_020d8eec()
+{
+	if (this->_4e4 == 0) {
+		this->_4e4 += 1;
+		this->visible = true;
+		this->_4ce = 0x20;
+	} else if (this->_4e4 != ~0) {
+		if (((this->_4a8) & 0x400000) != 0) {
+			Base::destroy();
+			return true;
+		}
+		this->applyVelocity();
+		if (this->_4ce == 0) {
+            this->_444.link();
+			this->func_ov000_0209c820(0xfffffd00);
+		} else {
+			this->_4ce = this->_4ce - 1;
+		}
+		if (this->_4ce == 1) {
+			this->_3be = 0x1;
+			this->_3ea = 0;
+		}
+		this->func_ov010_020d9acc();
+	}
+	return true;
+}

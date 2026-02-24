@@ -26,6 +26,7 @@ public:
     void Reset();
     void unlink();
     void updatePosition();
+    void link();
     void init(Base*, void*, u32, u32, u32);
 };
 

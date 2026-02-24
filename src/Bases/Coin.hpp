@@ -11,7 +11,8 @@ public:
     i32 (Coin::**_430)(); // 0x430
     Vec3_32 _434; // 0x434
     Collider _444; // 0x444
-    u8 _pad0[9];
+    u8 _pad99[4];
+    u32 _4a8;
     u8 _4ad;
     u8 _pad5[1];
     u32 _4b0;
@@ -58,6 +59,8 @@ public:
     void func_ov010_020d9890();
     i32 func_ov010_020d923c();
     void func_ov000_0209ab90(u8, u8, u8, i8);
+    bool func_ov010_020d8eec();
+    void func_ov010_020d9acc();
 
     bool onCreate();
     bool onDestroy();
