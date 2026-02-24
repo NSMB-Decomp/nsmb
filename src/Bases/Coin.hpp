@@ -16,7 +16,9 @@ public:
     u8 _4ad;
     u8 _pad5[1];
     u32 _4b0;
-    u8 _pad7[12];
+    u32 _4b4;
+    u32 _4b8;
+    u32 _4bc;
     u32 _4c0;
     u32 _4c4;
     u16 _4ce;
@@ -41,8 +43,8 @@ public:
     i8 _4e3;
     i8 _4e4;
 
-    inline Coin();
-    ~Coin();
+    inline Coin() {};
+    inline ~Coin() {};
     static void* create();
 
     void func_ov010_020d81dc(u32);
