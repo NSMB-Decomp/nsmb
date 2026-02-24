@@ -1,16 +1,16 @@
 #include "Coin.hpp"
 #include "../ProcessManager.hpp"
 
-void (Coin::*data_ov010_021293e4)() = Coin::func_ov010_020d9890;
-void (Coin::*data_ov010_021293ec)() = Coin::func_ov010_020d9890;
-i32 (Coin::*data_ov010_021293f4)() = Coin::func_ov010_020d923c;
-void (Coin::*data_ov010_021293fc)() = Coin::func_ov010_020d9890;
-void (Coin::*data_ov010_02129404)() = Coin::func_ov010_020d9890;
-void (Coin::*data_ov010_0212940c)() = Coin::func_ov010_020d9890;
-void (Coin::*data_ov010_02129414)() = Coin::func_ov010_020d9890;
-void (Coin::*data_ov010_0212941c)() = Coin::func_ov010_020d9890;
-void (Coin::*data_ov010_02129424)() = Coin::func_ov010_020d9890;
-void (Coin::*data_ov010_0212942c)() = Coin::func_ov010_020d9890;
+void (Coin::*data_ov010_021293e4)() = Coin::func_ov010_020d99a8;
+void (Coin::*data_ov010_021293ec)() = Coin::func_ov010_020d99a8;
+bool (Coin::*data_ov010_021293f4)() = Coin::func_ov010_020d923c;
+void (Coin::*data_ov010_021293fc)() = Coin::func_ov010_020d99a8;
+void (Coin::*data_ov010_02129404)() = Coin::func_ov010_020d99a8;
+void (Coin::*data_ov010_0212940c)() = Coin::func_ov010_020d99a8;
+void (Coin::*data_ov010_02129414)() = Coin::func_ov010_020d99a8;
+void (Coin::*data_ov010_0212941c)() = Coin::func_ov010_020d99a8;
+void (Coin::*data_ov010_02129424)() = Coin::func_ov010_020d99a8;
+void (Coin::*data_ov010_0212942c)() = Coin::func_ov010_020d99a8;
 
 Coin::Coin()
 {
@@ -389,7 +389,7 @@ bool Coin::func_ov010_020d8eec()
 	return true;
 }
 
-i32 (Coin::*data_ov010_021293dc)();
+bool (Coin::*data_ov010_021293dc)();
 bool Coin::func_ov010_020d8fb0()
 {
 	Base *pBVar1;
@@ -455,4 +455,41 @@ bool Coin::func_ov010_020d91f4()
 		this->func_ov010_020d9acc();
 	}
 	return true;
+}
+
+bool Coin::func_ov010_020d923c()
+{
+}
+
+bool Coin::func_ov010_020d93b4()
+{
+}
+
+bool Coin::func_ov010_020d9634()
+{
+}
+
+bool Coin::func_ov010_020d9890()
+{
+}
+
+void Coin::func_ov010_020d9acc()
+
+{
+	if (this->_4ed == 0) {
+		this->_418.x -= 0x80;
+		if (this->_418.x <= 0xc00) {
+			this->_418.x = 0xc00;
+			this->_4ed = this->_4ed ^ 1;
+		}
+		this->_418.y = this->_418.x;
+
+	} else {
+		this->_418.x += 0x80;
+		if (0x1000 <= this->_418.x) {
+			this->_418.x = 0x1000;
+			this->_4ed = this->_4ed ^ 1;
+		}
+		this->_418.y = this->_418.x;
+	}
 }

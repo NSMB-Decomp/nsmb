@@ -8,7 +8,7 @@ public:
     Vec3_32 _408; // 0x408
     Vec2_32 _418; // 0x418
     Vec2_32 _424; // 0x424
-    i32 (Coin::**_430)(); // 0x430
+    bool (Coin::**_430)(); // 0x430
     Vec3_32 _434; // 0x434
     Collider _444; // 0x444
     u8 _pad99[4];
@@ -51,18 +51,20 @@ public:
     void func_ov010_020d8b40();
     bool func_ov010_020d8b9c();
     bool func_ov010_020d8d9c();
-    void func_ov010_020d9acc();
     bool func_ov010_020d8eec();
     bool func_ov010_020d8fb0();
     bool func_ov010_020d9004();
     bool func_ov010_020d91f4();
+    bool func_ov010_020d923c();
+    bool func_ov010_020d93b4();
+    bool func_ov010_020d9634();
+    bool func_ov010_020d9890();
+    void func_ov010_020d9acc();
 
     i32 func_ov010_020d9c78();
     void func_ov010_020d9b84();
-    void func_ov010_020d9dcc(i32 (Coin::**)());
+    void func_ov010_020d9dcc(bool (Coin::**)());
     void func_ov010_020d99a8();
-    void func_ov010_020d9890();
-    i32 func_ov010_020d923c();
     void func_ov000_0209ab90(u8, u8, u8, i8);
 
     bool onCreate();
