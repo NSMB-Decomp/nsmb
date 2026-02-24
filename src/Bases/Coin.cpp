@@ -552,3 +552,17 @@ void Coin::func_ov010_020d9d84()
 	}
 	(this->**_430)();
 }
+
+bool Coin::func_ov010_020d9dcc(bool (Coin::**param_1)())
+{
+	if (this->_430 != param_1) {
+		if (this->_430 != NULL) {
+			this->_4e4 = 0xff;
+			(this->**_430)();
+		}
+		this->_430 = param_1;
+		this->_4e4 = 0;
+		(this->**_430)();
+	}
+	return true;
+}
