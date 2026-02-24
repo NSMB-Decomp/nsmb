@@ -61,6 +61,7 @@ public:
     void func_ov000_0209ab90(u8, u8, u8, i8);
     bool func_ov010_020d8eec();
     void func_ov010_020d9acc();
+    bool func_ov010_020d8fb0();
 
     bool onCreate();
     bool onDestroy();

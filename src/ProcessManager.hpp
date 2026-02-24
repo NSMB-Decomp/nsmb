@@ -78,5 +78,6 @@ namespace ProcessManager {
 
     extern LinkedList idLookupProcesses[8];
     u32 getIDIndex(ProcessLink*);
+    Base* getObjectByID(u32 class_id);
     Base* getNextObjectByObjectID(u16 class_id, Base* prev);
 }

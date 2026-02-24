@@ -1,4 +1,5 @@
 #include "Coin.hpp"
+#include "../ProcessManager.hpp"
 
 void (Coin::*data_ov010_021293e4)() = Coin::func_ov010_020d9890;
 void (Coin::*data_ov010_021293ec)() = Coin::func_ov010_020d9890;
@@ -384,6 +385,19 @@ bool Coin::func_ov010_020d8eec()
 			this->_3ea = 0;
 		}
 		this->func_ov010_020d9acc();
+	}
+	return true;
+}
+
+i32 (Coin::*data_ov010_021293dc)();
+bool Coin::func_ov010_020d8fb0()
+{
+	Base *pBVar1;
+
+	if (this->_4e4 == 0) {
+		this->_4e4 += 1;
+	} else if ((this->_4e4 != ~0) && (pBVar1 = ProcessManager::getObjectByID(this->_3f4), pBVar1 == (Base *)0x0)) {
+		this->func_ov010_020d9dcc(&data_ov010_021293dc);
 	}
 	return true;
 }
