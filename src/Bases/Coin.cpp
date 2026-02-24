@@ -1,16 +1,16 @@
 #include "Coin.hpp"
 #include "../ProcessManager.hpp"
-
-bool (Coin::*data_ov010_021293e4)() = Coin::func_ov010_020d923c;
-bool (Coin::*data_ov010_021293ec)() = Coin::func_ov010_020d923c;
+//bool (Coin::*data_ov010_0212942c)() = Coin::func_ov010_020d923c; (TODO: This is part of a different sinit)
+bool (Coin::*data_ov010_02129424)() = Coin::func_ov010_020d8b9c;
+bool (Coin::*data_ov010_0212941c)() = Coin::func_ov010_020d9890;
+bool (Coin::*data_ov010_02129414)() = Coin::func_ov010_020d9634;
+bool (Coin::*data_ov010_0212940c)() = Coin::func_ov010_020d93b4;
+bool (Coin::*data_ov010_02129404)() = Coin::func_ov010_020d8d9c;
+bool (Coin::*data_ov010_021293fc)() = Coin::func_ov010_020d91f4;
 bool (Coin::*data_ov010_021293f4)() = Coin::func_ov010_020d923c;
-bool (Coin::*data_ov010_021293fc)() = Coin::func_ov010_020d923c;
-bool (Coin::*data_ov010_02129404)() = Coin::func_ov010_020d923c;
-bool (Coin::*data_ov010_0212940c)() = Coin::func_ov010_020d923c;
-bool (Coin::*data_ov010_02129414)() = Coin::func_ov010_020d923c;
-bool (Coin::*data_ov010_0212941c)() = Coin::func_ov010_020d923c;
-bool (Coin::*data_ov010_02129424)() = Coin::func_ov010_020d923c;
-bool (Coin::*data_ov010_0212942c)() = Coin::func_ov010_020d923c;
+bool (Coin::*data_ov010_021293ec)() = Coin::func_ov010_020d8fb0;
+bool (Coin::*data_ov010_021293e4)() = Coin::func_ov010_020d9004;
+bool (Coin::*data_ov010_021293dc)() = Coin::func_ov010_020d8eec;
 
 void *Coin::create()
 {
@@ -62,7 +62,7 @@ void Coin::func_ov010_020d9cf0(StageEntity *param_1)
 	this->_4ae |= 4;
 }
 
-u32 data_ov000_020cad40;
+extern u32 data_ov000_020cad40;
 void func_ov000_020af844(i32, u16, u16);
 bool Coin::func_ov010_020d9c78()
 {
@@ -271,7 +271,6 @@ bool Coin::func_ov010_020d9004()
 	// return true;
 }
 
-bool (Coin::*data_ov010_021293dc)();
 bool Coin::func_ov010_020d8fb0()
 {
 	Base *pBVar1;
@@ -355,11 +354,11 @@ bool Coin::func_ov010_020d8d9c()
 	return true;
 }
 
-i32 data_ov010_02121644[2];
-i32 data_ov010_021216b4[2];
-u32 data_ov010_02121684;
-u32 data_ov010_02121690;
-u32 data_ov010_0212169c;
+extern i32 data_ov010_02121644[2];
+extern i32 data_ov010_021216b4[2];
+extern u32 data_ov010_02121684;
+extern u32 data_ov010_02121690;
+extern u32 data_ov010_0212169c;
 bool Coin::func_ov010_020d8b9c()
 {
 	int iVar1;
@@ -438,15 +437,15 @@ void Coin::func_ov010_020d8b40()
 	this->_4ee = ((((uVar1 & 0x7fff) << 1) >> 0xf) << 1);
 }
 
-u8 data_ov000_020c4ec0[2];
-u32 data_ov010_021216a8[3];
-u32 data_ov010_02121660[3];
-u32 data_ov010_02121654[3];
-u32 data_ov010_021216ec[3];
-i32 data_ov010_021216c4[3];
-i32 data_ov010_0212164c[2];
-u8 *data_ov000_020ca2ac;
-Collider* data_ov010_02125204;
+extern u8 data_ov000_020c4ec0[2];
+extern u32 data_ov010_021216a8[3];
+extern u32 data_ov010_02121660[3];
+extern u32 data_ov010_02121654[3];
+extern u32 data_ov010_021216ec[3];
+extern i32 data_ov010_021216c4[3];
+extern i32 data_ov010_0212164c[2];
+extern u8 *data_ov000_020ca2ac;
+extern Collider* data_ov010_02125204;
 bool func_ov000_020af790(u32, u16, u16);
 bool Coin::onCreate()
 {
@@ -698,7 +697,7 @@ void Coin::func_ov010_020d823c(u32 a)
 	this->_3f4 = a;
 }
 
-u32 data_ov010_0212163c[2];
+extern u32 data_ov010_0212163c[2];
 void Coin::func_ov010_020d81dc(u32 a)
 {
 	if ((BOOL)(this->_430 == &data_ov010_021293f4) == FALSE) {

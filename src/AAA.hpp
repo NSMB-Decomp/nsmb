@@ -81,9 +81,9 @@ extern SaveOptions data_02088bdc;
 //
 u32(func_ov000_02098798)(void *, u32);
 void(func_0200d578)();
-u8 data_ov010_02129438;
-u32 data_ov011_0212f180[23];
-u32 data_02085a98;
+extern u8 data_ov010_02129438;
+extern u32 data_ov011_0212f180[23];
+extern u32 data_02085a98;
 void drawSprite(u32, u32, u32, u32, u32, u32, Vec2_32*, u32, u32, u32);
 void Heap_deallocate(Heap*, void *);
 extern Heap* data_0208b720;
