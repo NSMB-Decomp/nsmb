@@ -32,7 +32,7 @@ public:
     u32 _3b8; /* 0x3B8 */
     u16 _3bc; /* 0x3BC */
     u16 _3be /* 0x3BE */;
-    u8 _pad11[0x2];
+    u16 _3c0; /* 0x3C0 */
     u16 _3c2; /* 0x3C2 */
     u8 _pad_3c4[2];
     u16 _3c6[2]; /* 0x3C6 */
@@ -110,6 +110,7 @@ public:
     void func_ov000_0209e5a8(u32, u32);
     void func_ov000_020a020c();
     void func_ov000_020a01b4();
+    i32 func_ov000_0209acd4(Vec3_32*);
 
     virtual bool onUpdate_0();
     virtual bool _01();

@@ -403,9 +403,13 @@ u8 data_ov000_020c4ec0[2];
 u32 data_ov010_021216a8[3];
 u32 data_ov010_02121660[3];
 u32 data_ov010_02121654[3];
+u32 data_ov010_021216ec[3];
+i32 data_ov010_021216c4[3];
 i32 data_ov010_0212164c[2];
 u8 data_ov000_020ca2ac;
 void *data_ov010_02125204;
+StageEntity *func_020205ec();
+bool func_ov000_020af790(u32, u32, u32);
 bool Coin::onCreate()
 {
 	this->_408 = this->position;
@@ -450,13 +454,18 @@ bool Coin::onCreate()
 		if ((settings >> 0x18 & 0xf) != 0) {
 			this->position.x += 0x8000;
 		}
-		if (*(short *)this->_pad11 != 0) {
+		if (this->_3c0 != 0) {
 			this->_4ef = 1;
 			this->_4ed = 0;
 			this->_418.x = 0x1000;
 			this->_418.y = 0x1000;
 		}
-		// data_ov000_020ca2ac |= 1;
+		bool iVar2 = func_ov000_020af790(data_ov000_020cad40, this->_408.x, this->_408.y);
+		if (iVar2 == 0) {
+			this->func_ov010_020d9dcc(&data_ov010_0212941c);
+			return true;
+		}
+		data_ov000_020ca2ac |= 1;
 		return false;
 	} else {
 		if (_4c0 == 8) {
@@ -465,11 +474,11 @@ bool Coin::onCreate()
 			this->_4e8 = 0;
 		} else if (_4c0 == 1) {
 			this->func_ov010_020d8b40();
-			// this->direction = this->func_ov000_0209acd4(&this->position);
+			this->direction = this->func_ov000_0209acd4(&this->position);
 			this->func_ov010_020d9dcc(&data_ov010_021293e4);
 		} else if (_4c0 == 2) {
 			this->func_ov010_020d8b40();
-			// this->direction = this->func_ov000_0209acd4(&this->position);
+			this->direction = this->func_ov000_0209acd4(&this->position);
 			this->_4eb = 2;
 			this->_4ea = 2;
 			this->func_ov010_020d9dcc(&data_ov010_021293e4);
@@ -487,22 +496,17 @@ bool Coin::onCreate()
 			this->func_ov010_020d9dcc(&data_ov010_021293fc);
 		} else if (_4c0 == 7) {
 			this->func_ov010_020d8b40();
-			// iVar5 = DAT_arm9_ov010__020d8b24;
-			// this->_4e8 = '\0';
-			// iVar2 = DAT_arm9_ov010__020d8b28;
-			// settings = settings >> 4 & 0xf;
-			//(this->velocity).x = *(i32 *)(iVar5 + settings * 4);
-			//(this->velocity).y = *(i32 *)(iVar2 + settings * 4);
-			// this->visible = false;
-			// this->_pad11[0] = '\0';
-			// this->_pad11[1] = '\0';
-			// this->_3ea = '\x01';
+			this->_4e8 = 0;
+			this->velocity.x = data_ov010_021216ec[settings >> 4 & 0xf];
+			this->velocity.y = data_ov010_021216c4[settings >> 4 & 0xf];
+			this->visible = false;
+			this->_3c0 = 0;
+			this->_3ea = 1;
 			this->func_ov010_020d9dcc(&data_ov010_021293ec);
 		} else if (_4c0 == 9) {
 			this->_4e3 = (settings >> 0xc) & 0xf;
-			if (1 < (char)this->_4e3) {
-				// iVar5 = func_020205ec();
-				// this->_4e3 = *(u8 *)(iVar5 + 0x11e);
+			if (1 < this->_4e3) {
+				this->_4e3 = func_020205ec()->linked_player;
 			}
 			this->func_ov010_020d9dcc(&data_ov010_02129404);
 			func_02012398(0x16c, &this->position);
