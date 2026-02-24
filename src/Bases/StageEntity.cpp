@@ -286,7 +286,6 @@ void StageEntity::func_ov000_020a020c()
     return;
 }
 
-void func_02012398(u32, Vec3_32 *);
 void StageEntity::_43(u32 param_1, u32 param_2, u32 param_3)
 {
     this->_42(param_1, param_2, param_3, 0);

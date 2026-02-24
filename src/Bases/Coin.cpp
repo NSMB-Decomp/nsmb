@@ -374,7 +374,7 @@ bool Coin::func_ov010_020d8eec()
 		}
 		this->applyVelocity();
 		if (this->_4ce == 0) {
-            this->_444.link();
+			this->_444.link();
 			this->func_ov000_0209c820(0xfffffd00);
 		} else {
 			this->_4ce = this->_4ce - 1;
