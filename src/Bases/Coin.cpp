@@ -1,5 +1,17 @@
 #include "Coin.hpp"
 
+void (Coin::*data_ov010_021293e4)() = Coin::func_ov010_020d9890;
+void (Coin::*data_ov010_021293ec)() = Coin::func_ov010_020d9890;
+i32 (Coin::*data_ov010_021293f4)() = Coin::func_ov010_020d923c;
+void (Coin::*data_ov010_021293fc)() = Coin::func_ov010_020d9890;
+void (Coin::*data_ov010_02129404)() = Coin::func_ov010_020d9890;
+void (Coin::*data_ov010_0212940c)() = Coin::func_ov010_020d9890;
+void (Coin::*data_ov010_02129414)() = Coin::func_ov010_020d9890;
+void (Coin::*data_ov010_0212941c)() = Coin::func_ov010_020d9890;
+void (Coin::*data_ov010_02129424)() = Coin::func_ov010_020d9890;
+void (Coin::*data_ov010_0212942c)() = Coin::func_ov010_020d9890;
+
+
 Coin::Coin()
 {
 }
@@ -104,7 +116,6 @@ void Coin::func_ov010_020d8488() {
     drawSprite(data_ov011_0212f180[this->_4e9 + 0x15], this->position.x, this->position.y + 0x8000, 0, 0, 3, &this->_424, 0, 0, 0);
 }
 
-i32 (Base::*data_ov010_021293f4)();
 u32 data_ov010_0212163c[2];
 void Coin::func_ov010_020d81dc(u32 a)
 {
@@ -246,24 +257,3 @@ bool Coin::onDestroy()
 }
 
 Coin::~Coin() {}
-
-void (Coin::*__5[3])() = {
-    Coin::func_ov010_020d9890,
-    Coin::func_ov010_020d9890,
-    Coin::func_ov010_020d9890,
-};
-void (Coin::*__6[3])() = {
-    Coin::func_ov010_020d9890,
-    Coin::func_ov010_020d9890,
-    Coin::func_ov010_020d9890,
-};
-void (Coin::*__7[3])() = {
-    Coin::func_ov010_020d9890,
-    Coin::func_ov010_020d9890,
-    Coin::func_ov010_020d9890,
-};
-void (Coin::*__8[3])() = {
-    Coin::func_ov010_020d9890,
-    Coin::func_ov010_020d9890,
-    Coin::func_ov010_020d9890,
-};

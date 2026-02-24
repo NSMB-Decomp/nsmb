@@ -8,7 +8,7 @@ public:
     Vec3_32 _408; // 0x408
     Vec2_32 _418; // 0x418
     Vec2_32 _424; // 0x424
-    i32 (Base::**_430)(); // 0x430
+    i32 (Coin::**_430)(); // 0x430
     Vec3_32 _434; // 0x434
     Collider _444; // 0x444
     u8 _pad0[9];
@@ -44,7 +44,7 @@ public:
     static void* create();
 
     void func_ov010_020d81dc(u32);
-    void func_ov010_020d9dcc(i32 (Base::**)());
+    void func_ov010_020d9dcc(i32 (Coin::**)());
     void func_ov010_020d823c(u32 a);
     void func_ov010_020d99a8();
     void func_ov010_020d8b40();
@@ -59,11 +59,12 @@ public:
     void onStageComplete(PlayerActor* player);
     void func_ov010_020d8488();
     void func_ov010_020d9890();
+    i32 func_ov010_020d923c();
 };
 size_assert(Coin, 0x4e8);
 
-extern void (Coin::*__5[3])();
-extern void (Coin::*__6[3])();
-extern void (Coin::*__7[3])();
-extern void (Coin::*__8[3])();
-extern void (Coin::*__9[3])();
+//extern void (Coin::*__5[3])();
+//extern void (Coin::*__6[3])();
+//extern void (Coin::*__7[3])();
+//extern void (Coin::*__8[3])();
+//extern void (Coin::*__9[3])();
