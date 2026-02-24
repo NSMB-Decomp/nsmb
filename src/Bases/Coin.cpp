@@ -36,7 +36,7 @@ bool Coin::onUpdate_0()
 	if ((this->_4c0 - 1 <= 1) && (this->_01() == false)) {
 		this->_3e4 = 1;
 	}
-	func_ov010_020d9b40(this);
+	this->func_ov010_020d9b40();
 	this->func_ov010_020d99a8();
 	this->func_ov000_0209adb0(0);
 	func_ov000_020ab2cc(&this->_444);
@@ -492,4 +492,16 @@ void Coin::func_ov010_020d9acc()
 		}
 		this->_418.y = this->_418.x;
 	}
+}
+
+void Coin::func_ov010_020d9b40()
+{
+	if (this->_4f1 != 0) {
+		this->_4f1 -= 1;
+	}
+	if (this->_4f1 == 0) {
+		this->_4f0 = this->_4f0 + 1 & 3;
+		this->_4f1 = 8;
+	}
+	this->_4e9 ^= 1;
 }

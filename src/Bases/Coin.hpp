@@ -60,6 +60,7 @@ public:
     bool func_ov010_020d9634();
     bool func_ov010_020d9890();
     void func_ov010_020d9acc();
+    void func_ov010_020d9b40();
 
     i32 func_ov010_020d9c78();
     void func_ov010_020d9b84();
