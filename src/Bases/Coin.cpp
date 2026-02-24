@@ -401,3 +401,58 @@ bool Coin::func_ov010_020d8fb0()
 	}
 	return true;
 }
+
+bool Coin::func_ov010_020d9004()
+{
+	// uint uVar1;
+	// undefined4 *local_18;
+	// int local_14;
+	// int local_10;
+	// i32 local_c;
+	//
+	// if (this->_4e4 == '\0') {
+	//	this->_4e4 = '\x01';
+	//	uVar1 = (uint) * (short *)(&data_02080304 + (((int)*(short *)(&data_ov010_02121634 + (uint)this->_4eb * 2) >> 4) * 2 + 1) * 2);
+	//	(this->velocity).x = uVar1 * 0x800 + 0x800 >> 0xc | ((((int)uVar1 >> 0x1f) << 0xb | uVar1 >> 0x15) + (uint)(0xfffff7ff < uVar1 * 0x800)) * 0x100000;
+	//	uVar1 = (uint) * (short *)(&data_02080304 + ((int)*(short *)(&data_ov010_02121634 + (uint)this->_4eb * 2) >> 4) * 4);
+	//	(this->velocity).y = -(uVar1 * 0x800 + 0x800 >> 0xc | ((((int)uVar1 >> 0x1f) << 0xb | uVar1 >> 0x15) + (uint)(0xfffff7ff < uVar1 * 0x800)) * 0x100000);
+	//	if (this->direction != '\0') {
+	//		(this->velocity).x = -(this->velocity).x;
+	//	}
+	//	(this->_3f8).x = (this->position).x;
+	//	(this->_3f8).y = (this->position).y;
+	//	(this->_3f8).z = (this->position).z;
+	//	(this->_3f8).x = (this->_3f8).x + -0x8000;
+	//	(this->_3f8).y = (this->_3f8).y + 0x10000;
+	//} else if (this->_4e4 != 0xff) {
+	//	func_ov010_020d9c78();
+	//	Actor::applyVelocity((Actor *)this);
+	//	func_ov010_020d9acc(this);
+	//	if (this->_4ea != '\0') {
+	//		local_18 = &{vtable(Vec3_32)};
+	//		local_c = (this->_3f8).z;
+	//		if (this->direction == '\0') {
+	//			local_14 = -*(int *)(&data_ov010_0212166c + (uint)this->_4ea * 4);
+	//		} else {
+	//			local_14 = *(int *)(&data_ov010_0212166c + (uint)this->_4ea * 4);
+	//		}
+	//		local_14 = (this->_3f8).x + local_14;
+	//		local_10 = (this->_3f8).y + *(int *)(&data_ov010_02121678 + (uint)this->_4ea * 4);
+	//		Actor::spawnActor(0x42, (this->_4ea - 1) * 0x100 | 1, &local_18, 0, 0, 0);
+	//		this->_4ea = this->_4ea + 0xff;
+	//	}
+	//}
+	// return true;
+}
+
+bool Coin::func_ov010_020d91f4()
+{
+	if (this->_4e4 == 0) {
+		this->_4e4 += 1;
+	} else if (this->_4e4 != ~0) {
+		func_ov010_020d9c78();
+		this->applyVelocity();
+		this->func_ov010_020d9acc();
+	}
+	return true;
+}
