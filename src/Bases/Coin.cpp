@@ -261,15 +261,14 @@ bool Coin::func_ov010_020d8b9c()
 
 	if (this->_4e4 == 0) {
 		this->_4e4 += 1;
-		(this->minVelocity).x = 0x4000;
-		(this->minVelocity).y = -0x8000;
-		(this->minVelocity).z = 0;
+		this->minVelocity.x = 0x4000;
+		this->minVelocity.y = -0x8000;
+		this->minVelocity.z = 0;
 		this->accelV = -0x280;
-		(this->velocity).x = data_ov010_02121644[this->direction];
-		(this->velocity).y = 0x3400;
-		(this->velocity).z = 0;
+		this->velocity.x = data_ov010_02121644[this->direction];
+		this->velocity.y = 0x3400;
+		this->velocity.z = 0;
 		this->collision_manager.func_ov000_020ab010(this, &data_ov010_02121684, &data_ov010_02121690, &data_ov010_0212169c, 0);
-		// func_ov000_020ab010(&this->collision_manager, this, &data_ov010_02121684, &data_ov010_02121690, &data_ov010_0212169c, 0);
 		this->_4dc = 0;
 		this->_4e2 = 0;
 		this->_4e0 = 6;
@@ -292,7 +291,7 @@ bool Coin::func_ov010_020d8b9c()
 		if (this->_4e2 != 0) {
 			iVar1 = this->updateBottomSensors();
 			if (iVar1 != 0) {
-				(this->velocity).y = 0;
+				this->velocity.y = 0;
 				if (this->_4dc < 3) {
 					this->_4dc = this->_4dc + 1;
 					if (this->_4dc == 1) {
@@ -305,15 +304,59 @@ bool Coin::func_ov010_020d8b9c()
 			}
 			bool iVar1 = this->collision_manager.func_ov000_020aa990(0);
 			if (iVar1 != 0) {
-				(this->velocity).y = -0x2000;
+				this->velocity.y = -0x2000;
 			}
 			bool iVar2 = this->collision_manager.func_01ffe778(0, 0);
 			if (iVar2 != 0) {
-				(this->velocity).x = -(this->velocity).x;
+				this->velocity.x = -(this->velocity).x;
 			}
 			this->func_ov000_0209c820(0xfffffd80);
 		}
 		this->func_ov010_020d9b84();
+	}
+	return true;
+}
+
+bool Coin::func_ov010_020d8d9c()
+{
+	if (this->_4e4 == 0) {
+		this->_4e4 += 1;
+		this->_4de = 0x1c;
+		this->minVelocity.x = 0x1000;
+		this->minVelocity.y = -0x8000;
+		this->minVelocity.z = 0;
+		this->accelV = -0x300;
+		this->velocity.y = 0x3000;
+		this->_4c0 = 9;
+	} else if (this->_4e4 != ~0) {
+		this->updateVerticalVelocity();
+		this->func_ov000_0209c85c();
+		if (this->_4f1 != 0) {
+			this->_4f1 -= 1;
+		}
+		if (this->_4f1 == 0) {
+			this->_4f0 = this->_4f0 + 1 & 3;
+			this->_4f1 = 3;
+		}
+		if (this->_4de != 0) {
+			this->_4de = this->_4de - 1;
+
+		} else {
+			func_02020354(this->_4e3);
+			bool iVar1 = func_020202a0();
+			if (iVar1 == 1) {
+				this->func_ov000_0209ab90(0, 0, 0, this->_4e3);
+			} else {
+				i32 iVar1 = func_0202040c(this->_4e3);
+				iVar1 = iVar1 + -1;
+				if (iVar1 < 0) {
+					iVar1 = 7;
+				}
+				StageEntity::func_ov000_0209aad0(&this->position, iVar1, this->_4e3);
+			}
+			this->func_ov000_0209e264(0, 0, 2);
+			Base::destroy();
+		}
 	}
 	return true;
 }

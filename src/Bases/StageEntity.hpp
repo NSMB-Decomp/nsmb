@@ -96,6 +96,7 @@ public:
     static void shellCallback(ActiveCollider *);
     static void simpleCallback(ActiveCollider *);
     static bool spawnBrokenPipe(i32, i32, u32, u32, u8, u8, i8);
+    static u8 func_ov000_0209aad0(Vec3_32*, u32, u32);
     u32 random();
     i32 tryAttachToPlayerHands(i32, i32, i32);
     i32 attachToPlayerHands(i32, i32, i32);

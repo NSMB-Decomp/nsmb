@@ -35,8 +35,9 @@ public:
     u8 _4ee;
     u8 _4ef;
     u8 _4f0;
-    u8 _pad3[0x2];
-    u8 _4e3;
+    u8 _4f1;
+    u8 _pad3[0x1];
+    i8 _4e3;
     i8 _4e4;
 
     inline Coin();
@@ -48,6 +49,7 @@ public:
     void func_ov010_020d8488();
     void func_ov010_020d8b40();
     bool func_ov010_020d8b9c();
+    bool func_ov010_020d8d9c();
 
     i32 func_ov010_020d9c78();
     void func_ov010_020d9b84();
@@ -55,6 +57,7 @@ public:
     void func_ov010_020d99a8();
     void func_ov010_020d9890();
     i32 func_ov010_020d923c();
+    void func_ov000_0209ab90(u8, u8, u8, i8);
 
     bool onCreate();
     bool onDestroy();
