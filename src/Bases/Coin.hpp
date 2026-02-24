@@ -37,7 +37,7 @@ public:
     u8 _4f0;
     u8 _pad3[0x2];
     u8 _4e3;
-    u8 _4e4;
+    i8 _4e4;
 
     inline Coin();
     ~Coin();
@@ -49,6 +49,8 @@ public:
     void func_ov010_020d8b40();
     bool func_ov010_020d8b9c();
 
+    i32 func_ov010_020d9c78();
+    void func_ov010_020d9b84();
     void func_ov010_020d9dcc(i32 (Coin::**)());
     void func_ov010_020d99a8();
     void func_ov010_020d9890();

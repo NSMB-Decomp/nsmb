@@ -62,6 +62,9 @@ public:
 
     void func_ov000_020ab9ac();
     void func_ov000_020ab350();
+    void func_ov000_020ab010(Base*, void*, void*, void*, u32);
+    bool func_ov000_020aa990(u32);
+    bool func_01ffe778(u32, u32);
     virtual void _TEMP(); // To make sure size is correct
 };
 size_assert(CollisionManager, 0xb8);

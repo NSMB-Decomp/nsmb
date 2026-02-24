@@ -250,26 +250,32 @@ Coin::~Coin()
 {
 }
 
+i32 data_ov010_02121644[2];
+i32 data_ov010_021216b4[2];
+u32 data_ov010_02121684;
+u32 data_ov010_02121690;
+u32 data_ov010_0212169c;
 bool Coin::func_ov010_020d8b9c()
 {
 	int iVar1;
 
-	if (this->_4e4 == '\0') {
-		this->_4e4 = '\x01';
+	if (this->_4e4 == 0) {
+		this->_4e4 += 1;
 		(this->minVelocity).x = 0x4000;
 		(this->minVelocity).y = -0x8000;
 		(this->minVelocity).z = 0;
 		this->accelV = -0x280;
-		(this->velocity).x = *(i32 *)(&data_ov010_02121644 + (uint)this->direction * 4);
+		(this->velocity).x = data_ov010_02121644[this->direction];
 		(this->velocity).y = 0x3400;
 		(this->velocity).z = 0;
-		func_ov000_020ab010(&this->collision_manager, this, &data_ov010_02121684, &data_ov010_02121690, &data_ov010_0212169c, 0);
+		this->collision_manager.func_ov000_020ab010(this, &data_ov010_02121684, &data_ov010_02121690, &data_ov010_0212169c, 0);
+		// func_ov000_020ab010(&this->collision_manager, this, &data_ov010_02121684, &data_ov010_02121690, &data_ov010_0212169c, 0);
 		this->_4dc = 0;
 		this->_4e2 = 0;
 		this->_4e0 = 6;
 		this->_2c6 = this->_2c6 | 4;
-	} else if (this->_4e4 != 0xff) {
-		iVar1 = func_ov010_020d9c78();
+	} else if (this->_4e4 != ~0) {
+		iVar1 = this->func_ov010_020d9c78();
 		if (iVar1 != 0) {
 			return true;
 		}
@@ -284,7 +290,7 @@ bool Coin::func_ov010_020d8b9c()
 			}
 		}
 		if (this->_4e2 != 0) {
-			iVar1 = StageEntity::updateBottomSensors(this);
+			iVar1 = this->updateBottomSensors();
 			if (iVar1 != 0) {
 				(this->velocity).y = 0;
 				if (this->_4dc < 3) {
@@ -292,22 +298,22 @@ bool Coin::func_ov010_020d8b9c()
 					if (this->_4dc == 1) {
 						func_02012398(0x170, &this->position);
 					}
-					(this->velocity).y = *(i32 *)(&data_ov010_021216b4 + (uint)this->_4dc * 4);
+					(this->velocity).y = data_ov010_021216b4[this->_4dc];
 				} else {
 					(this->velocity).x = 0;
 				}
 			}
-			iVar1 = func_ov000_020aa990(&this->collision_manager, 0);
+			bool iVar1 = this->collision_manager.func_ov000_020aa990(0);
 			if (iVar1 != 0) {
 				(this->velocity).y = -0x2000;
 			}
-			iVar1 = func_01ffe778(&this->collision_manager, 0, 0);
-			if (iVar1 != 0) {
+			bool iVar2 = this->collision_manager.func_01ffe778(0, 0);
+			if (iVar2 != 0) {
 				(this->velocity).x = -(this->velocity).x;
 			}
-			StageEntity::func_ov000_0209c820(this, 0xfffffd80);
+			this->func_ov000_0209c820(0xfffffd80);
 		}
-		func_ov010_020d9b84(this);
+		this->func_ov010_020d9b84();
 	}
 	return true;
 }
