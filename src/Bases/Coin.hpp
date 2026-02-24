@@ -44,10 +44,15 @@ public:
     static void* create();
 
     void func_ov010_020d81dc(u32);
-    void func_ov010_020d9dcc(i32 (Coin::**)());
-    void func_ov010_020d823c(u32 a);
-    void func_ov010_020d99a8();
+    void func_ov010_020d823c(u32);
+    void func_ov010_020d8488();
     void func_ov010_020d8b40();
+    bool func_ov010_020d8b9c();
+
+    void func_ov010_020d9dcc(i32 (Coin::**)());
+    void func_ov010_020d99a8();
+    void func_ov010_020d9890();
+    i32 func_ov010_020d923c();
 
     bool onCreate();
     bool onDestroy();
@@ -57,9 +62,6 @@ public:
     void _11();
     void _21();
     void onStageComplete(PlayerActor* player);
-    void func_ov010_020d8488();
-    void func_ov010_020d9890();
-    i32 func_ov010_020d923c();
 };
 size_assert(Coin, 0x4e8);
 
