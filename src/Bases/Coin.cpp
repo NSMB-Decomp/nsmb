@@ -57,7 +57,7 @@ void Coin::func_ov010_020d9cf0(StageEntity *param_1)
 		linked_player = func_020205ec()->linked_player;
 	}
 	this->_4e3 = linked_player;
-	this->func_ov010_020d9dcc( &data_ov010_02129404);
+	this->func_ov010_020d9dcc(&data_ov010_02129404);
 	func_02012398(0x16c, &this->position);
 	this->_4ae |= 4;
 }
@@ -77,8 +77,28 @@ bool Coin::func_ov010_020d9c78()
 	return false;
 }
 
+void func_02020300(u32, u32);
 void Coin::_21()
 {
+
+	i8 linked_player = this->linked_player;
+	if (2 <= linked_player) {
+		StageEntity * stage_entity = func_020205ec();
+		linked_player = stage_entity->linked_player;
+	}
+	func_02020354(linked_player);
+	if (func_020202a0() == true) {
+		func_02020300(linked_player, 100);
+	} else {
+		i32 iVar2 = func_0202040c(linked_player);
+		iVar2 -= 1;
+		if (iVar2 < 0) {
+			iVar2 = 7;
+		}
+		StageEntity::func_ov000_0209aad0(&this->position, iVar2, linked_player);
+	}
+	func_02012398(0x16c, &this->position);
+	Base::destroy();
 }
 
 void Coin::func_ov010_020d9b84()
