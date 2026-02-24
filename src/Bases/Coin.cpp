@@ -39,8 +39,27 @@ void Coin::func_ov010_020d9d84()
 	(this->**_430)();
 }
 
+StageEntity *func_020205ec();
 void Coin::func_ov010_020d9cf0(StageEntity *param_1)
 {
+	if (BOOL(param_1->actorType == 2) == FALSE) {
+		return;
+	}
+	u16 object_id = param_1->object_id;
+	if (((object_id != 0xf0) && (object_id != 0xf1)) && (object_id != 0xbc)) {
+		return;
+	}
+	if (this->_4ec != 0) {
+		return;
+	}
+	i8 linked_player = param_1->linked_player;
+	if (2 <= linked_player) {
+		linked_player = func_020205ec()->linked_player;
+	}
+	this->_4e3 = linked_player;
+	this->func_ov010_020d9dcc( &data_ov010_02129404);
+	func_02012398(0x16c, &this->position);
+	this->_4ae |= 4;
 }
 
 u32 data_ov000_020cad40;
@@ -406,9 +425,8 @@ u32 data_ov010_02121654[3];
 u32 data_ov010_021216ec[3];
 i32 data_ov010_021216c4[3];
 i32 data_ov010_0212164c[2];
-u8 data_ov000_020ca2ac;
+u8 *data_ov000_020ca2ac;
 void *data_ov010_02125204;
-StageEntity *func_020205ec();
 bool func_ov000_020af790(u32, u32, u32);
 bool Coin::onCreate()
 {
@@ -440,9 +458,9 @@ bool Coin::onCreate()
 	Collider *collider = &this->_444;
 	collider->init(this, data_ov010_02125204, 0x20000, 0, 0);
 	if (this->_4c4 == 0) {
-		this->_4ad = 0;
+		this->_4ac = 0;
 	} else {
-		this->_4ad = data_ov000_020c4ec0[this->_4c4];
+		this->_4ac = data_ov000_020c4ec0[this->_4c4];
 	}
 	this->func_ov000_0209c820(0xfffffd80);
 
@@ -461,12 +479,13 @@ bool Coin::onCreate()
 			this->_418.y = 0x1000;
 		}
 		bool iVar2 = func_ov000_020af790(data_ov000_020cad40, this->_408.x, this->_408.y);
-		if (iVar2 == 0) {
+		if (iVar2 != 0) {
+			*data_ov000_020ca2ac |= 1;
+			return false;
+		} else {
 			this->func_ov010_020d9dcc(&data_ov010_0212941c);
 			return true;
 		}
-		data_ov000_020ca2ac |= 1;
-		return false;
 	} else {
 		if (_4c0 == 8) {
 			this->func_ov010_020d9dcc(&data_ov010_0212941c);
@@ -505,15 +524,15 @@ bool Coin::onCreate()
 			this->func_ov010_020d9dcc(&data_ov010_021293ec);
 		} else if (_4c0 == 9) {
 			this->_4e3 = (settings >> 0xc) & 0xf;
-			if (1 < this->_4e3) {
+			if (2 <= this->_4e3) {
 				this->_4e3 = func_020205ec()->linked_player;
 			}
 			this->func_ov010_020d9dcc(&data_ov010_02129404);
 			func_02012398(0x16c, &this->position);
-			this->onRender();
+			Coin::onRender();
 		} else if (_4c0 == 10) {
 			this->func_ov010_020d9dcc(&data_ov010_02129424);
-			this->onRender();
+			Coin::onRender();
 		} else if (_4c0 == 0xb) {
 			(this->position).y = (this->position).y + 0x11000;
 			// this->_4b4 = uVar3;

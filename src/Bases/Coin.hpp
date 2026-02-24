@@ -13,8 +13,10 @@ public:
     Collider _444; // 0x444
     u8 _pad99[4];
     u32 _4a8;
+    u8 _4ac;
     u8 _4ad;
-    u8 _pad5[1];
+    u8 _4ae;
+    u8 _4af;
     u32 _4b0;
     u32 _4b4;
     u32 _4b8;
