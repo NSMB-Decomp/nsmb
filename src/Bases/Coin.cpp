@@ -8,7 +8,7 @@ void (Coin::*data_ov010_021293fc)() = Coin::func_ov010_020d99a8;
 void (Coin::*data_ov010_02129404)() = Coin::func_ov010_020d99a8;
 void (Coin::*data_ov010_0212940c)() = Coin::func_ov010_020d99a8;
 void (Coin::*data_ov010_02129414)() = Coin::func_ov010_020d99a8;
-void (Coin::*data_ov010_0212941c)() = Coin::func_ov010_020d99a8;
+bool (Coin::*data_ov010_0212941c)() = Coin::func_ov010_020d923c;
 void (Coin::*data_ov010_02129424)() = Coin::func_ov010_020d99a8;
 void (Coin::*data_ov010_0212942c)() = Coin::func_ov010_020d99a8;
 
@@ -26,13 +26,12 @@ void Coin::_21()
 }
 
 void(func_ov000_020ab350)(Collider *);
-void(func_ov010_020d9d84)(Coin *);
 void(func_ov010_020d9b40)(Coin *);
 void(func_ov000_020ab2cc)(Collider *);
 bool Coin::onUpdate_0()
 {
 	func_ov000_020ab350(&this->_444);
-	func_ov010_020d9d84(this);
+	this->func_ov010_020d9d84();
 	if ((this->_4c0 - 1 <= 1) && (this->_01() == false)) {
 		this->_3e4 = 1;
 	}
@@ -540,4 +539,16 @@ bool Coin::func_ov010_020d9c78()
 	}
 	this->_444.link();
 	return false;
+}
+
+void Coin::func_ov010_020d9cf0(StageEntity *param_1)
+{
+}
+
+void Coin::func_ov010_020d9d84()
+{
+	if (this->_430 == NULL) {
+		this->func_ov010_020d9dcc(&data_ov010_0212941c);
+	}
+	(this->**_430)();
 }

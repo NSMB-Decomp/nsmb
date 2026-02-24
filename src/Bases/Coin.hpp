@@ -62,6 +62,8 @@ public:
     void func_ov010_020d9acc();
     void func_ov010_020d9b40();
     bool func_ov010_020d9c78();
+    void func_ov010_020d9cf0(StageEntity*);
+    void func_ov010_020d9d84();
 
     void func_ov010_020d9b84();
     void func_ov010_020d9dcc(bool (Coin::**)());
