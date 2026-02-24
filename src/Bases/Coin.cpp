@@ -507,7 +507,6 @@ void Coin::func_ov010_020d9b40()
 }
 
 void Coin::func_ov010_020d9b84()
-
 {
 	if (this->_4d0 != 0) {
 		this->_4d0 -= 1;
@@ -526,4 +525,19 @@ void Coin::func_ov010_020d9b84()
 		return;
 	}
 	return;
+}
+
+u32 data_ov000_020cad40;
+void func_ov000_020af844(u32, u16, u16);
+bool Coin::func_ov010_020d9c78()
+{
+	if ((this->_4a8 & 0x400000) != 0) {
+		if (this->_4c0 == 0) {
+			func_ov000_020af844(data_ov000_020cad40, this->_408.x, this->_408.y);
+		}
+		Base::destroy();
+		return true;
+	}
+	this->_444.link();
+	return false;
 }

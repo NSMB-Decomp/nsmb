@@ -61,8 +61,8 @@ public:
     bool func_ov010_020d9890();
     void func_ov010_020d9acc();
     void func_ov010_020d9b40();
+    bool func_ov010_020d9c78();
 
-    i32 func_ov010_020d9c78();
     void func_ov010_020d9b84();
     void func_ov010_020d9dcc(bool (Coin::**)());
     void func_ov010_020d99a8();
