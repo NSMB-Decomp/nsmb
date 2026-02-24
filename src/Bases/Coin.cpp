@@ -63,12 +63,12 @@ void Coin::func_ov010_020d9cf0(StageEntity *param_1)
 }
 
 u32 data_ov000_020cad40;
-void func_ov000_020af844(u32, u16, u16);
+void func_ov000_020af844(i32, u16, u16);
 bool Coin::func_ov010_020d9c78()
 {
 	if ((this->_4a8 & 0x400000) != 0) {
 		if (this->_4c0 == 0) {
-			func_ov000_020af844(data_ov000_020cad40, this->_408.x, this->_408.y);
+			func_ov000_020af844(data_ov000_020cad40, this->_408.x >> 0xc, -(this->_408.y>>0xc));
 		}
 		Base::destroy();
 		return true;
@@ -83,7 +83,7 @@ void Coin::_21()
 
 	i8 linked_player = this->linked_player;
 	if (2 <= linked_player) {
-		StageEntity * stage_entity = func_020205ec();
+		StageEntity *stage_entity = func_020205ec();
 		linked_player = stage_entity->linked_player;
 	}
 	func_02020354(linked_player);
