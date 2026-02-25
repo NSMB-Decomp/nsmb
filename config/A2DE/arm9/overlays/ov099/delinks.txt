@@ -4,3 +4,6 @@
     .data       start:0x02186360 end:0x02186600 kind:data align:32
     .bss        start:0x02186600 end:0x02186660 kind:bss align:32
 
+src/Bases/Object_229.cpp:
+    .text       start:0x02185df4 end:0x02186278
+    .data       start:0x021864dc end:0x021865f0
