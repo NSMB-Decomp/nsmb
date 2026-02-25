@@ -279,11 +279,23 @@ typedef PlayerBase_vtable PlayerActor_vtable;
 struct PlayerActor
 {
     PlayerBase_vtable *vtable;
-    D_PlayerActor_data
+    D_PlayerActor_data;
 };
 
 // Class: Coin
+struct Coin_vtable {
+    D_Coin_vtable;
+};
 struct Coin {
-    Coin_vtable *vtable;
-    D_Coin_data
-}
+    Coin_vtable* vtable;
+    D_Coin_data;
+};
+
+// Class: Object_229
+struct Object_229_vtable {
+    D_Object229_vtable;
+};
+struct Object_229 {
+    Object_229_vtable* vtable;
+    D_Object229_data;
+};

@@ -6,4 +6,6 @@
 
 src/Bases/Object_229.cpp:
     .text       start:0x02185df4 end:0x02186278
+    .init       start:0x02186278 end:0x02186358
+    .ctor       start:0x02186358 end:0x02186360
     .data       start:0x021864dc end:0x021865f0

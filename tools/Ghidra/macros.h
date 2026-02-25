@@ -307,7 +307,7 @@
 
 /* Coin */
 #define D_Coin_vtable \
-    StageEntity_vtable
+    D_StageEntity_vtable
 
 #define D_Coin_data \
    D_StageEntity_Data; \
@@ -349,3 +349,16 @@
     u8 _pad3[0x1]; \
     u8 _4e3; \
     u8 _4e4; 
+
+/* Coin */
+#define D_Object229_vtable \
+    D_StageEntity_vtable
+
+#define D_Object229_data \
+   D_StageEntity_Data; \
+   PTMF a; \
+   u32 b; \
+   u32 c; \
+   u32 d; \
+   u32 e; \
+   u8 f; 

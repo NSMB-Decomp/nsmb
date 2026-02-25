@@ -2,7 +2,13 @@
 
 class Object_229 : public StageEntity
 {
-	u8 padding[0x1b];
+    void (Object_229::*a)();
+    u32 b;
+    u32 c;
+    u32 d;
+    u32 e;
+    u8 f;
+    u8 _40d;
 
 	inline Object_229()
 	{
@@ -27,7 +33,7 @@ class Object_229 : public StageEntity
     void func_ov099_02185fdc();
     void func_ov099_02185fb4();
     void func_ov099_02185f5c();
-    void func_ov099_02185f30();
+    void func_ov099_02185f30(u32);
     void func_ov099_02185ebc();
     bool func_ov099_02185eb4();
     u32 func_ov099_02185e50();
