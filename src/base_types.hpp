@@ -14,6 +14,9 @@ typedef void* unknown_pointer;
 #define size_assert( what, howmuch ) typedef char what##_size_wrong_[( !!(sizeof(what) == howmuch) )*2-1 ]
 //#define size_assert( what, howmuch ) 
 
+//
+#define READ_NIBBLE( data, nybble ) ((settings >> (nybble * 4)) & 0xf)
+
 // To fix code that has weird bool logic
 #define BOOL i32
 #define TRUE 1

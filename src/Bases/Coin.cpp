@@ -1,6 +1,6 @@
 #include "Coin.hpp"
 #include "../ProcessManager.hpp"
-//bool (Coin::*data_ov010_0212942c)() = Coin::func_ov010_020d923c; (TODO: This is part of a different sinit)
+// bool (Coin::*data_ov010_0212942c)() = Coin::func_ov010_020d923c; (TODO: This is part of a different sinit)
 bool (Coin::*data_ov010_02129424)() = Coin::func_ov010_020d8b9c;
 bool (Coin::*data_ov010_0212941c)() = Coin::func_ov010_020d9890;
 bool (Coin::*data_ov010_02129414)() = Coin::func_ov010_020d9634;
@@ -67,8 +67,8 @@ void func_ov000_020af844(i32, u16, u16);
 bool Coin::func_ov010_020d9c78()
 {
 	if ((this->_4a8 & 0x400000) != 0) {
-		if (this->_4c0 == 0) {
-			func_ov000_020af844(data_ov000_020cad40, this->_408.x >> 0xc, -(this->_408.y>>0xc));
+		if (this->coinType == 0) {
+			func_ov000_020af844(data_ov000_020cad40, this->_408.x >> 0xc, -(this->_408.y >> 0xc));
 		}
 		Base::destroy();
 		return true;
@@ -320,7 +320,7 @@ bool Coin::func_ov010_020d8d9c()
 		this->minVelocity.z = 0;
 		this->accelV = -0x300;
 		this->velocity.y = 0x3000;
-		this->_4c0 = 9;
+		this->coinType = 9;
 	} else if (this->_4e4 != ~0) {
 		this->updateVerticalVelocity();
 		this->func_ov000_0209c85c();
@@ -445,7 +445,7 @@ extern u32 data_ov010_021216ec[3];
 extern i32 data_ov010_021216c4[3];
 extern i32 data_ov010_0212164c[2];
 extern u8 *data_ov000_020ca2ac;
-extern Collider* data_ov010_02125204;
+extern Collider *data_ov010_02125204;
 bool func_ov000_020af790(u32, u16, u16);
 bool Coin::onCreate()
 {
@@ -453,13 +453,13 @@ bool Coin::onCreate()
 	this->position.x += 0x8000;
 	this->position.y -= 0x10000;
 	u32 settings = this->settings;
-	this->_4c0 = settings & 0xf;
-	this->direction = (settings >> 0x1c) & 0xf;
+	this->coinType = READ_NIBBLE(settings, 0);
+	this->direction = READ_NIBBLE(settings, 7);
 	this->_4c4 = 0;
-	if (this->_4c0 == 0) {
-		this->_4c4 = (settings >> 8) & 0xf;
+	if (this->coinType == 0) {
+		this->_4c4 = READ_NIBBLE(settings, 2);
 	}
-	this->_4eb = (settings >> 8) & 0xf;
+	this->_4eb = READ_NIBBLE(settings, 2);
 	this->_4d0 = 0x1c2;
 	this->_4d8 = 4;
 	this->_4da = 0;
@@ -479,16 +479,15 @@ bool Coin::onCreate()
 		this->_4ad = data_ov000_020c4ec0[this->_4c4];
 	} else {
 		this->_4ad = 0;
-
 	}
 	this->func_ov000_0209c820(0xfffffd80);
 
-	u32 _4c0 = this->_4c0;
+	u32 _4c0 = this->coinType;
 	if (_4c0 == 0) {
-		if ((settings >> 0x14 & 0xf) != 0) {
+		if (READ_NIBBLE(settings, 5) != 0) {
 			this->position.y -= 0x8000;
 		}
-		if ((settings >> 0x18 & 0xf) != 0) {
+		if (READ_NIBBLE(settings, 6) != 0) {
 			this->position.x += 0x8000;
 		}
 		if (this->_3be != 0) {
@@ -497,7 +496,7 @@ bool Coin::onCreate()
 			this->_418.x = 0x1000;
 			this->_418.y = 0x1000;
 		}
-		bool iVar2 = func_ov000_020af790(data_ov000_020cad40, this->_408.x >> 0xc, -(this->_408.y>>0xc));
+		bool iVar2 = func_ov000_020af790(data_ov000_020cad40, this->_408.x >> 0xc, -(this->_408.y >> 0xc));
 		if (iVar2 != 0) {
 			*data_ov000_020ca2ac |= 1;
 			return false;
@@ -521,9 +520,9 @@ bool Coin::onCreate()
 			this->_4ea = 2;
 			this->func_ov010_020d9dcc(&data_ov010_021293e4);
 		} else if (_4c0 == 4) {
-			this->_4b4 = data_ov010_021216a8[settings >> 4 & 0xf];
-			this->_4bc = data_ov010_02121660[settings >> 4 & 0xf];
-			this->_4b8 = data_ov010_02121654[settings >> 4 & 0xf];
+			this->_4b4 = data_ov010_021216a8[READ_NIBBLE(settings, 1)];
+			this->_4bc = data_ov010_02121660[READ_NIBBLE(settings, 1)];
+			this->_4b8 = data_ov010_02121654[READ_NIBBLE(settings, 1)];
 			this->func_ov010_020d9dcc(&data_ov010_0212940c);
 		} else if (_4c0 == 6) {
 			this->func_ov010_020d8b40();
@@ -535,14 +534,14 @@ bool Coin::onCreate()
 		} else if (_4c0 == 7) {
 			this->func_ov010_020d8b40();
 			this->_4e8 = 0;
-			this->velocity.x = data_ov010_021216ec[settings >> 4 & 0xf];
-			this->velocity.y = data_ov010_021216c4[settings >> 4 & 0xf];
+			this->velocity.x = data_ov010_021216ec[READ_NIBBLE(settings, 1)];
+			this->velocity.y = data_ov010_021216c4[READ_NIBBLE(settings, 1)];
 			this->visible = false;
 			this->_3be = 0;
 			this->_3ea = 1;
 			this->func_ov010_020d9dcc(&data_ov010_021293ec);
 		} else if (_4c0 == 9) {
-			this->_4e3 = (settings >> 0xc) & 0xf;
+			this->_4e3 = READ_NIBBLE(settings, 3);
 			if (2 <= this->_4e3) {
 				this->_4e3 = func_020205ec()->linked_player;
 			}
@@ -553,26 +552,26 @@ bool Coin::onCreate()
 			this->func_ov010_020d9dcc(&data_ov010_02129424);
 			Coin::onRender();
 		} else if (_4c0 == 0xb) {
-			(this->position).y = (this->position).y + 0x11000;
+			(this->position).y += 0x11000;
 			this->_4b4 = 0xFFF;
 			this->_4bc = 0x1000;
 			this->_4b8 = 0;
 			this->func_ov010_020d9dcc(&data_ov010_02129414);
 		} else {
 			if (_4c0 == 5) {
-				(this->position).y = (this->position).y + 0x11000;
+				(this->position).y += 0x11000;
 			}
 			this->_4b4 = 0x0FFF;
 			this->_4bc = 0x1000;
 			this->_4b8 = 0x0000;
 			this->func_ov010_020d9dcc(&data_ov010_02129414);
 		}
-		if (this->_4c0 == 6) {
+		if (this->coinType == 6) {
 			this->_36c.x = 0xc0;
 			this->_36c.y = 0x40;
 			this->_378.x = 0xc0;
 			this->_378.y = 0x40;
-		} else if (this->_4c0 == 8) {
+		} else if (this->coinType == 8) {
 			this->_36c.x = 0x140;
 			this->_36c.y = 0x40;
 			this->_378.x = 0x140;
@@ -615,7 +614,7 @@ bool Coin::onUpdate_0()
 {
 	func_ov000_020ab350(&this->_444);
 	this->func_ov010_020d9d84();
-	if ((this->_4c0 - 1 <= 1) && (this->_01() == false)) {
+	if ((this->coinType - 1 <= 1) && (this->_01() == false)) {
 		this->_3e4 = 1;
 	}
 	this->func_ov010_020d9b40();
@@ -655,14 +654,14 @@ bool Coin::onRender()
 		}
 	} else {
 		u8 b;
-		if (this->_4c0 == 0) {
+		if (this->coinType == 0) {
 			b = data_ov010_02129438;
 		} else {
 			b = this->_4f0;
 		}
 
 		u32 sprite_priority = this->getSpritePriority(0);
-		if ((this->_4c0 == 0) && (this->_4c4 != 0)) {
+		if ((this->coinType == 0) && (this->_4c4 != 0)) {
 			sprite_priority = 0x20;
 		}
 

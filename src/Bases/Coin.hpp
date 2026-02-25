@@ -21,7 +21,7 @@ public:
     u32 _4b4;
     u32 _4b8;
     u32 _4bc;
-    u32 _4c0;
+    u32 coinType; /* 0x4C0 */
     u32 _4c4;
     u16 _4ce;
     u16 _4d0;
