@@ -8,8 +8,8 @@ class Object_229 : public StageEntity
 	u32 c;
 	u32 _404; /* 0x404 */
 	u32 e;
-	u8 f;
-	u8 _40d; /* 0x40D */
+	u8 setting_1;
+	u8 setting_2; /* 0x40D */
 
 	inline Object_229()
 	{
@@ -35,7 +35,7 @@ class Object_229 : public StageEntity
 	void func_ov099_02185fb4();
 	void func_ov099_02185f5c();
 	void func_ov099_02185f30(u32);
-	void func_ov099_02185ebc();
+	void onUpdate_CallPTMF();
 	bool func_ov099_02185eb4();
 	u32 func_ov099_02185e50();
 	u32 func_ov099_02185df4();

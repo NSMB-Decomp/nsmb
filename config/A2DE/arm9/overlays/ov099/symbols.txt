@@ -37,15 +37,15 @@ data_ov099_02186360 kind:data(any) addr:0x02186360
 data_ov099_02186368 kind:data(any) addr:0x02186368
 UnknownProfile::ov099_02186370 kind:data(any) addr:0x02186370 ambiguous
 data_ov099_02186384 kind:data(any) addr:0x02186384
-data_ov099_02186490 kind:data(any) addr:0x02186490
-data_ov099_02186498 kind:data(any) addr:0x02186498
-data_ov099_021864a0 kind:data(any) addr:0x021864a0
-data_ov099_021864a8 kind:data(any) addr:0x021864a8
-data_ov099_021864b0 kind:data(any) addr:0x021864b0
-data_ov099_021864b8 kind:data(any) addr:0x021864b8
-data_ov099_021864c0 kind:data(any) addr:0x021864c0
-data_ov099_021864c8 kind:data(any) addr:0x021864c8
-UnknownProfile::ov099_021864d0 kind:data(any) addr:0x021864d0 ambiguous
+@0 kind:data(any) addr:0x02186490
+@0 kind:data(any) addr:0x02186498
+@0 kind:data(any) addr:0x021864a0
+@0 kind:data(any) addr:0x021864a8
+@0 kind:data(any) addr:0x021864b0
+@0 kind:data(any) addr:0x021864b8
+@0 kind:data(any) addr:0x021864c0
+@0 kind:data(any) addr:0x021864c8
+Object_229::profile kind:data(any) addr:0x021864d0 ambiguous
 _ZTV10Object_229 kind:data(word[69]) addr:0x021864dc
 data_ov099_02186600 kind:bss addr:0x02186600
 data_ov099_02186604 kind:bss addr:0x02186604
