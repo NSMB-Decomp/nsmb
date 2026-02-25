@@ -121,11 +121,3 @@ bool Object_229::func_ov099_02185eb4()
 {
 	return true;
 }
-
-u32 Object_229::func_ov099_02185e50()
-{
-}
-
-u32 Object_229::func_ov099_02185df4()
-{
-}

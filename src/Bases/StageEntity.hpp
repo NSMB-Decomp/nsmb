@@ -1,163 +1,163 @@
-#include "StageActor.hpp"
 #include "Player/PlayerActor.hpp"
+#include "StageActor.hpp"
 
-class StageEntity : public StageActor {
-public:
-    u8 _2c4; /* 0x2C4 */
-    u8 _2c5; /* 0x2C5 */
-    u16 _2c6; /* 0x2C6 */
-    u8 _pad13[0x02]; /* 0x2C0 */
-    u16 _2ca; /* 0x2CA */
-    u8 _pad9[0x2];
-    u32 _2d0; /* 0x2D0 */
-    u8 _pad1[0x38];
-    Vec3_32 _30c; /* 0x30C */
-    Vec3_32 _31c; /* 0x31C */
-    u8 _pad2[0x14];
-    i32 _340; /* 0x340 */
-    u8 _pad14[0x8];
-    u32 _34c; /* 0x34C */
-    i32 _350; /* 0x350 */
-    u32 _354; /* 0x354 */
-    u32 _358; /* 0x358 */
-    Vec3_32 _35c; /* 0x35C */
-    Vec2_32 _36c; /* 0x36C */
-    Vec2_32 _378; /* 0x378 */
-    Vec2_32 _384; /* 0x384 */
-    Vec2_32 _390; /* 0x390 */
-    Vec2_32 _39c; /* 0x39C */
-    u32 _3a8; /* 0x3A8 */
-    u8 _pad3[0x8];
-    u32 _3b4; /* 0x3B4 */
-    u32 _3b8; /* 0x3B8 */
-    u16 _3bc; /* 0x3BC */
-    u16 _3be /* 0x3BE */;
-    u16 _3c0; /* 0x3C0 */
-    u16 _3c2; /* 0x3C2 */
-    u8 _pad_3c4[2];
-    u16 _3c6[2]; /* 0x3C6 */
-    u8 _pad_3ca[1];
-    u16* _3cc; /* 0x3CC */
-    u8 _3d0; /* 0x3D0 */
-    u8 _pad15[0x1];
-    u8 _3d2; /* 0x3D2 */
-    u8 Pad5[0x3];
-    u8* _3d8; /* 0x3D8 */
-    u8 _pad4[0x2];
-    u8 _3de; /* 0x3DE */
-    u8 _3df; /* 0x3DF */
-    u8 _pad16[0x4];
-    u8 _3e4; /* 0x3E4 */
-    u8 _pad8[2];
-    i8 _3e7; /* 0x3E7 */
-    u8 _3e8; /* 0x3E8 */
-    u8 _3e9; /* 0x3E9 */
-    u8 _3ea; /* 0x3EA */
-    u8 _3eb; /* 0x3EB */
-    u8 _3ec; /* 0x3EC */
-    u8 _3ed; /* 0x3ED */
-    u8 _3ee; /* 0x3EE */
-    u8 _3ef; /* 0x3EF */
-    u8 _3f0; /* 0x3F0 */
-    u8 _3f1; /* 0x3F1 */
+class StageEntity : public StageActor
+{
+      public:
+	u8 _2c4;	 /* 0x2C4 */
+	u8 _2c5;	 /* 0x2C5 */
+	u16 _2c6;	 /* 0x2C6 */
+	u8 _pad13[0x02]; /* 0x2C0 */
+	u16 _2ca;	 /* 0x2CA */
+	u8 _pad9[0x2];
+	u32 _2d0; /* 0x2D0 */
+	u8 _pad1[0x38];
+	Vec3_32 _30c; /* 0x30C */
+	Vec3_32 _31c; /* 0x31C */
+	u8 _pad2[0x14];
+	i32 _340; /* 0x340 */
+	u8 _pad14[0x8];
+	u32 _34c;     /* 0x34C */
+	i32 _350;     /* 0x350 */
+	u32 _354;     /* 0x354 */
+	u32 _358;     /* 0x358 */
+	Vec3_32 _35c; /* 0x35C */
+	Vec2_32 _36c; /* 0x36C */
+	Vec2_32 _378; /* 0x378 */
+	Vec2_32 _384; /* 0x384 */
+	Vec2_32 _390; /* 0x390 */
+	Vec2_32 _39c; /* 0x39C */
+	u32 _3a8;     /* 0x3A8 */
+	u8 _pad3[0x8];
+	u32 _3b4; /* 0x3B4 */
+	u32 _3b8; /* 0x3B8 */
+	u16 _3bc; /* 0x3BC */
+	u16 _3be /* 0x3BE */;
+	u16 _3c0; /* 0x3C0 */
+	u16 _3c2; /* 0x3C2 */
+	u8 _pad_3c4[2];
+	u16 _3c6[2]; /* 0x3C6 */
+	u8 _pad_3ca[1];
+	u16 *_3cc; /* 0x3CC */
+	u8 _3d0;   /* 0x3D0 */
+	u8 _pad15[0x1];
+	u8 _3d2; /* 0x3D2 */
+	u8 Pad5[0x3];
+	u8 *_3d8; /* 0x3D8 */
+	u8 _pad4[0x2];
+	u8 _3de; /* 0x3DE */
+	u8 _3df; /* 0x3DF */
+	u8 _pad16[0x4];
+	u8 _3e4; /* 0x3E4 */
+	u8 _pad8[2];
+	i8 _3e7; /* 0x3E7 */
+	u8 _3e8; /* 0x3E8 */
+	u8 _3e9; /* 0x3E9 */
+	u8 _3ea; /* 0x3EA */
+	u8 _3eb; /* 0x3EB */
+	u8 _3ec; /* 0x3EC */
+	u8 _3ed; /* 0x3ED */
+	u8 _3ee; /* 0x3EE */
+	u8 _3ef; /* 0x3EF */
+	u8 _3f0; /* 0x3F0 */
+	u8 _3f1; /* 0x3F1 */
 
-    StageEntity();
-    inline ~StageEntity();
+	StageEntity();
+	inline ~StageEntity() {};
 
-    void func_ov000_0209c820(u32);
-    bool onUpdate();
-    bool preUpdate();
-    void postUpdate(u32);
-    bool preRender();
-    static u16 * getObjectBank(u32);
-    u32 getSpritePriority(u32);
-    Vec3_32 tryNormalizeVec3(Vec3_32*);
-    void func_ov000_020988ac(u32);
-    void func_ov000_020988d0(u32);
-    void assignView(Vec3_32*);
-    void isPlayerInZone(PlayerActor*, u32);
-    u32 stopPlayerInShell(ActiveCollider*, PlayerActor*);
-    static bool isBelowPlayer(i32, ActiveCollider*, u8);
-    bool setGroundPoundCollision(PlayerActor*);
-    bool checkSquished();
-    u32 updateSideSensors();
-    u32 updateBottomSensors();
-    bool checkLavaCollision(Vec3_32*);
-    u32 updateCollisionSensors();
-    bool checkPlayersInOffset(i32, i32);
-    bool checkPlayersInOffset(i32);
-    bool rotateToTarget(i16[2], i16[2]);
-    void applyFireballWiggle();
-    u16 getActorID(u8);
-    void setTimedEvent(u32, i32, bool, bool, bool);
-    void destroy(bool);
-    void updateBounce(i32, i32, i32);
-    static void damagePlayerCallback(ActiveCollider*, ActiveCollider*);  // These callbacks should not be static, set as static temporarily to match code.
-    static void damageEntityCallback(ActiveCollider*);
-    static void shellCallback(ActiveCollider *);
-    static void simpleCallback(ActiveCollider *);
-    static bool spawnBrokenPipe(i32, i32, u32, u32, u8, u8, i8);
-    static u8 func_ov000_0209aad0(Vec3_32*, u32, u32);
-    u32 random();
-    i32 tryAttachToPlayerHands(i32, i32, i32);
-    i32 attachToPlayerHands(i32, i32, i32);
-    void func_ov000_0209c85c();
-    void func_ov000_0209adb0(u32);
-    void func_ov000_0209e264(u32, u32, u32);
-    bool func_ov000_0209ccd0(PlayerBase*);
-    void func_ov000_0209da00();
-    void func_ov000_0209da0c();
-    void func_ov000_0209e5a8(u32, u32);
-    void func_ov000_020a020c();
-    void func_ov000_020a01b4();
-    i32 func_ov000_0209acd4(Vec3_32*);
+	void func_ov000_0209c820(u32);
+	bool onUpdate();
+	bool preUpdate();
+	void postUpdate(u32);
+	bool preRender();
+	static u16 *getObjectBank(u32);
+	u32 getSpritePriority(u32);
+	Vec3_32 tryNormalizeVec3(Vec3_32 *);
+	void func_ov000_020988ac(u32);
+	void func_ov000_020988d0(u32);
+	void assignView(Vec3_32 *);
+	void isPlayerInZone(PlayerActor *, u32);
+	u32 stopPlayerInShell(ActiveCollider *, PlayerActor *);
+	static bool isBelowPlayer(i32, ActiveCollider *, u8);
+	bool setGroundPoundCollision(PlayerActor *);
+	bool checkSquished();
+	u32 updateSideSensors();
+	u32 updateBottomSensors();
+	bool checkLavaCollision(Vec3_32 *);
+	u32 updateCollisionSensors();
+	bool checkPlayersInOffset(i32, i32);
+	bool checkPlayersInOffset(i32);
+	bool rotateToTarget(i16[2], i16[2]);
+	void applyFireballWiggle();
+	u16 getActorID(u8);
+	void setTimedEvent(u32, i32, bool, bool, bool);
+	void destroy(bool);
+	void updateBounce(i32, i32, i32);
+	static void damagePlayerCallback(ActiveCollider *, ActiveCollider *); // These callbacks should not be static, set as static temporarily to match code.
+	static void damageEntityCallback(ActiveCollider *);
+	static void shellCallback(ActiveCollider *);
+	static void simpleCallback(ActiveCollider *);
+	static bool spawnBrokenPipe(i32, i32, u32, u32, u8, u8, i8);
+	static u8 func_ov000_0209aad0(Vec3_32 *, u32, u32);
+	u32 random();
+	i32 tryAttachToPlayerHands(i32, i32, i32);
+	i32 attachToPlayerHands(i32, i32, i32);
+	void func_ov000_0209c85c();
+	void func_ov000_0209adb0(u32);
+	void func_ov000_0209e264(u32, u32, u32);
+	bool func_ov000_0209ccd0(PlayerBase *);
+	void func_ov000_0209da00();
+	void func_ov000_0209da0c();
+	void func_ov000_0209e5a8(u32, u32);
+	void func_ov000_020a020c();
+	void func_ov000_020a01b4();
+	i32 func_ov000_0209acd4(Vec3_32 *);
 
-    virtual bool onUpdate_0();
-    virtual bool _01();
-    virtual bool onUpdate_1();
-    virtual bool onUpdate_defeated();
-    virtual bool onUpdate_3();
-    virtual bool onUpdate_4();
-    virtual bool onUpdate_5();
-    virtual bool onUpdate_6();
-    virtual bool onUpdate_7();
-    virtual bool onUpdate_8();
-    virtual bool onUpdate_9();
-    virtual void _11();
-    virtual void _12();
-    virtual void _13();
-    virtual bool _14();
-    virtual void _15();
-    virtual void _16();
-    virtual void _17();
-    virtual void _18();
-    virtual void _19();
-    virtual void onUpdate_xx();
-    virtual void _21();
-    virtual void _22();
-    virtual void _23();
-    virtual void _24();
-    virtual void _25();
-    virtual void _26();
-    virtual void _27();
-    virtual void stopVelocity();
-    virtual void onStomped();
-    virtual void _30();
-    virtual void _31();
-    virtual void _32();
-    virtual void onMegaGroundPound();
-    virtual void onStageComplete(PlayerActor*);
-    virtual void _35();
-    virtual void _36();
-    virtual void _37();
-    virtual void _38();
-    virtual bool playerCollision(ActiveCollider*, ActiveCollider*);
-    virtual void entityCollision();
-    virtual void damagePlayer(ActiveCollider*, PlayerBase*);
-    virtual void _42(u32, u32, u32, u32);
-    virtual void _43(u32, u32, u32);
-    virtual void _44();
-    virtual void _45();
-    virtual void _46();
+	virtual bool onUpdate_0();
+	virtual bool _01();
+	virtual bool onUpdate_1();
+	virtual bool onUpdate_defeated();
+	virtual bool onUpdate_3();
+	virtual bool onUpdate_4();
+	virtual bool onUpdate_5();
+	virtual bool onUpdate_6();
+	virtual bool onUpdate_7();
+	virtual bool onUpdate_8();
+	virtual bool onUpdate_9();
+	virtual void _11();
+	virtual void _12();
+	virtual void _13();
+	virtual bool _14();
+	virtual void _15();
+	virtual void _16();
+	virtual void _17();
+	virtual void _18();
+	virtual void _19();
+	virtual void onUpdate_xx();
+	virtual void _21();
+	virtual void _22();
+	virtual void _23();
+	virtual void _24();
+	virtual void _25();
+	virtual void _26();
+	virtual void _27();
+	virtual void stopVelocity();
+	virtual void onStomped();
+	virtual void _30();
+	virtual void _31();
+	virtual void _32();
+	virtual void onMegaGroundPound();
+	virtual void onStageComplete(PlayerActor *);
+	virtual void _35();
+	virtual void _36();
+	virtual void _37();
+	virtual void _38();
+	virtual bool playerCollision(ActiveCollider *, ActiveCollider *);
+	virtual void entityCollision();
+	virtual void damagePlayer(ActiveCollider *, PlayerBase *);
+	virtual void _42(u32, u32, u32, u32);
+	virtual void _43(u32, u32, u32);
+	virtual void _44();
+	virtual void _45();
+	virtual void _46();
 };
-StageEntity::~StageEntity() {}
