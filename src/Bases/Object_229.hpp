@@ -6,10 +6,10 @@ class Object_229 : public StageEntity
 	void (Object_229::*a)();
 	u32 b;
 	u32 c;
-	u32 d;
+	u32 _404; /* 0x404 */
 	u32 e;
 	u8 f;
-	u8 _40d;
+	u8 _40d; /* 0x40D */
 
 	inline Object_229()
 	{

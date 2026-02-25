@@ -21,21 +21,21 @@ bool Object_229::onCreate()
 	if (4 < this->f) {
 		this->f = 4;
 	}
-	u32 uVar1 = (uVar2 << 8) >> 0x1c;
-	if (uVar1 == 0) {
+	i32 uVar1 = (u8)((uVar2 << 8) >> 0x1c);
+	if (uVar1 < 1) {
 		uVar1 = 1;
 	}
 	if (3 < uVar1) {
 		uVar1 = 3;
 	}
 	this->_40d = (char)(1 << (uVar1 - 1 & 0xff));
-	if ((data_0208af3c[1] & *(u32 *)(this->_pad2 + 0xc)) == 0 && (data_0208af3c[0] & *(u32 *)(this->_pad2 + 8)) == 0) {
-		this->c = 3;
-		this->func_ov099_02185f30(2); // this->func_ov099_02185f30(2);
+	if ((data_0208af3c[1] & this->_334) == 0 && (data_0208af3c[0] & this->_334) == 0) {
+		this->_404 = 3;
+		this->func_ov099_02185f30(2);
 		data_ov000_020cac9c |= this->_40d;
 
 	} else {
-		this->c = 0;
+		this->_404 = 0;
 		this->func_ov099_02185f30(0);
 		data_ov000_020cac9c &= ~this->_40d;
 	}
@@ -70,6 +70,11 @@ void Object_229::func_ov099_021860f0()
 
 void Object_229::func_ov099_021860a4()
 {
+	if ((data_0208af3c[1] & this->_338) != 0 || (data_0208af3c[0] & this->_334) != 0) {
+		this->func_ov099_02185f30(1);
+		return;
+	}
+	return;
 }
 
 void Object_229::func_ov099_02186080()
@@ -80,6 +85,17 @@ void Object_229::func_ov099_02186080()
 
 void Object_229::func_ov099_0218602c()
 {
+	this->e = this->e - 1;
+	if (this->e != 0) {
+		return;
+	}
+	this->e = 2;
+	this->_404 = this->_404 + 1;
+	if (3 <= (i32)this->_404) {
+		this->func_ov099_02185f30(2);
+		return;
+	}
+	return;
 }
 
 void Object_229::func_ov099_02186028()
@@ -88,6 +104,9 @@ void Object_229::func_ov099_02186028()
 
 void Object_229::func_ov099_02185fdc()
 {
+	if (BOOL(((data_0208af3c[0] & this->_334) == (data_0208af3c[1] & this->_338)) == 0) == TRUE) {
+		this->func_ov099_02185f30(3);
+	}
 }
 
 void Object_229::func_ov099_02185fb4()
@@ -98,6 +117,15 @@ void Object_229::func_ov099_02185fb4()
 
 void Object_229::func_ov099_02185f5c()
 {
+	this->e = this->e - 1;
+	if (this->e != 0) {
+		return;
+	}
+	this->e = 2;
+	this->_404 = this->_404 - 1;
+	if (this->_404 == 0) {
+		this->func_ov099_02185f30(0);
+	}
 }
 
 void (Object_229::*data_ov099_02186614[4])() = {};

@@ -14,7 +14,10 @@ class StageEntity : public StageActor
 	u8 _pad1[0x38];
 	Vec3_32 _30c; /* 0x30C */
 	Vec3_32 _31c; /* 0x31C */
-	u8 _pad2[0x14];
+	u8 _pad2[8];
+    u32 _334; /* 0x334 */
+    u32 _338; /* 0x338 */
+	u8 _pad99[4];
 	i32 _340; /* 0x340 */
 	u8 _pad14[0x8];
 	u32 _34c;     /* 0x34C */
