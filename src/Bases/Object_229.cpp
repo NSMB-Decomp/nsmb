@@ -74,6 +74,8 @@ void Object_229::func_ov099_021860a4()
 
 void Object_229::func_ov099_02186080()
 {
+	data_ov000_020cac9c |= this->_40d;
+	this->e = 1;
 }
 
 void Object_229::func_ov099_0218602c()
