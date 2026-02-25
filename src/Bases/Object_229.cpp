@@ -6,7 +6,7 @@ Object_229 *Object_229::create()
 }
 
 u32 data_0208af3c[2];
-u32 data_ov000_020cac9c;
+u8 data_ov000_020cac9c;
 bool Object_229::onCreate()
 {
 	u32 uVar2 = this->settings;
@@ -90,6 +90,8 @@ void Object_229::func_ov099_02185fdc()
 
 void Object_229::func_ov099_02185fb4()
 {
+	data_ov000_020cac9c &= ~this->_40d;
+	this->e = 1;
 }
 
 void Object_229::func_ov099_02185f5c()
