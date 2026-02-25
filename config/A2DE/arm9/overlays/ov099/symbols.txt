@@ -31,8 +31,8 @@ _ZN10Object_22914pendingDestroyEv kind:function(arm,size=0x4) addr:0x0218611c
 _ZN10Object_2299onDestroyEv kind:function(arm,size=0x8) addr:0x02186120
 _ZN10Object_2298onCreateEv kind:function(arm,size=0x124) addr:0x02186128
 _ZN10Object_2296createEv kind:function(arm,size=0x2c) addr:0x0218624c
-__sinit_ov099_02186278 kind:function(arm,size=0xe0) addr:0x02186278
-.p__sinit_ov099_02186278 kind:data(word) addr:0x02186358
+__sinit_Object_229.cpp kind:function(arm,size=0xe0) addr:0x02186278
+.p__sinit_Object_229.cpp kind:data(word) addr:0x02186358
 data_ov099_02186360 kind:data(any) addr:0x02186360
 data_ov099_02186368 kind:data(any) addr:0x02186368
 UnknownProfile::ov099_02186370 kind:data(any) addr:0x02186370 ambiguous

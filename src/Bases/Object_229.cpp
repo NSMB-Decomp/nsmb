@@ -5,6 +5,18 @@ Object_229 *Object_229::create()
 	return new Object_229();
 }
 
+void (Object_229::*data_ov099_02186614[4])() = {
+	Object_229::func_ov099_021860f0,
+	Object_229::func_ov099_02186080,
+	Object_229::func_ov099_02186028,
+	Object_229::func_ov099_02185fb4,
+};
+void (Object_229::*data_ov099_02186634[4])() = {
+	Object_229::func_ov099_021860a4,
+	Object_229::func_ov099_0218602c,
+	Object_229::func_ov099_02185fdc,
+	Object_229::func_ov099_02185f5c,
+};
 u32 data_0208af3c[2];
 u8 data_ov000_020cac9c;
 bool Object_229::onCreate()
@@ -128,7 +140,6 @@ void Object_229::func_ov099_02185f5c()
 	}
 }
 
-void (Object_229::*data_ov099_02186614[4])() = {};
 void Object_229::func_ov099_02185f30(u32 param_1)
 {
 	this->b = param_1;
