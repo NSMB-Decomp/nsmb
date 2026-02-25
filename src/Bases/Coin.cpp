@@ -12,6 +12,14 @@ bool (Coin::*data_ov010_021293ec)() = Coin::func_ov010_020d8fb0;
 bool (Coin::*data_ov010_021293e4)() = Coin::func_ov010_020d9004;
 bool (Coin::*data_ov010_021293dc)() = Coin::func_ov010_020d8eec;
 
+const i32 data_ov010_0212166c[3] = {0x0, 0x30000, 0x18000};
+const i32 data_ov010_02121678[3] = {0x0, 0x0, 0x10000};
+i32 data_ov010_021216b4[4];
+const i32 data_ov010_02121644[2] = {0x1000, 0xFFFFF000};
+extern u32 data_ov010_02121684;
+extern u32 data_ov010_02121690;
+extern u32 data_ov010_0212169c;
+
 void *Coin::create()
 {
 	return new Coin();
@@ -214,6 +222,47 @@ bool Coin::func_ov010_020d93b4()
 
 bool Coin::func_ov010_020d923c()
 {
+	bool bVar1;
+	int iVar2;
+
+	if (this->_4e4 == 0) {
+		this->_4e4 += 1;
+		this->minVelocity.x = 0x4000;
+		this->minVelocity.y = -0x8000;
+		this->minVelocity.z = 0x0;
+		this->accelV = -0x280;
+		this->collision_manager.func_ov000_020ab010(this, &data_ov010_02121684, 0, &data_ov010_0212169c, 0);
+		this->_2c6 |= 4;
+		this->_4dc = 0;
+	} else if (this->_4e4 != ~0) {
+		bVar1 = this->func_ov010_020d9c78();
+		if (bVar1) {
+			return true;
+		}
+		this->updateVerticalVelocity();
+		this->func_ov000_0209c85c();
+		iVar2 = this->updateBottomSensors();
+		if (iVar2 != 0) {
+			this->velocity.y = 0x0;
+			if (this->_4dc < 3) {
+				this->_4dc = this->_4dc + 1;
+				if (this->_4dc == 1) {
+					func_02012398(0x170, &this->position);
+				}
+				this->velocity.y = data_ov010_021216b4[this->_4dc];
+				this->velocity.x >>= 1;
+			} else {
+				this->velocity.x = 0x0;
+			}
+		}
+		iVar2 = this->collision_manager.func_01ffe778(0, 0);
+		if (iVar2 != 0) {
+			this->velocity.x = -this->velocity.x;
+		}
+		this->func_ov000_0209c820(-0x280);
+		this->func_ov010_020d9b84();
+	}
+	return true;
 }
 
 bool Coin::func_ov010_020d91f4()
@@ -230,45 +279,44 @@ bool Coin::func_ov010_020d91f4()
 
 bool Coin::func_ov010_020d9004()
 {
-	// uint uVar1;
-	// undefined4 *local_18;
-	// int local_14;
-	// int local_10;
-	// i32 local_c;
-	//
-	// if (this->_4e4 == '\0') {
-	//	this->_4e4 = '\x01';
-	//	uVar1 = (uint) * (short *)(&data_02080304 + (((int)*(short *)(&data_ov010_02121634 + (uint)this->_4eb * 2) >> 4) * 2 + 1) * 2);
-	//	(this->velocity).x = uVar1 * 0x800 + 0x800 >> 0xc | ((((int)uVar1 >> 0x1f) << 0xb | uVar1 >> 0x15) + (uint)(0xfffff7ff < uVar1 * 0x800)) * 0x100000;
-	//	uVar1 = (uint) * (short *)(&data_02080304 + ((int)*(short *)(&data_ov010_02121634 + (uint)this->_4eb * 2) >> 4) * 4);
-	//	(this->velocity).y = -(uVar1 * 0x800 + 0x800 >> 0xc | ((((int)uVar1 >> 0x1f) << 0xb | uVar1 >> 0x15) + (uint)(0xfffff7ff < uVar1 * 0x800)) * 0x100000);
-	//	if (this->direction != '\0') {
-	//		(this->velocity).x = -(this->velocity).x;
-	//	}
-	//	(this->_3f8).x = (this->position).x;
-	//	(this->_3f8).y = (this->position).y;
-	//	(this->_3f8).z = (this->position).z;
-	//	(this->_3f8).x = (this->_3f8).x + -0x8000;
-	//	(this->_3f8).y = (this->_3f8).y + 0x10000;
-	//} else if (this->_4e4 != 0xff) {
-	//	func_ov010_020d9c78();
-	//	Actor::applyVelocity((Actor *)this);
-	//	func_ov010_020d9acc(this);
-	//	if (this->_4ea != '\0') {
-	//		local_18 = &{vtable(Vec3_32)};
-	//		local_c = (this->_3f8).z;
-	//		if (this->direction == '\0') {
-	//			local_14 = -*(int *)(&data_ov010_0212166c + (uint)this->_4ea * 4);
-	//		} else {
-	//			local_14 = *(int *)(&data_ov010_0212166c + (uint)this->_4ea * 4);
-	//		}
-	//		local_14 = (this->_3f8).x + local_14;
-	//		local_10 = (this->_3f8).y + *(int *)(&data_ov010_02121678 + (uint)this->_4ea * 4);
-	//		Actor::spawnActor(0x42, (this->_4ea - 1) * 0x100 | 1, &local_18, 0, 0, 0);
-	//		this->_4ea = this->_4ea + 0xff;
-	//	}
-	//}
-	// return true;
+	i32 uVar2;
+	i32 uVar1;
+	i32 uVar3;
+	Vec3_32 local_18;
+
+	if (this->_4e4 == 0) {
+		this->_4e4 = 1;
+		// uVar1 = (i32)data_02080304[((int)data_ov010_02121634[this->_4eb] >> 4) * 2 + 1];
+		//(this->velocity).x = uVar1 * 0x800 + 0x800U >> 0xc | (((uVar1 >> 0x1f) << 0xb | (uint)uVar1 >> 0x15) + (uint)(0xfffff7ff < (uint)(uVar1 * 0x800))) * 0x100000;
+		// uVar3 = (i32)data_02080304[((int)data_ov010_02121634[this->_4eb] >> 4) * 2];
+		//(this->velocity).y = -(uVar3 * 0x800 + 0x800U >> 0xc | (((uVar3 >> 0x1f) << 0xb | (uint)uVar3 >> 0x15) + (uint)(0xfffff7ff < (uint)(uVar3 * 0x800))) * 0x100000);
+		if (this->direction != '\0') {
+			(this->velocity).x = -(this->velocity).x;
+		}
+		this->_3f8.x = this->position.x;
+		this->_3f8.y = this->position.y;
+		this->_3f8.z = this->position.z;
+		this->_3f8.x = this->_3f8.x + -0x8000;
+		this->_3f8.y = this->_3f8.y + 0x10000;
+	} else if (this->_4e4 != 0) {
+		this->func_ov010_020d9c78();
+		this->Actor::applyVelocity();
+		this->func_ov010_020d9acc();
+		if (this->_4ea != '\0') {
+			Vec3_32 local_18;
+			local_18.z = (this->_3f8).z;
+			if (this->direction == 0) {
+				uVar2 = -data_ov010_0212166c[this->_4ea];
+			} else {
+				uVar2 = data_ov010_0212166c[this->_4ea];
+			}
+			local_18.x = this->_3f8.x + uVar2;
+			local_18.y = this->_3f8.y + data_ov010_02121678[this->_4ea];
+			Actor::spawnActor(0x42, (this->_4ea - 1) * 0x100 | 1, &local_18, 0, 0, 0);
+			this->_4ea = this->_4ea + 0xff;
+		}
+	}
+	return true;
 }
 
 bool Coin::func_ov010_020d8fb0()
@@ -354,11 +402,6 @@ bool Coin::func_ov010_020d8d9c()
 	return true;
 }
 
-extern i32 data_ov010_02121644[2];
-extern i32 data_ov010_021216b4[2];
-extern u32 data_ov010_02121684;
-extern u32 data_ov010_02121690;
-extern u32 data_ov010_0212169c;
 bool Coin::func_ov010_020d8b9c()
 {
 	int iVar1;
@@ -644,10 +687,6 @@ bool Coin::onRender()
 				this->func_ov010_020d8488();
 			}
 			drawSprite(data_ov011_0212f180[this->_4f0 + 0xf], this->position.x, this->position.y + 0x8000, 0, 0, 3, (Vec2_32 *)NULL, 0, 0, 0);
-			// drawSprite(*(int *)((this->_4f0 + 0xf) * 4 +
-			// 0x212f180),(this->position).x,
-			//(this->position).y + 0x8000,0,0,3,0,0,(undefined2
-			//*)0x0,0);
 			if (this->_4e9 == 0) {
 				this->func_ov010_020d8488();
 			}
@@ -691,17 +730,17 @@ void Coin::_11()
 {
 }
 
-void Coin::func_ov010_020d823c(u32 a)
+void Coin::func_ov010_020d823c(u32 param_1)
 {
-	this->_3f4 = a;
+	this->_3f4 = param_1;
 }
 
-extern u32 data_ov010_0212163c[2];
-void Coin::func_ov010_020d81dc(u32 a)
+const i32 data_ov010_0212163c[2] = {0x555, 0xFFFFFAAB};
+void Coin::func_ov010_020d81dc(u32 param_1)
 {
 	if ((BOOL)(this->_430 == &data_ov010_021293f4) == FALSE) {
 		this->func_ov010_020d9dcc(&data_ov010_021293f4);
-		this->velocity.x = data_ov010_0212163c[a];
+		this->velocity.x = data_ov010_0212163c[param_1];
 		this->velocity.y = 0;
 	}
 }
