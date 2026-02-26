@@ -140,7 +140,7 @@ void Object_229::func_ov099_02185f5c()
 		return;
 	}
 	this->e = 2;
-	this->_404 = this->_404 - 1;
+	this->_404 -= 1;
 	if (this->_404 == 0) {
 		this->func_ov099_02185f30(0);
 	}

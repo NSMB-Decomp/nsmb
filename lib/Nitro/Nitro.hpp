@@ -28,8 +28,7 @@
 // All inputs other than FOLD
 #define KEYS_ALL (KEY_A|KEY_B|KEY_SELECT|KEY_START|KEY_RIGHT|KEY_LEFT|KEY_UP|KEY_DOWN|KEY_R|KEY_L|KEY_X|KEY_Y|KEY_DEBUG)
 
-class Vec3_32s {
-public:
+struct Vec3_32s {
     i32 x;
     i32 y;
     i32 z;

@@ -208,8 +208,33 @@ void Coin::func_ov010_020d99a8()
 	return;
 }
 
+void func_02022220(Vec3_32 *);
+u8 data_ov000_020cace0[2];
+i32 data_ov000_020cae0c[2];
+u32 data_02085a7c;
 bool Coin::func_ov010_020d9890()
 {
+	if (this->_4e4 == 0) {
+		this->_4e4 += 1;
+	} else if (this->_4e4 != ~0) {
+		this->func_ov010_020d9c78();
+		if (this->_3be != 0) {
+			this->func_ov010_020d9acc();
+		}
+		if (((func_020202a0() != 2) && (data_ov000_020cace0[data_02085a7c] == 2)) && (this->position.y >= data_ov000_020cae0c[data_02085a7c])) {
+			Vec3_32 local_18;
+			local_18.x = (this->position).x;
+			local_18.y = (this->position).y;
+			local_18.z = (this->position).z;
+			Nitro::Math_AddVec3_32s(&local_18, &this->centerOffset, &local_18);
+			local_18.y += 0x8000;
+			this->_3e4 = 1;
+			func_02022220(&local_18);
+			this->_444.unlink();
+			this->destroy(true);
+		}
+	}
+	return true;
 }
 
 bool Coin::func_ov010_020d9634()
@@ -384,8 +409,7 @@ bool Coin::func_ov010_020d8d9c()
 
 		} else {
 			func_02020354(this->_4e3);
-			bool iVar1 = func_020202a0();
-			if (iVar1 == 1) {
+			if (func_020202a0() ==1) {
 				this->func_ov000_0209ab90(0, 0, 0, this->_4e3);
 			} else {
 				i32 iVar1 = func_0202040c(this->_4e3);
@@ -645,7 +669,8 @@ void Coin::onStageComplete(PlayerActor *player)
 	vec.z = this->position.z;
 	player->func_ov000_0209ab90(0, 0, 0x18000, player->linked_player);
 	func_02020354(player->linked_player);
-	Nitro::Math_AddVec3_32s(&vec, &this->centerOffset, &vec);
+	Vec3_32* a = &this->centerOffset;
+	Nitro::Math_AddVec3_32s(&vec, a, &vec);
 	func_02012398(0x70, &vec);
 	this->destroy(true);
 }
