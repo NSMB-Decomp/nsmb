@@ -338,7 +338,7 @@ bool Coin::func_ov010_020d9004()
 		this->func_ov010_020d9c78();
 		this->Actor::applyVelocity();
 		this->func_ov010_020d9acc();
-		if (this->_4ea != '\0') {
+		if (this->_4ea != 0) {
 			Vec3_32 local_18;
 			local_18.z = (this->_3f8).z;
 			if (this->direction == 0) {
@@ -349,7 +349,7 @@ bool Coin::func_ov010_020d9004()
 			local_18.x = this->_3f8.x + uVar2;
 			local_18.y = this->_3f8.y + data_ov010_02121678[this->_4ea];
 			Actor::spawnActor(0x42, (this->_4ea - 1) * 0x100 | 1, &local_18, 0, 0, 0);
-			this->_4ea = this->_4ea + 0xff;
+			this->_4ea -= 1;
 		}
 	}
 	return true;
@@ -678,9 +678,13 @@ void Coin::onStageComplete(PlayerActor *player)
 	vec.x = this->position.x;
 	vec.y = this->position.y;
 	vec.z = this->position.z;
-	player->func_ov000_0209ab90(0, 0, 0x18000, player->linked_player);
+	this->func_ov000_0209ab90(0, 0, 0x18000, player->linked_player);
 	func_02020354(player->linked_player);
-	Nitro::Math_AddVec3_32s(&vec, &this->centerOffset, &vec);
+	Nitro::Math_AddVec3_32s(
+		(Vec3_32s *)((u32)&vec + 4),
+		(Vec3_32s *)((u32)&this->centerOffset + 4),
+		(Vec3_32s *)((u32)&vec + 4)
+	);
 	func_02012398(0x70, &vec);
 	this->destroy(true);
 }

@@ -4,6 +4,8 @@ class Vec3_32 : public Vec3_32s {
 public:
     Vec3_32 sub(Vec3_32s *a);
     operator Vec3_32s*() {return this;}
+    operator Vec3_32s*() const {return (Vec3_32s *)((u32)this + 4);}
+
 
     //Vec3();
     virtual inline ~Vec3_32() {};

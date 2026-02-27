@@ -72,7 +72,6 @@ public:
 
     void func_ov010_020d9b84();
     void func_ov010_020d99a8();
-    void func_ov000_0209ab90(u8, u8, u8, i8);
 
     bool onCreate();
     bool onDestroy();
