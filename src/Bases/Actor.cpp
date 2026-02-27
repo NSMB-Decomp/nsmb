@@ -209,24 +209,11 @@ Vec3_32 Actor::applyAcceleration(Vec3_32 *acceleration)
 // TODO: Is there a better sytax?
 void Actor::applyVelocityToPosition(Vec3_32 *velocity)
 {
-    u32 c = ((u32)this + 0x5c);
-    if (c != 0)
-    {
-        c += 4;
-    }
-
-    u32 a = ((i32)this + 0x5c);
-    if (a != 0)
-    {
-        a += 4;
-    }
-
-    u32 b = ((u32)velocity + 4);
-
     Nitro::Math_AddVec3_32s(
-        (Vec3_32s *)a,
-        (Vec3_32s *)b,
-        (Vec3_32s *)c);
+        this->position,
+        (Vec3_32s *)((u32)velocity + 4),
+        this->position
+    );
 }
 
 void Actor::applyVelocity()
@@ -446,5 +433,3 @@ void Actor::initWrapFunctions(u32 a) {
     Actor::setCalcPositionToPlayerFunction(a);
     Actor::setIsBehindTargetFunction(a);
 }
-
-//bool ()
