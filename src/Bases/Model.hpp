@@ -1,4 +1,5 @@
-class Model {
-public:
-    Model();
+class Model
+{
+      public:
+	Model();
 };

@@ -1,19 +1,20 @@
 #include "../Bases/Object.hpp"
 
-class Scene: public Object {
-public:
-  ~Scene();
-  Scene();
+class Scene : public Object
+{
+      public:
+	~Scene();
+	Scene();
 
-  static void prepareFirstScreen();
-  static Scene* tryChangeScene();
+	static void prepareFirstScreen();
+	static Scene *tryChangeScene();
 
-  bool preCreate();
-  void postCreate(u32);
-  bool preDestroy();
-  void postDestroy(u32);
-  bool preUpdate();
-  void postUpdate(u32);
-  bool preRender();
-  void postRender(u32);
+	bool preCreate();
+	void postCreate(u32);
+	bool preDestroy();
+	void postDestroy(u32);
+	bool preUpdate();
+	void postUpdate(u32);
+	bool preRender();
+	void postRender(u32);
 };

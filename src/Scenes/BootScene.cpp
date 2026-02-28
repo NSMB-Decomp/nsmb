@@ -1,29 +1,37 @@
 #include "BootScene.hpp"
 
-BootScene::BootScene() {}
-void * BootScene::create() {
-    return new BootScene();
+BootScene::BootScene()
+{
+}
+void *BootScene::create()
+{
+	return new BootScene();
 }
 
-bool BootScene::onCreate() {
+bool BootScene::onCreate()
+{
 
-    return true;
+	return true;
 }
 
-bool BootScene::onDestroy() {
-    return true;
+bool BootScene::onDestroy()
+{
+	return true;
 }
 
-void BootScene::pendingDestroy() {
-    
+void BootScene::pendingDestroy()
+{
 }
 
-bool BootScene::onRender() {
-    return true;
+bool BootScene::onRender()
+{
+	return true;
 }
 
-bool BootScene::onUpdate() {
-
+bool BootScene::onUpdate()
+{
 }
 
-BootScene::~BootScene() {}
+BootScene::~BootScene()
+{
+}

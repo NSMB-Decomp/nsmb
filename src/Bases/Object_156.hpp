@@ -1,11 +1,12 @@
-#include "StageEntity.hpp"
 #include "Model.hpp"
+#include "StageEntity.hpp"
 
-class Object_156 : public StageEntity {
-public:
-    Model model;
-    inline Object_156();
-    ~Object_156();
-    void* create();
+class Object_156 : public StageEntity
+{
+      public:
+	Model model;
+	inline Object_156();
+	~Object_156();
+	void *create();
 };
-//size_assert(Object_156, 0x4dc)
+// size_assert(Object_156, 0x4dc)

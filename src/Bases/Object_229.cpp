@@ -46,9 +46,7 @@ bool Object_229::onCreate()
 	this->setting_2 = (char)(1 << (uVar1 - 1));
 	u32 a = (data_0208af3c[0] & this->_334);
 	u32 b = (data_0208af3c[1] & this->_338);
-	if (
-		(a && b) == 0
-	) {
+	if ((a && b) == 0) {
 		this->_404 = 3;
 		this->func_ov099_02185f30(2);
 		data_ov000_020cac9c |= this->setting_2;

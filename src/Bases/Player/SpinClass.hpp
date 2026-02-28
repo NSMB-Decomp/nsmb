@@ -1,5 +1,6 @@
-class SpinClass {
-public:
-    SpinClass();
-    ~SpinClass();
+class SpinClass
+{
+      public:
+	SpinClass();
+	~SpinClass();
 };

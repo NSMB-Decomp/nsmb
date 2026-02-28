@@ -1,14 +1,16 @@
 #include "MGDebugScene.hpp"
 
-bool MGDebugScene::preCreate() {
-    MGScene::preCreate();
+bool MGDebugScene::preCreate()
+{
+	MGScene::preCreate();
 }
 
-bool MGDebugScene::preUpdate() {
-    bool a = MGScene::preUpdate();
-    if (a != 0) {
+bool MGDebugScene::preUpdate()
+{
+	bool a = MGScene::preUpdate();
+	if (a != 0) {
 
-        return true;
-    }
-    return false;
+		return true;
+	}
+	return false;
 }

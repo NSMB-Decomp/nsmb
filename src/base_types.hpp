@@ -6,16 +6,16 @@ typedef signed char i8;
 typedef signed short i16;
 typedef signed long i32;
 typedef signed long long i64;
-typedef void* unknown_pointer;
+typedef void *unknown_pointer;
 
-#define NULL (void*)0x0
+#define NULL (void *)0x0
 
 // https://forum.vcfed.org/index.php?threads/c-item-size-check-at-compile-time.1244920/
-#define size_assert( what, howmuch ) typedef char what##_size_wrong_[( !!(sizeof(what) == howmuch) )*2-1 ]
-//#define size_assert( what, howmuch ) 
+#define size_assert(what, howmuch) typedef char what##_size_wrong_[(!!(sizeof(what) == howmuch)) * 2 - 1]
+// #define size_assert( what, howmuch )
 
 //
-#define READ_NIBBLE( data, nybble ) ((settings >> (nybble * 4)) & 0xf)
+#define READ_NIBBLE(data, nybble) ((settings >> (nybble * 4)) & 0xf)
 
 // To fix code that has weird bool logic
 #define BOOL i32

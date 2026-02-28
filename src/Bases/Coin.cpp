@@ -221,23 +221,13 @@ bool Coin::func_ov010_020d9890()
 		if (this->_3be != 0) {
 			this->func_ov010_020d9acc();
 		}
-		if (
-			(
-				(func_020202a0() != 2) && 
-				(data_ov000_020cace0[data_02085a7c] == 2)
-			) && 
-			data_ov000_020cae0c[data_02085a7c] >= this->position.y
-		) {
+		if (((func_020202a0() != 2) && (data_ov000_020cace0[data_02085a7c] == 2)) && data_ov000_020cae0c[data_02085a7c] >= this->position.y) {
 			Vec3_32 local_18;
 			local_18.x = (this->position).x;
 			local_18.y = (this->position).y;
 			local_18.z = (this->position).z;
-			Vec3_32s* b = (Vec3_32s *)((u32)&this->centerOffset + 4);
-			Nitro::Math_AddVec3_32s(
-				local_18, 
-				b, 
-				local_18
-			);
+			Vec3_32s *b = (Vec3_32s *)((u32) & this->centerOffset + 4);
+			Nitro::Math_AddVec3_32s(local_18, b, local_18);
 			local_18.y += 0x8000;
 			this->_3e4 = 1;
 			func_02022220(&local_18);
@@ -420,7 +410,7 @@ bool Coin::func_ov010_020d8d9c()
 
 		} else {
 			func_02020354(this->_4e3);
-			if (func_020202a0() ==1) {
+			if (func_020202a0() == 1) {
 				this->func_ov000_0209ab90(0, 0, 0, this->_4e3);
 			} else {
 				i32 iVar1 = func_0202040c(this->_4e3);
@@ -680,11 +670,7 @@ void Coin::onStageComplete(PlayerActor *player)
 	vec.z = this->position.z;
 	this->func_ov000_0209ab90(0, 0, 0x18000, player->linked_player);
 	func_02020354(player->linked_player);
-	Nitro::Math_AddVec3_32s(
-		(Vec3_32s *)((u32)&vec + 4),
-		(Vec3_32s *)((u32)&this->centerOffset + 4),
-		(Vec3_32s *)((u32)&vec + 4)
-	);
+	Nitro::Math_AddVec3_32s((Vec3_32s *)((u32)&vec + 4), (Vec3_32s *)((u32) & this->centerOffset + 4), (Vec3_32s *)((u32)&vec + 4));
 	func_02012398(0x70, &vec);
 	this->destroy(true);
 }

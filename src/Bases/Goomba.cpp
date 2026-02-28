@@ -1,12 +1,14 @@
 #include "Goomba.hpp"
 
-Goomba::Goomba() {}
+Goomba::Goomba()
+{
+}
 
-bool Goomba::onCreate() {
-
+bool Goomba::onCreate()
+{
 }
 
 void *Goomba::create()
 {
-    return new Goomba();
+	return new Goomba();
 }

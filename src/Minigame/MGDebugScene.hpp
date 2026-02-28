@@ -1,17 +1,22 @@
 #include "MGScene.hpp"
 
-class MGDebugScene: public MGScene {
-public:
-  inline ~MGDebugScene();
-  inline MGDebugScene();
-  
-  bool func_ov130_02126ab0();
+class MGDebugScene : public MGScene
+{
+      public:
+	inline ~MGDebugScene();
+	inline MGDebugScene();
 
-  bool preCreate();
-  bool preUpdate();
-  virtual void virt_18();
-  virtual char* virt_19(u32);
-  virtual void virt_20(u32);
+	bool func_ov130_02126ab0();
+
+	bool preCreate();
+	bool preUpdate();
+	virtual void virt_18();
+	virtual char *virt_19(u32);
+	virtual void virt_20(u32);
 };
-inline MGDebugScene::MGDebugScene(){}
-inline MGDebugScene::~MGDebugScene(){}
+inline MGDebugScene::MGDebugScene()
+{
+}
+inline MGDebugScene::~MGDebugScene()
+{
+}

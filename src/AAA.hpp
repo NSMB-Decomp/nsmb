@@ -1,68 +1,74 @@
 // This file is used solely as a placeholder for functions with a currently unknown location.
 // We should avoid using this file.
 
-#include "base_types.hpp"
-#include "ProcessManager.hpp"
 #include "Heap.hpp"
+#include "ProcessManager.hpp"
 #include "Vec.hpp"
+#include "base_types.hpp"
 
-
-struct ObjectProfile
-{
-    void* (*constructor)();
-    u16 updatePriority;
-    u16 renderPriority;
+struct ObjectProfile {
+	void *(*constructor)();
+	u16 updatePriority;
+	u16 renderPriority;
 };
 
 struct ActorProfile : ObjectProfile {
-    void* (*loadResources)();
+	void *(*loadResources)();
 };
 
-namespace FS {
-    namespace Cache {
-        void clear();
-    }
+namespace FS
+{
+namespace Cache
+{
+void clear();
+}
+} // namespace FS
+
+namespace Nitro_
+{
+void func_02063af0(u16[1], u32, u32);
 }
 
-namespace Nitro_ {
-    void func_02063af0(u16[1], u32, u32);
+namespace WiFi
+{
+u32 random();
 }
 
-namespace WiFi {
-    u32 random();
-}
+namespace Stage
+{
+extern u16 ObjectBankTable[2];
+extern u8 actorFreezeFlag;
+extern u8 stageGroup;
+extern u8 stageID;
+extern u8 stageAreaID;
+} // namespace Stage
 
-namespace Stage {
-    extern u16 ObjectBankTable[2];
-    extern u8 actorFreezeFlag;
-    extern u8 stageGroup;
-    extern u8 stageID;
-    extern u8 stageAreaID;
-}
+namespace Game
+{
+extern i32 cameraY[2];
+extern i32 cameraZoomY[2];
+} // namespace Game
 
-namespace Game {
-    extern i32 cameraY[2];
-    extern i32 cameraZoomY[2];
-}
+namespace Input
+{
+extern u8 localConsoleID;
+extern u32 consoleKeys[4][2];
+extern u32 consoleKeysRepeated[4];
+} // namespace Input
 
-namespace Input {
-    extern u8 localConsoleID;
-    extern u32 consoleKeys[4][2];
-    extern u32 consoleKeysRepeated[4];
-}
-
-class Fader {
-public:
-    u8 _pad0[0x5ac];
-    i32 brightnessFactor[2];
-    u8 _pad1[0x8];
-    u8 fadingTarget[2];
-    bool isComplete();
+class Fader
+{
+      public:
+	u8 _pad0[0x5ac];
+	i32 brightnessFactor[2];
+	u8 _pad1[0x8];
+	u8 fadingTarget[2];
+	bool isComplete();
 };
-extern Fader GlobalFader; 
+extern Fader GlobalFader;
 
-extern ObjectProfile** CurrentProfileTable;
-extern ObjectProfile* MainProfileTable;
+extern ObjectProfile **CurrentProfileTable;
+extern ObjectProfile *MainProfileTable;
 extern u8 data_02088f34;
 
 //
@@ -70,11 +76,11 @@ extern u8 data_ov000_020ca84c;
 extern u8 data_020887fc;
 extern u32 data_02085ad4[2];
 struct SaveOptions {
-    u32 header;
-    u32 flags;
-    u32 soundMode;
-    u32 controlOptions;
-    u32 currentSlot;
+	u32 header;
+	u32 flags;
+	u32 soundMode;
+	u32 controlOptions;
+	u32 currentSlot;
 };
 extern SaveOptions data_02088bdc;
 
@@ -84,11 +90,11 @@ void(func_0200d578)();
 extern u8 data_ov010_02129438;
 extern u32 data_ov011_0212f180[23];
 extern u32 data_02085a98;
-void drawSprite(u32, u32, u32, u32, u32, u32, Vec2_32*, u32, u32, u32);
-void Heap_deallocate(Heap*, void *);
-extern Heap* data_0208b720;
+void drawSprite(u32, u32, u32, u32, u32, u32, Vec2_32 *, u32, u32, u32);
+void Heap_deallocate(Heap *, void *);
+extern Heap *data_0208b720;
 void func_02020354(i8);
-void func_02012398(i32, Vec3_32*);
+void func_02012398(i32, Vec3_32 *);
 u32 func_020202a0();
 i32 func_0202040c(i32);
 
@@ -98,12 +104,12 @@ void func_020067dc();
 extern i32 data_02085aa4;
 
 //
-bool SceneGraph_removeChild(SceneGraph*, ProcessLink*);
-bool SceneGraph_addChild(SceneGraph*, ProcessLink*, ProcessLink*);
-bool LinkedList_append(LinkedList*, PriorityNode*);
-bool LinkedList_Remove(LinkedList*, void*); // TODO: Confirm these paramaters?
-bool LinkedList_Prepend(LinkedList*, ProcessNode*);
-void ProcessSet_add(ProcessList*, PriorityNode*);
+bool SceneGraph_removeChild(SceneGraph *, ProcessLink *);
+bool SceneGraph_addChild(SceneGraph *, ProcessLink *, ProcessLink *);
+bool LinkedList_append(LinkedList *, PriorityNode *);
+bool LinkedList_Remove(LinkedList *, void *); // TODO: Confirm these paramaters?
+bool LinkedList_Prepend(LinkedList *, ProcessNode *);
+void ProcessSet_add(ProcessList *, PriorityNode *);
 
 void Save_setupBackup(u32, void *);
 void CardPulledOutCallback();
@@ -148,8 +154,8 @@ void func_020050ec();
 void func_020050d8();
 void func_020050c0();
 void func_ov001_020cceb4();
-bool (func_0200ae9c)(Vec3_32*);
-bool (func_0201f000)(Vec3_32*);
+bool(func_0200ae9c)(Vec3_32 *);
+bool(func_0201f000)(Vec3_32 *);
 bool isMultiBootCart();
 bool func_020109c8();
 void InitGame();
@@ -160,7 +166,7 @@ extern u16 data_020850e8;
 extern void (*data_0203981c)();
 extern void (*data_02039820)();
 extern void (*data_02039824)();
-extern char GAME_NAME[8];// = "Mario2d";
+extern char GAME_NAME[8]; // = "Mario2d";
 extern u32 FrameCounter;
 extern u32 data_02085a78;
 extern u32 data_02085a74;

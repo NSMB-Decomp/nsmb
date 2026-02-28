@@ -2,23 +2,38 @@
 
 #pragma thumb on
 
-MGScene::MGScene() {
-    this->skipFlags |= 1;
-    this->skipFlags |= 4;
+MGScene::MGScene()
+{
+	this->skipFlags |= 1;
+	this->skipFlags |= 4;
 }
 
-bool MGScene::preCreate() {
-    return true;
+bool MGScene::preCreate()
+{
+	return true;
 }
 
-void MGScene::postCreate(u32) {
+void MGScene::postCreate(u32)
+{
 }
 
-bool MGScene::preDestroy() {}
-void MGScene::postDestroy(u32) {}
-bool MGScene::preUpdate() {}
-void MGScene::postUpdate(u32) {}
-bool MGScene::preRender() {}
-void MGScene::postRender(u32) {}
+bool MGScene::preDestroy()
+{
+}
+void MGScene::postDestroy(u32)
+{
+}
+bool MGScene::preUpdate()
+{
+}
+void MGScene::postUpdate(u32)
+{
+}
+bool MGScene::preRender()
+{
+}
+void MGScene::postRender(u32)
+{
+}
 
 #pragma thumb off

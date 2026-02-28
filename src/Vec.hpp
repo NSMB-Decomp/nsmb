@@ -1,31 +1,35 @@
 #include "../lib/Nitro/Nitro.hpp"
 
-class Vec3_32 : public Vec3_32s {
-public:
-    Vec3_32 sub(Vec3_32s *a);
-    operator Vec3_32s*() {return this;}
-    operator Vec3_32s*() const {return (Vec3_32s *)((u32)this + 4);}
+class Vec3_32 : public Vec3_32s
+{
+      public:
+	Vec3_32 sub(Vec3_32s *a);
+	operator Vec3_32s *()
+	{
+		return this;
+	}
 
-
-    //Vec3();
-    virtual inline ~Vec3_32() {};
+	// Vec3();
+	virtual inline ~Vec3_32() {};
 };
 
-class Vec2_32 {
-public:
-    i32 x;
-    i32 y;
+class Vec2_32
+{
+      public:
+	i32 x;
+	i32 y;
 
-    //Vec3();
-    virtual inline ~Vec2_32() {};
+	// Vec3();
+	virtual inline ~Vec2_32() {};
 };
 
-class Vec3_16 {
-public:
-    i16 x;
-    i16 y;
-    i16 z;
+class Vec3_16
+{
+      public:
+	i16 x;
+	i16 y;
+	i16 z;
 
-    //Vec3s();
-    virtual inline ~Vec3_16() {};
+	// Vec3s();
+	virtual inline ~Vec3_16() {};
 };
