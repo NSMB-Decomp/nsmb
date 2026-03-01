@@ -59,10 +59,16 @@ extern u32 consoleKeysRepeated[4];
 class Fader
 {
       public:
-	u8 _pad0[0x5ac];
+	u8 _pad0[0x5a4];
+	i32 targetBrightness;
+	u32 fadingMode;
 	i32 brightnessFactor[2];
-	u8 _pad1[0x8];
+	i32 brightnessIncrement[2];
 	u8 fadingTarget[2];
+	u8 fadingState[2];
+	u8 fadeMaskShape[2];
+	u8 fadingType; /* 5C2 */
+
 	bool isComplete();
 	void setupSceneFading(u32, bool, bool);
 };

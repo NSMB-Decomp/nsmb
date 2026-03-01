@@ -53,14 +53,14 @@ Scene::~Scene()
 bool Scene::preCreate()
 {
 	if (!Base::preCreate()) {
-	return false;
+		return false;
 	}
-			if (this->object_id != 0) {
-			GlobalFader.setupSceneFading(0,0,1);
-    	}
-		this->_5c = 0x1fc;
-    	this->_60 = 0xf;
-		return true;
+	if (this->object_id != 0) {
+		GlobalFader.setupSceneFading(0, 0, 1);
+	}
+	this->_5c = 0x1fc;
+	this->_60 = 0xf;
+	return true;
 }
 
 void Scene::postCreate(u32 a)
@@ -69,6 +69,12 @@ void Scene::postCreate(u32 a)
 
 bool Scene::preDestroy()
 {
+	bool result = Base::preDestroy();
+	if (!result) {
+		return false;
+	}
+	GlobalFader.fadingType = 0;
+	return true;
 }
 
 void Scene::postDestroy(u32 a)
