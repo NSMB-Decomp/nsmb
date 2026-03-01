@@ -4,12 +4,25 @@ bool func_02046c5c();
 bool Wifi_isMultiBootCart();
 void func_0200f3d8();
 void func_02009b64();
-u32 data_02085a84;
-u32 data_0208ae58;
 void func_ov052_02152bf0();
 void func_0200e874(u32, u32, bool);
+void func_0200514c(u32);
+void sceneBaseInit();
+void func_02018ac0();
+void func_0200e944(u32, u32, u32);
+u32 data_02088f18();
+u32 func_02013050(u32);
+u32 data_02085a84;
+u32 data_0208ae58;
 u32 data_02089504;
 u8 data_0203bd28;
+u8 data_02085974;
+u16 data_0203bd2c;
+u16 data_0203bd34;
+u8 data_02088f30;
+u32 data_02088f38;
+
+Fader *PTR_02085b14;
 
 Scene::Scene()
 {
@@ -64,8 +77,14 @@ bool Scene::preCreate()
 	return true;
 }
 
-void Scene::postCreate(u32 a)
+void Scene::postCreate(u32 param_1)
 {
+	func_0200e944(this->_5c, this->_60, 1);
+	if (param_1 == 2) {
+		PTR_02085b14 = &GlobalFader;
+	}
+	Object::postCreate(param_1);
+	return;
 }
 
 bool Scene::preDestroy()
@@ -109,10 +128,6 @@ void Scene::postRender(u32 a)
 	Base::postRender(a);
 }
 
-void sceneBaseInit();
-void func_02018ac0();
-u32 data_02088f18();
-u32 func_02013050(u32);
 void Scene::prepareFirstScreen()
 {
 	if (i32(&GlobalFader) == 0) {
@@ -148,12 +163,6 @@ void Scene::prepareFirstScreen()
 	}
 }
 
-u8 data_02085974;
-u16 data_0203bd2c;
-u16 data_0203bd34;
-u8 data_02088f30;
-u32 data_02088f38;
-void func_0200514c(u32);
 Scene *Scene::tryChangeScene()
 {
 	if (data_0203bd28 != 0 || data_0203bd30 == 0x181) {
