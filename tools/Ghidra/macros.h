@@ -33,6 +33,10 @@
     void *_54;                \
     void *heap;
 
+#define D_Object_vtable D_Base_vtable
+#define D_Object_data D_Base_data
+
+
 /* Actor */
 #define D_Actor_vtable               \
     D_Base_vtable void (*setPosX)(); \
@@ -362,3 +366,15 @@
    u32 d; \
    u32 e; \
    u8 f; 
+
+#define D_Scene_vtable \
+    D_Object_vtable
+
+#define D_Scene_data \
+    D_Object_data
+
+#define D_SoundTestScene_vtable \
+    D_Scene_vtable
+
+#define D_SoundTestScene_data \
+   D_Scene_data; \

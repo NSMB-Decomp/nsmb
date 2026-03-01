@@ -9,6 +9,7 @@
 #define REG_DISPCNT_SUB *((u32 *)0x04001000)
 #define REG_BG1CNT_SUB *((u16 *)0x0400100a)
 #define REG_BLDCNT_SUB *((u16 *)0x04001050)
+#define REG_BG1HOFS *((u32 *)0x04000014)
 
 #define KEY_A 0 << 1
 #define KEY_B 1 << 1

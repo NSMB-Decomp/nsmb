@@ -1,11 +1,10 @@
-func_ov006_020cc2e0 kind:function(arm,size=0x20) addr:0x020cc2e0
-func_ov006_020cc300 kind:function(arm,size=0x28) addr:0x020cc300
-func_ov006_020cc328 kind:function(arm,size=0x13c) addr:0x020cc328
-func_ov006_020cc464 kind:function(arm,size=0x8) addr:0x020cc464
-func_ov006_020cc46c kind:function(arm,size=0x4) addr:0x020cc46c
-func_ov006_020cc470 kind:function(arm,size=0x18) addr:0x020cc470
-func_ov006_020cc488 kind:function(arm,size=0x114) addr:0x020cc488
-func_ov006_020cc59c kind:function(arm,size=0x2c) addr:0x020cc59c
-UnknownProfile::ov006_020cc5e0 kind:data(any) addr:0x020cc5e0
-UnknownVtable::ov006_020cc5f0 kind:data(any) addr:0x020cc5f0
-data_ov006_020cc620 kind:data(any) addr:0x020cc620 ambiguous
+_ZN14SoundTestSceneD1Ev kind:function(arm,size=0x20) addr:0x020cc2e0
+_ZN14SoundTestSceneD0Ev kind:function(arm,size=0x28) addr:0x020cc300
+_ZN14SoundTestScene8onUpdateEv kind:function(arm,size=0x13c) addr:0x020cc328
+_ZN14SoundTestScene8onRenderEv kind:function(arm,size=0x8) addr:0x020cc464
+_ZN14SoundTestScene14pendingDestroyEv kind:function(arm,size=0x4) addr:0x020cc46c
+_ZN14SoundTestScene9onDestroyEv kind:function(arm,size=0x18) addr:0x020cc470
+_ZN14SoundTestScene8onCreateEv kind:function(arm,size=0x114) addr:0x020cc488
+_ZN14SoundTestScene6createEv kind:function(arm,size=0x2c) addr:0x020cc59c
+_ZN14SoundTestScene7ProfileE kind:data(any) addr:0x020cc5e0
+_ZTV14SoundTestScene kind:data(word[20]) addr:0x020cc5e8

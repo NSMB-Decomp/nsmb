@@ -3,3 +3,7 @@
     .data       start:0x020cc5e0 end:0x020cc640 kind:data align:32
     .bss        start:0x020cc640 end:0x020cc640 kind:bss align:32
 
+src/Scenes/SoundTestScene.cpp:
+    .text       start:0x020cc2e0 end:0x020cc5c8
+    .ctor       start:0x020cc5c8 end:0x020cc5cc
+    .data       start:0x020cc5e0 end:0x020cc640

@@ -299,3 +299,12 @@ struct Object_229 {
     Object_229_vtable* vtable;
     D_Object229_data;
 };
+
+// Class: SoundTestScene
+struct SoundTestScene_vtable {
+    D_SoundTestScene_vtable;
+};
+struct SoundTestScene {
+    SoundTestScene_vtable* vtable;
+    D_SoundTestScene_data;
+};
