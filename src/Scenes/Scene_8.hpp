@@ -3,7 +3,7 @@
 class Scene_8 : public Scene
 {
       public:
-	u8 _pad[0xc];
+	u8 _pad[0x4];
 
 	inline Scene_8();
 	~Scene_8();

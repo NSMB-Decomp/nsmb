@@ -300,6 +300,15 @@ struct Object_229 {
     D_Object229_data;
 };
 
+// Class: Scene
+struct Scene_vtable {
+    D_Scene_vtable;
+};
+struct Scene {
+    Scene_vtable* vtable;
+    D_Scene_data;
+};
+
 // Class: SoundTestScene
 struct SoundTestScene_vtable {
     D_SoundTestScene_vtable;
@@ -307,4 +316,37 @@ struct SoundTestScene_vtable {
 struct SoundTestScene {
     SoundTestScene_vtable* vtable;
     D_SoundTestScene_data;
+};
+
+// Class: MainMenuScene
+struct TitleScreenButton {
+	i32 posX;
+	i32 posY;
+	i32 velX;
+	i32 velY;
+};
+typedef enum SaveStateFlag { Empty = 1, Saved = 2, StoryCompleted = 4, StandardLevelsCompleted = 8, GameCompleted = 16 } SaveStateFlag;
+struct SaveState {
+	SaveStateFlag flags;
+	u32 lives;
+	u32 coins;
+	u32 score;
+	u32 starCoins;
+	u32 currentWorld;
+};
+
+struct TitleScreenCutscene
+{
+	u8 _pad[0x908];
+};
+struct TextLabel
+{
+	u8 _pad[0xb0];
+};
+struct MainMenuScene_vtable {
+    D_MainMenuScene_vtable;
+};
+struct MainMenuScene {
+    MainMenuScene_vtable* vtable;
+    D_MainMenuScene_data;
 };

@@ -101,7 +101,7 @@ func_ov009_020cf1b4 kind:function(arm,size=0x160) addr:0x020cf1b4
 func_ov009_020cf314 kind:function(arm,size=0x250) addr:0x020cf314
 func_ov009_020cf564 kind:function(arm,size=0x104) addr:0x020cf564
 func_ov009_020cf668 kind:function(arm,size=0x154) addr:0x020cf668
-func_ov009_020cf7bc kind:function(arm,size=0xe8) addr:0x020cf7bc
+_ZN13MainMenuScene8onRenderEv kind:function(arm,size=0xe8) addr:0x020cf7bc
 func_ov009_020cf8a4 kind:function(arm,size=0xac) addr:0x020cf8a4
 func_ov009_020cf950 kind:function(arm,size=0x34) addr:0x020cf950
 func_ov009_020cf984 kind:function(arm,size=0x2c) addr:0x020cf984
@@ -183,11 +183,11 @@ func_ov009_020d339c kind:function(arm,size=0x104) addr:0x020d339c
 func_ov009_020d34a0 kind:function(arm,size=0x8c) addr:0x020d34a0
 func_ov009_020d352c kind:function(arm,size=0x10) addr:0x020d352c
 func_ov009_020d353c kind:function(arm,size=0x34) addr:0x020d353c
-func_ov009_020d3570 kind:function(arm,size=0x280) addr:0x020d3570
-func_ov009_020d37f0 kind:function(arm,size=0x44) addr:0x020d37f0
-func_ov009_020d3834 kind:function(arm,size=0x3c) addr:0x020d3834
-func_ov009_020d3870 kind:function(arm,size=0x38) addr:0x020d3870
-Object_4::create kind:function(arm,size=0x2c) addr:0x020d38a8
+_ZN13MainMenuScene8onCreateEv kind:function(arm,size=0x280) addr:0x020d3570
+_ZN13MainMenuSceneD0Ev kind:function(arm,size=0x44) addr:0x020d37f0
+_ZN13MainMenuSceneD1Ev kind:function(arm,size=0x3c) addr:0x020d3834
+_ZN13MainMenuSceneC2Ev kind:function(arm,size=0x38) addr:0x020d3870
+_ZN13MainMenuScene6createEv kind:function(arm,size=0x2c) addr:0x020d38a8
 func_ov009_020d38d4 kind:function(arm,size=0x64) addr:0x020d38d4
 func_ov009_020d3938 kind:function(arm,size=0x6c) addr:0x020d3938
 func_ov009_020d39a4 kind:function(arm,size=0xac) addr:0x020d39a4
@@ -583,7 +583,7 @@ data_ov009_020daa34 kind:data(any) addr:0x020daa34
 data_ov009_020daa44 kind:data(any) addr:0x020daa44
 data_ov009_020daa54 kind:data(any) addr:0x020daa54
 data_ov009_020daa6c kind:data(any) addr:0x020daa6c
-Object_4::vtable kind:data(any) addr:0x020daa94
+_ZTV13MainMenuScene kind:data(any) addr:0x020daa94
 UnknownProfile::ov009_020daadc kind:data(any) addr:0x020daadc
 UnknownVtable::ov009_020daaec kind:data(any) addr:0x020daaec
 UnknownVtable::ov009_020dab3c kind:data(any) addr:0x020dab3c

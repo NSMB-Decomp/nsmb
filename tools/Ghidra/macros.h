@@ -36,7 +36,6 @@
 #define D_Object_vtable D_Base_vtable
 #define D_Object_data D_Base_data
 
-
 /* Actor */
 #define D_Actor_vtable               \
     D_Base_vtable void (*setPosX)(); \
@@ -368,13 +367,66 @@
    u8 f; 
 
 #define D_Scene_vtable \
-    D_Object_vtable
+    D_Object_vtable \
 
 #define D_Scene_data \
+    u8 _pad[8]; \
     D_Object_data
 
 #define D_SoundTestScene_vtable \
     D_Scene_vtable
 
 #define D_SoundTestScene_data \
-   D_Scene_data; \
+    D_Scene_data; \
+
+#define D_MainMenuScene_vtable \
+    D_Scene_vtable
+
+#define D_MainMenuScene_data \
+    D_Scene_data; \
+    u8 menuID; \
+    u8 stateID; \
+    u8 _pad0;	    /* unused? */ \
+    i8 buttonAnimTimer; /* used to animate the button pressed animation */ \
+    u8 fileSelectCurrentButton; \
+    u8 fileCopySourceFile;	       /* 0-2=file id */ \
+    u8 fileCopyDestinationFile;    /* 0-2=file id */ \
+    u8 fileCopyIgnoredFile;	       /* the third unselected file (neither source nor destination) */ \
+    u8 fileEraseFile;	       /* 0-2=file id */ \
+    u8 fileEraseCurrentButton;     /* 0-2=file,3=back,4='Yes',5='No' */ \
+    u8 optionsCurrentButton;       /* 0=sound mode,1=control mode,2='OK' */ \
+    u8 fileConfirmOperationButton; /* 0='Yes',1='No' */ \
+    bool backButtonSelected;       /* cancel operation */ \
+    bool backButtonHighlighted; \
+    bool fileSelectionCompleted;  /* set to true when the (copy/erase) file selection is completed */ \
+    bool fileConfirmRequest;      /* set to true when a file operation needs a confirmation (erase=always, copy=overwrite only) */ \
+    bool copyingFile;	      /* used to render the icon */ \
+    bool copyingFileAnimStopping; /* if set to true, the animation will continue until frame 0 is reached */ \
+    u8 copyingFileFrame;	      /* used to animate the icon */ \
+    u8 stateTimer; \
+    bool buttonsVisible; /* if not true, the enter state should be responsible for sliding them back on screen */ \
+    u8 fileEraseSelected; \
+    u8 fileCopiedTimer; \
+    u8 fileCopyCurrentButton; \
+    u8 _pad1;		  /* used? */ \
+    bool fileOperationFailed; /* set to true when a file operation fails */ \
+    u8 _pad2; \
+    u8 _pad3; \
+    int buttonHitTimer; \
+    int button1Offset;	   /* copy/sound mode */ \
+    int button2Offset;	   /* erase/control mode */ \
+    int optionsOKButtonOffset; /* pos Y = pos X + offset */ \
+    int optionsOKButtonPosX;   /* relative to the BNCL cell (ofc) */ \
+    int guiTimer;		   /* used to move the GUI in/out of the screen */ \
+    int buttonsTimer;	   /* used to move the buttons in/out of the screen */ \
+    int backButtonOffset; \
+    int soundMode; \
+    int controlMode; \
+    int fileButtonsTargetY[3]; \
+    TitleScreenButton mainMenuButtons[4]; \
+    TitleScreenButton fileSelectFileButtons[3]; \
+    TitleScreenButton fileSelectButtons1[2]; \
+    TitleScreenButton fileSelectButtons2[2]; \
+    SaveState saves[3]; \
+    TitleScreenCutscene cutscene; \
+    TextLabel label; 

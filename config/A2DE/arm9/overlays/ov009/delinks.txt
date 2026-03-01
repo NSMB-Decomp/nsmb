@@ -5,5 +5,6 @@
     .data       start:0x020da620 end:0x020dbb80 kind:data align:32
     .bss        start:0x020dbb80 end:0x020dc1e0 kind:bss align:32
 
-src/overlay009.cpp:
-    .text       start:0x020cc2e0 end:0x020d9620
+src/Scenes/MainMenuScene.cpp:
+    .text       start:0x020cf7bc end:0x020d38d4
+    .data       start:0x020daa94 end:0x020daadc

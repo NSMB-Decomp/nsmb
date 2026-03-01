@@ -3,7 +3,6 @@
 class SoundTestScene : public Scene
 {
       public:
-	u8 _pad9[8];
 	u32 _64;
 	u32 _68;
 	u32 _6c;

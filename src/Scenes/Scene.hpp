@@ -3,6 +3,8 @@
 class Scene : public Object
 {
       public:
+	u8 _pad4[0x8];
+
 	~Scene();
 	Scene();
 
