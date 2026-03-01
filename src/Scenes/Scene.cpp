@@ -77,8 +77,13 @@ bool Scene::preDestroy()
 	return true;
 }
 
+u8 data_0203bd28;
 void Scene::postDestroy(u32 a)
 {
+	if (a == 2) {
+		data_0203bd28 = 0;
+	}
+	Base::postDestroy(a);
 }
 
 bool Scene::preUpdate()
