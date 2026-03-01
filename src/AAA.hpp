@@ -56,6 +56,7 @@ extern u32 consoleKeys[4][2];
 extern u32 consoleKeysRepeated[4];
 } // namespace Input
 
+void func_ov001_020cceb4();
 class Fader
 {
       public:

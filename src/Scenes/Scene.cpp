@@ -9,6 +9,7 @@ u32 data_0208ae58;
 void func_ov052_02152bf0();
 void func_0200e874(u32, u32, bool);
 u32 data_02089504;
+u8 data_0203bd28;
 
 Scene::Scene()
 {
@@ -77,7 +78,6 @@ bool Scene::preDestroy()
 	return true;
 }
 
-u8 data_0203bd28;
 void Scene::postDestroy(u32 a)
 {
 	if (a == 2) {
