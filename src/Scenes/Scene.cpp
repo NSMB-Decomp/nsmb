@@ -107,6 +107,54 @@ void Scene::postDestroy(u32 a)
 
 bool Scene::preUpdate()
 {
+	if (!Base::preUpdate()) {
+		return 0;
+	}
+	if (data_0203bd30 == 0x181) {
+		if ((this->skipFlags & 1) != 0) {
+			if (!this->hasChildPendingCreation()) {
+				this->skipFlags = this->skipFlags & 0xfe;
+				this->skipFlags = this->skipFlags & 0xfb;
+			}
+			return false;
+		}
+		u32 i = 0;
+		do {
+		if ((GlobalFader.fadingState[0] & 4) != 0) {
+			GlobalFader.func_02007e34(0x20, i);
+		}
+		if ((GlobalFader.fadingState[0] & 0x20) != 0) {
+			GlobalFader.func_02007cf8(0x20, i);
+		}
+		i += 1;
+		//pFVar3 = (Fader *)(pFVar3->_pad0 + 1);
+		} while (i < 2);
+		// if (data_02087630 == '\0') {
+		//	data_02088f2c = '\x01';
+		// } else if ((data_02088f2c != '\0') && (data_02088f30 != '\0')) {
+		//	bVar1 = Wifi_isMultiBootCart();
+		//	if (bVar1) {
+		//		data_0208883c |= 0x8000;
+		//	} else {
+		//		data_02088f2c = '\0';
+		//		func_02011e3c(0x1e);
+		//		func_02007c44(&GlobalFader);
+		//		func_02007bfc(&GlobalFader);
+		//		func_020131fc(4, 0);
+		//		data_02088f34 = 1;
+		//	}
+		//	return 0;
+		// }
+		// return 1;
+	}
+	if (GlobalFader.func_02007c68() == 0) {
+		GlobalFader.func_02007df0(0x20);
+	} else {
+		if (GlobalFader.func_02007c68() != 0) {
+			this->destroy();
+		}
+	}
+	return false;
 }
 
 void Scene::postUpdate(u32 a)
