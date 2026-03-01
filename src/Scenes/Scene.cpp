@@ -74,9 +74,11 @@ void Scene::postUpdate(u32 a)
 	Base::postUpdate(a);
 }
 
+void func_0200e874(void*, void*, bool);
 bool Scene::preRender()
 {
 	if (Base::preRender()) {
+		func_0200e874(this->_5c, this->_60, true);
 		return true;
 	}
 	return false;

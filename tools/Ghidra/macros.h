@@ -370,8 +370,9 @@
     D_Object_vtable \
 
 #define D_Scene_data \
-    u8 _pad[8]; \
-    D_Object_data
+    D_Object_data \
+    void* _5c; \
+    void* _60;
 
 #define D_SoundTestScene_vtable \
     D_Scene_vtable
