@@ -1,5 +1,15 @@
 #include "Scene.hpp"
 
+bool func_02046c5c();
+bool Wifi_isMultiBootCart();
+void func_0200f3d8();
+void func_02009b64();
+u32 data_02085a84;
+u32 data_0208ae58;
+void func_ov052_02152bf0();
+void func_0200e874(u32, u32, bool);
+u32 data_02089504;
+
 Scene::Scene()
 {
 	this->skipFlags |= 1;
@@ -9,14 +19,6 @@ Scene::Scene()
 	data_02088f34 = 0;
 }
 
-bool func_02046c5c();
-bool Wifi_isMultiBootCart();
-void func_0200f3d8();
-void func_02009b64();
-u32 data_02085a84;
-u32 data_0208ae58;
-void func_ov052_02152bf0();
-u32 data_02089504;
 Scene::~Scene()
 {
 	if (data_02088f34 != 0) {
@@ -50,7 +52,15 @@ Scene::~Scene()
 
 bool Scene::preCreate()
 {
-	return true;
+	if (!Base::preCreate()) {
+	return false;
+	}
+			if (this->object_id != 0) {
+			GlobalFader.setupSceneFading(0,0,1);
+    	}
+		this->_5c = 0x1fc;
+    	this->_60 = 0xf;
+		return true;
 }
 
 void Scene::postCreate(u32 a)
@@ -74,7 +84,6 @@ void Scene::postUpdate(u32 a)
 	Base::postUpdate(a);
 }
 
-void func_0200e874(void*, void*, bool);
 bool Scene::preRender()
 {
 	if (Base::preRender()) {

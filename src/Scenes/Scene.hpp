@@ -3,8 +3,8 @@
 class Scene : public Object
 {
       public:
-	void* _5c;
-	void* _60;
+	u32 _5c;
+	u32 _60;
 
 	~Scene();
 	Scene();

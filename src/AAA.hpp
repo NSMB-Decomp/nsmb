@@ -64,6 +64,7 @@ class Fader
 	u8 _pad1[0x8];
 	u8 fadingTarget[2];
 	bool isComplete();
+	void setupSceneFading(u32, bool, bool);
 };
 extern Fader GlobalFader;
 
