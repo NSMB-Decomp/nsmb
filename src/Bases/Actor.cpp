@@ -370,12 +370,14 @@ bool Actor::isBehindTargetNoWrap(i32 param_1, i32 param_2)
 
 bool Actor::isBehindTargetWrap(i32 this_, i32 other)
 {
-	i32 iVar1 = (this_ & data_02085aa4) - (other & data_02085aa4);
-	i32 iVar2 = (data_02085aa4 + 1) / 2;
-	if (iVar1 < 0) {
-		return -iVar1 >= iVar2;
+	i32 iVar2;
+	i32 iVar1;
+	iVar2 = (this_ & data_02085aa4) - (other & data_02085aa4);
+	iVar1 = (data_02085aa4 + 1) / 2;
+	if (iVar2 < 0) {
+		return iVar2 >= -iVar1;
 	} else {
-		return iVar1 > iVar2;
+		return iVar2 > iVar1;
 	}
 }
 
