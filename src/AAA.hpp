@@ -47,6 +47,7 @@ namespace Game
 {
 extern i32 cameraY[2];
 extern i32 cameraZoomY[2];
+u32 getBootScene();
 } // namespace Game
 
 namespace Input
@@ -69,6 +70,8 @@ class Fader
 	u8 fadingState[2];
 	u8 fadeMaskShape[2];
 	u8 fadingType; /* 5C2 */
+
+	Fader();
 
 	bool isComplete();
 	void setupSceneFading(u32, bool, bool);
@@ -105,6 +108,7 @@ void func_02020354(i8);
 void func_02012398(i32, Vec3_32 *);
 u32 func_020202a0();
 i32 func_0202040c(i32);
+extern u16 data_0203bd30;
 
 //
 bool func_0204d82c();
