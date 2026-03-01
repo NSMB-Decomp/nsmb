@@ -81,8 +81,7 @@ bool Actor::preUpdate()
 	}
 
 	if (!(Stage::actorFreezeFlag & this->actorCategory)) {
-		Vec3_32 step = this->position.sub(&this->lastPosition);
-		this->lastStep = step;
+		this->lastStep = this->position.sub(&this->lastPosition);
 		this->lastPosition = this->position;
 		return true;
 	}
