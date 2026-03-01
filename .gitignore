@@ -2,6 +2,7 @@ objdiff.json
 objdiff_report.json
 *.nds
 *.sav
+*.mch
 temp
 .vscode
 
