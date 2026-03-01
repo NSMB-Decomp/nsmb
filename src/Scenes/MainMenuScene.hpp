@@ -30,6 +30,8 @@ class TextLabel
 	u8 _pad[0xb0];
 	TextLabel();
 	~TextLabel();
+
+	void func_02018060();
 };
 
 class MainMenuScene : public Scene
@@ -64,7 +66,7 @@ class MainMenuScene : public Scene
 	u8 _pad2;
 	u8 _pad3;
 	int buttonHitTimer;
-	int button1Offset;	   /* copy/sound mode */
+	i32 button1Offset;	   /* copy/sound mode */
 	int button2Offset;	   /* erase/control mode */
 	int optionsOKButtonOffset; /* pos Y = pos X + offset */
 	int optionsOKButtonPosX;   /* relative to the BNCL cell (ofc) */
@@ -86,6 +88,13 @@ class MainMenuScene : public Scene
 	void *create();
 	bool onCreate();
 	bool onRender();
+
+	i32 func_ov009_020ce8d8();
+	i32 func_ov009_020ce944(i32);
+	void func_ov009_020ceaec(i32, i32);
+	u8 func_ov009_020ce86c();
+	void func_ov009_020cea8c();
+	void func_ov009_020cea44(i32);
 
 	void onRender_0();
 	void onRender_1();

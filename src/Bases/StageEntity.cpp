@@ -650,8 +650,18 @@ u32 StageEntity::stopPlayerInShell(ActiveCollider *collider, PlayerActor *player
 	return 0;
 }
 
-void StageEntity::isPlayerInZone(PlayerActor *player, u32 id)
+void func_0201eef8(u32, Rect32 *);
+bool StageEntity::isPlayerInZone(PlayerActor *player, u32 id)
 {
+	Rect32 rect;
+
+	func_0201eef8(id, &rect);
+	player->position.x &= data_02085aa4;
+	i32 pos_x = player->position.x;
+	if ((((rect.x <= pos_x) && (pos_x <= rect.x + rect.half_w)) && (player->position.y >= rect.y)) && (rect.y - rect.half_h >= pos_x)) {
+		return true;
+	}
+	return false;
 }
 
 void StageEntity::assignView(Vec3_32 *position)

@@ -33,3 +33,10 @@ class Vec3_16
 	// Vec3s();
 	virtual inline ~Vec3_16() {};
 };
+
+struct Rect32 {
+	i32 x;
+	i32 y;
+	i32 half_w;
+	i32 half_h;
+};

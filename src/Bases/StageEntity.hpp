@@ -79,7 +79,7 @@ class StageEntity : public StageActor
 	void func_ov000_020988ac(u32);
 	void func_ov000_020988d0(u32);
 	void assignView(Vec3_32 *);
-	void isPlayerInZone(PlayerActor *, u32);
+	bool isPlayerInZone(PlayerActor *, u32);
 	u32 stopPlayerInShell(ActiveCollider *, PlayerActor *);
 	static bool isBelowPlayer(i32, ActiveCollider *, u8);
 	bool setGroundPoundCollision(PlayerActor *);
