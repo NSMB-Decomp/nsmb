@@ -87,11 +87,11 @@ class MainMenuScene : public Scene
 	bool onCreate();
 	bool onRender();
 
-	void func_ov009_020cf668();
-	void func_ov009_020cf564();
-	void func_ov009_020cf314();
-	void func_ov009_020cf1b4();
-	void func_ov009_020cecec();
+	void onRender_0();
+	void onRender_1();
+	void onRender_2();
+	void onRender_3();
+	void onRender_4();
 };
 
 // #include "base_types.hpp"

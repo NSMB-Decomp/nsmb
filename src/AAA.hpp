@@ -153,7 +153,7 @@ void func_0200a0b4();
 void func_020050ec();
 void func_020050d8();
 void func_020050c0();
-void func_ov001_020cceb4();
+void onRender_3();
 bool(func_0200ae9c)(Vec3_32 *);
 bool(func_0201f000)(Vec3_32 *);
 bool isMultiBootCart();

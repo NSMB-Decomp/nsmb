@@ -3,7 +3,7 @@
 class DebugScene : public Scene
 {
       public:
-	u8 _pad0[0x17c];
+	u8 _pad0[0x174];
 	u32 _1d8;
 	u32 _1dc;
 	u32 _1e0;
