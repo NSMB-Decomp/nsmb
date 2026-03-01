@@ -325,7 +325,7 @@ i32 Actor::calcDistanceToPlayerWrap(i32, i32, i32, i32)
 
 i32 Actor::getDistanceToPlayer(i32 x, i32 y)
 {
-	//(*data_ov000_020ca858)()
+	(*data_ov000_020ca858)((this->position.x + this->centerOffset.x) >> 0xc, (this->position.y + this->centerOffset.y) >> 0xc, x, y);
 }
 
 void Actor::setCalcPositionToPlayerFunction(u32 param_1)
