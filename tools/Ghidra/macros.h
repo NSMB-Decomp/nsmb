@@ -272,8 +272,8 @@
     i8 _7a8;              \
     u8 _7a9;              \
     u8 _7aa;              \
-    i8 _7ab;              \
-    i8 _7ac;              \
+    i8 runtimePowerup;              \
+    i8 powerup;              \
     u8 _pad5[0x3];        \
     u8 _7b0;              \
     i8 _7b1;              \
