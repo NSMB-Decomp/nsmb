@@ -157,8 +157,8 @@ class PlayerBase : public StageActor
 	u32 func_ov011_0212c5a4();
 	u32 func_ov011_0212c5b0();
 	u32 func_ov011_0212c5bc();
-	bool func_ov011_0212c5c8();
-	bool func_ov011_0212c5ec();
+	u32 func_ov011_0212c5c8();
+	u32 func_ov011_0212c5ec();
 	u32 func_ov011_0212c610();
 	u32 func_ov011_0212c8dc();
 	u32 func_ov011_0212c61c();
@@ -179,13 +179,13 @@ class PlayerBase : public StageActor
 	u32 func_ov011_0212c90c();
 	u32 func_ov011_0212c768();
 	u32 func_ov011_0212c774();
-	u16 func_ov011_0212c78c();
+	u32 func_ov011_0212c78c();
 	u32 func_ov011_0212c8ac();
 	u32 func_ov011_0212c8bc();
 	u32 func_ov011_0212c8ec();
 	u32 func_ov011_0212c8fc();
-	u32 func_ov011_0212c91c();
-	u32 func_ov011_0212c93c();
-	u32 func_ov011_0212c950();
+	void func_ov011_0212c91c();
+	void func_ov011_0212c93c();
+	void func_ov011_0212c950();
 };
 //size_assert(PlayerBase, 0x0);

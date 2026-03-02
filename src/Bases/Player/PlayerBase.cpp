@@ -10,17 +10,25 @@ struct UNKNOWN {
 
 UNKNOWN data_020876b2[2];
 u8 data_02085a0c;
+u16 data_02087660[2];
+u16 data_02087664[2];
 
-u32 PlayerBase::func_ov011_0212c950()
+void PlayerBase::func_ov011_0212c950()
 {
+	this->_7a0 = data_02087660[this->linked_player];
+	this->_7a2 = data_02087664[this->linked_player];
 }
 
-u32 PlayerBase::func_ov011_0212c93c()
+void PlayerBase::func_ov011_0212c93c()
 {
+	this->_7a0 = 0;
+	this->_7a2 = 0;
 }
 
-u32 PlayerBase::func_ov011_0212c91c()
+void PlayerBase::func_ov011_0212c91c()
 {
+	this->_7a0 &= ~0x30;
+	this->_7a2 &= ~0x30;
 }
 
 u32 PlayerBase::func_ov011_0212c90c()
@@ -39,11 +47,11 @@ u32 PlayerBase::func_ov011_0212c8ec()
 
 u32 PlayerBase::func_ov011_0212c828()
 {
-	return this->_7a0 & 0x10;
+	return this->_7a2 & data_020876b2[this->linked_player]._0;
 }
 u32 PlayerBase::func_ov011_0212c7fc()
 {
-	return this->_7a0 & 0x10;
+	return this->_7a0 & data_020876b2[this->linked_player]._0;
 }
 
 u32 PlayerBase::func_ov011_0212c8bc()
@@ -91,27 +99,22 @@ u32 PlayerBase::func_ov011_0212c7a4()
 	return this->_7a0 & data_020876b2[this->linked_player]._1;
 }
 
-u16 PlayerBase::func_ov011_0212c78c()
+u32 PlayerBase::func_ov011_0212c78c()
 {
-	u16 result;
-
-	if ((this->_7a0 & 0xb0) == 0) {
-		result = this->_7a0 & 0x40;
+	if ((this->_7a0 & 0xb0) != 0) {
+		return 0;
 	} else {
-		result = 0;
+		return this->_7a0 & 0x40;
 	}
-	return result;
 }
 
 u32 PlayerBase::func_ov011_0212c774()
 {
-	u32 result;
-	if ((this->_7a0 & 0x70) == 0) {
-		result = this->_7a0 & 0x80;
+	if ((this->_7a0 & 0x70) != 0) {
+		return 0;
 	} else {
-		result = 0;
+		return this->_7a0 & 0x80;
 	}
-	return result;
 }
 
 u32 PlayerBase::func_ov011_0212c768()
@@ -126,7 +129,7 @@ u32 PlayerBase::func_ov011_0212c75c()
 
 u32 PlayerBase::func_ov011_0212c720()
 {
-	if (data_02085a0c - 1 == 0x2) {
+	if ((u32)1 >= (data_02085a0c + 0xff & 0xff)) {
 		return this->func_ov011_0212c854();
 	}
 	return this->func_ov011_0212c7a4();
@@ -134,7 +137,7 @@ u32 PlayerBase::func_ov011_0212c720()
 
 u32 PlayerBase::func_ov011_0212c6e4()
 {
-	if (data_02085a0c - 1 < 2) {
+	if ((u32)1 >= (data_02085a0c + 0xff & 0xff)) {
 		return this->func_ov011_0212c880();
 	}
 	return this->func_ov011_0212c7d0();
@@ -179,20 +182,20 @@ u32 PlayerBase::func_ov011_0212c610()
 	return this->func_ov011_0212c8dc();
 }
 
-bool PlayerBase::func_ov011_0212c5ec()
+u32 PlayerBase::func_ov011_0212c5ec()
 {
-	if ((this->func_ov011_0212c90c() & 0x70) == 0) {
-		return this->func_ov011_0212c8dc();
+	if ((this->func_ov011_0212c90c() & 0x70)) {
+		return false;
 	}
-	return false;
+	return this->func_ov011_0212c8dc();
 }
 
-bool PlayerBase::func_ov011_0212c5c8()
+u32 PlayerBase::func_ov011_0212c5c8()
 {
-	if ((this->func_ov011_0212c90c() & 0x70) == 0) {
-		return this->func_ov011_0212c8dc();
+	if ((this->func_ov011_0212c90c() & 0x70)) {
+		return false;
 	}
-	return false;
+	return this->func_ov011_0212c8dc();
 }
 
 u32 PlayerBase::func_ov011_0212c5bc()
