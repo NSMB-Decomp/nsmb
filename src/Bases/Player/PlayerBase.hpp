@@ -7,7 +7,9 @@ class PlayerBase : public StageActor
 {
       public:
 	PlayerModel _000;
-	u8 _pad1[0x3c0];
+	u8 _pad1[687];
+	Vec3_32s _574;
+	u8 _pad580[261];
 	Actor *linkedActor;
 	u8 _pad10[0x44];
 	SpinClass _6d0;
@@ -19,7 +21,9 @@ class PlayerBase : public StageActor
 	Vec3_32 _724;
 	Vec3_32 _734;
 	Vec3_32 _744;
-	u8 _pad9[0x24];
+	u8 _pad9[0x4];
+	i32 _758;
+	u8 _pad98[0x1c];
 	u32 _778;
 	u32 _77c;
 	u32 _780;

@@ -575,7 +575,14 @@ bool PlayerBase::func_ov011_0212bc50(i32 a)
 Vec3_32 PlayerBase::func_ov011_0212bbdc()
 {
 	Vec3_32 result;
+	Vec3_32s* _574 = &this->_574;
+	result.x = _574->x;
+	result.y = _574->y;
+	result.z = _574->z;
 
+
+	i32 uVar1 = this->_758 >> 0x1f;
+	result.y += (uVar1 + 0x800) >> 0xc | ((this->_758 >> 0x11) + (0x800 < uVar1)) * 0x100000;
 	return result;
 }
 
