@@ -251,19 +251,30 @@ PlayerBase::~PlayerBase()
 u32 PlayerBase::func_ov011_0212c27c(u32)
 {
 }
+
+PlayerBase *data_0208b35c[2];
 void PlayerBase::func_ov011_0212c200()
 {
 }
+
 void PlayerBase::func_ov011_0212c1b8()
 {
+	i32 i = 0;
+	do {
+		PlayerBase *v = data_0208b35c[i];
+		if ((v != NULL) && (this->linked_player != v->linked_player)) {
+			v->_7a8 = 0x1;
+		}
+		i += 1;
+	} while (i < 2);
+	return;
 }
 
-PlayerBase *data_0208b35c[2];
 void PlayerBase::func_ov011_0212c170()
 {
 	i32 i = 0;
 	do {
-		PlayerBase* v = data_0208b35c[i];
+		PlayerBase *v = data_0208b35c[i];
 		if ((v != NULL) && (this->linked_player != v->linked_player)) {
 			v->_7a8 = 0x0;
 		}
