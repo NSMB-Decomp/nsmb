@@ -45,13 +45,14 @@ u32 PlayerBase::func_ov011_0212c8ec()
 	return this->_7a0 & 0x40;
 }
 
-u32 PlayerBase::func_ov011_0212c828()
+u32 PlayerBase::func_ov011_0212c8dc()
 {
-	return this->_7a2 & data_020876b2[this->linked_player]._0;
+	return this->_7a0 & 0x80;
 }
-u32 PlayerBase::func_ov011_0212c7fc()
+
+u32 PlayerBase::func_ov011_0212c8cc()
 {
-	return this->_7a0 & data_020876b2[this->linked_player]._0;
+	return this->_7a0 & 0x20;
 }
 
 u32 PlayerBase::func_ov011_0212c8bc()
@@ -74,19 +75,16 @@ u32 PlayerBase::func_ov011_0212c854()
 	return this->_7a0 & data_020876b2[this->linked_player]._1;
 }
 
-u32 PlayerBase::func_ov011_0212c8dc()
+u32 PlayerBase::func_ov011_0212c828()
 {
-	return this->_7a0 & 0x80;
+	return this->_7a2 & data_020876b2[this->linked_player]._0;
 }
 
-u32 PlayerBase::func_ov011_0212c8cc()
-{
-	return this->_7a0 & 0x20;
-}
 
-u32 PlayerBase::func_ov011_0212c61c()
+
+u32 PlayerBase::func_ov011_0212c7fc()
 {
-	return (this->_7a0 & 0x30) >> 4;
+	return this->_7a0 & data_020876b2[this->linked_player]._0;
 }
 
 u32 PlayerBase::func_ov011_0212c7d0()
@@ -175,6 +173,11 @@ u32 PlayerBase::func_ov011_0212c63c()
 u32 PlayerBase::func_ov011_0212c630()
 {
 	return this->func_ov011_0212c7fc();
+}
+
+u32 PlayerBase::func_ov011_0212c61c()
+{
+	return (this->_7a0 & 0x30) >> 4;
 }
 
 u32 PlayerBase::func_ov011_0212c610()
