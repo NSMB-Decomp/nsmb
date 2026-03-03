@@ -88,7 +88,7 @@ class PlayerBase : public StageActor
 	void func_ov011_0212bbcc();
 	Vec3_32 func_ov011_0212bbdc();
 	bool func_ov011_0212bc50(i32);
-	bool func_ov011_0212bca4(Vec3_32s);
+	bool func_ov011_0212bca4(i32, i32, i32);
 	bool func_ov011_0212bd68(i32, i32, i32);
 	u32 func_ov011_0212bdb8(u32);
 	bool func_ov011_0212bde0(Actor *);
