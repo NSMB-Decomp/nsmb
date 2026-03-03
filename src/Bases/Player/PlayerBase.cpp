@@ -266,7 +266,7 @@ void PlayerBase::func_ov011_0212c130()
 void PlayerBase::func_ov011_0212c110(u32 a)
 {
 }
-bool PlayerBase::virt_20()
+bool PlayerBase::virt_20(i32, i32, i32, u8, i8)
 {
 	return false;
 }
@@ -507,31 +507,31 @@ void PlayerBase::func_ov011_0212bf00()
 	func_02022b64(0xab, &this->position);
 }
 
-bool PlayerBase::func_ov011_0212beb8()
+bool PlayerBase::func_ov011_0212beb8(i32 a, i32 b, i32 c, u8 d, i8 e)
 {
-	u32 iVar1 = this->virt_20();
-	if (iVar1 != 0) {
-		this->_77c |= 0x40000;
+	if (this->virt_20(a, b, c, d, e) != false) {
+		this->_780 |= 0x2000;
+		return true;
 	}
-	return iVar1 != 0;
+	return false;
 }
 
-bool PlayerBase::func_ov011_0212be70()
+bool PlayerBase::func_ov011_0212be70(i32 a, i32 b, i32 c, u8 d, i8 e)
 {
-	u32 iVar1 = this->virt_20();
-	if (iVar1 != 0) {
-		this->_77c |= 0x40000;
+	if (this->virt_20(a, b, c, d, e) != false) {
+		this->_780 |= 0x40000;
+		return true;
 	}
-	return iVar1 != 0;
+	return false;
 }
 
-bool PlayerBase::func_ov011_0212be28()
+bool PlayerBase::func_ov011_0212be28(i32 a, i32 b, i32 c, u8 d, i8 e)
 {
-	bool iVar1 = this->virt_20();
-	if (iVar1) {
+	if (this->virt_20(a, b, c, d, e) != false) {
 		this->_778 |= 0x80000;
+		return true;
 	}
-	return iVar1;
+	return false;
 }
 
 bool PlayerBase::func_ov011_0212bde0(Actor *a)

@@ -92,11 +92,11 @@ class PlayerBase : public StageActor
 	bool func_ov011_0212bd68(i32, i32, i32);
 	u32 func_ov011_0212bdb8(i32);
 	bool func_ov011_0212bde0(Actor *);
-	bool func_ov011_0212be28();
-	bool func_ov011_0212be70();
-	bool func_ov011_0212beb8();
+	bool func_ov011_0212be28(i32, i32, i32, u8, i8);
+	bool func_ov011_0212be70(i32, i32, i32, u8, i8);
+	bool func_ov011_0212beb8(i32, i32, i32, u8, i8);
 	void func_ov011_0212bf00();
-	virtual bool virt_20();
+	virtual bool virt_20(i32, i32, i32, u8, i8);
 	virtual bool virt_21();
 	virtual bool virt_22();
 	virtual bool virt_23();
