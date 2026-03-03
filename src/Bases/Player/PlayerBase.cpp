@@ -393,6 +393,10 @@ bool PlayerBase::virt_51()
 Vec3_32 PlayerBase::func_ov011_0212bff0()
 {
 	Vec3_32 result;
+	Vec3_32s* a = &this->_4b4;
+	result.x = a->x;
+	result.y = a->y;
+	result.z = a->z;
 
 	return result;
 }
