@@ -668,19 +668,19 @@ bool PlayerBase::func_ov011_0212bd68(i32 x, i32 y, i32 z)
 
 bool PlayerBase::func_ov011_0212bca4(i32 x, i32 y, i32 z)
 {
-	// if ((BOOL)(this->_7a9 == 2) == FALSE) {
-	//	if (a.x < 0) {
-	//		if ((this->_788 & 0x400) == 0) {
-	//			this->position.x += a.x;
-	//			this->collision_manager.func_01ffe778(&a, 0);
-	//			return true;
-	//		}
-	//	} else if ((0 < a.x) && ((this->_788 & 0x800) == 0)) {
-	//		this->position.x += a.x;
-	//		this->collision_manager.func_01ffe778(&a, 0);
-	//		return true;
-	//	}
-	// }
+	if ((BOOL)(this->_7a9 == 2) == FALSE) {
+		if (x < 0) {
+			if ((this->_788 & 0x400) == 0) {
+				this->position.x += x;
+				this->collision_manager.func_01ffe778(&x, 0);
+				return true;
+			}
+		} else if ((0 < x) && ((this->_788 & 0x800) == 0)) {
+			this->position.x += x;
+			this->collision_manager.func_01ffe778(&x, 0);
+			return true;
+		}
+	}
 	return false;
 }
 
