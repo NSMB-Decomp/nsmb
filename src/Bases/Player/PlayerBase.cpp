@@ -544,15 +544,14 @@ bool PlayerBase::func_ov011_0212bde0(Actor *a)
 	return true;
 }
 
-u32 PlayerBase::func_ov011_0212bdb8(u32 a)
+u32 PlayerBase::func_ov011_0212bdb8(i32 x)
 {
-	int x;
-
-	x = 0x4000;
-	if ((0x4001 < a) && (x = a, 0x4000 < a)) {
+	if (x < -0x4000) {
+		x = -0x4000;
+	} else if (x > 0x4000) {
 		x = 0x4000;
-	}
-	//this->func_ov011_0212bca4((Vec3_32s){x, 0x4000, 0xffffc000});
+	};
+	return this->func_ov011_0212bca4(x, 0x4000, -0x4000);
 }
 
 bool PlayerBase::func_ov011_0212bd68(i32 x, i32 y, i32 z)
@@ -576,7 +575,7 @@ bool PlayerBase::func_ov011_0212bd68(i32 x, i32 y, i32 z)
 
 bool PlayerBase::func_ov011_0212bca4(i32 x, i32 y, i32 z)
 {
-	//if ((BOOL)(this->_7a9 == 2) == FALSE) {
+	// if ((BOOL)(this->_7a9 == 2) == FALSE) {
 	//	if (a.x < 0) {
 	//		if ((this->_788 & 0x400) == 0) {
 	//			this->position.x += a.x;
@@ -588,7 +587,7 @@ bool PlayerBase::func_ov011_0212bca4(i32 x, i32 y, i32 z)
 	//		this->collision_manager.func_01ffe778(&a, 0);
 	//		return true;
 	//	}
-	//}
+	// }
 	return false;
 }
 

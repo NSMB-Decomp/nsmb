@@ -90,7 +90,7 @@ class PlayerBase : public StageActor
 	bool func_ov011_0212bc50(i32);
 	bool func_ov011_0212bca4(i32, i32, i32);
 	bool func_ov011_0212bd68(i32, i32, i32);
-	u32 func_ov011_0212bdb8(u32);
+	u32 func_ov011_0212bdb8(i32);
 	bool func_ov011_0212bde0(Actor *);
 	bool func_ov011_0212be28();
 	bool func_ov011_0212be70();
