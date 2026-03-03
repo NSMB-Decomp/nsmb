@@ -188,12 +188,12 @@ class PlayerBase : public StageActor
 	u32 func_ov011_0212c78c();
 	u32 func_ov011_0212c8ac();
 	u32 func_ov011_0212c8bc();
-	bool func_ov011_0212c8ec();
+	u32 func_ov011_0212c8ec();
 	u32 func_ov011_0212c8fc();
 	void func_ov011_0212c91c();
 	void func_ov011_0212c93c();
 	void func_ov011_0212c950();
-	bool func_ov011_0212c56c();
+	u32 func_ov011_0212c56c();
 	u32 func_ov011_0212c52c();
 	bool func_ov011_0212c4ec();
 };

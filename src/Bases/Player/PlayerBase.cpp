@@ -46,7 +46,7 @@ u32 PlayerBase::func_ov011_0212c8fc()
 	return this->_7a2 & 0xf0;
 }
 
-bool PlayerBase::func_ov011_0212c8ec()
+u32 PlayerBase::func_ov011_0212c8ec()
 {
 	return this->_7a0 & 0x40;
 }
@@ -225,7 +225,7 @@ u32 PlayerBase::func_ov011_0212c598()
 	return this->func_ov011_0212c8cc();
 }
 
-bool PlayerBase::func_ov011_0212c56c()
+u32 PlayerBase::func_ov011_0212c56c()
 {
 	if ((this->_7a0 & 0x30) == 0) {
 		return this->func_ov011_0212c8ec();
