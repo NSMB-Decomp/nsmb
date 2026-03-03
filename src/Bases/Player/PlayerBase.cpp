@@ -548,8 +548,27 @@ u32 PlayerBase::func_ov011_0212bdb8(u32 a)
 {
 }
 
-u32 PlayerBase::func_ov011_0212bd68(u32 a, u32 b, u32 c)
+bool PlayerBase::func_ov011_0212bd68(i32 x, i32 y, i32 z)
 {
+	Vec3_32s uStack_c;
+	if (x < 0) {
+		z = this->_778 | 0x40000;
+		y = 0xffff1000;
+		this->_778 = z;
+		if (x < -0xf000) {
+			x = y;
+		}
+	} else if (0 < x) {
+		y = this->_778 | 0x20000;
+		this->_778 = y;
+		if (0xf000 < x) {
+			x = 0xf000;
+		}
+	}
+	uStack_c.x = x;
+	uStack_c.y = x;
+	uStack_c.z = x;
+	return this->func_ov011_0212bca4(uStack_c);
 }
 
 bool PlayerBase::func_ov011_0212bca4(Vec3_32s a)
