@@ -231,6 +231,7 @@ void PlayerBase::func_ov011_0212c56c()
 
 u32 PlayerBase::func_ov011_0212c52c()
 {
+	return this->_7a2 & (data_020876b2[this->linked_player]._0 | 0xf0 | data_020876b2[this->linked_player]._1);
 }
 
 u32 data_0208b3d4[2][4];
@@ -238,7 +239,7 @@ bool PlayerBase::func_ov011_0212c4ec()
 {
 	// TODO: Can this syntax be improved?
 	i32 i = 0;
-	u32* v = (u32*)&data_0208b3d4[this->linked_player];
+	u32 *v = (u32 *)&data_0208b3d4[this->linked_player];
 	do {
 		if (*v != 0) {
 			return true;

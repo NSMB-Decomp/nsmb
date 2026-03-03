@@ -31,7 +31,7 @@ class PlayerBase : public StageActor
 	u32 _780;
 	u8 _pad7[0x4];
 	u32 _788;
-	u8 _pad2[0x0b];
+	u8 _pad2[0xc];
 	i32 _798;
 	i16 _79c;
 	u8 _pad91[0x2];
