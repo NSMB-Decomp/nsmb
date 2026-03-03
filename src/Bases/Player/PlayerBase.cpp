@@ -12,6 +12,9 @@ UNKNOWN data_020876b2[2];
 u8 data_02085a0c;
 u16 data_02087660[2];
 u16 data_02087664[2];
+u32 data_ov000_020ca8d0;
+u32 data_02085abc;
+PlayerBase *data_0208b35c[2];
 
 void PlayerBase::func_ov011_0212c950()
 {
@@ -252,9 +255,29 @@ u32 PlayerBase::func_ov011_0212c27c(u32)
 {
 }
 
-PlayerBase *data_0208b35c[2];
+void func_020201c8(i32, i32);
+u8 data_02085a20;
 void PlayerBase::func_ov011_0212c200()
 {
+	i8 powerup = this->powerup;
+	i8 linked_player = this->linked_player;
+	switch (powerup) {
+	case 0:
+	case 1:
+	case 2:
+	case 4:
+	case 5:
+		func_020201c8(linked_player, powerup);
+		break;
+	case 3:
+		if ((u8)((u16)data_02085a20 & 2) == 0) {
+			func_020201c8(linked_player, powerup);
+			return;
+		}
+	default:
+		func_020201c8(linked_player, 1);
+		return;
+	}
 }
 
 void PlayerBase::func_ov011_0212c1b8()
@@ -283,8 +306,6 @@ void PlayerBase::func_ov011_0212c170()
 	return;
 }
 
-u32 data_ov000_020ca8d0;
-u32 data_02085abc;
 void PlayerBase::func_ov011_0212c130()
 {
 	if ((data_02085abc & 0x10) != 0) {
