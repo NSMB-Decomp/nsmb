@@ -31,6 +31,11 @@ struct Vec3_32 {
 	i32 y;
 	i32 z;
 };
+struct Vec3_32s {
+	i32 x;
+	i32 y;
+	i32 z;
+};
 struct Vec2_32 {
 	unknown_vtable *vtable;
 	i32 x;

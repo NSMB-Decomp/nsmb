@@ -552,8 +552,22 @@ u32 PlayerBase::func_ov011_0212bd68(u32 a, u32 b, u32 c)
 {
 }
 
-u32 PlayerBase::func_ov011_0212bca4()
+bool PlayerBase::func_ov011_0212bca4(Vec3_32s a)
 {
+	if ((BOOL)(this->_7a9 == 2) == FALSE) {
+		if (a.x < 0) {
+			if ((this->_788 & 0x400) == 0) {
+				this->position.x += a.x;
+				this->collision_manager.func_01ffe778(&a, 0);
+				return true;
+			}
+		} else if ((0 < a.x) && ((this->_788 & 0x800) == 0)) {
+			this->position.x += a.x;
+			this->collision_manager.func_01ffe778(&a, 0);
+			return true;
+		}
+	}
+	return false;
 }
 
 bool PlayerBase::func_ov011_0212bc50(i32 a)
@@ -575,11 +589,10 @@ bool PlayerBase::func_ov011_0212bc50(i32 a)
 Vec3_32 PlayerBase::func_ov011_0212bbdc()
 {
 	Vec3_32 result;
-	Vec3_32s* _574 = &this->_574;
+	Vec3_32s *_574 = &this->_574;
 	result.x = _574->x;
 	result.y = _574->y;
 	result.z = _574->z;
-
 
 	i32 uVar1 = this->_758 >> 0x1f;
 	result.y += (uVar1 + 0x800) >> 0xc | ((this->_758 >> 0x11) + (0x800 < uVar1)) * 0x100000;
