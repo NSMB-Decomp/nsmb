@@ -747,21 +747,21 @@ bool PlayerBase::func_ov011_0212bb90()
 #define POWERUP_7 7
 u16 data_0208b344[2];
 void func_02020150(u32, u32);
-void func_02020128(u32);
+void func_02020128(u32, u32);
 void PlayerBase::func_ov011_0212bac8()
 {
-	i32 powerup = this->powerup;
-	if (powerup != POWERUP_MEGA) {
-		if (powerup != POWERUP_MINI) {
-			func_02020150(this->linked_player, 0x348);
-			data_0208b344[this->linked_player] = 0;
-			func_02020128(this->linked_player);
-		} else {
-			func_02020150(this->linked_player, 0);
-			data_0208b344[this->linked_player] = 0x168;
-			this->func_ov011_0212b838(0x167, &this->position);
-		}
-	} else {
+	switch (this->powerup) {
+	case POWERUP_MEGA:
+		func_02020150(this->linked_player, 0x348);
+		data_0208b344[this->linked_player] = 0;
+		func_02020128(this->linked_player, 0);
+		break;
+	case POWERUP_MINI:
+		func_02020150(this->linked_player, 0);
+		data_0208b344[this->linked_player] = 0x168;
+		this->func_ov011_0212b838(0x167, &this->position);
+		break;
+	default:
 		func_02020150(this->linked_player, 0);
 		data_0208b344[this->linked_player] = 0;
 	}
@@ -958,7 +958,7 @@ void func_0202048c(i8);
 u8 data_02089508[2];
 void func_ov000_020a189c(u32);
 void func_ov000_020a183c(u32, u32);
-void func_02012d6c(u32, Save*);
+void func_02012d6c(u32, Save *);
 
 bool PlayerBase::func_ov011_0212b2bc()
 {
