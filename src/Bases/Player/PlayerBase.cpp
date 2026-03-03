@@ -12,6 +12,9 @@ UNKNOWN data_020876b2[2];
 u8 data_02085a0c;
 u16 data_02087660[2];
 u16 data_02087664[2];
+u16 data_ov011_0212e218[2];
+u16 data_ov011_0212e21c[2];
+u16 data_ov011_0212e220[2];
 u32 data_ov000_020ca8d0;
 u32 data_02085abc;
 PlayerBase *data_0208b35c[2];
@@ -230,8 +233,20 @@ u32 PlayerBase::func_ov011_0212c52c()
 {
 }
 
+u32 data_0208b3d4[2][4];
 bool PlayerBase::func_ov011_0212c4ec()
 {
+	// TODO: Can this syntax be improved?
+	i32 i = 0;
+	u32* v = (u32*)&data_0208b3d4[this->linked_player];
+	do {
+		if (*v != 0) {
+			return true;
+		}
+		i += 1;
+		v += 1;
+	} while (i < 4);
+	return false;
 }
 
 PlayerBase::PlayerBase()
@@ -251,8 +266,24 @@ PlayerBase::~PlayerBase()
 {
 }
 
-u32 PlayerBase::func_ov011_0212c27c(u32)
+u32 PlayerBase::func_ov011_0212c27c(u32 param_1)
 {
+	char cVar1;
+	u16 uVar2;
+
+	cVar1 = (char)this->_7a0;
+	if (cVar1 == '\x03') {
+		return (int)(short)data_ov011_0212e218[param_1];
+	}
+	if (cVar1 != '\x05') {
+		return (int)(short)data_ov011_0212e21c[param_1];
+	}
+	// if (((this->_pad9 + 0x1c) & 1) == 0) {
+	//	uVar2 = data_ov011_0212e220[param_1];
+	// } else {
+	//	uVar2 = data_ov011_0212e21c[param_1];
+	// }
+	return (int)(short)uVar2;
 }
 
 void func_020201c8(i32, i32);
