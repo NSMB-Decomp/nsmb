@@ -958,7 +958,7 @@ void func_0202048c(i8);
 u8 data_02089508[2];
 void func_ov000_020a189c(u32);
 void func_ov000_020a183c(u32, u32);
-void func_02012d6c(u32);
+void func_02012d6c(u32, Save*);
 
 bool PlayerBase::func_ov011_0212b2bc()
 {
@@ -979,7 +979,7 @@ bool PlayerBase::func_ov011_0212b2bc()
 			if (b != 0) {
 				func_ov000_020a189c(0);
 			} else {
-				func_02012d6c(*(u32 *)((u32)&data_02088bdc + 0x34c));
+				func_02012d6c(data_02088bdc.currentSlot, &data_02088bdc);
 				func_ov000_020a183c(0xe, 0);
 			}
 		}

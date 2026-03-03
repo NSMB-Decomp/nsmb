@@ -91,14 +91,15 @@ extern u8 data_02088f34;
 extern u8 data_ov000_020ca84c;
 extern u8 data_020887fc;
 extern u32 data_02085ad4[2];
-struct SaveOptions {
+struct Save {
+	u32 _pad0[0xcf];
 	u32 header;
 	u32 flags;
 	u32 soundMode;
 	u32 controlOptions;
-	u32 currentSlot;
+	u32 currentSlot;/* 0x34C */
 };
-extern SaveOptions data_02088bdc;
+extern Save data_02088bdc;
 
 //
 u32(func_ov000_02098798)(void *, u32);
