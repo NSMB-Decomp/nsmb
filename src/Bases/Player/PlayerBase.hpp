@@ -55,7 +55,7 @@ class PlayerBase : public StageActor
 	u32 _7c8;
 
 	u8 func_ov011_0212b1d4();
-	u16 func_ov011_0212b210(u16);
+	i32 func_ov011_0212b210(i32);
 	void setPosition(Vec3_32 *);
 	void func_ov011_0212b26c(Actor *);
 	bool func_ov011_0212b2bc();
@@ -187,5 +187,8 @@ class PlayerBase : public StageActor
 	void func_ov011_0212c91c();
 	void func_ov011_0212c93c();
 	void func_ov011_0212c950();
+	void func_ov011_0212c56c();
+	u32 func_ov011_0212c52c();
+	bool func_ov011_0212c4ec();
 };
 //size_assert(PlayerBase, 0x0);

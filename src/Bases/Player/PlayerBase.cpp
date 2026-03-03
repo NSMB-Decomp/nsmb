@@ -221,6 +221,18 @@ u32 PlayerBase::func_ov011_0212c598()
 	return this->func_ov011_0212c8cc();
 }
 
+void PlayerBase::func_ov011_0212c56c() {
+
+}
+
+u32 PlayerBase::func_ov011_0212c52c() {
+
+}
+
+bool PlayerBase::func_ov011_0212c4ec() {
+
+}
+
 PlayerBase::PlayerBase()
 {
 	this->actorType = 1;
@@ -861,24 +873,12 @@ void PlayerBase::setPosition(Vec3_32 *newPos)
 	this->position.y = newPos->y;
 }
 
-u16 PlayerBase::func_ov011_0212b210(u16 r1)
+i32 PlayerBase::func_ov011_0212b210(i32 gravity)
 {
-	if (this->powerup == 4) {
-		// u32 r0 = 0xd00; // mov r0, 0xd00
-		// u32 r2 = 0x0; // mov r2, 0x0
-		// u64 r3_12 = (r1 * r2); // umull r12, r3, r1, r0
-		// u32 r3 = r3_12 >> 0x32;
-		// i32 r12 = r3_12;
-		// r3 = (r1 * r2) + r3; // mla r3, r1, r2, r3
-		// r2 = r1 >> 0x1f; // mov r2, r1, asr #0x1f
-		// u32 r1 = 0x800; // // mov r1, #0x800
-		// r3 = (r2 * r0) + r3; // mla r3, r2, r0, r3
-		// r12 += r1; // adds r12, r12, r1
-		//
-		// return r1;
-		// return (u16)(a * 0xd00 + 0x800 >> 0xc);
+	if (this->powerup == POWERUP_MINI) {
+		return ((i64)gravity * 0xD00 + 0x800) >> 12;
 	}
-	return r1;
+	return gravity;
 }
 
 u8 PlayerBase::func_ov011_0212b1d4()
