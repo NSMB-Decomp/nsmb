@@ -149,9 +149,9 @@ class PlayerBase : public StageActor
 	virtual bool func_ov011_0212bf50();
 	virtual Vec3_32 func_ov011_0212bf28();
 	virtual void func_ov011_0212bf24();
-	void func_ov011_0212c110(u32);
+	void func_ov011_0212c110();
 	void func_ov011_0212c130();
-	void func_ov011_0212c170(u32);
+	void func_ov011_0212c170();
 	void func_ov011_0212c1b8();
 	void func_ov011_0212c200();
 	u32 func_ov011_0212c27c(u32);

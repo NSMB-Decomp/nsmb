@@ -257,14 +257,35 @@ void PlayerBase::func_ov011_0212c200()
 void PlayerBase::func_ov011_0212c1b8()
 {
 }
-void PlayerBase::func_ov011_0212c170(u32 a)
+
+PlayerBase *data_0208b35c[2];
+void PlayerBase::func_ov011_0212c170()
 {
+	i32 i = 0;
+	do {
+		PlayerBase* v = data_0208b35c[i];
+		if ((v != NULL) && (this->linked_player != v->linked_player)) {
+			v->_7a8 = 0x0;
+		}
+		i += 1;
+	} while (i < 2);
+	return;
 }
+
+u32 data_ov000_020ca8d0;
+u32 data_02085abc;
 void PlayerBase::func_ov011_0212c130()
 {
+	if ((data_02085abc & 0x10) != 0) {
+		data_ov000_020ca8d0 |= 1;
+		this->func_ov011_0212c1b8();
+		return;
+	}
 }
-void PlayerBase::func_ov011_0212c110(u32 a)
+void PlayerBase::func_ov011_0212c110()
 {
+	data_ov000_020ca8d0 |= 4;
+	this->func_ov011_0212c170();
 }
 bool PlayerBase::virt_20(i32, i32, i32, u8, i8)
 {
@@ -393,7 +414,7 @@ bool PlayerBase::virt_51()
 Vec3_32 PlayerBase::func_ov011_0212bff0()
 {
 	Vec3_32 result;
-	Vec3_32s* a = &this->_4b4;
+	Vec3_32s *a = &this->_4b4;
 	result.x = a->x;
 	result.y = a->y;
 	result.z = a->z;
