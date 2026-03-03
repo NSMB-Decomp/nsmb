@@ -1,6 +1,6 @@
 #include "../lib/Nitro/Nitro.hpp"
 
-class Vec3_32 : public Vec3_32s
+struct Vec3_32 : public Vec3_32s
 {
       public:
 	Vec3_32 sub(Vec3_32s *a);

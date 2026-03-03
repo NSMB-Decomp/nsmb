@@ -603,29 +603,6 @@ bool PlayerBase::func_ov011_0212bb90()
 	return this->_7bf == TRUE;
 }
 
-u16 data_0208b344[2];
-void func_02020150(u32, u32);
-void func_02020128(u32);
-void PlayerBase::func_ov011_0212bac8()
-{
-	i32 powerup = this->powerup;
-	if (powerup != 3) {
-		if (powerup != 4) {
-			func_02020150(this->linked_player, 0);
-			data_0208b344[this->linked_player] = 0x168;
-			this->func_ov011_0212b838(0x167, &this->position);
-			return;
-		}
-		func_02020150(this->linked_player, 0);
-		data_0208b344[this->linked_player] = 0;
-		return;
-	}
-	func_02020150(this->linked_player, 0x348);
-	data_0208b344[this->linked_player] = 0;
-	func_02020128(this->linked_player);
-	return;
-}
-
 #define POWERUP_SMALL 0
 #define POWERUP_SUPER 1
 #define POWERUP_FIRE 2
@@ -634,6 +611,28 @@ void PlayerBase::func_ov011_0212bac8()
 #define POWERUP_SHELL 5
 #define POWERUP_6 6
 #define POWERUP_7 7
+u16 data_0208b344[2];
+void func_02020150(u32, u32);
+void func_02020128(u32);
+void PlayerBase::func_ov011_0212bac8()
+{
+	i32 powerup = this->powerup;
+	if (powerup != POWERUP_MEGA) {
+		if (powerup != POWERUP_MINI) {
+			func_02020150(this->linked_player, 0x348);
+			data_0208b344[this->linked_player] = 0;
+			func_02020128(this->linked_player);
+		} else {
+			func_02020150(this->linked_player, 0);
+			data_0208b344[this->linked_player] = 0x168;
+			this->func_ov011_0212b838(0x167, &this->position);
+		}
+	} else {
+		func_02020150(this->linked_player, 0);
+		data_0208b344[this->linked_player] = 0;
+	}
+}
+
 bool PlayerBase::checkAndApplyPowerup(u8 new_powerup)
 {
 	bool bVar2;
@@ -846,7 +845,7 @@ bool PlayerBase::func_ov011_0212b2bc()
 			if (b != 0) {
 				func_ov000_020a189c(0);
 			} else {
-				func_02012d6c(*(u32*)((u32)&data_02088bdc + 0x34c));
+				func_02012d6c(*(u32 *)((u32)&data_02088bdc + 0x34c));
 				func_ov000_020a183c(0xe, 0);
 			}
 		}
