@@ -80,8 +80,6 @@ u32 PlayerBase::func_ov011_0212c828()
 	return this->_7a2 & data_020876b2[this->linked_player]._0;
 }
 
-
-
 u32 PlayerBase::func_ov011_0212c7fc()
 {
 	return this->_7a0 & data_020876b2[this->linked_player]._0;
@@ -221,16 +219,16 @@ u32 PlayerBase::func_ov011_0212c598()
 	return this->func_ov011_0212c8cc();
 }
 
-void PlayerBase::func_ov011_0212c56c() {
-
+void PlayerBase::func_ov011_0212c56c()
+{
 }
 
-u32 PlayerBase::func_ov011_0212c52c() {
-
+u32 PlayerBase::func_ov011_0212c52c()
+{
 }
 
-bool PlayerBase::func_ov011_0212c4ec() {
-
+bool PlayerBase::func_ov011_0212c4ec()
+{
 }
 
 PlayerBase::PlayerBase()
@@ -822,13 +820,12 @@ void PlayerBase::func_ov011_0212b384(i16)
 	// }
 }
 
-u32 func_020204e0(i8);
-void func_0202048c(u8);
+u8 func_020204e0(i8);
+void func_0202048c(i8);
 u8 data_02089508[2];
 void func_ov000_020a189c(u32);
 void func_ov000_020a183c(u32, u32);
-void func_02012d6c(u32, u32 *);
-u32 uRam02088f28; // data_02088bdc + 0x34c
+void func_02012d6c(u32);
 
 bool PlayerBase::func_ov011_0212b2bc()
 {
@@ -843,13 +840,15 @@ bool PlayerBase::func_ov011_0212b2bc()
 
 		if (BOOL(data_02085a84 != 0) != FALSE) {
 			if (b != 0) {
+				return true;
+			}
+		} else {
+			if (b != 0) {
 				func_ov000_020a189c(0);
 			} else {
-				func_02012d6c(uRam02088f28, (u32 *)&data_02088bdc);
+				func_02012d6c(*(u32*)((u32)&data_02088bdc + 0x34c));
 				func_ov000_020a183c(0xe, 0);
 			}
-		} else if (b != 0) {
-			return true;
 		}
 	}
 	return false;
