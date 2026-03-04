@@ -22,8 +22,8 @@ class Actor : public Object
 	Vec3_32 lastPosition;
 	Vec3_32 lastStep; // 0x78
 	Vec3_32 centerOffset;
-	Vec3_u16 rotation;
-	Vec3_u16 lastRotation;
+	Vec3_16 rotation;
+	Vec3_16 lastRotation;
 	i32 velH; // TODO: These names are awful, fix them D:<.
 	i32 minVelH;
 	i32 accelV;
