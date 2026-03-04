@@ -186,6 +186,13 @@ void StageEntity::_36()
 	return;
 }
 
+void StageEntity::stopVelocity()
+{
+	this->velocity.x = 0;
+	this->velocity.y = 0;
+	this->accelV = 0;
+}
+
 bool StageEntity::func_ov000_0209ccd0(PlayerBase *player)
 
 {
@@ -424,36 +431,38 @@ void StageEntity::_11()
 {
 }
 
-u16 data_ov000_020c22b8[2];
-u16 getActorID(u8 sprite_id)
+// StageEntity::func_ov000_0209acd4
+// StageEntity::func_ov000_0209ac8c
+// StageEntity::func_ov000_0209ac0c
+// StageEntity::func_ov000_0209ab90
+void StageEntity::func_ov000_0209aa04(u32 type,i32 x,i32 y,i32 player_id)
+
 {
-	return data_ov000_020c22b8[sprite_id];
+  Vec3_32 local_18;
+  local_18.x = 0;
+  local_18.y = 0;
+  local_18.z = 0;
+  
+  local_18.x = x+this->position.x;
+  local_18.y = y+this->position.y;
+  
+  StageEntity::func_ov000_0209aa5c(&local_18,type,player_id);
+  return;
 }
 
-void StageEntity::onUpdate_xx()
-{
-	if ((this->_2c6 & 0x4000) != 0) {
-		return;
-	}
+// StageEntity::func_ov000_0209a990
+// StageEntity::func_ov000_0209a938
+// StageEntity::func_ov000_0209a938
+// StageEntity::func_ov000_0209a80c
+// StageEntity::_46()
+// StageEntity::func_ov000_0209a5bc
 
-	if ((u32)((this->active_collider._1c0 & 0x80) << 0x10) >> 0x10) {
-		this->_3bc = 0x18;
-		this->_3a8 = 0x1000;
-	}
+i32 StageEntity::func_ov000_0209a4f0() {
 
-	if (this->_3bc == 0) {
-		this->_35c.x = this->scale.x;
-		this->_35c.y = this->scale.y;
-		this->_35c.z = this->scale.z;
-		this->_3a8 = 0x1000;
-		return;
-	}
-	this->_3bc -= 1;
-	if (this->_3bc & 0x4) {
-		this->_3a8 += 0x100;
-	} else {
-		this->_3a8 -= 0x100;
-	}
+}
+
+i32 StageEntity::func_ov000_0209a23c() {
+
 }
 
 i32 StageEntity::attachToPlayerHands(i32 z, i32 y, i32 x)
@@ -530,6 +539,38 @@ void StageEntity::setTimedEvent(u32 event_id, i32 time, bool enable, bool switch
 {
 }
 
+u16 data_ov000_020c22b8[2];
+u16 getActorID(u8 sprite_id)
+{
+	return data_ov000_020c22b8[sprite_id];
+}
+
+void StageEntity::onUpdate_xx()
+{
+	if ((this->_2c6 & 0x4000) != 0) {
+		return;
+	}
+
+	if ((u32)((this->active_collider._1c0 & 0x80) << 0x10) >> 0x10) {
+		this->_3bc = 0x18;
+		this->_3a8 = 0x1000;
+	}
+
+	if (this->_3bc == 0) {
+		this->_35c.x = this->scale.x;
+		this->_35c.y = this->scale.y;
+		this->_35c.z = this->scale.z;
+		this->_3a8 = 0x1000;
+		return;
+	}
+	this->_3bc -= 1;
+	if (this->_3bc & 0x4) {
+		this->_3a8 += 0x100;
+	} else {
+		this->_3a8 -= 0x100;
+	}
+}
+
 void StageEntity::applyFireballWiggle()
 {
 	if (this->_2c6 & 0x4000) {
@@ -567,11 +608,9 @@ bool StageEntity::checkLavaCollision(Vec3_32 *pos)
 {
 }
 
-void StageEntity::stopVelocity()
-{
-	this->velocity.x = 0;
-	this->velocity.y = 0;
-	this->accelV = 0;
+
+void StageEntity::_38() {
+
 }
 
 u32 StageEntity::updateBottomSensors()
@@ -582,18 +621,18 @@ u32 StageEntity::updateSideSensors()
 {
 }
 
-void StageEntity::onMegaGroundPound()
-{
-	this->active_collider.delink();
-	this->_42(0, 0x2000, 0xfffffd00, 0);
-}
-
 bool StageEntity::checkSquished()
 {
 	u32 _2bf = this->empty;
 	if (_2bf != 0) {
 		return true;
 	}
+}
+
+void StageEntity::onMegaGroundPound()
+{
+	this->active_collider.delink();
+	this->_42(0, 0x2000, 0xfffffd00, 0);
 }
 
 void StageEntity::onStageComplete(PlayerActor *player)
