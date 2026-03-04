@@ -639,12 +639,7 @@ bool PlayerBase::func_ov011_0212bde0(Actor *a)
 
 u32 PlayerBase::func_ov011_0212bdb8(i32 x)
 {
-	if (x < -0x4000) {
-		x = -0x4000;
-	} else if (x > 0x4000) {
-		x = 0x4000;
-	};
-	return this->func_ov011_0212bca4(x, 0x4000, -0x4000);
+	return this->func_ov011_0212bca4(x < -0x4000 ? -0x4000 : (x > 0x4000 ? 0x4000 : x));
 }
 
 bool PlayerBase::func_ov011_0212bd68(i32 x, i32 y, i32 z)
@@ -663,10 +658,10 @@ bool PlayerBase::func_ov011_0212bd68(i32 x, i32 y, i32 z)
 			x = 0xf000;
 		}
 	}
-	return this->func_ov011_0212bca4(x, y, z);
+	return this->func_ov011_0212bca4(x);
 }
 
-bool PlayerBase::func_ov011_0212bca4(i32 x, i32 y, i32 z)
+bool PlayerBase::func_ov011_0212bca4(i32 x)
 {
 	if ((BOOL)(this->_7a9 == 2) == FALSE) {
 		if (x < 0) {
@@ -946,83 +941,83 @@ Vec3_32 data_ov000_020caed8[2];
 u8 data_ov000_020cacd0[2];
 void PlayerBase::func_ov011_0212b384(i16 player_id)
 {
-    Vec3_32 s0;
-    Vec2_32 s1;
-    Vec3_32 s2;
+	Vec3_32 s0;
+	Vec2_32 s1;
+	Vec3_32 s2;
 
-    s2 = this->position;
-    Vec3_16 s3;
-    s3.x = this->rotation.x;
-    s3.y = this->rotation.y;
-    s3.z = this->rotation.z;
+	s2 = this->position;
+	Vec3_16 s3;
+	s3.x = this->rotation.x;
+	s3.y = this->rotation.y;
+	s3.z = this->rotation.z;
 
-    switch (this->_7b2) {
-        case 0:
-            s0.x = s2.x;
-            s0.y = s2.y;
-            s0.z = s2.z;
-            break;
-        case 1:
-            s0.x = data_ov000_020caeb8[player_id].x;
-            s0.y = this->position.y;
-            s0.z = this->position.z;
-            Math::expLerp(&s0.x, data_ov000_020caeb8[player_id].x, 0x200, 0x6000, 0x1000);
-            break;
-        case 2:
-            s0.x = data_ov000_020caeb8[player_id].x;
-            s0.y = data_ov000_020caeb8[player_id].y;
-            s0.z = this->position.z;
-			Vec3_32* a = &this->_6d0._6d0;
-            Math::expLerp(&s0.x, a->x, 0x200, 0x6000, 0x1000);
-            Math::expLerp(&s0.y, a->y, 0x200, 0x6000, 0x1000);
-            break;
-        case 3:
-			s0 = data_ov000_020caeb8[player_id];
-            //s0.x = data_ov000_020caeb8[player_id].x;
-            //s0.y = data_ov000_020caeb8[player_id].y;
-            //s0.z = data_ov000_020caeb8[player_id].z;
-            break;
-        case 4: {
-            s0.y = data_ov000_020caeb8[player_id].y;
-            s0.x = this->position.x;
-            s0.z = this->position.z;
-            i32 iVar3 = Math::expLerp(&s0.y, this->position.y, 0x200, 0x8000, 0x1000);
-            if (iVar3 == 0) {
-                this->_7b2 = 0;
-            }
-            break;
-        }
-        case 5: {
-            s0.x = data_ov000_020caeb8[player_id].x;
-            s0.y = data_ov000_020caeb8[player_id].y;
-            s0.z = this->position.z;
-            i32 iVar3 = Math::expLerp(&s0.x, this->position.x, 0x800, 0x8000, 0x2000);
-            i32 iVar4 = Math::expLerp(&s0.y, this->position.y, 0x800, 0x8000, 0x2000);
-            if ((iVar3 == 0) && (iVar4 == 0)) {
-                this->_7b2 = 0;
-            }
-            break;
-        }
-        default: {
-            s0.x = data_ov000_020caeb8[player_id].x;
-            s0.y = data_ov000_020caeb8[player_id].y;
-            s0.z = this->position.z;
-            i32 iVar3 = Math::expLerp(&s0.x, this->position.x, 0x200, 0x8000, 0x1000);
-            i32 iVar4 = Math::expLerp(&s0.y, this->position.y, 0x200, 0x8000, 0x1000);
-            if ((iVar3 == 0) && (iVar4 == 0)) {
-                this->_7b2 = 0;
-            }
-            break;
-        }
-    }
+	switch (this->_7b2) {
+	case 0:
+		s0.x = s2.x;
+		s0.y = s2.y;
+		s0.z = s2.z;
+		break;
+	case 1:
+		s0.x = data_ov000_020caeb8[player_id].x;
+		s0.y = this->position.y;
+		s0.z = this->position.z;
+		Math::expLerp(&s0.x, data_ov000_020caeb8[player_id].x, 0x200, 0x6000, 0x1000);
+		break;
+	case 2:
+		s0.x = data_ov000_020caeb8[player_id].x;
+		s0.y = data_ov000_020caeb8[player_id].y;
+		s0.z = this->position.z;
+		Vec3_32 *a = &this->_6d0._6d0;
+		Math::expLerp(&s0.x, a->x, 0x200, 0x6000, 0x1000);
+		Math::expLerp(&s0.y, a->y, 0x200, 0x6000, 0x1000);
+		break;
+	case 3:
+		s0 = data_ov000_020caeb8[player_id];
+		// s0.x = data_ov000_020caeb8[player_id].x;
+		// s0.y = data_ov000_020caeb8[player_id].y;
+		// s0.z = data_ov000_020caeb8[player_id].z;
+		break;
+	case 4: {
+		s0.y = data_ov000_020caeb8[player_id].y;
+		s0.x = this->position.x;
+		s0.z = this->position.z;
+		i32 iVar3 = Math::expLerp(&s0.y, this->position.y, 0x200, 0x8000, 0x1000);
+		if (iVar3 == 0) {
+			this->_7b2 = 0;
+		}
+		break;
+	}
+	case 5: {
+		s0.x = data_ov000_020caeb8[player_id].x;
+		s0.y = data_ov000_020caeb8[player_id].y;
+		s0.z = this->position.z;
+		i32 iVar3 = Math::expLerp(&s0.x, this->position.x, 0x800, 0x8000, 0x2000);
+		i32 iVar4 = Math::expLerp(&s0.y, this->position.y, 0x800, 0x8000, 0x2000);
+		if ((iVar3 == 0) && (iVar4 == 0)) {
+			this->_7b2 = 0;
+		}
+		break;
+	}
+	default: {
+		s0.x = data_ov000_020caeb8[player_id].x;
+		s0.y = data_ov000_020caeb8[player_id].y;
+		s0.z = this->position.z;
+		i32 iVar3 = Math::expLerp(&s0.x, this->position.x, 0x200, 0x8000, 0x1000);
+		i32 iVar4 = Math::expLerp(&s0.y, this->position.y, 0x200, 0x8000, 0x1000);
+		if ((iVar3 == 0) && (iVar4 == 0)) {
+			this->_7b2 = 0;
+		}
+		break;
+	}
+	}
 
-    data_ov000_020caeb8[player_id].x = s0.x;
-    data_ov000_020caeb8[player_id].y = s0.y;
-    data_ov000_020caeb8[player_id].z = s0.z;
-    data_ov000_020caed8[player_id].x = this->velocity.x;
-    data_ov000_020caed8[player_id].y = this->velocity.y;
-    data_ov000_020caed8[player_id].z = this->velocity.z;
-    data_ov000_020cacd0[player_id] = Stage::actorFreezeFlag & 4;
+	data_ov000_020caeb8[player_id].x = s0.x;
+	data_ov000_020caeb8[player_id].y = s0.y;
+	data_ov000_020caeb8[player_id].z = s0.z;
+	data_ov000_020caed8[player_id].x = this->velocity.x;
+	data_ov000_020caed8[player_id].y = this->velocity.y;
+	data_ov000_020caed8[player_id].z = this->velocity.z;
+	data_ov000_020cacd0[player_id] = Stage::actorFreezeFlag & 4;
 }
 
 u8 func_020204e0(i8);
