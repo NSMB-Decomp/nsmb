@@ -610,7 +610,9 @@ bool StageEntity::checkLavaCollision(Vec3_32 *pos)
 
 
 void StageEntity::_38() {
-
+	this->velocity.x = 0;
+	this->velocity.y = 0;
+	this->accelV = 0;
 }
 
 u32 StageEntity::updateBottomSensors()
