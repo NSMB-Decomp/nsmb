@@ -3,7 +3,7 @@
 #include "Object.hpp"
 
 extern Vec3_32 *ActorSpawnPosition;
-extern Vec3_u16 *ActorSpawnRotation;
+extern Vec3_16 *ActorSpawnRotation;
 extern i8 *ActorSpawnPlayer;
 extern i32 *ActorSpawnScale;
 
@@ -48,9 +48,9 @@ class Actor : public Object
 	void setDirectionalVelocity3D();
 	void applyDirectionalVelocity3D();
 	void attenuateAcceleration();
-	static Actor *spawnActor(u16, u32, Vec3_32 *, Vec3_u16 *, i32 *, i8 *);
+	static Actor *spawnActor(u16, u32, Vec3_32 *, Vec3_16 *, i32 *, i8 *);
 	void applyDirectionalVelocity();
-	static void setSpawnParams(Vec3_32 *, Vec3_u16 *, i32 *, i8 *);
+	static void setSpawnParams(Vec3_32 *, Vec3_16 *, i32 *, i8 *);
 	void applyVelocityToPosition(Vec3_32 *);
 	Vec3_32 applyAcceleration(Vec3_32 *);
 	void StepVelocityYClamped();
