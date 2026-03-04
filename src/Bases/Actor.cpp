@@ -119,7 +119,7 @@ u32 Actor::getActorCount(u8 a)
 	return i;
 }
 
-void Actor::setSpawnParams(Vec3_32 *a, Vec3_16 *b, i32 *c, i8 *d)
+void Actor::setSpawnParams(Vec3_32 *a, Vec3_u16 *b, i32 *c, i8 *d)
 {
 	ActorSpawnPosition = a;
 	ActorSpawnRotation = b;
@@ -128,7 +128,7 @@ void Actor::setSpawnParams(Vec3_32 *a, Vec3_16 *b, i32 *c, i8 *d)
 }
 
 u16 data_0203bd34;
-Actor *Actor::spawnActor(u16 a, u32 b, Vec3_32 *c, Vec3_16 *d, i32 *e, i8 *f)
+Actor *Actor::spawnActor(u16 a, u32 b, Vec3_32 *c, Vec3_u16 *d, i32 *e, i8 *f)
 {
 	Base *pBVar1;
 

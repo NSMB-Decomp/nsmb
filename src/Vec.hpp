@@ -34,6 +34,17 @@ class Vec3_16
 	virtual inline ~Vec3_16() {};
 };
 
+class Vec3_u16
+{
+      public:
+	u16 x;
+	u16 y;
+	u16 z;
+
+	// Vec3s();
+	virtual inline ~Vec3_u16() {};
+};
+
 struct Rect32 {
 	i32 x;
 	i32 y;

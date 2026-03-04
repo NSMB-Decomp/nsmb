@@ -941,16 +941,73 @@ void PlayerBase::func_ov011_0212b710()
 	}
 }
 
-void PlayerBase::func_ov011_0212b384(i16)
+Vec3_32 data_ov000_020caeb8[2];
+Vec3_32 data_ov000_020caed8[2];
+u8 da_020cacd0[2];
+void PlayerBase::func_ov011_0212b384(i16 player_id)
 {
-	Vec3_16 rotation = this->rotation;
-	Vec3_32 position = this->position;
-	// switch (this->_7b2) {
-	//	case 0:
-	//		break;
-	//	case 1:
-	//
-	// }
+	Vec3_32 s0;
+	Vec2_32 s1;
+	Vec3_32 s2;
+	Vec3_u16 s3;
+	s2.x = this->position.x;
+	s2.y = this->position.y;
+	s2.z = this->position.z;
+	s3.x = this->rotation.x;
+	s3.y = this->rotation.y;
+	s3.z = this->rotation.z;
+
+	switch (this->_7b2) {
+	case 0:
+		break;
+	case 1:
+		s0.x = data_ov000_020caeb8[player_id].x;
+		Math::expLerp(&s0.x, data_ov000_020caeb8[player_id].x, 0x200, 0x6000, 0x1000);
+		break;
+	case 2:
+		s0.x = data_ov000_020caeb8[player_id].x;
+		s0.y = data_ov000_020caeb8[player_id].y;
+		Math::expLerp(&s0.x, this->_6cc, 0x200, 0x6000, 0x1000);
+		Math::expLerp(&s0.y, this->_6d0.a, 0x200, 0x6000, 0x1000);
+		break;
+	case 3:
+		s0.z = data_ov000_020caeb8[player_id].z;
+		s0.x = data_ov000_020caeb8[player_id].x;
+		s0.y = data_ov000_020caeb8[player_id].y;
+		break;
+	case 4:
+		s0.y = data_ov000_020caeb8[player_id].y;
+		i32 iVar3 = Math::expLerp(&s0.y, this->position.y, 0x200, 0x8000, 0x1000);
+		if (iVar3 == 0) {
+			this->_7b2 = 0;
+		}
+		break;
+	case 5:
+		s0.x = data_ov000_020caeb8[player_id].x;
+		s0.y = data_ov000_020caeb8[player_id].y;
+		iVar3 = Math::expLerp(&s0.x, this->position.x, 0x800, 0x8000, 0x2000);
+		i32 iVar4 = Math::expLerp(&s0.y, this->position.y, 0x800, 0x8000, 0x2000);
+		if ((iVar3 == 0) && (iVar4 == 0)) {
+			this->_7b2 = 0;
+		}
+		break;
+	default:
+		s0.x = data_ov000_020caeb8[player_id].x;
+		s0.y = data_ov000_020caeb8[player_id].y;
+		iVar3 = Math::expLerp(&s0.x, iVar3, 0x200, 0x8000, 0x1000);
+		iVar4 = Math::expLerp(&s0.y, iVar4, 0x200, 0x8000, 0x1000);
+		if ((iVar3 == 0) && (iVar4 == 0)) {
+			this->_7b2 = 0;
+		}
+		break;
+	}
+	data_ov000_020caeb8[player_id].x = s0.x;
+	data_ov000_020caeb8[player_id].y = s0.y;
+	data_ov000_020caeb8[player_id].z = s0.z;
+	data_ov000_020caed8[player_id].x = this->velocity.x;
+	data_ov000_020caed8[player_id].y = this->velocity.y;
+	data_ov000_020caed8[player_id].z = this->velocity.z;
+	da_020cacd0[player_id] = Stage::actorFreezeFlag & 4;
 }
 
 u8 func_020204e0(i8);

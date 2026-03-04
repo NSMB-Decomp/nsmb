@@ -13,9 +13,10 @@ class PlayerBase : public StageActor
 	Vec3_32s _574;
 	u8 _pad580[261];
 	Actor *linkedActor;
-	u8 _pad10[0x44];
+	u8 _pad10[0x40];
+	i32 _6cc;
 	SpinClass _6d0;
-	u8 _pad11[0x23];
+	u8 _pad11[0x14];
 	BlendColor _6f4;
 	u8 _pad12[0x17];
 	BlendColor _70c;
@@ -197,4 +198,4 @@ class PlayerBase : public StageActor
 	u32 func_ov011_0212c52c();
 	bool func_ov011_0212c4ec();
 };
-//size_assert(PlayerBase, 0x0);
+// size_assert(PlayerBase, 0x0);

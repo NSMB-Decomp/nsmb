@@ -51,6 +51,10 @@ u32 getBootScene();
 void drawBNCLSpriteSub(u32 id, void *data, u32 flags, u8 palette, u8 affineSet, Vec2_32 *scale, i16 rotation, i16 *rotation_center, u8 procSettings, u32 x, u32 y);
 } // namespace Game
 
+
+namespace Math {
+	i32 expLerp(i32*, i32, i32, i32, i32);
+}
 namespace Input
 {
 extern u8 localConsoleID;
