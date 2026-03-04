@@ -15,8 +15,8 @@ Actor::Actor()
 	}
 	// Set Rotation
 	if (ActorSpawnRotation != NULL) {
-		this->rotation = *ActorSpawnRotation;
-		this->lastRotation = *ActorSpawnRotation;
+		this->rotation = *(Vec3_16*)&ActorSpawnRotation;
+		this->lastRotation = *(Vec3_16*)&ActorSpawnRotation;
 	}
 	// Set Scale
 	if (ActorSpawnScale != NULL) {
