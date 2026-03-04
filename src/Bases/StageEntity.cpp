@@ -707,6 +707,8 @@ bool StageEntity::isPlayerInZone(PlayerActor *player, u32 id)
 
 void StageEntity::assignView(Vec3_32 *position)
 {
+
+  	this->_2be = func_0201f000(position);
 }
 
 void StageEntity::func_ov000_020988d0(u32 bit)
