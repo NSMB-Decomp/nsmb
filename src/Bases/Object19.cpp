@@ -15,7 +15,10 @@ bool Object19::onCreate() {
 }
 
 bool Object19::onUpdate() {
-
+    if (this->_1 != 0) {
+        this->_1 -= 1;
+    }
+    return true;
 }
 
 
