@@ -520,14 +520,14 @@ bool Coin::onCreate()
 	this->_408 = this->position;
 	this->position.x += 0x8000;
 	this->position.y -= 0x10000;
-	CoinSettings settings = *(CoinSettings*)&this->settings;
-	this->coinType = settings.coinType;
-	this->direction = settings.direction;
+	u32 settings = this->settings;
+	this->coinType = READ_NIBBLE(settings, 0);
+	this->direction = READ_NIBBLE(settings, 7);
 	this->_4c4 = 0;
 	if (this->coinType == 0) {
-		this->_4c4 = settings._pad0;
+		this->_4c4 = READ_NIBBLE(settings, 2);
 	}
-	this->_4eb = settings._pad0;
+	this->_4eb = READ_NIBBLE(settings, 2);
 	this->_4d0 = 0x1c2;
 	this->_4d8 = 4;
 	this->_4da = 0;
@@ -552,10 +552,10 @@ bool Coin::onCreate()
 
 	u32 _4c0 = this->coinType;
 	if (_4c0 == 0) {
-		if (settings.yOffset != 0) {
+		if (READ_NIBBLE(settings, 5) != 0) {
 			this->position.y -= 0x8000;
 		}
-		if (settings.xOffset != 0) {
+		if (READ_NIBBLE(settings, 6) != 0) {
 			this->position.x += 0x8000;
 		}
 		if (this->_3be != 0) {
@@ -588,9 +588,9 @@ bool Coin::onCreate()
 			this->_4ea = 2;
 			this->func_ov010_020d9dcc(&data_ov010_021293e4);
 		} else if (_4c0 == 4) {
-			this->_4b4 = data_ov010_021216a8[settings.variantIndex];
-			this->_4bc = data_ov010_02121660[settings.variantIndex];
-			this->_4b8 = data_ov010_02121654[settings.variantIndex];
+			this->_4b4 = data_ov010_021216a8[READ_NIBBLE(settings, 1)];
+			this->_4bc = data_ov010_02121660[READ_NIBBLE(settings, 1)];
+			this->_4b8 = data_ov010_02121654[READ_NIBBLE(settings, 1)];
 			this->func_ov010_020d9dcc(&data_ov010_0212940c);
 		} else if (_4c0 == 6) {
 			this->func_ov010_020d8b40();
@@ -602,14 +602,14 @@ bool Coin::onCreate()
 		} else if (_4c0 == 7) {
 			this->func_ov010_020d8b40();
 			this->_4e8 = 0;
-			this->velocity.x = data_ov010_021216ec[settings.variantIndex];
-			this->velocity.y = data_ov010_021216c4[settings.variantIndex];
+			this->velocity.x = data_ov010_021216ec[READ_NIBBLE(settings, 1)];
+			this->velocity.y = data_ov010_021216c4[READ_NIBBLE(settings, 1)];
 			this->visible = false;
 			this->_3be = 0;
 			this->_3ea = 1;
 			this->func_ov010_020d9dcc(&data_ov010_021293ec);
 		} else if (_4c0 == 9) {
-			this->_4e3 = settings.playerIndex;
+			this->_4e3 = READ_NIBBLE(settings, 3);
 			if (2 <= this->_4e3) {
 				this->_4e3 = func_020205ec()->linked_player;
 			}

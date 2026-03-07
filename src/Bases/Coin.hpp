@@ -1,17 +1,6 @@
 #include "../Collision/Collider.hpp"
 #include "StageEntity.hpp"
 
-struct CoinSettings {
-	u32 coinType     : 4; // bits 0–3
-	u32 variantIndex : 4; // bits 4–7
-	u32 _pad0       : 4; // bits 8–11
-	u32 playerIndex  : 4; // bits 12–15
-	u32 _pad1         : 4; // bits 16–19
-	u32 yOffset      : 4; // bits 20–23
-	u32 xOffset      : 4; // bits 24–27
-	u32 direction    : 4; // bits 28–31
-};
-
 class Coin : public StageEntity
 {
       public:
