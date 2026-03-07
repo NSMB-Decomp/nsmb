@@ -1,11 +1,10 @@
 #include "StageEntity.hpp"
 
-
 struct Object_229_Settings {
-    u32 _pad0       : 20; // bits 0–19
-    u32 setting_2  :  4; // bits 20–23
-    u32 setting_1  :  4; // bits 24–27
-    u32 direction  :  4; // bits 28–31
+	u32 _pad0 : 20;	   // bits 0–19
+	u32 setting_2 : 4; // bits 20–23
+	u32 setting_1 : 4; // bits 24–27
+	u32 direction : 4; // bits 28–31
 };
 class Object_229 : public StageEntity
 {
@@ -25,7 +24,7 @@ class Object_229 : public StageEntity
 	{
 	}
 
-	Object_229 *create();
+	static void *create();
 
 	bool onCreate();
 	bool onDestroy();
@@ -43,7 +42,13 @@ class Object_229 : public StageEntity
 	void func_ov099_02185f5c();
 	void func_ov099_02185f30(u32);
 	void onUpdate_CallPTMF();
-	bool func_ov099_02185eb4();
+	static bool func_ov099_02185eb4();
 	u32 func_ov099_02185e50();
 	u32 func_ov099_02185df4();
+};
+ActorProfile Object229_Profile = {
+    Object_229::create,
+    0xe5,
+    0xc0,
+    Object_229::func_ov099_02185eb4,
 };

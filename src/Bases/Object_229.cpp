@@ -1,6 +1,6 @@
 #include "Object_229.hpp"
 
-Object_229 *Object_229::create()
+void *Object_229::create()
 {
 	return new Object_229();
 }
@@ -25,7 +25,7 @@ u64 data_0208af3c;
 u8 data_ov000_020cac9c;
 bool Object_229::onCreate()
 {
-	Object_229_Settings settings = *(Object_229_Settings*)&this->settings;
+	Object_229_Settings settings = *(Object_229_Settings *)&this->settings;
 	this->direction = settings.direction & 1;
 	this->scale.x = 0x1000;
 	this->scale.y = 0x1000;
