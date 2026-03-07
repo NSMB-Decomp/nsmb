@@ -1,21 +1,21 @@
-#include "Object_229.hpp"
+#include "Object229.hpp"
 
-void *Object_229::create()
+void *Object229::create()
 {
-	return new Object_229();
+	return new Object229();
 }
 
-void (Object_229::*data_ov099_02186614[4])() = {
-    Object_229::func_ov099_021860f0,
-    Object_229::func_ov099_02186080,
-    Object_229::func_ov099_02186028,
-    Object_229::func_ov099_02185fb4,
+void (Object229::*data_ov099_02186614[4])() = {
+    Object229::func_ov099_021860f0,
+    Object229::func_ov099_02186080,
+    Object229::func_ov099_02186028,
+    Object229::func_ov099_02185fb4,
 };
-void (Object_229::*data_ov099_02186634[4])() = {
-    Object_229::func_ov099_021860a4,
-    Object_229::func_ov099_0218602c,
-    Object_229::func_ov099_02185fdc,
-    Object_229::func_ov099_02185f5c,
+void (Object229::*data_ov099_02186634[4])() = {
+    Object229::func_ov099_021860a4,
+    Object229::func_ov099_0218602c,
+    Object229::func_ov099_02185fdc,
+    Object229::func_ov099_02185f5c,
 };
 struct UNKWN_STRUCT {
 	u32 a;
@@ -23,9 +23,9 @@ struct UNKWN_STRUCT {
 };
 u64 data_0208af3c;
 u8 data_ov000_020cac9c;
-bool Object_229::onCreate()
+bool Object229::onCreate()
 {
-	Object_229_Settings settings = *(Object_229_Settings *)&this->settings;
+	Object229_Settings settings = *(Object229_Settings *)&this->settings;
 	this->direction = settings.direction & 1;
 	this->scale.x = 0x1000;
 	this->scale.y = 0x1000;
@@ -58,32 +58,32 @@ bool Object_229::onCreate()
 	return true;
 }
 
-bool Object_229::onDestroy()
+bool Object229::onDestroy()
 {
 	return true;
 }
 
-void Object_229::pendingDestroy()
+void Object229::pendingDestroy()
 {
 }
 
-bool Object_229::onRender()
+bool Object229::onRender()
 {
 	return true;
 }
 
-bool Object_229::onUpdate_0()
+bool Object229::onUpdate_0()
 {
 	this->onUpdate_CallPTMF();
 	this->func_ov000_0209adb0(0);
 	return true;
 }
 
-void Object_229::func_ov099_021860f0()
+void Object229::func_ov099_021860f0()
 {
 }
 
-void Object_229::func_ov099_021860a4()
+void Object229::func_ov099_021860a4()
 {
 	if ((data_0208af3c & this->_334) != 0) {
 		this->func_ov099_02185f30(1);
@@ -92,13 +92,13 @@ void Object_229::func_ov099_021860a4()
 	return;
 }
 
-void Object_229::func_ov099_02186080()
+void Object229::func_ov099_02186080()
 {
 	data_ov000_020cac9c |= this->setting_2;
 	this->e = 1;
 }
 
-void Object_229::func_ov099_0218602c()
+void Object229::func_ov099_0218602c()
 {
 	this->e = this->e - 1;
 	if (this->e != 0) {
@@ -113,24 +113,24 @@ void Object_229::func_ov099_0218602c()
 	return;
 }
 
-void Object_229::func_ov099_02186028()
+void Object229::func_ov099_02186028()
 {
 }
 
-void Object_229::func_ov099_02185fdc()
+void Object229::func_ov099_02185fdc()
 {
 	if ((data_0208af3c & this->_334) == 0) {
 		this->func_ov099_02185f30(3);
 	}
 }
 
-void Object_229::func_ov099_02185fb4()
+void Object229::func_ov099_02185fb4()
 {
 	data_ov000_020cac9c &= ~this->setting_2;
 	this->e = 1;
 }
 
-void Object_229::func_ov099_02185f5c()
+void Object229::func_ov099_02185f5c()
 {
 	this->e = this->e - 1;
 	if (this->e != 0) {
@@ -143,14 +143,14 @@ void Object_229::func_ov099_02185f5c()
 	}
 }
 
-void Object_229::func_ov099_02185f30(u32 param_1)
+void Object229::func_ov099_02185f30(u32 param_1)
 {
 	this->b = param_1;
 	this->a = data_ov099_02186634[param_1];
 	this->c = 1;
 }
 
-void Object_229::onUpdate_CallPTMF()
+void Object229::onUpdate_CallPTMF()
 {
 	if (this->c != 0) {
 		(this->*(data_ov099_02186614[this->b]))();
@@ -159,7 +159,7 @@ void Object_229::onUpdate_CallPTMF()
 	(this->*a)();
 }
 
-bool Object_229::func_ov099_02185eb4()
+bool Object229::func_ov099_02185eb4()
 {
 	return true;
 }
