@@ -1,5 +1,12 @@
 #include "StageEntity.hpp"
 
+
+struct Object_229_Settings {
+    u32 _pad0       : 20; // bits 0–19
+    u32 setting_2  :  4; // bits 20–23
+    u32 setting_1  :  4; // bits 24–27
+    u32 direction  :  4; // bits 28–31
+};
 class Object_229 : public StageEntity
 {
       public:
