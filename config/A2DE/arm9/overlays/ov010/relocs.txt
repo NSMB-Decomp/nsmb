@@ -11276,7 +11276,7 @@ from:0x02126c38 kind:load to:0x020e93c4 module:overlay(10)
 from:0x02126c3c kind:load to:0x0201ff68 module:main
 from:0x02126c40 kind:load to:0x0201ff70 module:main
 from:0x02126c44 kind:load to:0x020a03a4 module:overlay(0)
-from:0x02126c48 kind:load to:0x0209ad1c module:overlays(0,126)
+from:0x02126c48 kind:load to:0x0209ad1c module:overlay(0)
 from:0x02126c4c kind:load to:0x020a039c module:overlay(0)
 from:0x02126c50 kind:load to:0x020a0304 module:overlay(0)
 from:0x02126c54 kind:load to:0x020a0274 module:overlay(0)

@@ -111,8 +111,11 @@ struct ProcessList {
 	PTMF executor;
 };
 
-// TODO: Does this need to be renamed?
-// TODO: Does this have a optioanal 4th function?
+struct Objectrofile {
+	void *constructor;
+	u16 updatePriority;
+	u16 renderPriority;
+};
 struct ActorProfile {
 	void *constructor;
 	u16 updatePriority;
