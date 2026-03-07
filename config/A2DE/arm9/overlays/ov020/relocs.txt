@@ -441,7 +441,7 @@ from:0x0213322c kind:load to:0x02131614 module:overlay(20)
 from:0x02133230 kind:load to:0x0201ff68 module:main
 from:0x02133234 kind:load to:0x0201ff70 module:main
 from:0x02133238 kind:load to:0x021317d8 module:overlay(20)
-from:0x0213323c kind:load to:0x0209ad1c module:overlays(0,126)
+from:0x0213323c kind:load to:0x0209ad1c module:overlay(0)
 from:0x02133240 kind:load to:0x020a039c module:overlay(0)
 from:0x02133244 kind:load to:0x020a0304 module:overlay(0)
 from:0x02133248 kind:load to:0x020a0274 module:overlay(0)
