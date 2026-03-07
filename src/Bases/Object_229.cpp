@@ -21,7 +21,7 @@ struct UNKWN_STRUCT {
 	u32 a;
 	u32 b;
 };
-u32 data_0208af3c[2];
+u64 data_0208af3c;
 u8 data_ov000_020cac9c;
 bool Object_229::onCreate()
 {
@@ -44,9 +44,7 @@ bool Object_229::onCreate()
 		uVar1 = 3;
 	}
 	this->setting_2 = (char)(1 << (uVar1 - 1));
-	u32 a = (data_0208af3c[0] & this->_334);
-	u32 b = (data_0208af3c[1] & this->_338);
-	if ((a && b) == 0) {
+	if (data_0208af3c & this->_334) {
 		this->_404 = 3;
 		this->func_ov099_02185f30(2);
 		data_ov000_020cac9c |= this->setting_2;
@@ -86,7 +84,7 @@ void Object_229::func_ov099_021860f0()
 
 void Object_229::func_ov099_021860a4()
 {
-	if ((data_0208af3c[1] & this->_338) != 0 || (data_0208af3c[0] & this->_334) != 0) {
+	if ((data_0208af3c & this->_334) != 0) {
 		this->func_ov099_02185f30(1);
 		return;
 	}
@@ -120,7 +118,7 @@ void Object_229::func_ov099_02186028()
 
 void Object_229::func_ov099_02185fdc()
 {
-	if (BOOL(((data_0208af3c[0] & this->_334) == (data_0208af3c[1] & this->_338)) == 0) == TRUE) {
+	if ((data_0208af3c & this->_334) == 0) {
 		this->func_ov099_02185f30(3);
 	}
 }
