@@ -5,6 +5,10 @@
     .data       start:0x02123c00 end:0x02129220 kind:data align:32
     .bss        start:0x02129220 end:0x0212b160 kind:bss align:32
 
+src/Bases/Object316.cpp:
+    .text       start:0x020cdd1c end:0x020ce540
+    .data       start:0x02123c80 end:0x02123d10
+
 src/Bases/Coin.cpp:
     .text       start:0x020d80cc end:0x020d9ebc
     .init       start:0x02123698 end:0x021237e8

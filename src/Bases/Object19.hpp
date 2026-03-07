@@ -4,8 +4,9 @@ class Object19 : public StageController
 {
       public:
 	static ActorProfile Profile;
+    u8 _pad0[0x8];
+    u16 _1;
 
-	u8 _pad0[0xc];
 	Object19() {};
 	~Object19();
 

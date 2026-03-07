@@ -691,8 +691,8 @@ _ZN8Object19D0Ev kind:function(arm,size=0x34) addr:0x020e9284
 func_ov010_020e92b8 kind:function(arm,size=0x8) addr:0x020e92b8
 func_ov010_020e92c0 kind:function(arm,size=0x4) addr:0x020e92c0
 func_ov010_020e92c4 kind:function(arm,size=0x8) addr:0x020e92c4
-func_ov010_020e92cc kind:function(arm,size=0x1c) addr:0x020e92cc
-func_ov010_020e92e8 kind:function(arm,size=0x28) addr:0x020e92e8
+_ZN8Object198onUpdateEv kind:function(arm,size=0x1c) addr:0x020e92cc
+_ZN8Object198onCreateEv kind:function(arm,size=0x28) addr:0x020e92e8
 _ZN8Object196createEv kind:function(arm,size=0x2c) addr:0x020e9310
 _ZN8Object226createEv kind:function(arm,size=0x2c) addr:0x020e933c
 _ZN8Object22D1Ev kind:function(arm,size=0x5c) addr:0x020e9368
@@ -2275,7 +2275,7 @@ data_ov010_02126b4c kind:data(any) addr:0x02126b4c
 data_ov010_02126b64 kind:data(any) addr:0x02126b64
 data_ov010_02126b74 kind:data(any) addr:0x02126b74
 _ZN8Object197ProfileE kind:data(any) addr:0x02126b7c
-_ZTV8Object19 kind:data(any) addr:0x02126b90
+_ZTV8Object19 kind:data(any) addr:0x02126b88
 _ZN8Object227ProfileE kind:data(any) addr:0x02126be0
 _ZTV8Object22 kind:data(any) addr:0x02126bec
 data_ov010_02126d00 kind:data(any) addr:0x02126d00
