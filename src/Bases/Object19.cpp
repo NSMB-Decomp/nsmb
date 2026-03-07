@@ -21,6 +21,19 @@ bool Object19::onUpdate() {
     return true;
 }
 
+bool Object19::onRender() {
+
+    return true;
+}
+
+void Object19::pendingDestroy() {
+
+}
+
+bool Object19::onDestroy() {
+
+    return true;
+}
 
 Object19::~Object19() {
 
