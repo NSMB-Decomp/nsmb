@@ -25,18 +25,19 @@ u64 data_0208af3c;
 u8 data_ov000_020cac9c;
 bool Object_229::onCreate()
 {
-	this->direction = (this->settings >> 0x1c) & 1;
+	Settings settings = this->settings;
+	this->direction = settings.direction & 1;
 	this->scale.x = 0x1000;
 	this->scale.y = 0x1000;
 	this->scale.z = 0x1000;
-	this->setting_1 = ((this->settings << 4) >> 0x1c);
+	this->setting_1 = settings.setting_1;
 	if (this->setting_1 < 1) {
 		this->setting_1 = 1;
 	}
 	if (4 < this->setting_1) {
 		this->setting_1 = 4;
 	}
-	i32 uVar1 = (u8)((this->settings << 8) >> 0x1c);
+	i32 uVar1 = (u8)settings.setting_2;
 	if (uVar1 < 1) {
 		uVar1 = 1;
 	}

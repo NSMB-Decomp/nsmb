@@ -1,6 +1,12 @@
 #include "../AAA.hpp"
 #include "../base_types.hpp"
 
+struct Settings {
+    u32 _pad0       : 20; // bits 0–19
+    u32 setting_2  :  4; // bits 20–23
+    u32 setting_1  :  4; // bits 24–27
+    u32 direction  :  4; // bits 28–31
+};
 class Base
 {
       public:
@@ -8,7 +14,7 @@ class Base
 	enum SkipFlags { UpdateChildren = 1, Update = 2, RenderChildren = 4, Render = 8 };
 
 	u32 guid;		  /* 0x04 */
-	u32 settings;		  /* 0x08 */
+	Settings settings;		  /* 0x08 */
 	u16 object_id;		  /* 0x0c */
 	State state;		  /* 0x0e */
 	bool pending_destroy;	  /* 0x0f */
