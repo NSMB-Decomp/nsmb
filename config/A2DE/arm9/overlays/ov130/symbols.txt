@@ -202,7 +202,7 @@ func_ov130_02127744 kind:function(arm,size=0x50) addr:0x02127744
 func_ov130_02127794 kind:function(arm,size=0x284) addr:0x02127794
 func_ov130_02127a18 kind:function(arm,size=0x43c) addr:0x02127a18
 func_ov130_02127e54 kind:function(arm,size=0x4c) addr:0x02127e54
-_ZN16MGDebugMenuSceneD2Ev kind:function(arm,size=0x44) addr:0x02127ea0
+_ZN16MGDebugMenuSceneD1Ev kind:function(arm,size=0x44) addr:0x02127ea0
 _ZN16MGDebugMenuSceneD0Ev kind:function(arm,size=0x4c) addr:0x02127ee4
 _ZN16MGDebugMenuScene7virt_20Em kind:function(arm,size=0x100) addr:0x02127f30
 _ZN16MGDebugMenuScene7virt_19Em kind:function(arm,size=0x10) addr:0x02128030
@@ -636,7 +636,7 @@ data_ov130_0213896c kind:data(any) addr:0x0213896c
 data_ov130_02138980 kind:data(any) addr:0x02138980
 data_ov130_02138994 kind:data(any) addr:0x02138994
 data_ov130_021389ac kind:data(any) addr:0x021389ac
-_ZTV16MGDebugMenuScene kind:data(any) addr:0x021389d0
+_ZTV16MGDebugMenuScene kind:data(any) addr:0x021389c8
 data_ov130_02138a24 kind:data(any) addr:0x02138a24
 data_ov130_02138a25 kind:data(any) addr:0x02138a25
 UnknownProfile::ov130_02138a28 kind:data(any) addr:0x02138a28
