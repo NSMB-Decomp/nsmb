@@ -98,10 +98,11 @@ bool VsStar::onRender()
 {
 }
 
+void func_ov010_020f9d64(void*);
 bool VsStar::onDestroy()
 {
 	if (this->setting_0 == 1) {
-		// func_ov010_020f9d64(&this->field_0x47c);
+		func_ov010_020f9d64(&this->field_0x47c);
 	}
 	return true;
 }

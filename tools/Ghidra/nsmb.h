@@ -333,3 +333,11 @@ struct Fader {
 	u8 fadeMaskShape[2];
 	u8 fadingType; /* 5C2 */
 };
+
+struct VsStar_vtable {
+	D_VsStar_vtable;
+};
+struct VsStar {
+	VsStar_vtable *vtable;
+	D_VsStar_data;
+};
