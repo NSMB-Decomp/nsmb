@@ -9,7 +9,8 @@ class VsStar : public StageEntity
 	u32 setting_0; /*0x4C0*/
 	u32 _4c4;      /*0x4C4*/
 	u32 setting_1; /*0x4C8*/
-	u8 _pad1[0x24];
+	u32 _4cc;
+	u8 _pad1[0x20];
 
 	inline VsStar() {};
 	~VsStar();
@@ -37,5 +38,5 @@ class VsStar : public StageEntity
 	void _30();
 	void _31();
 	bool onUpdate_0();
-	void damagePlayer();
+	void damagePlayer(ActiveCollider *, PlayerBase *);
 };

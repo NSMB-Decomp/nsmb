@@ -17,8 +17,12 @@ void VsStar::func_ov020_02132510()
 {
 }
 
-void VsStar::damagePlayer()
+void VsStar::damagePlayer(ActiveCollider *collider, PlayerBase *player)
 {
+	// if ((collider->_8 + 0x4e4) == 0) {
+	//	*(undefined2 *)(*(int *)collider->_pad_04 + 0x4e4) = 1;
+	//	this->func_ov020_02132510(player, player->linked_player);
+	// }
 }
 
 void VsStar::_24()
@@ -80,6 +84,24 @@ bool VsStar::func_ov020_02131c54()
 
 void VsStar::func_ov020_02131bbc()
 {
+	u8 direction;
+
+	if (this->setting_1 != 0) {
+		this->setting_1 -= 1;
+		direction = this->direction ^ 1;
+		if ((this->setting_1 & 1) == 0) {
+			direction = this->direction;
+		}
+		PlayerActor *player = (PlayerActor*)Game::getPlayer(this->_4cc);
+		Vec3_32* pos1 = &player->position;
+		Vec3_32 position;
+		position.x = pos1->x;
+		position.y = pos1->y;
+		position.z = pos1->z;
+		Actor::spawnActor(0x22, direction << 0x1f | 3, &position, 0, 0, 0);
+		return;
+	}
+	return;
 }
 
 bool VsStar::onCreate()
@@ -98,7 +120,7 @@ bool VsStar::onRender()
 {
 }
 
-void func_ov010_020f9d64(void*);
+void func_ov010_020f9d64(void *);
 bool VsStar::onDestroy()
 {
 	if (this->setting_0 == 1) {
