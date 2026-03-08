@@ -19,7 +19,18 @@ bool Scene8::onRender()
 	return true;
 };
 
-bool Scene8::onUpdate() {};
+void func_02011e3c(u32);
+void func_020131fc(u32, u32);
+u16 data_02087650[2][2];
+bool Scene8::onUpdate()
+{
+	if ((u16)(data_02087650[Input::localConsoleID][0] & 0xc) == 0xc) {
+		func_02011e3c(0x1e);
+		func_020131fc(2, 0);
+		return true;
+	}
+	return true;
+};
 
 Scene8::~Scene8() {
 
