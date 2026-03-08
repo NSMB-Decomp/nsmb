@@ -7,8 +7,9 @@ const STRS MG_DEBUG_STRINGS = {
     {"1P MODE", "MULTIBOOT VS MENU MODE", "ROM VS MENU MODE - PARENT", "ROM VS CHILD", "ROM VS FAKE CHILD"},
 };
 
-MGDebugMenuScene::MGDebugMenuScene()
+void* MGDebugMenuScene::create()
 {
+	return new MGDebugMenuScene();
 }
 MGDebugMenuScene::~MGDebugMenuScene()
 {
