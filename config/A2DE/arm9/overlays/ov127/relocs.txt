@@ -457,9 +457,9 @@ from:0x0209d268 kind:arm_call to:0x02062ac8 module:autoload(2)
 from:0x0209d280 kind:arm_call to:0x02007238 module:main
 from:0x0209d29c kind:load to:0x02039208 add:0x8 module:main
 from:0x0209d2a4 kind:load to:0x02080304 module:autoload(2)
-from:0x0209d2ac kind:load to:0x027e00d0 module:dtcm
+from:0x0209d2ac kind:load to:0x027e00c8 add:0x8 module:dtcm
 from:0x0209d2b0 kind:load to:0x027e00c8 module:dtcm
-from:0x0209d2b4 kind:load to:0x027e0114 module:dtcm
+from:0x0209d2b4 kind:load to:0x027e00c8 add:0x4c module:dtcm
 from:0x0209d2e8 kind:arm_call to:0x0204354c module:autoload(2)
 from:0x0209d318 kind:arm_call to:0x02124ca8 module:overlay(130)
 from:0x0209d31c kind:arm_call to:0x0200e6a4 module:main

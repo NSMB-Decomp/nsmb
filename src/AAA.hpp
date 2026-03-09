@@ -6,6 +6,10 @@
 #include "Vec.hpp"
 #include "base_types.hpp"
 
+inline i32 _FixedMul(i32 x, i32 y) {
+	return (((i64)x * y) + 0x800LL) >> 12;
+}
+
 struct ObjectProfile {
 	void *(*constructor)();
 	u16 updatePriority;
