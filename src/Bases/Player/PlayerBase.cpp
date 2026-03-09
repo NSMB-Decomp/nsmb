@@ -1,6 +1,15 @@
 #include "PlayerBase.hpp"
 #include "../StageEntity.hpp"
 
+#define POWERUP_SMALL 0
+#define POWERUP_SUPER 1
+#define POWERUP_FIRE 2
+#define POWERUP_MEGA 3
+#define POWERUP_MINI 4
+#define POWERUP_SHELL 5
+#define POWERUP_6 6
+#define POWERUP_7 7
+
 struct UNKNOWN {
 	u16 _0;
 	u8 _pad[18];
@@ -12,9 +21,9 @@ UNKNOWN data_020876b2[2];
 u8 data_02085a0c;
 u16 data_02087660[2];
 u16 data_02087664[2];
-u16 data_ov011_0212e218[2];
-u16 data_ov011_0212e21c[2];
-u16 data_ov011_0212e220[2];
+i16 data_ov011_0212e218[2];
+i16 data_ov011_0212e21c[2];
+i16 data_ov011_0212e220[2];
 u32 data_ov000_020ca8d0;
 u32 data_02085abc;
 PlayerBase *data_0208b35c[2];
@@ -273,22 +282,22 @@ PlayerBase::~PlayerBase()
 
 u32 PlayerBase::func_ov011_0212c27c(u32 param_1)
 {
-	char cVar1;
-	u16 uVar2;
+	switch (this->powerup) {
 
-	cVar1 = (char)this->_7a0;
-	if (cVar1 == '\x03') {
-		return (int)(short)data_ov011_0212e218[param_1];
+	case POWERUP_SHELL:
+		if (this->st1 & ST1_CARRYING) {
+			return data_ov011_0212e21c[param_1];
+		} else {
+			return data_ov011_0212e220[param_1];
+		}
+
+	case POWERUP_MEGA:
+		return data_ov011_0212e218[param_1];
+
+	default:
+		return data_ov011_0212e21c[param_1];
+
 	}
-	if (cVar1 != '\x05') {
-		return (int)(short)data_ov011_0212e21c[param_1];
-	}
-	// if (((this->_pad9 + 0x1c) & 1) == 0) {
-	//	uVar2 = data_ov011_0212e220[param_1];
-	// } else {
-	//	uVar2 = data_ov011_0212e21c[param_1];
-	// }
-	return (int)(short)uVar2;
 }
 
 void func_020201c8(i32, i32);
@@ -482,10 +491,10 @@ bool PlayerBase::virt_51()
 Vec3_32 PlayerBase::func_ov011_0212bff0()
 {
 	Vec3_32 result;
-	Vec3_32s *a = &this->_4b4;
-	result.x = a->x;
-	result.y = a->y;
-	result.z = a->z;
+	i32* v = this->model.nodeTransforms.rightWrist.v[3];
+	result.x = v[0];
+	result.y = v[1];
+	result.z = v[2];
 
 	return result;
 }
@@ -629,7 +638,7 @@ bool PlayerBase::func_ov011_0212be28(i32 a, i32 b, i32 c, u8 d, i8 e)
 
 bool PlayerBase::func_ov011_0212bde0(Actor *a)
 {
-	this->_77c = this->_77c & ~0x1;
+	this->st1 = this->st1 & ~ST1_CARRYING;
 	if ((BOOL)(this->linkedActor == a) == FALSE) {
 		return false;
 	}
@@ -698,13 +707,14 @@ bool PlayerBase::func_ov011_0212bc50(i32 a)
 Vec3_32 PlayerBase::func_ov011_0212bbdc()
 {
 	Vec3_32 result;
-	Vec3_32s *_574 = &this->_574;
-	result.x = _574->x;
-	result.y = _574->y;
-	result.z = _574->z;
 
-	i32 uVar1 = this->_758 >> 0x1f;
-	result.y += (uVar1 + 0x800) >> 0xc | ((this->_758 >> 0x11) + (0x800 < uVar1)) * 0x100000;
+	// TODO: Is there a conversion operator/constructor for this?
+	i32* v = this->model.nodeTransforms.face.v[3];
+	result.x = v[0];
+	result.y = v[1];
+	result.z = v[2];
+
+	result.y += _FixedMul(this->_758, 0x8000);
 	return result;
 }
 
@@ -732,14 +742,6 @@ bool PlayerBase::func_ov011_0212bb90()
 	return this->_7bf == TRUE;
 }
 
-#define POWERUP_SMALL 0
-#define POWERUP_SUPER 1
-#define POWERUP_FIRE 2
-#define POWERUP_MEGA 3
-#define POWERUP_MINI 4
-#define POWERUP_SHELL 5
-#define POWERUP_6 6
-#define POWERUP_7 7
 u16 data_0208b344[2];
 void func_02020150(u32, u32);
 void func_02020128(u32, u32);
@@ -833,7 +835,7 @@ void PlayerBase::func_ov011_0212b954()
 {
 	if ((this->_780 & 0x40) != 0) {
 		this->_780 &= 0xffffffbf;
-		func_ov011_0212cfe4(&this->_000._2c4);
+		func_ov011_0212cfe4(&this->model);
 	}
 }
 
@@ -922,7 +924,7 @@ void PlayerBase::func_ov011_0212b740(u32 a)
 	if (BOOL(data_02085a84 != 0) != FALSE && (a == 3)) {
 		return;
 	}
-	this->_77c = this->_77c | 0x800000;
+	this->st1 = this->st1 | 0x800000;
 	func_02011dc4(a);
 	this->_798 = a;
 }
@@ -930,26 +932,70 @@ void PlayerBase::func_ov011_0212b740(u32 a)
 void func_02011d94(u32);
 void PlayerBase::func_ov011_0212b710()
 {
-	if ((this->_77c & 0x800000) != 0) {
-		this->_77c &= 0xff7fffff;
+	if ((this->st1 & 0x800000) != 0) {
+		this->st1 &= 0xff7fffff;
 		func_02011d94(this->_798);
 	}
 }
+
+struct Test940 {
+	Vec3_32 s0;
+	Vec2_32 s1;
+	Vec3_32 s2;
+	Vec3_16 s3;
+};
+size_assert(Test940, 0x10 + 0xC + 0x10 + 0xC);
+// Well that makes sense (size = 0x38)
+// Still, 0x38 is not 0x3C nor 0x40
+// 0x3C - 0x38 = 0x4 -> u32 somewhere?
 
 Vec3_32 data_ov000_020caeb8[2];
 Vec3_32 data_ov000_020caed8[2];
 u8 data_ov000_020cacd0[2];
 void PlayerBase::func_ov011_0212b384(i16 player_id)
 {
-	Vec3_32 s0;
-	Vec2_32 s1;
-	Vec3_32 s2;
+	Vec3_32 s0; // target
+	Vec2_32 s1; // pos_2d
+	Vec3_32 s2; // pos_3d
+	Vec3_32* t;
 
-	s2 = this->position;
-	Vec3_16 s3;
-	s3.x = this->rotation.x;
-	s3.y = this->rotation.y;
-	s3.z = this->rotation.z;
+	// s2 = this->position;
+
+	/* i32 px = position.x;
+	i32 py = position.y;
+	i32 pz = position.z;
+
+	s1.x = px;
+	s1.y = py;
+
+	s0.z = pz;
+
+	Vec3_16 s3 = rotation; */
+	//s3 = this->rotation; // rotation
+	/* s3.x = rotation.x;
+	s3.y = rotation.y;
+	s3.z = rotation.z; */
+
+	/* s0.x = s1.x;
+	s0.y = s1.y; */
+
+	/* s2.x = s1.x;
+	s2.y = s1.y;
+	s2.z = s0.z; */
+
+	s2 = position;
+
+	//{
+
+	Vec3_16 s3 = _getRot();
+	//_getRot();
+	// Vec3_16 s3 (rotation.x, rotation.y, rotation.z);
+	// Vec3_16 s3;
+	/* s3.x = rotation.x;
+	s3.y = rotation.y;
+	s3.z = rotation.z; */
+
+	//}
 
 	switch (this->_7b2) {
 	case 0:
@@ -957,53 +1003,103 @@ void PlayerBase::func_ov011_0212b384(i16 player_id)
 		s0.y = s2.y;
 		s0.z = s2.z;
 		break;
-	case 1:
+	case 1: // 88
+
+		/* i32 r1 = 0x1000;
 		s0.x = data_ov000_020caeb8[player_id].x;
+		i32 r2 = 0x200;
+		s0.y = data_ov000_020caeb8[player_id].y;
+		i32 r3 = 0x6000;
+		s0.z = data_ov000_020caeb8[player_id].z; */
+
+		t = &data_ov000_020caeb8[player_id];
+
+		s0 = *t;
+
+		s0.y = s2.y;
+		s0.z = s2.z;
+
+		s1.x = this->spin.pos.x;
+
+		//Math::expLerp(&s0.x, s0.x, r2, r3, r1);
+		Math::expLerp(&s0.x, s1.x, 0x200, 0x6000, 0x1000);
+
+		/* s0.x = data_ov000_020caeb8[player_id].x;
 		s0.y = this->position.y;
 		s0.z = this->position.z;
-		Math::expLerp(&s0.x, data_ov000_020caeb8[player_id].x, 0x200, 0x6000, 0x1000);
+		Math::expLerp(&s0.x, data_ov000_020caeb8[player_id].x, 0x200, 0x6000, 0x1000); */
 		break;
-	case 2:
-		s0.x = data_ov000_020caeb8[player_id].x;
-		s0.y = data_ov000_020caeb8[player_id].y;
-		s0.z = this->position.z;
-		Vec3_32 *a = &this->_6d0._6d0;
-		Math::expLerp(&s0.x, a->x, 0x200, 0x6000, 0x1000);
-		Math::expLerp(&s0.y, a->y, 0x200, 0x6000, 0x1000);
+	case 2: // 98
+
+		t = &data_ov000_020caeb8[player_id];
+
+		s0 = *t;
+
+		s0.z = s2.z;
+
+		s1.x = this->spin.pos.x;
+		s1.y = this->spin.pos.y;
+
+		//Math::expLerp(&s0.x, s0.x, r2, r3, r1);
+		Math::expLerp(&s0.x, s1.x, 0x200, 0x6000, 0x1000);
+		Math::expLerp(&s0.y, s1.y, 0x200, 0x6000, 0x1000);
+
 		break;
-	case 3:
-		s0 = data_ov000_020caeb8[player_id];
+	case 3: // e8
+		t = &data_ov000_020caeb8[player_id];
+
+		s0 = *t;
 		// s0.x = data_ov000_020caeb8[player_id].x;
 		// s0.y = data_ov000_020caeb8[player_id].y;
 		// s0.z = data_ov000_020caeb8[player_id].z;
 		break;
-	case 4: {
-		s0.y = data_ov000_020caeb8[player_id].y;
-		s0.x = this->position.x;
-		s0.z = this->position.z;
-		i32 iVar3 = Math::expLerp(&s0.y, this->position.y, 0x200, 0x8000, 0x1000);
+	case 4: { //
+		t = &data_ov000_020caeb8[player_id];
+
+		s0 = *t;
+
+		//s1.x = s2.x;
+		s1.y = s2.y;
+
+		s0.x = s2.x;
+		s0.z = s2.z;
+
+		//s0.x = s2.x;
+		//s0.z = s2.z;
+
+		i32 iVar3 = Math::expLerp(&s0.y, s1.y, 0x200, 0x8000, 0x1000);
 		if (iVar3 == 0) {
 			this->_7b2 = 0;
 		}
 		break;
 	}
 	case 5: {
-		s0.x = data_ov000_020caeb8[player_id].x;
-		s0.y = data_ov000_020caeb8[player_id].y;
-		s0.z = this->position.z;
-		i32 iVar3 = Math::expLerp(&s0.x, this->position.x, 0x800, 0x8000, 0x2000);
-		i32 iVar4 = Math::expLerp(&s0.y, this->position.y, 0x800, 0x8000, 0x2000);
+		t = &data_ov000_020caeb8[player_id];
+
+		s0 = *t;
+
+		s0.z = s2.z;
+		s1.x = s2.x;
+		s1.y = s2.y;
+
+		i32 iVar3 = Math::expLerp(&s0.x, s1.x, 0x800, 0x8000, 0x2000);
+		i32 iVar4 = Math::expLerp(&s0.y, s1.y, 0x800, 0x8000, 0x2000);
 		if ((iVar3 == 0) && (iVar4 == 0)) {
 			this->_7b2 = 0;
 		}
 		break;
 	}
 	default: {
-		s0.x = data_ov000_020caeb8[player_id].x;
-		s0.y = data_ov000_020caeb8[player_id].y;
-		s0.z = this->position.z;
-		i32 iVar3 = Math::expLerp(&s0.x, this->position.x, 0x200, 0x8000, 0x1000);
-		i32 iVar4 = Math::expLerp(&s0.y, this->position.y, 0x200, 0x8000, 0x1000);
+		t = &data_ov000_020caeb8[player_id];
+
+		s0 = *t;
+
+		s0.z = s2.z;
+		s1.x = s2.x;
+		s1.y = s2.y;
+
+		i32 iVar3 = Math::expLerp(&s0.x, s1.x, 0x200, 0x8000, 0x1000);
+		i32 iVar4 = Math::expLerp(&s0.y, s1.y, 0x200, 0x8000, 0x1000);
 		if ((iVar3 == 0) && (iVar4 == 0)) {
 			this->_7b2 = 0;
 		}
@@ -1074,11 +1170,17 @@ void PlayerBase::setPosition(Vec3_32 *newPos)
 
 i32 PlayerBase::func_ov011_0212b210(i32 gravity)
 {
-	if (this->powerup == POWERUP_MINI) {
-		return (((i64)gravity * 0xD00) + 0x800) >> 12;
-	} else {
+
+	switch (this->powerup) {
+
+	case POWERUP_MINI:
+		return _FixedMul(gravity, 0xD00);
+
+	default:
 		return gravity;
+
 	}
+
 }
 
 u8 PlayerBase::func_ov011_0212b1d4()

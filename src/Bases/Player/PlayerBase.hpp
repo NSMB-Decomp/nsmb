@@ -1,22 +1,18 @@
+#pragma once
 #include "../StageActor.hpp"
+#include "../../player/model.hpp"
 #include "BlendColor.hpp"
-#include "PlayerModel.hpp"
 #include "SpinClass.hpp"
 
 class PlayerBase : public StageActor
 {
       public:
-	PlayerModel _000;
-	u8 _pad1[495];
-	Vec3_32s _4b4;
-	u8 _pad333333[180];
-	Vec3_32s _574;
-	u8 _pad580[261];
+	PlayerModel model;
 	Actor *linkedActor;
 	u8 _pad10[0x40];
 	i32 _6cc;
-	SpinClass _6d0;
-	u8 _pad11[0x14];
+	SpinClass spin;
+	u8 _pad11[0x10];
 	BlendColor _6f4;
 	u8 _pad12[0x17];
 	BlendColor _70c;
@@ -26,9 +22,14 @@ class PlayerBase : public StageActor
 	Vec3_32 _744;
 	u8 _pad9[0x4];
 	i32 _758;
-	u8 _pad98[0x1c];
+	u8 _pad98[0x18];
+
+	u32 _774;
 	u32 _778;
-	u32 _77c;
+
+#define ST1_CARRYING 0x1
+
+	u32 st1;
 	u32 _780;
 	u8 _pad7[0x4];
 	u32 _788;
@@ -60,6 +61,23 @@ class PlayerBase : public StageActor
 	u8 _7c1;
 	u32 _7c4;
 	u32 _7c8;
+
+
+	inline const Vec3_16& _getRot() {
+		//Vec3_16 r = Vec3_16(rotation.x, rotation.y, rotation.z);
+		//Vec3_16 r = Vec3_16(rotation);
+		Vec3_16 r;
+		/* r.x = rotation.x;
+		r.y = rotation.y;
+		r.z = rotation.z; */
+		u16 x = rotation.x;
+		u16 y = rotation.y;
+		r.x = x;
+		r.y = y;
+		u16 z = rotation.z;
+		r.z = z;
+		return r;
+	}
 
 	u8 func_ov011_0212b1d4();
 	i32 func_ov011_0212b210(i32);
