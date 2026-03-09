@@ -4,7 +4,7 @@
 class SpinClass
 {
       public:
-	Vec3_32 _6d0;
+	Vec3_32 pos;
 	SpinClass();
-	~SpinClass();
+	virtual ~SpinClass();
 };

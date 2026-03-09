@@ -42,7 +42,7 @@ public:
 	}
 
 	//0201fe74
-	void setAnimationType(FrameCtrl::Type type); //Sets the animation type
+	void setAnimationType(u32 type); //Sets the animation type
 
 	inline u32 getAnimationType() const {
 		return settings & TypeMask;
