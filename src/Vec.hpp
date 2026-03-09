@@ -2,7 +2,7 @@
 
 struct Vec3_32 : public Vec3_32s
 {
-      public:
+public:
 	Vec3_32 sub(Vec3_32s *a);
 	operator Vec3_32s *()
 	{
@@ -10,7 +10,71 @@ struct Vec3_32 : public Vec3_32s
 	}
 
 	// Vec3();
+
+	/* inline Vec3_32(const Vec3_32s& v) :
+		Vec3_32s(v)
+	{} */
+
+	inline Vec3_32(const Vec3_32s& v) {
+		/*
+			Can either be in order z, y, x or x, z, y
+			But NOT in order x, y, z
+			(messes up LDR/STR order in Model functions)
+		*/
+		z = v.z;
+		y = v.y;
+		x = v.x;
+	}
+
+	inline Vec3_32(i32 x, i32 y, i32 z) {
+		/*
+			Can either be in order z, y, x or x, z, y
+			But NOT in order x, y, z
+			(messes up LDR/STR order in Model functions)
+		*/
+		this->z = z;
+		this->y = y;
+		this->x = x;
+	}
+
+	inline Vec3_32() {};
+
 	virtual inline ~Vec3_32() {};
+
+	/* inline Vec3_32() = default;
+
+	inline Vec3_32(const Vec3_32& other) {
+		this->x = other.x;
+		this->y = other.y;
+		this->z = other.z;
+	} */
+
+	inline Vec3_32& operator=(const Vec3_32& other) {
+		this->x = other.x;
+		this->y = other.y;
+		this->z = other.z;
+		return *this;
+	}
+
+
+	// Speculation
+	inline void setFromMat4x3(const Mat4x3& matrix) {
+
+		// Only matches in Model::getNodePosition() so far
+		i32 transZ = matrix.m32;
+		i32 transY = matrix.m31;
+		i32 transX = matrix.m30;
+		x = transX;
+		y = transY;
+		z = transZ;
+
+		// Nope
+		/* z = matrix.m32;
+		y = matrix.m31;
+		x = matrix.m30; */
+
+	}
+
 };
 
 class Vec2_32
@@ -26,12 +90,37 @@ class Vec2_32
 class Vec3_16
 {
       public:
-	i16 x;
-	i16 y;
-	i16 z;
+	u16 x;
+	u16 y;
+	u16 z;
 
 	// Vec3s();
+	inline Vec3_16() {};
+
 	virtual inline ~Vec3_16() {};
+
+	inline Vec3_16(const Vec3_16& other) /*  :
+		x(other.x), y(other.y), z(other.z) */
+	{
+		x = other.x;
+		y = other.y;
+		z = other.z;
+	}
+
+	inline Vec3_16(u16 x, u16 y, u16 z) /* :
+		x(x), y(y), z(z) */
+	{
+		this->z = z;
+		this->y = y;
+		this->x = x;
+	}
+
+	/* inline Vec3_16& operator=(const Vec3_16& other) {
+		this->x = other.x;
+		this->y = other.y;
+		this->z = other.z;
+		return *this;
+	} */
 };
 
 struct Rect32 {
