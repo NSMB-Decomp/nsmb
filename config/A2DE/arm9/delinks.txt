@@ -31,3 +31,28 @@ src/ProcessManager.cpp:
 
 src/ExceptionHandler.cpp:
     .text       start:0x02005b10 end:0x0200626c
+
+
+src/graphics/3d/texture.cpp:
+    .text       start:0x02018b68 end:0x02018c3c
+
+src/graphics/3d/animationctrl.cpp:
+    .text       start:0x02018c3c end:0x02018da8
+
+src/graphics/3d/animation.cpp:
+    .text       start:0x02018da8 end:0x02018fb8
+
+src/graphics/3d/blendmodelanm.cpp:
+    .text       start:0x02018fb8 end:0x02019440
+
+src/graphics/3d/modelanm.cpp:
+    .text       start:0x02019440 end:0x0201967c
+
+src/graphics/3d/model.cpp:
+    .text       start:0x0201967c end:0x02019a88
+
+src/graphics/3d/util.cpp:
+    .text       start:0x02019a88 end:0x02019b7c
+
+src/graphics/3d/modelbase.cpp:
+    .text       start:0x02019b7c end:0x02019c18
