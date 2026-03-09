@@ -1,12 +1,12 @@
 #include "Scene.hpp"
 
-class Scene_8 : public Scene
+class Scene8 : public Scene
 {
       public:
 	u8 _pad[0x4];
 
-	inline Scene_8();
-	~Scene_8();
+	inline Scene8();
+	~Scene8();
 	static void *create();
 
 	bool onCreate();

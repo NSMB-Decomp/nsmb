@@ -13,7 +13,7 @@ class DebugScene : public Scene
 	u8 _pad2[0x40];
 
 	inline DebugScene();
-	~DebugScene();
+	inline ~DebugScene();
 	static void *create();
 
 	void func_ov002_020cc328();

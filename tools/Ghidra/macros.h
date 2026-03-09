@@ -366,6 +366,7 @@
    u32 e; \
    u8 f; 
 
+/* Scene */
 #define D_Scene_vtable \
     D_Object_vtable \
 
@@ -374,12 +375,14 @@
     void* _5c; \
     void* _60;
 
+/* SoundTestScene */
 #define D_SoundTestScene_vtable \
     D_Scene_vtable
 
 #define D_SoundTestScene_data \
     D_Scene_data; \
 
+/* MainMenuScene */
 #define D_MainMenuScene_vtable \
     D_Scene_vtable
 
@@ -431,3 +434,10 @@
     SaveState saves[3]; \
     TitleScreenCutscene cutscene; \
     TextLabel label; 
+
+/* VsStar */
+#define D_VsStar_vtable \
+    D_StageEntity_vtable
+
+#define D_VsStar_data \
+    D_StageEntity_Data;

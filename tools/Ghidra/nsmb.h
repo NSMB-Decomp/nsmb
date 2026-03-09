@@ -5,9 +5,11 @@
 typedef unsigned char u8;
 typedef unsigned short u16;
 typedef unsigned long u32;
+typedef unsigned long long u64;
 typedef signed char i8;
 typedef signed short i16;
 typedef signed long i32;
+typedef signed long long i64;
 
 // Placeholders
 typedef u8 unknown1;
@@ -109,8 +111,11 @@ struct ProcessList {
 	PTMF executor;
 };
 
-// TODO: Does this need to be renamed?
-// TODO: Does this have a optioanal 4th function?
+struct Objectrofile {
+	void *constructor;
+	u16 updatePriority;
+	u16 renderPriority;
+};
 struct ActorProfile {
 	void *constructor;
 	u16 updatePriority;
@@ -259,12 +264,12 @@ struct Coin {
 	D_Coin_data;
 };
 
-// Class: Object_229
-struct Object_229_vtable {
+// Class: Object229
+struct Object229_vtable {
 	D_Object229_vtable;
 };
-struct Object_229 {
-	Object_229_vtable *vtable;
+struct Object229 {
+	Object229_vtable *vtable;
 	D_Object229_data;
 };
 
@@ -327,4 +332,12 @@ struct Fader {
 	u8 fadingState[2];
 	u8 fadeMaskShape[2];
 	u8 fadingType; /* 5C2 */
+};
+
+struct VsStar_vtable {
+	D_VsStar_vtable;
+};
+struct VsStar {
+	VsStar_vtable *vtable;
+	D_VsStar_data;
 };

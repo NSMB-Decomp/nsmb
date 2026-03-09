@@ -12,8 +12,12 @@ struct ObjectProfile {
 	u16 renderPriority;
 };
 
-struct ActorProfile : ObjectProfile {
-	void *(*loadResources)();
+struct ActorProfile { 
+// TODO: Can we rever this back to ActorProfile : ObjectProfile? I was unable to compile without doing the below.
+	void *(*constructor)();
+	u16 updatePriority;
+	u16 renderPriority;
+	bool (*loadResources)();
 };
 
 namespace FS
@@ -49,6 +53,7 @@ extern i32 cameraY[2];
 extern i32 cameraZoomY[2];
 u32 getBootScene();
 void drawBNCLSpriteSub(u32 id, void *data, u32 flags, u8 palette, u8 affineSet, Vec2_32 *scale, i16 rotation, i16 *rotation_center, u8 procSettings, u32 x, u32 y);
+void* getPlayer(u32);
 } // namespace Game
 
 

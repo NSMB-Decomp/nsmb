@@ -1,0 +1,165 @@
+#include "Object229.hpp"
+
+void *Object229::create()
+{
+	return new Object229();
+}
+
+void (Object229::*data_ov099_02186614[4])() = {
+    Object229::func_ov099_021860f0,
+    Object229::func_ov099_02186080,
+    Object229::func_ov099_02186028,
+    Object229::func_ov099_02185fb4,
+};
+void (Object229::*data_ov099_02186634[4])() = {
+    Object229::func_ov099_021860a4,
+    Object229::func_ov099_0218602c,
+    Object229::func_ov099_02185fdc,
+    Object229::func_ov099_02185f5c,
+};
+struct UNKWN_STRUCT {
+	u32 a;
+	u32 b;
+};
+u64 data_0208af3c;
+u8 data_ov000_020cac9c;
+bool Object229::onCreate()
+{
+	Object229_Settings settings = *(Object229_Settings *)&this->settings;
+	this->direction = settings.direction & 1;
+	this->scale.x = 0x1000;
+	this->scale.y = 0x1000;
+	this->scale.z = 0x1000;
+	this->setting_1 = settings.setting_1;
+	if (this->setting_1 < 1) {
+		this->setting_1 = 1;
+	}
+	if (4 < this->setting_1) {
+		this->setting_1 = 4;
+	}
+	i32 uVar1 = (u8)settings.setting_2;
+	if (uVar1 < 1) {
+		uVar1 = 1;
+	}
+	if (3 < uVar1) {
+		uVar1 = 3;
+	}
+	this->setting_2 = (char)(1 << (uVar1 - 1));
+	if (data_0208af3c & this->_334) {
+		this->_404 = 3;
+		this->func_ov099_02185f30(2);
+		data_ov000_020cac9c |= this->setting_2;
+	} else {
+		this->_404 = 0;
+		this->func_ov099_02185f30(0);
+		data_ov000_020cac9c &= ~this->setting_2;
+	}
+	this->_3b4 = 1;
+	return true;
+}
+
+bool Object229::onDestroy()
+{
+	return true;
+}
+
+void Object229::pendingDestroy()
+{
+}
+
+bool Object229::onRender()
+{
+	return true;
+}
+
+bool Object229::onUpdate_0()
+{
+	this->onUpdate_CallPTMF();
+	this->func_ov000_0209adb0(0);
+	return true;
+}
+
+void Object229::func_ov099_021860f0()
+{
+}
+
+void Object229::func_ov099_021860a4()
+{
+	if ((data_0208af3c & this->_334) != 0) {
+		this->func_ov099_02185f30(1);
+		return;
+	}
+	return;
+}
+
+void Object229::func_ov099_02186080()
+{
+	data_ov000_020cac9c |= this->setting_2;
+	this->e = 1;
+}
+
+void Object229::func_ov099_0218602c()
+{
+	this->e = this->e - 1;
+	if (this->e != 0) {
+		return;
+	}
+	this->e = 2;
+	this->_404 = this->_404 + 1;
+	if (3 <= (i32)this->_404) {
+		this->func_ov099_02185f30(2);
+		return;
+	}
+	return;
+}
+
+void Object229::func_ov099_02186028()
+{
+}
+
+void Object229::func_ov099_02185fdc()
+{
+	if ((data_0208af3c & this->_334) == 0) {
+		this->func_ov099_02185f30(3);
+	}
+}
+
+void Object229::func_ov099_02185fb4()
+{
+	data_ov000_020cac9c &= ~this->setting_2;
+	this->e = 1;
+}
+
+void Object229::func_ov099_02185f5c()
+{
+	this->e = this->e - 1;
+	if (this->e != 0) {
+		return;
+	}
+	this->e = 2;
+	this->_404 -= 1;
+	if (this->_404 == 0) {
+		this->func_ov099_02185f30(0);
+	}
+}
+
+void Object229::func_ov099_02185f30(u32 param_1)
+{
+	this->b = param_1;
+	this->a = data_ov099_02186634[param_1];
+	this->c = 1;
+}
+
+void Object229::onUpdate_CallPTMF()
+{
+	if (this->c != 0) {
+		(this->*(data_ov099_02186614[this->b]))();
+		this->c = 0;
+	}
+	(this->*a)();
+}
+
+bool Object229::func_ov099_02185eb4()
+{
+	return true;
+}

@@ -5,3 +5,6 @@
     .data       start:0x02133020 end:0x02133540 kind:data align:32
     .bss        start:0x02133540 end:0x02133580 kind:bss align:32
 
+src/Bases/VSStar.cpp:
+    .text       start:0x021315b8 end:0x02132718
+    .data       start:0x021331d4 end:0x021332f4

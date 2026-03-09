@@ -3,7 +3,11 @@
 class ActiveCollider
 {
       public:
-	u8 _pad_04[0x10];
+	Actor* owner;
+	u16 _8;
+	u16	_a;
+	ActiveCollider * prev;
+	ActiveCollider * next;
 	Rect rect;
 	u8 _24;
 	u8 _25;

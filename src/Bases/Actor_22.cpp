@@ -1,6 +1,0 @@
-#include "Actor_22.hpp"
-
-void *Actor_22::create()
-{
-	return new Actor_22();
-}

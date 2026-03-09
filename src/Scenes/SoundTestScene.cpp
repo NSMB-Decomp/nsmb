@@ -49,9 +49,12 @@ bool SoundTestScene::onCreate()
 	Nitro::func_02061474(8);
 	Nitro::func_02060d78(1, 0, 1);
 	data_02085a88 = 0x12;
-	REG_DISPCNT = REG_DISPCNT & ~0x7000000 | 0x8000000;
+	// TODO: Turn these into macros?
+	REG_DISPCNT &= ~0x7000000;
 	REG_DISPCNT = REG_DISPCNT & ~0x38000000 | 0x8000000;
-	REG_BG1CNT = 0x2810;
+	REG_BG1CNT = (REG_BG1CNT &~ 0x3);
+	REG_BG1CNT = (REG_BG1CNT & 0x43) | 0x2810;
+	REG_BG1CNT &= ~0x40;
 	REG_BG1HOFS = 0;
 	u32 uVar1 = Nitro::func_02062264();
 	Nitro::func_02066edc(0, uVar1, 0x800);
