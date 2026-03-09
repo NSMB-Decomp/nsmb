@@ -1,4 +1,4 @@
-#include "Model.hpp"
+#include "../graphics/3d/model.hpp"
 #include "StageEntity.hpp"
 
 class Object156 : public StageEntity
