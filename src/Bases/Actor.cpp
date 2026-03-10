@@ -176,16 +176,16 @@ Vec3_32 Actor::applyAcceleration(Vec3_32 *acceleration)
 	return result;
 }
 
-// TODO: Is there a better sytax?
-void Actor::applyVelocityToPosition(Vec3_32 *velocity)
+void Actor::applyVelocityToPosition(Vec3_32& velocity)
 {
-	Nitro::Math_AddVec3_32s(this->position, (Vec3_32s *)((u32)velocity + 4), this->position);
+	Vec3_32 *pos = &this->position;
+	Nitro::Math_AddVec3_32s(*pos, velocity, *pos);
 }
 
 void Actor::applyVelocity()
 {
 	Vec3_32 newVelocity = this->applyAcceleration(&this->velocity);
-	this->applyVelocityToPosition(&newVelocity);
+	this->applyVelocityToPosition(newVelocity);
 }
 
 void Actor::applyDirectionalVelocity()

@@ -190,7 +190,7 @@ void MI_CpuCopy16(void *, void *, u32);
 void MI_CpuCopy32(void *, void *, u32);
 
 //
-void Math_AddVec3_32s(Vec3_32s *, Vec3_32s *, Vec3_32s *);
+void Math_AddVec3_32s(Vec3_32s &, Vec3_32s &, Vec3_32s &);
 void MultiThread_Init();
 void Exception_SetHandler(void *, void *);
 void Graphics_ResetOAM();
