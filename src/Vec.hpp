@@ -1,8 +1,7 @@
 #include "../lib/Nitro/Nitro.hpp"
 
-struct Vec3_32 : public Vec3_32s
-{
-public:
+struct Vec3_32 : public Vec3_32s {
+      public:
 	Vec3_32 sub(Vec3_32s *a);
 	operator Vec3_32s *()
 	{
@@ -15,7 +14,8 @@ public:
 		Vec3_32s(v)
 	{} */
 
-	inline Vec3_32(const Vec3_32s& v) {
+	inline Vec3_32(const Vec3_32s &v)
+	{
 		/*
 			Can either be in order z, y, x or x, z, y
 			But NOT in order x, y, z
@@ -26,7 +26,8 @@ public:
 		x = v.x;
 	}
 
-	inline Vec3_32(i32 x, i32 y, i32 z) {
+	inline Vec3_32(i32 x, i32 y, i32 z)
+	{
 		/*
 			Can either be in order z, y, x or x, z, y
 			But NOT in order x, y, z
@@ -49,16 +50,17 @@ public:
 		this->z = other.z;
 	} */
 
-	inline Vec3_32& operator=(const Vec3_32& other) {
+	inline Vec3_32 &operator=(const Vec3_32 &other)
+	{
 		this->x = other.x;
 		this->y = other.y;
 		this->z = other.z;
 		return *this;
 	}
 
-
 	// Speculation
-	inline void setFromMat4x3(const Mat4x3& matrix) {
+	inline void setFromMat4x3(const Mat4x3 &matrix)
+	{
 
 		// Only matches in Model::getNodePosition() so far
 		i32 transZ = matrix.m32;
@@ -72,9 +74,7 @@ public:
 		/* z = matrix.m32;
 		y = matrix.m31;
 		x = matrix.m30; */
-
 	}
-
 };
 
 class Vec2_32
@@ -87,40 +87,11 @@ class Vec2_32
 	virtual inline ~Vec2_32() {};
 };
 
-class Vec3_16
-{
+struct Vec3_16 : public Vec3_16s {
       public:
-	u16 x;
-	u16 y;
-	u16 z;
-
-	// Vec3s();
-	inline Vec3_16() {};
-
+	inline Vec3_16() : Vec3_16s() {};
+	inline Vec3_16(Vec3_16 *a) : Vec3_16s() {};
 	virtual inline ~Vec3_16() {};
-
-	inline Vec3_16(const Vec3_16& other) /*  :
-		x(other.x), y(other.y), z(other.z) */
-	{
-		x = other.x;
-		y = other.y;
-		z = other.z;
-	}
-
-	inline Vec3_16(u16 x, u16 y, u16 z) /* :
-		x(x), y(y), z(z) */
-	{
-		this->z = z;
-		this->y = y;
-		this->x = x;
-	}
-
-	/* inline Vec3_16& operator=(const Vec3_16& other) {
-		this->x = other.x;
-		this->y = other.y;
-		this->z = other.z;
-		return *this;
-	} */
 };
 
 struct Rect32 {

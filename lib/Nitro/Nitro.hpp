@@ -76,6 +76,11 @@ struct Vec3_32s {
 	i32 y;
 	i32 z;
 };
+struct Vec3_16s {
+	i16 x;
+	i16 y;
+	i16 z;
+};
 
 // TODO: Seperate out files.
 namespace Nitro

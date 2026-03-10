@@ -296,7 +296,6 @@ u32 PlayerBase::func_ov011_0212c27c(u32 param_1)
 
 	default:
 		return data_ov011_0212e21c[param_1];
-
 	}
 }
 
@@ -491,7 +490,7 @@ bool PlayerBase::virt_51()
 Vec3_32 PlayerBase::func_ov011_0212bff0()
 {
 	Vec3_32 result;
-	i32* v = this->model.nodeTransforms.rightWrist.v[3];
+	i32 *v = this->model.nodeTransforms.rightWrist.v[3];
 	result.x = v[0];
 	result.y = v[1];
 	result.z = v[2];
@@ -709,7 +708,7 @@ Vec3_32 PlayerBase::func_ov011_0212bbdc()
 	Vec3_32 result;
 
 	// TODO: Is there a conversion operator/constructor for this?
-	i32* v = this->model.nodeTransforms.face.v[3];
+	i32 *v = this->model.nodeTransforms.face.v[3];
 	result.x = v[0];
 	result.y = v[1];
 	result.z = v[2];
@@ -957,45 +956,11 @@ void PlayerBase::func_ov011_0212b384(i16 player_id)
 	Vec3_32 s0; // target
 	Vec2_32 s1; // pos_2d
 	Vec3_32 s2; // pos_3d
-	Vec3_32* t;
-
-	// s2 = this->position;
-
-	/* i32 px = position.x;
-	i32 py = position.y;
-	i32 pz = position.z;
-
-	s1.x = px;
-	s1.y = py;
-
-	s0.z = pz;
-
-	Vec3_16 s3 = rotation; */
-	//s3 = this->rotation; // rotation
-	/* s3.x = rotation.x;
-	s3.y = rotation.y;
-	s3.z = rotation.z; */
-
-	/* s0.x = s1.x;
-	s0.y = s1.y; */
-
-	/* s2.x = s1.x;
-	s2.y = s1.y;
-	s2.z = s0.z; */
+	Vec3_32 *t;
 
 	s2 = position;
 
-	//{
-
-	Vec3_16 s3 = _getRot();
-	//_getRot();
-	// Vec3_16 s3 (rotation.x, rotation.y, rotation.z);
-	// Vec3_16 s3;
-	/* s3.x = rotation.x;
-	s3.y = rotation.y;
-	s3.z = rotation.z; */
-
-	//}
+	Vec3_16 s3 = Vec3_16(this->rotation);
 
 	switch (this->_7b2) {
 	case 0:
@@ -1004,14 +969,6 @@ void PlayerBase::func_ov011_0212b384(i16 player_id)
 		s0.z = s2.z;
 		break;
 	case 1: // 88
-
-		/* i32 r1 = 0x1000;
-		s0.x = data_ov000_020caeb8[player_id].x;
-		i32 r2 = 0x200;
-		s0.y = data_ov000_020caeb8[player_id].y;
-		i32 r3 = 0x6000;
-		s0.z = data_ov000_020caeb8[player_id].z; */
-
 		t = &data_ov000_020caeb8[player_id];
 
 		s0 = *t;
@@ -1021,52 +978,30 @@ void PlayerBase::func_ov011_0212b384(i16 player_id)
 
 		s1.x = this->spin.pos.x;
 
-		//Math::expLerp(&s0.x, s0.x, r2, r3, r1);
 		Math::expLerp(&s0.x, s1.x, 0x200, 0x6000, 0x1000);
-
-		/* s0.x = data_ov000_020caeb8[player_id].x;
-		s0.y = this->position.y;
-		s0.z = this->position.z;
-		Math::expLerp(&s0.x, data_ov000_020caeb8[player_id].x, 0x200, 0x6000, 0x1000); */
 		break;
 	case 2: // 98
-
 		t = &data_ov000_020caeb8[player_id];
-
 		s0 = *t;
-
 		s0.z = s2.z;
-
 		s1.x = this->spin.pos.x;
 		s1.y = this->spin.pos.y;
-
-		//Math::expLerp(&s0.x, s0.x, r2, r3, r1);
 		Math::expLerp(&s0.x, s1.x, 0x200, 0x6000, 0x1000);
 		Math::expLerp(&s0.y, s1.y, 0x200, 0x6000, 0x1000);
 
 		break;
 	case 3: // e8
 		t = &data_ov000_020caeb8[player_id];
-
 		s0 = *t;
-		// s0.x = data_ov000_020caeb8[player_id].x;
-		// s0.y = data_ov000_020caeb8[player_id].y;
-		// s0.z = data_ov000_020caeb8[player_id].z;
 		break;
 	case 4: { //
 		t = &data_ov000_020caeb8[player_id];
 
 		s0 = *t;
 
-		//s1.x = s2.x;
 		s1.y = s2.y;
-
 		s0.x = s2.x;
 		s0.z = s2.z;
-
-		//s0.x = s2.x;
-		//s0.z = s2.z;
-
 		i32 iVar3 = Math::expLerp(&s0.y, s1.y, 0x200, 0x8000, 0x1000);
 		if (iVar3 == 0) {
 			this->_7b2 = 0;
@@ -1178,9 +1113,7 @@ i32 PlayerBase::func_ov011_0212b210(i32 gravity)
 
 	default:
 		return gravity;
-
 	}
-
 }
 
 u8 PlayerBase::func_ov011_0212b1d4()
