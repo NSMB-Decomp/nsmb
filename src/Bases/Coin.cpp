@@ -668,9 +668,10 @@ void Coin::onStageComplete(PlayerActor *player)
 	vec.x = this->position.x;
 	vec.y = this->position.y;
 	vec.z = this->position.z;
+	Vec3_32s *c = &this->centerOffset;
 	this->func_ov000_0209ab90(0, 0, 0x18000, player->linked_player);
 	func_02020354(player->linked_player);
-	Nitro::Math_AddVec3_32s((Vec3_32s *)((u32)&vec + 4), (Vec3_32s *)((u32) & this->centerOffset + 4), (Vec3_32s *)((u32)&vec + 4));
+	Nitro::Math_AddVec3_32s(vec, c, vec);
 	func_02012398(0x70, &vec);
 	this->destroy(true);
 }

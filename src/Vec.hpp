@@ -2,17 +2,14 @@
 
 struct Vec3_32 : public Vec3_32s {
       public:
-	Vec3_32 sub(Vec3_32s *a);
+	inline Vec3_32() {};
+	virtual inline ~Vec3_32() {};
+
 	operator Vec3_32s *()
 	{
-		return this;
+		return (Vec3_32s *)(((u32)this) + 4);
 	}
-
-	// Vec3();
-
-	/* inline Vec3_32(const Vec3_32s& v) :
-		Vec3_32s(v)
-	{} */
+	Vec3_32 sub(Vec3_32s *a);
 
 	inline Vec3_32(const Vec3_32s &v)
 	{
@@ -37,10 +34,6 @@ struct Vec3_32 : public Vec3_32s {
 		this->y = y;
 		this->x = x;
 	}
-
-	inline Vec3_32() {};
-
-	virtual inline ~Vec3_32() {};
 
 	/* inline Vec3_32() = default;
 
