@@ -282,6 +282,8 @@ extern "C" {
 
 	};
 
+	i32 FixedDiv(i32, i32);
+
 	void CopyMat3x3(const void*, void*);
 
 	void ConcatMat4x3(const void*, const void*, void*);
@@ -528,9 +530,9 @@ extern "C" {
 
 	void Ns_3dDrawableDraw(Ns3dDrawable* d);
 
-	void Ns_3dDrawableLinkAnimation(Ns3dDrawable* d, Ns3dAnimation* anim);
+	void Ns_3dDrawableAttachAnimation(Ns3dDrawable* d, Ns3dAnimation* anim);
 
-	void Ns_3dDrawableUnlinkAnimation(Ns3dDrawable* d, Ns3dAnimation* anim);
+	void Ns_3dDrawableDetachAnimation(Ns3dDrawable* d, Ns3dAnimation* anim);
 
 	void Ns_3dDrawableSetCmdFunc(Ns3dDrawable* d, Ns3dCmdFunc func, u8* address, u32 cmd, u32 timing);
 
@@ -560,6 +562,14 @@ extern "C" {
 
 	inline void Ns_3dAnimationSetFrame(Ns3dAnimation* a, i32 frame) {
 		a->frame = frame;
+	}
+
+	inline i32 Ns_3dAnimationGetRatio(Ns3dAnimation* a) {
+		return a->scale;
+	}
+
+	inline void Ns_3dAnimationSetRatio(Ns3dAnimation* a, i32 ratio) {
+		a->scale = ratio;
 	}
 
 
