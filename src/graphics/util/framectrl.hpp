@@ -15,9 +15,9 @@ public:
 	};
 
 
-	FrameCtrl();
+	inline FrameCtrl() {}
 
-	inline ~FrameCtrl();
+	inline ~FrameCtrl() {}
 
 	//0201feb8
 	void update(); //Updates currentFrame by speed. If it's looping, currentFrame is wrapped around. If not, currentFrame is incremented until it reaches frames - 1. When timer becomes negative due to negative speeds, it's kept at 0.

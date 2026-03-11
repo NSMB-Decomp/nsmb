@@ -403,6 +403,17 @@ extern "C" {
 	}
 
 
+	/* Animation resource */
+
+	struct Ns3dAnimationData {
+		u32 _0;
+		u16 frameCount;
+		u16 _6;
+	};
+
+	Ns3dAnimationData* Ns_3dGetAnimation(Ns3dFileHeader* animFile, u32 index);
+
+
 	/* Model resource */
 
 	struct Ns3dModelData {
@@ -489,6 +500,8 @@ extern "C" {
 
 	/* Drawable class */
 
+	struct Ns3dAnimation;
+
 	struct Ns3dDrawable {
 		u32 flags;
 		Ns3dModelData* modelData;
@@ -515,6 +528,10 @@ extern "C" {
 
 	void Ns_3dDrawableDraw(Ns3dDrawable* d);
 
+	void Ns_3dDrawableLinkAnimation(Ns3dDrawable* d, Ns3dAnimation* anim);
+
+	void Ns_3dDrawableUnlinkAnimation(Ns3dDrawable* d, Ns3dAnimation* anim);
+
 	void Ns_3dDrawableSetCmdFunc(Ns3dDrawable* d, Ns3dCmdFunc func, u8* address, u32 cmd, u32 timing);
 
 	inline void Ns_3dDrawableSetUserData(Ns3dDrawable* d, void* data) {
@@ -538,6 +555,8 @@ extern "C" {
 	size_assert(Ns3dAnimation, 0x1C);
 
 	void Ns_3dAnimationInit(Ns3dAnimation* a, void* anim, Ns3dModelData* model, Ns3dTextureData* texture);
+
+	u32 Ns_3dAnimationGetSize(Ns3dAnimationData* anim, Ns3dModelData* model);
 
 	inline void Ns_3dAnimationSetFrame(Ns3dAnimation* a, i32 frame) {
 		a->frame = frame;
