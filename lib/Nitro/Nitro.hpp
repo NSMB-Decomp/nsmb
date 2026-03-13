@@ -226,6 +226,19 @@ void func_020613c8(u32);
 
 extern "C" {
 
+	/* 3D texture formats (from gbatek) */
+
+	enum TEX_FMT {
+		TEX_FMT_NONE = 0x0,
+		TEX_FMT_A3I5,
+		TEX_FMT_PLTT4,
+		TEX_FMT_PLTT16,
+		TEX_FMT_PLTT256,
+		TEX_FMT_COMP4x4,
+		TEX_FMT_A5I3,
+		TEX_FMT_DIRECT
+	};
+
 	/* 3D geometry commands (from gbatek) */
 
 	enum GE_CMD {
@@ -289,6 +302,9 @@ extern "C" {
 	void ConcatMat4x3(const void*, const void*, void*);
 
 	typedef void (*Ns3dCmdFunc)(void* p);
+
+
+	void Ns_3dInitialize();
 
 
 	/* Data headers */
@@ -495,9 +511,54 @@ extern "C" {
 
 	/* Texture resource */
 
-	struct Ns3dTextureData {};
+	struct Ns3dTexImageData {
+		u32 textureParam;
+		u32 _4;
+	};
+	size_assert(Ns3dTexImageData, 0x8);
+
+	struct Ns3dTexPaletteData {
+		u16 paletteParam;
+		u16 _4;
+	};
+	size_assert(Ns3dTexPaletteData, 0x4);
+
+	struct Ns3dTextureData {
+		/* 00 */ Ns3dDataHeader hdr;
+		/* 08 */ u32 textureVramOffset;
+		/* 0C */ u16 textureSize;
+		/* 0E */ u16 textureDictOffset;
+		/* 10 */ u16 _10;
+		/* 12 */ u16 _12;
+		/* 14 */ u32 textureOffset;
+		/* 18 */ u32 comp4x4VramOffset;
+		/* 1C */ u16 comp4x4Size;
+		/* 1E */ u16 comp4x4DictOffset;
+		/* 20 */ u16 _20;
+		/* 22 */ u16 _22;
+		/* 24 */ u32 comp4x4Offset;
+		/* 28 */ u32 comp4x4IndexOffset;
+		/* 2C */ u32 paletteVramOffset;
+		/* 30 */ u16 paletteSize;
+		/* 32 */ u16 _32;
+		/* 34 */ u16 paletteDictOffset;
+		/* 36 */ u16 _36;
+		/* 38 */ u32 paletteOffset;
+		/* 3C */ Ns3dDictionary dict;
+		//u8 data[];
+	};
+	size_assert(Ns3dTextureData, 0x3C + 0x8);
 
 	Ns3dTextureData* Ns_3dGetTexture(Ns3dFileHeader* file);
+
+	inline Ns3dTexImageData* Ns_3dGetTexImageData(Ns3dTextureData* tex, u32 index) {
+		return rcast<Ns3dTexImageData*>(Ns_3dGetDictionaryData(&tex->dict, index));
+	}
+
+	inline Ns3dTexPaletteData* Ns_3dGetTexPaletteData(Ns3dTextureData* tex, u32 index) {
+		Ns3dDictionary* dict = rcast<Ns3dDictionary*>(rcast<u8*>(tex) + tex->paletteDictOffset);
+		return rcast<Ns3dTexPaletteData*>(Ns_3dGetDictionaryData(dict, index));
+	}
 
 
 	/* Drawable class */
