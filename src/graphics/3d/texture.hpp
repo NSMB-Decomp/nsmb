@@ -9,8 +9,7 @@ struct TextureInfo {
 };
 
 //vtable 0203c49c
-class Texture
-{
+class Texture {
 public:
 
 	//02018c2c
