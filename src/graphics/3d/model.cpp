@@ -1,7 +1,7 @@
 #include "model.hpp"
 
 Model::Model() {
-	data = nullptr;
+	model = nullptr;
 	texture = nullptr;
 }
 
@@ -10,16 +10,16 @@ Model::~Model() {}
 
 bool Model::create(void* bmd, u32 modelID, u32 polygonID) {
 
-	data = loadModel(bmd, modelID, &texture);
-	if (!data)
+	model = loadModel(bmd, modelID, &texture);
+	if (!model)
 		return false;
 
-	Ns_3dDrawableInit(&drawable, data);
+	Ns_3dDrawableInit(&drawable, model);
 	Ns_3dDrawableSetUserData(&drawable, nullptr);
 
-	Ns_3dModelSetAllPolygonID(data, polygonID);
-	Ns_3dModelUseGlobalAmbient(data);
-	Ns_3dModelUseGlobalEmission(data);
+	Ns_3dModelSetAllPolygonID(model, polygonID);
+	Ns_3dModelUseGlobalAmbient(model);
+	Ns_3dModelUseGlobalEmission(model);
 
 	return true;
 
@@ -70,11 +70,11 @@ void Model::setCommandCallback(Ns3dCmdFunc func, u8* address, u8 cmd, u32 timing
 }
 
 Ns3dMaterialData* Model::getMaterialData(u32 index) {
-	return Ns_3dGetMaterial(Ns_3dGetMaterials(data), index);
+	return Ns_3dGetMaterial(Ns_3dGetMaterials(model), index);
 }
 
 Ns3dMaterialList* Model::getMaterialCollection() {
-	return Ns_3dGetMaterials(data);
+	return Ns_3dGetMaterials(model);
 }
 
 i32 Model::getMaterialIndex(const Ns3dStringData* name) {
@@ -83,7 +83,7 @@ i32 Model::getMaterialIndex(const Ns3dStringData* name) {
 }
 
 Ns3dNodeList* Model::getNodeInfo() {
-	return Ns_3dGetNodes(data);
+	return Ns_3dGetNodes(model);
 }
 
 i32 Model::getNodeIndex(const Ns3dStringData* name) {
@@ -108,14 +108,14 @@ bool Model::getNodeMatrixInternal(Ns3dNodeList* nodeInfo, u32 nodeIndex, Mat4x3*
 }
 
 bool Model::getNodeMatrix(u32 nodeIndex, Mat4x3* mtx) {
-	return getNodeMatrixInternal(Ns_3dGetNodes(data), nodeIndex, mtx);
+	return getNodeMatrixInternal(Ns_3dGetNodes(model), nodeIndex, mtx);
 }
 
 bool Model::getNodePosition(u32 nodeIndex, Vec3_32& position) {
 
 	Mat4x3 mtx;
 
-	if (getNodeMatrixInternal(Ns_3dGetNodes(data), nodeIndex, &mtx)) {
+	if (getNodeMatrixInternal(Ns_3dGetNodes(model), nodeIndex, &mtx)) {
 
 		// Works
 		/* i32 z = mtx.m32;
@@ -143,7 +143,7 @@ bool Model::getNodePosition(u32 nodeIndex, Vec3_32& position) {
 
 bool Model::restoreNodeMatrix(u32 nodeIndex) {
 
-	Ns3dNodeData* nodeData = Ns_3dGetNode(Ns_3dGetNodes(data), nodeIndex);
+	Ns3dNodeData* nodeData = Ns_3dGetNode(Ns_3dGetNodes(model), nodeIndex);
 
 	u32 matrixStackIndex = (nodeData->flags & NS_3D_NODE_MTX_INDEX_MASK) >> NS_3D_NODE_MTX_INDEX_SHIFT;
 	if (matrixStackIndex == 31)

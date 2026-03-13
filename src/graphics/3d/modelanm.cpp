@@ -25,7 +25,7 @@ bool ModelAnm::create(void* bmd, void* bca, u32 modelID, u32 animID, u32 polygon
 	if (!animData)
 		return false;
 
-	u32 animSize = Ns_3dAnimationGetSize(animData, data);
+	u32 animSize = Ns_3dAnimationGetSize(animData, model);
 	u8* animBuff = new u8[animSize];
 
 	animation = rcast<Ns3dAnimation*>(animBuff);
@@ -34,7 +34,7 @@ bool ModelAnm::create(void* bmd, void* bca, u32 modelID, u32 animID, u32 polygon
 
 	this->animID = animID;
 
-	Ns_3dAnimationInit(animation, animData, data, nullptr);
+	Ns_3dAnimationInit(animation, animData, model, nullptr);
 	frameController.init(animData->frameCount, FrameCtrl::Looping, 0x1000, 0);
 	Ns_3dDrawableAttachAnimation(&drawable, animation);
 
@@ -81,7 +81,7 @@ void ModelAnm::init(u32 animID, u32 type, i32 speed, u16 startFrame) {
 	Ns3dAnimationData* animData = Ns_3dGetAnimation(scast<Ns3dFileHeader*>(animFile), animID);
 	// TODO: no nullptr check?
 
-	Ns_3dAnimationInit(animation, animData, data, nullptr);
+	Ns_3dAnimationInit(animation, animData, model, nullptr);
 	frameController.init(animData->frameCount, type, speed, startFrame);
 	Ns_3dDrawableAttachAnimation(&drawable, animation);
 

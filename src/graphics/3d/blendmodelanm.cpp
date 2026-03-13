@@ -74,7 +74,7 @@ bool BlendModelAnm::create(void* bmd, void* bca, u32 modelID, u32 animID, u32 po
 	if (!animData)
 		return false;
 
-	u32 animSize = Ns_3dAnimationGetSize(animData, data);
+	u32 animSize = Ns_3dAnimationGetSize(animData, model);
 
 	for (i = 0; i < 2; i++) {
 
@@ -84,7 +84,7 @@ bool BlendModelAnm::create(void* bmd, void* bca, u32 modelID, u32 animID, u32 po
 		if (!blendAnims[i].animation)
 			return false;
 
-		Ns_3dAnimationInit(blendAnims[i].animation, animData, data, nullptr);
+		Ns_3dAnimationInit(blendAnims[i].animation, animData, model, nullptr);
 
 	}
 
@@ -122,7 +122,7 @@ void BlendModelAnm::pushAnimation(u32 animID, u32 steps, u32 type, i32 speed, u1
 	Ns3dAnimationData* animData = Ns_3dGetAnimation(scast<Ns3dFileHeader*>(animFile), animID);
 	// TODO: no nullptr check?
 
-	Ns_3dAnimationInit(blendAnims[selector1].animation, animData, data, nullptr);
+	Ns_3dAnimationInit(blendAnims[selector1].animation, animData, model, nullptr);
 	frameController.init(animData->frameCount, type, speed, startFrame);
 	attachAnimation(&blendAnims[selector1]);
 

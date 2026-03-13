@@ -81,7 +81,7 @@ public:
 	bool restoreNodeMatrix(u32 nodeIndex); //Restores the node matrix with index nodeIndex. returns true if successful, false otherwise.
 
 
-	Ns3dModelData* data;
+	Ns3dModelData* model;
 	Ns3dTextureData* texture;
 
 	Mat4x3 matrix;
