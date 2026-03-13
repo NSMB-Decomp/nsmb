@@ -17,7 +17,7 @@ public:
 	virtual ~AnimationCtrl();
 
 	//02018cf4
-	bool createCtrl(Ns3dDrawable* model, void* animFile, u32 animID, Ns3dTextureData* texture); //Creates the animation and sets up the frame controller with the given parameters. returns true if successful, false otherwise.
+	bool createCtrl(Ns3dDrawable* drw, void* file, u32 animID, Ns3dTextureData* tex); //Creates the animation and sets up the frame controller with the given parameters. returns true if successful, false otherwise.
 
 	//02018c74
 	void init(u32 animID, u32 type, i32 speed, u16 startFrame); //If animID doesn't equal the current animation ID, the new animation is loaded and attached if successful. In both cases the frame controller is reinitialized with type and speed, startFrame is only set when the animation ID changed.
