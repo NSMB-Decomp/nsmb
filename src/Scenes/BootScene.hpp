@@ -6,7 +6,7 @@ class BootScene : public Scene
 	u8 _pad0[0x1c];
 
 	inline BootScene();
-	~BootScene();
+	inline ~BootScene();
 	void *create();
 
 	bool onCreate();

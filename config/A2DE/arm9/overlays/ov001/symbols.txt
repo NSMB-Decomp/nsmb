@@ -1,4 +1,4 @@
-_ZN9BootSceneD2Ev kind:function(arm,size=0x20) addr:0x020cc2e0
+_ZN9BootSceneD1Ev kind:function(arm,size=0x20) addr:0x020cc2e0
 _ZN9BootSceneD0Ev kind:function(arm,size=0x28) addr:0x020cc300
 BootScene::func_ov001_020cc328 kind:function(arm,size=0x18c) addr:0x020cc328
 BootScene::func_ov001_020cc4b4 kind:function(arm,size=0xcc) addr:0x020cc4b4
