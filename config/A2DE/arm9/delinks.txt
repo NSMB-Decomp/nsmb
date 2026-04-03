@@ -7,11 +7,17 @@
     .data       start:0x020391e0 end:0x02043380 kind:data align:32
     .bss        start:0x02043380 end:0x02043380 kind:bss align:32
 
+src/ProcessManager.cpp:
+    .init       start:0x0202614c end:0x02026244
+
 src/main.cpp:
     .text       start:0x02003000 end:0x02003070
 
 src/init.cpp:
     .text       start:0x02004d90 end:0x02005098
+
+src/ExceptionHandler.cpp:
+    .text       start:0x02005b10 end:0x0200626c
 
 src/Bases/Object.cpp:
     complete
@@ -21,17 +27,6 @@ src/Bases/Object.cpp:
 src/Scenes/Scene.cpp:
     .text       start:0x020132a0 end:0x02013b98
     .data       start:0x0203bd28 end:0x0203bd88
-
-src/Minigame/MGScene.cpp:
-    .text       start:0x020249dc end:0x02024f1c
-    .data       start:0x0203d2c8 end:0x0203d318
-
-src/ProcessManager.cpp:
-    .init       start:0x0202614c end:0x02026244
-
-src/ExceptionHandler.cpp:
-    .text       start:0x02005b10 end:0x0200626c
-
 
 src/graphics/3d/texture.cpp:
     .text       start:0x02018b68 end:0x02018c3c
@@ -57,6 +52,9 @@ src/graphics/3d/util.cpp:
 src/graphics/3d/modelbase.cpp:
     .text       start:0x02019b7c end:0x02019c18
 
-
 src/graphics/util/framectrl.cpp:
     .text       start:0x0201fd1c end:0x0201ff20
+
+src/Minigame/MGScene.cpp:
+    .text       start:0x020249dc end:0x02024f1c
+    .data       start:0x0203d2c8 end:0x0203d318

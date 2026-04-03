@@ -16,6 +16,9 @@ src/Bases/Coin.cpp:
     .data       start:0x021251a8 end:0x02125334
     .bss        start:0x021293e4 end:0x02129434
 
+src/Bases/Goomba.cpp:
+    .text       start:0x020e0ab4 end:0x020e27d4
+
 src/Bases/Object19.cpp:
     .text       start:0x020e9258 end:0x020e933c
     .data       start:0x02126b7c end:0x02126be0
@@ -27,9 +30,6 @@ src/Bases/Object22.cpp:
 src/Bases/Object176.cpp:
     .text       start:0x020e9428 end:0x020e94cc
     .data       start:0x02126d18 end:0x02126e24
-
-src/Bases/Goomba.cpp:
-    .text       start:0x020e0ab4 end:0x020e27d4
 
 src/Bases/Object18.cpp:
     .text       start:0x020fb57c end:0x020fc988

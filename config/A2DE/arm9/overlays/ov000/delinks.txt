@@ -5,9 +5,9 @@
     .data       start:0x020c4ec0 end:0x020ca280 kind:data align:32
     .bss        start:0x020ca280 end:0x020cc2e0 kind:bss align:32
 
-src/Scenes/StageScene.cpp:
-    .text       start:0x020a12dc end:0x020a3a38
-    .data       start:0x020c6d28 end:0x020c6eac
+src/Bases/StageEntity.cpp:
+    .text       start:0x020986e0 end:0x020a03ac
+    .data       start:0x020c4efc end:0x020c5010
 
 src/Bases/Actor.cpp:
     .text       start:0x020a03ac end:0x020a10a0
@@ -18,9 +18,9 @@ src/Bases/StageActor.cpp:
     .text       start:0x020a10a0 end:0x020a12dc
     .data       start:0x020c6c84 end:0x020c6cdc
 
-src/Bases/StageEntity.cpp:
-    .text       start:0x020986e0 end:0x020a03ac
-    .data       start:0x020c4efc end:0x020c5010
+src/Scenes/StageScene.cpp:
+    .text       start:0x020a12dc end:0x020a3a38
+    .data       start:0x020c6d28 end:0x020c6eac
 
 src/Collision/Collider.cpp:
     .text       start:0x020ab18c end:0x020ab918
