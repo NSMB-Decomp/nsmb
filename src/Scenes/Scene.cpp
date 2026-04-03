@@ -120,14 +120,14 @@ bool Scene::preUpdate()
 		}
 		u32 i = 0;
 		do {
-		if ((GlobalFader.fadingState[0] & 4) != 0) {
-			GlobalFader.func_02007e34(0x20, i);
-		}
-		if ((GlobalFader.fadingState[0] & 0x20) != 0) {
-			GlobalFader.func_02007cf8(0x20, i);
-		}
-		i += 1;
-		//pFVar3 = (Fader *)(pFVar3->_pad0 + 1);
+			if ((GlobalFader.fadingState[0] & 4) != 0) {
+				GlobalFader.func_02007e34(0x20, i);
+			}
+			if ((GlobalFader.fadingState[0] & 0x20) != 0) {
+				GlobalFader.func_02007cf8(0x20, i);
+			}
+			i += 1;
+			// pFVar3 = (Fader *)(pFVar3->_pad0 + 1);
 		} while (i < 2);
 		// if (data_02087630 == '\0') {
 		//	data_02088f2c = '\x01';
@@ -176,9 +176,11 @@ void Scene::postRender(u32 a)
 	Base::postRender(a);
 }
 
+void func_02008558();
 void Scene::prepareFirstScreen()
 {
-	if (i32(&GlobalFader) == 0) {
+	if (i32(&GlobalFader) != 0) {
+		func_02008558();
 		// GlobalFader = Fader();
 		//*(i32*)(&GlobalFader) = 1;
 	}

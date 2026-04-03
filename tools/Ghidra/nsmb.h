@@ -730,3 +730,14 @@ struct VsStar {
 	VsStar_vtable *_;
 	VsStar_data _;
 };
+
+// Class: BootScene
+typedef Scene_vtable BootScene_vtable;
+struct BootScene_data {
+	Scene_data _;
+	u8 _pad0[0x1c];
+};
+struct BootScene {
+	BootScene_vtable _;
+	BootScene_data _;
+};
