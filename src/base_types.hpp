@@ -59,9 +59,6 @@ EXTERN_OVERLAY_ID(52);
 #define OVERLAY_11 OVERLAY_ID(11)
 #define OVERLAY_VS_MENU OVERLAY_ID(11)
 
-// Old c++03 standard does not have 'override' keyword
-#define override
-
 // ...
 #define nullptr 0
 

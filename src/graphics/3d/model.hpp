@@ -12,7 +12,7 @@ public:
 	//D0:020199e8
 	//D1:02019a10
 	//D2:020199c8
-	virtual ~Model() override;
+	virtual ~Model();
 
 	//02019948
 	bool create(void* bmd, u32 modelID, u32 polygonID); //Loads the model with ID modelID from the bmd, assigns texture and model, sets the polygon ID and disables ambient/emission components. returns true if successful, false otherwise.

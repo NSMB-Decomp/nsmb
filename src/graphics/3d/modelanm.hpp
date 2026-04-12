@@ -16,16 +16,16 @@ public:
 
 	//D0:020195fc
 	//D1:02019624
-	virtual ~ModelAnm() override;
+	virtual ~ModelAnm();
 
 	//02019518
-	virtual void render(const Vec3_32s* scale) override;
+	virtual void render(const Vec3_32s* scale);
 
 	//020194f8
-	virtual void render(const Mat4x3& transform, const Vec3_32s* scale) override;
+	virtual void render(const Mat4x3& transform, const Vec3_32s* scale);
 
 	//020194e0
-	virtual void render() override;
+	virtual void render();
 
 	//02019530
 	bool create(void* bmd, void* bca, u32 modelID, u32 animID, u32 polygonID); //Loads the model from bmd and the animation from bca. Also allocates unka0 on heap. Default initializes the frame animation. Attaches the animation to the render object. returns true if successful, false otherwise.
