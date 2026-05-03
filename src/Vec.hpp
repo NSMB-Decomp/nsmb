@@ -57,9 +57,9 @@ struct Vec3_32 : public Vec3_32s {
 	{
 
 		// Only matches in Model::getNodePosition() so far
-		i32 transZ = matrix.m32;
-		i32 transY = matrix.m31;
-		i32 transX = matrix.m30;
+		i32 transZ = matrix.s.m32;
+		i32 transY = matrix.s.m31;
+		i32 transX = matrix.s.m30;
 		x = transX;
 		y = transY;
 		z = transZ;
