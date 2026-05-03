@@ -16,6 +16,7 @@ public:
 	u8 _pad1[0x4];
 
 	static void *create();
+	static void *create_unused();
 	static bool loadResources();
 	inline FireSnake();
 
@@ -25,5 +26,11 @@ ActorProfile FireSnake_Profile = {
     FireSnake::create,
     0x6A,
     0x7A,
+    FireSnake::loadResources,
+};
+ActorProfile FireSnakeUnused_Profile = {
+    FireSnake::create_unused,
+    0x2E,
+    0x3C,
     FireSnake::loadResources,
 };

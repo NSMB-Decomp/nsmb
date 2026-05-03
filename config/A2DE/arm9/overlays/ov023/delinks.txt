@@ -6,4 +6,4 @@
 
 src/Bases/FireSnake.cpp:
     .text       start:0x0213deac end:0x0213eadc
-    .data       start:0x0213ed44 end:0x0213ee80
+    .data       start:0x0213ed38 end:0x0213ee80

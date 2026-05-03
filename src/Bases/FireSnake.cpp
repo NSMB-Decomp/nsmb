@@ -12,3 +12,7 @@ void *FireSnake::create()
 {
 	return new FireSnake();
 }
+void *FireSnake::create_unused()
+{
+	return new FireSnake();
+}
