@@ -370,7 +370,7 @@ data_0208b2a0 kind:bss addr:0x0208b2a0
 data_0208b320 kind:bss addr:0x0208b320
 data_0208b324 kind:bss addr:0x0208b324
 data_0208b328 kind:bss addr:0x0208b328
-HeldItem kind:data(byte[2]) addr:0x0208b32c
+HeldItem kind:bss addr:0x0208b32c
 data_0208b330 kind:bss addr:0x0208b330
 data_0208b334 kind:bss addr:0x0208b334
 data_0208b338 kind:bss addr:0x0208b338
@@ -381,7 +381,7 @@ data_0208b348 kind:bss addr:0x0208b348
 data_0208b34c kind:bss addr:0x0208b34c
 data_0208b350 kind:bss addr:0x0208b350
 data_0208b354 kind:bss addr:0x0208b354
-data_0208b35c kind:bss addr:0x0208b35c
+Players kind:bss addr:0x0208b35c
 data_0208b364 kind:bss addr:0x0208b364
 data_0208b36c kind:bss addr:0x0208b36c
 data_0208b374 kind:bss addr:0x0208b374

@@ -4,6 +4,7 @@
 #include "BlendColor.hpp"
 #include "SpinClass.hpp"
 
+#define ST1_CARRYING 0x1
 class PlayerBase : public StageActor
 {
       public:
@@ -26,9 +27,6 @@ class PlayerBase : public StageActor
 
 	u32 _774;
 	u32 _778;
-
-#define ST1_CARRYING 0x1
-
 	u32 st1;
 	u32 _780;
 	u8 _pad7[0x4];
@@ -59,8 +57,8 @@ class PlayerBase : public StageActor
 	u8 _7bf;
 	u8 _7c0;
 	u8 _7c1;
-	u32 _7c4;
-	u32 _7c8;
+	void* _7c4; // TODO: what do these point to?
+	void* _7c8; // TODO: what do these point to?
 
 
 	inline const Vec3_16& _getRot() {

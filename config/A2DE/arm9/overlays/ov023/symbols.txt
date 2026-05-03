@@ -50,9 +50,9 @@ func_ov023_0213e648 kind:function(arm,size=0x38) addr:0x0213e648
 func_ov023_0213e680 kind:function(arm,size=0x3c) addr:0x0213e680
 func_ov023_0213e6bc kind:function(arm,size=0xe4) addr:0x0213e6bc
 func_ov023_0213e7a0 kind:function(arm,size=0x118) addr:0x0213e7a0
-func_ov023_0213e8b8 kind:function(arm,size=0x54) addr:0x0213e8b8
+_ZN9FireSnake13loadResourcesEv kind:function(arm,size=0x54) addr:0x0213e8b8
 func_ov023_0213e90c kind:function(arm,size=0xe8) addr:0x0213e90c
-func_ov023_0213e9f4 kind:function(arm,size=0xe8) addr:0x0213e9f4
+_ZN9FireSnake6createEv kind:function(arm,size=0xe8) addr:0x0213e9f4
 data_ov023_0213eadc kind:data(any) addr:0x0213eadc
 data_ov023_0213eae0 kind:data(any) addr:0x0213eae0
 data_ov023_0213eaec kind:data(any) addr:0x0213eaec
@@ -74,8 +74,8 @@ data_ov023_0213ed20 kind:data(any) addr:0x0213ed20
 data_ov023_0213ed28 kind:data(any) addr:0x0213ed28
 data_ov023_0213ed30 kind:data(any) addr:0x0213ed30
 UnknownProfile::ov023_0213ed38 kind:data(any) addr:0x0213ed38
-UnknownProfile::ov023_0213ed44 kind:data(any) addr:0x0213ed44
-data_ov023_0213ed58 kind:data(any) addr:0x0213ed58
+FireSnake_Profile kind:data(any) addr:0x0213ed44
+_ZTV9FireSnake kind:data(any) addr:0x0213ed50
 data_ov023_0213ee80 kind:bss addr:0x0213ee80
 data_ov023_0213ee84 kind:bss addr:0x0213ee84
 data_ov023_0213ee90 kind:bss addr:0x0213ee90
