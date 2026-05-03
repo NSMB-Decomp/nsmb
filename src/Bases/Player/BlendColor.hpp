@@ -1,4 +1,3 @@
-#include "../../Vec.hpp"
 
 class BlendColor
 {

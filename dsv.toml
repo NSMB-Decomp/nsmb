@@ -1,0 +1,10 @@
+[gdb]
+address = "127.0.0.1:3333"
+
+[types]
+project_root = "/home/umbreon/Projects/nsmb/src"
+include_paths = ["/home/umbreon/Projects/nsmb/lib/Nitro"]
+ignore_paths = []
+short_enums = true
+
+[games.nsmb]

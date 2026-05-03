@@ -1,3 +1,4 @@
+#pragma once
 #include "../lib/Nitro/Nitro.hpp"
 
 struct Vec3_32 : public Vec3_32s {

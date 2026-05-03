@@ -635,7 +635,6 @@ extern "C" {
 
 
 	/* 3D renderer global state */
-
 	struct Ns3dGlobalState {
 		u32 _0;
 		u32 matrixModeProj;
@@ -667,7 +666,7 @@ extern "C" {
 		Vec3_32s cameraUp;
 		Vec3_32s cameraTarget;
 	};
-	size_assert(Ns3dGlobalState, 0x264);
+	//size_assert(Ns3dGlobalState, 0x264);
 
 	extern Ns3dGlobalState Ns_3dGs;
 

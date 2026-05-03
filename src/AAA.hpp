@@ -1,6 +1,6 @@
 // This file is used solely as a placeholder for functions with a currently unknown location.
 // We should avoid using this file.
-
+#pragma once
 #include "Heap.hpp"
 #include "ProcessManager.hpp"
 #include "Vec.hpp"

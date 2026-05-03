@@ -1,4 +1,4 @@
-#include "../Vec.hpp"
+#pragma once
 #include "../base_types.hpp"
 #include "Object.hpp"
 

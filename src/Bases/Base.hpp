@@ -1,12 +1,12 @@
+#pragma once
 #include "../AAA.hpp"
 #include "../base_types.hpp"
 
+enum State { PendingInit, Active, Inactive };
+enum SkipFlags { UpdateChildren = 1, Update = 2, RenderChildren = 4, Render = 8 };
 class Base
 {
       public:
-	enum State { PendingInit, Active, Inactive };
-	enum SkipFlags { UpdateChildren = 1, Update = 2, RenderChildren = 4, Render = 8 };
-
 	u32 guid;		  /* 0x04 */
 	u32 settings;		  /* 0x08 */
 	u16 object_id;		  /* 0x0c */
@@ -28,7 +28,7 @@ class Base
 	static void setSpawnParams(u16, ProcessLink *, u32, u8);
 	bool hasChildPendingCreation();
 	void create();
-	void *operator new(u32);
+	void *operator new(size_t);
 	void operator delete(void *);
 	Base *getParent();
 	void destroy();

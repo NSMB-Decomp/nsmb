@@ -1,3 +1,4 @@
+#pragma once
 #include "base_types.hpp"
 
 class Heap
@@ -14,7 +15,7 @@ class Heap
 	Heap *setCurrent();
 	u32 maxAllocationUnitSize();
 
-	virtual _(); // Temp function to create vtable
+	virtual void _(); // Temp function to create vtable
 };
 
 class FrameHeap

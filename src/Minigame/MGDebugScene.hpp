@@ -3,8 +3,8 @@
 class MGDebugScene : public MGScene
 {
       public:
-	inline ~MGDebugScene();
-	inline MGDebugScene();
+	inline ~MGDebugScene() {};
+	inline MGDebugScene() {};
 
 	bool func_ov130_02126ab0();
 
@@ -14,9 +14,3 @@ class MGDebugScene : public MGScene
 	virtual char *virt_19(u32);
 	virtual void virt_20(u32);
 };
-inline MGDebugScene::MGDebugScene()
-{
-}
-inline MGDebugScene::~MGDebugScene()
-{
-}

@@ -1,3 +1,4 @@
+#pragma once
 typedef unsigned char u8;
 typedef unsigned short u16;
 typedef unsigned long u32;
@@ -7,6 +8,11 @@ typedef signed short i16;
 typedef signed long i32;
 typedef signed long long i64;
 typedef void *unknown_pointer;
+#if defined(__MWERKS__)
+typedef unsigned long size_t;
+#else
+typedef unsigned int size_t;
+#endif
 
 #define NULL (void *)0x0
 

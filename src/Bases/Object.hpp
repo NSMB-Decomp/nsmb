@@ -1,3 +1,4 @@
+#pragma once
 #include "Base.hpp"
 
 class Object : public Base
@@ -8,8 +9,5 @@ class Object : public Base
 	void __stub();
 
 	void postCreate(u32);
-	inline ~Object();
+	inline ~Object() {};
 };
-Object::~Object()
-{
-}

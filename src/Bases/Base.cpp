@@ -289,7 +289,7 @@ bool Base::onHeapCreated()
 {
 	return true;
 }
-void *Base::operator new(u32 count)
+void *Base::operator new(size_t count)
 {
 	Base *ptr = (Base *)data_0208b720->allocate(count, -4);
 	if (ptr != (Base *)0x0) {

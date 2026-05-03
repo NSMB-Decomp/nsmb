@@ -3,7 +3,7 @@
 class MGScene : public Object
 {
       public:
-	inline ~MGScene();
+	inline ~MGScene() {};
 	MGScene();
 
 	static void func_02024ab8();
@@ -19,4 +19,3 @@ class MGScene : public Object
 	bool preRender();
 	void postRender(u32);
 };
-MGScene::~MGScene() {};
