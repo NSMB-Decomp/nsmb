@@ -106,7 +106,7 @@ data_ov020_021331b8 kind:data(any) addr:0x021331b8
 data_ov020_021331c0 kind:data(any) addr:0x021331c0
 UnknownProfile::ov020_021331c8 kind:data(any) addr:0x021331c8 ambiguous
 UnknownProfile::ov020_021331d4 kind:data(any) addr:0x021331d4 ambiguous
-_ZTV6VsStar kind:data(any) addr:0x021331e8
+_ZTV6VsStar kind:data(any) addr:0x021331e0
 UnknownProfile::ov020_021332f4 kind:data(any) addr:0x021332f4
 data_ov020_02133308 kind:data(any) addr:0x02133308
 UnknownProfile::ov020_02133414 kind:data(any) addr:0x02133414

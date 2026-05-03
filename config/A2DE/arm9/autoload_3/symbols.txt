@@ -580,13 +580,13 @@ data_0208e7e0 kind:bss addr:0x0208e7e0
 data_0208f021 kind:bss addr:0x0208f021
 data_0208fae0 kind:bss(size=0x4) addr:0x0208fae0
 data_0208fae8 kind:bss(size=0x1) addr:0x0208fae8
-SpawnParam4 kind:bss(size=0x1) addr:0x0208faec
+SpawnParam_Type kind:bss(size=0x1) addr:0x0208faec
 data_0208faf0 kind:bss(size=0x2) addr:0x0208faf0
-SpawnParam1 kind:bss(size=0x2) addr:0x0208faf4
-SpawnParam2 kind:bss addr:0x0208faf8
+SpawnParam_ObjectId kind:bss(size=0x2) addr:0x0208faf4
+SpawnParam_Parent kind:bss addr:0x0208faf8
 spawnFunctionCtor kind:bss addr:0x0208fafc
 spawnFunctionDtor kind:bss addr:0x0208fb00
-SpawnParam3 kind:bss addr:0x0208fb04
+SpawnParam_Settings kind:bss addr:0x0208fb04
 data_0208fb08 kind:bss addr:0x0208fb08
 _ZN14ProcessManager11ConnectTaskE kind:bss addr:0x0208fb0c
 _ZN14ProcessManager11ExecuteTaskE kind:bss addr:0x0208fb18
