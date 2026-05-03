@@ -31,7 +31,7 @@
 #define KEYS_ALL (KEY_A | KEY_B | KEY_SELECT | KEY_START | KEY_RIGHT | KEY_LEFT | KEY_UP | KEY_DOWN | KEY_R | KEY_L | KEY_X | KEY_Y | KEY_DEBUG)
 
 union Mat2x2 {
-	struct {
+	struct s {
 		i32 m00, m01;
 		i32 m10, m11;
 	};
@@ -40,7 +40,7 @@ union Mat2x2 {
 };
 
 union Mat3x3 {
-	struct {
+	struct s {
 		i32 m00, m01, m02;
 		i32 m10, m11, m12;
 		i32 m20, m21, m22;
@@ -50,7 +50,7 @@ union Mat3x3 {
 };
 
 union Mat4x3 {
-	struct {
+	struct s {
 		i32 m00, m01, m02;
 		i32 m10, m11, m12;
 		i32 m20, m21, m22;
@@ -61,7 +61,7 @@ union Mat4x3 {
 };
 
 union Mat4x4 {
-	struct {
+	struct s {
 		i32 m00, m01, m02, m03;
 		i32 m10, m11, m12, m13;
 		i32 m20, m21, m22, m23;
