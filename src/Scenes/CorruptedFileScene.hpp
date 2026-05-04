@@ -3,8 +3,11 @@
 class CorruptedFileScene : public Scene
 {
       public:
-	u32 a;
-    u8 _pad[0x90];
+	u32 _64;
+    u8 _pad0[0x7a];
+	u32 _e4;
+    u8 _pad1[0xa];
+	u32 _f4;
     
 	CorruptedFileScene();
 	inline ~CorruptedFileScene();

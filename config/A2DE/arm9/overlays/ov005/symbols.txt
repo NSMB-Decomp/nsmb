@@ -18,5 +18,5 @@ _ZN18CorruptedFileSceneC1Ev kind:function(arm,size=0x28) addr:0x020cccc8
 _ZN18CorruptedFileScene6createEv kind:function(arm,size=0x28) addr:0x020cccf0
 data_ov005_020ccd18 kind:data(any) addr:0x020ccd18
 data_ov005_020ccd28 kind:data(any) addr:0x020ccd28
-UnknownProfile::ov005_020ccd40 kind:data(any) addr:0x020ccd40 ambiguous
+CorruptedFileScene::profile kind:data(any) addr:0x020ccd40
 _ZTV18CorruptedFileScene kind:data(word[20]) addr:0x020ccd48
