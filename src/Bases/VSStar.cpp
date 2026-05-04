@@ -118,6 +118,22 @@ bool VsStar::onUpdate_0()
 
 bool VsStar::onRender()
 {
+	if (data_02085a84 != 0) {
+		if (this->_4e2 != 0) {
+			return true;
+		}
+		u32 a = 0;
+		if (this->_3ea != 0) {
+			a = 0x20;
+		}
+		Vec2_32 scale;
+		scale.x = this->scale.x;
+		scale.y = this->scale.y;
+		Vec3_32 position = this->position;
+		Vec3_16 rotation = this->rotation;
+		Actor::wrapPosition((u32)&position, (u32)&rotation, 1);
+		drawSprite(DAT_02039200, position.x, position.y + 0x10000, a, 0, 3, &scale, (u32)&rotation, 0, 0);
+	}
 }
 
 void func_ov010_020f9d64(void *);

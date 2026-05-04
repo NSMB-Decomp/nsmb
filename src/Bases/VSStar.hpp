@@ -10,7 +10,9 @@ class VsStar : public StageEntity
 	u32 _4c4;      /*0x4C4*/
 	u32 setting_1; /*0x4C8*/
 	u32 _4cc;
-	u8 _pad1[0x20];
+	u8 _pad1[0x12];
+	u16 _4e2;
+	u8 _pad3[0xc];
 
 	inline VsStar() {};
 	~VsStar();
