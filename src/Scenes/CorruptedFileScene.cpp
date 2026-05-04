@@ -119,7 +119,11 @@ bool CorruptedFileScene::onCreate() {
 	return true;
 }
 bool CorruptedFileScene::onDestroy() {
-    
+    func_020087c0(this->_dc);
+	FS::Cache::clear();
+	GlobalFader.func_02007bfc();
+	data_02088f30 = 1;
+	return true;
 }
 void CorruptedFileScene::pendingDestroy() {
 
