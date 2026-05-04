@@ -1,16 +1,16 @@
 #include "CorruptedFileScene.hpp"
 
-const u32 data_ov005_020ccd28[4] = {
-	1,
-	2,
-    3,
-    4,
-};
 const u32 data_ov005_020ccd18[4] = {
 	0x100,
 	0x200,
 	0x400,
 	0x800,
+};
+const u32 data_ov005_020ccd28[4] = {
+	1,
+	2,
+    3,
+    4,
 };
 
 void *CorruptedFileScene::create()
@@ -21,12 +21,10 @@ void func_02014820(void*);
 void func_0201481c(void*);
 CorruptedFileScene::CorruptedFileScene()
 {
-    func_02014820(&this->_64); // TODO: Is this a class?
 }
 
 CorruptedFileScene::~CorruptedFileScene()
 {
-    func_0201481c(&this->_64); // TODO: Is this a class?
 }
 
 bool CorruptedFileScene::onCreate() {
@@ -35,10 +33,6 @@ bool CorruptedFileScene::onCreate() {
 bool CorruptedFileScene::onDestroy() {
     
 }
-void func_02014824(u32, u32);
-void func_020144bc(u32*, u32, u32, u32);
-void func_020145f8(u32*, u32, u32);
-void func_0201486c(u32, u32, u32);
 bool CorruptedFileScene::onRender() {
     switch(this->_e4) {
 		case 0:
@@ -51,19 +45,49 @@ bool CorruptedFileScene::onRender() {
 			break;
 		case 6:
 		case 7:
-			func_020144bc(&this->_64,this->_f4,0,0);
+			this->_64.func_020144bc(this->_f4,0,0);
 			break;
 		case 3:
 		case 9:
 		case 11:
 			func_02014824(0,0);
 	}
-	func_020145f8(&this->_64,0,0);
+	this->_64.func_020145f8(0,0);
   	func_0201486c(0,0,0);
 	return true;
 }
 bool CorruptedFileScene::onUpdate() {
-    
+	if (!GlobalFader.func_02007cb0()) {
+		return true;
+	}
+
+	switch (this->_e4) {
+		case 0:
+			this->_e4 = 1;
+			break;
+		case 1:
+			this->func_ov005_020cc77c();
+			break;
+		case 2:
+		case 4:
+		case 8:
+		case 10:
+			this->func_ov005_020cc75c();
+			break;
+		case 3:
+		case 9:
+		case 11:
+			this->func_ov005_020cc664();
+			break;
+		case 5:
+			this->func_ov005_020cc5bc();
+			break;
+		case 6:
+		case 7:
+			this->func_ov005_020cc4a4();
+			break;
+	}
+	return true;
 }
 void CorruptedFileScene::pendingDestroy() {
 

@@ -93,6 +93,7 @@ class Fader
 	void func_02007cf8(u32, u32);
 	bool func_02007c68();
 	void func_02007df0(u32);
+	bool func_02007cb0();
 };
 extern Fader GlobalFader;
 
@@ -201,6 +202,8 @@ extern char GAME_NAME[8]; // = "Mario2d";
 extern u32 FrameCounter;
 extern u32 data_02085a78;
 extern u32 data_02085a74;
+void func_02014824(u32, u32);
+void func_0201486c(u32, u32, u32);
 
 extern u32 data_ov000_020ca2b8;
 extern void (*data_02039968)(i32, i32);
