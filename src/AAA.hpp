@@ -222,5 +222,5 @@ void func_020087c0(SceneNode*);
 extern u8 data_02088f30;
 void func_020051ec();
 void func_020045cc();
-u32 data_02085a84;
-u32 DAT_02039200;
+extern u32 data_02085a84;
+extern u32 DAT_02039200;
