@@ -188,7 +188,13 @@ void CorruptedFileScene::func_ov005_020cc77c() {
 	func_020051ec();
 	func_020045cc();
 }
-void CorruptedFileScene::func_ov005_020cc75c() {}
+void CorruptedFileScene::func_ov005_020cc75c() {
+	if (this->_e8 > 0) {
+		this->_e8 -= 1;
+	}else {
+		this->_e4 += 1;
+	 }
+}
 void CorruptedFileScene::func_ov005_020cc664() {}
 void CorruptedFileScene::func_ov005_020cc5bc() {}
 void CorruptedFileScene::func_ov005_020cc4a4() {}
