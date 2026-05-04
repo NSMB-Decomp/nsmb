@@ -101,13 +101,13 @@ from:0x020ccc64 kind:load to:0x02088f30 module:autoload(3)
 from:0x020ccc7c kind:arm_call to:0x0201481c module:main
 from:0x020ccc84 kind:arm_call to:0x020137b8 module:main
 from:0x020ccc8c kind:arm_call to:0x0204cc7c module:autoload(2)
-from:0x020ccc98 kind:load to:0x020ccd50 module:overlay(5)
+from:0x020ccc98 kind:load to:0x020ccd48 add:0x8 module:overlay(5)
 from:0x020cccb0 kind:arm_call to:0x0201481c module:main
 from:0x020cccb8 kind:arm_call to:0x020137b8 module:main
-from:0x020cccc4 kind:load to:0x020ccd50 module:overlay(5)
+from:0x020cccc4 kind:load to:0x020ccd48 add:0x8 module:overlay(5)
 from:0x020cccd0 kind:arm_call to:0x02013b2c module:main
 from:0x020ccce0 kind:arm_call to:0x02014820 module:main
-from:0x020cccec kind:load to:0x020ccd50 module:overlay(5)
+from:0x020cccec kind:load to:0x020ccd48 add:0x8 module:overlay(5)
 from:0x020cccfc kind:arm_call to:0x0204cc98 module:autoload(2)
 from:0x020ccd0c kind:arm_call to:0x020cccc8 module:overlay(5)
 from:0x020ccd40 kind:load to:0x020cccf0 module:overlay(5)

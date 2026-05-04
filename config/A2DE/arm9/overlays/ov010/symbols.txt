@@ -686,7 +686,7 @@ func_ov010_020e91a0 kind:function(arm,size=0x3c) addr:0x020e91a0
 func_ov010_020e91dc kind:function(arm,size=0x2c) addr:0x020e91dc
 func_ov010_020e9208 kind:function(arm,size=0x1c) addr:0x020e9208
 func_ov010_020e9224 kind:function(arm,size=0x34) addr:0x020e9224
-_ZN8Object19D2Ev kind:function(arm,size=0x2c) addr:0x020e9258
+_ZN8Object19D1Ev kind:function(arm,size=0x2c) addr:0x020e9258
 _ZN8Object19D0Ev kind:function(arm,size=0x34) addr:0x020e9284
 _ZN8Object199onDestroyEv kind:function(arm,size=0x8) addr:0x020e92b8
 _ZN8Object1914pendingDestroyEv kind:function(arm,size=0x4) addr:0x020e92c0
@@ -1021,11 +1021,11 @@ func_ov010_020fc214 kind:function(arm,size=0xa0) addr:0x020fc214
 func_ov010_020fc2b4 kind:function(arm,size=0x294) addr:0x020fc2b4
 func_ov010_020fc548 kind:function(arm,size=0x4) addr:0x020fc548
 func_ov010_020fc54c kind:function(arm,size=0x2c) addr:0x020fc54c
-Object18::onUpdate kind:function(arm,size=0x10c) addr:0x020fc578
-Object18::onRender kind:function(arm,size=0x10c) addr:0x020fc684
-Object18::pendingDestroy kind:function(arm,size=0x4) addr:0x020fc790
-Object18::onDestroy kind:function(arm,size=0x38) addr:0x020fc794
-Object18::onCreate kind:function(arm,size=0x190) addr:0x020fc7cc
+_ZN8Object188onUpdateEv kind:function(arm,size=0x10c) addr:0x020fc578
+_ZN8Object188onRenderEv kind:function(arm,size=0x10c) addr:0x020fc684
+_ZN8Object1814pendingDestroyEv kind:function(arm,size=0x4) addr:0x020fc790
+_ZN8Object189onDestroyEv kind:function(arm,size=0x38) addr:0x020fc794
+_ZN8Object188onCreateEv kind:function(arm,size=0x190) addr:0x020fc7cc
 _ZN8Object186createEv kind:function(arm,size=0x2c) addr:0x020fc95c
 func_ov010_020fc988 kind:function(arm,size=0x20) addr:0x020fc988
 func_ov010_020fc9a8 kind:function(arm,size=0x10) addr:0x020fc9a8
@@ -2380,7 +2380,7 @@ data_ov010_021277c8 kind:data(any) addr:0x021277c8
 UnknownProfile::ov010_021277d4 kind:data(any) addr:0x021277d4
 data_ov010_021277e0 kind:data(any) addr:0x021277e0
 data_ov010_0212780c kind:data(any) addr:0x0212780c
-_ZTV8Object18 kind:data(any) addr:0x02127840
+_ZTV8Object18 kind:data(any) addr:0x02127838
 data_ov010_02127890 kind:data(any) addr:0x02127890
 data_ov010_02127898 kind:data(any) addr:0x02127898
 data_ov010_021278a0 kind:data(any) addr:0x021278a0

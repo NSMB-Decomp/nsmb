@@ -1069,7 +1069,7 @@ StageController::~StageController kind:function(arm,size=0x20) addr:0x0201ff20
 StageController::~StageController kind:function(arm,size=0x28) addr:0x0201ff40
 _ZN5Actor7setPosXEm kind:function(arm,size=0x8) addr:0x0201ff68
 _ZN5Actor7incPosXEm kind:function(arm,size=0x10) addr:0x0201ff70
-func_0201ff80 kind:function(arm,size=0x44) addr:0x0201ff80
+_ZN15StageController9preUpdateEv kind:function(arm,size=0x44) addr:0x0201ff80
 func_0201ffc4 kind:function(arm,size=0x48) addr:0x0201ffc4
 func_0202000c kind:function(arm,size=0x10) addr:0x0202000c
 func_0202001c kind:function(arm,size=0x10) addr:0x0202001c
@@ -1752,7 +1752,7 @@ data_0203c8c8 kind:data(any) addr:0x0203c8c8
 data_0203c900 kind:data(any) addr:0x0203c900
 data_0203c960 kind:data(any) addr:0x0203c960
 data_0203cc44 kind:data(any) addr:0x0203cc44
-StageController::vtable kind:data(any) addr:0x0203cf30
+_ZTV15StageController kind:data(any) addr:0x0203cf30
 data_0203cf80 kind:data(any) addr:0x0203cf80
 ParticleHandler::vtable kind:data(any) addr:0x0203cf8c
 ParticleControllerManual::vtable kind:data(any) addr:0x0203cf9c

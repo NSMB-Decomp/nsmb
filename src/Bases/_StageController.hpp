@@ -4,4 +4,5 @@ class StageController : public Actor
 {
       public:
 	StageController();
+      bool preUpdate();
 };

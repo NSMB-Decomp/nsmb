@@ -33,7 +33,7 @@ src/Bases/Object176.cpp:
 
 src/Bases/Object18.cpp:
     .text       start:0x020fb57c end:0x020fc988
-    .data       start:0x02127840 end:0x02127890
+    .data       start:0x02127838 end:0x02127890
 
 src/Bases/Player/PlayerActor.cpp:
     .text       start:0x02108fe4 end:0x02109180

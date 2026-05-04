@@ -8,7 +8,7 @@ class Object19 : public StageController
     u16 _1;
 
 	Object19() {};
-	~Object19();
+	inline ~Object19();
 
 	static void *create();
 

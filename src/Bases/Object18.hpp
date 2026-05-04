@@ -7,7 +7,11 @@ class Object18 : public StageController
 	Object18() {};
 	~Object18();
 
-	static void *create();
+	bool onCreate();
+	bool onDestroy();
+	bool onUpdate();
+	bool onRender();
+	void pendingDestroy();
 
-    bool onRender();
+	static void *create();
 };
