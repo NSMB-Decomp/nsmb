@@ -184,12 +184,15 @@ bool CorruptedFileScene::onUpdate() {
 	}
 	return true;
 }
-void CorruptedFileScene::func_ov005_020cc77c() {}
+void CorruptedFileScene::func_ov005_020cc77c() {
+	func_020051ec();
+	func_020045cc();
+}
 void CorruptedFileScene::func_ov005_020cc75c() {}
 void CorruptedFileScene::func_ov005_020cc664() {}
 void CorruptedFileScene::func_ov005_020cc5bc() {}
 void CorruptedFileScene::func_ov005_020cc4a4() {}
 //void CorruptedFileScene::func_ov005_020cc404() {}
 //void CorruptedFileScene::func_ov005_020cc3a4() {}
-//void CorruptedFileScene::func_ov005_020cc314() {}
-//void CorruptedFileScene::func_ov005_020cc2e0() {}
+void CorruptedFileScene::func_ov005_020cc314() {}
+void CorruptedFileScene::func_ov005_020cc2e0() {}

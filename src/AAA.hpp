@@ -219,4 +219,6 @@ void func_02009a30(u32, u32, u32);
 void func_02017190(u32);
 SceneNode* func_020087f0();
 void func_020087c0(SceneNode*);
-u8 data_02088f30;
+extern u8 data_02088f30;
+void func_020051ec();
+void func_020045cc();
