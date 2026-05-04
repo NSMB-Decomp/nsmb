@@ -94,6 +94,7 @@ class Fader
 	bool func_02007c68();
 	void func_02007df0(u32);
 	bool func_02007cb0();
+	void func_02007bd8();
 };
 extern Fader GlobalFader;
 
@@ -207,3 +208,13 @@ void func_0201486c(u32, u32, u32);
 
 extern u32 data_ov000_020ca2b8;
 extern void (*data_02039968)(i32, i32);
+extern u32 data_02085a88;
+extern u32 data_02085e0c;
+
+void func_0200b87c();
+extern u32 data_02087700;
+void func_0200b83c();
+void func_02009a30(u32, u32, u32);
+void func_02017190(u32);
+SceneNode* func_020087f0();
+u8 data_02088f30;

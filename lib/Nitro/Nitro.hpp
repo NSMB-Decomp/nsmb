@@ -2,7 +2,10 @@
 #include "../../src/base_types.hpp"
 
 #define REG_DISPCNT *((u32 *)0x04000000)
+#define REG_BG0CNT *((u16 *)0x04000008)
 #define REG_BG1CNT *((u16 *)0x0400000a)
+#define REG_BG2CNT *((u16 *)0x0400000c)
+#define REG_BG3CNT *((u16 *)0x0400000e)
 #define REG_BLDCNT *((u16 *)0x04000050)
 #define REG_KEYINPUT *((u16 *)0x04000130)
 #define REG_IME *((u16 *)0x04000208)
@@ -221,6 +224,24 @@ void FS_Overlays_unload(u32);
 void FS_Archive_loadMainGameArchives();
 void func_02061ac4(u32);
 void func_020613c8(u32);
+void func_02061494(u32);
+void func_02061958(u32);
+void func_02061844(u32);
+void func_0206178c(u32);
+void func_02061274();
+void func_02061260();
+void func_0206123c();
+void func_02061218();
+void func_02061204();
+void func_020611f0();
+void func_020611dc();
+void func_020611c8();
+void func_020611b4();
+void func_0206118c();
+void func_02061164();
+void func_02056f40(u32, u32);
+void func_020571c4(u32, u32);
+void func_02060d78(u32, u32, u32);
 
 } // namespace Nitro
 
