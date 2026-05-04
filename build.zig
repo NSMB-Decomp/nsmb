@@ -1,7 +1,10 @@
 const std = @import("std");
 
+var release_global: Release = undefined;
+
 pub fn build(b: *std.Build) void {
     const release = b.option(Release, "Release", "") orelse Release.A2DE;
+    release_global = release;
 
     // Define paths that are used in the build steps
     const rom_file = b.path(release.fileName());
@@ -112,6 +115,8 @@ fn compileFile(source_file: []const u8, destination_file: []const u8) !void {
         "-once",
         "-i",
         "lib/Nitro/",
+        "-d",
+        release_global.macro_name(),
     };
     var child = std.process.Child.init(&command, std.heap.smp_allocator);
     const exit_code = try child.spawnAndWait();
@@ -165,6 +170,13 @@ const Release = enum {
     // Returns the enum name (e.g. A2DE)
     pub fn name(self: Release) []const u8 {
         return @tagName(self);
+    }
+
+    // Returns the name with VER_ preanded (e.g. VER_A2DE)
+    pub fn macro_name(self: Release) []const u8 {
+        return switch (self) {
+            inline else => |en| "VER_" ++ @tagName(en),
+        };
     }
 };
 

@@ -2,7 +2,6 @@
 
 void func_02011d40();
 void func_02011b64();
-u32 data_02085a88;
 namespace Nitro
 {
 void func_02061274();

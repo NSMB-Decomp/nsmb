@@ -66,7 +66,11 @@ bool CorruptedFileScene::onCreate() {
 	func_0200b87c();
 	data_02087700 = 0;
 	func_0200b83c(0);
+	#if defined(VER_A2DJ)
+	func_02009a30(0x75d,0,1);
+	#else
 	func_02009a30(0x75c,0,1);
+	#endif
 	func_02017190(2);
 	SceneNode* sn = func_020087f0();
 	this->_dc = sn;
