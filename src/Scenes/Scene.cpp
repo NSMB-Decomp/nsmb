@@ -19,7 +19,6 @@ u8 data_0203bd28;
 u8 data_02085974;
 u16 data_0203bd2c;
 u16 data_0203bd34;
-u8 data_02088f30;
 u32 data_02088f38;
 
 Fader *PTR_02085b14;

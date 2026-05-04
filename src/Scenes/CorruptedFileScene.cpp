@@ -51,11 +51,12 @@ bool CorruptedFileScene::onCreate() {
 	REG_BG2CNT &= ~0x40;
 	REG_BG3CNT &= ~0x40;
 	REG_DISPCNT = REG_DISPCNT & 0xffcfffef | 0x200010;
+	REG_DISPCNT = REG_DISPCNT & 0xffbfff9f | 0x20;
 	Nitro::func_02056f40(2,1);
 	Nitro::func_020571c4(0x10000,1);
 	Nitro::func_02060d78(1,5,1);
 	REG_POWER_CNT |= 0x8000;
-	REG_DISPCNT = REG_DISPCNT & 0xffbfff9f | 0x1000;
+	REG_DISPCNT = REG_DISPCNT & ~0x1f00 | 0x1000;
 	data_02085a88 = 0x10;
 	REG_BG0CNT &= ~3;
 	REG_BG1CNT = REG_BG1CNT & ~3 | 3;
@@ -64,7 +65,7 @@ bool CorruptedFileScene::onCreate() {
 	data_02085e0c = 0;
 	func_0200b87c();
 	data_02087700 = 0;
-	func_0200b83c();
+	func_0200b83c(0);
 	func_02009a30(0x75c,0,1);
 	func_02017190(2);
 	SceneNode* sn = func_020087f0();
