@@ -490,7 +490,7 @@ bool PlayerBase::virt_51()
 Vec3_32 PlayerBase::func_ov011_0212bff0()
 {
 	Vec3_32 result;
-	i32 *v = this->model.nodeTransforms.rightWrist.v[3];
+	i32 *v = this->model.nodeTransforms.s.rightWrist.v[3];
 	result.x = v[0];
 	result.y = v[1];
 	result.z = v[2];
@@ -708,7 +708,7 @@ Vec3_32 PlayerBase::func_ov011_0212bbdc()
 	Vec3_32 result;
 
 	// TODO: Is there a conversion operator/constructor for this?
-	i32 *v = this->model.nodeTransforms.face.v[3];
+	i32 *v = this->model.nodeTransforms.s.face.v[3];
 	result.x = v[0];
 	result.y = v[1];
 	result.z = v[2];
