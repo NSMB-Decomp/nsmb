@@ -9,7 +9,8 @@ class Unknwon {
 class MPLevelSelectScene : public Scene
 {
       public:
-	u8 _pad0[0x8];
+	u8 _64;
+	u8 _pad0[0x7];
 	u32 _6c;
 	u32 _70;
 	Unknwon a;
@@ -23,6 +24,8 @@ class MPLevelSelectScene : public Scene
 	~MPLevelSelectScene();
 	void func_ov052_02155cf8();
 	void func_ov052_02155c9c();
+	void func_ov052_02155ba8();
+	void func_ov052_02155b00();
 	void *create();
 
 	bool onCreate();
