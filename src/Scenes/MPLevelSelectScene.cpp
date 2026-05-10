@@ -78,3 +78,52 @@ MPLevelSelectScene::MPLevelSelectScene()
 MPLevelSelectScene::~MPLevelSelectScene()
 {
 }
+
+u32 MPLevelSelectScene::func_ov052_02155540() {
+
+}
+
+bool MPLevelSelectScene::func_ov052_0215552() {
+	return true;
+}
+
+void MPLevelSelectScene::pendingDestroy() {
+}
+
+//void (Object229::*data_ov099_02186614[4])() = {
+//    Object229::func_ov099_021860f0,
+//    Object229::func_ov099_02186080,
+//    Object229::func_ov099_02186028,
+//    Object229::func_ov099_02185fb4,
+//};
+
+bool MPLevelSelectScene::onUpdate() {
+	static void (MPLevelSelectScene::*a[20])() = {
+		MPLevelSelectScene::func_ov052_02155210,
+		MPLevelSelectScene::func_ov052_021551e4,
+		MPLevelSelectScene::func_ov052_0215515c,
+		MPLevelSelectScene::func_ov052_02154c9c,
+		MPLevelSelectScene::func_ov052_02154bb4,
+		MPLevelSelectScene::func_ov052_02154a60,
+		MPLevelSelectScene::func_ov052_0215476c,
+		MPLevelSelectScene::func_ov052_021546d0,
+		MPLevelSelectScene::func_ov052_02154698,
+		MPLevelSelectScene::func_ov052_0215459c,
+		MPLevelSelectScene::func_ov052_02154698,
+		MPLevelSelectScene::func_ov052_02155178,
+		MPLevelSelectScene::func_ov052_02154b64,
+		MPLevelSelectScene::func_ov052_02154af4,
+		MPLevelSelectScene::func_ov052_02154a24,
+		MPLevelSelectScene::func_ov052_0215454c,
+		MPLevelSelectScene::func_ov052_021544a0,
+		MPLevelSelectScene::func_ov052_02154c68,
+		MPLevelSelectScene::func_ov052_02154c34,
+		MPLevelSelectScene::func_ov052_021549f8
+	};
+	func_02021808();
+	if (this->_pad3 > 0) {
+		this->_pad3 -= 1;
+	}
+	(this->*a[this->_64])();
+	return 1;
+}

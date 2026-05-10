@@ -501,15 +501,15 @@ from:0x02155a38 kind:load to:0x0215aee8 module:overlay(52)
 from:0x02155a60 kind:arm_call to:0x02018104 module:main
 from:0x02155a68 kind:arm_call to:0x020137b8 module:main
 from:0x02155a70 kind:arm_call to:0x0204cc7c module:autoload(2)
-from:0x02155a7c kind:load to:0x0215b814 module:overlay(52)
+from:0x02155a7c kind:load to:0x0215b80c add:0x8 module:overlay(52)
 from:0x02155a80 kind:load to:0x020391e0 add:0x8 module:main
 from:0x02155aa4 kind:arm_call to:0x02018104 module:main
 from:0x02155aac kind:arm_call to:0x020137b8 module:main
-from:0x02155ab8 kind:load to:0x0215b814 module:overlay(52)
+from:0x02155ab8 kind:load to:0x0215b80c add:0x8 module:overlay(52)
 from:0x02155abc kind:load to:0x020391e0 add:0x8 module:main
 from:0x02155ac8 kind:arm_call to:0x02013b2c module:main
 from:0x02155ae0 kind:arm_call to:0x02018114 module:main
-from:0x02155af8 kind:load to:0x0215b814 module:overlay(52)
+from:0x02155af8 kind:load to:0x0215b80c add:0x8 module:overlay(52)
 from:0x02155afc kind:load to:0x020391e0 add:0x8 module:main
 from:0x02155b28 kind:arm_call to:0x02009c64 module:main
 from:0x02155b38 kind:arm_call to:0x02009c64 module:main

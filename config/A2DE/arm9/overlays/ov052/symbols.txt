@@ -37,7 +37,7 @@ func_ov052_02154220 kind:function(arm,size=0xc) addr:0x02154220
 func_ov052_0215422c kind:function(arm,size=0xc) addr:0x0215422c
 func_ov052_02154238 kind:function(arm,size=0xc) addr:0x02154238
 func_ov052_02154244 kind:function(arm,size=0xc) addr:0x02154244
-_ZN18MPLevelSelectScene19func_ov052_02154250Ev kind:function(arm,size=0x250) addr:0x02154250
+_ZN18MPLevelSelectScene8onRenderEv kind:function(arm,size=0x250) addr:0x02154250
 _ZN18MPLevelSelectScene19func_ov052_021544a0Ev kind:function(arm,size=0xac) addr:0x021544a0
 _ZN18MPLevelSelectScene19func_ov052_0215454cEv kind:function(arm,size=0x50) addr:0x0215454c
 _ZN18MPLevelSelectScene19func_ov052_0215459cEv kind:function(arm,size=0xfc) addr:0x0215459c
@@ -57,11 +57,11 @@ _ZN18MPLevelSelectScene19func_ov052_0215515cEv kind:function(arm,size=0x1c) addr
 _ZN18MPLevelSelectScene19func_ov052_02155178Ev kind:function(arm,size=0x6c) addr:0x02155178
 _ZN18MPLevelSelectScene19func_ov052_021551e4Ev kind:function(arm,size=0x2c) addr:0x021551e4
 _ZN18MPLevelSelectScene19func_ov052_02155210Ev kind:function(arm,size=0x60) addr:0x02155210
-_ZN18MPLevelSelectScene19func_ov052_02155270Ev kind:function(arm,size=0x26c) addr:0x02155270
+_ZN18MPLevelSelectScene8onUpdateEv kind:function(arm,size=0x26c) addr:0x02155270
 _ZN18MPLevelSelectScene19func_ov052_021554dcEv kind:function(arm,size=0x40) addr:0x021554dc
-_ZN18MPLevelSelectScene19func_ov052_0215551cEv kind:function(arm,size=0x4) addr:0x0215551c
-_ZN18MPLevelSelectScene19func_ov052_02155520Ev kind:function(arm,size=0x20) addr:0x02155520
-_ZN18MPLevelSelectScene19func_ov052_02155540Ev kind:function(arm,size=0x500) addr:0x02155540
+_ZN18MPLevelSelectScene14pendingDestroyEv kind:function(arm,size=0x4) addr:0x0215551c
+_ZN18MPLevelSelectScene9onDestroyEv kind:function(arm,size=0x20) addr:0x02155520
+_ZN18MPLevelSelectScene8onCreateEv kind:function(arm,size=0x500) addr:0x02155540
 _ZN18MPLevelSelectSceneD0Ev kind:function(arm,size=0x44) addr:0x02155a40
 _ZN18MPLevelSelectSceneD2Ev kind:function(arm,size=0x3c) addr:0x02155a84
 _ZN18MPLevelSelectSceneC2Ev kind:function(arm,size=0x40) addr:0x02155ac0
@@ -301,7 +301,7 @@ data_ov052_0215b7b8 kind:data(any) addr:0x0215b7b8
 data_ov052_0215b7c4 kind:data(any) addr:0x0215b7c4
 data_ov052_0215b7d8 kind:data(any) addr:0x0215b7d8
 data_ov052_0215b7ec kind:data(any) addr:0x0215b7ec
-_ZTV18MPLevelSelectScene kind:data(any) addr:0x0215b814
+_ZTV18MPLevelSelectScene kind:data(any) addr:0x0215b80c
 data_ov052_0215b85c kind:data(any) addr:0x0215b85c
 data_ov052_0215b864 kind:data(any) addr:0x0215b864
 data_ov052_0215b86c kind:data(any) addr:0x0215b86c

@@ -227,3 +227,4 @@ extern u32 DAT_02039200;
 void func_02008784(u32, void*);
 u32 func_02009c64(u32, u32);
 void func_02004564(u32, u32, u32);
+void func_02021808();
