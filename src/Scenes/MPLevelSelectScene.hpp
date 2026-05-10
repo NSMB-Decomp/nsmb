@@ -22,6 +22,7 @@ class MPLevelSelectScene : public Scene
 	MPLevelSelectScene(u32);
 	~MPLevelSelectScene();
 	void func_ov052_02155cf8();
+	void func_ov052_02155c9c();
 	void *create();
 
 	bool onCreate();
