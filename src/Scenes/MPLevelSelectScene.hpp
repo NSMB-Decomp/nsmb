@@ -47,6 +47,26 @@ class MPLevelSelectScene : public Scene
 	void func_ov052_02154c68();
 	void func_ov052_02154c34();
 	void func_ov052_021549f8();
+
+	void func_ov052_02154244();
+	void func_ov052_02154238();
+	void func_ov052_02154220();
+	void func_ov052_02153d5c();
+	void func_ov052_02153d14();
+	void func_ov052_02153d08();
+	void func_ov052_02153b44();
+	void func_ov052_02153b38();
+	void func_ov052_02153ad0();
+	void func_ov052_02153b04();
+	void func_ov052_0215422c();
+	void func_ov052_02153d2c();
+	void func_ov052_02153d20();
+	void func_ov052_02153cfc();
+	void func_ov052_02153ac4();
+	void func_ov052_02153ab8();
+	void func_ov052_02153d50();
+	void func_ov052_02153d44();
+	void func_ov052_02153d38();
 	void *create();
 
 	bool onCreate();
