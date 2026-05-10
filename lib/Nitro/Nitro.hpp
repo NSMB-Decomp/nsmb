@@ -242,6 +242,8 @@ void func_02061164();
 void func_02056f40(u32, u32);
 void func_020571c4(u32, u32);
 void func_02060d78(u32, u32, u32);
+u32 func_02061f2c();
+u32 func_02061f84();
 
 } // namespace Nitro
 

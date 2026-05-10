@@ -224,3 +224,4 @@ void func_020051ec();
 void func_020045cc();
 extern u32 data_02085a84;
 extern u32 DAT_02039200;
+void func_02008784(u32, u32);

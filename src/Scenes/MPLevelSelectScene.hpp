@@ -3,6 +3,7 @@
 class Unknwon {
 	public:
 	Unknwon();
+	~Unknwon();
 };
 
 class MPLevelSelectScene : public Scene
@@ -19,7 +20,8 @@ class MPLevelSelectScene : public Scene
 
 	MPLevelSelectScene();
 	MPLevelSelectScene(u32);
-	inline ~MPLevelSelectScene();
+	~MPLevelSelectScene();
+	void func_ov052_02155cf8();
 	void *create();
 
 	bool onCreate();
