@@ -87,6 +87,16 @@ bool MPLevelSelectScene::func_ov052_0215552() {
 	return true;
 }
 
+bool MPLevelSelectScene::onCreate() {
+
+}
+
+bool MPLevelSelectScene::onDestroy() {
+	func_020180a4(&this->a);
+  	func_02005700();
+	return true;
+}
+
 void MPLevelSelectScene::pendingDestroy() {
 }
 
@@ -121,8 +131,8 @@ bool MPLevelSelectScene::onUpdate() {
 		MPLevelSelectScene::func_ov052_021549f8
 	};
 	func_02021808();
-	if (this->_pad3 > 0) {
-		this->_pad3 -= 1;
+	if (this->_144 > 0) {
+		this->_144 -= 1;
 	}
 	(this->*a[this->_64])();
 	return 1;

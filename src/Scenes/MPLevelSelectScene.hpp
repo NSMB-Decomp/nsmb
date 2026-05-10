@@ -17,7 +17,7 @@ class MPLevelSelectScene : public Scene
 	u8 _pad1[0xb4];
 	Vec2_32 _12c;
 	Vec2_32 _138;
-    i16 _pad3;
+    i16 _144;
 
 	MPLevelSelectScene();
 	MPLevelSelectScene(u32);
