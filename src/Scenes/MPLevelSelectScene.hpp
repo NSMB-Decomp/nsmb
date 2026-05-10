@@ -1,14 +1,24 @@
 #include "Scene.hpp"
 
+class Unknwon {
+	public:
+	Unknwon();
+};
+
 class MPLevelSelectScene : public Scene
 {
       public:
-	u8 _pad0[0xc8];
+	u8 _pad0[0x8];
+	u32 _6c;
+	u32 _70;
+	Unknwon a;
+	u8 _pad1[0xb4];
 	Vec2_32 _12c;
 	Vec2_32 _138;
-    u32 _pad1;
+    u32 _pad3;
 
 	MPLevelSelectScene();
+	MPLevelSelectScene(u32);
 	inline ~MPLevelSelectScene();
 	void *create();
 

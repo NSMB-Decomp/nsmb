@@ -301,7 +301,7 @@ data_ov052_0215b7b8 kind:data(any) addr:0x0215b7b8
 data_ov052_0215b7c4 kind:data(any) addr:0x0215b7c4
 data_ov052_0215b7d8 kind:data(any) addr:0x0215b7d8
 data_ov052_0215b7ec kind:data(any) addr:0x0215b7ec
-Object_5::vtable kind:data(any) addr:0x0215b814
+_ZTV18MPLevelSelectScene kind:data(any) addr:0x0215b814
 data_ov052_0215b85c kind:data(any) addr:0x0215b85c
 data_ov052_0215b864 kind:data(any) addr:0x0215b864
 data_ov052_0215b86c kind:data(any) addr:0x0215b86c

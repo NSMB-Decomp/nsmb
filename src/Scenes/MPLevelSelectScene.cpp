@@ -7,7 +7,6 @@ void *MPLevelSelectScene::create()
 
 MPLevelSelectScene::MPLevelSelectScene()
 {
-
 }
 
 MPLevelSelectScene::~MPLevelSelectScene()
