@@ -64,20 +64,16 @@ pub fn build(b: *std.Build) void {
     report_step.dependOn(&report_cmd.step);
 }
 
-fn read_objdiff() !std.json.Parsed(OBJDiff) {
-    const cwd = std.fs.cwd();
-    const objdiff = try cwd.openFile("objdiff.json", .{ .mode = .read_only });
-    var buffer: [1024 * 64]u8 = undefined;
-    const buffer_length = try objdiff.read(&buffer);
-    const buffer_slice = buffer[0..buffer_length];
+fn read_objdiff(io: std.Io, allocator: std.mem.Allocator) !std.json.Parsed(OBJDiff) {
+    const contents = try std.Io.Dir.readFileAlloc(std.Io.Dir.cwd(), io, "objdiff.json", allocator, .unlimited);
 
-    return try std.json.parseFromSlice(OBJDiff, std.heap.smp_allocator, buffer_slice, .{
+    return try std.json.parseFromSlice(OBJDiff, allocator, contents, .{
         .ignore_unknown_fields = true,
     });
 }
 
-fn getSourceByDest(destination: []const u8) ![]u8 {
-    const result = try read_objdiff();
+fn getSourceByDest(io: std.Io, allocator: std.mem.Allocator, destination: []const u8) ![]u8 {
+    const result = try read_objdiff(io, allocator);
     defer result.deinit();
 
     for (result.value.units) |r| {
@@ -91,9 +87,9 @@ fn getSourceByDest(destination: []const u8) ![]u8 {
     @panic("Could not find something");
 }
 
-fn compileFile(source_file: []const u8, destination_file: []const u8) !void {
+fn compileFile(io: std.Io, source_file: []const u8, destination_file: []const u8) !void {
     const i = std.mem.lastIndexOf(u8, destination_file, &[_]u8{'/'}) orelse 0;
-    std.fs.cwd().makePath(destination_file[0..i]) catch undefined;
+    std.Io.Dir.createDirPath(std.Io.Dir.cwd(), io, destination_file[0..i]) catch undefined;
 
     const command = .{
         "wine",
@@ -118,10 +114,10 @@ fn compileFile(source_file: []const u8, destination_file: []const u8) !void {
         "-d",
         release_global.macro_name(),
     };
-    var child = std.process.Child.init(&command, std.heap.smp_allocator);
-    const exit_code = try child.spawnAndWait();
+    var child = try std.process.spawn(io, .{ .argv = &command });
+    const exit_code = try child.wait(io);
     switch (exit_code) {
-        .Exited => |id| {
+        .exited => |id| {
             if (id > 0) return error.BUILD_ERROR;
         },
         else => {},
@@ -129,20 +125,24 @@ fn compileFile(source_file: []const u8, destination_file: []const u8) !void {
 }
 
 fn taskSingle(self: *std.Build.Step, _: std.Build.Step.MakeOptions) !void {
+    const io = self.owner.graph.io;
+    const allocator = self.owner.allocator;
     const args = self.owner.args orelse @panic("Missing argument?");
     const destination_file = args[0];
-    const source_file = try getSourceByDest(destination_file);
+    const source_file = try getSourceByDest(io, allocator, destination_file);
 
-    compileFile(source_file, destination_file) catch @panic("");
+    compileFile(io, source_file, destination_file) catch @panic("");
 }
 
-fn taskAll(_: *std.Build.Step, _: std.Build.Step.MakeOptions) !void {
-    const result = try read_objdiff();
+fn taskAll(self: *std.Build.Step, _: std.Build.Step.MakeOptions) !void {
+    const io = self.owner.graph.io;
+    const allocator = self.owner.allocator;
+    const result = try read_objdiff(io, allocator);
 
     for (result.value.units) |r| {
         if (r.metadata.source_path) |source| {
             std.log.info("Compiling {s}", .{source});
-            try compileFile(source, r.base_path);
+            try compileFile(io, source, r.base_path);
         }
     }
 }
