@@ -65,8 +65,7 @@ pub fn build(b: *std.Build) void {
 }
 
 fn read_objdiff(io: std.Io, allocator: std.mem.Allocator) !std.json.Parsed(OBJDiff) {
-    var buffer: [1024 * 64]u8 = undefined;
-    const contents = try std.Io.Dir.readFile(std.Io.Dir.cwd(), io, "objdiff.json", &buffer);
+    const contents = try std.Io.Dir.readFileAlloc(std.Io.Dir.cwd(), io, "objdiff.json", allocator, .unlimited);
 
     return try std.json.parseFromSlice(OBJDiff, allocator, contents, .{
         .ignore_unknown_fields = true,
