@@ -28,15 +28,15 @@ class CorruptedFileScene : public Scene
 	u32 _ec;
 	u32 _f0;
 	u32 _f4;
-    
+
 	CorruptedFileScene();
 	~CorruptedFileScene();
 	static void *create();
 
-	bool onCreate();
-	bool onDestroy();
-	bool onUpdate();
-	bool onRender();
+	s32 onCreate();
+	s32 onDestroy();
+	s32 onUpdate();
+	s32 onRender();
 	void pendingDestroy();
 
 	void func_ov005_020cc77c();
@@ -51,6 +51,6 @@ class CorruptedFileScene : public Scene
 
 ObjectProfile CorruptedFileScene::Profile = {
 	CorruptedFileScene::create,
-	0x0b, 
+	0x0b,
 	0x12
 };

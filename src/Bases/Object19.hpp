@@ -12,10 +12,10 @@ class Object19 : public StageController
 
 	static void *create();
 
-    bool onCreate();
-    bool onDestroy();
-    bool onUpdate();
-    bool onRender();
+    s32 onCreate();
+    s32 onDestroy();
+    s32 onUpdate();
+    s32 onRender();
     void pendingDestroy();
 };
 ActorProfile Object19::Profile = {

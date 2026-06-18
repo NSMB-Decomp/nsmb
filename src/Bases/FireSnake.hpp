@@ -20,7 +20,7 @@ public:
 	static bool loadResources();
 	inline FireSnake();
 
-	bool onCreate();
+	s32 onCreate();
 };
 ActorProfile FireSnake_Profile = {
     FireSnake::create,

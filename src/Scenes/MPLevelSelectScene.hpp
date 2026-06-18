@@ -69,10 +69,10 @@ class MPLevelSelectScene : public Scene
 	void func_ov052_02153d38();
 	void *create();
 
-	bool onCreate();
-	bool onDestroy();
-	bool onUpdate();
-	bool onRender();
+	s32 onCreate();
+	s32 onDestroy();
+	s32 onUpdate();
+	s32 onRender();
 	void pendingDestroy();
 };
 

@@ -7,5 +7,5 @@ class Goomba : public StageEntity
 	static void *create();
 	inline Goomba();
 
-	bool onCreate();
+	s32 onCreate();
 };

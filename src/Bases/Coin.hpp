@@ -74,9 +74,9 @@ class Coin : public StageEntity
 	void func_ov010_020d9b84();
 	void func_ov010_020d99a8();
 
-	bool onCreate();
-	bool onDestroy();
-	bool onRender();
+	s32 onCreate();
+	s32 onDestroy();
+	s32 onRender();
 
 	bool onUpdate_0();
 	void _11();

@@ -86,8 +86,8 @@ class MainMenuScene : public Scene
 
 	MainMenuScene();
 	void *create();
-	bool onCreate();
-	bool onRender();
+	s32 onCreate();
+	s32 onRender();
 
 	i32 func_ov009_020ce8d8();
 	i32 func_ov009_020ce944(i32);

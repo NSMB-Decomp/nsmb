@@ -12,8 +12,8 @@ class MGScene_338 : public MGDebugScene
 	inline MGScene_338();
 	void *create();
 
-	bool onCreate();
-	bool onDestroy();
+	s32 onCreate();
+	s32 onDestroy();
 	void virt_18();
 	char *virt_19(u32);
 	void virt_20(u32);

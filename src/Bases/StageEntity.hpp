@@ -68,7 +68,7 @@ class StageEntity : public StageActor
 	inline ~StageEntity() {};
 
 	void func_ov000_0209c820(u32);
-	bool onUpdate();
+	s32 onUpdate();
 	bool preUpdate();
 	void postUpdate(u32);
 	bool preRender();

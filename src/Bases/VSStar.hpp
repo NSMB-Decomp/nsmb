@@ -29,9 +29,9 @@ class VsStar : public StageEntity
 	bool func_ov020_02132660(u32);
 
 	static void *create();
-	bool onDestroy();
-	bool onCreate();
-	bool onRender();
+	s32 onDestroy();
+	s32 onCreate();
+	s32 onRender();
 	void _21();
 	void _24();
 	void _25();

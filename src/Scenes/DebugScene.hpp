@@ -19,10 +19,10 @@ class DebugScene : public Scene
 	void func_ov002_020cc328();
 	void func_ov002_020cc514();
 
-	bool onCreate();
-	bool onDestroy();
-	bool onUpdate();
-	bool onRender();
+	s32 onCreate();
+	s32 onDestroy();
+	s32 onUpdate();
+	s32 onRender();
 	void pendingDestroy();
 	bool onHeapCreated();
 };

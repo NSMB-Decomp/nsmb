@@ -26,9 +26,9 @@ class Object229 : public StageEntity
 
 	static void *create();
 
-	bool onCreate();
-	bool onDestroy();
-	bool onRender();
+	s32 onCreate();
+	s32 onDestroy();
+	s32 onRender();
 	void pendingDestroy();
 	bool onUpdate_0();
 

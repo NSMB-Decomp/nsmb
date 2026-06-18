@@ -13,11 +13,11 @@ class SoundTestScene : public Scene
 
 	static void *create();
 
-	bool onRender();
+	s32 onRender();
 	void pendingDestroy();
-	bool onCreate();
-	bool onDestroy();
-	bool onUpdate();
+	s32 onCreate();
+	s32 onDestroy();
+	s32 onUpdate();
 };
 
 ObjectProfile SoundTestScene::Profile = {SoundTestScene::create, 0x10, 0x17};
