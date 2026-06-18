@@ -104,7 +104,7 @@ void VsStar::func_ov020_02131bbc()
 	return;
 }
 
-bool VsStar::onCreate()
+s32 VsStar::onCreate()
 {
 	u32 settings = this->settings;
 	this->setting_0 = READ_NIBBLE(settings, 0);
@@ -116,7 +116,7 @@ bool VsStar::onUpdate_0()
 {
 }
 
-bool VsStar::onRender()
+s32 VsStar::onRender()
 {
 	if (data_02085a84 != 0) {
 		if (this->_4e2 != 0) {
@@ -137,7 +137,7 @@ bool VsStar::onRender()
 }
 
 void func_ov010_020f9d64(void *);
-bool VsStar::onDestroy()
+s32 VsStar::onDestroy()
 {
 	if (this->setting_0 == 1) {
 		func_ov010_020f9d64(&this->field_0x47c);

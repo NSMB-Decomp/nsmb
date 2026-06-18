@@ -64,7 +64,7 @@ Base::~Base()
 	this->process_link.render.unlink();
 	this->process_link.update.unlink();
 } // Why does this one create 3???
-bool Base::onCreate()
+s32 Base::onCreate()
 {
 	return true;
 }
@@ -87,7 +87,7 @@ void Base::postCreate(u32 a)
 	this->state = Active;
 	return;
 }
-bool Base::onDestroy()
+s32 Base::onDestroy()
 {
 	return true;
 }
@@ -323,7 +323,7 @@ void Base::create()
 }
 i32 Base::processCreate()
 {
-	bool (Base::*on)() = Base::onCreate;
+	s32 (Base::*on)() = Base::onCreate;
 	bool (Base::*pre)() = Base::preCreate;
 	void (Base::*post)(u32) = Base::postCreate;
 	return this->process(on, pre, post);
@@ -332,7 +332,7 @@ i32 Base::processCreate()
 i32 Base::processDestroy()
 {
 	u16 object_id = this->object_id;
-	bool (Base::*on)() = Base::onDestroy;
+	s32 (Base::*on)() = Base::onDestroy;
 	bool (Base::*pre)() = Base::preDestroy;
 	void (Base::*post)(u32) = Base::postDestroy;
 

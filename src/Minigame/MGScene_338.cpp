@@ -105,11 +105,11 @@ void MGScene_338::virt_20(u32 param_1)
 	this->_64 = 0;
 }
 
-bool MGScene_338::onCreate()
+s32 MGScene_338::onCreate()
 {
 }
 
-bool MGScene_338::onDestroy()
+s32 MGScene_338::onDestroy()
 {
 }
 

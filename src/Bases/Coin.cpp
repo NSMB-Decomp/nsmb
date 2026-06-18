@@ -514,7 +514,7 @@ extern i32 data_ov010_0212164c[2];
 extern u8 *data_ov000_020ca2ac;
 extern Collider *data_ov010_02125204;
 bool func_ov000_020af790(u32, u16, u16);
-bool Coin::onCreate()
+s32 Coin::onCreate()
 {
 	this->_408 = this->position;
 	this->position.x += 0x8000;
@@ -655,7 +655,7 @@ bool Coin::onCreate()
 	}
 }
 
-bool Coin::onDestroy()
+s32 Coin::onDestroy()
 {
 	this->_444.unlink();
 	return true;
@@ -697,7 +697,7 @@ void Coin::func_ov010_020d8488()
 	drawSprite(data_ov011_0212f180[this->_4e9 + 0x15], this->position.x, this->position.y + 0x8000, 0, 0, 3, &this->_424, 0, 0, 0);
 }
 
-bool Coin::onRender()
+s32 Coin::onRender()
 {
 	if (this->_4da != 0) {
 		return true;

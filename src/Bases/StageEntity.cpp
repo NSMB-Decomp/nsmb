@@ -52,7 +52,7 @@ bool StageEntity::onUpdate_0()
 	return true;
 }
 
-bool StageEntity::onUpdate()
+s32 StageEntity::onUpdate()
 {
 	this->onUpdate_xx();
 	i32 state = this->_340;
@@ -442,10 +442,10 @@ void StageEntity::func_ov000_0209aa04(u32 type,i32 x,i32 y,i32 player_id)
   local_18.x = 0;
   local_18.y = 0;
   local_18.z = 0;
-  
+
   local_18.x = x+this->position.x;
   local_18.y = y+this->position.y;
-  
+
   StageEntity::func_ov000_0209aa5c(&local_18,type,player_id);
   return;
 }

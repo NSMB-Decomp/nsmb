@@ -11,7 +11,7 @@ MainMenuScene::MainMenuScene()
 {
 }
 
-bool MainMenuScene::onCreate()
+s32 MainMenuScene::onCreate()
 {
 }
 
@@ -22,7 +22,7 @@ bool MainMenuScene::onCreate()
 //     Object229::func_ov099_02185fb4,
 // };
 u32 data_ov009_020dbb94;
-bool MainMenuScene::onRender()
+s32 MainMenuScene::onRender()
 {
 	if ((data_ov009_020dbb94 & 1) == 0) {
 		data_ov009_020dbbb4[0] = MainMenuScene::onRender_0;

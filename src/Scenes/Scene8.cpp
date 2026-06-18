@@ -6,15 +6,15 @@ void *Scene8::create()
 	return new Scene8();
 }
 
-bool Scene8::onCreate() {};
+s32 Scene8::onCreate() {};
 
-bool Scene8::onDestroy() {};
+s32 Scene8::onDestroy() {};
 
 void Scene8::pendingDestroy()
 {
 }
 
-bool Scene8::onRender()
+s32 Scene8::onRender()
 {
 	return true;
 };
@@ -22,7 +22,7 @@ bool Scene8::onRender()
 void func_02011e3c(u32);
 void func_020131fc(u32, u32);
 u16 data_02087650[2][2];
-bool Scene8::onUpdate()
+s32 Scene8::onUpdate()
 {
 	if ((u16)(data_02087650[Input::localConsoleID][0] & 0xc) == 0xc) {
 		func_02011e3c(0x1e);

@@ -4,7 +4,7 @@ Goomba::Goomba()
 {
 }
 
-bool Goomba::onCreate()
+s32 Goomba::onCreate()
 {
 }
 

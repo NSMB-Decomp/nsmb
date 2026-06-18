@@ -1,6 +1,6 @@
 #include "Base.hpp"
 
-i32 Base::process(bool (Base::*on)(), bool (Base::*pre)(), void (Base::*post)(u32))
+i32 Base::process(s32 (Base::*on)(), bool (Base::*pre)(), void (Base::*post)(u32))
 {
 	u32 state;
 	u32 result;
@@ -23,7 +23,7 @@ i32 Base::process(bool (Base::*on)(), bool (Base::*pre)(), void (Base::*post)(u3
 	return callResult;
 }
 
-bool Base::onUpdate()
+s32 Base::onUpdate()
 {
 	return true;
 }
@@ -40,7 +40,7 @@ void Base::postUpdate(u32)
 {
 }
 
-bool Base::onRender()
+s32 Base::onRender()
 {
 	return true;
 }

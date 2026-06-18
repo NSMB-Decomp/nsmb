@@ -87,11 +87,11 @@ bool MPLevelSelectScene::func_ov052_0215552() {
 	return true;
 }
 
-bool MPLevelSelectScene::onCreate() {
+s32 MPLevelSelectScene::onCreate() {
 
 }
 
-bool MPLevelSelectScene::onDestroy() {
+s32 MPLevelSelectScene::onDestroy() {
 	func_020180a4(&this->a);
   	func_02005700();
 	return true;
@@ -107,7 +107,7 @@ void MPLevelSelectScene::pendingDestroy() {
 //    Object229::func_ov099_02185fb4,
 //};
 
-bool MPLevelSelectScene::onUpdate() {
+s32 MPLevelSelectScene::onUpdate() {
 	static void (MPLevelSelectScene::*ptmfs[20])() = {
 		MPLevelSelectScene::func_ov052_02155210,
 		MPLevelSelectScene::func_ov052_021551e4,
@@ -138,7 +138,7 @@ bool MPLevelSelectScene::onUpdate() {
 	return 1;
 }
 
-bool MPLevelSelectScene::onRender() {
+s32 MPLevelSelectScene::onRender() {
 	static void (MPLevelSelectScene::*ptmfs[20])() = {
 		MPLevelSelectScene::func_ov052_02154244,
 		MPLevelSelectScene::func_ov052_02154238,

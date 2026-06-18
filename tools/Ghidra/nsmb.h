@@ -191,16 +191,16 @@ struct PlatformManager {
 
 // Class: Base
 struct Base_vtable {
-	bool (*onCreate)(void);
+	s32 (*onCreate)(void);
 	bool (*preCreate)(void);
 	void (*postCreate)(u16, u16);
-	bool (*onDestroy)();
+	s32 (*onDestroy)();
 	bool (*preDestroy)();
 	void (*postDestroy)(u16, u16);
-	bool (*onUpdate)();
+	s32 (*onUpdate)();
 	bool (*preUpdate)();
 	void (*postUpdate)();
-	bool (*onRender)();
+	s32 (*onRender)();
 	bool (*preRender)();
 	void (*postRender)();
 	void (*pendingDestroy)();

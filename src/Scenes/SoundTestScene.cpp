@@ -28,7 +28,7 @@ void *SoundTestScene::create()
 	return new SoundTestScene();
 }
 
-bool SoundTestScene::onCreate()
+s32 SoundTestScene::onCreate()
 {
 	Nitro::func_02061274();
 	Nitro::func_02061260();
@@ -64,7 +64,7 @@ bool SoundTestScene::onCreate()
 	return true;
 }
 
-bool SoundTestScene::onDestroy()
+s32 SoundTestScene::onDestroy()
 {
 	func_02011d40();
 	return true;
@@ -73,12 +73,12 @@ void SoundTestScene::pendingDestroy()
 {
 }
 
-bool SoundTestScene::onRender()
+s32 SoundTestScene::onRender()
 {
 	return true;
 }
 
-bool SoundTestScene::onUpdate()
+s32 SoundTestScene::onUpdate()
 {
 	return true;
 }

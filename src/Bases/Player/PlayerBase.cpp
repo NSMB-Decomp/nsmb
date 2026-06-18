@@ -1077,7 +1077,7 @@ bool PlayerBase::func_ov011_0212b2bc()
 			if (b != 0) {
 				func_ov000_020a189c(0);
 			} else {
-				func_02012d6c(data_02088bdc.currentSlot, &data_02088bdc);
+				func_02012d6c(save.options.currentSlot, &save);
 				func_ov000_020a183c(0xe, 0);
 			}
 		}

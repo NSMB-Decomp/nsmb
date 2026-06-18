@@ -4,7 +4,7 @@ FireSnake::FireSnake()
 {
 }
 
-bool FireSnake::onCreate()
+s32 FireSnake::onCreate()
 {
 }
 

@@ -38,7 +38,7 @@ class Base
 	i32 doOrderProc();
 	i32 processUpdate();
 	i32 procesRender();
-	i32 process(bool (Base::*)(), bool (Base::*)(), void (Base::*)(u32));
+	i32 process(s32 (Base::*)(), bool (Base::*)(), void (Base::*)(u32));
 	void func_01ffd290();
 
 	virtual s32 onCreate();

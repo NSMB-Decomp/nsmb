@@ -23,7 +23,7 @@ struct UNKWN_STRUCT {
 };
 u64 data_0208af3c;
 u8 data_ov000_020cac9c;
-bool Object229::onCreate()
+s32 Object229::onCreate()
 {
 	Object229_Settings settings = *(Object229_Settings *)&this->settings;
 	this->direction = settings.direction & 1;
@@ -58,7 +58,7 @@ bool Object229::onCreate()
 	return true;
 }
 
-bool Object229::onDestroy()
+s32 Object229::onDestroy()
 {
 	return true;
 }
@@ -67,7 +67,7 @@ void Object229::pendingDestroy()
 {
 }
 
-bool Object229::onRender()
+s32 Object229::onRender()
 {
 	return true;
 }

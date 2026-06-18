@@ -27,7 +27,7 @@ CorruptedFileScene::~CorruptedFileScene()
 }
 
 
-bool CorruptedFileScene::onCreate() {
+s32 CorruptedFileScene::onCreate() {
 	REG_POWER_CNT = REG_POWER_CNT & 0xfffffdf1 | 0x20e;
 	Nitro::func_02061274();
 	Nitro::func_02061260();
@@ -122,7 +122,7 @@ bool CorruptedFileScene::onCreate() {
 	data_02088f30 = 0;
 	return true;
 }
-bool CorruptedFileScene::onDestroy() {
+s32 CorruptedFileScene::onDestroy() {
     func_020087c0(this->_dc);
 	FS::Cache::clear();
 	GlobalFader.func_02007bfc();
@@ -132,7 +132,7 @@ bool CorruptedFileScene::onDestroy() {
 void CorruptedFileScene::pendingDestroy() {
 
 }
-bool CorruptedFileScene::onRender() {
+s32 CorruptedFileScene::onRender() {
     switch(this->_e4) {
 		case 0:
 		case 1:
@@ -155,7 +155,7 @@ bool CorruptedFileScene::onRender() {
   	func_0201486c(0,0,0);
 	return true;
 }
-bool CorruptedFileScene::onUpdate() {
+s32 CorruptedFileScene::onUpdate() {
 	if (!GlobalFader.func_02007cb0()) {
 		return true;
 	}

@@ -8,7 +8,7 @@ void *DebugScene::create()
 	return new DebugScene();
 }
 
-bool DebugScene::onCreate()
+s32 DebugScene::onCreate()
 {
 	return true;
 }
@@ -18,7 +18,7 @@ bool DebugScene::onHeapCreated()
 	return true;
 }
 
-bool DebugScene::onDestroy()
+s32 DebugScene::onDestroy()
 {
 	u16 a[1];
 	FS::Cache::clear();
@@ -31,12 +31,12 @@ void DebugScene::pendingDestroy()
 {
 }
 
-bool DebugScene::onRender()
+s32 DebugScene::onRender()
 {
 	return true;
 }
 
-bool DebugScene::onUpdate()
+s32 DebugScene::onUpdate()
 {
 	return true;
 }

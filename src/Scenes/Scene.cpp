@@ -46,7 +46,7 @@ Scene::~Scene()
 		if (a) {
 			bool c = func_02046c5c();
 			if (c != 0 && !Wifi_isMultiBootCart()) {
-				data_02085ad4[0] = *((u32 *)&data_02088bdc + 0xd2); // TODO: Do not offset using pointers
+				data_02085ad4[0] = save.options.controlOptions; // TODO: Do not offset using pointers
 			}
 			func_0200f3d8();
 		}
@@ -176,7 +176,7 @@ void Scene::postRender(u32 a)
 }
 
 void func_02008558();
-void Scene::prepareFirstScreen()
+void Scene::prepareFirstScreen() // TODO: prepareFirstScene???
 {
 	if (i32(&GlobalFader) != 0) {
 		func_02008558();

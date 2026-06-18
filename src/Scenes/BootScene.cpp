@@ -8,13 +8,13 @@ void *BootScene::create()
 	return new BootScene();
 }
 
-bool BootScene::onCreate()
+s32 BootScene::onCreate()
 {
 
 	return true;
 }
 
-bool BootScene::onDestroy()
+s32 BootScene::onDestroy()
 {
 	return true;
 }
@@ -23,12 +23,12 @@ void BootScene::pendingDestroy()
 {
 }
 
-bool BootScene::onRender()
+s32 BootScene::onRender()
 {
 	return true;
 }
 
-bool BootScene::onUpdate()
+s32 BootScene::onUpdate()
 {
 }
 
