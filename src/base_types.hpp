@@ -14,6 +14,21 @@ typedef unsigned long size_t;
 typedef unsigned int size_t;
 #endif
 
+typedef signed char s8;
+typedef signed short s16;
+typedef signed long s32;
+typedef signed long long s64;
+
+typedef s16 fx16;
+typedef s32 fx32;
+typedef s64 fx64;
+
+typedef u32 EmitterT;
+
+// Doesn't work with objdiff
+//#include <cstddef.h> // for size_t
+typedef unsigned long size_t;
+
 #define NULL (void *)0x0
 
 // https://forum.vcfed.org/index.php?threads/c-item-size-check-at-compile-time.1244920/
