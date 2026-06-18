@@ -17,3 +17,19 @@ bool WmController::canEntityTransitLink(WM::NodeLink* link) {
 
 }
 
+bool WmController::canEntityStopAtNode(WM::NodeLink* link) {
+
+	u16 flag = wxNodes[link->node].flag;
+
+	if (u16(flag & NF_Course) == 0)
+		return false;
+
+	if (u16(flag & NF_StarCoins) == 0)
+		return false;
+
+	if (u16(flag & NF_Castle) || u16(flag & NF_FinalCastle))
+		return false;
+
+	return true;
+
+}
