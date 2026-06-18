@@ -11,3 +11,4 @@ class Object : public Base
 	void postCreate(u32);
 	inline ~Object() {};
 };
+size_assert(Object, sizeof(Base));

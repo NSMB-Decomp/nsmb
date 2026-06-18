@@ -28,7 +28,7 @@ class Base
 	static void setSpawnParams(u16, ProcessLink *, u32, u8);
 	bool hasChildPendingCreation();
 	void create();
-	void *operator new(size_t);
+	void* operator new(size_t);
 	void operator delete(void *);
 	Base *getParent();
 	void destroy();
@@ -41,17 +41,17 @@ class Base
 	i32 process(bool (Base::*)(), bool (Base::*)(), void (Base::*)(u32));
 	void func_01ffd290();
 
-	virtual bool onCreate();
+	virtual s32 onCreate();
 	virtual bool preCreate();
 	virtual void postCreate(u32);
-	virtual bool onDestroy();
+	virtual s32 onDestroy();
 	virtual bool preDestroy();
 	virtual void postDestroy(u32);
 	// Missing some funcs here
-	virtual bool onUpdate();
+	virtual s32 onUpdate();
 	virtual bool preUpdate();
 	virtual void postUpdate(u32);
-	virtual bool onRender();
+	virtual s32 onRender();
 	virtual bool preRender();
 	virtual void postRender(u32);
 	virtual void pendingDestroy();
@@ -60,3 +60,4 @@ class Base
 	virtual bool onHeapCreated();
 	virtual ~Base() = 0;
 };
+size_assert(Base, 0x5C);
