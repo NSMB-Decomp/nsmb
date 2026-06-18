@@ -107,15 +107,60 @@ extern u8 data_02088f34;
 extern u8 data_ov000_020ca84c;
 extern u8 data_020887fc;
 extern u32 data_02085ad4[2];
-struct Save {
-	u32 _pad0[0xcf];
-	u32 header;
+struct SaveMapEntity {
+	u8 node;
+	u8 type;
+};
+struct SaveHeader {
+	u32 magic;
 	u32 flags;
+};
+size_assert(SaveHeader, 0x8);
+struct GameSave {
+	SaveHeader header;
+	u32 completion;
+	u32 lives;
+	u32 coins;
+	u32 score;
+	u32 starCoinsCollected;
+	u32 starCoinsSpent;
+	u32 currentWorld;
+	u32 savedWorld;
+	u32 currentWorldNode;
+	u32 savedWorldNode;
+	u32 powerup;
+	u32 tempScore;
+	u32 bottomScreenTheme;
+	BOOL miniMushroomUnlocked;
+	u32 actorRespawnWorld;
+	u32 seenLevelImages[6];
+	u8 inventoryPowerup;
+	u8 reserved0[3];
+	u16 worldStates[8];
+	u8 nodeStates[8][25];
+	u8 pathStates[8][30];
+	SaveMapEntity mapEntities[8][2];
+};
+size_assert(GameSave, 0x248);
+struct MinigamesSave {
+	SaveHeader header;
+	u8 scores[18][13];
+};
+size_assert(MinigamesSave, 0xF4);
+struct OptionSave {
+	SaveHeader header;
 	u32 soundMode;
 	u32 controlOptions;
-	u32 currentSlot;/* 0x34C */
+	u32 currentSlot;
 };
-extern Save data_02088bdc;
+size_assert(OptionSave, 0x14);
+struct Save {
+	GameSave game;
+	MinigamesSave minigames;
+	OptionSave options;
+};
+size_assert(Save, 0x350);
+extern Save save;
 
 //
 u32(func_ov000_02098798)(void *, u32);
