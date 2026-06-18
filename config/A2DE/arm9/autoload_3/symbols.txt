@@ -262,12 +262,11 @@ data_02088ba4 kind:bss addr:0x02088ba4
 data_02088bb4 kind:bss addr:0x02088bb4
 data_02088bd4 kind:bss addr:0x02088bd4
 data_02088bd8 kind:bss addr:0x02088bd8
-data_02088bdc kind:bss addr:0x02088bdc
+save kind:bss addr:0x02088bdc
 data_02088c20 kind:bss addr:0x02088c20
 data_02088c3c kind:bss addr:0x02088c3c
 data_02088c4c kind:bss addr:0x02088c4c
 data_02088c52 kind:bss addr:0x02088c52
-data_02088d14 kind:bss addr:0x02088d14
 data_02088e04 kind:bss addr:0x02088e04
 data_02088e24 kind:bss addr:0x02088e24
 data_02088e2c kind:bss addr:0x02088e2c

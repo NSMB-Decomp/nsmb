@@ -202,13 +202,13 @@ func_ov008_020da730 kind:function(arm,size=0xc4) addr:0x020da730
 func_ov008_020da7f4 kind:function(arm,size=0x1b0) addr:0x020da7f4
 func_ov008_020da9a4 kind:function(arm,size=0x74) addr:0x020da9a4
 func_ov008_020daa18 kind:function(arm,size=0x94) addr:0x020daa18
-func_ov008_020daaac kind:function(arm,size=0x488) addr:0x020daaac
-func_ov008_020daf34 kind:function(arm,size=0xfc) addr:0x020daf34
-func_ov008_020db030 kind:function(arm,size=0x88) addr:0x020db030
-func_ov008_020db0b8 kind:function(arm,size=0x10) addr:0x020db0b8
-func_ov008_020db0c8 kind:function(arm,size=0x30) addr:0x020db0c8
-func_ov008_020db0f8 kind:function(arm,size=0x6c) addr:0x020db0f8
-func_ov008_020db164 kind:function(arm,size=0x74) addr:0x020db164
+_ZN12WmController12moveEntitiesEv kind:function(arm,size=0x488) addr:0x020daaac
+_ZN12WmController19func_ov008_020daf34EPhiPhPhPmi kind:function(arm,size=0xfc) addr:0x020daf34
+_ZN12WmController19func_ov008_020db030EPhiiPhPhPmi kind:function(arm,size=0x88) addr:0x020db030
+_ZN12WmController18getEntityMoveIndexEmmm kind:function(arm,size=0x10) addr:0x020db0b8
+_ZN12WmController19func_ov008_020db0c8EhmPm kind:function(arm,size=0x30) addr:0x020db0c8
+_ZN12WmController20canEntityTransitLinkEPN2WM8NodeLinkE kind:function(arm,size=0x6c) addr:0x020db0f8
+_ZN12WmController19canEntityStopAtNodeEPN2WM8NodeLinkE kind:function(arm,size=0x74) addr:0x020db164
 func_ov008_020db1d8 kind:function(arm,size=0x2c) addr:0x020db1d8
 func_ov008_020db204 kind:function(arm,size=0x40) addr:0x020db204
 func_ov008_020db244 kind:function(arm,size=0x48) addr:0x020db244
@@ -948,7 +948,7 @@ data_ov008_020e6714 kind:data(any) addr:0x020e6714
 data_ov008_020e6718 kind:data(any) addr:0x020e6718
 data_ov008_020e6754 kind:data(any) addr:0x020e6754
 data_ov008_020e6794 kind:data(any) addr:0x020e6794
-data_ov008_020e67ec kind:data(any) addr:0x020e67ec
+data_ov008_020e67e4 kind:data(any) addr:0x020e67e4 // vtable for WorldmapScene
 data_ov008_020e6834 kind:data(any) addr:0x020e6834
 data_ov008_020e6884 kind:data(any) addr:0x020e6884
 data_ov008_020e68d4 kind:data(any) addr:0x020e68d4
@@ -1015,7 +1015,7 @@ UnknownProfile::ov008_020e8bec kind:data(any) addr:0x020e8bec
 data_ov008_020e8bf4 kind:data(any) addr:0x020e8bf4
 data_ov008_020e8bfc kind:data(any) addr:0x020e8bfc
 data_ov008_020e8c00 kind:data(any) addr:0x020e8c00
-data_ov008_020e8c44 kind:data(any) addr:0x020e8c44
+data_ov008_020e8c3c kind:data(any) addr:0x020e8c3c // vtable for WmCamera
 data_ov008_020e8c8c kind:data(any) addr:0x020e8c8c
 data_ov008_020e9394 kind:data(any) addr:0x020e9394
 data_ov008_020e939c kind:data(any) addr:0x020e939c
@@ -1076,7 +1076,7 @@ data_ov008_020e95c8 kind:data(any) addr:0x020e95c8
 data_ov008_020e95e8 kind:data(any) addr:0x020e95e8
 data_ov008_020e960c kind:data(any) addr:0x020e960c
 data_ov008_020e9638 kind:data(any) addr:0x020e9638
-data_ov008_020e9680 kind:data(any) addr:0x020e9680
+data_ov008_020e9678 kind:data(any) addr:0x020e9678 // vtable for WmController
 data_ov008_020e96d0 kind:data(any) addr:0x020e96d0
 data_ov008_020e9760 kind:data(any) addr:0x020e9760
 data_ov008_020e97f0 kind:data(any) addr:0x020e97f0
@@ -1092,10 +1092,10 @@ data_ov008_020e98c4 kind:data(any) addr:0x020e98c4
 UnknownProfile::ov008_020e98cc kind:data(any) addr:0x020e98cc ambiguous
 data_ov008_020e98d8 kind:data(any) addr:0x020e98d8
 data_ov008_020e98dc kind:data(any) addr:0x020e98dc
-data_ov008_020e98f0 kind:data(any) addr:0x020e98f0
+data_ov008_020e98e8 kind:data(any) addr:0x020e98e8 // vtable for WmCharacter
 data_ov008_020e9940 kind:data(any) addr:0x020e9940
 data_ov008_020e9944 kind:data(any) addr:0x020e9944
-data_ov008_020e9958 kind:data(any) addr:0x020e9958
+data_ov008_020e9950 kind:data(any) addr:0x020e9950 // vtable for WmEntityModel
 data_ov008_020e9960 kind:data(any) addr:0x020e9960
 data_ov008_020e9968 kind:data(any) addr:0x020e9968
 data_ov008_020e9970 kind:data(any) addr:0x020e9970
@@ -1123,8 +1123,8 @@ data_ov008_020e9a6c kind:data(any) addr:0x020e9a6c
 data_ov008_020e9a90 kind:data(any) addr:0x020e9a90
 data_ov008_020e9ab8 kind:data(any) addr:0x020e9ab8
 data_ov008_020e9ae4 kind:data(any) addr:0x020e9ae4
-data_ov008_020e9b20 kind:data(any) addr:0x020e9b20
-data_ov008_020e9b70 kind:data(any) addr:0x020e9b70
+data_ov008_020e9b18 kind:data(any) addr:0x020e9b18 // vtable for WmMinimap
+data_ov008_020e9b68 kind:data(any) addr:0x020e9b68 // vtable for WmPlayerModel
 data_ov008_020e9b78 kind:data(any) addr:0x020e9b78
 data_ov008_020e9b80 kind:data(any) addr:0x020e9b80
 UnknownProfile::ov008_020e9b88 kind:data(any) addr:0x020e9b88
@@ -1303,16 +1303,16 @@ data_ov008_020ee3a4 kind:bss addr:0x020ee3a4
 data_ov008_020ee3a8 kind:bss addr:0x020ee3a8
 data_ov008_020ee3ac kind:bss addr:0x020ee3ac
 data_ov008_020ee3b0 kind:bss addr:0x020ee3b0
-data_ov008_020ee3b4 kind:bss addr:0x020ee3b4
-data_ov008_020ee3b8 kind:bss addr:0x020ee3b8
-data_ov008_020ee3bc kind:bss addr:0x020ee3bc
-data_ov008_020ee3c0 kind:bss addr:0x020ee3c0
+_ZN2WM7wxPathsE kind:bss addr:0x020ee3b4
+_ZN2WM11dialogMsgIDE kind:bss addr:0x020ee3b8
+_ZN2WM12currentWorldE kind:bss addr:0x020ee3bc
+_ZN2WM8instanceE kind:bss addr:0x020ee3c0
 data_ov008_020ee3c4 kind:bss addr:0x020ee3c4
-data_ov008_020ee3c8 kind:bss addr:0x020ee3c8
+_ZN2WM7wxAnimsE kind:bss addr:0x020ee3c8
 data_ov008_020ee3cc kind:bss addr:0x020ee3cc
 data_ov008_020ee3d0 kind:bss addr:0x020ee3d0
 data_ov008_020ee3d4 kind:bss addr:0x020ee3d4
-data_ov008_020ee3d8 kind:bss addr:0x020ee3d8
+_ZN2WM9nodeStateE kind:bss addr:0x020ee3d8
 data_ov008_020ee3dc kind:bss addr:0x020ee3dc
 data_ov008_020ee3e0 kind:bss addr:0x020ee3e0
 data_ov008_020ee3e4 kind:bss addr:0x020ee3e4
@@ -1321,18 +1321,18 @@ data_ov008_020ee3ec kind:bss addr:0x020ee3ec
 data_ov008_020ee3f0 kind:bss addr:0x020ee3f0
 data_ov008_020ee3f4 kind:bss addr:0x020ee3f4
 data_ov008_020ee3f8 kind:bss addr:0x020ee3f8
-data_ov008_020ee3fc kind:bss addr:0x020ee3fc
-data_ov008_020ee400 kind:bss addr:0x020ee400
-data_ov008_020ee404 kind:bss addr:0x020ee404
-data_ov008_020ee408 kind:bss addr:0x020ee408
-data_ov008_020ee40c kind:bss addr:0x020ee40c
+_ZN2WM12wxToadHousesE kind:bss addr:0x020ee3fc
+_ZN2WM11wxPathCountE kind:bss addr:0x020ee400
+_ZN2WM7wxSignsE kind:bss addr:0x020ee404
+_ZN2WM8wxPointsE kind:bss addr:0x020ee408
+_ZN2WM10wxEntitiesE kind:bss addr:0x020ee40c
 data_ov008_020ee410 kind:bss addr:0x020ee410
 data_ov008_020ee414 kind:bss addr:0x020ee414
-data_ov008_020ee418 kind:bss addr:0x020ee418
-data_ov008_020ee41c kind:bss addr:0x020ee41c
+_ZN2WM11wxNodeCountE kind:bss addr:0x020ee418
+_ZN2WM7wxUnk14E kind:bss addr:0x020ee41c
 data_ov008_020ee420 kind:bss addr:0x020ee420
-data_ov008_020ee424 kind:bss addr:0x020ee424
-data_ov008_020ee428 kind:bss addr:0x020ee428
+_ZN2WM7wxNodesE kind:bss addr:0x020ee424
+_ZN2WM7wxFlagsE kind:bss addr:0x020ee428
 data_ov008_020ee42c kind:bss addr:0x020ee42c
 data_ov008_020ee438 kind:bss addr:0x020ee438
 data_ov008_020ee444 kind:bss addr:0x020ee444
