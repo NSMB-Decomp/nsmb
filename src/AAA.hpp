@@ -15,6 +15,8 @@
 #define POWERUP_6 6
 #define POWERUP_7 7
 
+#define _FixedFlt(flt) ((i32)(flt * 4096.0))
+
 inline i32 _FixedMul(i32 x, i32 y) {
 	return (((i64)x * y) + 0x800LL) >> 12;
 }
@@ -266,21 +268,24 @@ extern void (*data_02039968)(i32, i32);
 extern u32 data_02085a88;
 extern u32 data_02085e0c;
 
-void func_0200b87c();
-extern u32 data_02087700;
-void func_0200b83c(u32);
-void func_02009a30(u32, u32, u32);
-void func_02017190(u32);
-SceneNode* func_020087f0();
-void func_020087c0(SceneNode*);
-extern u8 data_02088f30;
-void func_020051ec();
-void func_020045cc();
-extern u32 data_02085a84;
-extern u32 DAT_02039200;
-void func_02008784(u32, void*);
-u32 func_02009c64(u32, u32);
+void func_0200b87c(); // OAM::setFilesUnloaded
+extern u32 data_02087700; // OAM::curTileOffset
+void func_0200b83c(u32); // OAM::loadFilesToVRAM
+void func_02009a30(u32, u32, u32); // FS::loadOBJPalette
+void func_02017190(u32); // Font::getScriptFileID
+SceneNode* func_020087f0(); // FS::loadExtFile
+void func_020087c0(SceneNode*); // FS::unloadFile
+extern u8 data_02088f30; // Scene::allowSoftReset
+void func_020051ec(); // App::forceDisplayOn
+void func_020045cc(); // Exception::terminateCaught
+extern u32 data_02085a84; // Game::vsMode
+extern u32 DAT_02039200; // vtable for Vec3
+void func_02008784(u32, void*); // FS::loadFileLZ77
+u32 func_02009c64(u32, u32); // FS::Cache::loadFile
+void* func_02009cb4(u32); // FS::Cache::getFile
 void func_02004564(u32, u32, u32);
 void func_02021808();
 void func_020180a4(void*);
-void func_02005700();
+void func_02005700();void func_02021808(); // TP::updatePlayer
+void func_020180a4(void*); // TextLabel::unloadScript
+void func_02005700(); // System::resetSubBGVBlank
