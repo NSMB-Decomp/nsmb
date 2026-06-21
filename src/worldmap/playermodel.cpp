@@ -133,7 +133,7 @@ void WmPlayerModel::init(u32 animID, BOOL resume) {
 	switch (this->animID) {
 
 	case A_Wait:
-		if (modelState) {
+		if (modelState != 1) {
 			resIdx = charaWaitAnimIDs[playerID];
 		}
 		break;
