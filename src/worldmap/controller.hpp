@@ -33,6 +33,12 @@ public:
 		Task19
 	};
 
+
+	WmController();
+
+	~WmController();
+
+
 	void issueTask(u32 taskID);
 
 
@@ -49,6 +55,9 @@ public:
 	static bool canEntityTransitLink(WM::NodeLink* link);
 
 	static bool canEntityStopAtNode(WM::NodeLink* link);
+
+
+	static void* create();
 
 
 	WmPlayerModel playerModels[2];

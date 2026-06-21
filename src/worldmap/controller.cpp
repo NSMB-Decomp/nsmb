@@ -9,6 +9,11 @@ struct __Work {
 	u32 a;
 };
 
+WmController::WmController() {}
+
+WmController::~WmController() {}
+
+
 void WmController::moveEntities() {
 
 	// int linkA;
@@ -326,4 +331,9 @@ bool WmController::canEntityStopAtNode(WM::NodeLink* link) {
 
 	return true;
 
+}
+
+
+void* WmController::create() {
+	return new WmController();
 }
