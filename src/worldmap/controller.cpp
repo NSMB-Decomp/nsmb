@@ -31,16 +31,14 @@ void WmController::moveEntities() {
 	//u32 w_a;
 	//u32 w_n;
 	u32 entityNodes[2];
-	s32 buf4[2];
-	s32 buf3[2];
+	u32 buf4[2];
+	u32 buf3[2];
 	u8 moveTbl[2*12*2];
-	u8 nodeTbl[2][12];
+	u8 nodeTbl[2*12];
 	//int g;
 
 	NodeLink* nextLink; // 1
-	int moveCount2 = 0;
-	u8* pm = moveTbl;
-	u8* pn = nodeTbl[0];
+	int moveCount3 = 0;
 	int mi2; // 2
 	int mi; // 2
 	//int moveCount; // # doesn't matter
@@ -55,9 +53,12 @@ void WmController::moveEntities() {
 
 	WM::nodeState |= 0x40;
 
-	for (/* pn = nodeTbl,  */e = 0; e < 2; e++/* , pn += 12 */) {
+	u8* pm = moveTbl;
+	u8* pn;
 
-		for (moveCount2 = 0; moveCount2 < 12; moveCount2++) {
+	for (pn = nodeTbl, e = 0; e < 2; pn += 12, e++) {
+
+		for (moveCount3 = 0; moveCount3 < 12; moveCount3++) {
 
 			for (int w = 0; w < 2; w++) {
 				*pm = 0xff;
@@ -78,18 +79,18 @@ void WmController::moveEntities() {
 			// }
 
 			//nodeTbl[e][f] = 0xff;
-			pn[moveCount2] = 0xff;
+			pn[moveCount3] = 0xff;
 			//p1 += 2;
 			//nodeTbl[(a*12) + b] = 0xff;
 
 		}
 
-		for (moveCount2 = 0; moveCount2 < 2; moveCount2++) {
-			entityStates[e][moveCount2] = 0xff;
+		for (moveCount3 = 0; moveCount3 < 2; moveCount3++) {
+			entityStates[e][moveCount3] = 0xff;
 		}
 
 		buf3[e] = 0;
-		pn += 12;
+		//pn += 12;
 
 	}
 
@@ -97,7 +98,7 @@ void WmController::moveEntities() {
 	//pn = nodeTbl;
 	//pm = moveTbl;
 
-	for (pn = nodeTbl[0], e = 0; e < 2; e++, pn += 12) {
+	for (pn = nodeTbl, e = 0; e < 2; pn += 12, e++) {
 		/* u32 node = save.game.mapEntities[w_world][e].node;
 		//entityNodes[e] = save.game.mapEntities[w_world][e].node;
 		node = entityNodes[e] = node;
@@ -116,11 +117,11 @@ void WmController::moveEntities() {
 
 		if (w_a == 0xff) continue;
 
-		//moveCount2 = 0;
-		//w_link = WM::wxNodes[w_a].links;
+		moveCount3 = 0;
+		w_link = WM::wxNodes[w_a].links;
 		//int linkA = 0;
 		/* iterate through all 4 possible links of the current node */
-		for (moveCount2 = 0, f = 0, w_link = WM::wxNodes[w_a].links; f < 4; w_link++, f++) {
+		for (f = 0; f < 4; w_link++, f++) {
 			if (w_link->node == 0xff)
 				break;
 
@@ -128,10 +129,9 @@ void WmController::moveEntities() {
 				/* entity cannot stop at this node, analyze next node's links */
 				if (canEntityStopAtNode(w_link) != 0) {
 					/* entity can stop at first node */
-					mi2 = getEntityMoveIndex(e, moveCount2, 0);
-					moveTbl[mi2] = (u8)f;
-					pn[moveCount2] = w_link->node;
-					moveCount2++;
+					moveTbl[getEntityMoveIndex(e, moveCount3, 0)] = f;
+					pn[moveCount3] = w_link->node;
+					moveCount3++;
 				} else {
 
 					nextLink = WM::wxNodes[w_link->node].links;
@@ -141,26 +141,24 @@ void WmController::moveEntities() {
 
 						/* can transit link, can stop at node and target node isn't source node */
 						if (canEntityTransitLink(nextLink) && canEntityStopAtNode(nextLink) && (nextLink->node != w_a)) {
-							mi2 = getEntityMoveIndex(e, moveCount2, 0);
-							moveTbl[mi2] = (u8)f;
-							mi2 = getEntityMoveIndex(e, moveCount2, 1);
-							moveTbl[mi2] = (u8)mi;
-							pn[moveCount2] = nextLink->node;
-							moveCount2++;
+							moveTbl[getEntityMoveIndex(e, moveCount3, 0)] = f;
+							moveTbl[getEntityMoveIndex(e, moveCount3, 1)] = mi;
+							pn[moveCount3] = nextLink->node;
+							moveCount3++;
 						}
 					};
 				}
 			}
 		}
 
-		buf3[e] = moveCount2;
+		buf3[e] = moveCount3;
 	}
 
 	// q can be anything really, even a newly defined int
 	#define q f
 	//int q;
 
-	if (!buf3[0] || !buf3[1]) {
+	if ((buf3[0] == 0) || (buf3[1] == 0)) {
 		q = -1;
 		for (e = 0; e < 2; e++) {
 			if ((int)buf3[e] <= 0)
@@ -171,11 +169,11 @@ void WmController::moveEntities() {
 		if (q == -1) {
 			return;
 		}
-		func_ov008_020daf34(entityStates[q], q, moveTbl, nodeTbl[q]/* nodeTbl + q * 0xc */, buf4, 1);
+		moveEntitiesLoop(entityStates[q], q, moveTbl, nodeTbl+(q*12)/* [q] *//* nodeTbl + q * 0xc */, buf4, 1);
 		return;
 	}
 
-	if ((buf3[1] != 1) || (buf3[0] == 1)) {
+	if ((buf3[0] == 1) && (buf3[1] == 1)) {
 		// linkA = 0;
 		// //pMoveTbl = nodeTbl;
 		// pauVar4 = this->entityStates;
@@ -187,13 +185,14 @@ void WmController::moveEntities() {
 		// } while (linkA < 2);
 		//u8* pn = nodeTbl;
 		//pm = entityStates[0];
+		u8* pn = nodeTbl;
 		for (e = 0; e < 2; e++) {
-			func_ov008_020db030(entityStates[e], e, 0, moveTbl, nodeTbl[e], buf4, (u32)(e != 0));
+			moveEntitiesOnce(entityStates[e], e, 0, moveTbl, pn/* [e] */, buf4, (u32)(e != 0));
 			//pm += 2;
-			//pn += 12;
+			pn += 12;
 		}
 	} else {
-		if ((buf4[2] == 1) || (buf3[0] == 1)) {
+		if ((buf3[0] == 1) || (buf3[1] == 1)) {
 			q = -1;
 			for (e = 0; e < 2; e++) {
 				if (buf3[e] == 1) {
@@ -201,35 +200,102 @@ void WmController::moveEntities() {
 					break;
 				}
 			}
-			func_ov008_020db030(entityStates[q], q, 0, moveTbl, nodeTbl[q]/* nodeTbl + q * 0xc */, buf4, 0);
+			moveEntitiesOnce(entityStates[q], q, 0, moveTbl, nodeTbl+(q*12)/* [q] *//* nodeTbl + q * 0xc */, buf4, 0);
 			int r = q == 0 ? 1 : 0;
-			func_ov008_020daf34(entityStates[r], r, moveTbl, nodeTbl[r]/* nodeTbl + r * 0xc */, buf4, 1);
+			moveEntitiesLoop(entityStates[r], r, moveTbl, nodeTbl+(r*12)/* [r] *//* nodeTbl + r * 0xc */, buf4, 1);
 			return;
 		}
-
-		//pn = nodeTbl;
+		u8* pn = nodeTbl;
 		for (e = 0; e < 2; e++) {
-			func_ov008_020daf34(entityStates[e], e, moveTbl, nodeTbl[e], buf4, (u32)(e != 0));
-			//pn += 12;
+			moveEntitiesLoop(entityStates[e], e, moveTbl, pn/* [e] */, buf4, (u32)(e != 0));
+			pn += 12;
 		}
 	}
 
 }
 
-void WmController::func_ov008_020daf34(u8* state, int linkIndex,u8* buf1,u8* buf2, s32* param_5, int param_6) {
+void WmController::moveEntitiesLoop(u8* entityMoves, u32 entityIdx, u8* moveTbl, u8* nodeTbl, u32* entityNodes, BOOL order) {
+
+	if (order) {
+
+		for (int m = 0; m < 12; m++) {
+
+			// Entity is already at this node, cancel this movement
+			if (nodeTbl[m] != 0xFF && isEntityAtNode(nodeTbl[m], entityIdx, entityNodes))
+				nodeTbl[m] = 0xFF;
+
+		}
+
+	}
+
+	// Count number of moves
+	int moveNum = 0;
+
+	for (int m = 0; m < 12; m++) {
+
+		if (nodeTbl[m] != 0xFF)
+			moveNum++;
+
+	}
+
+	if (moveNum == 0)
+		return;
+
+	u32 random = WiFi::random();
+	s32 randMove = (moveNum * (random & 0x7FFF)) >> 15;
+
+	for (int m = 0; m < 12; m++) {
+
+		if (nodeTbl[m] == 0xFF)
+			continue;
+
+		if (randMove > 0) {
+			randMove--;
+			continue;
+		}
+
+		moveEntitiesOnce(entityMoves, entityIdx, m, moveTbl, nodeTbl, entityNodes, false);
+		return;
+
+	}
 
 }
 
-void WmController::func_ov008_020db030(u8* state, int i, int i2, u8* buf1, u8* buf2, s32* param_6, int param_7) {
+void WmController::moveEntitiesOnce(u8* entityMoves, u32 entityIdx, u32 moveIdx, u8* moveTbl, u8* nodeTbl, u32* entityNodes, BOOL order) {
+
+	u8 node = nodeTbl[moveIdx];
+	if (node == 0xFF)
+		return;
+
+	if (order && isEntityAtNode(node, entityIdx, entityNodes))
+		return;
+
+	for (int s = 0; s < 2; s++) {
+		entityMoves[s] = moveTbl[getEntityMoveIndex(entityIdx, moveIdx, s)];
+	}
+
+	entityNodes[entityIdx] = node;
 
 }
 
-s32 WmController::getEntityMoveIndex(u32 entityIndex, u32 moveCount, u32 moveStep) {
-	return (entityIndex * 12 + moveCount) * 2 + moveStep;
+s32 WmController::getEntityMoveIndex(u32 entityIdx, u32 moveIdx, u32 moveStep) {
+	return (entityIdx * 12 + moveIdx) * 2 + moveStep;
 }
 
-bool WmController::func_ov008_020db0c8(u8 param_1, u32 param_2, s32* param_3) {
+bool WmController::isEntityAtNode(u8 node, u32 entityIdx, u32* entityNodes) {
+
+	for (int e = 0; e < 2; e++) {
+
+		if (e == entityIdx)
+			continue;
+
+		if (entityNodes[e] == node)
+			return true;
+
+	}
+
 	return false;
+
 }
 
 bool WmController::canEntityTransitLink(WM::NodeLink* link) {

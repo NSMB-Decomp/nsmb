@@ -38,13 +38,13 @@ public:
 
 	void moveEntities();
 
-	static void func_ov008_020daf34(u8* state, int linkIndex,u8* buf1,u8* buf2, s32* param_5, int param_6);
+	static void moveEntitiesLoop(u8* entityMoves, u32 entityIdx, u8* moveTbl, u8* nodeTbl, u32* entityNodes, BOOL order);
 
-	static void func_ov008_020db030(u8* state, int i, int i2, u8* buf1, u8* buf2, s32* param_6, int param_7);
+	static void moveEntitiesOnce(u8* entityMoves, u32 entityIdx, u32 moveIdx, u8* moveTbl, u8* nodeTbl, u32* entityNodes, BOOL order);
 
 	static s32 getEntityMoveIndex(u32 entityIndex, u32 moveCount, u32 moveStep);
 
-	static bool func_ov008_020db0c8(u8 param_1, u32 param_2, s32* param_3);
+	static bool isEntityAtNode(u8 node, u32 entityIdx, u32* entityNodes);
 
 	static bool canEntityTransitLink(WM::NodeLink* link);
 
