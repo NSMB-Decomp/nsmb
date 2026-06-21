@@ -39,7 +39,7 @@ typedef unsigned long size_t;
 #define READ_NIBBLE(data, nybble) ((settings >> (nybble * 4)) & 0xf)
 
 // To fix code that has weird bool logic
-#define BOOL i32
+#define BOOL int
 #define TRUE 1
 #define FALSE 0
 
