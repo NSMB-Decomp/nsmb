@@ -289,3 +289,86 @@ void func_020180a4(void*);
 void func_02005700();void func_02021808(); // TP::updatePlayer
 void func_020180a4(void*); // TextLabel::unloadScript
 void func_02005700(); // System::resetSubBGVBlank
+
+extern class Heap* Memory_gameHeap;
+extern Mat4x3 Game_modelMatrix;
+
+#define FN_INIT 0
+#define FN_STEP(n) (n+1)
+#define FN_EXIT -1
+
+namespace MTX {
+
+	void initialize(); // Does nothing
+
+	void setRotationZ(Mat4x3& mtx, s16 angle);
+	void setRotationY(Mat4x3& mtx, s16 angle);
+	void setRotationX(Mat4x3& mtx, s16 angle);
+	void setRotation(Mat4x3& mtx, s16 angleX, s16 angleY, s16 angleZ);
+
+	inline void setRotation(Mat4x3& mtx, const Vec3_16s& vec) {
+		setRotation(mtx, vec.x, vec.y, vec.z);
+	}
+
+	inline void setScale(Mat4x3& mtx, fx32 x, fx32 y, fx32 z) {
+
+		mtx.v[0][0] = x; mtx.v[0][1] = 0; mtx.v[0][2] = 0;
+		mtx.v[1][0] = 0; mtx.v[1][1] = y; mtx.v[1][2] = 0;
+		mtx.v[2][0] = 0; mtx.v[2][1] = 0; mtx.v[2][2] = z;
+		mtx.v[3][0] = 0; mtx.v[3][1] = 0; mtx.v[3][2] = 0;
+
+	}
+
+	void setTranslation(Mat4x3& mtx, fx32 x, fx32 y, fx32 z);
+
+	inline void setTranslation(Mat4x3& mtx, const Vec3_32s& vec) {
+		setTranslation(mtx, vec.x, vec.y, vec.z);
+	}
+
+	void rotateZ(Mat4x3& mtx, s16 angle);
+	void rotateY(Mat4x3& mtx, s16 angle);
+	void rotateX(Mat4x3& mtx, s16 angle);
+	void rotate(Mat4x3& mtx, s16 angleX, s16 angleY, s16 angleZ);
+
+	inline void rotate(Mat4x3& mtx, const Vec3_16s& vec) {
+		rotate(mtx, vec.x, vec.y, vec.z);
+	}
+
+	void rotateReversed(Mat4x3& mtx, s16 angleX, s16 angleY, s16 angleZ);
+
+	inline void rotateReversed(Mat4x3& mtx, const Vec3_16s& vec) {
+		rotateReversed(mtx, vec.x, vec.y, vec.z);
+	}
+
+	void scale(Mat4x3& mtx, fx32 scaleX, fx32 scaleY, fx32 scaleZ);
+
+	inline void scale(Mat4x3& mtx, fx32 value) {
+		scale(mtx, value, value, value);
+	}
+
+	inline void scale(Mat4x3& mtx, const Vec3_32s& vec) {
+		scale(mtx, vec.x, vec.y, vec.z);
+	}
+
+	void translate(Mat4x3& mtx, fx32 transX, fx32 transY, fx32 transZ);
+
+	inline void translate(Mat4x3& mtx, const Vec3_32s& vec) {
+		translate(mtx, vec.x, vec.y, vec.z);
+	}
+
+	inline void identity(Mat4x3& mtx) {
+
+		fx32 i = 4096;
+
+		mtx.v[0][0] = i; mtx.v[0][1] = 0; mtx.v[0][2] = 0;
+		mtx.v[1][0] = 0; mtx.v[1][1] = i; mtx.v[1][2] = 0;
+		mtx.v[2][0] = 0; mtx.v[2][1] = 0; mtx.v[2][2] = i;
+		mtx.v[3][0] = 0; mtx.v[3][1] = 0; mtx.v[3][2] = 0;
+
+	}
+
+	inline void multiply(const Mat4x3& a, const Mat4x3& b, Mat4x3& ab) {
+		ConcatMat4x3(&a, &b, &ab);
+	}
+
+}

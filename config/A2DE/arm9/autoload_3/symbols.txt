@@ -485,10 +485,10 @@ data_0208b690 kind:bss addr:0x0208b690
 data_0208b694 kind:bss addr:0x0208b694
 data_0208b698 kind:bss addr:0x0208b698
 data_0208b6a0 kind:bss addr:0x0208b6a0
-data_0208b6e8 kind:bss addr:0x0208b6e8
+Game_modelMatrix kind:bss addr:0x0208b6e8
 data_0208b718 kind:bss addr:0x0208b718
 data_0208b71c kind:bss addr:0x0208b71c
-data_0208b720 kind:bss addr:0x0208b720
+Memory_gameHeap kind:bss addr:0x0208b720
 data_0208b724 kind:bss addr:0x0208b724
 data_0208b728 kind:bss addr:0x0208b728
 data_0208b72c kind:bss addr:0x0208b72c
