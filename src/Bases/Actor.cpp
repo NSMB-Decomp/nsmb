@@ -309,7 +309,7 @@ Vec3_32 Actor::getCenteredPosition()
 	return result;
 }
 
-bool Actor::isOutOfViewVertical(Rect *rect, int player_id)
+bool Actor::isOutOfViewVertical(FxRect *rect, int player_id)
 {
 	return ((rect->y + this->position.y) + 0x18000) + rect->halfHeight < -(Game::cameraY[player_id] + Game::cameraZoomY[player_id]);
 }

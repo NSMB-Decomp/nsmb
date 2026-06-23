@@ -1,6 +1,14 @@
 #pragma once
 #include "../lib/Nitro/Nitro.hpp"
 
+struct FxRect {
+	fx32 x;
+	fx32 y;
+	fx32 halfWidth;
+	fx32 halfHeight;
+};
+size_assert(FxRect, 0x10);
+
 struct Vec3_32 : public Vec3_32s {
       public:
 	inline Vec3_32() {};
@@ -171,11 +179,4 @@ struct Vec3_16 : public Vec3_16s {
 	inline Vec3_16() : Vec3_16s() {};
 	inline Vec3_16(Vec3_16 *a) : Vec3_16s() {};
 	virtual inline ~Vec3_16() {};
-};
-
-struct Rect32 {
-	i32 x;
-	i32 y;
-	i32 half_w;
-	i32 half_h;
 };

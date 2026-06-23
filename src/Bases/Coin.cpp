@@ -254,7 +254,7 @@ bool Coin::func_ov010_020d923c()
 		this->minVelocity.y = -0x8000;
 		this->minVelocity.z = 0x0;
 		this->accelV = -0x280;
-		this->collision_manager.func_ov000_020ab010(this, &data_ov010_02121684, 0, &data_ov010_0212169c, 0);
+		this->collisionMgr.func_ov000_020ab010(this, &data_ov010_02121684, 0, &data_ov010_0212169c, 0);
 		this->_2c6 |= 4;
 		this->_4dc = 0;
 	} else if (this->_4e4 != ~0) {
@@ -278,7 +278,7 @@ bool Coin::func_ov010_020d923c()
 				this->velocity.x = 0x0;
 			}
 		}
-		iVar2 = this->collision_manager.func_01ffe778(0, 0);
+		iVar2 = this->collisionMgr.func_01ffe778(0, 0);
 		if (iVar2 != 0) {
 			this->velocity.x = -this->velocity.x;
 		}
@@ -437,7 +437,7 @@ bool Coin::func_ov010_020d8b9c()
 		this->velocity.x = data_ov010_02121644[this->direction];
 		this->velocity.y = 0x3400;
 		this->velocity.z = 0;
-		this->collision_manager.func_ov000_020ab010(this, &data_ov010_02121684, &data_ov010_02121690, &data_ov010_0212169c, 0);
+		this->collisionMgr.func_ov000_020ab010(this, &data_ov010_02121684, &data_ov010_02121690, &data_ov010_0212169c, 0);
 		this->_4dc = 0;
 		this->_4e2 = 0;
 		this->_4e0 = 6;
@@ -471,11 +471,11 @@ bool Coin::func_ov010_020d8b9c()
 					(this->velocity).x = 0;
 				}
 			}
-			bool iVar1 = this->collision_manager.func_ov000_020aa990(0);
+			bool iVar1 = this->collisionMgr.func_ov000_020aa990(0);
 			if (iVar1 != 0) {
 				this->velocity.y = -0x2000;
 			}
-			bool iVar2 = this->collision_manager.func_01ffe778(0, 0);
+			bool iVar2 = this->collisionMgr.func_01ffe778(0, 0);
 			if (iVar2 != 0) {
 				this->velocity.x = -(this->velocity).x;
 			}

@@ -109,18 +109,18 @@ bool StageEntity::_01()
 void StageEntity::_12()
 {
 	this->_3c6[this->linked_player] = 0xc;
-	(this->active_collider)._26 |= 0x140;
+	(this->activeCollider)._26 |= 0x140;
 	if (this->_3c2 != 0) {
-		(this->active_collider)._25 = 0xa;
-		(this->active_collider)._2c = (void *)shellCallback;
+		(this->activeCollider)._25 = 0xa;
+		(this->activeCollider)._2c = (void *)shellCallback;
 	}
 }
 
 void StageEntity::_13()
 {
-	(this->active_collider)._26 &= ~0x140;
-	(this->active_collider)._25 = 0x0;
-	(this->active_collider)._2c = (void *)damagePlayerCallback;
+	(this->activeCollider)._26 &= ~0x140;
+	(this->activeCollider)._25 = 0x0;
+	(this->activeCollider)._2c = (void *)damagePlayerCallback;
 	this->accelH = 0;
 	(this->minVelocity).x = 0;
 	this->_2c6 &= 0xfffe;
@@ -134,9 +134,9 @@ void StageEntity::_19()
 	} else {
 		this->_pad4[1] = 0x0;
 	}
-	this->active_collider._26 &= ~0x140;
-	this->active_collider._25 = 0x0;
-	this->active_collider._2c = damagePlayerCallback;
+	this->activeCollider._26 &= ~0x140;
+	this->activeCollider._25 = 0x0;
+	this->activeCollider._2c = damagePlayerCallback;
 	this->_3f1 = 0x0;
 	this->accelH = 0;
 	this->minVelocity.x = 0;
@@ -150,13 +150,13 @@ void StageEntity::_19()
 bool StageEntity::_14()
 
 {
-	this->active_collider._25 = 0xa;
-	this->active_collider._26 = 0x113;
+	this->activeCollider._25 = 0xa;
+	this->activeCollider._26 = 0x113;
 	return 0;
 }
 
 PlayerActor *GAME_getPlayer(u32);
-void func_0201d954(PlatformManager *, u32);
+void func_0201d954(PlatformMgr *, u32);
 void StageEntity::_16()
 {
 	PlayerBase *player;
@@ -166,12 +166,12 @@ void StageEntity::_16()
 	}
 	player = GAME_getPlayer(this->linked_player);
 	player->func_ov011_0212bde0(this);
-	this->active_collider._26 &= ~0x100;
-	this->active_collider._25 = 0x0;
-	this->active_collider._2c = damagePlayerCallback;
+	this->activeCollider._26 &= ~0x100;
+	this->activeCollider._25 = 0x0;
+	this->activeCollider._2c = damagePlayerCallback;
 	this->linked_player = -1;
-	func_0201d954(&this->platform_manager, 0);
-	this->collision_manager._rawr = 0x0;
+	func_0201d954(&this->platformMgr, 0);
+	this->collisionMgr._rawr = 0x0;
 	this->_2c6 = this->_2c6 & 0xfffe;
 	return;
 }
@@ -258,7 +258,7 @@ void StageEntity::func_ov000_020a01b4()
 {
 	this->_340 = 0;
 	this->_3f0 = this->_3f0 ^ 1;
-	this->active_collider._pad_a2[2] = data_ov000_020c1f38[this->_3f0];
+	this->activeCollider._pad_a2[2] = data_ov000_020c1f38[this->_3f0];
 	this->position.z = data_ov000_020c1f58[this->_3f0];
 	this->_45();
 	return;
@@ -293,8 +293,8 @@ void StageEntity::_18()
 	i32 iVar2;
 
 	player = GAME_getPlayer((int)this->linked_player);
-	(this->active_collider)._pad_a2[2] = (player->active_collider)._pad_a2[2];
-	(this->collision_manager)._b7 = (player->active_collider)._pad_a2[2];
+	(this->activeCollider)._pad_a2[2] = (player->activeCollider)._pad_a2[2];
+	(this->collisionMgr)._b7 = (player->activeCollider)._pad_a2[2];
 	if (((
 		 //((*(uint *)player->_pad2 & 1) == 0) &&
 		 ((player->velocity).y < 0)) &&
@@ -315,9 +315,9 @@ void StageEntity::_18()
 		(this->velocity).x = (int)(short)data_ov000_020c1f44[this->direction];
 		this->_3c6[this->linked_player] = 5;
 	}
-	(this->active_collider)._26 = (this->active_collider)._26 | 0x140;
-	(this->active_collider)._25 = 0xa;
-	(this->active_collider)._2c = shellCallback;
+	(this->activeCollider)._26 = (this->activeCollider)._26 | 0x140;
+	(this->activeCollider)._25 = 0xa;
+	(this->activeCollider)._2c = shellCallback;
 	this->accelH = 0x100;
 	this->accelV = -0x300;
 	(this->minVelocity).x = (this->velocity).x;
@@ -329,18 +329,18 @@ void StageEntity::_45()
 {
 	this->direction ^= 1;
 	this->velocity.x = -(this->velocity).x;
-	this->active_collider._2c = damagePlayerCallback;
+	this->activeCollider._2c = damagePlayerCallback;
 }
 
 void StageEntity::_44()
 {
-	this->active_collider._2c = (void *)0x0;
+	this->activeCollider._2c = (void *)0x0;
 }
 
 i16 data_ov000_020c4ed4[2];
 void StageEntity::_21()
 {
-	this->active_collider.delink();
+	this->activeCollider.unlink();
 	(this->minVelocity).y = -0x4000;
 	func_02012398(0x70, &this->position);
 	this->direction = this->_pad16[2];
@@ -385,7 +385,7 @@ bool StageEntity::onUpdate_defeated()
 	this->func_ov000_0209c85c();
 	this->func_ov000_0209c820(0xfffffd00);
 	this->_11();
-	this->func_ov000_0209adb0(((u32)(this->_2c6 & 2) << 0xf) >> 0x10);
+	this->destroyInactive(((u32)(this->_2c6 & 2) << 0xf) >> 0x10);
 	return true;
 }
 bool StageEntity::onUpdate_3()
@@ -404,7 +404,7 @@ bool StageEntity::onUpdate_3()
 	this->updateVerticalVelocity();
 	this->func_ov000_0209c85c();
 	this->_11();
-	this->func_ov000_0209adb0(((u32)(this->_2c6 & 2) << 0xf) >> 0x10);
+	this->destroyInactive(((u32)(this->_2c6 & 2) << 0xf) >> 0x10);
 	return true;
 }
 bool StageEntity::onUpdate_4()
@@ -552,7 +552,7 @@ void StageEntity::onUpdate_xx()
 		return;
 	}
 
-	if ((u32)((this->active_collider._1c0 & 0x80) << 0x10) >> 0x10) {
+	if ((u32)((this->activeCollider._1c0 & 0x80) << 0x10) >> 0x10) {
 		this->_3bc = 0x18;
 		this->_3a8 = 0x1000;
 	}
@@ -634,7 +634,7 @@ bool StageEntity::checkSquished()
 
 void StageEntity::onMegaGroundPound()
 {
-	this->active_collider.delink();
+	this->activeCollider.unlink();
 	this->_42(0, 0x2000, 0xfffffd00, 0);
 }
 
@@ -692,15 +692,15 @@ u32 StageEntity::stopPlayerInShell(ActiveCollider *collider, PlayerActor *player
 	return 0;
 }
 
-void func_0201eef8(u32, Rect32 *);
+void func_0201eef8(u32, FxRect *);
 bool StageEntity::isPlayerInZone(PlayerActor *player, u32 id)
 {
-	Rect32 rect;
+	FxRect rect;
 
 	func_0201eef8(id, &rect);
 	player->position.x &= data_02085aa4;
 	i32 pos_x = player->position.x;
-	if ((((rect.x <= pos_x) && (pos_x <= rect.x + rect.half_w)) && (player->position.y >= rect.y)) && (rect.y - rect.half_h >= pos_x)) {
+	if ((((rect.x <= pos_x) && (pos_x <= rect.x + rect.halfWidth)) && (player->position.y >= rect.y)) && (rect.y - rect.halfHeight >= pos_x)) {
 		return true;
 	}
 	return false;

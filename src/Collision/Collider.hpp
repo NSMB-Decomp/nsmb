@@ -1,6 +1,6 @@
+#pragma once
 #include "../Bases/Base.hpp"
 #include "../Vec.hpp"
-#include "../base_types.hpp"
 
 class Collider
 {

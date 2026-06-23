@@ -7,14 +7,6 @@ extern Vec3_16 *ActorSpawnRotation;
 extern i8 *ActorSpawnPlayer;
 extern i32 *ActorSpawnScale;
 
-struct Rect {
-	i32 x;
-	i32 y;
-	i32 halfWidth;
-	i32 halfHeight;
-};
-size_assert(Rect, 0x10);
-
 class Actor : public Object
 {
       public:
@@ -57,7 +49,7 @@ class Actor : public Object
 	void StepVelocityXClamped();
 	void stepVelocityClamped();
 	Vec3_32 getCenteredPosition();
-	bool isOutOfViewVertical(Rect *, int);
+	bool isOutOfViewVertical(FxRect *, int);
 	bool isInFrontOfTarget(Actor *);
 	bool isBehindTarget(Actor *);
 	i32 getDistanceToPlayer(i32, i32);

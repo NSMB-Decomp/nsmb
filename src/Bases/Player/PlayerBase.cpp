@@ -263,7 +263,7 @@ PlayerBase::PlayerBase()
 	i8 a = this->settings & 0xf;
 	this->linkPlayer(a);
 	this->_7b4 = a;
-	this->collision_manager._25e = a;
+	this->collisionMgr._25e = a;
 	this->_7a8 = 0;
 }
 
@@ -666,12 +666,12 @@ bool PlayerBase::func_ov011_0212bca4(i32 x)
 		if (x < 0) {
 			if ((this->_788 & 0x400) == 0) {
 				this->position.x += x;
-				this->collision_manager.func_01ffe778(&x, 0);
+				this->collisionMgr.func_01ffe778(&x, 0);
 				return true;
 			}
 		} else if ((0 < x) && ((this->_788 & 0x800) == 0)) {
 			this->position.x += x;
-			this->collision_manager.func_01ffe778(&x, 0);
+			this->collisionMgr.func_01ffe778(&x, 0);
 			return true;
 		}
 	}
@@ -836,7 +836,7 @@ void PlayerBase::func_ov011_0212b908()
 	data_ov000_020ca880 |= 0x10;
 	data_ov000_020ca898 |= 0x40;
 	this->_7b0 = 1;
-	this->active_collider._1c6 |= 1;
+	this->activeCollider._1c6 |= 1;
 }
 
 void PlayerBase::func_ov011_0212b8bc()
@@ -844,7 +844,7 @@ void PlayerBase::func_ov011_0212b8bc()
 	data_ov000_020ca880 &= ~0x10;
 	data_ov000_020ca898 &= ~0x40;
 	this->_7b0 = 0;
-	this->active_collider._1c6 &= ~1;
+	this->activeCollider._1c6 &= ~1;
 }
 
 u16 data_0208b350[2];
