@@ -1,4 +1,4 @@
-#include "Player/PlayerActor.hpp"
+#pragma once
 #include "StageActor.hpp"
 
 class PlayerBase;

@@ -1,3 +1,4 @@
+#pragma once
 #include "_StageController.hpp"
 
 class Object18 : public StageController

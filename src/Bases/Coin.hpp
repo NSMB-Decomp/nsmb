@@ -1,3 +1,4 @@
+#pragma once
 #include "../Collision/Collider.hpp"
 #include "StageEntity.hpp"
 

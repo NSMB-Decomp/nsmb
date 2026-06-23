@@ -1,3 +1,4 @@
+#pragma once
 #include "StageEntity.hpp"
 
 struct Object229_Settings {

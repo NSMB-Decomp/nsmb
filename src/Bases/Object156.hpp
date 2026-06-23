@@ -1,3 +1,4 @@
+#pragma once
 #include "../graphics/3d/model.hpp"
 #include "StageEntity.hpp"
 
