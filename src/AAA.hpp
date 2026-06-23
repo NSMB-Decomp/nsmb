@@ -20,7 +20,6 @@ extern i16 _FixedSinCosTbl[];
 #define _FixedFlt(flt) ((i32)(flt * 4096.0))
 
 inline i32 _FixedMul(i32 x, i32 y) {
-	return (((i64)x * y) + 0x800LL) >> 12;
 	return (i32)(((i64)x * y) + 0x800LL) >> 12;
 }
 
@@ -82,9 +81,19 @@ void drawBNCLSpriteSub(u32 id, void *data, u32 flags, u8 palette, u8 affineSet, 
 void* getPlayer(u32);
 } // namespace Game
 
-
+#define C_DEG(d) s32((d * 0x10000) / 360)
 namespace Math {
 	i32 expLerp(i32*, i32, i32, i32, i32);
+
+	inline s32 max(s32 a, s32 b) {
+		//return a >= b ? a : b;
+		return a < b ? b : a;
+	}
+
+	inline s32 min(s32 a, s32 b) {
+		return a > b ? b : a;
+	}
+
 }
 namespace Input
 {
