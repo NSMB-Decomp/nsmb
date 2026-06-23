@@ -1,4 +1,5 @@
 #include "StageEntity.hpp"
+#include "Player/PlayerActor.hpp"
 
 StageEntity::StageEntity()
 {
@@ -738,4 +739,41 @@ u32 StageEntity::getSpritePriority(u32 a)
 u16 *StageEntity::getObjectBank(u32 sprite_id)
 {
 	return &Stage::ObjectBankTable[sprite_id];
+}
+
+
+extern s8 data_ov000_020c4ec4[2];
+
+bool StageEntity::func_ov000_0209ff98() {
+
+	fx32 dummy = data_ov000_020c4ec4[direction];
+	collisionMgr.func_01ffe778(&dummy, 0);
+
+	if (_2c6 & 0x8000) {
+
+		// Vec3_32 pos;
+		// pos.x = position.x;
+		// pos.y = position.y;
+		// pos.z = position.z;
+		// pos.add(centerOffset);
+
+		// Not allowed to be inlined!!
+		//Vec3_32 pos = position.add(centerOffset);
+
+		Vec3_32 pos;
+		pos = position;
+		pos.add2(centerOffset);
+		//Vec3_32s* r = &pos;
+		//r->x = position.x;
+		//r->y = position.y;
+		//r->z = position.z;
+		//Nitro::Math_AddVec3_32s(&pos, &centerOffset, r);
+
+		if (collisionMgr.getSolidTileType(pos.x, pos.y))
+			return true;
+
+	}
+
+	return false;
+
 }

@@ -1,4 +1,5 @@
 #include "VSStar.hpp"
+#include "Player/PlayerActor.hpp"
 
 void *VsStar::create()
 {

@@ -176,10 +176,16 @@ Vec3_32 Actor::applyAcceleration(Vec3_32 *acceleration)
 	return result;
 }
 
-void Actor::applyVelocityToPosition(Vec3_32& velocity)
-{
-	Vec3_32 *pos = &this->position;
-	Nitro::Math_AddVec3_32s(*pos, velocity, *pos);
+void Actor::applyVelocityToPosition(Vec3_32& velocity) {
+
+	Vec3_32::add4(position, (Vec3_32s*)&velocity.x, position);
+
+	// Same code as in Vec3_32::add3 -> does not match
+	// Vec3_32s* r = &position;
+	// const Vec3_32s* a = &position;
+	// const Vec3_32s* b = (const Vec3_32s*)&velocity.x;
+	// Nitro::Math_AddVec3_32s(a, b, r);
+
 }
 
 void Actor::applyVelocity()

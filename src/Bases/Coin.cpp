@@ -1,4 +1,5 @@
 #include "Coin.hpp"
+#include "Player/PlayerActor.hpp"
 #include "../ProcessManager.hpp"
 // bool (Coin::*data_ov010_0212942c)() = Coin::func_ov010_020d923c; (TODO: This is part of a different sinit)
 bool (Coin::*data_ov010_02129424)() = Coin::func_ov010_020d8b9c;
@@ -222,14 +223,11 @@ bool Coin::func_ov010_020d9890()
 			this->func_ov010_020d9acc();
 		}
 		if (((func_020202a0() != 2) && (data_ov000_020cace0[data_02085a7c] == 2)) && data_ov000_020cae0c[data_02085a7c] >= this->position.y) {
-			Vec3_32 position;
-			position.x = this->position.x;
-			position.y = this->position.y;
-			position.z = this->position.z;
-			Nitro::Math_AddVec3_32s(*position, *this->centerOffset, *position);
-			position.y += 0x8000;
+			Vec3_32 pos = position;
+			pos.add1(centerOffset);
+			pos.y += 0x8000;
 			this->_3e4 = 1;
-			func_02022220(&position);
+			func_02022220(&pos);
 			this->_444.unlink();
 			this->destroy(true);
 		}
@@ -663,15 +661,13 @@ s32 Coin::onDestroy()
 
 void Coin::onStageComplete(PlayerActor *player)
 {
-	Vec3_32 vec;
-	vec.x = this->position.x;
-	vec.y = this->position.y;
-	vec.z = this->position.z;
-	Vec3_32 *center = &this->centerOffset;
+	//Vec3_32& center = this->centerOffset;
+	Vec3_32 pos = position;
+	Vec3_32& center = centerOffset;
 	this->func_ov000_0209ab90(0, 0, 0x18000, player->linked_player);
 	func_02020354(player->linked_player);
-	Nitro::Math_AddVec3_32s(*vec, *center, *vec);
-	func_02012398(0x70, &vec);
+	Vec3_32::add4(pos, (Vec3_32s*)&center.x, pos);
+	func_02012398(0x70, &pos);
 	this->destroy(true);
 }
 

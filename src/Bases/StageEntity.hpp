@@ -118,6 +118,7 @@ class StageEntity : public StageActor
 	i32 func_ov000_0209a4f0();
 	void func_ov000_0209aa04(u32 type,i32 x,i32 y,i32 player_id);
 	void func_ov000_0209aa5c(Vec3_32*, i32, i32);
+	bool func_ov000_0209ff98();
 
 	virtual bool onUpdate_0();
 	virtual bool _01();
