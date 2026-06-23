@@ -1755,7 +1755,7 @@ data_020802e0 kind:data(any) addr:0x020802e0
 data_020802e1 kind:data(any) addr:0x020802e1
 data_020802e2 kind:data(any) addr:0x020802e2
 data_020802e3 kind:data(any) addr:0x020802e3
-data_02080304 kind:data(any) addr:0x02080304
+_FixedSinCosTbl kind:data(any) addr:0x02080304
 data_02080404 kind:data(any) addr:0x02080404
 data_02080504 kind:data(any) addr:0x02080504
 data_02080704 kind:data(any) addr:0x02080704

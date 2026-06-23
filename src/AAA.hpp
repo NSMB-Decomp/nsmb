@@ -15,10 +15,21 @@
 #define POWERUP_6 6
 #define POWERUP_7 7
 
+extern i16 _FixedSinCosTbl[];
+
 #define _FixedFlt(flt) ((i32)(flt * 4096.0))
 
 inline i32 _FixedMul(i32 x, i32 y) {
 	return (((i64)x * y) + 0x800LL) >> 12;
+	return (i32)(((i64)x * y) + 0x800LL) >> 12;
+}
+
+inline i16 _FixedSin(int a) {
+	return _FixedSinCosTbl[(a >> 4) * 2];
+}
+
+inline i16 _FixedCos(int a) {
+	return _FixedSinCosTbl[(a >> 4) * 2 + 1];
 }
 
 struct ObjectProfile {
