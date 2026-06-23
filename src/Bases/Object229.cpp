@@ -54,7 +54,7 @@ s32 Object229::onCreate()
 		this->func_ov099_02185f30(0);
 		data_ov000_020cac9c &= ~this->setting_2;
 	}
-	this->_3b4 = 1;
+	this->collisionType = 1;
 	return true;
 }
 
@@ -75,7 +75,7 @@ s32 Object229::onRender()
 bool Object229::onUpdate_0()
 {
 	this->onUpdate_CallPTMF();
-	this->func_ov000_0209adb0(0);
+	this->destroyInactive(0);
 	return true;
 }
 

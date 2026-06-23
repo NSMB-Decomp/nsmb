@@ -1,9 +1,120 @@
 #include "Player/PlayerActor.hpp"
 #include "StageActor.hpp"
 
-class StageEntity : public StageActor
-{
-      public:
+class PlayerBase;
+class PlayerActor;
+
+struct ObjectInfo {
+
+	enum EntityProperties {
+		EP_None = 0,
+		EP_Immune				= (1U << 0),	// Immune to all collisions?
+		EP_InactiveFocus		= (1U << 1),	// Permanently destroy the object if inactive
+		EP_LiquidParticles		= (1U << 2),	// Spawn particles and play SFX on liquid collision
+		EP_NoLevelBeaten		= (1U << 4),	// Ignore defeat on level beaten
+		EP_NoGroundPound		= (1U << 5),	// Ignore groundpound collision
+		EP_NoMegaKick			= (1U << 6),	// Ignore mega player kick collision
+		EP_NoMega				= (1U << 7),	// Ignore mega player collision
+		EP_NoStarman			= (1U << 8),	// Ignore starman collision
+		EP_NoSliding			= (1U << 9),	// Ignore sliding player collision
+		EP_NoBlueShell			= (1U << 10),	// Ignore shell player collision
+		EP_FenceSlam			= (1U << 11),	// Enable fence slam collision
+		EP_SpinDrill			= (1U << 12),	// Enable spin drill collision
+		// 1U << 13 - used in Manhole
+		EP_NoFireball			= (1U << 14),	// Ignore fireball collision
+	};
+
+	enum SpawnSettings {
+		SS_None = 0,
+		SS_SinglePlayerOnly	= (1U << 0),
+		SS_MvsLOnly			= (1U << 1),
+		SS_AlwaysLoad		= (1U << 2),
+		SS_IgnoreView		= (1U << 3),
+	};
+
+	struct { s16 x, y; }
+
+	// Used to offset the sprite position in the stage
+	position,
+
+	// StageEntity::renderSize, StageEntity::existSize
+	size,
+
+	// Only used when assigning the view, does not affect the object's position
+	spawnOffset,
+
+	// StageEntity::viewOffset
+	viewOffset;
+
+	// StageEntity::properties
+	u16 properties;
+
+	// StageEntity::spawnSettings
+	u16 spawnSettings;
+
+
+	// inline ObjectInfo() :
+	// 	position{ 0, 0 },
+	// 	size{ 0, 0 },
+	// 	spawnOffset{ 0, 0 },
+	// 	viewOffset{ 0, 0 },
+	// 	properties(EP_None),
+	// 	spawnSettings(SS_None)
+	// {}
+
+
+	// inline ObjectInfo(
+	// 	s16 positionX, s16 positionY,
+	// 	s16 renderSizeX = 0, s16 renderSizeY = 0,
+	// 	s16 spawnOffsetX = 0, s16 spawnOffsetY = 0,
+	// 	s16 viewOffsetX = 0, s16 viewOffsetY = 0,
+	// 	u16 properties = EP_None,
+	// 	u16 spawnSettings = SS_None
+	// ) :
+	// 	position{ positionX, positionY },
+	// 	size{ renderSizeX, renderSizeY },
+	// 	spawnOffset{ spawnOffsetX, spawnOffsetY },
+	// 	viewOffset{ viewOffsetX, viewOffsetY },
+	// 	properties(properties),
+	// 	spawnSettings(spawnSettings)
+	// {}
+
+};
+
+class StageEntity : public StageActor {
+public:
+
+	enum CollisionType {
+		CT_None = 0,
+		CT_Collisionless	= (1U << 0),
+
+		// Mega Ground-Pound by player 0 while the entity is on the ground
+		CT_MGPGroundP0		= (1U << 1),
+
+		// Mega Ground-Pound by player 1 while the entity is on the ground
+		CT_MGPGroundP1		= (1U << 2),
+
+		// Mega Ground-Pound by player 0 while the entity is in midair
+		CT_MGPAirP0			= (1U << 3),
+
+		// Mega Ground-Pound by player 1 while the entity is in midair
+		CT_MGPAirP1			= (1U << 4),
+
+		CT_Fireball			= (1U << 5),
+		CT_Entity			= (1U << 6),
+		CT_Block			= (1U << 7),
+		CT_StageBeaten		= (1U << 8),
+		CT_Starman			= (1U << 9),
+		CT_Mega				= (1U << 10),
+		CT_SpinDrill		= (1U << 11),
+		CT_Sliding			= (1U << 12),
+		CT_Stomp			= (1U << 13),
+		CT_GroundPound		= (1U << 14),
+		CT_BlueShell		= (1U << 15),
+		CT_FenceSlam		= (1U << 16),
+
+	};
+
 	u8 _2c4;	 /* 0x2C4 */
 	u8 _2c5;	 /* 0x2C5 */
 	u16 _2c6;	 /* 0x2C6 */
@@ -24,14 +135,14 @@ class StageEntity : public StageActor
 	u32 _354;     /* 0x354 */
 	u32 _358;     /* 0x358 */
 	Vec3_32 _35c; /* 0x35C */
-	Vec2_32 _36c; /* 0x36C */
-	Vec2_32 _378; /* 0x378 */
-	Vec2_32 _384; /* 0x384 */
+	Vec2_32 activeSize; /* 0x36C */
+	Vec2_32 renderSize; /* 0x378 */
+	Vec2_32 viewOffset; /* 0x384 */
 	Vec2_32 _390; /* 0x390 */
 	Vec2_32 _39c; /* 0x39C */
 	u32 _3a8;     /* 0x3A8 */
 	u8 _pad3[0x8];
-	u32 _3b4; /* 0x3B4 */
+	u32 collisionType; /* 0x3B4 */
 	u32 _3b8; /* 0x3B8 */
 	u16 _3bc; /* 0x3BC */
 	u16 _3be /* 0x3BE */;
@@ -105,7 +216,7 @@ class StageEntity : public StageActor
 	i32 tryAttachToPlayerHands(i32, i32, i32);
 	i32 attachToPlayerHands(i32, i32, i32);
 	void func_ov000_0209c85c();
-	void func_ov000_0209adb0(u32);
+	bool destroyInactive(u32 flags);
 	void func_ov000_0209e264(u32, u32, u32);
 	bool func_ov000_0209ccd0(PlayerBase *);
 	void func_ov000_0209da00();

@@ -9,19 +9,19 @@ StageEntity::StageEntity()
 	this->actorCategory = this->actorCategory | 0x20;
 	this->_2d0 = 0;
 	this->_3e7 = ~0;
-	this->_3b4 = 0x107;
+	this->collisionType = 0x107;
 	this->accelV = -0x300;
 	this->minVelocity.x = 0;
 	this->minVelocity.y = -0x4000;
 	this->minVelocity.z = 0;
 	this->_3d8 = 0;
 	this->_3a8 = 0x1000;
-	this->_36c.x = 0;
-	this->_36c.y = 0;
-	this->_384.x = 0;
-	this->_384.y = 0;
-	this->_378.x = 0;
-	this->_378.y = 0;
+	this->activeSize.x = 0;
+	this->activeSize.y = 0;
+	this->viewOffset.x = 0;
+	this->viewOffset.y = 0;
+	this->renderSize.x = 0;
+	this->renderSize.y = 0;
 	this->_31c.x = 0;
 	this->_31c.y = 0;
 	this->_31c.z = 0;
@@ -97,10 +97,10 @@ bool StageEntity::_01()
 		return false;
 	}
 	if (this->_340 != 5) {
-		i32 a = this->_384.x << 0xc;
-		i32 b = this->_384.y << 0xc;
-		i32 c = this->_378.x;
-		i32 d = this->_378.y;
+		i32 a = this->viewOffset.x << 0xc;
+		i32 b = this->viewOffset.y << 0xc;
+		i32 c = this->renderSize.x;
+		i32 d = this->renderSize.y;
 		return func_0200ae9c(&this->position);
 	}
 	return false;
@@ -204,7 +204,7 @@ bool StageEntity::func_ov000_0209ccd0(PlayerBase *player)
 		i32 pps = player->centerOffset.x;
 		this->linked_player = player->linked_player;
 		this->_3ee = ((u32)((tp + tpc) - (pp + pps))) >> 0x1f;
-		this->_3b4 |= 0x8000;
+		this->collisionType |= 0x8000;
 		return true;
 	}
 	return false;

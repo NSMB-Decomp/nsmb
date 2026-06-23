@@ -538,7 +538,7 @@ s32 Coin::onCreate()
 	this->scale.x = 0x1200;
 	this->scale.y = 0x1200;
 	this->scale.z = 0x1200;
-	this->_3b4 &= ~6;
+	this->collisionType &= ~6;
 	this->_444.init(this, &data_ov010_02125204, 0x20000, 0, 0);
 	if (this->_4c4 != 0) {
 		this->_4ad = data_ov000_020c4ec0[this->_4c4];
@@ -632,23 +632,23 @@ s32 Coin::onCreate()
 			this->func_ov010_020d9dcc(&data_ov010_02129414);
 		}
 		if (this->coinType == 6) {
-			this->_36c.x = 0xc0;
-			this->_36c.y = 0x40;
-			this->_378.x = 0xc0;
-			this->_378.y = 0x40;
+			this->activeSize.x = 0xc0;
+			this->activeSize.y = 0x40;
+			this->renderSize.x = 0xc0;
+			this->renderSize.y = 0x40;
 		} else if (this->coinType == 8) {
-			this->_36c.x = 0x140;
-			this->_36c.y = 0x40;
-			this->_378.x = 0x140;
-			this->_378.y = 0x40;
+			this->activeSize.x = 0x140;
+			this->activeSize.y = 0x40;
+			this->renderSize.x = 0x140;
+			this->renderSize.y = 0x40;
 		} else {
-			this->_36c.x = 0x80;
-			this->_36c.y = 0x40;
-			this->_378.x = 0x80;
-			this->_378.y = 0x40;
+			this->activeSize.x = 0x80;
+			this->activeSize.y = 0x40;
+			this->renderSize.x = 0x80;
+			this->renderSize.y = 0x40;
 		}
-		this->_384.x = 0;
-		this->_384.y = 8;
+		this->viewOffset.x = 0;
+		this->viewOffset.y = 8;
 		return true;
 	}
 }
@@ -683,7 +683,7 @@ bool Coin::onUpdate_0()
 	}
 	this->func_ov010_020d9b40();
 	this->func_ov010_020d99a8();
-	this->func_ov000_0209adb0(0);
+	this->destroyInactive(0);
 	func_ov000_020ab2cc(&this->_444);
 	return true;
 }

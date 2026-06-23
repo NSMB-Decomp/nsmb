@@ -37,7 +37,7 @@ struct ObjectProfile {
 	u16 renderPriority;
 };
 
-struct ActorProfile { 
+struct ActorProfile {
 // TODO: Can we rever this back to ActorProfile : ObjectProfile? I was unable to compile without doing the below.
 	void *(*constructor)();
 	u16 updatePriority;
