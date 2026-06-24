@@ -55,32 +55,35 @@ func_ov098_0218848c kind:function(arm,size=0x38) addr:0x0218848c
 func_ov098_021884c4 kind:function(arm,size=0x50) addr:0x021884c4
 func_ov098_02188514 kind:function(arm,size=0x318) addr:0x02188514
 func_ov098_0218882c kind:function(arm,size=0xf4) addr:0x0218882c
-func_ov098_02188920 kind:function(arm,size=0x8c) addr:0x02188920
-func_ov098_021889ac kind:function(arm,size=0x94) addr:0x021889ac
-func_ov098_02188a40 kind:function(arm,size=0x3c) addr:0x02188a40
-func_ov098_02188a7c kind:function(arm,size=0x24) addr:0x02188a7c
-func_ov098_02188aa0 kind:function(arm,size=0x70) addr:0x02188aa0
-func_ov098_02188b10 kind:function(arm,size=0x3c) addr:0x02188b10
-func_ov098_02188b4c kind:function(arm,size=0x13c) addr:0x02188b4c
-func_ov098_02188c88 kind:function(arm,size=0x13c) addr:0x02188c88
-func_ov098_02188dc4 kind:function(arm,size=0x148) addr:0x02188dc4
-func_ov098_02188f0c kind:function(arm,size=0x1cc) addr:0x02188f0c
-func_ov098_021890d8 kind:function(arm,size=0x78) addr:0x021890d8
-func_ov098_02189150 kind:function(arm,size=0x48) addr:0x02189150
-func_ov098_02189198 kind:function(arm,size=0x34) addr:0x02189198
-func_ov098_021891cc kind:function(arm,size=0xd4) addr:0x021891cc
-func_ov098_021892a0 kind:function(arm,size=0x38) addr:0x021892a0
-func_ov098_021892d8 kind:function(arm,size=0x24) addr:0x021892d8
-func_ov098_021892fc kind:function(arm,size=0x48) addr:0x021892fc
+_ZN7ManholeD1Ev kind:function(arm,size=0x8c) addr:0x02188920
+_ZN7ManholeD0Ev kind:function(arm,size=0x94) addr:0x021889ac
+_ZN7Manhole14activeCallbackER14ActiveColliderS1_ kind:function(arm,size=0x3c) addr:0x02188a40
+_ZN7Manhole9onDestroyEv kind:function(arm,size=0x24) addr:0x02188a7c
+_ZN7Manhole8onRenderEv kind:function(arm,size=0x70) addr:0x02188aa0
+_ZN7Manhole10updateMainEv kind:function(arm,size=0x3c) addr:0x02188b10
+_ZN7Manhole8onCreateEv kind:function(arm,size=0x13c) addr:0x02188b4c
+_ZN7Manhole12rollBackwardEm kind:function(arm,size=0x13c) addr:0x02188c88
+_ZN7Manhole11rollForwardEm kind:function(arm,size=0x148) addr:0x02188dc4
+_ZN7Manhole9solidIdleEm kind:function(arm,size=0x1cc) addr:0x02188f0c
+_ZN7Manhole18updateRollingSoundEv kind:function(arm,size=0x78) addr:0x021890d8
+_ZN7Manhole20getPlatformCollisionEv kind:function(arm,size=0x48) addr:0x02189150
+_ZN7Manhole11updateStateEm kind:function(arm,size=0x34) addr:0x02189198
+_ZN7Manhole11switchStateEMS_FbmEm kind:function(arm,size=0xd4) addr:0x021891cc
+_ZN7Manhole18onPrepareResourcesEv kind:function(arm,size=0x38) addr:0x021892a0
+_ZN7Manhole13loadResourcesEv kind:function(arm,size=0x24) addr:0x021892d8
+_ZN7Manhole6createEv kind:function(arm,size=0x48) addr:0x021892fc
+
 data_ov098_02189344 kind:data(any) addr:0x02189344
 data_ov098_02189348 kind:data(any) addr:0x02189348
 data_ov098_0218934c kind:data(any) addr:0x0218934c
 data_ov098_02189350 kind:data(any) addr:0x02189350
-data_ov098_02189358 kind:data(any) addr:0x02189358
+_ZN7Manhole8acConfigE kind:data(any) addr:0x02189358
+
 __sinit_ov098_02189374 kind:function(arm,size=0x68) addr:0x02189374
 __sinit_ov098_021893dc kind:function(arm,size=0x68) addr:0x021893dc
 .p__sinit_ov098_02189374 kind:data(word) addr:0x02189444
 .p__sinit_ov098_021893dc kind:data(word) addr:0x02189448
+
 data_ov098_02189460 kind:data(any) addr:0x02189460
 data_ov098_02189468 kind:data(any) addr:0x02189468
 data_ov098_02189470 kind:data(any) addr:0x02189470
@@ -106,8 +109,8 @@ data_ov098_02189850 kind:data(any) addr:0x02189850
 data_ov098_02189858 kind:data(any) addr:0x02189858
 data_ov098_02189860 kind:data(any) addr:0x02189860
 data_ov098_02189868 kind:data(any) addr:0x02189868
-UnknownProfile::ov098_02189870 kind:data(any) addr:0x02189870 ambiguous
-data_ov098_02189884 kind:data(any) addr:0x02189884
+_ZN7Manhole7profileE kind:data(any) addr:0x02189870 ambiguous
+_ZTV7Manhole kind:data(byte[0x114]) addr:0x0218987c
 data_ov098_021899a0 kind:bss addr:0x021899a0
 data_ov098_021899a8 kind:bss addr:0x021899a8
 data_ov098_021899b0 kind:bss addr:0x021899b0

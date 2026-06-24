@@ -1,6 +1,11 @@
 #pragma once
 #include "Base.hpp"
 
+enum ObjectID {
+	SC_Boot = 0,
+	AC_Manhole = 187
+};
+
 class Object : public Base
 {
       public:
