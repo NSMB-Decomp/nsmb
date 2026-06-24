@@ -1834,7 +1834,7 @@ from:0x020dc0d0 kind:arm_call to:0x02019948 module:main
 from:0x020dc0e8 kind:arm_call to:0x02009cb4 module:main
 from:0x020dc100 kind:arm_call to:0x02018cf4 module:main
 from:0x020dc124 kind:load to:0x020e9940 module:overlay(8)
-from:0x020dc128 kind:load to:0x020e9944 module:overlay(8)
+from:0x020dc128 kind:load to:0x020e9940 add:0x4 module:overlay(8)
 from:0x020dc150 kind:arm_call to:0x02018d68 module:main
 from:0x020dc158 kind:arm_call to:0x02019a10 module:main
 from:0x020dc160 kind:arm_call to:0x02018d68 module:main

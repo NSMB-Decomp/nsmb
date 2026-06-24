@@ -18,7 +18,7 @@ public:
 
 	bool create(u32 type);
 
-	void render(Mat4x3* mtx, Vec3_32* scale);
+	void render(const Mat4x3& mtx, const Vec3_32& scale, const Vec3_32& offset);
 
 	void update();
 
@@ -28,10 +28,15 @@ public:
 	static bool loadResources();
 
 
+	static u16 paletteBase;
+	static u32 subAnimTbl[2];
+	static u32 mainAnimTbl[WM::ET_MAX][2];
+	static FileInfo fileInfo[WM::ET_MAX];
+
 	ModelAnm model;
-	AnimationCtrl texAnim;
-	Model shadowModel;
-	AnimationCtrl shadowAnim;
+	AnimationCtrl anim; // Flying block texture pattern anim
+	Model subModel; // Hammer or shadow model
+	AnimationCtrl subAnim; // Shadow anim
 	u32 type;
 
 };

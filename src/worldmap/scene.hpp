@@ -187,6 +187,8 @@ namespace WM {
 
 	extern u32 nodeState;
 
+	extern u16 entityPlttOfsTbl[ET_MAX];
+
 }
 
 class WorldmapScene : public Scene {
