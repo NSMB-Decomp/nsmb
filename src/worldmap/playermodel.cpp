@@ -148,7 +148,7 @@ void WmPlayerModel::init(u32 animID, BOOL resume) {
 
 	}
 
-	void* animFile = func_02009cb4(anim.fileID);
+	void* animFile = FS::Cache::getFile(anim.fileID);
 	if (animFile != nullptr) {
 		void* animRes = Ns_3dGetAnimation(scast<Ns3dFileHeader*>(animFile), resIdx);
 		if (animRes != nullptr) {
@@ -169,7 +169,7 @@ void WmPlayerModel::initHead(u32 animID) {
 
 	const PlayerHeadAnimation& headAnim = model.headAnimations[playerID][headAnimID];
 
-	void* animFile = func_02009cb4(model.headPatternFileIDs[playerID]);
+	void* animFile = FS::Cache::getFile(model.headPatternFileIDs[playerID]);
 	if (animFile != nullptr) {
 		void* animRes = Ns_3dGetAnimation(scast<Ns3dFileHeader*>(animFile), headAnim.animID);
 		if (animRes != nullptr) {

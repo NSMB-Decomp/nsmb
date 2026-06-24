@@ -8,17 +8,17 @@ void *MPLevelSelectScene::create()
 void MPLevelSelectScene::func_ov052_02155cf8()
 {
 	void *uVar1 = Nitro::func_02061f2c();
-	func_02008784(0xc90d, uVar1);
+	FS::loadFileLZ77(0xc90d, uVar1);
 	uVar1 = Nitro::func_02061f84();
-	func_02008784(0xc90d, uVar1);
-	func_02008784(0xc920, (void *)0x6600000);
+	FS::loadFileLZ77(0xc90d, uVar1);
+	FS::loadFileLZ77(0xc920, (void *)0x6600000);
 }
 
 void MPLevelSelectScene::func_ov052_02155c9c()
 {
 	// TODO, these are paletes, how best to define them?
-	func_02008784(0xc90e, (void *)0x05000000);
-	func_02008784(0xc910, (void *)0x05000200);
+	FS::loadFileLZ77(0xc90e, (void *)0x05000000);
+	FS::loadFileLZ77(0xc910, (void *)0x05000200);
 	Nitro::func_02066f28((void *)0x05000000, (void *)0x05000400, 0xe0);
 	Nitro::func_02066f28((void *)0x05000200, (void *)0x05000600, 0x1a0);
 }
@@ -58,14 +58,14 @@ struct data_0208588c_ {
 data_0208588c_ data_0208588c;
 void MPLevelSelectScene::func_ov052_02155b00() {
   if ((this->_64 == 0) || (this->_64 == 0x10)) {
-    u32 uVar1 = func_02009c64(0xc91c,0);
-    u32 uVar2 = func_02009c64(0xc91d,0);
-    func_02004564(0,uVar2,uVar1);
+    void* uVar1 = FS::Cache::loadFile(0xc91c, false);
+    void* uVar2 = FS::Cache::loadFile(0xc91d, false);
+    func_02004564(nullptr,uVar2,uVar1);
   }
   else {
-    u32 uVar1 = func_02009c64(0xc91e,0);
-    u32 uVar2 = func_02009c64(0xc91f,0);
-    func_02004564(0,uVar2,uVar1);
+    void* uVar1 = FS::Cache::loadFile(0xc91e, false);
+    void* uVar2 = FS::Cache::loadFile(0xc91f, false);
+    func_02004564(nullptr, uVar2,uVar1);
   }
   this->_70 = data_0208588c._0[1] + 8;
   return;

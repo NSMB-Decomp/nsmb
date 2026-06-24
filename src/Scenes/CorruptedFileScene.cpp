@@ -66,14 +66,13 @@ s32 CorruptedFileScene::onCreate() {
 	func_0200b87c();
 	data_02087700 = 0;
 	func_0200b83c(0);
-	#if defined(VER_A2DJ)
+#if defined(VER_A2DJ)
 	func_02009a30(0x75d,0,1);
-	#else
+#else
 	func_02009a30(0x75c,0,1);
-	#endif
-	func_02017190(2);
-	SceneNode* sn = func_020087f0();
-	this->_dc = sn;
+#endif
+	u32 scriptFileID = func_02017190(2);
+	this->bmg = FS::loadExtFile(scriptFileID);
 	this->_64.func_020144a8();
 	this->_64.func_0201443c();
 	u32 settings = this->settings;
@@ -123,7 +122,7 @@ s32 CorruptedFileScene::onCreate() {
 	return true;
 }
 s32 CorruptedFileScene::onDestroy() {
-    func_020087c0(this->_dc);
+    FS::unloadFile(bmg);
 	FS::Cache::clear();
 	GlobalFader.func_02007bfc();
 	data_02088f30 = 1;

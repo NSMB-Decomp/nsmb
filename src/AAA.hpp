@@ -45,13 +45,39 @@ struct ActorProfile {
 	bool (*loadResources)();
 };
 
-namespace FS
-{
-namespace Cache
-{
-void clear();
+namespace FS {
+	namespace Cache {
+
+		// 0x0200A0B4
+		void setupCacheEntries();
+
+		// 0x02009CB4
+		void* getFile(u32 extFileID);
+
+		// 0x02009C64
+		void* loadFile(u32 extFileID, bool compressed);
+
+		// 0x02009C14
+		void* loadFileToOverlay(u32 extFileID, bool compressed);
+
+		// 0x02009BC8
+		void* loadData(u32 size);
+
+		// 0x02009B94
+		bool unloadFile(u32 extFileID);
+
+		// 0x02009B64
+		void clear();
+
+	}
+
+	u32 loadFileLZ77(u32 extFileID, void* dest);
+
+	void unloadFile(void* file);
+
+	void* loadExtFile(u32 extFileID);
+
 }
-} // namespace FS
 
 namespace Nitro_
 {
@@ -292,21 +318,14 @@ void func_0200b87c(); // OAM::setFilesUnloaded
 extern u32 data_02087700; // OAM::curTileOffset
 void func_0200b83c(u32); // OAM::loadFilesToVRAM
 void func_02009a30(u32, u32, u32); // FS::loadOBJPalette
-void func_02017190(u32); // Font::getScriptFileID
-SceneNode* func_020087f0(); // FS::loadExtFile
-void func_020087c0(SceneNode*); // FS::unloadFile
+u32 func_02017190(u32); // Font::getScriptFileID
 extern u8 data_02088f30; // Scene::allowSoftReset
 void func_020051ec(); // App::forceDisplayOn
 void func_020045cc(); // Exception::terminateCaught
 extern u32 data_02085a84; // Game::vsMode
 extern u32 DAT_02039200; // vtable for Vec3
-void func_02008784(u32, void*); // FS::loadFileLZ77
-u32 func_02009c64(u32, u32); // FS::Cache::loadFile
-void* func_02009cb4(u32); // FS::Cache::getFile
-void func_02004564(u32, u32, u32);
-void func_02021808();
-void func_020180a4(void*);
-void func_02005700();void func_02021808(); // TP::updatePlayer
+void func_02004564(void* bncd, void* bncl, void* bnbl);
+void func_02021808(); // TP::updatePlayer
 void func_020180a4(void*); // TextLabel::unloadScript
 void func_02005700(); // System::resetSubBGVBlank
 

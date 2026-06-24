@@ -21,7 +21,7 @@ class CorruptedFileScene : public Scene
 
 	UnknownClass _64;
     u8 _pad0[0x74];
-	SceneNode* _dc;
+	void* bmg;
     u8 _pad1[0x4];
 	u32 _e4;
 	i32 _e8;
