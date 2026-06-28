@@ -35,7 +35,8 @@ typedef u32 EmitterT;
 #define READ_NIBBLE(data, nybble) ((settings >> (nybble * 4)) & 0xf)
 
 // Sections
-#pragma define_section autobss_3 "_" ".autobss_3"
+#pragma define_section autobss_3 ".autobss_3" ".autobss_3"
+#pragma define_section itcm ".itcm" ".itcm"
 
 // To fix code that has weird bool logic
 #define BOOL int
