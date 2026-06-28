@@ -20,7 +20,9 @@ extern i16 _FixedSinCosTbl[];
 #define _FixedFlt(flt) ((i32)(flt * 4096.0))
 
 inline i32 _FixedMul(i32 x, i32 y) {
-	return (i32)(((i64)x * y) + 0x800LL) >> 12;
+	i64 result = (i64)x * (i64)y;
+	result += 0x800;
+    return (i32)(result >> 12);
 }
 
 inline i16 _FixedSin(int a) {
