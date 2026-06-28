@@ -156,6 +156,8 @@ fn generateContext(io: std.Io, source_file: []const u8, destination_file: []cons
         "-E",
         "-P",
         "-undef",
+        "-I",
+        "lib/Nitro/",
         "-D",
         "__MWERKS__",
         //"-dD",
