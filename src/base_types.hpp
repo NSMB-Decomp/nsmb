@@ -25,10 +25,6 @@ typedef s64 fx64;
 
 typedef u32 EmitterT;
 
-// Doesn't work with objdiff
-//#include <cstddef.h> // for size_t
-typedef unsigned long size_t;
-
 #define NULL (void *)0x0
 
 // https://forum.vcfed.org/index.php?threads/c-item-size-check-at-compile-time.1244920/
