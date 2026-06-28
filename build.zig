@@ -81,7 +81,6 @@ fn getSourceByDest(io: std.Io, allocator: std.mem.Allocator, destination: []cons
             }
         }
     }
-    //}
 
     @panic("Could not find the source");
 }
@@ -130,7 +129,7 @@ fn compileFile(io: std.Io, source_file: []const u8, destination_file: []const u8
         "-i",
         "lib/Nitro/",
         "-d",
-        release_global.macro_name(),
+        release_global.macroName(),
     };
 
     var child = try std.process.spawn(io, .{ .argv = &command });
@@ -214,6 +213,11 @@ const Release = enum {
     A2DC,
     Y7QJ,
 
+    // Returns the enum name (e.g. A2DE)
+    pub fn name(self: Release) []const u8 {
+        return @tagName(self);
+    }
+
     // Returns the enum name with .nds appended (e.g. A2DE.nds)
     pub fn fileName(self: Release) []const u8 {
         return switch (self) {
@@ -221,13 +225,8 @@ const Release = enum {
         };
     }
 
-    // Returns the enum name (e.g. A2DE)
-    pub fn name(self: Release) []const u8 {
-        return @tagName(self);
-    }
-
     // Returns the name with VER_ preanded (e.g. VER_A2DE)
-    pub fn macro_name(self: Release) []const u8 {
+    pub fn macroName(self: Release) []const u8 {
         return switch (self) {
             inline else => |en| "VER_" ++ @tagName(en),
         };
@@ -241,27 +240,6 @@ const OBJDiff = struct {
             ctx_path: ?[]u8 = null,
         } = .{},
         metadata: struct {
-            source_path: ?[]u8 = null,
-        },
-    },
-};
-const OBJDiff_Full = struct {
-    min_version: []u8,
-    custom_make: []u8,
-    custom_args: [][]u8,
-    target_dir: []u8,
-    base_dir: []u8,
-    build_base: bool,
-    build_target: bool,
-    watch_patterns: [][]u8,
-    units: []struct {
-        name: []u8,
-        target_path: []u8,
-        base_path: []u8 = "",
-        metadata: struct {
-            complete: bool,
-            reverse_fn_order: bool,
-            auto_generated: bool,
             source_path: ?[]u8 = null,
         },
     },
