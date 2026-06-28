@@ -27,16 +27,16 @@ public:
 
 	//D0:020193c0
 	//D1:020193c0
-	virtual ~BlendModelAnm();
+	virtual ~BlendModelAnm() override;
 
 	//02019214
-	virtual void render(const Vec3_32s* scale);
+	virtual void render(const Vec3_32s* scale) override;
 
 	//020191cc
-	virtual void render(const Mat4x3& transform, const Vec3_32s* scale);
+	virtual void render(const Mat4x3& transform, const Vec3_32s* scale) override;
 
 	//0201918c
-	virtual void render();
+	virtual void render() override;
 
 	//020192a8
 	bool create(void* bmd, void* bca, u32 modelID, u32 animID, u32 polygonID); //Loads the model with the given params from the bmd. Allocates memory for both BlendAnimations, initializes the frame controller and registers the first animation. returns true if successful, false otherwise.
