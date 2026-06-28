@@ -60,12 +60,12 @@ void MPLevelSelectScene::func_ov052_02155b00() {
   if ((this->_64 == 0) || (this->_64 == 0x10)) {
     void* uVar1 = FS::Cache::loadFile(0xc91c, false);
     void* uVar2 = FS::Cache::loadFile(0xc91d, false);
-    func_02004564(nullptr,uVar2,uVar1);
+    Layout::initSub(nullptr,uVar2,uVar1);
   }
   else {
     void* uVar1 = FS::Cache::loadFile(0xc91e, false);
     void* uVar2 = FS::Cache::loadFile(0xc91f, false);
-    func_02004564(nullptr, uVar2,uVar1);
+    Layout::initSub(nullptr, uVar2,uVar1);
   }
   this->_70 = data_0208588c._0[1] + 8;
   return;

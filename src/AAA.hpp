@@ -89,6 +89,57 @@ namespace WiFi
 u32 random();
 }
 
+struct BNBL {
+
+};
+
+struct BNCL_Cell {
+	s16 posX   : 12;
+	s16 alignX : 4;
+	s16 posY   : 12;
+	s16 alignY : 4;
+	u8 graphics;
+	u8 rsv[3];
+};
+size_assert(BNCL_Cell, 0x8);
+
+struct BNCL {
+	u32 magic;
+	u16 rsv;
+	u16 cellCount;
+	BNCL_Cell cells[0];
+};
+
+struct BNCD {
+
+};
+
+namespace Layout {
+
+	void drawCellSub(u32 cellIdx, const void* oamAttrs, u32 oamFlags, u8 palette, u8 affineSet, const Vec2_32* scale, u16 rot, const s16* rotCenter, u32 oamSettings);
+
+	void drawCellMain(u32 cellIdx, const void* oamAttrs, u32 oamFlags, u8 palette, u8 affineSet, const Vec2_32* scale, u16 rot, const s16* rotCenter, u32 oamSettings);
+
+	void getCellPosMain(Vec2_32& pos, u32 cellIdx);
+
+	void drawCellSubEx(const BNCL_Cell* cell, const BNCL_Cell* refCell, bool sub, const Vec2_32* scale, u16 rot, s32 x, s32 y, u8 palette, u32 oamFlags);
+
+	void initSub(const void* bncd, const void* bncl, const void* bnbl);
+
+	extern u16 subBgColor;
+	extern const BNBL* bnbl[2];
+	extern const BNCL* bncl[2];
+	extern const BNCD* bncd[2];
+
+};
+
+// These are shared between TitleScreen, Stage and Worldmap
+extern "C" {
+	u8 optionsMenuState;
+	u8 optionsMenuSlideTimer;
+	s32 optionsMenuSlideOffset;
+}
+
 namespace Stage
 {
 extern u16 ObjectBankTable[2];
@@ -100,6 +151,7 @@ extern u8 stageAreaID;
 
 namespace Game
 {
+extern u8 character; // old luigiMode
 extern i32 cameraY[2];
 extern i32 cameraZoomY[2];
 u32 getBootScene();
@@ -324,7 +376,6 @@ void func_020051ec(); // App::forceDisplayOn
 void func_020045cc(); // Exception::terminateCaught
 extern u32 data_02085a84; // Game::vsMode
 extern u32 DAT_02039200; // vtable for Vec3
-void func_02004564(void* bncd, void* bncl, void* bnbl);
 void func_02021808(); // TP::updatePlayer
 void func_020180a4(void*); // TextLabel::unloadScript
 void func_02005700(); // System::resetSubBGVBlank

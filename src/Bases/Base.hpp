@@ -10,7 +10,7 @@ class Base
 	u32 guid;		  /* 0x04 */
 	u32 settings;		  /* 0x08 */
 	u16 object_id;		  /* 0x0c */
-	State state;		  /* 0x0e */
+	u8 state;		  /* 0x0e */
 	bool pending_destroy;	  /* 0x0f */
 	bool pending_update;	  /* 0x10 */
 	bool pending_create;	  /* 0x11 */

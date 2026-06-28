@@ -1,12 +1,21 @@
-data_02085880 kind:bss addr:0x02085880
-data_02085884 kind:bss addr:0x02085884
-data_0208588c kind:bss addr:0x0208588c
-data_02085894 kind:bss addr:0x02085894
-data_0208589c kind:bss addr:0x0208589c
-data_020858a0 kind:bss addr:0x020858a0
+
+// Layout
+
+_ZN6Layout10subBgColorE kind:bss(size=0x2) addr:0x02085880
+_ZN6Layout4bnblE kind:bss(size=0x8) addr:0x02085884
+_ZN6Layout4bnclE kind:bss(size=0x8) addr:0x0208588c
+_ZN6Layout4bncdE kind:bss(size=0x8) addr:0x02085894
+
+// Task
+
+data_0208589c kind:bss(size=0x1) addr:0x0208589c
+data_020858a0 kind:bss(size=0x1) addr:0x020858a0
 data_020858a4 kind:bss addr:0x020858a4
 data_020858a8 kind:bss addr:0x020858a8
 data_020858ac kind:bss addr:0x020858ac
+
+// App
+
 data_0208596c kind:bss addr:0x0208596c
 data_02085970 kind:bss addr:0x02085970
 data_02085974 kind:bss addr:0x02085974
@@ -56,7 +65,7 @@ data_02085a40 kind:bss addr:0x02085a40
 data_02085a44 kind:bss addr:0x02085a44
 data_02085a48 kind:bss addr:0x02085a48
 data_02085a4c kind:bss addr:0x02085a4c
-data_02085a50 kind:bss addr:0x02085a50
+_ZN4Game9characterE kind:bss addr:0x02085a50
 data_02085a54 kind:bss addr:0x02085a54
 data_02085a58 kind:bss addr:0x02085a58
 data_02085a5c kind:bss addr:0x02085a5c
@@ -267,7 +276,6 @@ data_02088c20 kind:bss addr:0x02088c20
 data_02088c3c kind:bss addr:0x02088c3c
 data_02088c4c kind:bss addr:0x02088c4c
 data_02088c52 kind:bss addr:0x02088c52
-data_02088e04 kind:bss addr:0x02088e04
 data_02088e24 kind:bss addr:0x02088e24
 data_02088e2c kind:bss addr:0x02088e2c
 data_02088edc kind:bss addr:0x02088edc

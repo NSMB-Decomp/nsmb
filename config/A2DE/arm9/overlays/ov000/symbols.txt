@@ -1544,11 +1544,11 @@ data_ov000_020cc194 kind:bss addr:0x020cc194
 data_ov000_020cc1d4 kind:bss addr:0x020cc1d4
 data_ov000_020cc214 kind:bss addr:0x020cc214
 data_ov000_020cc264 kind:bss addr:0x020cc264
-data_ov000_020cc2b4 kind:bss addr:0x020cc2b4
+optionsMenuSlideTimer kind:bss(size=0x1) addr:0x020cc2b4
 data_ov000_020cc2b8 kind:bss addr:0x020cc2b8
 data_ov000_020cc2bc kind:bss addr:0x020cc2bc
-data_ov000_020cc2c0 kind:bss addr:0x020cc2c0
-data_ov000_020cc2c4 kind:bss addr:0x020cc2c4
+optionsMenuState kind:bss(size=0x1) addr:0x020cc2c0
+optionsMenuSlideOffset kind:bss(size=0x4) addr:0x020cc2c4
 data_ov000_020cc2c8 kind:bss addr:0x020cc2c8
 data_ov000_020cc2cc kind:bss addr:0x020cc2cc
 data_ov000_020cc2d0 kind:bss addr:0x020cc2d0

@@ -85,6 +85,13 @@ struct Vec3_16s {
 	i16 z;
 };
 
+extern "C" {
+
+	void* G2S_GetBG0ScrPtr();
+	void MI_CpuCopy8(void *, void *, u32); // std::copy
+
+}
+
 // TODO: Seperate out files.
 namespace Nitro
 {

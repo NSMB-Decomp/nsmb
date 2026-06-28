@@ -56,7 +56,7 @@ void WmController::moveEntities() {
 	NodeLink* w_link;
 	u32 w_world = save.game.currentWorld;
 
-	WM::nodeState |= 0x40;
+	WM::state |= ST_EntityMove;
 
 	u8* pm = moveTbl;
 	u8* pn;
