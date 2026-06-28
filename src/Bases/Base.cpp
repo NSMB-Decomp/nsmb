@@ -7,8 +7,8 @@ u8 data_0208fae8;
 u16 data_0208faf0;
 u16 SpawnParam_ObjectId;
 ProcessLink *SpawnParam_Parent;
-u32 data_0208fafc;
-u32 data_0208fb00;
+u32 spawnFunctionCtor;
+u32 spawnFunctionDtor;
 u8 SpawnParam_Type;
 u32 SpawnParam_Settings;
 u32 data_0208fb08;
@@ -538,16 +538,16 @@ Base *Base::spawn(u16 overlay_id, ProcessLink *b, u32 c, u8 d)
 }
 u32 Base::loadSceneOverlay(u16 a)
 {
-	if (data_0208fafc != 0x00) {
-		((void (*)(u16))data_0208fafc)(a);
+	if (spawnFunctionCtor != 0x00) {
+		((void (*)(u16))spawnFunctionCtor)(a);
 	} else {
 		return 2;
 	}
 }
 void Base::unloadSceneOverlay(u16 a)
 {
-	if (data_0208fb00 != 0x00) {
-		((void (*)(u16))data_0208fb00)(a);
+	if (spawnFunctionDtor != 0x00) {
+		((void (*)(u16))spawnFunctionDtor)(a);
 	}
 }
 Base *Base::spawnChild(u16 overlay_id, Base *parent, u32 c, u8 d)
