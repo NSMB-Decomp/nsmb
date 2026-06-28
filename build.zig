@@ -156,7 +156,9 @@ fn generateContext(io: std.Io, source_file: []const u8, destination_file: []cons
         "-E",
         "-P",
         "-undef",
-        "-dD",
+        "-D",
+        "__MWERKS__",
+        //"-dD",
     };
 
     var child = try std.process.spawn(io, .{ .argv = &command });
