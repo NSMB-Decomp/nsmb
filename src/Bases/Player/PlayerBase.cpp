@@ -1,6 +1,10 @@
 #include "PlayerBase.hpp"
 #include "../StageEntity.hpp"
 
+const i16 data_ov011_0212e220[2] = {0x4000, -0x4000};
+const i16 data_ov011_0212e21c[2] = {0x3000, -0x3000};
+const i16 data_ov011_0212e218[2] = {0x3800,  -0x3800};
+
 struct UNKNOWN {
 	u16 _0;
 	u8 _pad[18];
@@ -8,16 +12,17 @@ struct UNKNOWN {
 	u8 _pad1[2];
 };
 
-UNKNOWN data_020876b2[2];
-u8 data_02085a0c;
+extern UNKNOWN data_020876b2[2];
+extern u8 data_02085a0c;
+extern u32 data_ov000_020ca8d0;
 u16 data_02087660[2];
 u16 data_02087664[2];
-i16 data_ov011_0212e218[2];
-i16 data_ov011_0212e21c[2];
-i16 data_ov011_0212e220[2];
-u32 data_ov000_020ca8d0;
+#pragma section autobss_3 begin
+// autoload test
+// TODO: Confirm which of these autoloads are actually a part of PlayerBase
 u32 data_02085abc;
-PlayerBase *data_0208b35c[2];
+#pragma section autobss_3 end
+extern PlayerBase *data_0208b35c[2];
 
 void PlayerBase::func_ov011_0212c950()
 {
@@ -238,7 +243,7 @@ u32 PlayerBase::func_ov011_0212c52c()
 	return this->_7a2 & (data_020876b2[this->linked_player]._0 | 0xf0 | data_020876b2[this->linked_player]._1);
 }
 
-u32 data_0208b3d4[2][4];
+extern u32 data_0208b3d4[2][4];
 bool PlayerBase::func_ov011_0212c4ec()
 {
 	// TODO: Can this syntax be improved?
@@ -291,7 +296,7 @@ u32 PlayerBase::func_ov011_0212c27c(u32 param_1)
 }
 
 void func_020201c8(i32, i32);
-u8 data_02085a20;
+extern u8 data_02085a20;
 void PlayerBase::func_ov011_0212c200()
 {
 	i8 powerup = this->powerup;
@@ -732,7 +737,7 @@ bool PlayerBase::func_ov011_0212bb90()
 	return this->_7bf == TRUE;
 }
 
-u16 data_0208b344[2];
+extern u16 data_0208b344[2];
 void func_02020150(u32, u32);
 void func_02020128(u32, u32);
 void PlayerBase::func_ov011_0212bac8()
@@ -829,8 +834,8 @@ void PlayerBase::func_ov011_0212b954()
 	}
 }
 
-u8 data_ov000_020ca880;
-u8 data_ov000_020ca898;
+extern u8 data_ov000_020ca880;
+extern u8 data_ov000_020ca898;
 void PlayerBase::func_ov011_0212b908()
 {
 	data_ov000_020ca880 |= 0x10;
@@ -847,7 +852,7 @@ void PlayerBase::func_ov011_0212b8bc()
 	this->activeCollider._1c6 &= ~1;
 }
 
-u16 data_0208b350[2];
+extern u16 data_0208b350[2];
 void PlayerBase::func_ov011_0212b878(u16 a)
 {
 	if (this->powerup == 3) {
@@ -896,7 +901,7 @@ void PlayerBase::func_ov011_0212b7f0(u32 a)
 	func_02011e3c(a);
 }
 
-u32 data_02085a7c;
+extern u32 data_02085a7c;
 void PlayerBase::func_ov011_0212b7bc(u32 a)
 {
 	if (this->linked_player == data_02085a7c) {
@@ -904,7 +909,7 @@ void PlayerBase::func_ov011_0212b7bc(u32 a)
 	}
 }
 
-u32 data_02085a84;
+extern u32 data_02085a84;
 void func_02011dc4(u32);
 void PlayerBase::func_ov011_0212b740(u32 a)
 {
@@ -939,9 +944,9 @@ size_assert(Test940, 0x10 + 0xC + 0x10 + 0xC);
 // Still, 0x38 is not 0x3C nor 0x40
 // 0x3C - 0x38 = 0x4 -> u32 somewhere?
 
-Vec3_32 data_ov000_020caeb8[2];
-Vec3_32 data_ov000_020caed8[2];
-u8 data_ov000_020cacd0[2];
+extern Vec3_32 data_ov000_020caeb8[2];
+extern Vec3_32 data_ov000_020caed8[2];
+extern u8 data_ov000_020cacd0[2];
 void PlayerBase::func_ov011_0212b384(i16 player_id)
 {
 	Vec3_32 s0; // target
@@ -1042,9 +1047,9 @@ void PlayerBase::func_ov011_0212b384(i16 player_id)
 	data_ov000_020cacd0[player_id] = Stage::actorFreezeFlag & 4;
 }
 
-u8 func_020204e0(i8);
+extern u8 func_020204e0(i8);
 void func_0202048c(i8);
-u8 data_02089508[2];
+extern u8 data_02089508[2];
 void func_ov000_020a189c(u32);
 void func_ov000_020a183c(u32, u32);
 void func_02012d6c(u32, Save *);

@@ -135,9 +135,9 @@ namespace Layout {
 
 // These are shared between TitleScreen, Stage and Worldmap
 extern "C" {
-	u8 optionsMenuState;
-	u8 optionsMenuSlideTimer;
-	s32 optionsMenuSlideOffset;
+	extern u8 optionsMenuState;
+	extern u8 optionsMenuSlideTimer;
+	extern s32 optionsMenuSlideOffset;
 }
 
 namespace Stage
