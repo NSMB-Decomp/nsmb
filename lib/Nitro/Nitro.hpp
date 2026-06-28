@@ -1,6 +1,9 @@
 #pragma once
 #include "../../src/base_types.hpp"
 
+#pragma section itcm begin
+#pragma section itcm end
+
 #define REG_DISPCNT *((u32 *)0x04000000)
 #define REG_BG0CNT *((u16 *)0x04000008)
 #define REG_BG1CNT *((u16 *)0x0400000a)
