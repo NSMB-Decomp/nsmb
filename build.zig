@@ -11,8 +11,6 @@ pub fn build(b: *std.Build) void {
     const extract_directory = b.path(b.pathJoin(&.{ "extracted", release.name(), "" }));
     const config_file = b.path(b.pathJoin(&.{ "config", release.name(), "arm9/config.yaml" }));
 
-    //std.log.info("{s}", .{rom_file});
-
     // step - extract
     const extract_cmd = b.addSystemCommand(&.{"dsd"});
     extract_cmd.addArgs(&.{ "rom", "extract" });
@@ -39,8 +37,8 @@ pub fn build(b: *std.Build) void {
     objdiff_cmd.addFileArg(config_file);
     objdiff_cmd.addArgs(&.{ "-m", "zig" });
     objdiff_cmd.addArgs(&.{ "-M", "build", "-M", "single", "-M", "--" });
-    //objdiff_cmd.addArgs(&.{ "-s", "-C", "mwcc_20_84", "-p", "201" });
-    //objdiff_cmd.addArgs(&.{ "-f", "-O4,p -interworking -proc=arm946e -w=off -gccinc -nolink -c -Cpp_exceptions off -lang=c++ -RTTI off -sym on" });
+    objdiff_cmd.addArgs(&.{ "-s", "-C", "mwcc_20_84", "-p", "201" });
+    objdiff_cmd.addArgs(&.{ "-f", "-O4,p -interworking -proc=arm946e -w=off -gccinc -nolink -c -Cpp_exceptions off -lang=c++ -RTTI off -sym on" });
 
     var objdiff_step = b.step("objdiff", "");
     objdiff_step.dependOn(&objdiff_cmd.step);
@@ -64,7 +62,7 @@ pub fn build(b: *std.Build) void {
     report_step.dependOn(&report_cmd.step);
 }
 
-fn read_objdiff(io: std.Io, allocator: std.mem.Allocator) !std.json.Parsed(OBJDiff) {
+fn readObjdiff(io: std.Io, allocator: std.mem.Allocator) !std.json.Parsed(OBJDiff) {
     const contents = try std.Io.Dir.readFileAlloc(std.Io.Dir.cwd(), io, "objdiff.json", allocator, .unlimited);
 
     return try std.json.parseFromSlice(OBJDiff, allocator, contents, .{
@@ -73,7 +71,7 @@ fn read_objdiff(io: std.Io, allocator: std.mem.Allocator) !std.json.Parsed(OBJDi
 }
 
 fn getSourceByDest(io: std.Io, allocator: std.mem.Allocator, destination: []const u8) ![]u8 {
-    const result = try read_objdiff(io, allocator);
+    const result = try readObjdiff(io, allocator);
     defer result.deinit();
 
     for (result.value.units) |r| {
@@ -83,8 +81,28 @@ fn getSourceByDest(io: std.Io, allocator: std.mem.Allocator, destination: []cons
             }
         }
     }
+    //}
 
-    @panic("Could not find something");
+    @panic("Could not find the source");
+}
+
+fn getSourceByScratch(io: std.Io, allocator: std.mem.Allocator, destination: []const u8) ![]u8 {
+    const result = try readObjdiff(io, allocator);
+    defer result.deinit();
+
+    for (result.value.units) |r| {
+        if (r.scratch) |scratch| {
+            if (scratch.ctx_path) |ctx_path| {
+                if (std.mem.eql(u8, ctx_path, destination)) {
+                    if (r.metadata.source_path) |source| {
+                        return source;
+                    }
+                }
+            }
+        }
+    }
+
+    @panic("Could not find the scratch source");
 }
 
 fn compileFile(io: std.Io, source_file: []const u8, destination_file: []const u8) !void {
@@ -114,6 +132,33 @@ fn compileFile(io: std.Io, source_file: []const u8, destination_file: []const u8
         "-d",
         release_global.macro_name(),
     };
+
+    var child = try std.process.spawn(io, .{ .argv = &command });
+    const exit_code = try child.wait(io);
+    switch (exit_code) {
+        .exited => |id| {
+            if (id > 0) return error.BUILD_ERROR;
+        },
+        else => {},
+    }
+}
+
+fn generateContext(io: std.Io, source_file: []const u8, destination_file: []const u8) !void {
+    const i = std.mem.lastIndexOf(u8, destination_file, &[_]u8{'/'}) orelse 0;
+    std.Io.Dir.createDirPath(std.Io.Dir.cwd(), io, destination_file[0..i]) catch undefined;
+
+    const command = .{
+        "zig",
+        "c++",
+        source_file,
+        "-o",
+        destination_file,
+        "-E",
+        "-P",
+        "-undef",
+        "-dD",
+    };
+
     var child = try std.process.spawn(io, .{ .argv = &command });
     const exit_code = try child.wait(io);
     switch (exit_code) {
@@ -129,15 +174,20 @@ fn taskSingle(self: *std.Build.Step, _: std.Build.Step.MakeOptions) !void {
     const allocator = self.owner.allocator;
     const args = self.owner.args orelse @panic("Missing argument?");
     const destination_file = args[0];
-    const source_file = try getSourceByDest(io, allocator, destination_file);
 
-    compileFile(io, source_file, destination_file) catch @panic("");
+    if (std.mem.find(u8, destination_file, ".ctx")) |_| {
+        const source_file = try getSourceByScratch(io, allocator, destination_file);
+        generateContext(io, source_file, destination_file) catch @panic("");
+    } else {
+        const source_file = try getSourceByDest(io, allocator, destination_file);
+        compileFile(io, source_file, destination_file) catch @panic("");
+    }
 }
 
 fn taskAll(self: *std.Build.Step, _: std.Build.Step.MakeOptions) !void {
     const io = self.owner.graph.io;
     const allocator = self.owner.allocator;
-    const result = try read_objdiff(io, allocator);
+    const result = try readObjdiff(io, allocator);
 
     for (result.value.units) |r| {
         if (r.metadata.source_path) |source| {
@@ -183,6 +233,9 @@ const Release = enum {
 const OBJDiff = struct {
     units: []struct {
         base_path: []u8 = "",
+        scratch: ?struct {
+            ctx_path: ?[]u8 = null,
+        } = .{},
         metadata: struct {
             source_path: ?[]u8 = null,
         },
