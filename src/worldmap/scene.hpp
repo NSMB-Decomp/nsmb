@@ -22,7 +22,7 @@ namespace WM {
 	};
 
 	enum PathState {
-		PS_Unk40    = 0x40, // can be walked by entity?
+		PS_Unk40    = 0x40, // actually unlocked?
 		PS_Unlocked = 0x80,
 	};
 
@@ -183,9 +183,15 @@ namespace WM {
 	extern ToadHouse* wxToadHouses;
 	extern Anim** wxAnims;
 	extern u32 wxNodeCount;
-	extern u32 wxPathCount;
+	extern s32 wxPathCount; // u32->s32 (some for loops did not match with u32)
 
-	extern u32 nodeState;
+	enum State {
+		ST_PlayerMove = 0x20,
+		ST_EntityMove = 0x40,
+		ST_CourseLeft = 0x80,
+	};
+
+	extern u32 state;
 
 	extern u16 entityPlttOfsTbl[ET_MAX];
 

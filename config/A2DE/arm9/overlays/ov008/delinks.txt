@@ -37,6 +37,7 @@ src/worldmap/entitymodel.cpp:
 
 src/worldmap/minimap.cpp:
     .text       start:0x020DC1F8 end:0x020DD21C
+    .rodata     start:0x020E2E58 end:0x020E3FEC
     .data       start:0x020E9960 end:0x020E9B68
     .bss        start:0x020EE7F8 end:0x020EE888
 
