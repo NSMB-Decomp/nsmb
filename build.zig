@@ -108,9 +108,9 @@ fn getSourceByScratch(io: std.Io, allocator: std.mem.Allocator, destination: []c
 fn compileFile(io: std.Io, source_file: []const u8, destination_file: []const u8) !void {
     const i = std.mem.lastIndexOf(u8, destination_file, &[_]u8{'/'}) orelse 0;
     std.Io.Dir.createDirPath(std.Io.Dir.cwd(), io, destination_file[0..i]) catch undefined;
-
+    const builtin = @import("builtin");
     const command = .{
-        "wine",
+        if (builtin.target.os.tag != .windows) "wine" else "start",
         "./build/compiler/mwccarm/1.2/sp3/mwccarm.exe",
         source_file,
         "-o",
