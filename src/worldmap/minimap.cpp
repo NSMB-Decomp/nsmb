@@ -715,7 +715,8 @@ u32 WmPathMap::getUnlockedPathMask() {
 	u32 world = save.game.currentWorld;
 	u32 mask = 0;
 
-	for (int i = 0; i < wxPathCount; i++) {
+	s32 pathCount = wxPathCount;
+	for (int i = 0; i < pathCount; i++) {
 
 		u8 in = i;
 		if (u8(save.game.pathStates[world][in] & PS_Unk40) != 0) {
@@ -748,26 +749,25 @@ void WmPathMap::writeTiles(const WmMapPathTile* tiles, u32 count) {
 
 }
 
-int WmPathMap::unlock(u32 pathMask) {
+bool WmPathMap::unlock(u32 pathMask) {
 
 	WmMapPathInfo* info = getPathInfo(save.game.currentWorld);
-	int unlocked = 0;
+	bool unlocked = false;
 
 	if (info != nullptr) {
 
-		WmMapPath** end = info->paths + info->count;
 		u32 prevMask = this->pathMask;
+		WmMapPath** paths;
+		WmMapPath** end = info->paths + info->count;
 
-		for (WmMapPath** paths = info->paths; paths != end; ++paths) {
+		for (paths = info->paths; paths != end; ++paths) {
 
 			WmMapPath* path = *paths;
-
-			//u32 mask = path->mask;
-
-			if (path->mask == (path->mask & pathMask) && path->mask != (path->mask & prevMask)) {
+			u32 mask = path->mask;
+			if (mask == (mask & pathMask) && mask != (mask & prevMask)) {
 				writeTiles(path->tiles, path->count);
-				unlocked = 1;
 				prevMask |= (*paths)->mask;
+				unlocked = true;
 			}
 
 		}

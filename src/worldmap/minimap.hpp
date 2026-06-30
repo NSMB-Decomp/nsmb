@@ -207,7 +207,7 @@ public:
 	static WmMapPathInfo* getPathInfo(u32 world);
 	static u32 getUnlockedPathMask();
 	void writeTiles(const WmMapPathTile* tiles, u32 count);
-	int unlock(u32 pathMask);
+	bool unlock(u32 pathMask);
 
 	void create();
 	void update();
