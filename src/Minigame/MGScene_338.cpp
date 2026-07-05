@@ -63,7 +63,6 @@ void MGScene_338::virt_20(u32 param_1)
 	if (b && (data_020887fc != 8)) {
 		a = true;
 	}
-
 	if (a) {
 		if (c == 0x148) {
 			return;
@@ -85,21 +84,15 @@ void MGScene_338::virt_20(u32 param_1)
 		data_ov130_02137df0 = 0;
 		MGScene::func_02024bec(0x151, 0, 0);
 		u32 i = 0;
-		// if ((u64)data_ov130_02137bf0 * (u64)0xcccccccd >> 3) {
-		//     return;
-		// }
-		u32 z = u32((u64)data_ov130_02137bf0 * 0xcccccccd) >> 3;
-		if (z) {
-			do {
-				if (c == data_ov130_02137df8[i].a) {
-					data_ov130_02137dec = data_ov130_02137df8[i].b;
-					data_ov130_02137de0 = data_ov130_02137df8[i].c;
-					data_ov130_02137de8 = data_ov130_02137df8[i].d;
-					data_ov130_021395e4 = data_ov130_02137df8[i].e;
-					break;
-				}
-				i += 1;
-			} while (i < z);
+		u32 z = data_ov130_02137bf0 / 10; //! note: multiple values works so not sure what makes the most sense (for instance 43 works too)
+		for (i = 0; i < z; i++) {
+			if (c == data_ov130_02137df8[i].a) {
+				data_ov130_02137dec = data_ov130_02137df8[i].b;
+				data_ov130_02137de0 = data_ov130_02137df8[i].c;
+				data_ov130_02137de8 = data_ov130_02137df8[i].d;
+				data_ov130_021395e4 = data_ov130_02137df8[i].e;
+				break;
+			}
 		}
 	}
 	this->_64 = 0;
