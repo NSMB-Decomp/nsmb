@@ -93,14 +93,14 @@ i32 Base::doOrderProc()
 			// Check to see if this object should be updated
 			if (((parent->skipFlags & UpdateChildren) != 0) || ((parent->skipFlags & Update) != 0)) {
 				this->skipFlags |= Update;
-			} else if (this->skipFlags & Update) {
+			} else if (this->GetFlags(Update)) {
 				this->skipFlags &= ~Update;
 			}
 
 			// Check to see if this object should be rendered
 			if (((parent->skipFlags & RenderChildren) != 0) || ((parent->skipFlags & Render) != 0)) {
 				this->skipFlags |= Render;
-			} else if (this->skipFlags & Render) {
+			} else if (this->GetFlags(Render)) {
 				this->skipFlags &= ~Render;
 			}
 		}
