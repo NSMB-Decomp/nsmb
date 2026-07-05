@@ -59,7 +59,7 @@ void func_02005cdc()
 
 u32 ExceptionHandlerState;
 u32 ExceptionHandlerKeys;
-u16 func_02005b34(u16)
+void func_02005b34()
 {
 	u32 newState = ExceptionHandlerState;
 	u32 keys = (REG_KEYINPUT | UNKWN) ^ KEYS_ALL;
@@ -129,9 +129,10 @@ u16 func_02005b34(u16)
 
 void ExceptionHandlerLoop()
 {
-	u16 a = REG_IME;
-	REG_IME = 0;
+    (void)REG_IME;
+
+    REG_IME = 0;
 	while (true) {
-		a = func_02005b34(a);
+		func_02005b34();
 	}
 }

@@ -4,19 +4,19 @@
 #pragma section itcm begin
 #pragma section itcm end
 
-#define REG_DISPCNT *((u32 *)0x04000000)
-#define REG_BG0CNT *((u16 *)0x04000008)
-#define REG_BG1CNT *((u16 *)0x0400000a)
-#define REG_BG2CNT *((u16 *)0x0400000c)
-#define REG_BG3CNT *((u16 *)0x0400000e)
-#define REG_BLDCNT *((u16 *)0x04000050)
-#define REG_KEYINPUT *((u16 *)0x04000130)
-#define REG_IME *((u16 *)0x04000208)
-#define REG_POWER_CNT *((u16 *)0x04000304)
-#define REG_DISPCNT_SUB *((u32 *)0x04001000)
-#define REG_BG1CNT_SUB *((u16 *)0x0400100a)
-#define REG_BLDCNT_SUB *((u16 *)0x04001050)
-#define REG_BG1HOFS *((u32 *)0x04000014)
+#define REG_DISPCNT *((vu32 *)0x04000000)
+#define REG_BG0CNT *((vu16 *)0x04000008)
+#define REG_BG1CNT *((vu16 *)0x0400000a)
+#define REG_BG2CNT *((vu16 *)0x0400000c)
+#define REG_BG3CNT *((vu16 *)0x0400000e)
+#define REG_BLDCNT *((vu16 *)0x04000050)
+#define REG_KEYINPUT *((vu16 *)0x04000130)
+#define REG_IME *((vu16 *)0x04000208)
+#define REG_POWER_CNT *((vu16 *)0x04000304)
+#define REG_DISPCNT_SUB *((vu32 *)0x04001000)
+#define REG_BG1CNT_SUB *((vu16 *)0x0400100a)
+#define REG_BLDCNT_SUB *((vu16 *)0x04001050)
+#define REG_BG1HOFS *((vu32 *)0x04000014)
 
 #define KEY_A 0 << 1
 #define KEY_B 1 << 1
