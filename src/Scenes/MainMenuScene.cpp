@@ -49,8 +49,12 @@ void MainMenuScene::onRender_1()
 			this->func_ov009_020ceaec(i, v);
 			i += 1;
 		} while (i <= 2);
-		Game::drawBNCLSpriteSub(0x15, &data_ov009_020db914, 0, this->func_ov009_020ce86c(), 0, 0, 0, 0, 0, this->button1Offset, this->buttonHitTimer + this->button1Offset);
-		Game::drawBNCLSpriteSub(0x16, &data_ov009_020db854, 0, this->func_ov009_020ce86c(), 0, 0, 0, 0, 0, this->button2Offset, this->buttonHitTimer + this->button2Offset);
+
+		u8 temp1 = this->func_ov009_020ce8d8();
+		Game::drawBNCLSpriteSub(0x15, &data_ov009_020db914, 0, temp1, 0, 0, 0, 0, 0, this->button1Offset, this->buttonHitTimer + this->button1Offset);
+
+		u8 temp2 = this->func_ov009_020ce86c();
+		Game::drawBNCLSpriteSub(0x16, &data_ov009_020db854, 0, temp2, 0, 0, 0, 0, 0, this->button2Offset, this->buttonHitTimer + this->button2Offset);
 		this->func_ov009_020cea8c();
 		this->func_ov009_020cea44(0);
 	}
