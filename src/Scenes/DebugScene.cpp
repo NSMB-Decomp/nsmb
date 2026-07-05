@@ -62,8 +62,7 @@ extern u32 func_0200696c(u32, u32, u32, u32);
 extern void func_02011e3c(u32);
 extern void func_020066f8();
 extern void func_02006740();
-extern u16 data_02087648[2];
-extern u32 data_02087650[2];
+extern u16 data_02087650[2];
 extern u32 iRam020cd304;
 extern u32 iRam020cd300;
 extern u32 data_02085a0c;
@@ -80,159 +79,159 @@ extern u32 uRam02088e05;
 void DebugScene::func_ov002_020cc514()
 {
 	u32 console_id = (u32)Input::localConsoleID;
-	if ((Input::consoleKeys[console_id][0] & 4) != 0) {
-		this->_190 = 1;
+	if ((Input::consoleKeys[console_id][0] & 4)) {
+		this->_1d8 = 1;
 		return;
 	}
-	if ((data_02087648[0] & 0x80) == 0) {
-		if (((data_02087648[0] & 0x40) != 0) && (this->_1ac = this->_1ac - 1, this->_1ac < 0)) {
-			this->_1ac = 0xf;
+
+	if ((Input::consoleKeysRepeated[0] & 0x80)) {
+		this->_1f4 = this->_1f4 + 1;
+		if (0x10 <= this->_1f4) {
+			this->_1f4 = 0;
 		}
-	} else {
-		this->_1ac = this->_1ac + 1;
-		if (0xf < this->_1ac) {
-			this->_1ac = 0;
-		}
+	} else if (((Input::consoleKeysRepeated[0] & 0x40)) && (this->_1f4 = this->_1f4 - 1, this->_1f4 < 0)) {
+		this->_1f4 = 0xf;
 	}
-	u32 iVar2 = *(int *)this->_pad1;
-	u32 uVar1 = this->_1ac;
-	if (uVar1 < iVar2 + 10) {
-		if (uVar1 < iVar2) {
-			*(u32 *)this->_pad1 = uVar1;
-		}
-	} else {
-		*(u32 *)this->_pad1 = uVar1 - 9;
+
+	i32 iVar2 = this->_1f8;
+	i32 uVar1 = this->_1f4;
+	if (uVar1 >= iVar2 + 10) {
+		this->_1f8 = uVar1 - 9;
+
+	} else if (uVar1 < iVar2) {
+		this->_1f8 = uVar1;
 	}
-	switch (this->_1ac) {
+
+	switch (this->_1f4) {
+	//
 	case 0:
-		if ((data_02087648[0] & 0x10) == 0) {
-			if ((data_02087648[0] & 0x20) != 0) {
-				this->_194 = this->_194 - 1;
-				if (this->_194 < 0) {
-					this->_194 = 9;
-				}
-				iVar2 = func_0201f5fc(this->_194);
-				if (iVar2 == 0) {
-					u32 *puVar3 = &this->_194;
-					do {
-						*puVar3 = *puVar3 - 1;
-						if (this->_194 < 0) {
-							this->_194 = 9;
-						}
-						iVar2 = func_0201f5fc(this->_194);
-					} while (iVar2 == 0);
-				}
+		if ((Input::consoleKeysRepeated[0] & 0x10)) {
+			this->_1dc += 1;
+			if (0xa <= this->_1dc) {
+				this->_1dc = 0;
 			}
-		} else {
-			this->_194 = this->_194 + 1;
-			if (9 < this->_194) {
-				this->_194 = 0;
-			}
-			iVar2 = func_0201f5fc(this->_194);
+			iVar2 = func_0201f5fc(this->_1dc);
 			if (iVar2 == 0) {
-				u32 *puVar3 = &this->_194;
+				i32 *puVar3 = &this->_1dc;
 				do {
 					*puVar3 = *puVar3 + 1;
-					iVar2 = func_0201f5fc(this->_194);
+					iVar2 = func_0201f5fc(this->_1dc);
+				} while (iVar2 == 0);
+			}
+		} else if ((Input::consoleKeysRepeated[0] & 0x20)) {
+			this->_1dc = this->_1dc - 1;
+			if (this->_1dc < 0) {
+				this->_1dc = 9;
+			}
+			iVar2 = func_0201f5fc(this->_1dc);
+			if (iVar2 == 0) {
+				i32 *puVar3 = &this->_1dc;
+				do {
+					*puVar3 = *puVar3 - 1;
+					if (this->_1dc < 0) {
+						this->_1dc = 9;
+					}
+					iVar2 = func_0201f5fc(this->_1dc);
 				} while (iVar2 == 0);
 			}
 		}
-		iVar2 = func_0201f5fc(this->_194);
-		if (iVar2 <= this->_198) {
-			this->_198 = 0;
+
+		iVar2 = func_0201f5fc(this->_1dc);
+		if (this->_1e0 >= iVar2) {
+			this->_1e0 = 0;
 		}
-		iVar2 = func_0201f590(this->_194, this->_198);
-		if (iVar2 <= this->_19c) {
-			this->_19c = 0;
+		iVar2 = func_0201f590(this->_1dc, this->_1e0);
+		if (this->_1e4 >= iVar2) {
+			this->_1e4 = 0;
 		}
-		iVar2 = func_0201f53c(this->_194, this->_198, this->_19c);
-		if (this->_pad0[iVar2 + -0x44] <= this->_1a0) {
-			this->_1a0 = 0xffffffff;
+		iVar2 = func_0201f53c(this->_1dc, this->_1e0, this->_1e4);
+		if (this->_1e8 >= this->_64[iVar2]) {
+			this->_1e8 = -1;
 		}
 		break;
+
+	//
 	case 1:
-		if ((data_02087648[0] & 0x10) == 0) {
-			if ((data_02087648[0] & 0x20) == 0) {
-				if ((data_02087648[0] & 0x100) == 0) {
-					if (((data_02087648[0] & 0x200) != 0) && (this->_198 = this->_198 - 10, this->_198 < 0)) {
-						iVar2 = func_0201f5fc(this->_194);
-						this->_198 = iVar2 - 1;
-					}
-				} else {
-					this->_198 = this->_198 + 10;
-					iVar2 = func_0201f5fc(this->_194);
-					if (iVar2 <= this->_198) {
-						this->_198 = 0;
-					}
-				}
-			} else {
-				this->_198 = this->_198 - 1;
-				if (this->_198 < 0) {
-					iVar2 = func_0201f5fc(this->_194);
-					this->_198 = iVar2 - 1;
-				}
+		if ((Input::consoleKeysRepeated[0] & 0x10)) {
+			this->_1e0 = this->_1e0 + 1;
+			iVar2 = func_0201f5fc(this->_1dc);
+			if (this->_1e0 >= iVar2) {
+				this->_1e0 = 0;
 			}
-		} else {
-			this->_198 = this->_198 + 1;
-			iVar2 = func_0201f5fc(this->_194);
-			if (iVar2 <= this->_198) {
-				this->_198 = 0;
+		} else if ((Input::consoleKeysRepeated[0] & 0x20)) {
+			this->_1e0 = this->_1e0 - 1;
+			if (this->_1e0 < 0) {
+				iVar2 = func_0201f5fc(this->_1dc);
+				this->_1e0 = iVar2 - 1;
 			}
+		} else if ((Input::consoleKeysRepeated[0] & 0x100)) {
+			this->_1e0 = this->_1e0 + 10;
+			iVar2 = func_0201f5fc(this->_1dc);
+			if (this->_1e0 >= iVar2) {
+				this->_1e0 = 0;
+			}
+		} else if (((Input::consoleKeysRepeated[0] & 0x200) != 0) && (this->_1e0 = this->_1e0 - 10, this->_1e0 < 0)) {
+			iVar2 = func_0201f5fc(this->_1dc);
+			this->_1e0 = iVar2 - 1;
 		}
-		iVar2 = func_0201f590(this->_194, this->_198);
-		if (iVar2 <= this->_19c) {
-			this->_19c = 0;
+
+		iVar2 = func_0201f590(this->_1dc, this->_1e0);
+		if (this->_1e4 >= iVar2) {
+			this->_1e4 = 0;
 		}
-		iVar2 = func_0201f53c(this->_194, this->_198, this->_19c);
-		if (this->_pad0[iVar2 + -0x44] <= this->_1a0) {
-			this->_1a0 = 0xffffffff;
+		iVar2 = func_0201f53c(this->_1dc, this->_1e0, this->_1e4);
+		if (this->_1e8 >= this->_64[iVar2]) {
+			this->_1e8 = -1;
 		}
 		break;
+
+	//
 	case 2:
-		if ((data_02087648[0] & 0x10) == 0) {
-			if ((data_02087648[0] & 0x20) != 0) {
-				if (((data_02087650[console_id] & 0x200) == 0) && ((data_02087650[console_id] & 0x100) == 0)) {
-					this->_19c = this->_19c - 1;
-				} else {
-					this->_19c = this->_19c - 10;
-				}
-				if (this->_19c < 0) {
-					iVar2 = func_0201f590(this->_194, this->_198);
-					this->_19c = iVar2 - 1;
-				}
-			}
-		} else {
-			if (((data_02087650[console_id] & 0x200) == 0) && ((data_02087650[console_id] & 0x100) == 0)) {
-				this->_19c = this->_19c + 1;
+		if ((Input::consoleKeysRepeated[0] & 0x10)) {
+			if (((data_02087650[console_id] & 0x200)) || ((data_02087650[console_id] & 0x100))) {
+				this->_1e4 += 10;
 			} else {
-				this->_19c = this->_19c + 10;
+				this->_1e4 += 1;
 			}
-			iVar2 = func_0201f590(this->_194, this->_198);
-			if (iVar2 <= this->_19c) {
-				this->_19c = 0;
+			iVar2 = func_0201f590(this->_1dc, this->_1e0);
+			if (this->_1e4 >= iVar2) {
+				this->_1e4 = 0;
+			}
+		} else if ((Input::consoleKeysRepeated[0] & 0x20)) {
+			if (((data_02087650[console_id] & 0x200)) || ((data_02087650[console_id] & 0x100))) {
+				this->_1e4 -= 10;
+			} else {
+				this->_1e4 -= 1;
+			}
+			if (this->_1e4 < 0) {
+				iVar2 = func_0201f590(this->_1dc, this->_1e0);
+				this->_1e4 = iVar2 - 1;
 			}
 		}
-		iVar2 = func_0201f53c(this->_194, this->_198, this->_19c);
-		if (this->_pad0[iVar2 + -0x44] <= this->_1a0) {
-			this->_1a0 = 0xffffffff;
+
+		iVar2 = func_0201f53c(this->_1dc, this->_1e0, this->_1e4);
+		if (this->_1e8 >= this->_64[iVar2]) {
+			this->_1e8 = -1;
 		}
 		break;
+
+	//
 	case 3:
-		iVar2 = func_0201f53c(this->_194, this->_198, this->_19c);
-		if ((data_02087648[0] & 0x10) == 0) {
-			if (((data_02087648[0] & 0x20) != 0) && (this->_1a0 = this->_1a0 - 1, this->_1a0 < -2)) {
-				this->_1a0 = this->_pad0[iVar2 + -0x44] - 1;
+		iVar2 = func_0201f53c(this->_1dc, this->_1e0, this->_1e4);
+		if ((Input::consoleKeysRepeated[0] & 0x10) == 0) {
+			if (((Input::consoleKeysRepeated[0] & 0x20) != 0) && (this->_1e8 = this->_1e8 - 1, this->_1e8 < -2)) {
+				this->_1e8 = this->_pad0[iVar2 + -0x44] - 1;
 			}
 		} else {
-			this->_1a0 = this->_1a0 + 1;
-			if (this->_pad0[iVar2 + -0x44] <= this->_1a0) {
-				this->_1a0 = 0xfffffffe;
+			this->_1e8 = this->_1e8 + 1;
+			if (this->_pad0[iVar2 + -0x44] <= this->_1e8) {
+				this->_1e8 = -2;
 			}
 		}
 		break;
 	case 4:
-		if ((data_02087648[0] & 0x10) == 0) {
-			if (((data_02087648[0] & 0x20) != 0) && (this->_1a4 = this->_1a4 - 1, this->_1a4 < 0)) {
+		if ((Input::consoleKeysRepeated[0] & 0x10) == 0) {
+			if (((Input::consoleKeysRepeated[0] & 0x20) != 0) && (this->_1a4 = this->_1a4 - 1, this->_1a4 < 0)) {
 				this->_1a4 = 2;
 			}
 		} else {
@@ -243,8 +242,8 @@ void DebugScene::func_ov002_020cc514()
 		}
 		break;
 	case 5:
-		if ((data_02087648[0] & 0x10) == 0) {
-			if (((data_02087648[0] & 0x20) != 0) && (iRam020cd304 += -1, iRam020cd304 < 0)) {
+		if ((Input::consoleKeysRepeated[0] & 0x10) == 0) {
+			if (((Input::consoleKeysRepeated[0] & 0x20) != 0) && (iRam020cd304 += -1, iRam020cd304 < 0)) {
 				iRam020cd304 = 3;
 			}
 		} else {
@@ -255,8 +254,8 @@ void DebugScene::func_ov002_020cc514()
 		}
 		break;
 	case 6:
-		if ((data_02087648[0] & 0x10) == 0) {
-			if (((data_02087648[0] & 0x20) != 0) && (iRam020cd300 += -1, iRam020cd300 < 0)) {
+		if ((Input::consoleKeysRepeated[0] & 0x10) == 0) {
+			if (((Input::consoleKeysRepeated[0] & 0x20) != 0) && (iRam020cd300 += -1, iRam020cd300 < 0)) {
 				iRam020cd300 = 5;
 			}
 		} else {
@@ -267,8 +266,8 @@ void DebugScene::func_ov002_020cc514()
 		}
 		break;
 	case 7:
-		if ((data_02087648[0] & 0x10) == 0) {
-			if (((data_02087648[0] & 0x20) != 0) && (this->_1d8 = this->_1d8 - 1, this->_1d8 < 0)) {
+		if ((Input::consoleKeysRepeated[0] & 0x10) == 0) {
+			if (((Input::consoleKeysRepeated[0] & 0x20) != 0) && (this->_1d8 = this->_1d8 - 1, this->_1d8 < 0)) {
 				this->_1d8 = 4;
 			}
 		} else {
@@ -280,13 +279,13 @@ void DebugScene::func_ov002_020cc514()
 		data_02085a0c = this->_1d8;
 		break;
 	case 8:
-		if (((data_02087648[0] & 0x10) != 0) || ((data_02087648[0] & 0x20) != 0)) {
+		if (((Input::consoleKeysRepeated[0] & 0x10) != 0) || ((Input::consoleKeysRepeated[0] & 0x20) != 0)) {
 			this->_1cc = this->_1cc ^ 1;
 		}
 		break;
 	case 9:
-		if ((data_02087648[0] & 0x10) == 0) {
-			if (((data_02087648[0] & 0x20) != 0) && (this->_1d0 = this->_1d0 - 1, this->_1d0 < -2)) {
+		if ((Input::consoleKeysRepeated[0] & 0x10) == 0) {
+			if (((Input::consoleKeysRepeated[0] & 0x20) != 0) && (this->_1d0 = this->_1d0 - 1, this->_1d0 < -2)) {
 				this->_1d0 = 0x6f;
 			}
 		} else {
@@ -295,8 +294,8 @@ void DebugScene::func_ov002_020cc514()
 				this->_1d0 = 0xfffffffe;
 			}
 		}
-		if ((data_02087648[0] & 0x100) == 0) {
-			if ((data_02087648[0] & 0x200) != 0) {
+		if ((Input::consoleKeysRepeated[0] & 0x100) == 0) {
+			if ((Input::consoleKeysRepeated[0] & 0x200) != 0) {
 				this->_1d0 = this->_1d0 - 0x80;
 			}
 		} else {
@@ -305,14 +304,14 @@ void DebugScene::func_ov002_020cc514()
 		_data_02085a90 = this->_1d0;
 		break;
 	case 10:
-		if (((data_02087648[0] & 0x10) != 0) || ((data_02087648[0] & 0x20) != 0)) {
+		if (((Input::consoleKeysRepeated[0] & 0x10) != 0) || ((Input::consoleKeysRepeated[0] & 0x20) != 0)) {
 			this->_1c8 = this->_1c8 ^ 1;
 		}
 		data_02085ad4[0] = this->_1c8; // data_02085ad4 = this->_1c8;
 		break;
 	case 0xb:
-		if ((data_02087648[0] & 0x10) == 0) {
-			if ((data_02087648[0] & 0x20) != 0) {
+		if ((Input::consoleKeysRepeated[0] & 0x10) == 0) {
+			if ((Input::consoleKeysRepeated[0] & 0x20) != 0) {
 				if (((data_02087650[console_id] & 0x200) == 0) && ((data_02087650[console_id] & 0x100) == 0)) {
 
 					this->_1d4 = this->_1d4 - 1;
@@ -343,8 +342,8 @@ void DebugScene::func_ov002_020cc514()
 		}
 		break;
 	case 0xc:
-		if ((data_02087648[0] & 0x10) == 0) {
-			if (((data_02087648[0] & 0x20) != 0) && (this->_1dc = this->_1dc - 1, this->_1dc < 0)) {
+		if ((Input::consoleKeysRepeated[0] & 0x10) == 0) {
+			if (((Input::consoleKeysRepeated[0] & 0x20) != 0) && (this->_1dc = this->_1dc - 1, this->_1dc < 0)) {
 				this->_1dc = 2;
 			}
 		} else {
@@ -355,13 +354,13 @@ void DebugScene::func_ov002_020cc514()
 		}
 		break;
 	case 0xd:
-		if (((data_02087648[0] & 0x10) != 0) || ((data_02087648[0] & 0x20) != 0)) {
+		if (((Input::consoleKeysRepeated[0] & 0x10) != 0) || ((Input::consoleKeysRepeated[0] & 0x20) != 0)) {
 			this->_1e0 = this->_1e0 ^ 1;
 		}
 		break;
 	case 0xe:
-		if ((data_02087648[0] & 0x10) == 0) {
-			if (((data_02087648[0] & 0x20) != 0) && (this->_1e4 = this->_1e4 - 1, this->_1e4 < 0)) {
+		if ((Input::consoleKeysRepeated[0] & 0x10) == 0) {
+			if (((Input::consoleKeysRepeated[0] & 0x20) != 0) && (this->_1e4 = this->_1e4 - 1, this->_1e4 < 0)) {
 				this->_1e4 = 2;
 			}
 		} else {
@@ -372,8 +371,8 @@ void DebugScene::func_ov002_020cc514()
 		}
 		break;
 	case 0xf:
-		if ((data_02087648[0] & 0x10) == 0) {
-			if (((data_02087648[0] & 0x20) != 0) && (this->_1e8 = this->_1e8 - 1, this->_1e8 < 0)) {
+		if ((Input::consoleKeysRepeated[0] & 0x10) == 0) {
+			if (((Input::consoleKeysRepeated[0] & 0x20) != 0) && (this->_1e8 = this->_1e8 - 1, this->_1e8 < 0)) {
 				this->_1e8 = 2;
 			}
 		} else {
@@ -391,16 +390,16 @@ void DebugScene::func_ov002_020cc514()
 			return;
 		}
 	}
-	u32 bVar4 = this->_1a0 != 0xfffffffe;
+	u32 bVar4 = this->_1e8 != 0xfffffffe;
 	if (bVar4) {
 		func_020066f8();
 	} else {
-		this->_1a0 = 0xffffffff;
+		this->_1e8 = 0xffffffff;
 		func_02006740();
 	}
 	data_02085a1c = !bVar4;
 	data_02085a10 = this->_1dc;
-	func_0200696c(0xd, 0, this->_194 & 0xff, this->_198 & 0xff);
+	func_0200696c(0xd, 0, this->_1dc & 0xff, this->_1e0 & 0xff);
 	uVar1 = this->_1e8;
 	if (uVar1 == 0) {
 		data_02088e04 = 0xff;
@@ -492,7 +491,6 @@ void DebugScene::func_ov002_020cc328()
 DebugScene::~DebugScene()
 {
 }
-
 
 const u8 data_ov002_020cd114[4] = {0, 1, 3, 0};
 u8 data_ov002_020cd240[4][2] = {
