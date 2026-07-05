@@ -421,7 +421,6 @@ void DebugScene::func_ov002_020cc514()
 	func_02011e3c(0x1e);
 }
 
-u32 data_ov002_020cd120[1];
 void func_020131fc(u32, u32);
 void DebugScene::func_ov002_020cc328()
 {
@@ -482,11 +481,11 @@ void DebugScene::func_ov002_020cc328()
 	Stage::stageAreaID = this->_1e4;
 	u32 uVar1;
 	if (Input::consoleKeys[local_console_id][0] & 1) {
-		uVar1 = data_ov002_020cd11c[this->_1fc].b;
-	} else {
 		uVar1 = data_ov002_020cd11c[this->_1fc].c;
+	} else {
+		uVar1 = data_ov002_020cd11c[this->_1fc].b;
 	}
-	func_020131fc(uVar1, data_ov002_020cd120[b]);
+	func_020131fc(uVar1, data_ov002_020cd11c[this->_1fc].d);
 	GlobalFader.func_02007bfc();
 }
 
