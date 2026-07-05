@@ -63,9 +63,9 @@ extern void func_02011e3c(u32);
 extern void func_020066f8();
 extern void func_02006740();
 extern u16 data_02087650[2];
-extern u32 iRam020cd304;
-extern u32 iRam020cd300;
-extern u32 data_02085a0c;
+extern i32 iRam020cd304;
+extern i32 iRam020cd300;
+extern u8 data_02085a0c;
 extern u32 _data_02085a90;
 extern u32 data_0208b4f0;
 extern u32 data_02085a1c;
@@ -80,7 +80,7 @@ void DebugScene::func_ov002_020cc514()
 {
 	u32 console_id = (u32)Input::localConsoleID;
 	if ((Input::consoleKeys[console_id][0] & 4)) {
-		this->_1d8 = 1;
+		this->_21c = 1;
 		return;
 	}
 
@@ -218,158 +218,162 @@ void DebugScene::func_ov002_020cc514()
 	//
 	case 3:
 		iVar2 = func_0201f53c(this->_1dc, this->_1e0, this->_1e4);
-		if ((Input::consoleKeysRepeated[0] & 0x10) == 0) {
-			if (((Input::consoleKeysRepeated[0] & 0x20) != 0) && (this->_1e8 = this->_1e8 - 1, this->_1e8 < -2)) {
-				this->_1e8 = this->_pad0[iVar2 + -0x44] - 1;
-			}
-		} else {
+		if ((Input::consoleKeysRepeated[0] & 0x10)) {
 			this->_1e8 = this->_1e8 + 1;
-			if (this->_pad0[iVar2 + -0x44] <= this->_1e8) {
+			if (this->_1e8 >= this->_64[iVar2]) {
 				this->_1e8 = -2;
 			}
+		} else if (((Input::consoleKeysRepeated[0] & 0x20)) && (this->_1e8 -= 1, this->_1e8 < -2)) {
+			this->_1e8 = this->_64[iVar2] - 1;
 		}
 		break;
+
+	//
 	case 4:
-		if ((Input::consoleKeysRepeated[0] & 0x10) == 0) {
-			if (((Input::consoleKeysRepeated[0] & 0x20) != 0) && (this->_1a4 = this->_1a4 - 1, this->_1a4 < 0)) {
-				this->_1a4 = 2;
+		if ((Input::consoleKeysRepeated[0] & 0x10)) {
+			this->_1ec = this->_1ec + 1;
+			if (2 < this->_1ec) {
+				this->_1ec = 0;
 			}
-		} else {
-			this->_1a4 = this->_1a4 + 1;
-			if (2 < this->_1a4) {
-				this->_1a4 = 0;
-			}
+		} else if (((Input::consoleKeysRepeated[0] & 0x20)) && (this->_1ec = this->_1ec - 1, this->_1ec < 0)) {
+			this->_1ec = 2;
 		}
 		break;
+
+	//
 	case 5:
-		if ((Input::consoleKeysRepeated[0] & 0x10) == 0) {
-			if (((Input::consoleKeysRepeated[0] & 0x20) != 0) && (iRam020cd304 += -1, iRam020cd304 < 0)) {
-				iRam020cd304 = 3;
-			}
-		} else {
+		if ((Input::consoleKeysRepeated[0] & 0x10)) {
 			iRam020cd304 += 1;
-			if (3 < iRam020cd304) {
+			if (iRam020cd304 > 3) {
 				iRam020cd304 = 0;
 			}
+		} else if (((Input::consoleKeysRepeated[0] & 0x20) != 0) && (iRam020cd304 += -1, iRam020cd304 < 0)) {
+			iRam020cd304 = 3;
 		}
 		break;
+
+	//
 	case 6:
-		if ((Input::consoleKeysRepeated[0] & 0x10) == 0) {
-			if (((Input::consoleKeysRepeated[0] & 0x20) != 0) && (iRam020cd300 += -1, iRam020cd300 < 0)) {
-				iRam020cd300 = 5;
-			}
-		} else {
+		if ((Input::consoleKeysRepeated[0] & 0x10)) {
 			iRam020cd300 += 1;
 			if (5 < iRam020cd300) {
 				iRam020cd300 = 0;
 			}
+		} else if (((Input::consoleKeysRepeated[0] & 0x20) != 0) && (iRam020cd300 += -1, iRam020cd300 < 0)) {
+			iRam020cd300 = 5;
 		}
 		break;
+
+	//
 	case 7:
-		if ((Input::consoleKeysRepeated[0] & 0x10) == 0) {
-			if (((Input::consoleKeysRepeated[0] & 0x20) != 0) && (this->_1d8 = this->_1d8 - 1, this->_1d8 < 0)) {
-				this->_1d8 = 4;
+		if ((Input::consoleKeysRepeated[0] & 0x10)) {
+			this->_21c = this->_21c + 1;
+			if (this->_21c >= 5) {
+				this->_21c = 0;
 			}
-		} else {
-			this->_1d8 = this->_1d8 + 1;
-			if (4 < this->_1d8) {
-				this->_1d8 = 0;
-			}
+		} else if (((Input::consoleKeysRepeated[0] & 0x20) != 0) && (this->_21c = this->_21c - 1, this->_21c < 0)) {
+			this->_21c = 4;
 		}
-		data_02085a0c = this->_1d8;
+		data_02085a0c = this->_21c;
 		break;
+
+		//
+	case 9:
+		if ((Input::consoleKeysRepeated[0] & 0x10)) {
+			this->_214 = this->_214 + 1;
+			if (this->_214 >= 0x70) {
+				this->_214 = -2;
+			}
+		} else if (((Input::consoleKeysRepeated[0] & 0x20) != 0) && (this->_214 = this->_214 - 1, this->_214 < -2)) {
+			this->_214 = 0x6f;
+		}
+
+		if ((Input::consoleKeysRepeated[0] & 0x100)) {
+			this->_214 += 0x80;
+		} else if ((Input::consoleKeysRepeated[0] & 0x200) != 0) {
+			this->_214 -= 0x80;
+		}
+		_data_02085a90 = this->_214;
+		break;
+
+	//
 	case 8:
 		if (((Input::consoleKeysRepeated[0] & 0x10) != 0) || ((Input::consoleKeysRepeated[0] & 0x20) != 0)) {
 			this->_1cc = this->_1cc ^ 1;
 		}
 		break;
-	case 9:
-		if ((Input::consoleKeysRepeated[0] & 0x10) == 0) {
-			if (((Input::consoleKeysRepeated[0] & 0x20) != 0) && (this->_1d0 = this->_1d0 - 1, this->_1d0 < -2)) {
-				this->_1d0 = 0x6f;
-			}
-		} else {
-			this->_1d0 = this->_1d0 + 1;
-			if (0x6f < this->_1d0) {
-				this->_1d0 = 0xfffffffe;
-			}
-		}
-		if ((Input::consoleKeysRepeated[0] & 0x100) == 0) {
-			if ((Input::consoleKeysRepeated[0] & 0x200) != 0) {
-				this->_1d0 = this->_1d0 - 0x80;
-			}
-		} else {
-			this->_1d0 = this->_1d0 + 0x80;
-		}
-		_data_02085a90 = this->_1d0;
-		break;
+
+	//
 	case 10:
 		if (((Input::consoleKeysRepeated[0] & 0x10) != 0) || ((Input::consoleKeysRepeated[0] & 0x20) != 0)) {
 			this->_1c8 = this->_1c8 ^ 1;
 		}
 		data_02085ad4[0] = this->_1c8; // data_02085ad4 = this->_1c8;
 		break;
-	case 0xb:
-		if ((Input::consoleKeysRepeated[0] & 0x10) == 0) {
-			if ((Input::consoleKeysRepeated[0] & 0x20) != 0) {
-				if (((data_02087650[console_id] & 0x200) == 0) && ((data_02087650[console_id] & 0x100) == 0)) {
 
-					this->_1d4 = this->_1d4 - 1;
-				} else {
-					this->_1d4 = this->_1d4 - 10;
-				}
-				if (this->_1d4 < 0) {
-					this->_1d4 = 999;
-				}
-			}
-		} else {
-			if (((data_02087650[console_id] & 0x200) == 0) && ((data_02087650[console_id] & 0x100) == 0)) {
-
-				this->_1d4 = this->_1d4 + 1;
+	//
+	case 11:
+		if ((Input::consoleKeysRepeated[0] & 0x10)) {
+			if (((data_02087650[console_id] & 0x200)) || ((data_02087650[console_id] & 0x100))) {
+				this->_218 += 10;
 			} else {
-				this->_1d4 = this->_1d4 + 10;
+				this->_218 += 1;
 			}
-			if (999 < this->_1d4) {
-				this->_1d4 = 0;
+			if (999 < this->_218) {
+				this->_218 = 0;
+			}
+		} else if ((Input::consoleKeysRepeated[0] & 0x20)) {
+			if (((data_02087650[console_id] & 0x200)) || ((data_02087650[console_id] & 0x100))) {
+				this->_218 = this->_218 - 10;
+			} else {
+				this->_218 = this->_218 - 1;
+			}
+			if (this->_218 < 0) {
+				this->_218 = 999;
 			}
 		}
-		if (this->_1d4 == 0) {
+
+		if (this->_218) {
+			func_02020580(0, 0);
+			func_02020580(1, this->_218);
+		} else {
 			func_02020580(0, 3);
 			func_02020580(1, 3);
-		} else {
-			func_02020580(0, 0);
-			func_02020580(1, this->_1d4);
 		}
 		break;
+
+	//
 	case 0xc:
-		if ((Input::consoleKeysRepeated[0] & 0x10) == 0) {
-			if (((Input::consoleKeysRepeated[0] & 0x20) != 0) && (this->_1dc = this->_1dc - 1, this->_1dc < 0)) {
-				this->_1dc = 2;
-			}
-		} else {
+		if ((Input::consoleKeysRepeated[0] & 0x10)) {
 			this->_1dc = this->_1dc + 1;
-			if (2 < this->_1dc) {
+			if (this->_1dc >= 3) {
 				this->_1dc = 0;
 			}
+		} else if (((Input::consoleKeysRepeated[0] & 0x20) != 0) && (this->_1dc = this->_1dc - 1, this->_1dc < 0)) {
+			this->_1dc = 2;
 		}
 		break;
+
+	//
 	case 0xd:
-		if (((Input::consoleKeysRepeated[0] & 0x10) != 0) || ((Input::consoleKeysRepeated[0] & 0x20) != 0)) {
-			this->_1e0 = this->_1e0 ^ 1;
+		if (((Input::consoleKeysRepeated[0] & 0x10)) || ((Input::consoleKeysRepeated[0] & 0x20))) {
+			this->_1e0 ^= 1;
 		}
 		break;
+
+	//
 	case 0xe:
-		if ((Input::consoleKeysRepeated[0] & 0x10) == 0) {
-			if (((Input::consoleKeysRepeated[0] & 0x20) != 0) && (this->_1e4 = this->_1e4 - 1, this->_1e4 < 0)) {
-				this->_1e4 = 2;
-			}
-		} else {
+		if ((Input::consoleKeysRepeated[0] & 0x10)) {
 			this->_1e4 = this->_1e4 + 1;
-			if (2 < this->_1e4) {
+			if (this->_1e4 >= 3) {
 				this->_1e4 = 0;
 			}
+		} else if (((Input::consoleKeysRepeated[0] & 0x20) != 0) && (this->_1e4 = this->_1e4 - 1, this->_1e4 < 0)) {
+			this->_1e4 = 2;
 		}
 		break;
+
+	//
 	case 0xf:
 		if ((Input::consoleKeysRepeated[0] & 0x10) == 0) {
 			if (((Input::consoleKeysRepeated[0] & 0x20) != 0) && (this->_1e8 = this->_1e8 - 1, this->_1e8 < 0)) {
@@ -425,7 +429,7 @@ void DebugScene::func_ov002_020cc328()
 {
 	u16 local_console_id = Input::localConsoleID;
 	if ((Input::consoleKeys[local_console_id][0] & 4) != 0) {
-		this->_1d8 = 0;
+		this->_21c = 0;
 		return;
 	}
 
