@@ -347,7 +347,7 @@ void onRender_3();
 bool(func_0200ae9c)(Vec3_32 *);
 bool(func_0201f000)(Vec3_32 *);
 bool isMultiBootCart();
-bool func_020109c8();
+bool Wifi_isMinigames();
 void InitGame();
 void SetMasterGameMode(u32);
 void SetBootScene(u32);
