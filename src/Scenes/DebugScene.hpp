@@ -31,11 +31,14 @@ class DebugScene : public Scene
 	i32 _1fc;
 	u32 _200;
 	i32 _204;
-	u8 _pad2[0xc];
+	i32 _208;
+	i32 _20c;
+	i32 _210;
 	i32 _214;
 	i32 _218;
 	i32 _21c;
-	u8 _pad3[0x10];
+	i32 _220;
+	u8 _pad3[0x8];
 
 	inline DebugScene();
 	inline ~DebugScene();

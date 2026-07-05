@@ -54,11 +54,30 @@ s32 DebugScene::onUpdate()
 	return true;
 }
 
+struct IDK {
+	u32 field1_0x4;
+	u32 field0_0x0;
+	u32 field2_0x8;
+	u32 field3_0xc;
+	u32 field4_0x10;
+	u32 field5_0x14;
+	u32 field6_0x18;
+	u8 field7_0x1c;
+	u8 field8_0x1d;
+	u8 field9_0x1e;
+	u8 field10_0x1f;
+	u32 field11_0x20;
+	u32 field12_0x24;
+	u32 field13_0x28;
+	u32 field14_0x2c;
+	u32 field15_0x30;
+};
 extern u32 func_0201f5fc(u32);
 extern u32 func_0201f590(u32, u32);
 extern u32 func_0201f53c(u32, u32, u32);
 extern u32 func_02020580(u32, u32);
-extern u32 func_0200696c(u32, u32, u32, u32);
+extern u32 func_0200696c(u32, u32, u32, u32, IDK);
+extern void func_0200696c_(u8, u8, u8, u8, u8, u8, u8, u8, u8, u8, u8, u8, u8, u8, u8, u8);
 extern void func_02011e3c(u32);
 extern void func_020066f8();
 extern void func_02006740();
@@ -67,15 +86,16 @@ extern i32 iRam020cd304;
 extern i32 iRam020cd300;
 extern u8 data_02085a0c;
 extern u32 _data_02085a90;
-extern u32 data_0208b4f0;
+extern u8 data_0208b4f0;
 extern u32 data_02085a1c;
 extern u32 data_02085a10;
-extern u32 data_02088e04;
-extern u32 uRam02088e06;
+extern u8 data_02088e04;
+extern u8 uRam02088e06;
 extern u32 uRam02088bfc;
-extern u32 uRam02088e07;
+extern u8 uRam02088e07;
 extern u32 uRam02088c04;
-extern u32 uRam02088e05;
+extern u8 uRam02088e05;
+
 void DebugScene::func_ov002_020cc514()
 {
 	u32 console_id = (u32)Input::localConsoleID;
@@ -375,52 +395,82 @@ void DebugScene::func_ov002_020cc514()
 
 	//
 	case 0xf:
-		if ((Input::consoleKeysRepeated[0] & 0x10) == 0) {
-			if (((Input::consoleKeysRepeated[0] & 0x20) != 0) && (this->_1e8 = this->_1e8 - 1, this->_1e8 < 0)) {
-				this->_1e8 = 2;
-			}
-		} else {
+		if ((Input::consoleKeysRepeated[0] & 0x10)) {
 			this->_1e8 = this->_1e8 + 1;
-			if (2 < this->_1e8) {
+			if (this->_1e8 >= 3) {
 				this->_1e8 = 0;
 			}
+		} else if (((Input::consoleKeysRepeated[0] & 0x20) != 0) && (this->_1e8 = this->_1e8 - 1, this->_1e8 < 0)) {
+			this->_1e8 = 2;
 		}
 	}
+
 	if (((Input::consoleKeys[Input::localConsoleID][0] & 1) == 0) && ((Input::consoleKeys[Input::localConsoleID][0] & 8) == 0)) {
 		if (this->_1a8 == 0) {
 			return;
 		}
-		if (data_0208b4f0 == '\0') {
+		if (data_0208b4f0) {
 			return;
 		}
 	}
-	u32 bVar4 = this->_1e8 != 0xfffffffe;
+
+	u32 iVar7;
+	u32 bVar10;
+	u32 uVar9;
+	u32 bVar8;
+	extern u32 *DAT_arm9_ov002__020cd060;
+	if (*DAT_arm9_ov002__020cd060 == 0) {
+		bVar10 = 1;
+		uVar9 = 0;
+		bVar8 = bVar10;
+	} else {
+		// iVar7 = *DAT_arm9_ov002__020cd060 + -1;
+		// bVar10 = *(byte *)(DAT_arm9_ov002__020cd07c + iVar7);
+		// uVar9 = *(undefined1 *)(DAT_arm9_ov002__020cd080 + iVar7 * 2);
+		// bVar8 = *(byte *)(DAT_arm9_ov002__020cd084 + iVar7 * 2);
+	}
+
+	u32 bVar4 = this->_1a0 != 0xfffffffe;
 	if (bVar4) {
 		func_020066f8();
 	} else {
-		this->_1e8 = 0xffffffff;
+		this->_1a0 = 0xffffffff;
 		func_02006740();
 	}
 	data_02085a1c = !bVar4;
 	data_02085a10 = this->_1dc;
-	func_0200696c(0xd, 0, this->_1dc & 0xff, this->_1e0 & 0xff);
-	uVar1 = this->_1e8;
-	if (uVar1 == 0) {
-		data_02088e04 = 0xff;
-		uRam02088e06 = 0xff;
-	} else if (uVar1 == 1) {
-		uRam02088bfc = 0;
-		uRam02088c04 = 0;
-		data_02088e04 = 0;
-		uRam02088e06 = 0xff;
-		uRam02088e05 = 0;
-	} else if (uVar1 == 2) {
-		uRam02088bfc = 0;
-		uRam02088c04 = 0;
-		data_02088e04 = 0xff;
-		uRam02088e06 = 0;
-		uRam02088e07 = 1;
+
+	struct Somettting {
+		u8 *DAT_arm9_ov002__020cd064;
+		u8 DAT_arm9_ov002__020cd090[2];
+	};
+	extern Somettting s;
+	extern u32 func_0200696c__(u32, u16, u8, u8, u8, u8, u8, u8, u8, u8, u8, u8, u8, u8, u8, u8, u8);
+	func_0200696c__(0xd, 0, this->_1dc, this->_1e0, this->_1e4, 0, bVar10, uVar9, bVar8, *s.DAT_arm9_ov002__020cd064, this->_1e8, s.DAT_arm9_ov002__020cd090[this->_1ec], this->_1f0, this->_20c, this->_210, this->_220, ~0);
+
+	u32 data_02088e04 = 0;
+	extern Save save;
+	switch (this->_1e8) {
+	case 0:
+		save.game.mapEntities[0][0].node = 0xff;
+		save.game.mapEntities[0][1].node = 0xff;
+		break;
+	case 1:
+		save.game.currentWorld = 0;
+		save.game.currentWorldNode = 0;
+		save.game.mapEntities[0][0].node = 0x00;
+		save.game.mapEntities[0][1].node = 0xff;
+		save.game.mapEntities[0][1].type = 0;
+		break;
+	case 2:
+		save.game.currentWorld = 0;
+		save.game.currentWorldNode = 0;
+		save.game.mapEntities[0][0].node = 0xff;
+		save.game.mapEntities[0][1].node = 0x00;
+		save.game.mapEntities[0][1].type = 1;
+		break;
 	}
+
 	func_02011e3c(0x1e);
 }
 
