@@ -268,7 +268,7 @@ void Base::postDestroy(u32 a)
 		func_0204d908();
 	}
 	this->~Base();
-	func_02044ab0(this, data_0208b720);
+	func_02044ab0(this, Memory_gameHeap);
 }
 void Base::pendingDestroy()
 {
@@ -438,7 +438,7 @@ bool Base::onHeapCreated()
 }
 void *Base::operator new(size_t count)
 {
-	Base *ptr = (Base *)data_0208b720->allocate(count, -4);
+	Base *ptr = (Base *)Memory_gameHeap->allocate(count, -4);
 	if (ptr != (Base *)0x0) {
 		Nitro::func_02066fe8(ptr, 0, count);
 		return ptr;
@@ -447,7 +447,7 @@ void *Base::operator new(size_t count)
 }
 void Base::operator delete(void *ptr)
 {
-	Heap_deallocate(data_0208b720, ptr);
+	Heap_deallocate(Memory_gameHeap, ptr);
 }
 void Base::create()
 {

@@ -14,14 +14,14 @@ func_02043750 kind:function(arm,size=0x40) addr:0x02043750
 func_02043790 kind:function(arm,size=0x14) addr:0x02043790
 func_020437a4 kind:function(arm,size=0x50) addr:0x020437a4
 Math::expLerp kind:function(arm,size=0xbc) addr:0x020437f4
-_Z18LinkedList_PrependP11ProcessListP11ProcessNode kind:function(arm,size=0x38) addr:0x020438b0
-_Z17LinkedList_appendP11ProcessListP12PriorityNode kind:function(arm,size=0x38) addr:0x020438e8
-_Z17LinkedList_RemoveP11ProcessListPv kind:function(arm,size=0x70) addr:0x02043920
+_Z18LinkedList_PrependP10LinkedListP11ProcessNode kind:function(arm,size=0x38) addr:0x020438b0
+_Z17LinkedList_appendP10LinkedListP12PriorityNode kind:function(arm,size=0x38) addr:0x020438e8
+_Z17LinkedList_RemoveP10LinkedListPv kind:function(arm,size=0x70) addr:0x02043920
 func_02043990 kind:function(arm,size=0x60) addr:0x02043990
 _ZN9SceneNode13func_020439f0Ev kind:function(arm,size=0x3c) addr:0x020439f0
 _ZN9SceneNode13func_02043a2cEv kind:function(arm,size=0x28) addr:0x02043a2c
-_Z22SceneGraph_removeChildP11ProcessListP11ProcessLink kind:function(arm,size=0x78) addr:0x02043a54
-_Z19SceneGraph_addChildP11ProcessListP11ProcessLinkS2_ kind:function(arm,size=0x74) addr:0x02043acc
+_Z22SceneGraph_removeChildP10SceneGraphP11ProcessLink kind:function(arm,size=0x78) addr:0x02043a54
+_Z19SceneGraph_addChildP10SceneGraphP11ProcessLinkS2_ kind:function(arm,size=0x74) addr:0x02043acc
 func_02043b40 kind:function(arm,size=0x18) addr:0x02043b40
 _Z13func_02043b58P11ProcessLink kind:function(arm,size=0x14) addr:0x02043b58
 func_02043b6c kind:function(arm,size=0x1a4) addr:0x02043b6c
@@ -72,7 +72,7 @@ _ZN4Heap10setCurrentEv kind:function(arm,size=0x30) addr:0x02044b48
 func_02044b78 kind:function(arm,size=0x28) addr:0x02044b78
 func_02044ba0 kind:function(arm,size=0x4c) addr:0x02044ba0
 func_02044bec kind:function(arm,size=0x8) addr:0x02044bec
-Heap::resizeToFit kind:function(arm,size=0x4c) addr:0x02044bf4
+_ZN4Heap11resizeToFitEv kind:function(arm,size=0x4c) addr:0x02044bf4
 func_02044c40 kind:function(arm,size=0x8) addr:0x02044c40
 func_02044c48 kind:function(arm,size=0x10) addr:0x02044c48
 func_02044c58 kind:function(arm,size=0x8) addr:0x02044c58
@@ -122,7 +122,7 @@ func_020451d8 kind:function(arm,size=0x4) addr:0x020451d8
 func_020451dc kind:function(arm,size=0x1c) addr:0x020451dc
 func_020451f8 kind:function(arm,size=0x38) addr:0x020451f8
 func_02045230 kind:function(arm,size=0x10) addr:0x02045230
-FrameHeap::create kind:function(arm,size=0xf8) addr:0x02045240
+_ZN9FrameHeap6createEmP4Heapm kind:function(arm,size=0xf8) addr:0x02045240
 func_02045338 kind:function(arm,size=0xd4) addr:0x02045338
 func_0204540c kind:function(arm,size=0x6c) addr:0x0204540c
 func_02045478 kind:function(arm,size=0x28) addr:0x02045478
@@ -1791,11 +1791,11 @@ data_02085204 kind:data(any) addr:0x02085204
 data_02085208 kind:data(any) addr:0x02085208
 data_02085220 kind:data(any) addr:0x02085220
 data_02085224 kind:data(word) addr:0x02085224
-@254 kind:data(word[2]) addr:0x02085228 local
-@265 kind:data(word[2]) addr:0x02085230 local
-@252 kind:data(word[2]) addr:0x02085238 local
-@250 kind:data(word[2]) addr:0x02085240 local
-@267 kind:data(word[2]) addr:0x02085248 local
+@868 kind:data(word[2]) addr:0x02085228 local
+@876 kind:data(word[2]) addr:0x02085230 local
+@865 kind:data(word[2]) addr:0x02085238 local
+@862 kind:data(word[2]) addr:0x02085240 local
+@879 kind:data(word[2]) addr:0x02085248 local
 @269 kind:data(word[2]) addr:0x02085250 local
 _ZTV4Base kind:data(word[20]) addr:0x02085258
 _ZN14ProcessManager11CurrentTaskE kind:data(word) addr:0x020852a8
