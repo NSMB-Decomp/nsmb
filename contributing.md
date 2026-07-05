@@ -30,3 +30,10 @@
 11. Click the **Parse to Program** button on the bottom left
 12. Click **Continue**
 13. Click **Use Open Archives**
+
+<!--
+## Building a ROM
+`dsd lcf --config-path config/A2DE/arm9/config.yaml`
+`dsd check modules --config-path config/A2DE/arm9/config.yaml`
+`dsd rom build --config extracted/A2DE/config.yaml --rom build/A2DE.nds`
+-->

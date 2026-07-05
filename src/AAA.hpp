@@ -178,8 +178,8 @@ namespace Math {
 namespace Input
 {
 extern u8 localConsoleID;
-extern u32 consoleKeys[4][2];
-extern u32 consoleKeysRepeated[4];
+extern u16 consoleKeys[4][2];
+extern u16 consoleKeysRepeated[4];
 } // namespace Input
 
 void func_ov001_020cceb4();

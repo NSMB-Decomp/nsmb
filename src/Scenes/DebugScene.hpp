@@ -25,10 +25,11 @@ class DebugScene : public Scene
 	u32 _1e8;
 	u32 _1f0;
 	u32 _1f4;
+	u32 _PAD;
 	u32 _1f8;
-	u32 _1fc;
+	i32 _1fc;
 	u32 _200;
-	u32 _204;
+	i32 _204;
 	u8 _pad2[0x2c];
 
 	inline DebugScene();
