@@ -1,5 +1,12 @@
 #include "Scene.hpp"
 
+class Unknwon2 {
+	public:
+	u32 a;
+	inline Unknwon2() {this->a = 0;};
+	~Unknwon2();
+};
+
 class Unknwon {
 	public:
 	Unknwon();
@@ -11,7 +18,7 @@ class MPLevelSelectScene : public Scene
       public:
 	u8 _64;
 	u8 _pad0[0x7];
-	u32 _6c;
+	Unknwon2 b;
 	u32 _70;
 	Unknwon a;
 	u8 _pad1[0xb4];
