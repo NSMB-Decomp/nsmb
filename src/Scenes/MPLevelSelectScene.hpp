@@ -4,7 +4,7 @@ class Unknwon2 {
 	public:
 	u32 a;
 	inline Unknwon2() {this->a = 0;};
-	~Unknwon2();
+	inline ~Unknwon2() {};
 };
 
 class Unknwon {
