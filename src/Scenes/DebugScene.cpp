@@ -409,7 +409,7 @@ void DebugScene::func_ov002_020cc514()
 		if (this->_1f0 == 0) {
 			return;
 		}
-		if (data_0208b4f0) {
+		if (!data_0208b4f0) {
 			return;
 		}
 	}
@@ -417,21 +417,17 @@ void DebugScene::func_ov002_020cc514()
 	u32 r6;
 	u32 r5;
 	u32 r4;
-	extern u32 *DAT_arm9_ov002__020cd060;
-	extern u8 DAT_arm9_ov002__020cd080[2];
-	extern u8 DAT_arm9_ov002__020cd084[2];
-	if (*DAT_arm9_ov002__020cd060 == 0) {
+	extern u8 data_ov002_020cd240[2][2];
+	if (data_ov002_020cd304) {
+				i32 iVar7 = data_ov002_020cd304 - 1;
+		r6 = data_ov002_020cd220[iVar7];
+		r5 = data_ov002_020cd240[iVar7][0];
+		r4 = data_ov002_020cd240[iVar7][1];
+
+	} else {
 		r6 = 1;
 		r5 = 0;
 		r4 = 1;
-	} else {
-		u32 iVar7 = *DAT_arm9_ov002__020cd060 - 1;
-		r6 = data_ov002_020cd220[iVar7];
-		r5 = DAT_arm9_ov002__020cd080[iVar7];
-		r4 = DAT_arm9_ov002__020cd084[iVar7];
-		//bVar10 = *(byte *)(DAT_arm9_ov002__020cd07c + iVar7);
-		//uVar9 = *(undefined1 *)(DAT_arm9_ov002__020cd080 + iVar7 * 2);
-		//bVar8 = *(byte *)(DAT_arm9_ov002__020cd084 + iVar7 * 2);
 	}
 
 	
@@ -451,7 +447,7 @@ void DebugScene::func_ov002_020cc514()
 		u8 *DAT_arm9_ov002__020cd064;
 		u8 DAT_arm9_ov002__020cd090[2];
 	};
-	extern Somettting s;
+	extern Somettting data_ov002_020cd114;
 	extern u32 func_0200696c__(u32, u16, u8, u8, u8, u8, u8, u8, u8, u8, u8, u8, u8, u8, u8, u8, u8);
 	func_0200696c__(
 		0xd, 
@@ -463,7 +459,7 @@ void DebugScene::func_ov002_020cc514()
 		r6, 
 		r5,
 		r4, 
-		*s.DAT_arm9_ov002__020cd064, 
+		*data_ov002_020cd114.DAT_arm9_ov002__020cd064, 
 		this->_1e8, 
 		data_ov002_020cd220[this->_1ec], 
 		this->_1f0, 
