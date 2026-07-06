@@ -12,6 +12,8 @@ u32 data_ov002_020cd300;
 const SomethingElse data_ov002_020cd11c[] = {
     {"KINOK", 0x9, 0x9, 0xA000}, {"KINO2", 0x9, 0x9, 0xC000}, {"KINO3", 0x9, 0x9, 0xA001}, {"WORLD", 0x8, 0x8, 0x0}, {"SAVE", 0x7, 0x7, 0x0}, {"TITLE", 0x4, 0x4, 0x0}, {"ENDIN", 0xC, 0xC, 0x0}, {"CRSIN", 0xD, 0xD, 0x0}, {"GOVER", 0xE, 0xE, 0x0}, {"KEY", 0x11, 0x11, 0x0}, {"SOUND", 0x10, 0x10, 0x0}, {"ENTRY", 0x6, 0x6, 0x0}, {"ERROR", 0xB, 0xB, 0x0}, {"MGVS", 0x146, 0x146, 0x0},
 };
+u8 data_ov002_020cd220[4] = {1, 1, 3, 0};
+
 
 DebugScene::DebugScene()
 {
@@ -82,13 +84,11 @@ extern void func_02011e3c(u32);
 extern void func_020066f8();
 extern void func_02006740();
 extern u16 data_02087650[2];
-extern i32 iRam020cd304;
-extern i32 iRam020cd300;
 extern u8 data_02085a0c;
-extern u32 _data_02085a90;
+extern u32 data_02085a90;
 extern u8 data_0208b4f0;
-extern u32 data_02085a1c;
-extern u32 data_02085a10;
+extern u8 data_02085a1c;
+extern u8 data_02085a10;
 extern u8 data_02088e04;
 extern u8 uRam02088e06;
 extern u32 uRam02088bfc;
@@ -263,24 +263,24 @@ void DebugScene::func_ov002_020cc514()
 	//
 	case 5:
 		if ((Input::consoleKeysRepeated[0] & 0x10)) {
-			iRam020cd304 += 1;
-			if (iRam020cd304 > 3) {
-				iRam020cd304 = 0;
+			data_ov002_020cd304 += 1;
+			if (data_ov002_020cd304 > 3) {
+				data_ov002_020cd304 = 0;
 			}
-		} else if (((Input::consoleKeysRepeated[0] & 0x20) != 0) && (iRam020cd304 += -1, iRam020cd304 < 0)) {
-			iRam020cd304 = 3;
+		} else if (((Input::consoleKeysRepeated[0] & 0x20) != 0) && (data_ov002_020cd304 += -1, data_ov002_020cd304 < 0)) {
+			data_ov002_020cd304 = 3;
 		}
 		break;
 
 	//
 	case 6:
 		if ((Input::consoleKeysRepeated[0] & 0x10)) {
-			iRam020cd300 += 1;
-			if (5 < iRam020cd300) {
-				iRam020cd300 = 0;
+			data_ov002_020cd300 += 1;
+			if (5 < data_ov002_020cd300) {
+				data_ov002_020cd300 = 0;
 			}
-		} else if (((Input::consoleKeysRepeated[0] & 0x20) != 0) && (iRam020cd300 += -1, iRam020cd300 < 0)) {
-			iRam020cd300 = 5;
+		} else if (((Input::consoleKeysRepeated[0] & 0x20) != 0) && (data_ov002_020cd300 += -1, data_ov002_020cd300 < 0)) {
+			data_ov002_020cd300 = 5;
 		}
 		break;
 
@@ -313,7 +313,7 @@ void DebugScene::func_ov002_020cc514()
 		} else if ((Input::consoleKeysRepeated[0] & 0x200) != 0) {
 			this->_214 -= 0x80;
 		}
-		_data_02085a90 = this->_214;
+		data_02085a90 = this->_214;
 		break;
 
 	//
@@ -414,30 +414,37 @@ void DebugScene::func_ov002_020cc514()
 		}
 	}
 
-	u32 iVar7;
-	u32 bVar10;
-	u32 uVar9;
-	u32 bVar8;
+	u32 r6;
+	u32 r5;
+	u32 r4;
 	extern u32 *DAT_arm9_ov002__020cd060;
+	extern u8 DAT_arm9_ov002__020cd080[2];
+	extern u8 DAT_arm9_ov002__020cd084[2];
 	if (*DAT_arm9_ov002__020cd060 == 0) {
-		bVar10 = 1;
-		uVar9 = 0;
-		bVar8 = bVar10;
+		r6 = 1;
+		r5 = 0;
+		r4 = 1;
 	} else {
-		// iVar7 = *DAT_arm9_ov002__020cd060 + -1;
-		// bVar10 = *(byte *)(DAT_arm9_ov002__020cd07c + iVar7);
-		// uVar9 = *(undefined1 *)(DAT_arm9_ov002__020cd080 + iVar7 * 2);
-		// bVar8 = *(byte *)(DAT_arm9_ov002__020cd084 + iVar7 * 2);
+		u32 iVar7 = *DAT_arm9_ov002__020cd060 - 1;
+		r6 = data_ov002_020cd220[iVar7];
+		r5 = DAT_arm9_ov002__020cd080[iVar7];
+		r4 = DAT_arm9_ov002__020cd084[iVar7];
+		//bVar10 = *(byte *)(DAT_arm9_ov002__020cd07c + iVar7);
+		//uVar9 = *(undefined1 *)(DAT_arm9_ov002__020cd080 + iVar7 * 2);
+		//bVar8 = *(byte *)(DAT_arm9_ov002__020cd084 + iVar7 * 2);
 	}
 
-	u32 bVar4 = this->_1a0 != 0xfffffffe;
+	
+	bool bVar4 = this->_1e8 == ~1;
 	if (bVar4) {
-		func_020066f8();
-	} else {
-		this->_1a0 = 0xffffffff;
+		this->_1e8 = -1;
 		func_02006740();
+		data_02085a1c = 1;
+	} else {
+		func_020066f8();
+		data_02085a1c = 0;
 	}
-	data_02085a1c = !bVar4;
+
 	data_02085a10 = this->_1dc;
 
 	struct Somettting {
@@ -446,7 +453,25 @@ void DebugScene::func_ov002_020cc514()
 	};
 	extern Somettting s;
 	extern u32 func_0200696c__(u32, u16, u8, u8, u8, u8, u8, u8, u8, u8, u8, u8, u8, u8, u8, u8, u8);
-	func_0200696c__(0xd, 0, this->_1dc, this->_1e0, this->_1e4, 0, bVar10, uVar9, bVar8, *s.DAT_arm9_ov002__020cd064, this->_1e8, s.DAT_arm9_ov002__020cd090[this->_1ec], this->_1f0, this->_20c, this->_210, this->_220, ~0);
+	func_0200696c__(
+		0xd, 
+		0, 
+		this->_1dc, 
+		this->_1e0, 
+		this->_1e4, 
+		0, 
+		r6, 
+		r5,
+		r4, 
+		*s.DAT_arm9_ov002__020cd064, 
+		this->_1e8, 
+		data_ov002_020cd220[this->_1ec], 
+		this->_1f0, 
+		this->_20c, 
+		this->_210, 
+		this->_220, 
+		~0
+	);
 
 	u32 data_02088e04 = 0;
 	extern Save save;
@@ -557,4 +582,3 @@ ObjectProfile DebugScene_Profile = {DebugScene::create, 2, 9};
 
 void (DebugScene::*data_ov002_020cd308[])() = {DebugScene::func_ov002_020cc514, DebugScene::func_ov002_020cc328};
 
-u8 data_ov002_020cd220[4] = {1, 1, 3, 0};
