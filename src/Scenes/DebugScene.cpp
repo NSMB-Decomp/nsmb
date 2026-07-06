@@ -291,8 +291,11 @@ void DebugScene::func_ov002_020cc514()
 			if (this->_21c >= 5) {
 				this->_21c = 0;
 			}
-		} else if (((Input::consoleKeysRepeated[0] & 0x20) != 0) && (this->_21c = this->_21c - 1, this->_21c < 0)) {
-			this->_21c = 4;
+		} else if ((Input::consoleKeysRepeated[0] & 0x20)) {
+			this->_21c -= 1;
+			if (this->_21c < 0) {
+				this->_21c = 4;
+			}
 		}
 		data_02085a0c = this->_21c;
 		break;
@@ -304,16 +307,24 @@ void DebugScene::func_ov002_020cc514()
 			if (this->_214 >= 0x70) {
 				this->_214 = -2;
 			}
-		} else if (((Input::consoleKeysRepeated[0] & 0x20) != 0) && (this->_214 = this->_214 - 1, this->_214 < -2)) {
-			this->_214 = 0x6f;
+			data_02085a90 = this->_214;
+		} else if ((Input::consoleKeysRepeated[0] & 0x20)) {
+			this->_214 -= 1;
+			if (this->_214 < -2) {
+				this->_214 = 0x6f;
+			}
+			data_02085a90 = this->_214;
 		}
 
 		if ((Input::consoleKeysRepeated[0] & 0x100)) {
 			this->_214 += 0x80;
-		} else if ((Input::consoleKeysRepeated[0] & 0x200) != 0) {
+			data_02085a90 = this->_214;
+		} else if ((Input::consoleKeysRepeated[0] & 0x200)) {
 			this->_214 -= 0x80;
+			data_02085a90 = this->_214;
 		}
 		data_02085a90 = this->_214;
+
 		break;
 
 	//
@@ -354,7 +365,7 @@ void DebugScene::func_ov002_020cc514()
 		}
 
 		if (this->_218) {
-			func_02020580(0, 0);
+			func_02020580(0, this->_218);
 			func_02020580(1, this->_218);
 		} else {
 			func_02020580(0, 3);
@@ -441,32 +452,14 @@ void DebugScene::func_ov002_020cc514()
 
 	data_02085a10 = this->_220;
 
-	//struct Somettting {
+	// struct Somettting {
 	//	u8 *DAT_arm9_ov002__020cd064;
 	//	u8 DAT_arm9_ov002__020cd090[2];
-	//};
-	//extern Somettting data_ov002_020cd114;
-	
+	// };
+	// extern Somettting data_ov002_020cd114;
+
 	extern u32 func_0200696c__(u32, u16, u8, u8, u8, u32, u32, u32, u32, u8, u8, u8, u8, u8, u8, u8, u32);
-	func_0200696c__(
-		0xd, 
-		0, 
-		this->_1dc, 
-		this->_1e0, 
-		this->_1e4, 
-		0, 
-		r6, 
-		r5, 
-		r4, 
-		data_ov002_020cd300, 
-		this->_1e8, 
-		data_ov002_020cd114[this->_1ec], 
-		this->_1f0, 
-		this->_20c, 
-		this->_210, 
-		this->_220, 
-		~0
-	);
+	func_0200696c__(0xd, 0, this->_1dc, this->_1e0, this->_1e4, 0, r6, r5, r4, data_ov002_020cd300, this->_1e8, data_ov002_020cd114[this->_1ec], this->_1f0, this->_20c, this->_210, this->_220, ~0);
 
 	u32 data_02088e04 = 0;
 	extern Save save;
@@ -476,7 +469,7 @@ void DebugScene::func_ov002_020cc514()
 		save.game.mapEntities[0][1].node = 0xff;
 		break;
 	case 1:
-		save.game.currentWorld = 0; 
+		save.game.currentWorld = 0;
 		save.game.currentWorldNode = 0;
 		save.game.mapEntities[0][0].node = 0x00;
 		save.game.mapEntities[0][1].node = 0xff;
@@ -565,7 +558,6 @@ void DebugScene::func_ov002_020cc328()
 DebugScene::~DebugScene()
 {
 }
-
 
 u8 data_ov002_020cd240[4][2] = {
     {0, 0},
