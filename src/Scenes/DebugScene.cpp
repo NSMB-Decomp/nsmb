@@ -7,14 +7,33 @@ struct SomethingElse {
 	u32 d;
 };
 
-i32 data_ov002_020cd304;
 i32 data_ov002_020cd300;
+i32 data_ov002_020cd304;
 const SomethingElse data_ov002_020cd11c[] = {
-    {"KINOK", 0x9, 0x9, 0xA000}, {"KINO2", 0x9, 0x9, 0xC000}, {"KINO3", 0x9, 0x9, 0xA001}, {"WORLD", 0x8, 0x8, 0x0}, {"SAVE", 0x7, 0x7, 0x0}, {"TITLE", 0x4, 0x4, 0x0}, {"ENDIN", 0xC, 0xC, 0x0}, {"CRSIN", 0xD, 0xD, 0x0}, {"GOVER", 0xE, 0xE, 0x0}, {"KEY", 0x11, 0x11, 0x0}, {"SOUND", 0x10, 0x10, 0x0}, {"ENTRY", 0x6, 0x6, 0x0}, {"ERROR", 0xB, 0xB, 0x0}, {"MGVS", 0x146, 0x146, 0x0},
+    {"KINOK", 0x9, 0x9, 0xA000}, 
+	{"KINO2", 0x9, 0x9, 0xC000}, 
+	{"KINO3", 0x9, 0x9, 0xA001}, 
+	{"WORLD", 0x8, 0x8, 0x0}, 
+	{"SAVE", 0x7, 0x7, 0x0}, 
+	{"TITLE", 0x4, 0x4, 0x0}, 
+	{"ENDIN", 0xC, 0xC, 0x0}, 
+	{"CRSIN", 0xD, 0xD, 0x0}, 
+	{"GOVER", 0xE, 0xE, 0x0}, 
+	{"KEY", 0x11, 0x11, 0x0}, 
+	{"SOUND", 0x10, 0x10, 0x0}, 
+	{"ENTRY", 0x6, 0x6, 0x0}, 
+	{"ERROR", 0xB, 0xB, 0x0}, 
+	{"MGVS", 0x146, 0x146, 0x0},
 };
+
 u8 data_ov002_020cd220[4] = {1, 1, 3, 0};
 const u8 data_ov002_020cd114[4] = {0, 1, 3, 0};
-
+u8 data_ov002_020cd240[4][2] = {
+    {0, 0},
+    {1, 0},
+    {0, 1},
+    {0, 0},
+};
 DebugScene::DebugScene()
 {
 }
@@ -428,7 +447,6 @@ void DebugScene::func_ov002_020cc514()
 	u32 r6;
 	u32 r5;
 	u32 r4;
-	extern u8 data_ov002_020cd240[2][2];
 	if (data_ov002_020cd304) {
 		i32 iVar7 = data_ov002_020cd304 - 1;
 		r6 = data_ov002_020cd220[iVar7];
@@ -559,12 +577,6 @@ DebugScene::~DebugScene()
 {
 }
 
-u8 data_ov002_020cd240[4][2] = {
-    {0, 0},
-    {1, 0},
-    {0, 1},
-    {0, 0},
-};
 ObjectProfile DebugScene_Profile = {DebugScene::create, 2, 9};
 
 void (DebugScene::*data_ov002_020cd308[])() = {DebugScene::func_ov002_020cc514, DebugScene::func_ov002_020cc328};
