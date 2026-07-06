@@ -7,8 +7,8 @@ struct SomethingElse {
 	u32 d;
 };
 
-u32 data_ov002_020cd304;
-u32 data_ov002_020cd300;
+i32 data_ov002_020cd304;
+i32 data_ov002_020cd300;
 const SomethingElse data_ov002_020cd11c[] = {
     {"KINOK", 0x9, 0x9, 0xA000}, {"KINO2", 0x9, 0x9, 0xC000}, {"KINO3", 0x9, 0x9, 0xA001}, {"WORLD", 0x8, 0x8, 0x0}, {"SAVE", 0x7, 0x7, 0x0}, {"TITLE", 0x4, 0x4, 0x0}, {"ENDIN", 0xC, 0xC, 0x0}, {"CRSIN", 0xD, 0xD, 0x0}, {"GOVER", 0xE, 0xE, 0x0}, {"KEY", 0x11, 0x11, 0x0}, {"SOUND", 0x10, 0x10, 0x0}, {"ENTRY", 0x6, 0x6, 0x0}, {"ERROR", 0xB, 0xB, 0x0}, {"MGVS", 0x146, 0x146, 0x0},
 };
@@ -77,13 +77,13 @@ struct IDK {
 extern u32 func_0201f5fc(u32);
 extern u32 func_0201f590(u32, u32);
 extern u32 func_0201f53c(u32, u32, u32);
-extern u32 func_02020580(u32, u32);
+extern void func_02020580(u32, u32);
 extern u32 func_0200696c(u32, u32, u32, u32, IDK);
 extern void func_0200696c_(u8, u8, u8, u8, u8, u8, u8, u8, u8, u8, u8, u8, u8, u8, u8, u8);
 extern void func_02011e3c(u32);
 extern void func_020066f8();
 extern void func_02006740();
-extern u16 data_02087650[2];
+extern u16 data_02087650[2][2];
 extern u8 data_02085a0c;
 extern u32 data_02085a90;
 extern u8 data_0208b4f0;
@@ -100,7 +100,7 @@ void DebugScene::func_ov002_020cc514()
 {
 	u32 console_id = (u32)Input::localConsoleID;
 	if ((Input::consoleKeys[console_id][0] & 4)) {
-		this->_21c = 1;
+		this->_1d8 = 1;
 		return;
 	}
 
@@ -208,7 +208,7 @@ void DebugScene::func_ov002_020cc514()
 	//
 	case 2:
 		if ((Input::consoleKeysRepeated[0] & 0x10)) {
-			if (((data_02087650[console_id] & 0x200)) || ((data_02087650[console_id] & 0x100))) {
+			if (((data_02087650[console_id][0] & 0x200)) || ((data_02087650[console_id][0] & 0x100))) {
 				this->_1e4 += 10;
 			} else {
 				this->_1e4 += 1;
@@ -218,7 +218,7 @@ void DebugScene::func_ov002_020cc514()
 				this->_1e4 = 0;
 			}
 		} else if ((Input::consoleKeysRepeated[0] & 0x20)) {
-			if (((data_02087650[console_id] & 0x200)) || ((data_02087650[console_id] & 0x100))) {
+			if (((data_02087650[console_id][0] & 0x200)) || ((data_02087650[console_id][0] & 0x100))) {
 				this->_1e4 -= 10;
 			} else {
 				this->_1e4 -= 1;
@@ -300,7 +300,7 @@ void DebugScene::func_ov002_020cc514()
 		//
 	case 9:
 		if ((Input::consoleKeysRepeated[0] & 0x10)) {
-			this->_214 = this->_214 + 1;
+			this->_214 += 1;
 			if (this->_214 >= 0x70) {
 				this->_214 = -2;
 			}
@@ -319,22 +319,22 @@ void DebugScene::func_ov002_020cc514()
 	//
 	case 8:
 		if (((Input::consoleKeysRepeated[0] & 0x10) != 0) || ((Input::consoleKeysRepeated[0] & 0x20) != 0)) {
-			this->_1cc = this->_1cc ^ 1;
+			this->_210 ^= 1;
 		}
 		break;
 
 	//
 	case 10:
 		if (((Input::consoleKeysRepeated[0] & 0x10) != 0) || ((Input::consoleKeysRepeated[0] & 0x20) != 0)) {
-			this->_1c8 = this->_1c8 ^ 1;
+			this->_20c ^= 1;
 		}
-		data_02085ad4[0] = this->_1c8; // data_02085ad4 = this->_1c8;
+		data_02085ad4[0] = this->_20c; // data_02085ad4 = this->_1c8;
 		break;
 
 	//
 	case 11:
 		if ((Input::consoleKeysRepeated[0] & 0x10)) {
-			if (((data_02087650[console_id] & 0x200)) || ((data_02087650[console_id] & 0x100))) {
+			if (((data_02087650[console_id][0] & 0x200)) || ((data_02087650[console_id][0] & 0x100))) {
 				this->_218 += 10;
 			} else {
 				this->_218 += 1;
@@ -343,7 +343,7 @@ void DebugScene::func_ov002_020cc514()
 				this->_218 = 0;
 			}
 		} else if ((Input::consoleKeysRepeated[0] & 0x20)) {
-			if (((data_02087650[console_id] & 0x200)) || ((data_02087650[console_id] & 0x100))) {
+			if (((data_02087650[console_id][0] & 0x200)) || ((data_02087650[console_id][0] & 0x100))) {
 				this->_218 = this->_218 - 10;
 			} else {
 				this->_218 = this->_218 - 1;
@@ -365,48 +365,48 @@ void DebugScene::func_ov002_020cc514()
 	//
 	case 0xc:
 		if ((Input::consoleKeysRepeated[0] & 0x10)) {
-			this->_1dc = this->_1dc + 1;
-			if (this->_1dc >= 3) {
-				this->_1dc = 0;
+			this->_220 += 1;
+			if (this->_220 >= 3) {
+				this->_220 = 0;
 			}
-		} else if (((Input::consoleKeysRepeated[0] & 0x20) != 0) && (this->_1dc = this->_1dc - 1, this->_1dc < 0)) {
-			this->_1dc = 2;
+		} else if (((Input::consoleKeysRepeated[0] & 0x20) != 0) && (this->_220 = this->_220 - 1, this->_220 < 0)) {
+			this->_220 = 2;
 		}
 		break;
 
 	//
 	case 0xd:
 		if (((Input::consoleKeysRepeated[0] & 0x10)) || ((Input::consoleKeysRepeated[0] & 0x20))) {
-			this->_1e0 ^= 1;
+			this->_224 ^= 1;
 		}
 		break;
 
 	//
 	case 0xe:
 		if ((Input::consoleKeysRepeated[0] & 0x10)) {
-			this->_1e4 = this->_1e4 + 1;
-			if (this->_1e4 >= 3) {
-				this->_1e4 = 0;
+			this->_228 = this->_228 + 1;
+			if (this->_228 >= 3) {
+				this->_228 = 0;
 			}
-		} else if (((Input::consoleKeysRepeated[0] & 0x20) != 0) && (this->_1e4 = this->_1e4 - 1, this->_1e4 < 0)) {
-			this->_1e4 = 2;
+		} else if (((Input::consoleKeysRepeated[0] & 0x20) != 0) && (this->_228 = this->_228 - 1, this->_228 < 0)) {
+			this->_228 = 2;
 		}
 		break;
 
 	//
 	case 0xf:
 		if ((Input::consoleKeysRepeated[0] & 0x10)) {
-			this->_1e8 = this->_1e8 + 1;
-			if (this->_1e8 >= 3) {
-				this->_1e8 = 0;
+			this->_22c = this->_22c + 1;
+			if (this->_22c >= 3) {
+				this->_22c = 0;
 			}
-		} else if (((Input::consoleKeysRepeated[0] & 0x20) != 0) && (this->_1e8 = this->_1e8 - 1, this->_1e8 < 0)) {
-			this->_1e8 = 2;
+		} else if (((Input::consoleKeysRepeated[0] & 0x20) != 0) && (this->_22c = this->_22c - 1, this->_22c < 0)) {
+			this->_22c = 2;
 		}
 	}
 
 	if (((Input::consoleKeys[Input::localConsoleID][0] & 1) == 0) && ((Input::consoleKeys[Input::localConsoleID][0] & 8) == 0)) {
-		if (this->_1a8 == 0) {
+		if (this->_1f0 == 0) {
 			return;
 		}
 		if (data_0208b4f0) {
@@ -504,7 +504,7 @@ void DebugScene::func_ov002_020cc328()
 {
 	u16 local_console_id = Input::localConsoleID;
 	if ((Input::consoleKeys[local_console_id][0] & 4) != 0) {
-		this->_21c = 0;
+		this->_1d8 = 0;
 		return;
 	}
 

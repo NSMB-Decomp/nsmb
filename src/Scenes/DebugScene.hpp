@@ -3,7 +3,7 @@
 class DebugScene : public Scene
 {
       public:
-	  u8 _64[8]; // TODO: What is this actual size?
+	u8 _64[8]; // TODO: What is this actual size?
 	u8 _pad0[296];
 	u32 _190;
 	u32 _194;
@@ -38,7 +38,9 @@ class DebugScene : public Scene
 	i32 _218;
 	i32 _21c;
 	i32 _220;
-	u8 _pad3[0x8];
+	i32 _224;
+	i32 _228;
+	i32 _22c;
 
 	inline DebugScene();
 	inline ~DebugScene();
