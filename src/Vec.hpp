@@ -1,5 +1,5 @@
 #pragma once
-#include "../lib/Nitro/Nitro.hpp"
+#include "nsmb_nitro.hpp"
 
 struct FxRect {
 	fx32 x;
@@ -7,7 +7,7 @@ struct FxRect {
 	fx32 halfWidth;
 	fx32 halfHeight;
 };
-size_assert(FxRect, 0x10);
+NTR_SIZE_GUARD(FxRect, 0x10);
 
 struct Vec3_32 : public Vec3_32s {
       public:

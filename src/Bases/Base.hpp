@@ -1,6 +1,5 @@
 #pragma once
-#include "../AAA.hpp"
-#include "../base_types.hpp"
+#include "../ProcessManager.hpp"
 
 enum State { PendingInit, Active, Inactive };
 enum SkipFlags { UpdateChildren = 1, Update = 2, RenderChildren = 4, Render = 8 };
@@ -60,4 +59,4 @@ class Base
 	virtual bool onHeapCreated();
 	virtual ~Base() = 0;
 };
-size_assert(Base, 0x5C);
+NTR_SIZE_GUARD(Base, 0x5C);

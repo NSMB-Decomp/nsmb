@@ -40,4 +40,4 @@ public:
 	u32 type;
 
 };
-size_assert(WmEntityModel, 0x198);
+NTR_SIZE_GUARD(WmEntityModel, 0x198);

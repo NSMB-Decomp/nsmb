@@ -76,4 +76,4 @@ public:
 	}
 
 };
-size_assert(ModelAnm, 0xA8);
+NTR_SIZE_GUARD(ModelAnm, 0xA8);

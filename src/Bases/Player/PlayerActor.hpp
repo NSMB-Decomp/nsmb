@@ -43,4 +43,4 @@ class PlayerActor : public PlayerBase
 	PlayerActor();
 	~PlayerActor();
 };
-size_assert(PlayerActor, 0xbcc);
+NTR_SIZE_GUARD(PlayerActor, 0xbcc);

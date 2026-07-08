@@ -254,6 +254,7 @@ void OS_GetConsoleType();
 void OS_CheckStack();
 void OS_Sleep();
 void OS_KillThread();
+BOOL OS_IsThreadTerminated(Thread* p);
 void OS_CancelAlarm();
 void OS_GetResetParameter();
 void OS_KillThread();
@@ -505,13 +506,13 @@ extern "C" {
 		u16 headerSize;
 		u16 dataCount;
 	};
-	size_assert(Ns3dFileHeader, 0x10);
+	NITRO_SIZE_ASSERT(Ns3dFileHeader, 0x10);
 
 	struct Ns3dDataHeader {
 		u32 magic;
 		u32 size;
 	};
-	size_assert(Ns3dDataHeader, 0x8);
+	NITRO_SIZE_ASSERT(Ns3dDataHeader, 0x8);
 
 
 	/* Resource dictionaries */
@@ -519,14 +520,14 @@ extern "C" {
 	struct Ns3dStringData {
 		char c[16];
 	};
-	size_assert(Ns3dStringData, 0x10);
+	NITRO_SIZE_ASSERT(Ns3dStringData, 0x10);
 
 	struct Ns3dDictionaryData {
 		u16 itemSize;
 		u16 _2;
 		u8 data[];
 	};
-	size_assert(Ns3dDictionaryData, 0x4);
+	NITRO_SIZE_ASSERT(Ns3dDictionaryData, 0x4);
 
 	struct Ns3dDictionary {
 		u8 version;
@@ -535,12 +536,12 @@ extern "C" {
 		u16 _4;
 		u16 dataOffset;
 	};
-	size_assert(Ns3dDictionary, 0x8);
+	NITRO_SIZE_ASSERT(Ns3dDictionary, 0x8);
 
 	i32 Ns_3dGetDictionaryIndex(Ns3dDictionary* d, const Ns3dStringData* name);
 
 	inline void* Ns_3dGetDictionaryData(Ns3dDictionary* d, u32 index) {
-		Ns3dDictionaryData* h = rcast<Ns3dDictionaryData*>(rcast<u8*>(d) + d->dataOffset);
+		Ns3dDictionaryData* h = reinterpret_cast<Ns3dDictionaryData*>(reinterpret_cast<u8*>(d) + d->dataOffset);
 		return h->data + (h->itemSize * index);
 	}
 
@@ -570,18 +571,18 @@ extern "C" {
 		i32 _24;
 		i32 _28;
 	};
-	size_assert(Ns3dMaterialData, 0x2C);
+	NITRO_SIZE_ASSERT(Ns3dMaterialData, 0x2C);
 
 	struct Ns3dMaterialList {
 		u16 _0;
 		u16 _2;
 		Ns3dDictionary dict;
 	};
-	size_assert(Ns3dMaterialList, 0xC);
+	NITRO_SIZE_ASSERT(Ns3dMaterialList, 0xC);
 
 	inline Ns3dMaterialData* Ns_3dGetMaterial(Ns3dMaterialList* list, u32 index) {
-		u32* data = rcast<u32*>(Ns_3dGetDictionaryData(&list->dict, index));
-		return rcast<Ns3dMaterialData*>(rcast<u8*>(list) + *data);
+		u32* data = reinterpret_cast<u32*>(Ns_3dGetDictionaryData(&list->dict, index));
+		return reinterpret_cast<Ns3dMaterialData*>(reinterpret_cast<u8*>(list) + *data);
 	}
 
 
@@ -596,16 +597,16 @@ extern "C" {
 		u16 flags;
 		i16 p[0]; // 1 or more
 	};
-	size_assert(Ns3dNodeData, 0x2);
+	NITRO_SIZE_ASSERT(Ns3dNodeData, 0x2);
 
 	struct Ns3dNodeList {
 		Ns3dDictionary dict;
 	};
-	size_assert(Ns3dNodeList, 0x8);
+	NITRO_SIZE_ASSERT(Ns3dNodeList, 0x8);
 
 	inline Ns3dNodeData* Ns_3dGetNode(Ns3dNodeList* list, u32 index) {
-		u32* data = rcast<u32*>(Ns_3dGetDictionaryData(&list->dict, index));
-		return rcast<Ns3dNodeData*>(rcast<u8*>(list) + *data);
+		u32* data = reinterpret_cast<u32*>(Ns_3dGetDictionaryData(&list->dict, index));
+		return reinterpret_cast<Ns3dNodeData*>(reinterpret_cast<u8*>(list) + *data);
 	}
 
 
@@ -637,23 +638,23 @@ extern "C" {
 		u8 _6[0x26];
 		Ns3dNodeList nodes;
 	};
-	size_assert(Ns3dModelData, 0x48);
+	NITRO_SIZE_ASSERT(Ns3dModelData, 0x48);
 
 	struct Ns3dModelList {
 		Ns3dDataHeader hdr;
 		Ns3dDictionary dict;
 	};
-	size_assert(Ns3dModelList, 0x10);
+	NITRO_SIZE_ASSERT(Ns3dModelList, 0x10);
 
 	Ns3dModelList* Ns_3dGetModelList(Ns3dFileHeader* file);
 
 	inline Ns3dModelData* Ns_3dGetModel(Ns3dModelList* list, u32 index) {
-		u32* data = rcast<u32*>(Ns_3dGetDictionaryData(&list->dict, index));
-		return rcast<Ns3dModelData*>(rcast<u8*>(list) + *data);
+		u32* data = reinterpret_cast<u32*>(Ns_3dGetDictionaryData(&list->dict, index));
+		return reinterpret_cast<Ns3dModelData*>(reinterpret_cast<u8*>(list) + *data);
 	}
 
 	inline Ns3dMaterialList* Ns_3dGetMaterials(Ns3dModelData* m) {
-		return rcast<Ns3dMaterialList*>(rcast<u8*>(m) + m->materialOffset);
+		return reinterpret_cast<Ns3dMaterialList*>(reinterpret_cast<u8*>(m) + m->materialOffset);
 	}
 
 	inline Ns3dNodeList* Ns_3dGetNodes(Ns3dModelData* m) {
@@ -703,13 +704,13 @@ extern "C" {
 		u32 textureParam;
 		u32 _4;
 	};
-	size_assert(Ns3dTexImageData, 0x8);
+	NITRO_SIZE_ASSERT(Ns3dTexImageData, 0x8);
 
 	struct Ns3dTexPaletteData {
 		u16 paletteParam;
 		u16 _4;
 	};
-	size_assert(Ns3dTexPaletteData, 0x4);
+	NITRO_SIZE_ASSERT(Ns3dTexPaletteData, 0x4);
 
 	struct Ns3dTextureData {
 		/* 00 */ Ns3dDataHeader hdr;
@@ -735,17 +736,17 @@ extern "C" {
 		/* 3C */ Ns3dDictionary dict;
 		//u8 data[];
 	};
-	size_assert(Ns3dTextureData, 0x3C + 0x8);
+	NITRO_SIZE_ASSERT(Ns3dTextureData, 0x3C + 0x8);
 
 	Ns3dTextureData* Ns_3dGetTexture(Ns3dFileHeader* file);
 
 	inline Ns3dTexImageData* Ns_3dGetTexImageData(Ns3dTextureData* tex, u32 index) {
-		return rcast<Ns3dTexImageData*>(Ns_3dGetDictionaryData(&tex->dict, index));
+		return reinterpret_cast<Ns3dTexImageData*>(Ns_3dGetDictionaryData(&tex->dict, index));
 	}
 
 	inline Ns3dTexPaletteData* Ns_3dGetTexPaletteData(Ns3dTextureData* tex, u32 index) {
-		Ns3dDictionary* dict = rcast<Ns3dDictionary*>(rcast<u8*>(tex) + tex->paletteDictOffset);
-		return rcast<Ns3dTexPaletteData*>(Ns_3dGetDictionaryData(dict, index));
+		Ns3dDictionary* dict = reinterpret_cast<Ns3dDictionary*>(reinterpret_cast<u8*>(tex) + tex->paletteDictOffset);
+		return reinterpret_cast<Ns3dTexPaletteData*>(Ns_3dGetDictionaryData(dict, index));
 	}
 
 
@@ -773,7 +774,7 @@ extern "C" {
 		u32 _38;
 		u32 _3C[6];
 	};
-	size_assert(Ns3dDrawable, 0x54);
+	NITRO_SIZE_ASSERT(Ns3dDrawable, 0x54);
 
 	void Ns_3dDrawableInit(Ns3dDrawable* d, Ns3dModelData* model);
 
@@ -803,7 +804,7 @@ extern "C" {
 		u8 _19;
 		u16 _1A;
 	};
-	size_assert(Ns3dAnimation, 0x1C);
+	NITRO_SIZE_ASSERT(Ns3dAnimation, 0x1C);
 
 	void Ns_3dAnimationInit(Ns3dAnimation* a, void* anim, Ns3dModelData* model, Ns3dTextureData* texture);
 
@@ -854,7 +855,7 @@ extern "C" {
 		Vec3_32s cameraUp;
 		Vec3_32s cameraTarget;
 	};
-	//size_assert(Ns3dGlobalState, 0x264);
+	//NITRO_SIZE_ASSERT(Ns3dGlobalState, 0x264);
 
 	extern Ns3dGlobalState Ns_3dGs;
 

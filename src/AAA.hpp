@@ -1,19 +1,16 @@
 // This file is used solely as a placeholder for functions with a currently unknown location.
 // We should avoid using this file.
 #pragma once
-#include "Heap.hpp"
-#include "ProcessManager.hpp"
-#include "Vec.hpp"
+//#include "Heap.hpp"
+//#include "ProcessManager.hpp"
+//#include "Vec.hpp"
 #include "base_types.hpp"
 
-#define POWERUP_SMALL 0
-#define POWERUP_SUPER 1
-#define POWERUP_FIRE  2
-#define POWERUP_MEGA  3
-#define POWERUP_MINI  4
-#define POWERUP_SHELL 5
-#define POWERUP_6 6
-#define POWERUP_7 7
+class Vec2_32;
+class Vec3_32;
+class Vec3_16;
+struct Vec3_32s;
+struct Vec3_16s;
 
 extern i16 _FixedSinCosTbl[];
 
@@ -103,7 +100,7 @@ struct BNCL_Cell {
 	u8 graphics;
 	u8 rsv[3];
 };
-size_assert(BNCL_Cell, 0x8);
+NITRO_SIZE_ASSERT(BNCL_Cell, 0x8);
 
 struct BNCL {
 	u32 magic;
@@ -226,7 +223,7 @@ struct SaveHeader {
 	u32 magic;
 	u32 flags;
 };
-size_assert(SaveHeader, 0x8);
+NTR_SIZE_GUARD(SaveHeader, 0x8);
 struct GameSave {
 	SaveHeader header;
 	u32 completion;
@@ -252,138 +249,152 @@ struct GameSave {
 	u8 pathStates[8][30];
 	SaveMapEntity mapEntities[8][2];
 };
-size_assert(GameSave, 0x248);
+NTR_SIZE_GUARD(GameSave, 0x248);
 struct MinigamesSave {
 	SaveHeader header;
 	u8 scores[18][13];
 };
-size_assert(MinigamesSave, 0xF4);
+NTR_SIZE_GUARD(MinigamesSave, 0xF4);
 struct OptionSave {
 	SaveHeader header;
 	u32 soundMode;
 	u32 controlOptions;
 	u32 currentSlot;
 };
-size_assert(OptionSave, 0x14);
+NTR_SIZE_GUARD(OptionSave, 0x14);
 struct Save {
 	GameSave game;
 	MinigamesSave minigames;
 	OptionSave options;
 };
-size_assert(Save, 0x350);
+NTR_SIZE_GUARD(Save, 0x350);
 extern Save save;
 
-//
-u32(func_ov000_02098798)(void *, u32);
-void(func_0200d578)();
-extern u8 data_ov010_02129438;
-extern u32 data_ov011_0212f180[23];
-extern u32 data_02085a98;
-void drawSprite(u32, u32, u32, u32, u32, u32, Vec2_32 *, u32, u32, u32);
-void Heap_deallocate(Heap *, void *);
-extern Heap *data_0208b720;
-void func_02020354(i8);
-void func_02012398(i32, Vec3_32 *);
-u32 func_020202a0();
-i32 func_0202040c(i32);
-extern u16 data_0203bd30;
+extern "C" {
 
-//
-bool func_0204d82c();
-void func_020067dc();
-extern i32 data_02085aa4;
+	//
+	u32(func_ov000_02098798)(void *, u32);
+	void(func_0200d578)();
+	extern u8 data_ov010_02129438;
+	extern u32 data_ov011_0212f180[23];
+	extern u32 data_02085a98;
+	void drawSprite(u32, u32, u32, u32, u32, u32, Vec2_32 *, u32, u32, u32);
 
-//
-bool SceneGraph_removeChild(SceneGraph *, ProcessLink *);
-bool SceneGraph_addChild(SceneGraph *, ProcessLink *, ProcessLink *);
-bool LinkedList_append(LinkedList *, PriorityNode *);
-bool LinkedList_Remove(LinkedList *, void *); // TODO: Confirm these paramaters?
-bool LinkedList_Prepend(LinkedList *, ProcessNode *);
-void ProcessSet_add(ProcessList *, PriorityNode *);
+	class Heap;
 
-void Save_setupBackup(u32, void *);
-void CardPulledOutCallback();
-void SystemThreadsSleep();
-void doFadingTransition();
-void TouchPad_update();
-void Input_update();
-void Font_updateFont();
-void Wifi_updatePackets();
-void System_waitForVBlank();
-void Wifi_update();
-void func_02014a30();
-void Graphics_2DStep();
-void ProcessManager_ExecuteTasks();
-void func_020123d8();
-void func_02005ab0();
-void setupGraphicsForDebugScreen();
-void Save_clearLoadedSaves();
-void loadBuildtimeFile();
-void TouchPad_init();
-void prepareWifiStuff(u32);
-void func_0204c8fc();
-void func_02044ad8(u32, u32);
-void func_0200a9d0();
-void func_02006cf4();
-void func_0200e508();
-void Graphics_Init();
-void func_020125d4();
-void func_020125e8();
-void func_02043d10();
-void func_0202187c();
-void func_020133a4();
-void func_0200e040();
-void func_02014a58();
-void __stub_1();
-void __stub_2();
-void __stub_3();
-void func_020455d8();
-void __stub_4();
-void func_0200a0b4();
-void func_020050ec();
-void func_020050d8();
-void func_020050c0();
-void onRender_3();
-bool(func_0200ae9c)(Vec3_32 *);
-bool(func_0201f000)(Vec3_32 *);
-bool isMultiBootCart();
-bool func_020109c8();
-void InitGame();
-void SetMasterGameMode(u32);
-void SetBootScene(u32);
-void SetExtraBootParam(u32);
-extern u16 data_020850e8;
-extern void (*data_0203981c)();
-extern void (*data_02039820)();
-extern void (*data_02039824)();
-extern char GAME_NAME[8]; // = "Mario2d";
-extern u32 FrameCounter;
-extern u32 data_02085a78;
-extern u32 data_02085a74;
-void func_02014824(u32, u32);
-void func_0201486c(u32, u32, u32);
+	void Heap_deallocate(Heap *, void *);
+	extern Heap *data_0208b720;
+	void func_02020354(i8);
+	void func_02012398(i32, Vec3_32 *); // SND::playSFX(u32,Vec3*)
+	u32 func_020202a0();
+	i32 func_0202040c(i32);
+	extern u16 data_0203bd30;
 
-extern u32 data_ov000_020ca2b8;
-extern void (*data_02039968)(i32, i32);
-extern u32 data_02085a88;
-extern u32 data_02085e0c;
+	//
+	bool func_0204d82c();
+	void func_020067dc();
+	extern i32 data_02085aa4;
 
-void func_0200b87c(); // OAM::setFilesUnloaded
-extern u32 data_02087700; // OAM::curTileOffset
-void func_0200b83c(u32); // OAM::loadFilesToVRAM
-void func_02009a30(u32, u32, u32); // FS::loadOBJPalette
-u32 func_02017190(u32); // Font::getScriptFileID
-extern u8 data_02088f30; // Scene::allowSoftReset
-void func_020051ec(); // App::forceDisplayOn
-void func_020045cc(); // Exception::terminateCaught
-extern u32 data_02085a84; // Game::vsMode
-extern u32 DAT_02039200; // vtable for Vec3
-void func_02021808(); // TP::updatePlayer
-void func_020180a4(void*); // TextLabel::unloadScript
-void func_02005700(); // System::resetSubBGVBlank
+	class SceneGraph;
+	class ProcessLink;
+	class ProcessNode;
+	class PriorityNode;
+	class LinkedList;
+	class ProcessList;
 
-extern class Heap* Memory_gameHeap;
-extern Mat4x3 Game_modelMatrix;
+	//
+	bool SceneGraph_removeChild(SceneGraph *, ProcessLink *);
+	bool SceneGraph_addChild(SceneGraph *, ProcessLink *, ProcessLink *);
+	bool LinkedList_append(LinkedList *, PriorityNode *);
+	bool LinkedList_Remove(LinkedList *, void *); // TODO: Confirm these paramaters?
+	bool LinkedList_Prepend(LinkedList *, ProcessNode *);
+	void ProcessSet_add(ProcessList *, PriorityNode *);
+
+	void Save_setupBackup(u32, const char*);
+	void CardPulledOutCallback();
+	void SystemThreadsSleep();
+	void doFadingTransition();
+	void TouchPad_update();
+	void Input_update();
+	void Font_updateFont();
+	void Wifi_updatePackets();
+	void System_waitForVBlank();
+	void Wifi_update();
+	void func_02014a30();
+	void Graphics_2DStep();
+	void ProcessManager_ExecuteTasks();
+	void func_020123d8(); // SND::loop()
+	void func_02005ab0();
+	void Save_clearLoadedSaves();
+	void loadBuildtimeFile();
+	void TouchPad_init();
+	void prepareWifiStuff(u32);
+	void func_0204c8fc();
+	void func_02044ad8(u32, u32);
+	void func_0200a9d0();
+	void func_02006cf4();
+	void func_0200e508();
+	void Graphics_Init();
+	void func_020125d4();
+	void func_020125e8();
+	void func_02043d10();
+	void func_0202187c();
+	void func_020133a4();
+	void func_0200e040();
+	void func_02014a58();
+	void __stub_1();
+	void __stub_2();
+	void __stub_3();
+	void func_020455d8();
+	void Save_onStartup();
+	void func_0200a0b4();
+	void func_020050ec();
+	void func_020050d8();
+	void func_020050c0();
+	void onRender_3();
+	bool(func_0200ae9c)(Vec3_32 *);
+	bool(func_0201f000)(Vec3_32 *);
+	bool isMultiBootCart();
+	bool func_020109c8();
+	void InitGame();
+	void SetMasterGameMode(u32);
+	void SetBootScene(u32);
+	void SetExtraBootParam(u32);
+	extern u16 data_020850e8;
+	extern void (*data_0203981c)();
+	extern void (*data_02039820)();
+	extern void (*data_02039824)();
+	extern char GAME_NAME[8]; // = "Mario2d";
+	extern u32 FrameCounter;
+	extern u32 data_02085a78;
+	extern u32 data_02085a74;
+	void func_02014824(u32, u32);
+	void func_0201486c(u32, u32, u32);
+
+	extern u32 data_ov000_020ca2b8;
+	extern void (*data_02039968)(i32, i32);
+	extern u32 data_02085a88;
+	extern u32 data_02085e0c;
+
+	void func_01ff8378(u32);
+	void func_0200b87c(); // OAM::setFilesUnloaded
+	extern u32 data_02087700; // OAM::curTileOffset
+	void func_0200b83c(u32); // OAM::loadFilesToVRAM
+	void func_02009a30(u32, u32, u32); // FS::loadOBJPalette
+	u32 func_02017190(u32); // Font::getScriptFileID
+	extern u8 data_02088f30; // Scene::allowSoftReset
+	void func_020051ec(); // App::forceDisplayOn
+	void func_020045cc(); // Exception::terminateCaught
+	extern u32 data_02085a84; // Game::vsMode
+	extern u32 DAT_02039200; // vtable for Vec3
+	void func_02021808(); // TP::updatePlayer
+	void func_020180a4(void*); // TextLabel::unloadScript
+	void func_02005700(); // System::resetSubBGVBlank
+
+	extern class Heap* Memory_gameHeap;
+	extern Mat4x3 Game_modelMatrix;
+
+}
 
 #define FN_INIT 0
 #define FN_STEP(n) (n+1)

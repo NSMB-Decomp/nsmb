@@ -214,4 +214,4 @@ class PlayerBase : public StageActor
 	u32 func_ov011_0212c52c();
 	bool func_ov011_0212c4ec();
 };
-// size_assert(PlayerBase, 0x0);
+// NTR_SIZE_GUARD(PlayerBase, 0x0);

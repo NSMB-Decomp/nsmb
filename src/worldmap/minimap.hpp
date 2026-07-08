@@ -5,32 +5,32 @@ struct WmMapPathTile {
 	u16 srcTile;
 	u16 charNo;
 };
-size_assert(WmMapPathTile, 0x4);
+NTR_SIZE_GUARD(WmMapPathTile, 0x4);
 
 struct WmMapPath {
 	u32 mask;
 	WmMapPathTile* tiles;
 	u8 count;
 };
-size_assert(WmMapPath, 0xC);
+NTR_SIZE_GUARD(WmMapPath, 0xC);
 
 struct WmMapPathInfo {
 	WmMapPath** paths;
 	u8 count;
 };
-size_assert(WmMapPathInfo, 0x8);
+NTR_SIZE_GUARD(WmMapPathInfo, 0x8);
 
 struct WmMapNodePos {
 	s16 x;
 	s16 y;
 };
-size_assert(WmMapNodePos, 0x4);
+NTR_SIZE_GUARD(WmMapNodePos, 0x4);
 
 struct WmMapNodeInfo {
 	WmMapNodePos* nodes;
 	u8 count;
 };
-size_assert(WmMapNodeInfo, 0x8);
+NTR_SIZE_GUARD(WmMapNodeInfo, 0x8);
 
 class WmNodeMarkBlinker {
 public:
@@ -60,7 +60,7 @@ public:
 	u8 states[TypeCount];
 
 };
-size_assert(WmNodeMarkBlinker, 0xA);
+NTR_SIZE_GUARD(WmNodeMarkBlinker, 0xA);
 
 class WmNodeMark {
 public:
@@ -108,7 +108,7 @@ public:
 	u32 blinkType;
 
 };
-size_assert(WmNodeMark, 0x18);
+NTR_SIZE_GUARD(WmNodeMark, 0x18);
 
 class WmEntityMark : public WmNodeMark {
 public:
@@ -151,7 +151,7 @@ public:
 	u8 node;
 
 };
-size_assert(WmEntityMark, 0x2C);
+NTR_SIZE_GUARD(WmEntityMark, 0x2C);
 
 class WmPlayerMark : public WmNodeMark  {
 public:
@@ -196,7 +196,7 @@ public:
 	u8 node;
 
 };
-size_assert(WmPlayerMark, 0x28);
+NTR_SIZE_GUARD(WmPlayerMark, 0x28);
 
 class WmPathMap {
 public:
@@ -218,7 +218,7 @@ public:
 	u32 pathMask;
 
 };
-size_assert(WmPathMap, 0x4);
+NTR_SIZE_GUARD(WmPathMap, 0x4);
 
 class WmMinimap : public Object {
 public:
@@ -264,4 +264,4 @@ public:
 	WmNodeMarkBlinker markBlinker;
 
 };
-size_assert(WmMinimap, 0xEC);
+NTR_SIZE_GUARD(WmMinimap, 0xEC);

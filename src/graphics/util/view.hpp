@@ -1,7 +1,6 @@
 #pragma once
-
 #include "../../Bases/Object.hpp"
-#include "Nitro.hpp"
+#include "../../Vec.hpp"
 
 class View : public Object
 {
@@ -19,4 +18,4 @@ public:
 
 
 };
-size_assert(View, 0xCC);
+NTR_SIZE_GUARD(View, 0xCC);

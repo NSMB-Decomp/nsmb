@@ -1,5 +1,5 @@
 #pragma once
-#include "Nitro.hpp"
+#include "../../nsmb_nitro.hpp"
 
 class ModelBase {
 public:
@@ -15,4 +15,4 @@ public:
 	Ns3dDrawable drawable;
 
 };
-size_assert(ModelBase, 0x58);
+NTR_SIZE_GUARD(ModelBase, 0x58);

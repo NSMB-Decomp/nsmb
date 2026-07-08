@@ -23,4 +23,4 @@ public:
 	u32 unk164;
 
 };
-size_assert(WmCamera, 0x168);
+NTR_SIZE_GUARD(WmCamera, 0x168);

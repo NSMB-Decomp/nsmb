@@ -12,4 +12,4 @@ class Object156 : public StageEntity
 	~Object156();
 	void *create();
 };
-// size_assert(Object156, 0x4dc)
+// NTR_SIZE_GUARD(Object156, 0x4dc)

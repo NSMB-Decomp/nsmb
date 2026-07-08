@@ -24,7 +24,7 @@ public:
 	void func_0201d730();
 	void init(void *, void *);
 };
-size_assert(PlatformMgr, 0x34);
+NTR_SIZE_GUARD(PlatformMgr, 0x34);
 
 class Platform {
 public:
@@ -80,7 +80,7 @@ public:
 	static Platform* listTail;
 
 };
-size_assert(Platform, 0x58);
+NTR_SIZE_GUARD(Platform, 0x58);
 
 struct RotatingPlatformInfo {
 	fx32 x;
@@ -114,4 +114,4 @@ public:
 	fx32 left;
 
 };
-size_assert(RotatingPlatform, 0x70);
+NTR_SIZE_GUARD(RotatingPlatform, 0x70);

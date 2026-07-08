@@ -1,5 +1,5 @@
 #pragma once
-#include "Nitro.hpp"
+#include "../../nsmb_nitro.hpp"
 
 class FrameCtrl {
 public:
@@ -60,4 +60,4 @@ public:
 	i32 speed;
 
 };
-size_assert(FrameCtrl, 0xC);
+NTR_SIZE_GUARD(FrameCtrl, 0xC);

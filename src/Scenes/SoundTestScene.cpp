@@ -54,7 +54,7 @@ s32 SoundTestScene::onCreate()
 	REG_BG1CNT = (REG_BG1CNT &~ 0x3);
 	REG_BG1CNT = (REG_BG1CNT & 0x43) | 0x2810;
 	REG_BG1CNT &= ~0x40;
-	REG_BG1HOFS = 0;
+	REG_BG1OFS = 0;
 	u32 uVar1 = Nitro::func_02062264();
 	Nitro::func_02066edc(0, uVar1, 0x800);
 	this->_64 = 0;

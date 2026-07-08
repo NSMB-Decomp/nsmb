@@ -84,7 +84,7 @@ class Coin : public StageEntity
 	void _21();
 	void onStageComplete(PlayerActor *player);
 };
-size_assert(Coin, 0x4e8);
+NTR_SIZE_GUARD(Coin, 0x4e8);
 
 // extern void (Coin::*__5[3])();
 // extern void (Coin::*__6[3])();

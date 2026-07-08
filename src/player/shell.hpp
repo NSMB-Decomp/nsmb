@@ -20,4 +20,4 @@ public:
 	Model model;
 
 };
-size_assert(PlayerShell, 0x94);
+NTR_SIZE_GUARD(PlayerShell, 0x94);

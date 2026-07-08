@@ -87,7 +87,7 @@ namespace WM {
 		u16 flag;
 		u16 unkA;
 	};
-	size_assert(Node, 0xC);
+	NTR_SIZE_GUARD(Node, 0xC);
 
 	enum PathFlag {
 		PF_Unk1 = 0x1,
@@ -101,7 +101,7 @@ namespace WM {
 		u8 flag;
 		u8 unk3;
 	};
-	size_assert(Path, 0x4);
+	NTR_SIZE_GUARD(Path, 0x4);
 
 	enum EntityType {
 		ET_HammerBro,
@@ -114,7 +114,7 @@ namespace WM {
 		u8 node;
 		u8 type;
 	};
-	size_assert(Entity, 0x2);
+	NTR_SIZE_GUARD(Entity, 0x2);
 
 	struct Point {
 		u32 unk0;
@@ -124,7 +124,7 @@ namespace WM {
 		fx32 y;
 		fx32 z;
 	};
-	size_assert(Point, 0x18);
+	NTR_SIZE_GUARD(Point, 0x18);
 
 	struct Sign {
 		u32 path;
@@ -132,7 +132,7 @@ namespace WM {
 		fx32 y;
 		fx32 z;
 	};
-	size_assert(Sign, 0x10);
+	NTR_SIZE_GUARD(Sign, 0x10);
 
 	struct ToadHouse {
 		u32 node;
@@ -140,7 +140,7 @@ namespace WM {
 		fx32 y;
 		fx32 z;
 	};
-	size_assert(ToadHouse, 0x10);
+	NTR_SIZE_GUARD(ToadHouse, 0x10);
 
 	enum AnimFlag {
 		AF_ModelType    = 0x3,
@@ -153,7 +153,7 @@ namespace WM {
 		u8 path;
 		u8 flag;
 	};
-	size_assert(Anim, 0x2);
+	NTR_SIZE_GUARD(Anim, 0x2);
 
 
 
@@ -203,4 +203,4 @@ public:
 
 
 };
-size_assert(WorldmapScene, 0x64);
+NTR_SIZE_GUARD(WorldmapScene, 0x64);

@@ -1,5 +1,5 @@
 #pragma once
-#include "Nitro.hpp"
+#include "../../nsmb_nitro.hpp"
 
 class Animation {
 public:
@@ -42,4 +42,4 @@ public:
 	u16 frameCount;
 
 };
-size_assert(Animation, 0x20);
+NTR_SIZE_GUARD(Animation, 0x20);

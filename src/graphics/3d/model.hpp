@@ -87,4 +87,4 @@ public:
 	Mat4x3 matrix;
 
 };
-size_assert(Model, 0x90);
+NTR_SIZE_GUARD(Model, 0x90);

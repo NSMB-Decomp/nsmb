@@ -1,6 +1,5 @@
 #include "Actor.hpp"
 #include "../Math.hpp"
-#include "Nitro.hpp"
 
 // TODO: Some of this may be a part of inline Object::Object(). To comapre Actor::Actor() to Scene::Scene() and confirm if any comparisons
 Actor::Actor()

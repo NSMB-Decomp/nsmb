@@ -1,6 +1,6 @@
 #pragma once
-#include "../base_types.hpp"
 #include "Object.hpp"
+#include "../Vec.hpp"
 
 extern Vec3_32 *ActorSpawnPosition;
 extern Vec3_16 *ActorSpawnRotation;

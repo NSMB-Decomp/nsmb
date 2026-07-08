@@ -1,4 +1,5 @@
 #include "Scene.hpp"
+#include "../Vec.hpp"
 
 class Unknwon {
 	public:

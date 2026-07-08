@@ -1,8 +1,5 @@
 #pragma once
-
 #include "view.hpp"
-#include "../../Vec.hpp"
-
 
 //ov8
 class PerspView : public View
@@ -19,4 +16,4 @@ public:
 	virtual ~PerspView();
 
 };
-size_assert(PerspView, 0x108);
+NTR_SIZE_GUARD(PerspView, 0x108);

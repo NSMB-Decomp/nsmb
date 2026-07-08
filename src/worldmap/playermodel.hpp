@@ -73,4 +73,4 @@ public:
 	s8 powerup;
 
 };
-size_assert(WmPlayerModel, 0x3D8);
+NTR_SIZE_GUARD(WmPlayerModel, 0x3D8);

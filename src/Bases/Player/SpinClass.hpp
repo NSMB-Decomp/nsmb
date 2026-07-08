@@ -1,6 +1,5 @@
 #pragma once
 #include "../../Vec.hpp"
-#include "../../base_types.hpp"
 
 class SpinClass
 {

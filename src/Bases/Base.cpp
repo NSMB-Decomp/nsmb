@@ -1,5 +1,6 @@
 #include "Base.hpp"
-#include "Nitro.hpp"
+#include "../ProcessManager.hpp"
+#include "../Heap.hpp"
 
 #pragma section autobss_3 begin
 u32 data_0208fae0;

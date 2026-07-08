@@ -61,4 +61,4 @@ public:
 	}
 
 };
-size_assert(AnimationCtrl, 0x2C);
+NTR_SIZE_GUARD(AnimationCtrl, 0x2C);

@@ -60,4 +60,4 @@ public:
 	void detachAnimation(BlendAnimation* anim); //Register anim for the model and activate it
 
 };
-size_assert(BlendModelAnm, 0xC4);
+NTR_SIZE_GUARD(BlendModelAnm, 0xC4);

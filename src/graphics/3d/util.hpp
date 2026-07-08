@@ -1,5 +1,5 @@
 #pragma once
-#include "Nitro.hpp"
+#include "../../nsmb_nitro.hpp"
 
 namespace G3D {
 

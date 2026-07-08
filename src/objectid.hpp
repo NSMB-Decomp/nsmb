@@ -1,9 +1,11 @@
 #pragma once
-#include "Base.hpp"
 
 enum ObjectID {
 
+	// Core
 	SC_Boot,			// "BOOT" in SM64DS
+
+	// Game
 	SC_Connect,
 	SC_Debug,
 	SC_Stage,			// "STAGE" in SM64DS
@@ -22,25 +24,22 @@ enum ObjectID {
 	SC_Sound,			// "SOUND"
 	SC_Key,				// "KEY"
 
+	// Stage Actors
 	AC_Manhole = 187,
 
+	// Worldmap Actors
 	WM_Controller = 319,
 	WM_Character,
 	WM_Minimap,
 	WM_Camera,
 
-	SC_MgBoot = 326,	// "MGVS"
+	// Minigames
+	SC_MGBoot = 326,
+
+	// Invalid Object ID
+	AC_Invalid = 385,
+	SC_Invalid = 385,
+
+	ProfileCount
 
 };
-
-class Object : public Base
-{
-      public:
-	static Object *spawnObject(u16, Base *, u32, u8);
-	static Object *spawnScene(u16, u32, u8);
-	void __stub();
-
-	void postCreate(u32);
-	inline ~Object() {};
-};
-NTR_SIZE_GUARD(Object, sizeof(Base));

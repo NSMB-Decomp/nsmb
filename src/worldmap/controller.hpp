@@ -227,4 +227,4 @@ public:
 	u8 manualCameraState;
 
 };
-size_assert(WmController, 0x22FC);
+NTR_SIZE_GUARD(WmController, 0x22FC);

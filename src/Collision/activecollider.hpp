@@ -69,7 +69,7 @@ struct AcConfig {
 	AcCallback callback;
 
 };
-size_assert(AcConfig, 0x1C);
+NTR_SIZE_GUARD(AcConfig, 0x1C);
 
 class ActiveCollider {
 public:
@@ -127,4 +127,4 @@ public:
 	void link();
 	void unlink();
 };
-size_assert(ActiveCollider, 0xb0);
+NTR_SIZE_GUARD(ActiveCollider, 0xb0);

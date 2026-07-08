@@ -29,4 +29,4 @@ class CollisionMgr
 	bool func_01ffe778(i32*, u32);
 	virtual void _TEMP(); // To make sure size is correct
 };
-size_assert(CollisionMgr, 0xb8);
+NTR_SIZE_GUARD(CollisionMgr, 0xb8);

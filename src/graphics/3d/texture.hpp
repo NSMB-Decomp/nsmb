@@ -1,5 +1,5 @@
 #pragma once
-#include "Nitro.hpp"
+#include "../../nsmb_nitro.hpp"
 
 struct TextureInfo {
 
@@ -32,4 +32,4 @@ public:
 	Ns3dTextureData* texture;
 
 };
-size_assert(Texture, 0x8);
+NTR_SIZE_GUARD(Texture, 0x8);

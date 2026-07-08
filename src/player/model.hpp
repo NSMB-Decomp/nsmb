@@ -108,4 +108,4 @@ class PlayerModel
 	u8 headState;			      // Head state
 	u8 flags;			      // Render flags
 };
-size_assert(PlayerModel, 0x3C4);
+NTR_SIZE_GUARD(PlayerModel, 0x3C4);

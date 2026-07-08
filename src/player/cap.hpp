@@ -31,4 +31,4 @@ public:
 	i8 animType;
 
 };
-size_assert(PlayerCap, 0xC4);
+NTR_SIZE_GUARD(PlayerCap, 0xC4);
