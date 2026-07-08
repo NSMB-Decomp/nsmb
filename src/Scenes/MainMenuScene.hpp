@@ -89,7 +89,7 @@ class MainMenuScene : public Scene
 	s32 onCreate();
 	s32 onRender();
 
-	i32 func_ov009_020ce8d8();
+	u8 func_ov009_020ce8d8();
 	i32 func_ov009_020ce944(i32);
 	void func_ov009_020ceaec(i32, i32);
 	u8 func_ov009_020ce86c();

@@ -2,7 +2,6 @@
 #include "system/app.hpp"
 #include "base_types.hpp"
 
-void *data_0208b720;
 void *_data_0208b72c;
 void *_data_0208b730;
 
@@ -58,7 +57,7 @@ void func_02005cdc()
 
 u32 ExceptionHandlerState;
 u32 ExceptionHandlerKeys;
-u16 func_02005b34(u16)
+void func_02005b34()
 {
 	u32 newState = ExceptionHandlerState;
 	u32 keys = (REG_KEYINPUT | UNKWN) ^ KEYS_ALL;
@@ -115,7 +114,7 @@ u16 func_02005b34(u16)
 						Heap_dump(_data_0208b72c);
 					}
 				} else {
-					Heap_dump(data_0208b720);
+					Heap_dump(Memory_gameHeap);
 				}
 			} else {
 				Heap_dump(_data_0208b730);
@@ -128,9 +127,10 @@ u16 func_02005b34(u16)
 
 void ExceptionHandlerLoop()
 {
-	u16 a = REG_IME;
-	REG_IME = 0;
+    (void)REG_IME;
+
+    REG_IME = 0;
 	while (true) {
-		a = func_02005b34(a);
+		func_02005b34();
 	}
 }

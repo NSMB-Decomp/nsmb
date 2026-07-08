@@ -53,8 +53,8 @@ data_02085a04 kind:bss addr:0x02085a04
 data_02085a08 kind:bss addr:0x02085a08
 data_02085a0c kind:bss addr:0x02085a0c
 data_02085a10 kind:bss addr:0x02085a10
-data_02085a14 kind:bss addr:0x02085a14
-data_02085a18 kind:bss addr:0x02085a18
+_ZN5Stage7stageIDE kind:bss addr:0x02085a14
+_ZN5Stage10stageGroupE kind:bss addr:0x02085a18
 data_02085a1c kind:bss addr:0x02085a1c
 data_02085a20 kind:bss addr:0x02085a20
 data_02085a24 kind:bss addr:0x02085a24
@@ -67,7 +67,7 @@ data_02085a3c kind:bss addr:0x02085a3c
 data_02085a40 kind:bss addr:0x02085a40
 data_02085a44 kind:bss addr:0x02085a44
 data_02085a48 kind:bss addr:0x02085a48
-data_02085a4c kind:bss addr:0x02085a4c
+_ZN5Stage11stageAreaIDE kind:bss addr:0x02085a4c
 _ZN4Game9characterE kind:bss addr:0x02085a50
 data_02085a54 kind:bss addr:0x02085a54
 data_02085a58 kind:bss addr:0x02085a58
@@ -139,12 +139,12 @@ data_02085e24 kind:bss addr:0x02085e24
 data_02085e30 kind:bss addr:0x02085e30
 data_02086a30 kind:bss addr:0x02086a30
 data_02087630 kind:bss addr:0x02087630
-Input::localConsoleID kind:bss addr:0x02087634
+_ZN5Input14localConsoleIDE kind:bss addr:0x02087634
 data_02087638 kind:bss addr:0x02087638
 data_02087640 kind:bss addr:0x02087640
-data_02087648 kind:bss addr:0x02087648
+_ZN5Input19consoleKeysRepeatedE kind:bss addr:0x02087648
 data_02087650 kind:bss addr:0x02087650
-Input::ButtonsPressed kind:bss addr:0x02087652
+_ZN5Input11consoleKeysE kind:bss addr:0x02087652
 data_02087660 kind:bss addr:0x02087660
 data_02087664 kind:bss addr:0x02087664
 data_02087668 kind:bss addr:0x02087668
@@ -288,7 +288,7 @@ data_02088f30 kind:bss addr:0x02088f30
 data_02088f34 kind:bss addr:0x02088f34
 data_02088f38 kind:bss addr:0x02088f38
 data_02088f3c kind:bss addr:0x02088f3c
-Fader::fader kind:bss addr:0x02088f48
+GlobalFader kind:bss addr:0x02088f48
 data_02089504 kind:bss addr:0x02089504
 data_02089506 kind:bss addr:0x02089506
 data_02089508 kind:bss addr:0x02089508

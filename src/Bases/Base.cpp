@@ -94,14 +94,14 @@ i32 Base::doOrderProc()
 			// Check to see if this object should be updated
 			if (((parent->skipFlags & UpdateChildren) != 0) || ((parent->skipFlags & Update) != 0)) {
 				this->skipFlags |= Update;
-			} else if (this->skipFlags & Update) {
+			} else if (this->GetFlags(Update)) {
 				this->skipFlags &= ~Update;
 			}
 
 			// Check to see if this object should be rendered
 			if (((parent->skipFlags & RenderChildren) != 0) || ((parent->skipFlags & Render) != 0)) {
 				this->skipFlags |= Render;
-			} else if (this->skipFlags & Render) {
+			} else if (this->GetFlags(Render)) {
 				this->skipFlags &= ~Render;
 			}
 		}
@@ -269,7 +269,7 @@ void Base::postDestroy(u32 a)
 		func_0204d908();
 	}
 	this->~Base();
-	func_02044ab0(this, data_0208b720);
+	func_02044ab0(this, Memory_gameHeap);
 }
 void Base::pendingDestroy()
 {
@@ -439,7 +439,7 @@ bool Base::onHeapCreated()
 }
 void *Base::operator new(size_t count)
 {
-	Base *ptr = (Base *)data_0208b720->allocate(count, -4);
+	Base *ptr = (Base *)Memory_gameHeap->allocate(count, -4);
 	if (ptr != (Base *)0x0) {
 		Nitro::func_02066fe8(ptr, 0, count);
 		return ptr;
@@ -448,7 +448,7 @@ void *Base::operator new(size_t count)
 }
 void Base::operator delete(void *ptr)
 {
-	Heap_deallocate(data_0208b720, ptr);
+	Heap_deallocate(Memory_gameHeap, ptr);
 }
 void Base::create()
 {

@@ -1,6 +1,7 @@
 objdiff.json
 objdiff_report.json
 *.nds
+*.ids
 *.sav
 *.mch
 temp

@@ -6,6 +6,7 @@ enum SkipFlags { UpdateChildren = 1, Update = 2, RenderChildren = 4, Render = 8 
 class Base
 {
       public:
+	    const u32 GetFlags(u32 a) const { return skipFlags & a;}
 	u32 guid;		  /* 0x04 */
 	u32 settings;		  /* 0x08 */
 	u16 object_id;		  /* 0x0c */
