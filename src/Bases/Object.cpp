@@ -26,6 +26,6 @@ Object *Object::spawnScene(u16 a, u32 b, u8 c)
 	return scene;
 }
 
-void Object::__stub()
+void Object::onInitialize()
 {
 }

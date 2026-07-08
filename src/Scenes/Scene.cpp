@@ -176,7 +176,7 @@ void Scene::postRender(u32 a)
 }
 
 void func_02008558();
-void Scene::prepareFirstScreen() // TODO: prepareFirstScene???
+void Scene::prepareFirstScene()
 {
 	if (i32(&GlobalFader) != 0) {
 		func_02008558();

@@ -9,7 +9,7 @@ class Scene : public Object
 	~Scene();
 	Scene();
 
-	static void prepareFirstScreen();
+	static void prepareFirstScene();
 	static Scene *tryChangeScene();
 
 	bool preCreate();
