@@ -83,9 +83,10 @@ namespace Nitro_
 void func_02063af0(u16[1], u32, u32);
 }
 
-namespace WiFi
+namespace Wifi
 {
 u32 random();
+BOOL isWmInitialized();
 }
 
 struct BNBL {
@@ -210,6 +211,33 @@ extern Fader GlobalFader;
 extern ObjectProfile **CurrentProfileTable;
 extern ObjectProfile *MainProfileTable;
 extern u8 data_02088f34;
+
+namespace Net {
+
+	enum ConnectionState {
+		CS_Stopped,
+		CS_ParentMultiBoot,
+		CS_FakeChildScan,
+		CS_ParentBroadcast,
+		CS_ChildScan,
+		CS_Synchronizing,
+		CS_SyncTransfer,
+		CS_FastTransfer,
+		CS_Unused,
+		CS_Error
+	};
+
+	extern u8 connectionState;
+
+	inline BOOL isError() {
+		return connectionState == CS_Error;
+	}
+
+	inline BOOL isConnected() {
+		return connectionState != CS_Stopped && connectionState != CS_Error;
+	}
+
+}
 
 //
 extern u8 data_ov000_020ca84c;

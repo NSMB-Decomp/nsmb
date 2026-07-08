@@ -57,10 +57,10 @@ void MGScene_338::virt_20(u32 param_1)
 	bool a = false;
 	bool b = false;
 	u16 c = data_ov130_02139100[param_1];
-	if ((data_020887fc != 0) && (data_020887fc != 9)) {
+	if ((Net::connectionState != 0) && (Net::connectionState != 9)) {
 		b = true;
 	}
-	if (b && (data_020887fc != 8)) {
+	if (b && (Net::connectionState != 8)) {
 		a = true;
 	}
 

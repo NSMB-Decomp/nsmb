@@ -482,7 +482,7 @@ i32 StageEntity::tryAttachToPlayerHands(i32 z, i32 y, i32 x)
 
 u32 StageEntity::random()
 {
-	return WiFi::random();
+	return Wifi::random();
 }
 
 bool StageEntity::spawnBrokenPipe(i32 a, i32 b, u32 c, u32 d, u8 e, u8 f, i8 g)

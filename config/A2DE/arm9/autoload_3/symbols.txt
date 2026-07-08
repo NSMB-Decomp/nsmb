@@ -191,7 +191,7 @@ data_020887ec kind:bss addr:0x020887ec
 data_020887f0 kind:bss addr:0x020887f0
 data_020887f4 kind:bss addr:0x020887f4
 data_020887f8 kind:bss addr:0x020887f8
-data_020887fc kind:bss addr:0x020887fc
+_ZN3Net15connectionStateE kind:bss addr:0x020887fc
 data_02088800 kind:bss addr:0x02088800
 data_02088804 kind:bss addr:0x02088804
 data_02088808 kind:bss addr:0x02088808

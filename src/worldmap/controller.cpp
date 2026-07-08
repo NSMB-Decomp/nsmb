@@ -246,7 +246,7 @@ void WmController::moveEntitiesLoop(u8* entityMoves, u32 entityIdx, u8* moveTbl,
 	if (moveNum == 0)
 		return;
 
-	u32 random = WiFi::random();
+	u32 random = Wifi::random();
 	s32 randMove = (moveNum * (random & 0x7FFF)) >> 15;
 
 	for (int m = 0; m < 12; m++) {

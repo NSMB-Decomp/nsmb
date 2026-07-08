@@ -37,10 +37,10 @@ Scene::~Scene()
 	if (data_02088f34 != 0) {
 		bool a = false;
 		bool b = false;
-		if ((data_020887fc != 0) && (data_020887fc != 0x9)) {
+		if ((Net::connectionState != 0) && (Net::connectionState != 0x9)) {
 			b = true;
 		}
-		if (b && (data_020887fc != 0x8)) {
+		if (b && (Net::connectionState != 0x8)) {
 			a = true;
 		}
 		if (a) {
