@@ -14,19 +14,22 @@ data_020858a4 kind:bss addr:0x020858a4
 data_020858a8 kind:bss addr:0x020858a8
 data_020858ac kind:bss addr:0x020858ac
 
-// App
+// app.cpp
 
-data_0208596c kind:bss addr:0x0208596c
-data_02085970 kind:bss addr:0x02085970
-data_02085974 kind:bss addr:0x02085974
-data_02085978 kind:bss addr:0x02085978
-data_0208597c kind:bss addr:0x0208597c
-data_02085980 kind:bss addr:0x02085980
-data_02085984 kind:bss addr:0x02085984
-data_02085988 kind:bss addr:0x02085988
-ExtraBootParams kind:bss addr:0x0208598c
-SelectedMasterGameMode kind:bss addr:0x02085990
-BootScene kind:bss addr:0x02085994
+_ZN3App10sleepPhaseE kind:bss addr:0x0208596c
+_ZN3App12backlightOffE kind:bss addr:0x02085970
+_ZN3App12sleepControlE kind:bss addr:0x02085974
+_ZN3App8sleepingE kind:bss addr:0x02085978
+_ZN3App15sleepPhaseTimerE kind:bss addr:0x0208597c
+_ZN3App16sleepWakeUpTimerE kind:bss addr:0x02085980
+_ZN3App12backlightTopE kind:bss addr:0x02085984
+_ZN3App15backlightBottomE kind:bss addr:0x02085988
+_ZN3App9bootParamE kind:bss addr:0x0208598c
+_ZN3App10bootTargetE kind:bss addr:0x02085990
+_ZN3App9bootSceneE kind:bss addr:0x02085994
+
+// vblank.cpp
+
 data_02085998 kind:bss addr:0x02085998
 data_0208599c kind:bss addr:0x0208599c
 data_020859a0 kind:bss addr:0x020859a0
@@ -722,7 +725,7 @@ data_020942b0 kind:bss addr:0x020942b0
 data_020942b4 kind:bss addr:0x020942b4
 data_020942b8 kind:bss addr:0x020942b8
 data_020942c4 kind:bss addr:0x020942c4
-data_02094384 kind:bss addr:0x02094384
+launcherThread kind:bss addr:0x02094384
 data_0209450c kind:bss addr:0x0209450c
 data_02094510 kind:bss addr:0x02094510
 data_02094514 kind:bss addr:0x02094514

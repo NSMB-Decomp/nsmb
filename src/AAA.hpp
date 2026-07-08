@@ -241,7 +241,6 @@ namespace Net {
 
 //
 extern u8 data_ov000_020ca84c;
-extern u8 data_020887fc;
 extern u32 data_02085ad4[2];
 struct SaveMapEntity {
 	u8 node;

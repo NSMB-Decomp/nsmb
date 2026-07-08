@@ -41,7 +41,13 @@ func_020017b0 kind:function(thumb,size=0xc) addr:0x020017b0
 func_020017bc kind:function(arm,size=0x78) addr:0x020017bc
 func_02001834 kind:function(arm,size=0xb8) addr:0x02001834
 func_020018ec kind:function(arm,size=0xd4) addr:0x020018ec
-main kind:function(arm,size=0x70) addr:0x02003000
+
+// main.cpp
+
+NitroMain kind:function(arm,size=0x70) addr:0x02003000
+
+// ??????
+
 _ZN7Vec3_16D1Ev kind:function(arm,size=0x10) addr:0x02003070
 _ZN7Vec3_32D1Ev kind:function(arm,size=0x10) addr:0x02003080
 Fader::~Fader kind:function(arm,size=0x14) addr:0x02003090
@@ -58,6 +64,9 @@ _ZN7Vec3_32C1Ev kind:function(arm,size=0x10) addr:0x02003180
 _ZN7Vec3_32D0Ev kind:function(arm,size=0x20) addr:0x02003190
 _ZN7Vec3_16D0Ev kind:function(arm,size=0x20) addr:0x020031b0
 _ZN7Vec2_32D0Ev kind:function(arm,size=0x20) addr:0x020031d0
+
+// connect.cpp
+
 ConnectScene::~ConnectScene kind:function(arm,size=0x2c) addr:0x020031f0
 ConnectScene::~ConnectScene kind:function(arm,size=0x34) addr:0x0200321c
 ConnectScene::func_02003250 kind:function(arm,size=0x54) addr:0x02003250
@@ -87,69 +96,86 @@ func_02003d74 kind:function(arm,size=0xac) addr:0x02003d74
 func_02003e20 kind:function(arm,size=0xb8) addr:0x02003e20
 func_02003ed8 kind:function(arm,size=0x64) addr:0x02003ed8
 func_02003f3c kind:function(arm,size=0x260) addr:0x02003f3c
+
+// layout.cpp
+
 _ZN6Layout11drawCellSubEmPKvmhhPK7Vec2_32tPKsm kind:function(arm,size=0x80) addr:0x0200419c
 _ZN6Layout12drawCellMainEmPKvmhhPK7Vec2_32tPKsm kind:function(arm,size=0x80) addr:0x0200421c
 _ZN6Layout14getCellPosMainER7Vec2_32m kind:function(arm,size=0x3c) addr:0x0200429c
 _ZN6Layout13drawCellSubExEPK9BNCL_CellS2_bPK7Vec2_32tllhm kind:function(arm,size=0x28c) addr:0x020042d8
 _ZN6Layout7initSubEPvS0_S0_ kind:function(arm,size=0x34) addr:0x02004564
+
+// exception.cpp
+
 func_02004598 kind:function(arm,size=0x34) addr:0x02004598
 func_020045cc kind:function(arm,size=0x20) addr:0x020045cc
-func_020045ec kind:function(arm,size=0xc) addr:0x020045ec
+_ZN5Nitro9TerminateEv kind:function(arm,size=0xc) addr:0x020045ec
 func_020045f8 kind:function(arm,size=0x6c) addr:0x020045f8
 func_02004664 kind:function(arm,size=0x5c) addr:0x02004664
-func_020046c0 kind:function(arm,size=0x18) addr:0x020046c0
-setupGraphicsForDebugScreen kind:function(arm,size=0x508) addr:0x020046d8
-func_02004be0 kind:function(arm,size=0x44) addr:0x02004be0
-func_02004c24 kind:function(arm,size=0xc) addr:0x02004c24
+_ZN9Exception20userExceptionHandlerEPNS_7ContextEPv kind:function(arm,size=0x18) addr:0x020046c0
+
+// app.cpp
+
+_ZN3App8resetGpuEv kind:function(arm,size=0x508) addr:0x020046d8
+_ZN3App9resetVramEv kind:function(arm,size=0x44) addr:0x02004be0
+
+NitroStartUp kind:function(arm,size=0xc) addr:0x02004c24
 func_02004c30 kind:function(arm,size=0x88) addr:0x02004c30
 func_02004cb8 kind:function(arm,size=0xd8) addr:0x02004cb8
-_Z13sceneBaseInitv kind:function(arm,size=0x6c) addr:0x02004d90
-_Z15initExtendedIdsb kind:function(arm,size=0x24) addr:0x02004dfc
-_Z14SharedGameInitv kind:function(arm,size=0x3c) addr:0x02004e20
-_Z12InitMainGamev kind:function(arm,size=0x1c) addr:0x02004e5c
-_Z17InitNitroMainGamev kind:function(arm,size=0x30) addr:0x02004e78
-_Z13StartGameLoopv kind:function(arm,size=0x94) addr:0x02004ea8
-_Z8InitGamev kind:function(arm,size=0x15c) addr:0x02004f3c
-CardPulledOutCallback kind:function(arm,size=0x24) addr:0x02005098
-__stub kind:function(arm,size=0x4) addr:0x020050bc
-func_020050c0 kind:function(arm,size=0x18) addr:0x020050c0
-func_020050d8 kind:function(arm,size=0x14) addr:0x020050d8
-func_020050ec kind:function(arm,size=0x14) addr:0x020050ec
-func_02005100 kind:function(arm,size=0x3c) addr:0x02005100
-func_0200513c kind:function(arm,size=0x10) addr:0x0200513c
-func_0200514c kind:function(arm,size=0x4c) addr:0x0200514c
-func_02005198 kind:function(arm,size=0x54) addr:0x02005198
-func_020051ec kind:function(arm,size=0x44) addr:0x020051ec
-doFadingTransition kind:function(arm,size=0x28c) addr:0x02005230
-func_020054bc kind:function(arm,size=0x54) addr:0x020054bc
-func_02005510 kind:function(arm,size=0xbc) addr:0x02005510
-func_020055cc kind:function(arm,size=0x54) addr:0x020055cc
-__stub kind:function(arm,size=0x4) addr:0x02005620
-func_02005624 kind:function(arm,size=0x8) addr:0x02005624
-SetExtraBootParam kind:function(arm,size=0x10) addr:0x0200562c
-Game::getBootScene kind:function(arm,size=0x10) addr:0x0200563c
-SetBootScene kind:function(arm,size=0x10) addr:0x0200564c
-GetMasterGameMode kind:function(arm,size=0x10) addr:0x0200565c
-SetMasterGameMode kind:function(arm,size=0x10) addr:0x0200566c
-InitGame kind:function(arm,size=0x2c) addr:0x0200567c
-func_020056a8 kind:function(arm,size=0x2c) addr:0x020056a8
-func_020056d4 kind:function(arm,size=0x2c) addr:0x020056d4
-func_02005700 kind:function(arm,size=0x34) addr:0x02005700
-func_02005734 kind:function(arm,size=0x58) addr:0x02005734
-func_0200578c kind:function(arm,size=0x14) addr:0x0200578c
-func_020057a0 kind:function(arm,size=0xfc) addr:0x020057a0
-func_0200589c kind:function(arm,size=0x14) addr:0x0200589c
-func_020058b0 kind:function(arm,size=0x10) addr:0x020058b0
-System_waitForVBlank kind:function(arm,size=0x50) addr:0x020058c0
-func_02005910 kind:function(arm,size=0x14) addr:0x02005910
-SystemThreadsSleep kind:function(arm,size=0x14) addr:0x02005924
-func_02005938 kind:function(arm,size=0x10) addr:0x02005938
-func_02005948 kind:function(arm,size=0x60) addr:0x02005948
-func_020059a8 kind:function(arm,size=0x90) addr:0x020059a8
-func_02005a38 kind:function(arm,size=0x28) addr:0x02005a38
-func_02005a60 kind:function(arm,size=0x28) addr:0x02005a60
-func_02005a88 kind:function(arm,size=0x28) addr:0x02005a88
-func_02005ab0 kind:function(arm,size=0x60) addr:0x02005ab0
+
+_ZN3App8initBootEv kind:function(arm,size=0x6c) addr:0x02004d90
+_ZN3App13initFileCountEi kind:function(arm,size=0x24) addr:0x02004dfc
+_ZN3App13commonStartupEv kind:function(arm,size=0x3c) addr:0x02004e20
+_ZN3App8gameMainEv kind:function(arm,size=0x1c) addr:0x02004e5c
+_ZN3App10initializeEv kind:function(arm,size=0x30) addr:0x02004e78
+_ZN3App8gameLoopEv kind:function(arm,size=0x94) addr:0x02004ea8
+_ZN3App8gameInitEv kind:function(arm,size=0x15c) addr:0x02004f3c
+_ZN3App15onCardPulledOutEv kind:function(arm,size=0x24) addr:0x02005098
+_ZN3App9onStartupEv kind:function(arm,size=0x4) addr:0x020050bc
+_ZN3App17updateTaskDefaultEv kind:function(arm,size=0x18) addr:0x020050c0
+_ZN3App18onLidOpenedDefaultEv kind:function(arm,size=0x14) addr:0x020050d8
+_ZN3App18onLidClosedDefaultEv kind:function(arm,size=0x14) addr:0x020050ec
+_ZN3App7playSFXEml kind:function(arm,size=0x3c) addr:0x02005100
+_ZN3App10isSleepingEv kind:function(arm,size=0x10) addr:0x0200513c
+_ZN3App5resetEm kind:function(arm,size=0x4c) addr:0x0200514c
+_ZN3App4stopEv kind:function(arm,size=0x54) addr:0x02005198
+_ZN3App14forceDisplayOnEv kind:function(arm,size=0x44) addr:0x020051ec
+_ZN3App11updateSleepEv kind:function(arm,size=0x28c) addr:0x02005230
+_ZN3App14stopDisplayDMAEv kind:function(arm,size=0x54) addr:0x020054bc
+_ZN3App16powerOnBacklightEv kind:function(arm,size=0xbc) addr:0x02005510
+_ZN3App17powerOffBacklightEv kind:function(arm,size=0x54) addr:0x020055cc
+_ZN3App12onInitializeEv kind:function(arm,size=0x4) addr:0x02005620
+_ZN3App15defaultCallbackEv kind:function(arm,size=0x8) addr:0x02005624
+_ZN3App12setBootParamEm kind:function(arm,size=0x10) addr:0x0200562c
+_ZN3App12getBootSceneEv kind:function(arm,size=0x10) addr:0x0200563c
+_ZN3App12setBootSceneEm kind:function(arm,size=0x10) addr:0x0200564c
+_ZN3App13getBootTargetEv kind:function(arm,size=0x10) addr:0x0200565c
+_ZN3App13setBootTargetEm kind:function(arm,size=0x10) addr:0x0200566c
+_ZN3App12branchToMainEv kind:function(arm,size=0x2c) addr:0x0200567c
+_ZN3App15branchToStartupEv kind:function(arm,size=0x2c) addr:0x020056a8
+
+// vblank.cpp
+
+_ZN6System16setSubBGPositionEmll kind:function(arm,size=0x2c) addr:0x020056d4
+_ZN6System16resetSubBGVBlankEv kind:function(arm,size=0x34) addr:0x02005700
+_ZN6System16setupSubBGVBlankEv kind:function(arm,size=0x58) addr:0x02005734
+_ZN6System22subEngineVBlankHandlerEv kind:function(arm,size=0x14) addr:0x0200578c
+_ZN6System16uploadSubBGStateERNS_12VBlankBGInfoE kind:function(arm,size=0xfc) addr:0x020057a0
+_ZN6System23removeUserVBlankHandlerEv kind:function(arm,size=0x14) addr:0x0200589c
+_ZN6System20setUserVBlankHandlerEPFvvE kind:function(arm,size=0x10) addr:0x020058b0
+_ZN6System13waitForVBlankEv kind:function(arm,size=0x50) addr:0x020058c0
+_ZN6System15sleepGameThreadEv kind:function(arm,size=0x14) addr:0x02005910
+_ZN6System17sleepSystemThreadEv kind:function(arm,size=0x14) addr:0x02005924
+_ZN6System25setMinigamesVBlankCounterEl kind:function(arm,size=0x10) addr:0x02005938
+_ZN6System20setupMinigamesVBlankEv kind:function(arm,size=0x60) addr:0x02005948
+_ZN6System22minigamesVBlankHandlerEv kind:function(arm,size=0x90) addr:0x020059a8
+_ZN6System25switchToTitleScreenVBlankEv kind:function(arm,size=0x28) addr:0x02005a38
+_ZN6System19switchToStageVBlankEv kind:function(arm,size=0x28) addr:0x02005a60
+_ZN6System18switchToGameVBlankEv kind:function(arm,size=0x28) addr:0x02005a88
+_ZN6System15setupGameVBlankEv kind:function(arm,size=0x60) addr:0x02005ab0
+
+// exceptionscreen.cpp
+
 _Z20ExceptionHandlerLoopv kind:function(arm,size=0x24) addr:0x02005b10
 _Z13func_02005b34t kind:function(arm,size=0x1a8) addr:0x02005b34
 DebugScreenWaitForVblank kind:function(arm,size=0x28) addr:0x02005cdc
@@ -165,6 +191,9 @@ func_020063ac kind:function(arm,size=0x18) addr:0x020063ac
 func_020063c4 kind:function(arm,size=0x34) addr:0x020063c4
 func_020063f8 kind:function(arm,size=0x40) addr:0x020063f8
 func_02006438 kind:function(arm,size=0xc) addr:0x02006438
+
+// game.cpp??
+
 func_02006444 kind:function(arm,size=0x5c) addr:0x02006444
 func_020064a0 kind:function(arm,size=0xec) addr:0x020064a0
 func_0200658c kind:function(arm,size=0xe8) addr:0x0200658c
@@ -190,10 +219,10 @@ GFX::__stub kind:function(arm,size=0x4) addr:0x02006ee4
 GFX::resetWindows kind:function(arm,size=0x2c) addr:0x02006ee8
 GFX::FaderStep kind:function(arm,size=0x2c) addr:0x02006f14
 GFX::UnknownStep kind:function(arm,size=0x2c) addr:0x02006f40
-GFX::2DStep kind:function(arm,size=0x40) addr:0x02006f6c
-GFX::ResetOAM kind:function(arm,size=0xc) addr:0x02006fac
-GFX::Step kind:function(arm,size=0x54) addr:0x02006fb8
-GFX::Init kind:function(arm,size=0x15c) addr:0x0200700c
+Graphics_2DStep kind:function(arm,size=0x40) addr:0x02006f6c
+_ZN5Nitro17Graphics_ResetOAMEv kind:function(arm,size=0xc) addr:0x02006fac
+_ZN5Nitro13Graphics_StepEv kind:function(arm,size=0x54) addr:0x02006fb8
+Graphics_Init kind:function(arm,size=0x15c) addr:0x0200700c
 GFX::func_02007168 kind:function(arm,size=0x68) addr:0x02007168
 GFX::func_020071d0 kind:function(arm,size=0x68) addr:0x020071d0
 GFX::func_02007238 kind:function(arm,size=0x40) addr:0x02007238
@@ -267,14 +296,14 @@ FS::GetFileId kind:function(arm,size=0x28) addr:0x0200936c
 FS::calcFileID kind:function(arm,size=0x64) addr:0x02009394
 FS::SetFileIDOffset kind:function(arm,size=0x18) addr:0x020093f8
 FS::setFileCount kind:function(arm,size=0x14) addr:0x02009410
-FS::init kind:function(arm,size=0x54) addr:0x02009424
+_ZN5Nitro7FS_initEv kind:function(arm,size=0x54) addr:0x02009424
 FS::getDecompressedSize kind:function(arm,size=0xc) addr:0x02009478
 FS::Overlays::init kind:function(arm,size=0x34) addr:0x02009484
-FS::Overlays::unload kind:function(arm,size=0x58) addr:0x020094b8
+_ZN5Nitro18FS_Overlays_unloadEm kind:function(arm,size=0x58) addr:0x020094b8
 _ZN5Nitro23FS_Overlays_loadOverlayEm kind:function(arm,size=0x50) addr:0x02009510
 FS::Overlays::load kind:function(arm,size=0x238) addr:0x02009560
 FS::Overlays::invalidateRange kind:function(arm,size=0x38) addr:0x02009798
-FS_Archive_loadMainGameArchives kind:function(arm,size=0x1c) addr:0x020097d0
+_ZN5Nitro31FS_Archive_loadMainGameArchivesEv kind:function(arm,size=0x1c) addr:0x020097d0
 func_020097ec kind:function(arm,size=0x14) addr:0x020097ec
 func_02009800 kind:function(arm,size=0x1c) addr:0x02009800
 func_0200981c kind:function(arm,size=0xc) addr:0x0200981c
@@ -531,7 +560,7 @@ func_02012624 kind:function(arm,size=0x14) addr:0x02012624
 func_02012638 kind:function(arm,size=0xdc) addr:0x02012638
 func_02012714 kind:function(arm,size=0x30) addr:0x02012714
 loadBuildtimeFile kind:function(arm,size=0x20) addr:0x02012744
-__stub kind:function(arm,size=0x4) addr:0x02012764
+Save_onStartup kind:function(arm,size=0x4) addr:0x02012764
 func_02012768 kind:function(arm,size=0x20) addr:0x02012768
 func_02012788 kind:function(arm,size=0x9c) addr:0x02012788
 func_02012824 kind:function(arm,size=0x78) addr:0x02012824
@@ -1377,8 +1406,15 @@ __sinit_02026100 kind:function(arm,size=0x48) addr:0x02026100
 __sinit_02026148 kind:function(arm,size=0x4) addr:0x02026148
 __sinit_ProcessManager.cpp kind:function(arm,size=0xf8) addr:0x0202614c
 __sinit_02026244 kind:function(arm,size=0x4) addr:0x02026244
-data_02026248 kind:data(any) addr:0x02026248
-data_02026258 kind:data(any) addr:0x02026258
+
+// app.cpp
+
+_ZN3App11identityMtxE kind:data(word[4]) addr:0x02026248
+
+// exceptionscreen.cpp
+
+data_02026258 kind:data(byte[55]) addr:0x02026258
+
 data_02026290 kind:data(any) addr:0x02026290
 data_020262d0 kind:data(any) addr:0x020262d0
 data_020262dc kind:data(any) addr:0x020262dc
@@ -1473,15 +1509,21 @@ data_0203975c kind:data(any) addr:0x0203975c
 data_02039774 kind:data(any) addr:0x02039774
 data_0203978c kind:data(any) addr:0x0203978c
 data_020397a8 kind:data(any) addr:0x020397a8
-GAME_NAME kind:data(any) addr:0x02039808
-data_02039810 kind:data(any) addr:0x02039810
-data_02039814 kind:data(any) addr:0x02039814
-data_02039818 kind:data(any) addr:0x02039818
-data_0203981c kind:data(any) addr:0x0203981c
-data_02039820 kind:data(any) addr:0x02039820
-data_02039824 kind:data(any) addr:0x02039824
-MasterGameModeFunction1 kind:data(any) addr:0x02039828
-MasterGameModeFunction2 kind:data(any) addr:0x02039830
+
+// app.cpp
+
+_ZN3App15backupSignatureE kind:data(byte[8]) addr:0x02039808
+_ZN3App11frameLengthE kind:data(byte) addr:0x02039810
+_ZN3App12preLidClosedE kind:data(word) addr:0x02039814
+_ZN3App13postLidOpenedE kind:data(word) addr:0x02039818
+_ZN3App11onLidClosedE kind:data(word) addr:0x0203981c
+_ZN3App11onLidOpenedE kind:data(word) addr:0x02039820
+_ZN3App10updateTaskE kind:data(word) addr:0x02039824
+_ZN3App10startupTblE kind:data(word[2]) addr:0x02039828
+_ZN3App7mainTblE kind:data(word[2]) addr:0x02039830
+
+// exceptionscreen.cpp
+
 data_02039838 kind:data(any) addr:0x02039838
 data_02039898 kind:data(any) addr:0x02039898
 data_020398b0 kind:data(any) addr:0x020398b0

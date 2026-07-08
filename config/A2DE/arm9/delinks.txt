@@ -10,14 +10,29 @@
 src/ProcessManager.cpp:
     .init       start:0x0202614c end:0x02026244
 
-src/main.cpp:
+src/system/main.cpp:
     .text       start:0x02003000 end:0x02003070
 
-src/init.cpp:
-    .text       start:0x02004d90 end:0x02005098
+src/system/layout.cpp:
+    .text       start:0x0200419c end:0x02004598
+    .autobss_3  start:0x02085880 end:0x0208589c
 
-src/ExceptionHandler.cpp:
-    .text       start:0x02005b10 end:0x0200626c
+src/system/exception.cpp:
+    .text       start:0x02004598 end:0x020046d8
+
+src/system/app.cpp:
+    .text       start:0x020046d8 end:0x020056d4
+    .rodata     start:0x02026248 end:0x02026258
+    .data       start:0x02039808 end:0x02039838
+    .autobss_3  start:0x0208589c end:0x02085998
+
+src/system/vblank.cpp:
+    .text       start:0x020056d4 end:0x02005b10
+
+src/system/exceptionscreen.cpp:
+    .text       start:0x02005b10 end:0x02006444
+    .rodata     start:0x02026258 end:0x02026290
+    .data       start:0x02039838 end:0x02039968
 
 src/Bases/Object.cpp:
     complete

@@ -1,5 +1,5 @@
 #include "ExceptionHandler.hpp"
-#include "Nitro.hpp"
+#include "system/app.hpp"
 #include "base_types.hpp"
 
 void *data_0208b720;
@@ -9,7 +9,6 @@ void *_data_0208b730;
 u32 Nitro_GetCpsrM();
 void func_02005cdc();
 void Heap_dump(void *);
-void setupGraphicsForDebugScreen();
 
 void showExceptionHandler()
 {
@@ -25,7 +24,7 @@ void func_02005e68()
 }
 void setupGraphicsForDebugScreen2()
 {
-	setupGraphicsForDebugScreen();
+	App::resetGpu();
 	REG_POWER_CNT |= 1;
 	REG_BLDCNT = 0;
 	REG_BLDCNT_SUB = 0;
