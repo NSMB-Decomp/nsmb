@@ -11,6 +11,7 @@ class Scene : public Object
 
 	static void prepareFirstScene();
 	static Scene *tryChangeScene();
+	static void switchToCorruptedSave(u32 settings);
 
 	bool preCreate();
 	void postCreate(u32);

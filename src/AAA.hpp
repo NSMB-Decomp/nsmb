@@ -133,13 +133,6 @@ namespace Layout {
 
 };
 
-// These are shared between TitleScreen, Stage and Worldmap
-extern "C" {
-	extern u8 optionsMenuState;
-	extern u8 optionsMenuSlideTimer;
-	extern s32 optionsMenuSlideOffset;
-}
-
 namespace Stage
 {
 extern u16 ObjectBankTable[2];
@@ -241,7 +234,7 @@ namespace Net {
 
 //
 extern u8 data_ov000_020ca84c;
-extern u32 data_02085ad4[2];
+extern u32 data_02085ad4[2]; // Game::playerControlModes
 struct SaveMapEntity {
 	u8 node;
 	u8 type;

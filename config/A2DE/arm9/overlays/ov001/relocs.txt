@@ -11,7 +11,7 @@ from:0x020cc444 kind:arm_call to:0x02013050 module:main
 from:0x020cc464 kind:arm_call to:0x02013090 module:main
 from:0x020cc4a8 kind:load to:0x02088bdc module:autoload(3)
 from:0x020cc4ac kind:load to:0x02088e24 module:autoload(3)
-from:0x020cc4b0 kind:load to:0x02088f18 module:autoload(3)
+from:0x020cc4b0 kind:load to:0x02088bdc add:0x33c module:autoload(3)
 from:0x020cc500 kind:arm_call to:0x02062244 module:autoload(2)
 from:0x020cc5a8 kind:arm_call to:0x02043398 module:autoload(2)
 from:0x020cc5bc kind:arm_call to:0x02004c30 module:main

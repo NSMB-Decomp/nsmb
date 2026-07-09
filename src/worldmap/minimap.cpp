@@ -1,4 +1,5 @@
 #include "minimap.hpp"
+#include "../menu/OptionsMenu.hpp"
 
 using namespace WM;
 
@@ -398,8 +399,7 @@ void WmNodeMark::updateAnim(WmNodeMarkBlinker& blinker) {
 
 void WmNodeMark::render() {
 
-	s32 omState = optionsMenuState;
-	if (omState >= 2 && omState < 10)
+	if (OptionsMenu::isOpen())
 		return;
 
 	if (!visible)
@@ -408,7 +408,7 @@ void WmNodeMark::render() {
 	Layout::drawCellSubEx(
 		&Layout::bncl[1]->cells[cellIdx], nullptr,
 		true, nullptr, 0,
-		pos.x - optionsMenuSlideOffset, pos.y,
+		pos.x - OptionsMenu::restOffset, pos.y,
 		0, 0
 	);
 

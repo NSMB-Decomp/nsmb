@@ -282,7 +282,6 @@ data_02088c52 kind:bss addr:0x02088c52
 data_02088e24 kind:bss addr:0x02088e24
 data_02088e2c kind:bss addr:0x02088e2c
 data_02088edc kind:bss addr:0x02088edc
-data_02088f18 kind:bss addr:0x02088f18
 data_02088f2c kind:bss addr:0x02088f2c
 data_02088f30 kind:bss addr:0x02088f30
 data_02088f34 kind:bss addr:0x02088f34

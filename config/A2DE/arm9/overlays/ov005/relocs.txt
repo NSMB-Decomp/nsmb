@@ -13,7 +13,7 @@ from:0x020cc420 kind:arm_call to:0x02012ff0 module:main
 from:0x020cc45c kind:arm_call to:0x02012ee0 module:main
 from:0x020cc480 kind:arm_call to:0x020128d8 module:main
 from:0x020cc488 kind:arm_call to:0x0201289c module:main
-from:0x020cc498 kind:load to:0x02088f18 module:autoload(3)
+from:0x020cc498 kind:load to:0x02088bdc add:0x33c module:autoload(3)
 from:0x020cc49c kind:load to:0x02088bdc module:autoload(3)
 from:0x020cc4a0 kind:load to:0x02088e24 module:autoload(3)
 from:0x020cc4e4 kind:arm_call to:0x02012398 module:main

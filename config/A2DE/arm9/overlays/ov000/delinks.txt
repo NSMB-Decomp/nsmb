@@ -28,3 +28,8 @@ src/Collision/Collider.cpp:
     .ctor       start:0x020c4e94 end:0x020c4e98
     .data       start:0x020c71cc end:0x020c7234
     .bss        start:0x020cac0c end:0x020cac6c
+
+src/menu/OptionsMenu.cpp:
+    .text       start:0x020c0fa0 end:0x020c1f38
+    .data       start:0x020ca210 end:0x020ca268
+    .bss        start:0x020cc2b4 end:0x020cc2e0

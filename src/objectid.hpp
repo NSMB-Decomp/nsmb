@@ -34,7 +34,7 @@ enum ObjectID {
 	WM_Camera,
 
 	// Minigames
-	SC_MGBoot = 326,
+	SC_MgBoot = 326,
 
 	// Invalid Object ID
 	AC_Invalid = 385,

@@ -1,5 +1,6 @@
 #pragma once
 #include "base_types.hpp"
+#include "objectid.hpp"
 
 #define POWERUP_SMALL 0
 #define POWERUP_SUPER 1

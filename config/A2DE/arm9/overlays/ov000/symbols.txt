@@ -692,19 +692,23 @@ func_ov000_020c0e18 kind:function(arm,size=0x70) addr:0x020c0e18
 func_ov000_020c0e88 kind:function(arm,size=0x68) addr:0x020c0e88
 func_ov000_020c0ef0 kind:function(arm,size=0x8c) addr:0x020c0ef0
 func_ov000_020c0f7c kind:function(arm,size=0x24) addr:0x020c0f7c
-func_ov000_020c0fa0 kind:function(arm,size=0x540) addr:0x020c0fa0
-func_ov000_020c14e0 kind:function(arm,size=0x5c) addr:0x020c14e0
-func_ov000_020c153c kind:function(arm,size=0xac) addr:0x020c153c
-func_ov000_020c15e8 kind:function(arm,size=0x64) addr:0x020c15e8
-func_ov000_020c164c kind:function(arm,size=0xbc) addr:0x020c164c
-func_ov000_020c1708 kind:function(arm,size=0xdc) addr:0x020c1708
-func_ov000_020c17e4 kind:function(arm,size=0x6c) addr:0x020c17e4
-func_ov000_020c1850 kind:function(arm,size=0x4c) addr:0x020c1850
-func_ov000_020c189c kind:function(arm,size=0x54) addr:0x020c189c
-func_ov000_020c18f0 kind:function(arm,size=0x3e4) addr:0x020c18f0
-func_ov000_020c1cd4 kind:function(arm,size=0xd8) addr:0x020c1cd4
-func_ov000_020c1dac kind:function(arm,size=0x168) addr:0x020c1dac
-func_ov000_020c1f14 kind:function(arm,size=0x24) addr:0x020c1f14
+
+// OptionsMenu.cpp
+
+_ZN11OptionsMenu8menuDrawEv kind:function(arm,size=0x540) addr:0x020c0fa0
+_ZN11OptionsMenu18menuUnloadWorldmapEv kind:function(arm,size=0x5c) addr:0x020c14e0
+_ZN11OptionsMenu15menuUnloadStageEv kind:function(arm,size=0xac) addr:0x020c153c
+_ZN11OptionsMenu8menuLoadEv kind:function(arm,size=0x64) addr:0x020c15e8
+_ZN11OptionsMenu9menuCloseEv kind:function(arm,size=0xbc) addr:0x020c164c
+_ZN11OptionsMenu12menuSlideOutEv kind:function(arm,size=0xdc) addr:0x020c1708
+_ZN11OptionsMenu13menuCloseWaitEv kind:function(arm,size=0x6c) addr:0x020c17e4
+_ZN11OptionsMenu16menuCloseReleaseEv kind:function(arm,size=0x4c) addr:0x020c1850
+_ZN11OptionsMenu14menuClosePressEv kind:function(arm,size=0x54) addr:0x020c189c
+_ZN11OptionsMenu8menuMainEv kind:function(arm,size=0x3e4) addr:0x020c18f0
+_ZN11OptionsMenu11menuSlideInEv kind:function(arm,size=0xd8) addr:0x020c1cd4
+_ZN11OptionsMenu8menuInitEv kind:function(arm,size=0x168) addr:0x020c1dac
+_ZN11OptionsMenu8menuOpenEv kind:function(arm,size=0x24) addr:0x020c1f14
+
 data_ov000_020c1f38 kind:data(any) addr:0x020c1f38
 data_ov000_020c1f3c kind:data(any) addr:0x020c1f3c
 data_ov000_020c1f40 kind:data(any) addr:0x020c1f40
@@ -1176,6 +1180,9 @@ data_ov000_020c9a44 kind:data(any) addr:0x020c9a44
 data_ov000_020c9b74 kind:data(any) addr:0x020c9b74
 data_ov000_020c9ca4 kind:data(any) addr:0x020c9ca4
 data_ov000_020c9dd4 kind:data(any) addr:0x020c9dd4
+
+// StageMenu.cpp
+
 data_ov000_020c9f04 kind:data(any) addr:0x020c9f04
 data_ov000_020c9f0c kind:data(any) addr:0x020c9f0c
 data_ov000_020c9f14 kind:data(any) addr:0x020c9f14
@@ -1198,7 +1205,7 @@ data_ov000_020c9f94 kind:data(any) addr:0x020c9f94
 data_ov000_020c9f9c kind:data(any) addr:0x020c9f9c
 data_ov000_020c9fa4 kind:data(any) addr:0x020c9fa4
 data_ov000_020c9fac kind:data(any) addr:0x020c9fac
-data_ov000_020c9fbc kind:data(any) addr:0x020c9fbc
+_ZTV9StageMenu kind:data(any) addr:0x020c9fb4
 data_ov000_020c9fc4 kind:data(any) addr:0x020c9fc4
 data_ov000_020c9fcc kind:data(any) addr:0x020c9fcc
 data_ov000_020c9fd4 kind:data(any) addr:0x020c9fd4
@@ -1243,12 +1250,15 @@ data_ov000_020ca104 kind:data(any) addr:0x020ca104
 data_ov000_020ca10c kind:data(any) addr:0x020ca10c
 data_ov000_020ca114 kind:data(any) addr:0x020ca114
 data_ov000_020ca11c kind:data(any) addr:0x020ca11c
-data_ov000_020ca12c kind:data(any) addr:0x020ca12c
+_ZTV11StageMenuUi kind:data(any) addr:0x020ca124
 data_ov000_020ca134 kind:data(any) addr:0x020ca134
 data_ov000_020ca150 kind:data(any) addr:0x020ca150
 data_ov000_020ca180 kind:data(word[]) addr:0x020ca180
 data_ov000_020ca1b0 kind:data(any) addr:0x020ca1b0
 data_ov000_020ca1b4 kind:data(any) addr:0x020ca1b4
+
+// OptionsMenu.cpp
+
 data_ov000_020ca210 kind:data(any) addr:0x020ca210
 data_ov000_020ca218 kind:data(any) addr:0x020ca218
 data_ov000_020ca220 kind:data(any) addr:0x020ca220
@@ -1257,7 +1267,8 @@ data_ov000_020ca230 kind:data(any) addr:0x020ca230
 data_ov000_020ca238 kind:data(any) addr:0x020ca238
 data_ov000_020ca240 kind:data(any) addr:0x020ca240
 data_ov000_020ca24c kind:data(any) addr:0x020ca24c
-data_ov000_020ca258 kind:data(any) addr:0x020ca258
+data_ov000_020ca258 kind:data(word[4]) addr:0x020ca258
+
 data_ov000_020ca280 kind:bss addr:0x020ca280
 data_ov000_020ca284 kind:bss addr:0x020ca284
 data_ov000_020ca288 kind:bss addr:0x020ca288
@@ -1497,6 +1508,9 @@ data_ov000_020cbb00 kind:bss addr:0x020cbb00
 data_ov000_020cbd60 kind:bss addr:0x020cbd60
 data_ov000_020cbfc0 kind:bss addr:0x020cbfc0
 data_ov000_020cbfc4 kind:bss addr:0x020cbfc4
+
+// StageMenu.cpp
+
 data_ov000_020cbfc8 kind:bss addr:0x020cbfc8
 data_ov000_020cbfcc kind:bss addr:0x020cbfcc
 data_ov000_020cbfd0 kind:bss addr:0x020cbfd0
@@ -1544,14 +1558,17 @@ data_ov000_020cc194 kind:bss addr:0x020cc194
 data_ov000_020cc1d4 kind:bss addr:0x020cc1d4
 data_ov000_020cc214 kind:bss addr:0x020cc214
 data_ov000_020cc264 kind:bss addr:0x020cc264
-optionsMenuSlideTimer kind:bss(size=0x1) addr:0x020cc2b4
-data_ov000_020cc2b8 kind:bss addr:0x020cc2b8
-data_ov000_020cc2bc kind:bss addr:0x020cc2bc
-optionsMenuState kind:bss(size=0x1) addr:0x020cc2c0
-optionsMenuSlideOffset kind:bss(size=0x4) addr:0x020cc2c4
-data_ov000_020cc2c8 kind:bss addr:0x020cc2c8
-data_ov000_020cc2cc kind:bss addr:0x020cc2cc
-data_ov000_020cc2d0 kind:bss addr:0x020cc2d0
-data_ov000_020cc2d4 kind:bss addr:0x020cc2d4
-data_ov000_020cc2d8 kind:bss addr:0x020cc2d8
-data_ov000_020cc2dc kind:bss addr:0x020cc2dc
+
+// OptionsMenu.cpp
+
+_ZN11OptionsMenu10slideTimerE kind:bss(size=0x1) addr:0x020cc2b4
+_ZN11OptionsMenu9selectionE kind:bss(size=0x1) addr:0x020cc2b8
+_ZN11OptionsMenu9taskDelayE kind:bss(size=0x1) addr:0x020cc2bc
+_ZN11OptionsMenu6taskIDE kind:bss(size=0x1) addr:0x020cc2c0
+_ZN11OptionsMenu10restOffsetE kind:bss(size=0x4) addr:0x020cc2c4
+_ZN11OptionsMenu10menuOffsetE kind:bss(size=0x4) addr:0x020cc2c8
+_ZN11OptionsMenu14decideBtnFrameE kind:bss(size=0x4) addr:0x020cc2cc
+_ZN11OptionsMenu9soundModeE kind:bss(size=0x4) addr:0x020cc2d0
+_ZN11OptionsMenu11controlModeE kind:bss(size=0x4) addr:0x020cc2d4
+_ZN11OptionsMenu15decideBtnOffsetE kind:bss(size=0x4) addr:0x020cc2d8
+_ZN11OptionsMenu16controlBtnOffsetE kind:bss(size=0x4) addr:0x020cc2dc

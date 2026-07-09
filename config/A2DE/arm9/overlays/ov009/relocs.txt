@@ -444,7 +444,7 @@ from:0x020cf89c kind:load to:0x020da7f4 module:overlay(9)
 from:0x020cf8a0 kind:load to:0x020dbbb4 module:overlay(9)
 from:0x020cf928 kind:arm_call to:0x0201301c module:main
 from:0x020cf938 kind:arm_call to:0x020131d8 module:main
-from:0x020cf94c kind:load to:0x02088f18 module:autoload(3)
+from:0x020cf94c kind:load to:0x02088bdc add:0x33c module:autoload(3)
 from:0x020cfa38 kind:arm_call to:0x02055a0c module:autoload(2)
 from:0x020cfa88 kind:arm_call to:0x02012398 module:main
 from:0x020cfab8 kind:arm_call to:0x02012398 module:main
