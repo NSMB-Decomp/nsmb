@@ -9,30 +9,49 @@ struct SomethingElse {
 
 i32 data_ov002_020cd300;
 i32 data_ov002_020cd304;
-const SomethingElse data_ov002_020cd11c[] = {
-    {"KINOK", 0x9, 0x9, 0xA000}, 
-	{"KINO2", 0x9, 0x9, 0xC000}, 
-	{"KINO3", 0x9, 0x9, 0xA001}, 
-	{"WORLD", 0x8, 0x8, 0x0}, 
-	{"SAVE", 0x7, 0x7, 0x0}, 
-	{"TITLE", 0x4, 0x4, 0x0}, 
-	{"ENDIN", 0xC, 0xC, 0x0}, 
-	{"CRSIN", 0xD, 0xD, 0x0}, 
-	{"GOVER", 0xE, 0xE, 0x0}, 
-	{"KEY", 0x11, 0x11, 0x0}, 
-	{"SOUND", 0x10, 0x10, 0x0}, 
-	{"ENTRY", 0x6, 0x6, 0x0}, 
-	{"ERROR", 0xB, 0xB, 0x0}, 
-	{"MGVS", 0x146, 0x146, 0x0},
-};
-
+char S_ENDIN[] = "ENDIN";
+char S_MGVS[]  = "MGVS";
+char S_SAVE[]  = "SAVE";
+char S_CRSIN[] = "CRSIN";
+char S_KINO2[] = "KINO2";
+char S_WORLD[] = "WORLD";
+char S_SOUND[] = "SOUND";
+char S_KEY[]   = "KEY";
 u8 data_ov002_020cd220[4] = {1, 1, 3, 0};
-const u8 data_ov002_020cd114[4] = {0, 1, 3, 0};
+char S_GOVER[] = "GOVER";
 u8 data_ov002_020cd240[3][2] = {
     {0, 0},
     {1, 0},
     {0, 1},
 };
+const u8 data_ov002_020cd114[4] = {0, 1, 3, 0};
+char S_TITLE[] = "TITLE";
+char S_KINOK[] = "KINOK";
+char S_ENTRY[] = "ENTRY";
+char S_ERROR[] = "ERROR";
+char S_KINO3[] = "KINO3";
+ObjectProfile DebugScene_Profile = {DebugScene::create, 2, 9};
+
+const SomethingElse data_ov002_020cd11c[] = {
+    {S_KINOK, 0x9, 0x9, 0xA000}, 
+	{S_KINO2, 0x9, 0x9, 0xC000}, 
+	{S_KINO3, 0x9, 0x9, 0xA001}, 
+	{S_WORLD, 0x8, 0x8, 0x0}, 
+	{S_SAVE, 0x7, 0x7, 0x0}, 
+	{S_TITLE, 0x4, 0x4, 0x0}, 
+	{S_ENDIN, 0xC, 0xC, 0x0}, 
+	{S_CRSIN, 0xD, 0xD, 0x0}, 
+	{S_GOVER, 0xE, 0xE, 0x0}, 
+	{S_KEY, 0x11, 0x11, 0x0}, 
+	{S_SOUND, 0x10, 0x10, 0x0}, 
+	{S_ENTRY, 0x6, 0x6, 0x0}, 
+	{S_ERROR, 0xB, 0xB, 0x0}, 
+	{S_MGVS, 0x146, 0x146, 0x0},
+};
+
+void (DebugScene::*data_ov002_020cd308[])() = {DebugScene::func_ov002_020cc328, DebugScene::func_ov002_020cc514};
+
+
 DebugScene::DebugScene()
 {
 }
@@ -576,6 +595,4 @@ DebugScene::~DebugScene()
 {
 }
 
-ObjectProfile DebugScene_Profile = {DebugScene::create, 2, 9};
 
-void (DebugScene::*data_ov002_020cd308[])() = {DebugScene::func_ov002_020cc514, DebugScene::func_ov002_020cc328};

@@ -14,24 +14,24 @@ data_ov002_020cd11c kind:data(any) addr:0x020cbad8
 __sinit_DebugScene.cpp kind:function(arm,size=0x3c) addr:0x020cbb80
 .p__sinit_DebugScene.cpp kind:data(word) addr:0x020cbbbc
 data_ov002_020cd220 kind:data(byte[4]) addr:0x020cbbe0
-@423 kind:data(byte[4]) addr:0x020cbbe4 local
-@418 kind:data(byte[5]) addr:0x020cbbe8 local
-@427 kind:data(byte[5]) addr:0x020cbbf0 local
-@416 kind:data(byte[6]) addr:0x020cbbf8 local
+S_KEY kind:data(byte[4]) addr:0x020cbbe4 local
+S_SAVE kind:data(byte[5]) addr:0x020cbbe8 local
+S_MGVS kind:data(byte[5]) addr:0x020cbbf0 local
+S_KINO3 kind:data(byte[6]) addr:0x020cbbf8 local
 data_ov002_020cd240 kind:data(byte[6]) addr:0x020cbc00
-@419 kind:data(byte[6]) addr:0x020cbc08 local
-@421 kind:data(byte[6]) addr:0x020cbc10 local
-@414 kind:data(byte[6]) addr:0x020cbc18 local
-@422 kind:data(byte[6]) addr:0x020cbc20 local
-@425 kind:data(byte[6]) addr:0x020cbc28 local
-@424 kind:data(byte[6]) addr:0x020cbc30 local
-@426 kind:data(byte[6]) addr:0x020cbc38 local
-@417 kind:data(byte[6]) addr:0x020cbc40 local
-@415 kind:data(byte[6]) addr:0x020cbc48 local
-@420 kind:data(byte[6]) addr:0x020cbc50 local
+S_TITLE kind:data(byte[6]) addr:0x020cbc08 local
+S_CRSIN kind:data(byte[6]) addr:0x020cbc10 local
+S_KINOK kind:data(byte[6]) addr:0x020cbc18 local
+S_GOVER kind:data(byte[6]) addr:0x020cbc20 local
+S_ENTRY kind:data(byte[6]) addr:0x020cbc28 local
+S_SOUND kind:data(byte[6]) addr:0x020cbc30 local
+S_ERROR kind:data(byte[6]) addr:0x020cbc38 local
+S_WORLD kind:data(byte[6]) addr:0x020cbc40 local
+S_KINO2 kind:data(byte[6]) addr:0x020cbc48 local
+S_ENDIN kind:data(byte[6]) addr:0x020cbc50 local
 DebugScene_Profile kind:data(any) addr:0x020cbc58 ambiguous
-@761 kind:data(byte[8]) addr:0x020cbc60 local
-@763 kind:data(byte[8]) addr:0x020cbc68 local
+@415 kind:data(byte[8]) addr:0x020cbc60 local
+@417 kind:data(byte[8]) addr:0x020cbc68 local
 _ZTV10DebugScene kind:data(any) addr:0x020cbc70
 data_ov002_020cd300 kind:bss addr:0x020cbcc0
 data_ov002_020cd304 kind:bss addr:0x020cbcc4

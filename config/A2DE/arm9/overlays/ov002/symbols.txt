@@ -14,24 +14,24 @@ data_ov002_020cd11c kind:data(any) addr:0x020cd118 local
 __sinit_DebugScene.cpp kind:function(arm,size=0x3c) addr:0x020cd1c0 local
 .p__sinit_DebugScene.cpp kind:data(word) addr:0x020cd1fc local
 data_ov002_020cd220 kind:data(any) addr:0x020cd220
-@517 kind:data(byte[4]) addr:0x020cd224 local
-@512 kind:data(byte[5]) addr:0x020cd228 local
-@521 kind:data(byte[5]) addr:0x020cd230 local
-@510 kind:data(byte[6]) addr:0x020cd238 local
-data_ov002_020cd240 kind:data(any) addr:0x020cd240
-@513 kind:data(byte[6]) addr:0x020cd248 local
-@515 kind:data(byte[6]) addr:0x020cd250 local
-@508 kind:data(byte[6]) addr:0x020cd258 local
-@516 kind:data(byte[6]) addr:0x020cd260 local
-@519 kind:data(byte[6]) addr:0x020cd268 local
-@518 kind:data(byte[6]) addr:0x020cd270 local
-@520 kind:data(byte[6]) addr:0x020cd278 local
-@511 kind:data(byte[6]) addr:0x020cd280 local
-@509 kind:data(byte[6]) addr:0x020cd288 local
-@514 kind:data(byte[6]) addr:0x020cd290 local
+S_KEY kind:data(byte[4]) addr:0x020cd224
+S_SAVE kind:data(byte[5]) addr:0x020cd228
+S_MGVS kind:data(byte[5]) addr:0x020cd230
+S_KINO3 kind:data(byte[6]) addr:0x020cd238
+data_ov002_020cd240 kind:data(byte[6]) addr:0x020cd240
+S_TITLE kind:data(byte[6]) addr:0x020cd248
+S_CRSIN kind:data(byte[6]) addr:0x020cd250
+S_KINOK kind:data(byte[6]) addr:0x020cd258
+S_GOVER kind:data(byte[6]) addr:0x020cd260
+S_ENTRY kind:data(byte[6]) addr:0x020cd268
+S_SOUND kind:data(byte[6]) addr:0x020cd270
+S_ERROR kind:data(byte[6]) addr:0x020cd278
+S_WORLD kind:data(byte[6]) addr:0x020cd280
+S_KINO2 kind:data(byte[6]) addr:0x020cd288
+S_ENDIN kind:data(byte[6]) addr:0x020cd290
 DebugScene_Profile kind:data(any) addr:0x020cd298 ambiguous
-@855 kind:data(any) addr:0x020cd2a0 local
-@857 kind:data(any) addr:0x020cd2a8 local
+@415 kind:data(any) addr:0x020cd2a0 local
+@417 kind:data(any) addr:0x020cd2a8 local
 _ZTV10DebugScene kind:data(any) addr:0x020cd2b0
 data_ov002_020cd300 kind:bss addr:0x020cd300
 data_ov002_020cd304 kind:bss addr:0x020cd304
