@@ -30,8 +30,8 @@ S_WORLD kind:data(byte[6]) addr:0x020cd280
 S_KINO2 kind:data(byte[6]) addr:0x020cd288
 S_ENDIN kind:data(byte[6]) addr:0x020cd290
 DebugScene_Profile kind:data(any) addr:0x020cd298 ambiguous
-@415 kind:data(any) addr:0x020cd2a0 local
-@417 kind:data(any) addr:0x020cd2a8 local
+@416 kind:data(any) addr:0x020cd2a0 local
+@418 kind:data(any) addr:0x020cd2a8 local
 _ZTV10DebugScene kind:data(any) addr:0x020cd2b0
 data_ov002_020cd300 kind:bss addr:0x020cd300
 data_ov002_020cd304 kind:bss addr:0x020cd304
