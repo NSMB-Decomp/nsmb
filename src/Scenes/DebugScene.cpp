@@ -28,11 +28,10 @@ const SomethingElse data_ov002_020cd11c[] = {
 
 u8 data_ov002_020cd220[4] = {1, 1, 3, 0};
 const u8 data_ov002_020cd114[4] = {0, 1, 3, 0};
-u8 data_ov002_020cd240[4][2] = {
+u8 data_ov002_020cd240[3][2] = {
     {0, 0},
     {1, 0},
     {0, 1},
-    {0, 0},
 };
 DebugScene::DebugScene()
 {

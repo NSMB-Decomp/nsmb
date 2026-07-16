@@ -39,11 +39,11 @@ data_0208503c kind:bss addr:0x0208503c
 data_02085040 kind:bss addr:0x02085040
 data_02085044 kind:bss addr:0x02085044
 data_02085048 kind:bss addr:0x02085048
-data_0208504c kind:bss addr:0x0208504c
-data_02085050 kind:bss addr:0x02085050
-data_02085054 kind:bss addr:0x02085054
-data_02085058 kind:bss addr:0x02085058
-data_0208505c kind:bss addr:0x0208505c
+data_02085a0c kind:bss addr:0x0208504c
+data_02085a10 kind:bss addr:0x02085050
+_ZN5Stage7stageIDE kind:bss addr:0x02085054
+_ZN5Stage10stageGroupE kind:bss addr:0x02085058
+data_02085a1c kind:bss addr:0x0208505c
 data_02085060 kind:bss addr:0x02085060
 data_02085064 kind:bss addr:0x02085064
 data_02085068 kind:bss addr:0x02085068
@@ -55,7 +55,7 @@ data_0208507c kind:bss addr:0x0208507c
 data_02085080 kind:bss addr:0x02085080
 data_02085084 kind:bss addr:0x02085084
 data_02085088 kind:bss addr:0x02085088
-data_0208508c kind:bss addr:0x0208508c
+_ZN5Stage11stageAreaIDE kind:bss addr:0x0208508c
 data_02085090 kind:bss addr:0x02085090
 data_02085094 kind:bss addr:0x02085094
 data_02085098 kind:bss addr:0x02085098
@@ -72,7 +72,7 @@ data_020850c0 kind:bss addr:0x020850c0
 data_020850c4 kind:bss addr:0x020850c4
 data_020850c8 kind:bss addr:0x020850c8
 data_020850cc kind:bss addr:0x020850cc
-data_020850d0 kind:bss addr:0x020850d0
+data_02085a90 kind:bss addr:0x020850d0
 data_020850d4 kind:bss addr:0x020850d4
 data_020850d8 kind:bss addr:0x020850d8
 data_020850dc kind:bss addr:0x020850dc
@@ -88,7 +88,7 @@ data_02085100 kind:bss addr:0x02085100
 data_02085104 kind:bss addr:0x02085104
 data_02085108 kind:bss addr:0x02085108
 data_0208510c kind:bss addr:0x0208510c
-data_02085114 kind:bss addr:0x02085114
+data_02085ad4 kind:bss addr:0x02085114
 data_0208511c kind:bss addr:0x0208511c
 data_02085124 kind:bss addr:0x02085124
 data_02085130 kind:bss addr:0x02085130
@@ -127,12 +127,12 @@ data_02085464 kind:bss addr:0x02085464
 data_02085470 kind:bss addr:0x02085470
 data_02086070 kind:bss addr:0x02086070
 data_02086c70 kind:bss addr:0x02086c70
-data_02086c74 kind:bss addr:0x02086c74
+_ZN5Input14localConsoleIDE kind:bss addr:0x02086c74
 data_02086c78 kind:bss addr:0x02086c78
 data_02086c80 kind:bss addr:0x02086c80
-data_02086c88 kind:bss addr:0x02086c88
-data_02086c90 kind:bss addr:0x02086c90
-data_02086c92 kind:bss addr:0x02086c92
+_ZN5Input19consoleKeysRepeatedE kind:bss addr:0x02086c88
+data_02087650 kind:bss addr:0x02086c90
+_ZN5Input11consoleKeysE kind:bss addr:0x02086c92
 data_02086ca0 kind:bss addr:0x02086ca0
 data_02086ca4 kind:bss addr:0x02086ca4
 data_02086ca8 kind:bss addr:0x02086ca8
@@ -261,7 +261,7 @@ data_020881c4 kind:bss addr:0x020881c4
 data_020881d4 kind:bss addr:0x020881d4
 data_020881f4 kind:bss addr:0x020881f4
 data_020881f8 kind:bss addr:0x020881f8
-data_020881fc kind:bss addr:0x020881fc
+save kind:bss addr:0x020881fc
 data_02088240 kind:bss addr:0x02088240
 data_0208825c kind:bss addr:0x0208825c
 data_0208826c kind:bss addr:0x0208826c
@@ -277,7 +277,7 @@ data_02088550 kind:bss addr:0x02088550
 data_02088554 kind:bss addr:0x02088554
 data_02088558 kind:bss addr:0x02088558
 data_0208855c kind:bss addr:0x0208855c
-data_02088568 kind:bss addr:0x02088568
+GlobalFader kind:bss addr:0x02088568
 data_02088b24 kind:bss addr:0x02088b24
 data_02088b26 kind:bss addr:0x02088b26
 data_02088b28 kind:bss addr:0x02088b28
@@ -409,7 +409,7 @@ data_0208aadf kind:bss addr:0x0208aadf
 data_0208aaec kind:bss addr:0x0208aaec
 data_0208aafc kind:bss addr:0x0208aafc
 data_0208ab00 kind:bss addr:0x0208ab00
-data_0208ab04 kind:bss addr:0x0208ab04
+data_0208b4f0 kind:bss addr:0x0208ab04
 data_0208ab08 kind:bss addr:0x0208ab08
 data_0208ab0c kind:bss addr:0x0208ab0c
 data_0208ab10 kind:bss addr:0x0208ab10

@@ -1,8 +1,8 @@
 from:0x020cacb0 kind:arm_call to:0x02013664 module:main
-from:0x020cacbc kind:load to:0x020cbc78 module:overlay(2)
+from:0x020cacbc kind:load to:0x020cbc70 add:0x8 module:overlay(2)
 from:0x020cacd0 kind:arm_call to:0x02013664 module:main
 from:0x020cacd8 kind:arm_call to:0x0204c264 module:autoload(2)
-from:0x020cace4 kind:load to:0x020cbc78 module:overlay(2)
+from:0x020cace4 kind:load to:0x020cbc70 add:0x8 module:overlay(2)
 from:0x020cae90 kind:arm_call to:0x020130a8 module:main
 from:0x020cae98 kind:arm_call to:0x02007b38 module:main
 from:0x020caea4 kind:load to:0x02086c74 module:autoload(3)
@@ -11,9 +11,9 @@ from:0x020caeb4 kind:load to:0x02086c88 module:autoload(3)
 from:0x020caeb8 kind:load to:0x02085058 module:autoload(3)
 from:0x020caebc kind:load to:0x02085054 module:autoload(3)
 from:0x020caec0 kind:load to:0x0208508c module:autoload(3)
-from:0x020caec4 kind:load to:0x020cbadc module:overlay(2)
-from:0x020caec8 kind:load to:0x020cbade module:overlay(2)
-from:0x020caecc kind:load to:0x020cbae0 module:overlay(2)
+from:0x020caec4 kind:load to:0x020cbad8 add:0x4 module:overlay(2)
+from:0x020caec8 kind:load to:0x020cbad8 add:0x6 module:overlay(2)
+from:0x020caecc kind:load to:0x020cbad8 add:0x8 module:overlay(2)
 from:0x020caed0 kind:load to:0x02088568 module:autoload(3)
 from:0x020cb000 kind:arm_call to:0x0201f080 module:main
 from:0x020cb020 kind:arm_call to:0x0201f080 module:main
@@ -52,7 +52,7 @@ from:0x020cba30 kind:load to:0x02085114 module:autoload(3)
 from:0x020cba38 kind:load to:0x0208ab04 module:autoload(3)
 from:0x020cba3c kind:load to:0x020cbbe0 module:overlay(2)
 from:0x020cba40 kind:load to:0x020cbc00 module:overlay(2)
-from:0x020cba44 kind:load to:0x020cbc01 module:overlay(2)
+from:0x020cba44 kind:load to:0x020cbc00 add:0x1 module:overlay(2)
 from:0x020cba48 kind:load to:0x0208505c module:autoload(3)
 from:0x020cba4c kind:load to:0x02085050 module:autoload(3)
 from:0x020cba50 kind:load to:0x020cbad4 module:overlay(2)
@@ -61,7 +61,7 @@ from:0x020cba74 kind:arm_call to:0x02009a94 module:main
 from:0x020cba88 kind:arm_call to:0x0206312c module:autoload(2)
 from:0x020cbab0 kind:arm_call to:0x0204c280 module:autoload(2)
 from:0x020cbabc kind:arm_call to:0x020139d8 module:main
-from:0x020cbad0 kind:load to:0x020cbc78 module:overlay(2)
+from:0x020cbad0 kind:load to:0x020cbc70 add:0x8 module:overlay(2)
 from:0x020cbad8 kind:load to:0x020cbc18 module:overlay(2)
 from:0x020cbae4 kind:load to:0x020cbc48 module:overlay(2)
 from:0x020cbaf0 kind:load to:0x020cbbf8 module:overlay(2)
