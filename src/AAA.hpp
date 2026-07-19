@@ -496,6 +496,25 @@ namespace MTX {
 
 }
 
+struct IDK {
+	u32 field1_0x4;
+	u32 field0_0x0;
+	u32 field2_0x8;
+	u32 field3_0xc;
+	u32 field4_0x10;
+	u32 field5_0x14;
+	u32 field6_0x18;
+	u8 field7_0x1c;
+	u8 field8_0x1d;
+	u8 field9_0x1e;
+	u8 field10_0x1f;
+	u32 field11_0x20;
+	u32 field12_0x24;
+	u32 field13_0x28;
+	u32 field14_0x2c;
+	u32 field15_0x30;
+};
+
 void func_0201325c();
 u32 func_02006674(u32);
 void func_02011c34(u32);
@@ -514,10 +533,30 @@ void func_020131fc(u32, u32);
 void func_0200a42c(u32, u32);
 void func_0200a3d0(u32, u32);
 u32 func_02011e7c(u32, u32);
-void* data_02087650;
 void func_02012290(u32, u32);
 	void func_0200917c(u32, u32);
 	void func_ov052_021535a0();
 	void func_020125c4();
 	void func_02011c64();
 	u32 func_020090f8(u32);
+	extern u32 func_0201f5fc(u32);
+extern u32 func_0201f590(u32, u32);
+extern u32 func_0201f53c(u32, u32, u32);
+extern void func_02020580(u32, u32);
+extern u32 func_0200696c(u32, u32, u32, u32, IDK);
+extern void func_0200696c_(u8, u8, u8, u8, u8, u8, u8, u8, u8, u8, u8, u8, u8, u8, u8, u8);
+extern void func_02011e3c(u32);
+extern void func_020066f8();
+extern void func_02006740();
+extern u16 data_02087650[2][2];
+extern u8 data_02085a0c;
+extern u32 data_02085a90;
+extern u8 data_0208b4f0;
+extern u8 data_02085a1c;
+extern u8 data_02085a10;
+extern u8 data_02088e04;
+extern u8 uRam02088e06;
+extern u32 uRam02088bfc;
+extern u8 uRam02088e07;
+extern u32 uRam02088c04;
+extern u8 uRam02088e05;
