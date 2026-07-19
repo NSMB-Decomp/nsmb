@@ -1,6 +1,5 @@
 #include "SoundTestScene.hpp"
 
-void func_02011d40();
 void func_02011b64();
 namespace Nitro
 {
@@ -51,7 +50,7 @@ s32 SoundTestScene::onCreate()
 	// TODO: Turn these into macros?
 	REG_DISPCNT &= ~0x7000000;
 	REG_DISPCNT = REG_DISPCNT & ~0x38000000 | 0x8000000;
-	REG_BG1CNT = (REG_BG1CNT &~ 0x3);
+	REG_BG1CNT = (REG_BG1CNT & ~0x3);
 	REG_BG1CNT = (REG_BG1CNT & 0x43) | 0x2810;
 	REG_BG1CNT &= ~0x40;
 	REG_BG1OFS = 0;
@@ -78,7 +77,53 @@ s32 SoundTestScene::onRender()
 	return true;
 }
 
-s32 SoundTestScene::onUpdate()
+i32 SoundTestScene::onUpdate()
 {
-	return true;
+	u32 local_r0;
+	u32 local_r1;
+	if ((GlobalFader.func_02007cb0() == 0x0)) {
+		return 0x1;
+	}
+	local_r0 = ((((*rcast<u16 *>(((u32)&data_02087650 + ((*rcast<u8 *>(&Input::localConsoleID)) << 0x2)))) & 0xc) << 0x10) >> 0x10);
+	if ((local_r0 == 0xc)) {
+		func_02011e3c(0x1e);
+		func_020131fc(0x2, 0x0);
+	}
+	func_0200a42c(this->_64, 0x2);
+
+	if ((this->_64 != 0x0)) {
+		func_0200a3d0(this->_68, 0x70);
+		local_r0 = ((*rcast<u8 *>(&Input::localConsoleID)) << 0x2);
+		local_r1 = (*rcast<u16 *>(((u32)&Input::consoleKeys + local_r0)));
+		local_r0 = (local_r1 & 0x2);
+		if (((local_r1 & 0x2) != 0x0)) {
+			local_r0 = func_02011d40();
+		} else {
+			local_r0 = (local_r1 & 0x1);
+			if (((local_r1 & 0x1) != 0x0)) {
+				local_r0 = func_02011e7c(this->_68, 0x0);
+			}
+		}
+	} else {
+		if ((local_r0 != 0x1)) {
+			func_0200a3d0(this->_6c, 0x1c3);
+			local_r0 = ((*rcast<u8 *>(&Input::localConsoleID)) << 0x2);
+			local_r1 = (*rcast<u16 *>(((u32)&Input::consoleKeys + local_r0)));
+			local_r0 = (local_r1 & 0x2);
+			if (((local_r1 & 0x2) != 0x0)) {
+				func_02011d40();
+			} else {
+				local_r0 = (local_r1 & 0x1);
+				if (((local_r1 & 0x1) != 0x0)) {
+					func_02012398(this->_6c, 0x0);
+				} else {
+					local_r0 = (local_r1 & 0x400);
+					if (((local_r1 & 0x400) != 0x0)) {
+						func_02012290(this->_6c, 0x0);
+					}
+				}
+			}
+		}
+	}
+	return 0x1;
 }

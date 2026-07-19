@@ -21,5 +21,6 @@ class ConnectScene : public Scene
 	s32 onDestroy();
 	s32 onUpdate();
 	s32 onRender();
+	u32 func_020037e4();
 };
 NITRO_SIZE_ASSERT(ConnectScene, 0x108);

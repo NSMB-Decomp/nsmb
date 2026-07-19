@@ -211,3 +211,5 @@ void CorruptedFileScene::func_ov005_020cc2e0() {
 	u32 b = this->_f0 + this->_64.func_020141b8() - 3;
 	this->_64.func_020141c0(b);
 }
+
+
