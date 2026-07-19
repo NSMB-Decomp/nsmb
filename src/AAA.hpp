@@ -508,3 +508,4 @@ u16* data_ov001_020cd734;
 u32 data_ov001_020ce84c;
 u32 data_ov001_020ce86c;
 u32 data_02085a88;
+void func_02011d40();

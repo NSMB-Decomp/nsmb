@@ -8,7 +8,12 @@ void *Scene8::create()
 
 s32 Scene8::onCreate() {};
 
-s32 Scene8::onDestroy() {};
+i32 Scene8::onDestroy() {
+	FS::Cache::clear();
+	func_02011d40();
+	return true;
+}
+
 
 void Scene8::pendingDestroy()
 {
