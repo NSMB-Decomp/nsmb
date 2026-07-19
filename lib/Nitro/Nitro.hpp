@@ -405,7 +405,7 @@ void func_0206118c();
 void func_02061164();
 void func_02056f40(u32, u32);
 void func_020571c4(u32, u32);
-void func_02060d78(u32, u32, u32, u32);
+void func_02060d78(u32, u32, u32);
 void * func_02061f2c();
 void * func_02061f84();
 void func_02066f28(void*, void*, u32);

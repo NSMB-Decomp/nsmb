@@ -7,7 +7,7 @@ class UnknownClass {
 	~UnknownClass();
 
 	void func_020144bc(u32, u32, u32);
-	void func_020141c0(u32);
+	u32 func_020141c0(u32);
 	void func_020145f8(u32, u32);
 	void func_020144a8();
 	void func_0201443c();

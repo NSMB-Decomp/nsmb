@@ -26,7 +26,7 @@ i32 BootScene::onCreate() {
 		Nitro::func_0206134c(0x8);
 		REG_DISPCNT &= 0xffcfffef;
 		REG_DISPCNT_SUB &= 0xffcfffef;
-		Nitro::func_02060d78(0x1, 0x0, 0x0, 0x4001000);
+		Nitro::func_02060d78(0x1, 0x0, 0x0);
 		Nitro::func_02060d5c(0x0);
 		REG_DISPCNT = ((REG_DISPCNT & ~0x38000000) | 0x8000000);
 		REG_POWER_CNT = ((REG_POWER_CNT & 0xfffffdf1) | 0x20e);
