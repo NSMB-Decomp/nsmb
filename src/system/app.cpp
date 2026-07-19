@@ -537,7 +537,7 @@ namespace App {
 
 	}
 
-	void initBoot() {
+	void initBoot(u32) {
 
 		BOOL multiboot = Nitro::Wifi_isMultiBootCart();
 		if (multiboot) {

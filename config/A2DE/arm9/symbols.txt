@@ -67,17 +67,17 @@ _ZN7Vec2_32D0Ev kind:function(arm,size=0x20) addr:0x020031d0
 
 // connect.cpp
 
-ConnectScene::~ConnectScene kind:function(arm,size=0x2c) addr:0x020031f0
-ConnectScene::~ConnectScene kind:function(arm,size=0x34) addr:0x0200321c
+_ZN12ConnectSceneD2Ev kind:function(arm,size=0x2c) addr:0x020031f0
+_ZN12ConnectSceneD0Ev kind:function(arm,size=0x34) addr:0x0200321c
 ConnectScene::func_02003250 kind:function(arm,size=0x54) addr:0x02003250
-ConnectScene::func_020032a4 kind:function(arm,size=0x8) addr:0x020032a4
-ConnectScene::func_020032ac kind:function(arm,size=0x1c) addr:0x020032ac
+_ZN12ConnectScene13func_020032a4Ev kind:function(arm,size=0x8) addr:0x020032a4
+_ZN12ConnectScene13func_020032acEm kind:function(arm,size=0x1c) addr:0x020032ac
 ConnectScene::func_020032c8 kind:function(arm,size=0x1fc) addr:0x020032c8
 ConnectScene::func_020034c4 kind:function(arm,size=0xbc) addr:0x020034c4
 ConnectScene::func_02003580 kind:function(arm,size=0x21c) addr:0x02003580
-ConnectScene::func_0200379c kind:function(arm,size=0x18) addr:0x0200379c
-ConnectScene::func_020037b4 kind:function(arm,size=0x30) addr:0x020037b4
-_ZN12ConnectScene13func_020037e4Ev kind:function(arm,size=0x60) addr:0x020037e4
+_ZN12ConnectScene13func_0200379cEmm kind:function(arm,size=0x18) addr:0x0200379c
+_ZN12ConnectScene13func_020037b4Ev kind:function(arm,size=0x30) addr:0x020037b4
+_ZN12ConnectScene13func_020037e4Em kind:function(arm,size=0x60) addr:0x020037e4
 _ZN12ConnectScene6createEv kind:function(arm,size=0x34) addr:0x02003844
 func_02003878 kind:function(arm,size=0x4) addr:0x02003878
 func_0200387c kind:function(arm,size=0x88) addr:0x0200387c
