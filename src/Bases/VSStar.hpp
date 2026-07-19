@@ -25,7 +25,7 @@ class VsStar : public StageEntity
 	void func_ov020_021320dc(u32);
 	bool func_ov020_021322a4();
 	void func_ov020_0213238c();
-	void func_ov020_02132510();
+	void func_ov020_02132510(void*, void*);
 	void func_ov020_02132618();
 	bool func_ov020_02132660(u32);
 
