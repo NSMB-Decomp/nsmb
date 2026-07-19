@@ -80,7 +80,7 @@ namespace FS {
 
 namespace Nitro_
 {
-void func_02063af0(u16[1], u32, u32);
+u32 func_02063af0(u16[1], u32, u32);
 }
 
 namespace Wifi
@@ -190,7 +190,7 @@ class Fader
 	Fader();
 
 	bool isComplete();
-	void setupSceneFading(u32, bool, bool);
+	u32 setupSceneFading(u32, bool, bool);
 	void func_02007e34(u32, u32);
 	void func_02007cf8(u32, u32);
 	bool func_02007c68();
@@ -305,7 +305,7 @@ extern "C" {
 	void Heap_deallocate(Heap *, void *);
 	extern Heap *data_0208b720;
 	void func_02020354(i8);
-	void func_02012398(i32, Vec3_32 *); // SND::playSFX(u32,Vec3*)
+	u32 func_02012398(i32, Vec3_32 *); // SND::playSFX(u32,Vec3*)
 	u32 func_020202a0();
 	i32 func_0202040c(i32);
 	extern u16 data_0203bd30;
@@ -495,3 +495,16 @@ namespace MTX {
 	}
 
 }
+
+void func_0201325c();
+u32 func_02006674(u32);
+void func_02011c34(u32);
+u32 func_02004cb8(u32, u32, u32, u32, u32);
+u8 data_ov001_020cebc0;
+u32 data_ov001_020cd144;
+u32 data_ov001_020cd934;
+u32 data_ov001_020cdb24;
+u16* data_ov001_020cd734;
+u32 data_ov001_020ce84c;
+u32 data_ov001_020ce86c;
+u32 data_02085a88;
