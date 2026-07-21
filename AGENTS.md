@@ -7,7 +7,6 @@ This repository is a matching decompilation of *New Super Mario Bros.* for Ninte
 ## Legal and Source Boundaries
 
 - Never use NitroSDK implementations, SDK source, SDK binaries, leaked proprietary material, or code derived from them. The repository's clean-room declarations and existing public evidence are the only allowed implementation inputs.
-- `/Users/ndymario/NSMB-DS-Modding/NSMB-DB-Latest` is explicitly forbidden input because it uses NitroSDK material. Do not open, copy, index, archive, search, quote, or derive code or types from that project.
 - The approved Ghidra source is the authenticated shared `NSMBDS` project at `ghidra.gota7.com`, mirrored into the independent local `NSMBDS-Local` project. Use the shared server only for read-only snapshot export. Never run a mutating script, commit, checkout, rename, or analysis pass against the shared server.
 - Do not commit ROMs, save files, extracted ROM data, compiler binaries, Ghidra projects or archives, credentials, generated objdiff configuration, reports, or anything under `build/`.
 
@@ -73,9 +72,10 @@ This repository is a matching decompilation of *New Super Mario Bros.* for Ninte
 
 ## Git Safety
 
-- `origin` is the private `Ndymario/nsmb` mirror. `upstream` is the public `NSMB-Decomp/nsmb` repository.
-- Never push to `upstream`. Push only to `origin` and only when the user asks.
+- `upstream` is the public `NSMB-Decomp/nsmb` repository.
+- Never push to `upstream`.
 - Preserve unrelated user changes. Do not use destructive Git commands to clean the worktree.
+- Do not push without user approval.
 
 ## Validation
 
