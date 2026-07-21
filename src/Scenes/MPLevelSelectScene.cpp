@@ -176,9 +176,14 @@ s32 MPLevelSelectScene::onCreate()
 	data_02085a88 = 0x1c;
 	REG_DISPCNT = (REG_DISPCNT & ~0x1f00) | 0x1c00;
 	if (func_02046c78() == 0)
-		REG_DISPCNT_SUB = (REG_DISPCNT_SUB & ~0x1f00) | 0x1c00;
-	else
-		REG_DISPCNT_SUB = (REG_DISPCNT_SUB & ~0x1f00) | 0x1e00;
+		goto primary_display;
+	REG_DISPCNT_SUB = (REG_DISPCNT_SUB & ~0x1f00) | 0x1e00;
+	goto display_configured;
+
+primary_display:
+	REG_DISPCNT_SUB = (REG_DISPCNT_SUB & ~0x1f00) | 0x1c00;
+
+display_configured:
 
 	REG_DISPCNT = (REG_DISPCNT & 0xffcfffef) | 0x200010;
 	REG_DISPCNT_SUB = (REG_DISPCNT_SUB & 0xffcfffef) | 0x10;
@@ -216,24 +221,18 @@ s32 MPLevelSelectScene::onCreate()
 	_144 = 0x1e;
 	_12c.x = 0;
 	_12c.y = 0x100000;
-	vu32 *mainX = (vu32 *)0x04000014;
 	_138.x = _12c.x;
-	vu32 *mainY = (vu32 *)0x04000018;
 	_138.y = _12c.y;
-	u32 lowMask = 0x1ff;
 	i32 y = _12c.y;
 	i32 x = _12c.x;
-	*mainX = 0;
-	vu32 *subX = (vu32 *)0x04001010;
-	u32 position = (lowMask & (x >> 12)) | (0x1ff0000 & ((y >> 12) << 16));
-	*mainY = 0;
-	vu32 *subXY = (vu32 *)0x04001014;
-	*subX = 0;
-	*subXY = position;
-	vu32 *subY = (vu32 *)0x04001018;
-	*subY = position;
-	vu32 *subAffine = (vu32 *)0x0400101c;
-	*subAffine = 0;
+	i32 yShift = y >> 12;
+	REG_BG1OFS = 0;
+	REG_BG2OFS = 0;
+	REG_BG0OFS_SUB = 0;
+	u32 position = (0x1ff & (x >> 12)) | (0x1ff0000 & (yShift << 16));
+	REG_BG1OFS_SUB = position;
+	REG_BG2OFS_SUB = position;
+	REG_BG3OFS_SUB = 0;
 
 	func_02020628();
 	func_0201df50();
@@ -263,8 +262,9 @@ s32 MPLevelSelectScene::onCreate()
 			u32 range = ((count * 2 - 1) - start) & 0xff;
 			u32 random = Wifi::random();
 			u8 target = range * (random & 0x7fff) >> 15;
+			u32 i;
 			u32 available = 0;
-			u32 i = 0;
+			i = available;
 			do {
 				if ((data_ov052_0215c898 & (1 << i)) == 0) {
 					if (available == target)
@@ -468,8 +468,8 @@ void MPLevelSelectScene::func_ov052_02153d50()
 
 void MPLevelSelectScene::func_ov052_02153d5c()
 {
-	i32 subX = -(_138.x >> 12);
 	i32 mainY = -(_12c.y >> 12);
+	i32 subX = -(_138.x >> 12);
 	i32 subY = -(_138.y >> 12);
 	func_02018060(&a);
 
@@ -517,10 +517,9 @@ void MPLevelSelectScene::func_ov052_02153d5c()
 		u32 inactive2 = 0;
 		u32 inactive3 = 0;
 		for (s32 i = 0; i < 8; i++) {
-			u32 selection;
 			u32 itemStyle;
 			if (i == action - 2 ||
-				((i >> 1) == (selection = _pad0[0]) &&
+				((i >> 1) == _pad0[0] &&
 				 (((i & 1) == 0 && (data_02087650[Input::localConsoleID][0] & 0x20) != 0) ||
 				  ((i & 1) == 1 && (data_02087650[Input::localConsoleID][0] & 0x10) != 0)))) {
 				itemStyle = 1;
@@ -529,22 +528,22 @@ void MPLevelSelectScene::func_ov052_02153d5c()
 				switch (i) {
 				case 0:
 				case 1:
-					if (selection == 0)
+					if (_pad0[0] == 0)
 						itemStyle = inactive0;
 					break;
 				case 2:
 				case 3:
-					if (selection == 1)
+					if (_pad0[0] == 1)
 						itemStyle = inactive1;
 					break;
 				case 4:
 				case 5:
-					if (selection == 2)
+					if (_pad0[0] == 2)
 						itemStyle = inactive2;
 					break;
 				case 6:
 				case 7:
-					if (selection == 3)
+					if (_pad0[0] == 3)
 						itemStyle = inactive3;
 					break;
 				}
@@ -792,13 +791,13 @@ void MPLevelSelectScene::func_ov052_021544a0()
 			(void *)Nitro::func_02062244(),
 			*(u32 *)&_pad1[0xb3]
 		);
-		if (func_02046c78() != 0)
-			goto alternate_display;
-		REG_DISPCNT_SUB = (REG_DISPCNT_SUB & ~0x1f00) | 0x1c00;
+		if (func_02046c78() == 0)
+			goto primary_display;
+		REG_DISPCNT_SUB = (REG_DISPCNT_SUB & ~0x1f00) | 0x1e00;
 		goto display_configured;
 
-	alternate_display:
-		REG_DISPCNT_SUB = (REG_DISPCNT_SUB & ~0x1f00) | 0x1e00;
+	primary_display:
+		REG_DISPCNT_SUB = (REG_DISPCNT_SUB & ~0x1f00) | 0x1c00;
 
 	display_configured:
 		_64 = 0xb;
@@ -853,11 +852,13 @@ void MPLevelSelectScene::func_ov052_02155178()
 		return;
 	}
 	_64 = 2;
-	if (!func_02046c78()) {
-		REG_DISPCNT_SUB = (REG_DISPCNT_SUB & ~0x1f00) | 0x1d00;
-		return;
-	}
+	if (func_02046c78() == 0)
+		goto primary_display;
 	REG_DISPCNT_SUB = (REG_DISPCNT_SUB & ~0x1f00) | 0x1f00;
+	return;
+
+primary_display:
+	REG_DISPCNT_SUB = (REG_DISPCNT_SUB & ~0x1f00) | 0x1d00;
 }
 
 void MPLevelSelectScene::func_ov052_02155210()

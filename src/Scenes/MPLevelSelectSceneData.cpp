@@ -39,55 +39,59 @@ void func_ov052_02153780()
 	}
 
 	u16 *tiles = (u16 *)(Nitro::func_02062138() + 0x840);
-	for (s32 player = 0; player < topCount; player++, tiles += 3) {
-		for (s32 row = 0; row < 3; row++) {
-			for (s32 column = 0; column < 3; column++)
+	s32 player;
+	s32 row;
+	s32 column;
+	for (player = 0; player < topCount; player++, tiles += 3) {
+		for (row = 0; row < 3; row++) {
+			for (column = 0; column < 3; column++)
 				tiles[row * 0x20 + column] = 0x60a6 + row * 0x20 + column;
 		}
 	}
 
 	s32 selected = data_ov052_0215aee8[data_ov052_0215c894];
 	tiles = (u16 *)(Nitro::func_02062138() + 0x840);
-	tiles += selected * 3;
+	s32 tileOffset = selected * 3;
+	tiles += tileOffset;
 	for (; selected < 3; selected++, tiles += 3) {
-		for (s32 row = 0; row < 3; row++) {
-			for (s32 column = 0; column < 3; column++)
+		for (row = 0; row < 3; row++) {
+			for (column = 0; column < 3; column++)
 				tiles[row * 0x20 + column] = 0x60a0 + row * 0x20 + column;
 		}
 	}
 
 	tiles = (u16 *)(Nitro::func_02062138() + 0x87a);
-	for (s32 player = 0; player < bottomCount; player++, tiles -= 3) {
-		for (s32 row = 0; row < 3; row++) {
-			for (s32 column = 0; column < 3; column++)
+	for (player = 0; player < bottomCount; player++, tiles -= 3) {
+		for (row = 0; row < 3; row++) {
+			for (column = 0; column < 3; column++)
 				tiles[row * 0x20 + column] = 0x60a9 + row * 0x20 + column;
 		}
 	}
 
 	selected = data_ov052_0215aee8[data_ov052_0215c894];
 	tiles = (u16 *)(Nitro::func_02062138() + 0x87a);
-	tiles -= selected * 3;
+	tileOffset = selected * 3;
+	tiles -= tileOffset;
 	for (; selected < 3; selected++, tiles -= 3) {
-		for (s32 row = 0; row < 3; row++) {
-			for (s32 column = 0; column < 3; column++)
+		for (row = 0; row < 3; row++) {
+			for (column = 0; column < 3; column++)
 				tiles[row * 0x20 + column] = 0x60a0 + row * 0x20 + column;
 		}
 	}
 }
 
+static inline s32 negateOffset(u32 offset)
+{
+	return -offset;
+}
+
 void func_ov052_021539c8(MPLevelSelectScene *scene)
 {
-	u8 *indexPtr = &data_ov052_0215c890;
-	u16 *xTable = data_ov052_0215aef4;
-	u8 index = *indexPtr;
-	s32 originX = scene->_12c.x;
-	u16 *yTable = data_ov052_0215af00;
-	s32 xOffset = (u32)xTable[index] << 12;
-	xOffset = -xOffset;
-	scene->_138.x = originX + xOffset;
-	s32 yOffset = (u32)yTable[index] << 12;
-	yOffset = -yOffset;
-	scene->_138.y = scene->_12c.y + yOffset;
+	u32 selection = data_ov052_0215c890;
+	scene->_138.x = scene->_12c.x +
+		negateOffset((u32)data_ov052_0215aef4[selection] << 12);
+	scene->_138.y = scene->_12c.y +
+		negateOffset((u32)data_ov052_0215af00[selection] << 12);
 }
 
 void func_ov052_02153a1c(MPLevelSelectScene *scene)

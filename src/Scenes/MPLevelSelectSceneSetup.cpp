@@ -140,11 +140,11 @@ void func_ov052_02152bf0()
 		FS::unloadFile(resource);
 	func_020090f8(9);
 	func_ov053_0215cc70();
-	Nitro::FS_Overlays_unload(0x16);
-	Nitro::FS_Overlays_unload(0x20);
-	Nitro::FS_Overlays_unload(0x2a);
-	Nitro::FS_Overlays_unload(0x14);
-	Nitro::FS_Overlays_unload(0x35);
+	Nitro::FS_Overlays_unload(OVERLAY_ID(22));
+	Nitro::FS_Overlays_unload(OVERLAY_ID(32));
+	Nitro::FS_Overlays_unload(OVERLAY_ID(42));
+	Nitro::FS_Overlays_unload(OVERLAY_ID(20));
+	Nitro::FS_Overlays_unload(OVERLAY_ID(53));
 	func_02008970();
 }
 

@@ -57,6 +57,11 @@ from:0x02152c4c kind:arm_call to:0x020094b8 module:main
 from:0x02152c54 kind:arm_call to:0x020094b8 module:main
 from:0x02152c58 kind:arm_call to:0x02008970 module:main
 from:0x02152c64 kind:load to:0x02086a30 module:autoload(3)
+from:0x02152c68 kind:load to:0x00000016 module:main
+from:0x02152c6c kind:load to:0x00000020 module:main
+from:0x02152c70 kind:load to:0x0000002a module:main
+from:0x02152c74 kind:load to:0x00000014 module:main
+from:0x02152c78 kind:load to:0x00000035 module:main
 from:0x02152c84 kind:arm_call to:0x020a2eec module:overlay(0)
 from:0x02152c94 kind:arm_call to:0x0200dee0 module:main
 from:0x02152ca0 kind:arm_call to:0x02009d30 module:main

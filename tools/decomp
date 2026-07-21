@@ -22,7 +22,7 @@ OBJDIFF_CONFIG = REPO_ROOT / "objdiff.json"
 REPORT_PATH = REPO_ROOT / "objdiff_report.json"
 GHIDRA_SCRIPT_PATH = REPO_ROOT / "tools" / "Ghidra"
 
-EXPECTED_ORIGIN = "https://github.com/Ndymario/nsmb.git"
+EXPECTED_ORIGIN = "https://github.com/Ndymario/nsmb-private.git"
 EXPECTED_UPSTREAM = "https://github.com/NSMB-Decomp/nsmb.git"
 EXPECTED_OBJDIFF_SHA256 = (
     "4252b51c3ba9f0b58e5e4dbc1b8f1ec0b1e9db1578dac3d81c59f0cc421b623f"
