@@ -29,7 +29,9 @@ jobs:
       run: zig build delink -DRelease=${{ matrix.version }}
         
     - name: Generate objdiff config
-      run: zig build objdiff -DRelease=${{ matrix.version }}
+      run: |
+        rm -f objdiff.json
+        zig build objdiff -DRelease=${{ matrix.version }}
     
     - name: Compile all files
       run: zig build all -DRelease=${{ matrix.version }}
