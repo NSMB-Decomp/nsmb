@@ -274,8 +274,19 @@ def ghidra_headless_command(
 
 
 def _normalized_address(value: str) -> str:
-    stripped = value.lower().removeprefix("0x").lstrip("0")
+    offset = value.rsplit("::", 1)[-1]
+    stripped = offset.lower().removeprefix("0x").lstrip("0")
     return stripped or "0"
+
+
+def _address_query(value: str) -> tuple[str | None, str] | None:
+    match = re.fullmatch(
+        r"(?:(?P<space>[A-Za-z0-9_.-]+)::)?(?P<offset>(?:0x)?[0-9a-fA-F]+)",
+        value,
+    )
+    if not match:
+        return None
+    return match.group("space"), _normalized_address(match.group("offset"))
 
 
 def select_ghidra_function(
@@ -295,13 +306,18 @@ def select_ghidra_function(
             )
             raise HarnessError(f"Unknown Ghidra program: {program}", candidates=programs)
 
-    is_address = bool(re.fullmatch(r"(?:0x)?[0-9a-fA-F]+", query))
-    if is_address:
-        target = _normalized_address(query)
+    address_query = _address_query(query)
+    if address_query:
+        target_space, target = address_query
         matches = [
             item
             for item in functions
             if _normalized_address(str(item.get("entry", ""))) == target
+            and (
+                target_space is None
+                or str(item.get("entry", "")).partition("::")[0].lower()
+                == target_space.lower()
+            )
         ]
     else:
         matches = [
@@ -364,8 +380,15 @@ def resolve_ghidra_function(
 
         resolved: dict[tuple[str, str], dict[str, Any]] = {}
         for location in locations:
+            address_query = location["address"]
+            overlay = re.search(r"(?:^|/)overlays/(ov\d+)/symbols\.txt$", location["source"])
+            if overlay:
+                address_query = (
+                    f"arm9_{overlay.group(1)}::"
+                    f"{location['address'].lower().removeprefix('0x')}"
+                )
             try:
-                function = select_ghidra_function(index, location["address"], program)
+                function = select_ghidra_function(index, address_query, program)
             except HarnessError:
                 continue
             key = (str(function.get("program")), str(function.get("entry")))
@@ -403,7 +426,17 @@ def ensure_objdiff(runner: CommandRunner) -> None:
 
 def keep_wine_warm(runner: CommandRunner) -> None:
     if sys.platform != "win32":
-        runner.run(["wineserver", "-p"])
+        wineserver = shutil.which("wineserver")
+        if wineserver is None:
+            raise HarnessError("Required command not found: wineserver")
+        # Wine Stable on macOS locates its bundled NLS data relative to argv[0].
+        # Homebrew installs a symlink in /opt/homebrew/bin, which fails after a
+        # fresh server restart unless the app-bundle executable is used directly.
+        # Wine 11 can return 2 here when launched as a captured Python child on
+        # macOS even though the compiler can start and use its server normally.
+        # Persistence is an optimization, so let the subsequent compile be the
+        # authoritative health check.
+        runner.run([Path(wineserver).resolve(), "-p"], check=False)
 
 
 def compile_unit(

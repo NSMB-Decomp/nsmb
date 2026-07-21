@@ -8,10 +8,15 @@ class Unknwon2 {
 	inline ~Unknwon2() {};
 };
 
+extern "C" {
+	void func_02018104(void *);
+	void func_02018114(void *);
+}
+
 class Unknwon {
 	public:
-	Unknwon();
-	~Unknwon();
+	inline Unknwon() { func_02018114(this); }
+	inline ~Unknwon() { func_02018104(this); }
 };
 
 class MPLevelSelectScene : public Scene
@@ -34,11 +39,10 @@ class MPLevelSelectScene : public Scene
 	void func_ov052_02155c9c();
 	void func_ov052_02155ba8();
 	void func_ov052_02155b00();
-	u32 func_ov052_02155540();
-	bool func_ov052_0215552();
 	void func_ov052_02155210();
 	void func_ov052_021551e4();
 	void func_ov052_0215515c();
+	void func_ov052_021554dc();
 	void func_ov052_02154c9c();
 	void func_ov052_02154bb4();
 	void func_ov052_02154a60();

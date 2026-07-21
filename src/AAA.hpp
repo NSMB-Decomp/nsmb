@@ -118,7 +118,7 @@ namespace Layout {
 
 	void drawCellSub(u32 cellIdx, const void* oamAttrs, u32 oamFlags, u8 palette, u8 affineSet, const Vec2_32* scale, u16 rot, const s16* rotCenter, u32 oamSettings);
 
-	void drawCellMain(u32 cellIdx, const void* oamAttrs, u32 oamFlags, u8 palette, u8 affineSet, const Vec2_32* scale, u16 rot, const s16* rotCenter, u32 oamSettings);
+	void drawCellMain(u32 cellIdx, const void* oamAttrs, u32 oamFlags, u8 palette, u8 affineSet, const Vec2_32* scale, u16 rot, const s16* rotCenter, u32 oamSettings, u32, u32);
 
 	void getCellPosMain(Vec2_32& pos, u32 cellIdx);
 

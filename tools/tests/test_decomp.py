@@ -106,6 +106,28 @@ class GhidraSelectionTests(unittest.TestCase):
         selected = decomp.resolve_ghidra_function(index, "NitroMain")
         self.assertEqual(selected["qualified_name"], "main")
 
+    def test_maps_overlay_symbol_to_ghidra_address_space(self):
+        index = {
+            "functions": [
+                {
+                    "program": "/NSMB.nds",
+                    "name": "func_ov052_02153ab8",
+                    "qualified_name": "func_ov052_02153ab8",
+                    "entry": "arm9_ov052::02153ab8",
+                },
+                {
+                    "program": "/NSMB.nds",
+                    "name": "func_ov054_02153ab8",
+                    "qualified_name": "func_ov054_02153ab8",
+                    "entry": "arm9_ov054::02153ab8",
+                },
+            ]
+        }
+        selected = decomp.resolve_ghidra_function(
+            index, "_ZN18MPLevelSelectScene19func_ov052_02153ab8Ev"
+        )
+        self.assertEqual(selected["entry"], "arm9_ov052::02153ab8")
+
 
 class HeadlessCommandTests(unittest.TestCase):
     def test_command_is_read_only_and_targets_parent_folder(self):

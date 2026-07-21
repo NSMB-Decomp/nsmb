@@ -3,9 +3,9 @@ func_ov052_021528a0 kind:function(arm,size=0xd4) addr:0x021528a0
 func_ov052_02152974 kind:function(arm,size=0x4) addr:0x02152974
 func_ov052_02152978 kind:function(arm,size=0x3c) addr:0x02152978
 func_ov052_021529b4 kind:function(arm,size=0x1ac) addr:0x021529b4
-func_ov052_02152b60 kind:function(arm,size=0x28) addr:0x02152b60
-func_ov052_02152b88 kind:function(arm,size=0x20) addr:0x02152b88
-func_ov052_02152ba8 kind:function(arm,size=0x20) addr:0x02152ba8
+_ZN14Overlay52SceneD0Ev kind:function(arm,size=0x28) addr:0x02152b60
+_ZN14Overlay52SceneD2Ev kind:function(arm,size=0x20) addr:0x02152b88
+_ZN14Overlay52SceneC1Ev kind:function(arm,size=0x20) addr:0x02152ba8
 func_ov052_02152bc8 kind:function(arm,size=0x28) addr:0x02152bc8
 func_ov052_02152bf0 kind:function(arm,size=0x8c) addr:0x02152bf0
 func_ov052_02152c7c kind:function(arm,size=0x40) addr:0x02152c7c
@@ -246,7 +246,7 @@ __sinit_ov052_0215b274 kind:function(arm,size=0x33c) addr:0x0215b274
 .p__sinit_ov052_0215afbc kind:data(word) addr:0x0215b5b4
 .p__sinit_ov052_0215b274 kind:data(word) addr:0x0215b5b8
 UnknownProfile::ov052_0215b5c0 kind:data(any) addr:0x0215b5c0
-data_ov052_0215b5d0 kind:data(any) addr:0x0215b5d0
+_ZTV14Overlay52Scene kind:data(any) addr:0x0215b5c8
 data_ov052_0215b618 kind:data(any) addr:0x0215b618
 data_ov052_0215b620 kind:data(any) addr:0x0215b620
 data_ov052_0215b628 kind:data(any) addr:0x0215b628
