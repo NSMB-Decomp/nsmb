@@ -44,7 +44,7 @@ The end goal is a true 100% match: exact code and data bytes, symbol boundaries,
 ### 5. Run the tight feedback loop
 
 - Run `tools/decomp diff UNIT SYMBOL --json` after each meaningful edit. This compiles the unit and emits the symbol-level objdiff result.
-- Targeted `tools/decomp diff` and `work` commands may apply tracked unit overrides for that one diagnostic comparison. The harness removes them immediately afterward; overridden results never determine progress or completion totals.
+- Use only mappings carried by the checked-in `objdiff.yml` seed. DSD preserves those mappings when it generates `objdiff.json`, so targeted diffs, local reports, and CI all evaluate the same project configuration.
 - Compare exact instructions and relocations, not only semantic behavior or a fuzzy percentage.
 - Keep an edit only when it improves the match or provides concrete evidence about the remaining mismatch.
 - When stuck, test evidence-backed differences such as expression shape, register pressure, branch structure, signedness, casts, constants, inlining, declaration order, and temporary lifetime. Do not batch speculative rewrites.
@@ -57,11 +57,13 @@ The end goal is a true 100% match: exact code and data bytes, symbol boundaries,
   ```sh
   objdiff-cli diff -p . -u "UNIT" \
     -c function_reloc_diffs=name_address \
+    -c combine_data_sections=true \
+    -c combine_text_sections=true \
     -o build/decomp/strict-diff.json \
     --format json-pretty
   ```
 
-- Inspect the target symbol and every owned section in `build/decomp/strict-diff.json`. The target symbol and all applicable section `match_percent` values must be exactly `100.0`, with no instruction, argument, relocation, data, insertion, or deletion mismatch.
+- Inspect the target symbol and every owned section in `build/decomp/strict-diff.json`. The target symbol and all applicable combined section `match_percent` values must be exactly `100.0`, with no instruction, argument, relocation, data, insertion, or deletion mismatch. The combine options are mandatory because MWCC emits fragmented `.text`, `.data`, and `.bss` sections; omitting them can hide a CI-visible aggregate mismatch.
 - Never use `function_reloc_diffs=none` or `function_reloc_diffs=data_value` to justify a completion claim. Those modes may help diagnose whether a mismatch is relocation-only or points at equivalent data, but they intentionally accept differences that prevent a true binary match.
 - Run `tools/decomp progress --json` and confirm global code, data, and function totals do not regress.
 - Run `tools/decomp baseline --json` before handing off completed decompilation work.
@@ -75,6 +77,8 @@ The end goal is a true 100% match: exact code and data bytes, symbol boundaries,
   zig build report -DRelease=A2DE
   objdiff-cli diff -p . -u "UNIT" \
     -c function_reloc_diffs=name_address \
+    -c combine_data_sections=true \
+    -c combine_text_sections=true \
     -o build/decomp/strict-diff.json \
     --format json-pretty
   ```
@@ -101,8 +105,8 @@ The end goal is a true 100% match: exact code and data bytes, symbol boundaries,
 
 - Target the A2DE release unless the task explicitly says otherwise.
 - Use the repository's MWCC ARM 1.2sp3 compiler and existing flags. Do not change compiler flags or the Zig build system merely to force a match.
-- `objdiff.json`, `objdiff_report.json`, `extracted/`, and `build/` are generated state, not source files.
-- Bare `zig build objdiff`, CI reporting, and harness `baseline`/`progress` use the same unmodified DSD configuration. Agent-only unit overrides are temporary diagnostics for targeted `diff`/`work` commands and must not affect reported totals or completion claims.
+- `objdiff.json`, `objdiff_report.json`, `extracted/`, and `build/` are generated state, not source files. Root `objdiff.yml` is a hand-maintained seed for canonical symbol mappings and may be committed.
+- Bare `zig build objdiff`, CI reporting, and every harness command use the same DSD configuration. DSD must preserve the checked-in `objdiff.yml` mappings in generated `objdiff.json`; do not apply untracked local overrides when validating or reporting progress.
 - `objdiff_report.json` is the harness progress summary. `build/report.json` is the canonical completion inventory, but its function totals do not account for strict function-relocation differences. Neither report may be committed.
 - `zig build report -DRelease=A2DE` only reports the current build/objdiff state; it does not compile the target or rebuild the project. Always run it after the full baseline, and never use it as the sole symbol-matching check.
 - Keep `function_reloc_diffs=name_address` for final verification. `none` and `data_value` are diagnostic modes only and must never be used to manufacture or support a 100% completion claim.
@@ -130,6 +134,6 @@ The end goal is a true 100% match: exact code and data bytes, symbol boundaries,
 - Environment: `tools/decomp doctor --json`
 - Full baseline: `tools/decomp baseline --json`
 - Completion inventory: `zig build report -DRelease=A2DE`, then inspect `build/report.json`
-- Strict completion proof: `objdiff-cli diff -p . -u "UNIT" -c function_reloc_diffs=name_address -o build/decomp/strict-diff.json --format json-pretty`
+- Strict completion proof: `objdiff-cli diff -p . -u "UNIT" -c function_reloc_diffs=name_address -c combine_data_sections=true -c combine_text_sections=true -o build/decomp/strict-diff.json --format json-pretty`
 - Known smoke unit: `tools/decomp diff src/system/main NitroMain --json`
 - Ghidra smoke test: index the local mirror and dump `NitroMain`; all four dump artifacts must be non-empty.

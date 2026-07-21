@@ -10,17 +10,6 @@ SPEC = importlib.util.spec_from_loader(LOADER.name, LOADER)
 decomp = importlib.util.module_from_spec(SPEC)
 LOADER.exec_module(decomp)
 
-OVERRIDES_TOOL = Path(__file__).resolve().parents[1] / "apply_objdiff_overrides.py"
-OVERRIDES_LOADER = importlib.machinery.SourceFileLoader(
-    "nsmb_objdiff_overrides", str(OVERRIDES_TOOL)
-)
-OVERRIDES_SPEC = importlib.util.spec_from_loader(
-    OVERRIDES_LOADER.name, OVERRIDES_LOADER
-)
-objdiff_overrides = importlib.util.module_from_spec(OVERRIDES_SPEC)
-OVERRIDES_LOADER.exec_module(objdiff_overrides)
-
-
 class UnitResolutionTests(unittest.TestCase):
     def setUp(self):
         self.units = [
@@ -71,96 +60,6 @@ class ReportTests(unittest.TestCase):
         self.assertEqual(summary["matched_code"], 10)
         self.assertEqual(summary["total_code"], 100)
         self.assertEqual(summary["candidates"][0]["name"], "src/test")
-
-
-class ObjdiffOverrideTests(unittest.TestCase):
-    def test_harness_toggles_overrides_with_current_interpreter(self):
-        class RecordingRunner:
-            def __init__(self):
-                self.commands = []
-
-            def run(self, command):
-                self.commands.append(command)
-
-        runner = RecordingRunner()
-        decomp.set_objdiff_overrides(runner, enabled=True)
-        decomp.set_objdiff_overrides(runner, enabled=False)
-        self.assertEqual(
-            runner.commands,
-            [
-                [decomp.sys.executable, decomp.OBJDIFF_OVERRIDES_TOOL],
-                [decomp.sys.executable, decomp.OBJDIFF_OVERRIDES_TOOL, "--remove"],
-            ],
-        )
-
-    def test_applies_overrides_without_discarding_existing_entries(self):
-        objdiff = {
-            "units": [
-                {
-                    "name": "src/test",
-                    "symbol_mappings": {"existing": "existing_base"},
-                    "options": {"existing_option": True},
-                }
-            ]
-        }
-        objdiff_overrides.apply_overrides(
-            objdiff,
-            {
-                "src/test": {
-                    "symbol_mappings": {"target": "base"},
-                    "options": {"combine_text_sections": False},
-                }
-            },
-        )
-        self.assertEqual(
-            objdiff["units"][0]["symbol_mappings"],
-            {"existing": "existing_base", "target": "base"},
-        )
-        self.assertEqual(
-            objdiff["units"][0]["options"],
-            {"existing_option": True, "combine_text_sections": False},
-        )
-
-    def test_removes_only_tracked_override_values(self):
-        objdiff = {
-            "units": [
-                {
-                    "name": "src/test",
-                    "symbol_mappings": {
-                        "existing": "existing_base",
-                        "target": "base",
-                    },
-                    "options": {
-                        "existing_option": True,
-                        "combine_text_sections": False,
-                    },
-                }
-            ]
-        }
-        objdiff_overrides.remove_overrides(
-            objdiff,
-            {
-                "src/test": {
-                    "symbol_mappings": {"target": "base"},
-                    "options": {"combine_text_sections": False},
-                }
-            },
-        )
-        self.assertEqual(
-            objdiff["units"][0]["symbol_mappings"],
-            {"existing": "existing_base"},
-        )
-        self.assertEqual(
-            objdiff["units"][0]["options"],
-            {"existing_option": True},
-        )
-
-    def test_rejects_unknown_units(self):
-        with self.assertRaisesRegex(ValueError, "missing"):
-            objdiff_overrides.apply_overrides(
-                {"units": [{"name": "src/test"}]},
-                {"src/missing": {"symbol_mappings": {"target": "base"}}},
-            )
 
 
 class GhidraSelectionTests(unittest.TestCase):

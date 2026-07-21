@@ -1,0 +1,13 @@
+{
+  "units": [
+    {
+      "name": "src/Scenes/MPLevelSelectScene",
+      "symbol_mappings": {
+        "@745": "@745",
+        "@764": "@764",
+        "@792": "@792",
+        "@794": "@794"
+      }
+    }
+  ]
+}

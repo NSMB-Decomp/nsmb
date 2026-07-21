@@ -19,7 +19,6 @@ from typing import Any, Iterable, Sequence
 REPO_ROOT = Path(__file__).resolve().parents[1]
 BUILD_ROOT = REPO_ROOT / "build" / "decomp"
 OBJDIFF_CONFIG = REPO_ROOT / "objdiff.json"
-OBJDIFF_OVERRIDES_TOOL = REPO_ROOT / "tools" / "apply_objdiff_overrides.py"
 REPORT_PATH = REPO_ROOT / "objdiff_report.json"
 GHIDRA_SCRIPT_PATH = REPO_ROOT / "tools" / "Ghidra"
 
@@ -418,18 +417,10 @@ def _slug(value: str) -> str:
     return cleaned[:120] or "item"
 
 
-def set_objdiff_overrides(runner: CommandRunner, *, enabled: bool) -> None:
-    command: list[str | Path] = [sys.executable, OBJDIFF_OVERRIDES_TOOL]
-    if not enabled:
-        command.append("--remove")
-    runner.run(command)
-
-
 def ensure_objdiff(runner: CommandRunner) -> None:
     if not OBJDIFF_CONFIG.exists():
         runner.run(["zig", "build", "delink"])
         runner.run(["zig", "build", "objdiff"])
-    set_objdiff_overrides(runner, enabled=False)
 
 
 def keep_wine_warm(runner: CommandRunner) -> None:
@@ -473,25 +464,21 @@ def diff_unit(
     else:
         ensure_objdiff(runner)
         unit = resolve_unit(load_units(), unit_query)
-    set_objdiff_overrides(runner, enabled=True)
-    try:
-        result = runner.run(
-            [
-                "objdiff-cli",
-                "diff",
-                "-p",
-                str(REPO_ROOT),
-                "-u",
-                str(unit.get("name")),
-                "-o",
-                "-",
-                "--format",
-                "json-pretty",
-                symbol,
-            ]
-        )
-    finally:
-        set_objdiff_overrides(runner, enabled=False)
+    result = runner.run(
+        [
+            "objdiff-cli",
+            "diff",
+            "-p",
+            str(REPO_ROOT),
+            "-u",
+            str(unit.get("name")),
+            "-o",
+            "-",
+            "--format",
+            "json-pretty",
+            symbol,
+        ]
+    )
     try:
         diff = json.loads(result.stdout)
     except json.JSONDecodeError as exc:
