@@ -1,0 +1,840 @@
+#!/usr/bin/env python3
+"""Automation-first harness for the NSMB decompilation workflow."""
+
+from __future__ import annotations
+
+import argparse
+import hashlib
+import json
+import os
+import re
+import shutil
+import subprocess
+import sys
+from datetime import datetime, timezone
+from pathlib import Path, PurePosixPath
+from typing import Any, Iterable, Sequence
+
+
+REPO_ROOT = Path(__file__).resolve().parents[1]
+BUILD_ROOT = REPO_ROOT / "build" / "decomp"
+OBJDIFF_CONFIG = REPO_ROOT / "objdiff.json"
+REPORT_PATH = REPO_ROOT / "objdiff_report.json"
+GHIDRA_SCRIPT_PATH = REPO_ROOT / "tools" / "Ghidra"
+
+EXPECTED_ORIGIN = "https://github.com/Ndymario/nsmb.git"
+EXPECTED_UPSTREAM = "https://github.com/NSMB-Decomp/nsmb.git"
+EXPECTED_OBJDIFF_SHA256 = (
+    "4252b51c3ba9f0b58e5e4dbc1b8f1ec0b1e9db1578dac3d81c59f0cc421b623f"
+)
+
+
+class HarnessError(RuntimeError):
+    """A user-actionable harness failure."""
+
+    def __init__(self, message: str, *, candidates: Iterable[str] = ()) -> None:
+        super().__init__(message)
+        self.candidates = list(candidates)
+
+
+class CommandRunner:
+    def __init__(self, json_mode: bool = False) -> None:
+        self.json_mode = json_mode
+
+    def run(
+        self,
+        command: Sequence[str | Path],
+        *,
+        check: bool = True,
+        cwd: Path = REPO_ROOT,
+    ) -> subprocess.CompletedProcess[str]:
+        argv = [str(value) for value in command]
+        if not self.json_mode:
+            print("$ " + " ".join(argv), file=sys.stderr)
+        try:
+            result = subprocess.run(
+                argv,
+                cwd=cwd,
+                text=True,
+                stdout=subprocess.PIPE,
+                stderr=subprocess.PIPE,
+                check=False,
+            )
+        except FileNotFoundError as exc:
+            raise HarnessError(f"Required command not found: {argv[0]}") from exc
+
+        if not self.json_mode:
+            if result.stdout:
+                print(result.stdout, end="", file=sys.stderr)
+            if result.stderr:
+                print(result.stderr, end="", file=sys.stderr)
+
+        if check and result.returncode != 0:
+            details = (result.stderr or result.stdout).strip()
+            if len(details) > 6000:
+                details = details[-6000:]
+            suffix = f"\n{details}" if details else ""
+            raise HarnessError(
+                f"Command failed with exit code {result.returncode}: {' '.join(argv)}{suffix}"
+            )
+        return result
+
+
+def atomic_json(path: Path, payload: Any) -> None:
+    path.parent.mkdir(parents=True, exist_ok=True)
+    temporary = path.with_suffix(path.suffix + ".tmp")
+    temporary.write_text(
+        json.dumps(payload, indent=2, sort_keys=True) + "\n", encoding="utf-8"
+    )
+    temporary.replace(path)
+
+
+def emit(payload: dict[str, Any], json_mode: bool, human: str) -> None:
+    if json_mode:
+        print(json.dumps(payload, indent=2, sort_keys=True))
+    else:
+        print(human)
+
+
+def load_json(path: Path) -> Any:
+    try:
+        return json.loads(path.read_text(encoding="utf-8"))
+    except FileNotFoundError as exc:
+        raise HarnessError(f"Missing generated file: {path}") from exc
+    except json.JSONDecodeError as exc:
+        raise HarnessError(f"Invalid JSON in {path}: {exc}") from exc
+
+
+def file_sha256(path: Path) -> str:
+    digest = hashlib.sha256()
+    with path.open("rb") as stream:
+        for chunk in iter(lambda: stream.read(1024 * 1024), b""):
+            digest.update(chunk)
+    return digest.hexdigest()
+
+
+def load_units() -> list[dict[str, Any]]:
+    payload = load_json(OBJDIFF_CONFIG)
+    units = payload.get("units")
+    if not isinstance(units, list):
+        raise HarnessError(f"No units array found in {OBJDIFF_CONFIG}")
+    return units
+
+
+def _unit_labels(unit: dict[str, Any]) -> list[str]:
+    metadata = unit.get("metadata") or {}
+    source = metadata.get("source_path")
+    labels = [unit.get("name"), unit.get("base_path"), source]
+    if isinstance(source, str):
+        labels.append(str(Path(source).with_suffix("")))
+        labels.append(Path(source).stem)
+    name = unit.get("name")
+    if isinstance(name, str):
+        labels.append(PurePosixPath(name).name)
+    return [label for label in labels if isinstance(label, str) and label]
+
+
+def resolve_unit(units: list[dict[str, Any]], query: str) -> dict[str, Any]:
+    normalized = query.removeprefix("./")
+    exact = [unit for unit in units if normalized in _unit_labels(unit)]
+    if len(exact) == 1:
+        return exact[0]
+    if len(exact) > 1:
+        raise HarnessError(
+            f"Unit query is ambiguous: {query}",
+            candidates=sorted(str(unit.get("name")) for unit in exact),
+        )
+
+    suffix = [
+        unit
+        for unit in units
+        if any(label.endswith("/" + normalized) for label in _unit_labels(unit))
+    ]
+    if len(suffix) == 1:
+        return suffix[0]
+    candidates = suffix or [
+        unit
+        for unit in units
+        if any(normalized.lower() in label.lower() for label in _unit_labels(unit))
+    ]
+    raise HarnessError(
+        f"Could not uniquely resolve unit: {query}",
+        candidates=sorted(str(unit.get("name")) for unit in candidates[:20]),
+    )
+
+
+def _number(value: Any, kind: type[int] | type[float] = int) -> int | float:
+    if value is None:
+        return kind(0)
+    return kind(value)
+
+
+def summarize_report(report: dict[str, Any], candidate_limit: int = 10) -> dict[str, Any]:
+    measures = report.get("measures") or {}
+    candidates: list[dict[str, Any]] = []
+    for unit in report.get("units") or []:
+        metadata = unit.get("metadata") or {}
+        source = metadata.get("source_path")
+        unit_measures = unit.get("measures") or {}
+        total_code = _number(unit_measures.get("total_code"))
+        matched_percent = _number(unit_measures.get("matched_code_percent"), float)
+        if source and total_code and matched_percent < 100.0:
+            candidates.append(
+                {
+                    "name": unit.get("name"),
+                    "source": source,
+                    "matched_code_percent": matched_percent,
+                    "total_code": total_code,
+                }
+            )
+    candidates.sort(
+        key=lambda item: (-item["matched_code_percent"], item["total_code"], item["name"])
+    )
+    return {
+        "version": report.get("version"),
+        "matched_code": _number(measures.get("matched_code")),
+        "total_code": _number(measures.get("total_code")),
+        "matched_code_percent": _number(measures.get("matched_code_percent"), float),
+        "fuzzy_match_percent": _number(measures.get("fuzzy_match_percent"), float),
+        "matched_data": _number(measures.get("matched_data")),
+        "total_data": _number(measures.get("total_data")),
+        "matched_data_percent": _number(measures.get("matched_data_percent"), float),
+        "matched_functions": _number(measures.get("matched_functions")),
+        "total_functions": _number(measures.get("total_functions")),
+        "matched_functions_percent": _number(
+            measures.get("matched_functions_percent"), float
+        ),
+        "complete_units": _number(measures.get("complete_units")),
+        "total_units": _number(measures.get("total_units")),
+        "candidates": candidates[:candidate_limit],
+    }
+
+
+def _version_key(path: Path) -> tuple[int, ...]:
+    match = re.search(r"ghidra_([0-9.]+)_PUBLIC", path.name)
+    if not match:
+        return (0,)
+    return tuple(int(part) for part in match.group(1).split("."))
+
+
+def discover_ghidra_home() -> Path:
+    override = os.environ.get("GHIDRA_HOME")
+    if override:
+        return Path(override).expanduser().resolve()
+    candidates = sorted(
+        (REPO_ROOT.parent / "Tools").glob("ghidra_*_PUBLIC"), key=_version_key
+    )
+    if not candidates:
+        raise HarnessError("Could not find Ghidra; set GHIDRA_HOME")
+    return candidates[-1].resolve()
+
+
+def ghidra_project() -> tuple[Path, str]:
+    project_dir = Path(
+        os.environ.get(
+            "NSMB_GHIDRA_PROJECT_DIR", str(REPO_ROOT.parent / "NSMB-Ghidra-Local")
+        )
+    ).expanduser()
+    project_name = os.environ.get("NSMB_GHIDRA_PROJECT_NAME", "NSMBDS-Local")
+    return project_dir.resolve(), project_name
+
+
+def ghidra_headless_command(
+    ghidra_home: Path,
+    project_dir: Path,
+    project_name: str,
+    *,
+    script_name: str,
+    script_args: Sequence[str | Path],
+    program_path: str | None = None,
+) -> list[str]:
+    executable = ghidra_home / "support" / "analyzeHeadless"
+    project_spec = project_name
+    command: list[str] = [str(executable), str(project_dir)]
+    if program_path:
+        pure_path = PurePosixPath(program_path)
+        parent = str(pure_path.parent)
+        if parent not in (".", "/"):
+            project_spec += "/" + parent.lstrip("/")
+        command.extend([project_spec, "-process", pure_path.name])
+    else:
+        command.extend([project_spec, "-process", "-recursive"])
+    command.extend(
+        [
+            "-noanalysis",
+            "-readOnly",
+            "-scriptPath",
+            str(GHIDRA_SCRIPT_PATH),
+            "-postScript",
+            script_name,
+            *[str(arg) for arg in script_args],
+        ]
+    )
+    return command
+
+
+def _normalized_address(value: str) -> str:
+    stripped = value.lower().removeprefix("0x").lstrip("0")
+    return stripped or "0"
+
+
+def select_ghidra_function(
+    index: dict[str, Any], query: str, program: str | None = None
+) -> dict[str, Any]:
+    functions = list(index.get("functions") or [])
+    if program:
+        functions = [
+            item
+            for item in functions
+            if item.get("program") == program
+            or PurePosixPath(str(item.get("program", ""))).name == program
+        ]
+        if not functions:
+            programs = sorted(
+                {str(item.get("program")) for item in index.get("functions") or []}
+            )
+            raise HarnessError(f"Unknown Ghidra program: {program}", candidates=programs)
+
+    is_address = bool(re.fullmatch(r"(?:0x)?[0-9a-fA-F]+", query))
+    if is_address:
+        target = _normalized_address(query)
+        matches = [
+            item
+            for item in functions
+            if _normalized_address(str(item.get("entry", ""))) == target
+        ]
+    else:
+        matches = [
+            item
+            for item in functions
+            if query in (item.get("name"), item.get("qualified_name"))
+        ]
+
+    if len(matches) == 1:
+        return matches[0]
+    if len(matches) > 1:
+        raise HarnessError(
+            f"Ghidra query is ambiguous: {query}",
+            candidates=[
+                f"{item.get('program')}:{item.get('entry')}:{item.get('qualified_name')}"
+                for item in matches
+            ],
+        )
+
+    candidates = [
+        f"{item.get('program')}:{item.get('entry')}:{item.get('qualified_name')}"
+        for item in functions
+        if query.lower() in str(item.get("qualified_name", "")).lower()
+    ]
+    raise HarnessError(f"Ghidra function not found: {query}", candidates=candidates[:20])
+
+
+def repository_symbol_locations(query: str) -> list[dict[str, str]]:
+    """Resolve an exact decomp symbol to its A2DE address without external SDK data."""
+    locations: list[dict[str, str]] = []
+    symbol_root = REPO_ROOT / "config" / "A2DE"
+    pattern = re.compile(
+        r"^(?P<name>.+?)\s+kind:function\([^)]*\)\s+addr:(?P<address>0x[0-9a-fA-F]+)\s*$"
+    )
+    for symbols_path in sorted(symbol_root.glob("**/symbols.txt")):
+        for line in symbols_path.read_text(encoding="utf-8").splitlines():
+            match = pattern.match(line)
+            if match and match.group("name") == query:
+                locations.append(
+                    {
+                        "address": match.group("address"),
+                        "source": str(symbols_path.relative_to(REPO_ROOT)),
+                    }
+                )
+    return locations
+
+
+def resolve_ghidra_function(
+    index: dict[str, Any], query: str, program: str | None = None
+) -> dict[str, Any]:
+    try:
+        return select_ghidra_function(index, query, program)
+    except HarnessError as direct_error:
+        if re.fullmatch(r"(?:0x)?[0-9a-fA-F]+", query):
+            raise
+
+        locations = repository_symbol_locations(query)
+        if not locations:
+            raise direct_error
+
+        resolved: dict[tuple[str, str], dict[str, Any]] = {}
+        for location in locations:
+            try:
+                function = select_ghidra_function(index, location["address"], program)
+            except HarnessError:
+                continue
+            key = (str(function.get("program")), str(function.get("entry")))
+            resolved[key] = function
+
+        if len(resolved) == 1:
+            return next(iter(resolved.values()))
+        if len(resolved) > 1:
+            raise HarnessError(
+                f"Repository symbol is ambiguous in Ghidra: {query}",
+                candidates=[
+                    f"{item.get('program')}:{item.get('entry')}:{item.get('qualified_name')}"
+                    for item in resolved.values()
+                ],
+            )
+        raise HarnessError(
+            f"Repository symbol has no matching Ghidra function: {query}",
+            candidates=[
+                f"{location['source']}:{location['address']}" for location in locations
+            ],
+        )
+
+
+def _slug(value: str) -> str:
+    cleaned = re.sub(r"[^A-Za-z0-9_.-]+", "_", value).strip("_")
+    return cleaned[:120] or "item"
+
+
+def ensure_objdiff(runner: CommandRunner) -> None:
+    if OBJDIFF_CONFIG.exists():
+        return
+    runner.run(["zig", "build", "delink"])
+    runner.run(["zig", "build", "objdiff"])
+
+
+def keep_wine_warm(runner: CommandRunner) -> None:
+    if sys.platform != "win32":
+        runner.run(["wineserver", "-p"])
+
+
+def compile_unit(
+    runner: CommandRunner, query: str, *, keep_warm: bool = True
+) -> dict[str, Any]:
+    ensure_objdiff(runner)
+    unit = resolve_unit(load_units(), query)
+    base_path = unit.get("base_path")
+    if not base_path:
+        raise HarnessError(f"Unit has no compilable base path: {unit.get('name')}")
+    if keep_warm:
+        keep_wine_warm(runner)
+    runner.run(["zig", "build", "single", "--", base_path])
+    return {
+        "name": unit.get("name"),
+        "source": (unit.get("metadata") or {}).get("source_path"),
+        "base_path": base_path,
+    }
+
+
+def diff_unit(
+    runner: CommandRunner, unit_query: str, symbol: str, *, compile_first: bool = True
+) -> tuple[dict[str, Any], dict[str, Any]]:
+    if compile_first:
+        unit = compile_unit(runner, unit_query)
+    else:
+        unit = resolve_unit(load_units(), unit_query)
+    result = runner.run(
+        [
+            "objdiff-cli",
+            "diff",
+            "-p",
+            str(REPO_ROOT),
+            "-u",
+            str(unit.get("name")),
+            "-o",
+            "-",
+            "--format",
+            "json-pretty",
+            symbol,
+        ]
+    )
+    try:
+        diff = json.loads(result.stdout)
+    except json.JSONDecodeError as exc:
+        raise HarnessError(f"objdiff-cli returned invalid JSON: {exc}") from exc
+    return unit, diff
+
+
+def generate_progress(runner: CommandRunner) -> dict[str, Any]:
+    ensure_objdiff(runner)
+    runner.run(
+        [
+            "objdiff-cli",
+            "report",
+            "generate",
+            "-p",
+            str(REPO_ROOT),
+            "-o",
+            str(REPORT_PATH),
+            "--format",
+            "json-pretty",
+        ]
+    )
+    return summarize_report(load_json(REPORT_PATH))
+
+
+def index_ghidra(runner: CommandRunner) -> dict[str, Any]:
+    ghidra_home = discover_ghidra_home()
+    project_dir, project_name = ghidra_project()
+    marker = project_dir / f"{project_name}.gpr"
+    if not marker.exists():
+        raise HarnessError(f"Local Ghidra project is missing: {marker}")
+
+    timestamp = datetime.now(timezone.utc).strftime("%Y%m%dT%H%M%SZ")
+    parts = BUILD_ROOT / "ghidra-index-parts" / f"{timestamp}-{os.getpid()}"
+    parts.mkdir(parents=True, exist_ok=False)
+    command = ghidra_headless_command(
+        ghidra_home,
+        project_dir,
+        project_name,
+        script_name="IndexFunctions.java",
+        script_args=[parts],
+    )
+    runner.run(command)
+
+    programs: list[dict[str, Any]] = []
+    functions: list[dict[str, Any]] = []
+    for part in sorted(parts.glob("*.json")):
+        payload = load_json(part)
+        programs.append(
+            {
+                "program": payload.get("program"),
+                "name": payload.get("name"),
+                "image_base": payload.get("image_base"),
+                "function_count": len(payload.get("functions") or []),
+            }
+        )
+        functions.extend(payload.get("functions") or [])
+    if not programs or not functions:
+        raise HarnessError("Ghidra index produced no programs or functions")
+    programs.sort(key=lambda item: str(item["program"]))
+    functions.sort(
+        key=lambda item: (
+            str(item.get("program")),
+            _normalized_address(str(item.get("entry", ""))),
+            str(item.get("qualified_name")),
+        )
+    )
+    index = {
+        "schema_version": 1,
+        "project": str(marker),
+        "generated_at": datetime.now(timezone.utc).isoformat(),
+        "programs": programs,
+        "functions": functions,
+    }
+    atomic_json(BUILD_ROOT / "ghidra-index.json", index)
+    return index
+
+
+def dump_ghidra(
+    runner: CommandRunner,
+    query: str,
+    *,
+    program: str | None = None,
+    output_dir: Path | None = None,
+) -> dict[str, Any]:
+    index_path = BUILD_ROOT / "ghidra-index.json"
+    index = load_json(index_path) if index_path.exists() else index_ghidra(runner)
+    function = resolve_ghidra_function(index, query, program)
+    program_path = str(function["program"])
+    destination = output_dir or (
+        BUILD_ROOT
+        / "ghidra"
+        / _slug(program_path)
+        / f"{_slug(str(function['entry']))}-{_slug(str(function['name']))}"
+    )
+    destination.mkdir(parents=True, exist_ok=True)
+
+    ghidra_home = discover_ghidra_home()
+    project_dir, project_name = ghidra_project()
+    command = ghidra_headless_command(
+        ghidra_home,
+        project_dir,
+        project_name,
+        script_name="DumpFunction.java",
+        script_args=[destination, function["entry"]],
+        program_path=program_path,
+    )
+    runner.run(command)
+    expected = [
+        destination / "decompile.c",
+        destination / "listing.txt",
+        destination / "function.json",
+        destination / "references.json",
+    ]
+    missing = [str(path) for path in expected if not path.exists() or path.stat().st_size == 0]
+    if missing:
+        raise HarnessError("Ghidra dump is incomplete", candidates=missing)
+    return {
+        "program": program_path,
+        "entry": function["entry"],
+        "name": function["qualified_name"],
+        "output_dir": str(destination),
+        "files": [str(path) for path in expected],
+    }
+
+
+def _check_command(
+    runner: CommandRunner,
+    name: str,
+    command: Sequence[str],
+    expected: str | None = None,
+) -> dict[str, Any]:
+    result = runner.run(command, check=False)
+    output = (result.stdout or result.stderr).strip().splitlines()
+    detail = output[0] if output else f"exit {result.returncode}"
+    ok = result.returncode == 0 and (expected is None or expected in detail)
+    return {"name": name, "ok": ok, "detail": detail, "expected": expected}
+
+
+def command_doctor(args: argparse.Namespace) -> int:
+    runner = CommandRunner(args.json)
+    checks = [
+        _check_command(runner, "dsd", ["dsd", "--version"], "0.11.0"),
+        _check_command(runner, "zig", ["zig", "version"], "0.16.0"),
+        _check_command(runner, "wine", ["wine", "--version"], "wine-11"),
+        _check_command(
+            runner, "objdiff-cli", ["objdiff-cli", "-V"], "objdiff-cli 3.7.3"
+        ),
+    ]
+
+    objdiff_path = shutil.which("objdiff-cli")
+    objdiff_digest = file_sha256(Path(objdiff_path)) if objdiff_path else "not found"
+    checks.append(
+        {
+            "name": "objdiff-cli_sha256",
+            "ok": objdiff_digest == EXPECTED_OBJDIFF_SHA256,
+            "detail": objdiff_digest,
+            "expected": EXPECTED_OBJDIFF_SHA256,
+        }
+    )
+
+    paths = {
+        "rom": REPO_ROOT / "A2DE.nds",
+        "mwccarm": REPO_ROOT / "build/compiler/mwccarm/1.2/sp3/mwccarm.exe",
+        "objdiff_config": OBJDIFF_CONFIG,
+    }
+    for name, path in paths.items():
+        checks.append({"name": name, "ok": path.exists(), "detail": str(path)})
+
+    try:
+        ghidra_home = discover_ghidra_home()
+        ghidra_ok = (
+            (ghidra_home / "support/analyzeHeadless").exists()
+            and re.search(r"ghidra_12(?:\.|_)", ghidra_home.name) is not None
+        )
+        checks.append(
+            {
+                "name": "ghidra",
+                "ok": ghidra_ok,
+                "detail": str(ghidra_home),
+                "expected": "Ghidra 12",
+            }
+        )
+    except HarnessError as exc:
+        checks.append({"name": "ghidra", "ok": False, "detail": str(exc)})
+
+    project_dir, project_name = ghidra_project()
+    project_marker = project_dir / f"{project_name}.gpr"
+    project_store = project_dir / f"{project_name}.rep"
+    checks.append(
+        {
+            "name": "local_ghidra_project",
+            "ok": project_marker.exists() and project_store.is_dir(),
+            "detail": str(project_marker),
+        }
+    )
+
+    for remote, expected in (("origin", EXPECTED_ORIGIN), ("upstream", EXPECTED_UPSTREAM)):
+        result = runner.run(["git", "remote", "get-url", remote], check=False)
+        actual = result.stdout.strip()
+        checks.append(
+            {
+                "name": f"git_{remote}",
+                "ok": result.returncode == 0 and actual == expected,
+                "detail": actual or result.stderr.strip(),
+                "expected": expected,
+            }
+        )
+
+    ok = all(check["ok"] for check in checks)
+    payload = {"ok": ok, "checks": checks}
+    lines = [
+        f"{'OK' if check['ok'] else 'FAIL':4}  {check['name']}: {check['detail']}"
+        for check in checks
+    ]
+    emit(payload, args.json, "\n".join(lines))
+    return 0 if ok else 1
+
+
+def command_baseline(args: argparse.Namespace) -> int:
+    runner = CommandRunner(args.json)
+    keep_wine_warm(runner)
+    if not (REPO_ROOT / "extracted/A2DE/config.yaml").exists():
+        runner.run(["zig", "build", "extract"])
+    runner.run(["zig", "build", "delink"])
+    runner.run(["zig", "build", "objdiff"])
+    runner.run(["zig", "build", "all"])
+    summary = generate_progress(runner)
+    emit(
+        {"ok": True, "progress": summary},
+        args.json,
+        (
+            f"Exact code: {summary['matched_code']:,}/{summary['total_code']:,} "
+            f"({summary['matched_code_percent']:.6f}%)\n"
+            f"Functions: {summary['matched_functions']:,}/{summary['total_functions']:,} "
+            f"({summary['matched_functions_percent']:.6f}%)"
+        ),
+    )
+    return 0
+
+
+def command_compile(args: argparse.Namespace) -> int:
+    runner = CommandRunner(args.json)
+    unit = compile_unit(runner, args.unit)
+    emit({"ok": True, "unit": unit}, args.json, f"Compiled {unit['name']}")
+    return 0
+
+
+def command_diff(args: argparse.Namespace) -> int:
+    runner = CommandRunner(args.json)
+    unit, diff = diff_unit(runner, args.unit, args.symbol)
+    payload = {"ok": True, "unit": unit, "symbol": args.symbol, "diff": diff}
+    emit(payload, args.json, json.dumps(payload, indent=2, sort_keys=True))
+    return 0
+
+
+def command_progress(args: argparse.Namespace) -> int:
+    runner = CommandRunner(args.json)
+    summary = generate_progress(runner)
+    lines = [
+        f"Exact code: {summary['matched_code']:,}/{summary['total_code']:,} "
+        f"({summary['matched_code_percent']:.6f}%)",
+        f"Fuzzy code: {summary['fuzzy_match_percent']:.6f}%",
+        f"Data: {summary['matched_data']:,}/{summary['total_data']:,} "
+        f"({summary['matched_data_percent']:.6f}%)",
+        f"Functions: {summary['matched_functions']:,}/{summary['total_functions']:,} "
+        f"({summary['matched_functions_percent']:.6f}%)",
+    ]
+    emit({"ok": True, "progress": summary}, args.json, "\n".join(lines))
+    return 0
+
+
+def command_ghidra_index(args: argparse.Namespace) -> int:
+    runner = CommandRunner(args.json)
+    index = index_ghidra(runner)
+    payload = {
+        "ok": True,
+        "index": str(BUILD_ROOT / "ghidra-index.json"),
+        "program_count": len(index["programs"]),
+        "function_count": len(index["functions"]),
+    }
+    emit(
+        payload,
+        args.json,
+        f"Indexed {payload['function_count']:,} functions in {payload['program_count']} programs",
+    )
+    return 0
+
+
+def command_ghidra_dump(args: argparse.Namespace) -> int:
+    runner = CommandRunner(args.json)
+    result = dump_ghidra(runner, args.query, program=args.program)
+    emit({"ok": True, "dump": result}, args.json, f"Wrote {result['output_dir']}")
+    return 0
+
+
+def command_work(args: argparse.Namespace) -> int:
+    runner = CommandRunner(args.json)
+    unit, diff = diff_unit(runner, args.unit, args.symbol)
+    destination = (
+        BUILD_ROOT / "work" / _slug(str(unit.get("name"))) / _slug(args.symbol)
+    )
+    destination.mkdir(parents=True, exist_ok=True)
+    atomic_json(destination / "diff.json", diff)
+    dump = dump_ghidra(
+        runner,
+        args.symbol,
+        program=args.program,
+        output_dir=destination,
+    )
+    summary = {
+        "ok": True,
+        "unit": unit,
+        "symbol": args.symbol,
+        "diff": str(destination / "diff.json"),
+        "ghidra": dump,
+    }
+    atomic_json(destination / "summary.json", summary)
+    emit(summary, args.json, f"Wrote decomp workspace: {destination}")
+    return 0
+
+
+def add_json_flag(parser: argparse.ArgumentParser) -> None:
+    parser.add_argument("--json", action="store_true", help="emit stable JSON to stdout")
+
+
+def build_parser() -> argparse.ArgumentParser:
+    parser = argparse.ArgumentParser(description=__doc__)
+    subparsers = parser.add_subparsers(dest="command", required=True)
+
+    doctor = subparsers.add_parser("doctor", help="validate the local toolchain")
+    add_json_flag(doctor)
+    doctor.set_defaults(handler=command_doctor)
+
+    baseline = subparsers.add_parser("baseline", help="rebuild and report the baseline")
+    add_json_flag(baseline)
+    baseline.set_defaults(handler=command_baseline)
+
+    compile_parser = subparsers.add_parser("compile", help="compile one objdiff unit")
+    compile_parser.add_argument("unit")
+    add_json_flag(compile_parser)
+    compile_parser.set_defaults(handler=command_compile)
+
+    diff_parser = subparsers.add_parser("diff", help="compile and diff one symbol")
+    diff_parser.add_argument("unit")
+    diff_parser.add_argument("symbol")
+    add_json_flag(diff_parser)
+    diff_parser.set_defaults(handler=command_diff)
+
+    progress = subparsers.add_parser("progress", help="regenerate the progress report")
+    add_json_flag(progress)
+    progress.set_defaults(handler=command_progress)
+
+    ghidra = subparsers.add_parser("ghidra", help="read-only Ghidra operations")
+    ghidra_subparsers = ghidra.add_subparsers(dest="ghidra_command", required=True)
+
+    ghidra_index = ghidra_subparsers.add_parser("index", help="index local functions")
+    add_json_flag(ghidra_index)
+    ghidra_index.set_defaults(handler=command_ghidra_index)
+
+    ghidra_dump = ghidra_subparsers.add_parser("dump", help="dump one function")
+    ghidra_dump.add_argument("query")
+    ghidra_dump.add_argument("--program")
+    add_json_flag(ghidra_dump)
+    ghidra_dump.set_defaults(handler=command_ghidra_dump)
+
+    work = subparsers.add_parser("work", help="compile, diff, and dump one symbol")
+    work.add_argument("unit")
+    work.add_argument("symbol")
+    work.add_argument("--program")
+    add_json_flag(work)
+    work.set_defaults(handler=command_work)
+    return parser
+
+
+def main(argv: Sequence[str] | None = None) -> int:
+    args = build_parser().parse_args(argv)
+    try:
+        return int(args.handler(args))
+    except HarnessError as exc:
+        payload = {"ok": False, "error": str(exc), "candidates": exc.candidates}
+        if getattr(args, "json", False):
+            print(json.dumps(payload, indent=2, sort_keys=True))
+        else:
+            print(f"error: {exc}", file=sys.stderr)
+            for candidate in exc.candidates:
+                print(f"  - {candidate}", file=sys.stderr)
+        return 2
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())
