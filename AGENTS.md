@@ -51,6 +51,31 @@ This repository is a matching decompilation of *New Super Mario Bros.* for Ninte
 - Require the target function to reach 100% exact code and relocations. A successful compile or semantically equivalent function is not sufficient.
 - Run `tools/decomp progress --json` and confirm global code, data, and function totals do not regress.
 - Run `tools/decomp baseline --json` before handing off completed decompilation work.
+
+### 7. Verify the authoritative completion report
+
+- After every successful matching/validation cycle, and immediately before any completion claim, commit, or handoff, run `zig build report -DRelease=A2DE` after `tools/decomp baseline --json`. The required order is:
+
+  ```sh
+  tools/decomp baseline --json
+  zig build report -DRelease=A2DE
+  ```
+
+- Treat `build/report.json` as the authoritative completion inventory. Inspect the target unit directly:
+
+  ```sh
+  jq '.units[] | select(.name == "UNIT") |
+      {name, metadata, measures, sections}' build/report.json
+  ```
+
+- For an overlay claim, inspect its entire `delinks.txt` range and every corresponding `_dsd_gap@ovNNN_*` entry in `build/report.json`, including code, `.init`, `.rodata`, `.ctor`, `.data`, and `.bss`. Do not infer overlay completion from a few named source files or from the candidate list disappearing.
+- Record the target scope's matched/total code bytes, data bytes, functions, and `metadata.complete` value before committing or handing off.
+- Use these terms precisely:
+  - **Function matched:** the symbol diff is 100% exact with matching relocations.
+  - **Code matched:** all attributed code and functions match, but the unit may still contain unmatched data, relocations, literal pools, or other section content.
+  - **Unit complete:** `build/report.json` reports `metadata.complete: true`, matched code/data/functions equal their totals, and objdiff shows no mismatch in any owned section or relocation.
+  - **Overlay complete:** every unit in the overlay's `delinks.txt` is complete, aggregate code/data/function totals are exact, and no non-empty `_dsd_gap@ovNNN_*` unit remains.
+- If the report does not support `unit complete` or `overlay complete`, use narrower language such as `matched function` or `matched scene code` in commit messages and handoffs.
 - Review the final Git diff and remove unrelated changes. Generated evidence remains beneath `build/decomp/` and must not be committed.
 
 ## Build and Matching Rules
@@ -58,7 +83,8 @@ This repository is a matching decompilation of *New Super Mario Bros.* for Ninte
 - Target the A2DE release unless the task explicitly says otherwise.
 - Use the repository's MWCC ARM 1.2sp3 compiler and existing flags. Do not change compiler flags or the Zig build system merely to force a match.
 - `objdiff.json`, `objdiff_report.json`, `extracted/`, and `build/` are generated state, not source files.
-- `zig build report -DRelease=A2DE` only reports the current build/objdiff state; it does not compile the target or rebuild the project. Never use it as the sole matching check.
+- `objdiff_report.json` is the harness progress summary. `build/report.json` is the canonical completion inventory. Neither report may be committed.
+- `zig build report -DRelease=A2DE` only reports the current build/objdiff state; it does not compile the target or rebuild the project. Always run it after the full baseline, and never use it as the sole symbol-matching check.
 - Preserve data layout, declaration order, control flow, linkage, and symbol boundaries when binary evidence requires them.
 - Do not mark a unit complete based only on a successful compile. Verify exact code and data results in the generated report.
 - If evidence is ambiguous, report the competing interpretations and stop before inventing behavior.
@@ -82,5 +108,6 @@ This repository is a matching decompilation of *New Super Mario Bros.* for Ninte
 - Harness tests: `python3 -m unittest discover -s tools/tests -v`
 - Environment: `tools/decomp doctor --json`
 - Full baseline: `tools/decomp baseline --json`
+- Authoritative completion report: `zig build report -DRelease=A2DE`, then inspect `build/report.json`
 - Known smoke unit: `tools/decomp diff src/system/main NitroMain --json`
 - Ghidra smoke test: index the local mirror and dump `NitroMain`; all four dump artifacts must be non-empty.
