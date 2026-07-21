@@ -115,20 +115,24 @@ s32 func_ov052_021529b4(Overlay52Scene *scene)
 
 }
 
-Overlay52Scene::~Overlay52Scene()
-{
-}
-
-Overlay52Scene::Overlay52Scene()
-{
-}
-
 extern "C" {
 
 void *func_ov052_02152bc8()
 {
 	return new Overlay52Scene();
 }
+
+}
+
+Overlay52Scene::Overlay52Scene()
+{
+}
+
+Overlay52Scene::~Overlay52Scene()
+{
+}
+
+extern "C" {
 
 void func_ov052_02152bf0()
 {
