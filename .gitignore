@@ -6,7 +6,6 @@ objdiff_report.json
 *.mch
 temp
 .vscode
-__pycache__/
 
 # Build System
 .zig-cache
