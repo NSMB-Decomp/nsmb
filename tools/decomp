@@ -19,6 +19,7 @@ from typing import Any, Iterable, Sequence
 REPO_ROOT = Path(__file__).resolve().parents[1]
 BUILD_ROOT = REPO_ROOT / "build" / "decomp"
 OBJDIFF_CONFIG = REPO_ROOT / "objdiff.json"
+OBJDIFF_OVERRIDES_TOOL = REPO_ROOT / "tools" / "apply_objdiff_overrides.py"
 REPORT_PATH = REPO_ROOT / "objdiff_report.json"
 GHIDRA_SCRIPT_PATH = REPO_ROOT / "tools" / "Ghidra"
 
@@ -417,11 +418,15 @@ def _slug(value: str) -> str:
     return cleaned[:120] or "item"
 
 
+def apply_objdiff_overrides(runner: CommandRunner) -> None:
+    runner.run([sys.executable, OBJDIFF_OVERRIDES_TOOL])
+
+
 def ensure_objdiff(runner: CommandRunner) -> None:
-    if OBJDIFF_CONFIG.exists():
-        return
-    runner.run(["zig", "build", "delink"])
-    runner.run(["zig", "build", "objdiff"])
+    if not OBJDIFF_CONFIG.exists():
+        runner.run(["zig", "build", "delink"])
+        runner.run(["zig", "build", "objdiff"])
+    apply_objdiff_overrides(runner)
 
 
 def keep_wine_warm(runner: CommandRunner) -> None:

@@ -101,6 +101,7 @@ The end goal is a true 100% match: exact code and data bytes, symbol boundaries,
 - Target the A2DE release unless the task explicitly says otherwise.
 - Use the repository's MWCC ARM 1.2sp3 compiler and existing flags. Do not change compiler flags or the Zig build system merely to force a match.
 - `objdiff.json`, `objdiff_report.json`, `extracted/`, and `build/` are generated state, not source files.
+- Bare `zig build objdiff` generates the standard DSD configuration and has no Python dependency. Agent workflows apply `config/objdiff-unit-overrides.json` through `tools/decomp` before compiling, diffing, or reporting.
 - `objdiff_report.json` is the harness progress summary. `build/report.json` is the canonical completion inventory, but its function totals do not account for strict function-relocation differences. Neither report may be committed.
 - `zig build report -DRelease=A2DE` only reports the current build/objdiff state; it does not compile the target or rebuild the project. Always run it after the full baseline, and never use it as the sole symbol-matching check.
 - Keep `function_reloc_diffs=name_address` for final verification. `none` and `data_value` are diagnostic modes only and must never be used to manufacture or support a 100% completion claim.

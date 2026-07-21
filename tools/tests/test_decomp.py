@@ -74,6 +74,21 @@ class ReportTests(unittest.TestCase):
 
 
 class ObjdiffOverrideTests(unittest.TestCase):
+    def test_harness_applies_overrides_with_current_interpreter(self):
+        class RecordingRunner:
+            def __init__(self):
+                self.commands = []
+
+            def run(self, command):
+                self.commands.append(command)
+
+        runner = RecordingRunner()
+        decomp.apply_objdiff_overrides(runner)
+        self.assertEqual(
+            runner.commands,
+            [[decomp.sys.executable, decomp.OBJDIFF_OVERRIDES_TOOL]],
+        )
+
     def test_applies_overrides_without_discarding_existing_entries(self):
         objdiff = {
             "units": [
