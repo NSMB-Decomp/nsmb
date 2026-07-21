@@ -11,20 +11,55 @@ This repository is a matching decompilation of *New Super Mario Bros.* for Ninte
 - The approved Ghidra source is the authenticated shared `NSMBDS` project at `ghidra.gota7.com`, mirrored into the independent local `NSMBDS-Local` project. Use the shared server only for read-only snapshot export. Never run a mutating script, commit, checkout, rename, or analysis pass against the shared server.
 - Do not commit ROMs, save files, extracted ROM data, compiler binaries, Ghidra projects or archives, credentials, generated objdiff configuration, reports, or anything under `build/`.
 
-## Evidence-First Workflow
+## Evidence-First Decompilation Loop
 
-1. Run `tools/decomp doctor --json` before beginning a decompilation session.
-2. Use `tools/decomp progress --json` to establish the current baseline.
-3. Select one function and gather evidence from objdiff, the local Ghidra mirror, symbols, relocations, and neighboring code. Treat semantic names and decompiler output as hypotheses until corroborated.
-4. Use `tools/decomp work UNIT SYMBOL --json` for the normal compile, diff, and read-only Ghidra context bundle.
-5. Make the smallest source change that explains the observed binary. Avoid cleanup, architectural refactors, speculative abstractions, and unrelated formatting.
-6. Re-run `tools/decomp diff UNIT SYMBOL --json`, then `tools/decomp progress --json`. A change is not complete until it builds and its effect on matching is measured.
+### 1. Establish a clean baseline
+
+- Run `tools/decomp doctor --json` before beginning a decompilation session.
+- Run `tools/decomp progress --json` and record the current exact/fuzzy code, data, and function totals.
+- Inspect `git status --short`. Preserve unrelated work and identify any existing source changes before editing.
+
+### 2. Resolve the target
+
+- Identify one exact objdiff unit, symbol, program or overlay, and address. Do not start from a guessed semantic name.
+- Confirm the declaration, owning class, function size, calling convention, and whether the function is inherited or overridden.
+- Use the local Ghidra index, repository symbols, and objdiff metadata to resolve naming differences. If a Ghidra MCP is available, it may supplement this evidence, but `tools/decomp` remains the reproducible local path.
+- If the name, address, unit, or program is ambiguous, report the candidates and resolve the ambiguity before editing.
+
+### 3. Gather evidence
+
+- Run `tools/decomp work UNIT SYMBOL --json` for the normal compile, objdiff, and read-only Ghidra context bundle.
+- Inspect the generated `diff.json`, `decompile.c`, `listing.txt`, `function.json`, and `references.json` beneath `build/decomp/work/`.
+- Inspect relevant callers, callees, neighboring functions, relocations, vtables, class layout, and existing repository conventions.
+- Treat semantic names and Ghidra pseudocode as hypotheses. Corroborate them with instructions, references, layout, and compiler output.
+
+### 4. Form one hypothesis
+
+- Make the smallest source edit that explains the observed binary.
+- Preserve ABI, signatures, data layout, declaration order, types, signedness, temporary lifetime, and control-flow shape where binary evidence requires them.
+- Change one meaningful variable at a time. Avoid cleanup, architectural refactors, speculative abstractions, and unrelated formatting.
+- Never transcribe or derive implementation material from NitroSDK or another forbidden source.
+
+### 5. Run the tight feedback loop
+
+- Run `tools/decomp diff UNIT SYMBOL --json` after each meaningful edit. This compiles the unit and emits the symbol-level objdiff result.
+- Compare exact instructions and relocations, not only semantic behavior or a fuzzy percentage.
+- Keep an edit only when it improves the match or provides concrete evidence about the remaining mismatch.
+- When stuck, test evidence-backed differences such as expression shape, register pressure, branch structure, signedness, casts, constants, inlining, declaration order, and temporary lifetime. Do not batch speculative rewrites.
+
+### 6. Validate completion
+
+- Require the target function to reach 100% exact code and relocations. A successful compile or semantically equivalent function is not sufficient.
+- Run `tools/decomp progress --json` and confirm global code, data, and function totals do not regress.
+- Run `tools/decomp baseline --json` before handing off completed decompilation work.
+- Review the final Git diff and remove unrelated changes. Generated evidence remains beneath `build/decomp/` and must not be committed.
 
 ## Build and Matching Rules
 
 - Target the A2DE release unless the task explicitly says otherwise.
 - Use the repository's MWCC ARM 1.2sp3 compiler and existing flags. Do not change compiler flags or the Zig build system merely to force a match.
 - `objdiff.json`, `objdiff_report.json`, `extracted/`, and `build/` are generated state, not source files.
+- `zig build report -DRelease=A2DE` only reports the current build/objdiff state; it does not compile the target or rebuild the project. Never use it as the sole matching check.
 - Preserve data layout, declaration order, control flow, linkage, and symbol boundaries when binary evidence requires them.
 - Do not mark a unit complete based only on a successful compile. Verify exact code and data results in the generated report.
 - If evidence is ambiguous, report the competing interpretations and stop before inventing behavior.
