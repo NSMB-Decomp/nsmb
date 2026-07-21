@@ -40,8 +40,11 @@ pub fn build(b: *std.Build) void {
     objdiff_cmd.addArgs(&.{ "-s", "-C", "mwcc_20_84", "-p", "201" });
     objdiff_cmd.addArgs(&.{ "-f", "-O4,p -interworking -proc=arm946e -w=off -gccinc -nolink -c -Cpp_exceptions off -lang=c++ -RTTI off -sym on" });
 
+    const objdiff_overrides_cmd = b.addSystemCommand(&.{ "python3", "tools/apply_objdiff_overrides.py" });
+    objdiff_overrides_cmd.step.dependOn(&objdiff_cmd.step);
+
     var objdiff_step = b.step("objdiff", "");
-    objdiff_step.dependOn(&objdiff_cmd.step);
+    objdiff_step.dependOn(&objdiff_overrides_cmd.step);
 
     // Step - single
     var single_step = b.step("single", "");
@@ -57,6 +60,7 @@ pub fn build(b: *std.Build) void {
     // Step - report
     const report_cmd = b.addSystemCommand(&.{"objdiff-cli"});
     report_cmd.addArgs(&.{ "report", "generate", "-o", "build/report.json" });
+    report_cmd.step.dependOn(&objdiff_overrides_cmd.step);
 
     var report_step = b.step("report", "");
     report_step.dependOn(&report_cmd.step);

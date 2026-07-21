@@ -7,28 +7,42 @@ extern u8 data_ov052_0215c890;
 extern u8 data_ov052_0215c894;
 extern u8 data_ov052_0215c898;
 extern u8 data_ov052_0215c8a0[];
+u32 data_ov052_0215c8ac[2];
+u32 data_ov052_0215c8b4[3];
 extern u8 data_ov052_0215aee8[];
 extern u8 data_ov052_0215c89c;
 extern u32 data_ov052_0215af0c[];
-extern u32 data_ov052_0215b7c4[];
 extern u8 data_ov052_0215b864[];
-extern u32 data_ov052_0215b7a0[];
 extern u8 data_ov052_0215b904[];
-extern u32 data_ov052_0215b7ac[];
-extern u32 data_ov052_0215b7b8[];
-extern u32 data_ov052_0215b618[];
-extern u32 data_ov052_0215b628[];
-extern u32 data_ov052_0215b788[];
-extern u32 data_ov052_0215b794[];
 extern u8 data_ov052_0215b914[];
-extern u32 data_ov052_0215b6a0[];
-extern u32 data_ov052_0215b6b0[];
-extern u32 data_ov052_0215b7ec[];
-extern u32 data_ov052_0215b728[];
 extern u8 data_ov052_0215b9d4[];
 extern u8 data_ov052_0215ba84[];
-extern u32 data_ov052_0215b7d8[];
 extern u8 data_ov052_0215b87c[];
+extern u8 data_ov052_0215b85c[];
+extern u8 data_ov052_0215b874[];
+extern u8 data_ov052_0215bae4[];
+extern u8 data_ov052_0215ba54[];
+extern u8 data_ov052_0215b964[];
+extern u8 data_ov052_0215b86c[];
+extern u8 data_ov052_0215b8b4[];
+extern u8 data_ov052_0215b8c4[];
+extern u8 data_ov052_0215bab4[];
+extern u8 data_ov052_0215b924[];
+extern u8 data_ov052_0215b8d4[];
+extern u8 data_ov052_0215b8f4[];
+extern u8 data_ov052_0215b934[];
+extern u8 data_ov052_0215b954[];
+extern u8 data_ov052_0215b974[];
+extern u8 data_ov052_0215b884[];
+extern u8 data_ov052_0215b894[];
+extern u8 data_ov052_0215b944[];
+extern u8 data_ov052_0215b8a4[];
+extern u8 data_ov052_0215b8e4[];
+extern u8 data_ov052_0215ba34[];
+extern u8 data_ov052_0215ba14[];
+extern u8 data_ov052_0215b9f4[];
+extern u8 data_ov052_0215b994[];
+extern u8 data_ov052_0215b9b4[];
 extern u8 data_020887f0;
 extern u8 data_0208ae54[];
 extern u8 data_02085a58;
@@ -37,6 +51,61 @@ extern u8 data_0208b4e8;
 extern u8 data_0208b4ec;
 extern u8 data_0208b4f0;
 extern u8 data_0208b4f4;
+
+u32 data_ov052_0215b618[] = { 10, 11 };
+u32 data_ov052_0215b628[] = {
+	(u32)data_ov052_0215b85c,
+	(u32)data_ov052_0215b874,
+};
+u32 data_ov052_0215b6a0[] = { 16, 17 };
+u32 data_ov052_0215b6b0[] = {
+	(u32)data_ov052_0215bae4,
+	(u32)data_ov052_0215ba54,
+};
+u32 data_ov052_0215b728[] = {
+	(u32)data_ov052_0215b964,
+	(u32)data_ov052_0215b86c,
+};
+u32 data_ov052_0215b788[] = { 12, 13, 14 };
+u32 data_ov052_0215b794[] = {
+	(u32)data_ov052_0215b8b4,
+	(u32)data_ov052_0215b8c4,
+	(u32)data_ov052_0215bab4,
+};
+u32 data_ov052_0215b7a0[] = {
+	(u32)data_ov052_0215b924,
+	(u32)data_ov052_0215b8d4,
+	(u32)data_ov052_0215b8f4,
+};
+u32 data_ov052_0215b7ac[] = { 7, 8, 9 };
+u32 data_ov052_0215b7b8[] = {
+	(u32)data_ov052_0215b934,
+	(u32)data_ov052_0215b954,
+	(u32)data_ov052_0215b974,
+};
+u32 data_ov052_0215b7c4[] = {
+	(u32)data_ov052_0215b884,
+	(u32)data_ov052_0215b894,
+	(u32)data_ov052_0215b944,
+	(u32)data_ov052_0215b8a4,
+	(u32)data_ov052_0215b8e4,
+};
+u32 data_ov052_0215b7d8[] = {
+	(u32)data_ov052_0215ba34,
+	(u32)data_ov052_0215ba14,
+	(u32)data_ov052_0215b9f4,
+	(u32)data_ov052_0215b994,
+	(u32)data_ov052_0215b9b4,
+};
+u32 data_ov052_0215b7ec[] = { 18, 19, 20, 21, 22, 23, 24, 25 };
+
+namespace Object_4 {
+	ObjectProfile profile = {
+		MPLevelSelectScene::create,
+		5,
+		13,
+	};
+}
 
 extern u32 func_0200696c__(u32, u16, u8, u8, u8, u32, u32, u32, u32,
 	u8, u8, u8, u8, u8, u8, u8, u32);

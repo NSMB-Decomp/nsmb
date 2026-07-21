@@ -79,7 +79,7 @@ class MPLevelSelectScene : public Scene
 	void func_ov052_02153d50();
 	void func_ov052_02153d44();
 	void func_ov052_02153d38();
-	void *create();
+	static void *create();
 
 	s32 onCreate();
 	s32 onDestroy();
