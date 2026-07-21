@@ -74,7 +74,7 @@ class ReportTests(unittest.TestCase):
 
 
 class ObjdiffOverrideTests(unittest.TestCase):
-    def test_harness_applies_overrides_with_current_interpreter(self):
+    def test_harness_toggles_overrides_with_current_interpreter(self):
         class RecordingRunner:
             def __init__(self):
                 self.commands = []
@@ -83,10 +83,14 @@ class ObjdiffOverrideTests(unittest.TestCase):
                 self.commands.append(command)
 
         runner = RecordingRunner()
-        decomp.apply_objdiff_overrides(runner)
+        decomp.set_objdiff_overrides(runner, enabled=True)
+        decomp.set_objdiff_overrides(runner, enabled=False)
         self.assertEqual(
             runner.commands,
-            [[decomp.sys.executable, decomp.OBJDIFF_OVERRIDES_TOOL]],
+            [
+                [decomp.sys.executable, decomp.OBJDIFF_OVERRIDES_TOOL],
+                [decomp.sys.executable, decomp.OBJDIFF_OVERRIDES_TOOL, "--remove"],
+            ],
         )
 
     def test_applies_overrides_without_discarding_existing_entries(self):
@@ -115,6 +119,40 @@ class ObjdiffOverrideTests(unittest.TestCase):
         self.assertEqual(
             objdiff["units"][0]["options"],
             {"existing_option": True, "combine_text_sections": False},
+        )
+
+    def test_removes_only_tracked_override_values(self):
+        objdiff = {
+            "units": [
+                {
+                    "name": "src/test",
+                    "symbol_mappings": {
+                        "existing": "existing_base",
+                        "target": "base",
+                    },
+                    "options": {
+                        "existing_option": True,
+                        "combine_text_sections": False,
+                    },
+                }
+            ]
+        }
+        objdiff_overrides.remove_overrides(
+            objdiff,
+            {
+                "src/test": {
+                    "symbol_mappings": {"target": "base"},
+                    "options": {"combine_text_sections": False},
+                }
+            },
+        )
+        self.assertEqual(
+            objdiff["units"][0]["symbol_mappings"],
+            {"existing": "existing_base"},
+        )
+        self.assertEqual(
+            objdiff["units"][0]["options"],
+            {"existing_option": True},
         )
 
     def test_rejects_unknown_units(self):

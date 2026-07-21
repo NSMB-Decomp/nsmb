@@ -418,15 +418,18 @@ def _slug(value: str) -> str:
     return cleaned[:120] or "item"
 
 
-def apply_objdiff_overrides(runner: CommandRunner) -> None:
-    runner.run([sys.executable, OBJDIFF_OVERRIDES_TOOL])
+def set_objdiff_overrides(runner: CommandRunner, *, enabled: bool) -> None:
+    command: list[str | Path] = [sys.executable, OBJDIFF_OVERRIDES_TOOL]
+    if not enabled:
+        command.append("--remove")
+    runner.run(command)
 
 
 def ensure_objdiff(runner: CommandRunner) -> None:
     if not OBJDIFF_CONFIG.exists():
         runner.run(["zig", "build", "delink"])
         runner.run(["zig", "build", "objdiff"])
-    apply_objdiff_overrides(runner)
+    set_objdiff_overrides(runner, enabled=False)
 
 
 def keep_wine_warm(runner: CommandRunner) -> None:
@@ -468,22 +471,27 @@ def diff_unit(
     if compile_first:
         unit = compile_unit(runner, unit_query)
     else:
+        ensure_objdiff(runner)
         unit = resolve_unit(load_units(), unit_query)
-    result = runner.run(
-        [
-            "objdiff-cli",
-            "diff",
-            "-p",
-            str(REPO_ROOT),
-            "-u",
-            str(unit.get("name")),
-            "-o",
-            "-",
-            "--format",
-            "json-pretty",
-            symbol,
-        ]
-    )
+    set_objdiff_overrides(runner, enabled=True)
+    try:
+        result = runner.run(
+            [
+                "objdiff-cli",
+                "diff",
+                "-p",
+                str(REPO_ROOT),
+                "-u",
+                str(unit.get("name")),
+                "-o",
+                "-",
+                "--format",
+                "json-pretty",
+                symbol,
+            ]
+        )
+    finally:
+        set_objdiff_overrides(runner, enabled=False)
     try:
         diff = json.loads(result.stdout)
     except json.JSONDecodeError as exc:

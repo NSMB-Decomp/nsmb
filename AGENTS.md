@@ -44,6 +44,7 @@ The end goal is a true 100% match: exact code and data bytes, symbol boundaries,
 ### 5. Run the tight feedback loop
 
 - Run `tools/decomp diff UNIT SYMBOL --json` after each meaningful edit. This compiles the unit and emits the symbol-level objdiff result.
+- Targeted `tools/decomp diff` and `work` commands may apply tracked unit overrides for that one diagnostic comparison. The harness removes them immediately afterward; overridden results never determine progress or completion totals.
 - Compare exact instructions and relocations, not only semantic behavior or a fuzzy percentage.
 - Keep an edit only when it improves the match or provides concrete evidence about the remaining mismatch.
 - When stuck, test evidence-backed differences such as expression shape, register pressure, branch structure, signedness, casts, constants, inlining, declaration order, and temporary lifetime. Do not batch speculative rewrites.
@@ -78,7 +79,7 @@ The end goal is a true 100% match: exact code and data bytes, symbol boundaries,
     --format json-pretty
   ```
 
-- Treat `build/report.json` as the authoritative completion inventory, but never as standalone proof of an exact match. Objdiff's report generator disables function-relocation differences, so it can report 100% code/functions while strict objdiff still identifies incorrect relocation destinations. Inspect the target unit directly:
+- Treat the CI-generated `build/report.json` as the final authority for reported match totals. Local `tools/decomp baseline` and `progress` must use the same unmodified DSD objdiff configuration and agree with CI. The report is still not standalone proof of an exact match because objdiff's report generator disables function-relocation differences. Inspect the target unit directly:
 
   ```sh
   jq '.units[] | select(.name == "UNIT") |
@@ -101,7 +102,7 @@ The end goal is a true 100% match: exact code and data bytes, symbol boundaries,
 - Target the A2DE release unless the task explicitly says otherwise.
 - Use the repository's MWCC ARM 1.2sp3 compiler and existing flags. Do not change compiler flags or the Zig build system merely to force a match.
 - `objdiff.json`, `objdiff_report.json`, `extracted/`, and `build/` are generated state, not source files.
-- Bare `zig build objdiff` generates the standard DSD configuration and has no Python dependency. Agent workflows apply `config/objdiff-unit-overrides.json` through `tools/decomp` before compiling, diffing, or reporting.
+- Bare `zig build objdiff`, CI reporting, and harness `baseline`/`progress` use the same unmodified DSD configuration. Agent-only unit overrides are temporary diagnostics for targeted `diff`/`work` commands and must not affect reported totals or completion claims.
 - `objdiff_report.json` is the harness progress summary. `build/report.json` is the canonical completion inventory, but its function totals do not account for strict function-relocation differences. Neither report may be committed.
 - `zig build report -DRelease=A2DE` only reports the current build/objdiff state; it does not compile the target or rebuild the project. Always run it after the full baseline, and never use it as the sole symbol-matching check.
 - Keep `function_reloc_diffs=name_address` for final verification. `none` and `data_value` are diagnostic modes only and must never be used to manufacture or support a 100% completion claim.
