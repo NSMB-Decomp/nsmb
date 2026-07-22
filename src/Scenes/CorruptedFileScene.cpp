@@ -1,4 +1,5 @@
 #include "CorruptedFileScene.hpp"
+#include <nsmb/arm9/symbols.hpp>
 
 const u32 data_ov005_020ccd18[4] = {
 	0x100,
@@ -17,8 +18,6 @@ void *CorruptedFileScene::create()
 {
 	return new CorruptedFileScene();
 }
-void func_02014820(void*);
-void func_0201481c(void*);
 CorruptedFileScene::CorruptedFileScene()
 {
 }
@@ -29,32 +28,32 @@ CorruptedFileScene::~CorruptedFileScene()
 
 s32 CorruptedFileScene::onCreate() {
 	REG_POWER_CNT = REG_POWER_CNT & 0xfffffdf1 | 0x20e;
-	Nitro::func_02061274();
-	Nitro::func_02061260();
-	Nitro::func_0206123c();
-	Nitro::func_02061218();
-	Nitro::func_02061204();
-	Nitro::func_020611f0();
-	Nitro::func_020611dc();
-	Nitro::func_020611c8();
-	Nitro::func_020611b4();
-	Nitro::func_0206118c();
-	Nitro::func_02061164();
-	Nitro::func_02061588(6);
-	Nitro::func_02061ac4(8);
-	Nitro::func_02061494(0x10);
-	Nitro::func_02061958(1);
-	Nitro::func_02061844(0x40);
-	Nitro::func_0206178c(0x20);
+	NDS::Graphics::resetMainBackgroundBank();
+	NDS::Graphics::resetMainObjectBank();
+	NDS::Graphics::resetMainBackgroundPaletteBank();
+	NDS::Graphics::resetMainObjectPaletteBank();
+	NDS::Graphics::resetTextureBank();
+	NDS::Graphics::resetTexturePaletteBank();
+	NDS::Graphics::resetClearImageBank();
+	NDS::Graphics::resetSubBackgroundBank();
+	NDS::Graphics::resetSubObjectBank();
+	NDS::Graphics::resetSubBackgroundPaletteBank();
+	NDS::Graphics::resetSubObjectPaletteBank();
+	NDS::Graphics::assignTextureBank(6);
+	NDS::Graphics::assignMainBackgroundBank(8);
+	NDS::Graphics::assignTexturePaletteBank(0x10);
+	NDS::Graphics::assignMainObjectBank(1);
+	NDS::Graphics::assignMainBackgroundPaletteBank(0x40);
+	NDS::Graphics::assignMainObjectPaletteBank(0x20);
 	REG_BG0CNT &= ~0x40;
 	REG_BG1CNT &= ~0x40;
 	REG_BG2CNT &= ~0x40;
 	REG_BG3CNT &= ~0x40;
 	REG_DISPCNT = REG_DISPCNT & 0xffcfffef | 0x200010;
 	REG_DISPCNT = REG_DISPCNT & 0xffbfff9f | 0x20;
-	Nitro::func_02056f40(2,1);
-	Nitro::func_020571c4(0x10000,1);
-	Nitro::func_02060d78(1,5,1);
+	NDS::Graphics3D::initializeTextureArena(2,1);
+	NDS::Graphics3D::initializePaletteArena(0x10000,1);
+	NDS::Graphics::setMainDisplayMode(1,5,1);
 	REG_POWER_CNT |= 0x8000;
 	REG_DISPCNT = REG_DISPCNT & ~0x1f00 | 0x1000;
 	data_02085a88 = 0x10;
@@ -155,7 +154,7 @@ s32 CorruptedFileScene::onRender() {
 	return true;
 }
 s32 CorruptedFileScene::onUpdate() {
-	if (!GlobalFader.func_02007cb0()) {
+	if (!GlobalFader.fadedIn()) {
 		return true;
 	}
 
@@ -211,5 +210,4 @@ void CorruptedFileScene::func_ov005_020cc2e0() {
 	u32 b = this->_f0 + this->_64.func_020141b8() - 3;
 	this->_64.func_020141c0(b);
 }
-
 

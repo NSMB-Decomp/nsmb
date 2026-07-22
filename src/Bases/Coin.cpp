@@ -1,6 +1,8 @@
 #include "Coin.hpp"
 #include "Player/PlayerActor.hpp"
 #include "../ProcessManager.hpp"
+#include <nsmb/overlays/ov000/symbols.hpp>
+#include <nsmb/overlays/ov010/symbols.hpp>
 // bool (Coin::*data_ov010_0212942c)() = Coin::func_ov010_020d923c; (TODO: This is part of a different sinit)
 bool (Coin::*data_ov010_02129424)() = Coin::func_ov010_020d8b9c;
 bool (Coin::*data_ov010_0212941c)() = Coin::func_ov010_020d9890;
@@ -17,9 +19,6 @@ const i32 data_ov010_0212166c[3] = {0x0, 0x30000, 0x18000};
 const i32 data_ov010_02121678[3] = {0x0, 0x0, 0x10000};
 i32 data_ov010_021216b4[4];
 const i32 data_ov010_02121644[2] = {0x1000, 0xFFFFF000};
-extern u32 data_ov010_02121684;
-extern u32 data_ov010_02121690;
-extern u32 data_ov010_0212169c;
 
 void *Coin::create()
 {
@@ -71,8 +70,6 @@ void Coin::func_ov010_020d9cf0(StageEntity *param_1)
 	this->_4ae |= 4;
 }
 
-extern u32 data_ov000_020cad40;
-void func_ov000_020af844(i32, u16, u16);
 bool Coin::func_ov010_020d9c78()
 {
 	if ((this->_4a8 & 0x400000) != 0) {
@@ -86,7 +83,6 @@ bool Coin::func_ov010_020d9c78()
 	return false;
 }
 
-void func_02020300(u32, u32);
 void Coin::_21()
 {
 
@@ -209,7 +205,6 @@ void Coin::func_ov010_020d99a8()
 	return;
 }
 
-void func_02022220(Vec3_32 *);
 u8 data_ov000_020cace0[2];
 i32 data_ov000_020cae0c[2];
 u32 data_02085a7c;
@@ -502,16 +497,6 @@ void Coin::func_ov010_020d8b40()
 	this->_4ee = ((((uVar1 & 0x7fff) << 1) >> 0xf) << 1);
 }
 
-extern u8 data_ov000_020c4ec0[2];
-extern u32 data_ov010_021216a8[3];
-extern u32 data_ov010_02121660[3];
-extern u32 data_ov010_02121654[3];
-extern u32 data_ov010_021216ec[3];
-extern i32 data_ov010_021216c4[3];
-extern i32 data_ov010_0212164c[2];
-extern u8 *data_ov000_020ca2ac;
-extern Collider *data_ov010_02125204;
-bool func_ov000_020af790(u32, u16, u16);
 s32 Coin::onCreate()
 {
 	this->_408 = this->position;

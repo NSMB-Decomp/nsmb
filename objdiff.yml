@@ -1,12 +1,12 @@
 {
   "units": [
     {
-      "name": "src/Scenes/MPLevelSelectScene",
+      "name": "src/overlays/ov052/MPLevelSelectScene",
       "symbol_mappings": {
-        "@745": "@745",
-        "@764": "@764",
-        "@792": "@792",
-        "@794": "@794"
+        "@747": "@747",
+        "@766": "@766",
+        "@794": "@794",
+        "@796": "@796"
       }
     }
   ]

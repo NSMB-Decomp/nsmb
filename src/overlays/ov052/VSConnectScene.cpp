@@ -1,113 +1,16 @@
 #include "VSConnectScene.hpp"
-#include "../system/app.hpp"
-
-extern "C" {
-void func_0200419c(u32, u32, u32, u32, u32, u32, u32, u32, u32, u32, s32);
-void func_02043fe0(Vec2_32 *, Vec2_32 *, s32, s32, s32);
-bool func_02007cb0(Fader *);
-void func_02007b90(Fader *);
-bool func_02007c68(Fader *);
-void func_02007c20(Fader *);
-void func_02007c44(Fader *);
-void func_02007bb4(Fader *);
-bool func_02010a14(u8);
-bool func_02010a3c(VSConnectScene *);
-bool func_02010a60(VSConnectScene *);
-void func_02017e2c(void *, u32, u32);
-void func_02017ff8(void *, u32 *);
-void func_02017b94(void *);
-void func_0200d87c(void *, s32, s32, s32, s32, s32, s32, s32, s32, s32);
-void func_02003e20(void *);
-void func_ov052_021535a0();
-void func_02018060(void *);
-void func_02008970();
-void func_0200f608();
-void func_0200f65c();
-void func_0200f3d8();
-void func_0200e944(u32, u32, u32);
-void func_02017a80(void *);
-void func_02017a90(void *);
-void func_02016438(void *, const void *, u8);
-s32 func_02046c78();
-s32 func_0200f1b4(u8);
-void func_02003f3c(void *);
-void func_02003ed8(void *);
-void func_02046b80();
-s32 func_0200ec2c();
-s32 func_02047694();
-s32 func_02004c30();
-s32 func_02010b34(void *, void *);
-void func_0200e7c4(u32);
-s32 func_0200e7ac(u32);
-void func_0200e7b8(u32);
-void func_0200e748();
-void func_0201e00c();
-void func_ov000_020bd604();
-void func_02010bb0(void *, u32, void (*)(int, VSConnectScene *), VSConnectScene *);
-void func_020180c0(void *, u32);
-void func_02011d24(u32);
-void func_02011c64();
-void func_02008980();
-int strncmp(const char *, const char *, u32);
-}
-
-namespace Wifi {
-NicknameInfo *func_02001050(s32 aid);
-u8 *func_0200102c(s32 aid);
-void func_02001000();
-void func_020010a8();
-}
-
-namespace Nitro {
-u32 func_02055a0c(const BNBL *, u8, u8);
-u32 func_02061e84();
-u32 func_020620ac();
-u32 func_02061e34();
-u32 func_0206202c();
-}
-
-namespace Layout {
-void initSub(void *, void *, void *);
-}
-
-namespace Net {
-extern u8 connectionState;
-}
+#include "../../system/app.hpp"
+#include <nsmb/arm9/symbols.hpp>
+#include <nsmb/core/net/state.hpp>
+#include <nsmb/overlays/ov011/symbols.hpp>
+#include <nsmb/overlays/ov052/dependencies.hpp>
+#include <nsmb/overlays/ov052/symbols.hpp>
 
 struct NicknameInfo
 {
 	u8 data[0x1d];
 	u8 valid;
 };
-
-extern u32 data_0208ae58;
-extern u8 data_ov011_0212f54c[];
-extern u32 data_ov052_0215af24[];
-extern u8 data_02088804;
-extern NicknameInfo *data_02088850;
-extern u8 data_0208b4e8;
-extern u8 data_0208b4ec;
-extern u8 data_0208b4f4;
-extern u8 data_0208adcc[];
-extern u8 data_02088f30;
-extern u8 data_02088800;
-extern u16 data_0208883c;
-extern u8 data_0208b4c4;
-extern u8 data_0208b4c8[];
-extern u8 data_0208b4c9[];
-extern u8 data_0208b4ca[];
-extern u8 data_0208b4cb[];
-extern u8 data_0208ae54[];
-
-static inline u32 &sceneWord(VSConnectScene *scene, u32 offset)
-{
-	return *(u32 *)((u8 *)scene + offset);
-}
-
-static inline u8 &sceneByte(VSConnectScene *scene, u32 offset)
-{
-	return *((u8 *)scene + offset);
-}
 
 static inline void renderSubMenuBackground()
 {
@@ -137,22 +40,22 @@ void VSConnectScene::loadMvsLFilesThread()
 
 s32 VSConnectScene::onCreate()
 {
-	Nitro::FS_Overlays_loadOverlay(OVERLAY_ID(10));
-	Nitro::FS_Overlays_loadOverlay(OVERLAY_ID(11));
-	Nitro::FS_Overlays_loadOverlay(OVERLAY_ID(52));
+	FS::Overlay::load(OVERLAY_ID(10));
+	FS::Overlay::load(OVERLAY_ID(11));
+	FS::Overlay::load(OVERLAY_ID(52));
 	func_0200917c(5, 0);
 	REG_DISPCNT &= ~0x07000000;
 	REG_DISPCNT = (REG_DISPCNT & ~0x38000000) | 0x08000000;
 	*(vu16 *)0x04000304 |= 0x8000;
-	Nitro::func_02061ac4(8);
-	Nitro::func_02061958(1);
-	Nitro::func_02060d78(1, 0, 0);
+	NDS::Graphics::assignMainBackgroundBank(8);
+	NDS::Graphics::assignMainObjectBank(1);
+	NDS::Graphics::setMainDisplayMode(1, 0, 0);
 
 	REG_DISPCNT = (REG_DISPCNT & 0xffcfffef) | 0x00200010;
 	vu16 *bg3Main = (vu16 *)0x0400000e;
 	*bg3Main = (*bg3Main & 0x43) | 0x108;
-	FS::loadFileLZ77(0x75f, (void *)Nitro::func_02061e84());
-	FS::loadFileLZ77(0x761, (void *)Nitro::func_020620ac());
+	FS::loadFileLZ77(0x75f, (void *)NDS::Graphics::mainBackground3Tiles());
+	FS::loadFileLZ77(0x761, (void *)NDS::Graphics::mainBackground3Map());
 	FS::loadFileLZ77(0x760, (void *)0x05000000);
 	func_0200b87c();
 	data_02087700 = 0;
@@ -162,14 +65,14 @@ s32 VSConnectScene::onCreate()
 	*bg3Main = (*bg3Main & ~3) | 3;
 	*(vu32 *)0x0400001c = 0;
 	*bg3Main &= ~0x40;
-	Nitro::func_020613c8(0x80);
-	Nitro::func_0206134c(0x100);
-	Nitro::func_02060d5c(0);
+	NDS::Graphics::assignSubBackgroundBank(0x80);
+	NDS::Graphics::assignSubObjectBank(0x100);
+	NDS::Graphics::setSubDisplayMode(0);
 
 	vu16 *bg3Sub = (vu16 *)0x0400100e;
 	*bg3Sub = (*bg3Sub & 0x43) | 0xd00;
-	FS::loadFileLZ77(0x75f, (void *)Nitro::func_02061e34());
-	FS::loadFileLZ77(0x762, (void *)Nitro::func_0206202c());
+	FS::loadFileLZ77(0x75f, (void *)NDS::Graphics::subBackground3Tiles());
+	FS::loadFileLZ77(0x762, (void *)NDS::Graphics::subBackground3Map());
 	FS::loadFileLZ77(0x760, (void *)0x05000400);
 	FS::loadFileLZ77(0x78f, (void *)0x06600000);
 	func_ov000_020bd604();
@@ -179,24 +82,24 @@ s32 VSConnectScene::onCreate()
 	*(vu32 *)0x0400101c = 0;
 	*bg3Sub &= ~0x40;
 
-	sceneWord(this, 0x5c) = 0x9c;
-	sceneWord(this, 0x60) = 0xf;
+	wifiIconOBJIndex = 0x9c;
+	wifiIconOBJPalette = 0xf;
 	scheduledSubMenu = 0;
 	searchType = 3;
 	subMenuState = 0;
 	subMenuTimer = 0;
 	selectMode = 0;
 	inputScheme = 0;
-	_17d = 0;
+	selectedButton = 0;
 	specialMode = 0;
-	_180[0] = 0;
+	hasParentBssid = 0;
 	_164 = 0;
 	for (s32 i = 0; i < 6; i++)
-		_174[i] = 0;
-	_174[6] = 0;
-	func_02010bb0(&_204, 2, syncInputSchemeWrapper, this);
-	_204.data[0x18] = data_02085ad4[0];
-	_204.data[0x19] = save.options.soundMode;
+		parentBssid[i] = 0;
+	parentAid = 0;
+	func_02010bb0(&packetBuffer, 2, syncInputSchemeWrapper, this);
+	syncSettings[0] = data_02085ad4[0];
+	syncSettings[1] = save.options.soundMode;
 	syncedAidMask = 0;
 	for (s32 i = 0; i < 3; i++)
 		activeButtons[i] = 0;
@@ -247,9 +150,9 @@ s32 VSConnectScene::onDestroy()
 {
 	func_020180a4(&primaryText);
 	func_020180a4(&secondaryText);
-	Nitro::FS_Overlays_unload(OVERLAY_ID(10));
-	Nitro::FS_Overlays_unload(OVERLAY_ID(11));
-	Nitro::FS_Overlays_unload(OVERLAY_ID(52));
+	FS::Overlay::untrack(OVERLAY_ID(10));
+	FS::Overlay::untrack(OVERLAY_ID(11));
+	FS::Overlay::untrack(OVERLAY_ID(52));
 	if (data_0203bd30 == 5) {
 		func_020090f8(5);
 		func_0200917c(9, 0);
@@ -264,12 +167,12 @@ s32 VSConnectScene::onDestroy()
 
 void VSConnectScene::scheduleSubMenuChange(SubMenu *subMenu, s32 delay, bool playSound)
 {
-	sceneWord(this, 0x15c) = (u32)subMenu;
-	sceneWord(this, 0x160) = delay;
+	scheduledSubMenu = subMenu;
+	subMenuChangeDelay = delay;
 	if (!playSound)
 		return;
 
-	if (sceneByte(this, 0x17f))
+	if (specialMode)
 		func_02012398(0xea, (Vec3_32 *)0);
 	else
 		func_02012398(0xe9, (Vec3_32 *)0);
@@ -309,10 +212,10 @@ void VSConnectScene::createSelectModeSM()
 	textButtons[1].setup(0, 0, this);
 	activeButtons[1] = &textButtons[1];
 
-	sceneWord(this, 0x2b8) = -0x100;
-	sceneWord(this, 0x2bc) = 0;
-	sceneWord(this, 0x2c0) = 0x100;
-	sceneWord(this, 0x2c4) = 0;
+	primaryText.buttonPositions[0].x = -0x100;
+	primaryText.buttonPositions[0].y = 0;
+	primaryText.buttonPositions[1].x = 0x100;
+	primaryText.buttonPositions[1].y = 0;
 	buttons[2].palette = 0;
 	activeButtons[2] = &buttons[2];
 	selectButton(selectMode);
@@ -341,7 +244,7 @@ void VSConnectScene::updateSelectModeSM()
 	} else {
 		BOOL connected = data_0208b4f0 != 0 && data_0208b4ec != 0;
 		if (connected != FALSE)
-			action = Nitro::func_02055a0c(Layout::bnbl[1], data_0208b4e8, data_0208b4f4);
+			action = Layout::bnbl[1]->getBox(data_0208b4e8, data_0208b4f4);
 	}
 
 	switch (action) {
@@ -424,7 +327,7 @@ void VSConnectScene::updateCharSelectSM()
 	} else {
 		BOOL connected = data_0208b4f0 != 0 && data_0208b4ec != 0;
 		if (connected != FALSE)
-			action = Nitro::func_02055a0c(Layout::bnbl[1], data_0208b4e8, data_0208b4f4);
+			action = Layout::bnbl[1]->getBox(data_0208b4e8, data_0208b4f4);
 	}
 
 	switch (action) {
@@ -463,21 +366,21 @@ void VSConnectScene::renderCharSelectSM()
 
 void VSConnectScene::createSearchSM()
 {
-	if (sceneWord(this, 0x168) == 3) {
-		if (sceneByte(this, 0x17b))
-			sceneWord(this, 0x168) = 0;
-		else if (sceneByte(this, 0x17c))
-			sceneWord(this, 0x168) = 2;
+	if (searchType == 3) {
+		if (selectMode)
+			searchType = 0;
+		else if (inputScheme)
+			searchType = 2;
 		else
-			sceneWord(this, 0x168) = 1;
+			searchType = 1;
 	}
 
-	u32 textID = data_ov052_0215af24[sceneWord(this, 0x168)];
-	func_02017ff8((u8 *)this + 0x220, &textID);
+	u32 textID = data_ov052_0215af24[searchType];
+	func_02017ff8(&primaryText, &textID);
 	REG_DISPCNT_SUB = (REG_DISPCNT_SUB & ~0x1f00) | 0x1800;
 	buttons[2].palette = 0;
-	sceneWord(this, 0x13c) = (u32)&buttons[2];
-	sceneWord(this, 0x16c) = 0;
+	activeButtons[2] = &buttons[2];
+	subMenuState = 0;
 }
 
 void VSConnectScene::updateSearchSM()
@@ -486,7 +389,7 @@ void VSConnectScene::updateSearchSM()
 	if (_164 > 0)
 		_164--;
 	else
-		_180[0] = 0;
+		hasParentBssid = 0;
 
 	BOOL connected;
 	BOOL invalidConnection;
@@ -496,7 +399,7 @@ void VSConnectScene::updateSearchSM()
 		goto cancel;
 	connected = BOOL(data_0208b4f0 != 0 && data_0208b4ec != 0);
 	if (connected != FALSE) {
-		if (Nitro::func_02055a0c(Layout::bnbl[1], data_0208b4e8, data_0208b4f4) == 2)
+		if (Layout::bnbl[1]->getBox(data_0208b4e8, data_0208b4f4) == 2)
 			goto cancel;
 	}
 	goto normal;
@@ -506,7 +409,7 @@ cancel:
 	buttons[2].click();
 	scheduleSubMenuChange(&charSelectSM, 0x1e, true);
 	searchType = 3;
-	_180[0] = 0;
+	hasParentBssid = 0;
 	_164 = 0;
 	func_0200f3d8();
 	func_02017a80(&primaryText);
@@ -524,7 +427,7 @@ normal:
 			return;
 
 		if (startConsoleSearch()) {
-			func_0200e944(sceneWord(this, 0x5c), sceneWord(this, 0x60), 0);
+			func_0200e944(wifiIconOBJIndex, wifiIconOBJPalette, 0);
 			subMenuState = 1;
 			func_02017b94(&primaryText);
 			return;
@@ -550,7 +453,7 @@ void VSConnectScene::renderSearchSM()
 
 void VSConnectScene::createConfirmSM()
 {
-	_17d = 0;
+	selectedButton = 0;
 	if (inputScheme == 1) {
 		u32 textID = 6;
 		func_02017ff8(&primaryText, &textID);
@@ -565,7 +468,7 @@ void VSConnectScene::createConfirmSM()
 	buttons[1].create(4, 0x100, 0, 4);
 	buttons[1].setup(0, 0);
 	activeButtons[1] = &buttons[1];
-	selectButton(_17d);
+	selectButton(selectedButton);
 	subMenuState = 0;
 }
 
@@ -588,7 +491,7 @@ void VSConnectScene::updateConfirmSM()
 			return;
 		}
 
-		u32 previous = _17d;
+		u32 previous = selectedButton;
 		s32 action = -1;
 		u16 keys = Input::consoleKeys[Input::localConsoleID][0];
 		if (keys & 1) {
@@ -598,14 +501,14 @@ void VSConnectScene::updateConfirmSM()
 		} else {
 			BOOL connected = data_0208b4f0 != 0 && data_0208b4ec != 0;
 			if (connected != FALSE)
-				action = Nitro::func_02055a0c(Layout::bnbl[1], data_0208b4e8, data_0208b4f4);
+				action = Layout::bnbl[1]->getBox(data_0208b4e8, data_0208b4f4);
 		}
 
 		switch (action) {
 		case 0:
-			_17d = action;
-			buttons[_17d].click();
-			buttons[_17d ^ 1].palette = 2;
+			selectedButton = action;
+			buttons[selectedButton].click();
+			buttons[selectedButton ^ 1].palette = 2;
 			if (searchType == 0) {
 				Wifi::func_020010a8();
 				subMenuTimer = 0x1e;
@@ -621,23 +524,23 @@ void VSConnectScene::updateConfirmSM()
 			return;
 
 		case 1:
-			_17d = action;
-			buttons[_17d].click();
-			buttons[_17d ^ 1].palette = 2;
+			selectedButton = action;
+			buttons[selectedButton].click();
+			buttons[selectedButton ^ 1].palette = 2;
 			func_02012398(0xe9, 0);
 			subMenuState = 3;
 			return;
 
 		default:
-			if (_17d == 0) {
+			if (selectedButton == 0) {
 				if (Input::consoleKeys[Input::localConsoleID][0] & 0x80)
-					_17d = 1;
+					selectedButton = 1;
 			} else if (Input::consoleKeys[Input::localConsoleID][0] & 0x40) {
-				_17d = 0;
+				selectedButton = 0;
 			}
-			if (_17d != previous) {
-				activeButtons[_17d]->palette = 0;
-				activeButtons[_17d ^ 1]->palette = 2;
+			if (selectedButton != previous) {
+				activeButtons[selectedButton]->palette = 0;
+				activeButtons[selectedButton ^ 1]->palette = 2;
 				func_02012398(0xe5, 0);
 			}
 			return;
@@ -647,8 +550,8 @@ void VSConnectScene::updateConfirmSM()
 	case 2:
 		if (--subMenuTimer > 0)
 			return;
-		func_02007c20(&GlobalFader);
-		func_02007b90(&GlobalFader);
+		GlobalFader.disableMainScreenFading();
+		GlobalFader.prepareFadeOut();
 		func_02011e3c(0x1e);
 		scheduleSubMenuChange(&loadGameSM, 0x21, false);
 		return;
@@ -672,13 +575,13 @@ void VSConnectScene::renderConfirmSM()
 
 void VSConnectScene::createWaitHostConfirmSM()
 {
-	sceneWord(this, 0x16c) = 0;
+	subMenuState = 0;
 	u32 textID = 9;
-	func_02017ff8((u8 *)this + 0x220, &textID);
-	func_02017b94((u8 *)this + 0x220);
+	func_02017ff8(&primaryText, &textID);
+	func_02017b94(&primaryText);
 	REG_DISPCNT_SUB = (REG_DISPCNT_SUB & ~0x1f00) | 0x1800;
 	buttons[2].palette = 0;
-	sceneWord(this, 0x13c) = (u32)&buttons[2];
+	activeButtons[2] = &buttons[2];
 }
 
 void VSConnectScene::updateWaitHostConfirmSM()
@@ -697,7 +600,7 @@ void VSConnectScene::updateWaitHostConfirmSM()
 		connected = true;
 checkConnection:
 	if (connected != FALSE) {
-		if (Nitro::func_02055a0c(Layout::bnbl[1], data_0208b4ca[console * 4],
+		if (Layout::bnbl[1]->getBox(data_0208b4ca[console * 4],
 				data_0208b4cb[console * 4]) == 2)
 			goto cancel;
 	}
@@ -715,7 +618,7 @@ cancel:
 
 normal:
 	if (subMenuState == 0) {
-		if (func_0200f1b4(_174[6]) != 0) {
+		if (func_0200f1b4(parentAid) != 0) {
 			subMenuState = 1;
 			return;
 		}
@@ -743,22 +646,22 @@ void VSConnectScene::renderWaitHostConfirmSM()
 
 void VSConnectScene::createPlayerLeftSM()
 {
-	if (sceneByte(this, 0x17c) == 1) {
+	if (inputScheme == 1) {
 		u32 textID = 8;
-		func_02017ff8((u8 *)this + 0x220, &textID);
+		func_02017ff8(&primaryText, &textID);
 	} else {
 		u32 textID = 7;
-		func_02017ff8((u8 *)this + 0x220, &textID);
+		func_02017ff8(&primaryText, &textID);
 	}
-	sceneWord(this, 0x170) = 0x78;
+	subMenuTimer = 0x78;
 	REG_DISPCNT_SUB = (REG_DISPCNT_SUB & ~0x1f00) | 0x1800;
 }
 
 void VSConnectScene::updatePlayerLeftSM()
 {
-	if (--(s32 &)sceneWord(this, 0x170) > 0)
+	if (--subMenuTimer > 0)
 		return;
-	sceneByte(this, 0x17f) = 1;
+	specialMode = 1;
 	scheduleSubMenuChange(&searchSM, 0x1e, true);
 }
 
@@ -780,8 +683,8 @@ void VSConnectScene::createLoadGameSM()
 		data_0208ae54[1] = 1;
 	}
 	if (searchType == 0) {
-		func_02003f3c(_180 + 4);
-		func_02007bb4(&GlobalFader);
+		func_02003f3c(&connectionStatus);
+		GlobalFader.prepareFadeIn();
 		subMenuState = 0;
 	} else {
 		subMenuState = 1;
@@ -791,8 +694,8 @@ void VSConnectScene::createLoadGameSM()
 
 void VSConnectScene::updateLoadGameSM()
 {
-	if (func_02007cb0(&GlobalFader))
-		func_02007c44(&GlobalFader);
+	if (GlobalFader.fadedIn())
+		GlobalFader.enableMainScreenFading();
 
 	switch (subMenuState) {
 	case 0:
@@ -839,7 +742,7 @@ void VSConnectScene::updateLoadGameSM()
 			break;
 		subMenuState = 4;
 	case 4:
-		if (func_02010b34(&_204, _180 + 0x9c) != 0)
+		if (func_02010b34(&packetBuffer, syncSettings) != 0)
 			subMenuState = 5;
 		break;
 
@@ -880,32 +783,32 @@ void VSConnectScene::updateLoadGameSM()
 			data_0208883c |= 0x8000;
 	}
 	if (searchType == 0)
-		func_02003ed8(_180 + 4);
+		func_02003ed8(&connectionStatus);
 }
 
 void VSConnectScene::renderLoadGameSM()
 {
 	renderSubMenuBackground();
-	if (sceneWord(this, 0x168) == 0)
-		func_02003e20((u8 *)this + 0x184);
+	if (searchType == 0)
+		func_02003e20(&connectionStatus);
 }
 
 void VSConnectScene::createConnectionInterruptedSM()
 {
 	u32 textID = 0x12;
-	func_02017ff8((u8 *)this + 0x2d0, &textID);
-	sceneWord(this, 0x170) = 0x78;
+	func_02017ff8(&secondaryText, &textID);
+	subMenuTimer = 0x78;
 	REG_DISPCNT_SUB = (REG_DISPCNT_SUB & ~0x1f00) | 0x1800;
 }
 
 void VSConnectScene::updateConnectionInterruptedSM()
 {
-	if (sceneWord(this, 0x16c) == 0) {
+	if (subMenuState == 0) {
 		if ((Input::consoleKeys[Input::localConsoleID][0] & 1) == 0)
 			return;
-		func_02007b90(&GlobalFader);
-		sceneWord(this, 0x16c) = 1;
-	} else if (func_02007c68(&GlobalFader)) {
+		GlobalFader.prepareFadeOut();
+		subMenuState = 1;
+	} else if (GlobalFader.fadedOut()) {
 		App::reset(0x10100);
 	}
 }
@@ -917,15 +820,15 @@ void VSConnectScene::renderConnectionInterruptedSM()
 
 void VSConnectScene::selectButton(int id)
 {
-	if (!sceneByte(this, 0x17f) && sceneWord(this, 0x160) == 0)
-		(*(Button **)((u8 *)this + 0x134 + id * 4))->palette = 0;
+	if (!specialMode && subMenuChangeDelay == 0)
+		activeButtons[id]->palette = 0;
 	id ^= 1;
-	(*(Button **)((u8 *)this + 0x134 + id * 4))->palette = 2;
+	activeButtons[id]->palette = 2;
 }
 
 void VSConnectScene::loadSelectModeText()
 {
-	func_02017e2c((u8 *)this + 0x220, sceneByte(this, 0x17b) == 0, 1);
+	func_02017e2c(&primaryText, selectMode == 0, 1);
 }
 
 void VSConnectScene::updateTextButtonText()
@@ -934,16 +837,16 @@ void VSConnectScene::updateTextButtonText()
 	s32 y1 = textButtons[1].position.y;
 	s32 x1 = textButtons[1].position.x;
 	s32 y0 = textButtons[0].position.y;
-	*(s32 *)((u8 *)this + 0x2b8) = x0 >> 12;
-	*(s32 *)((u8 *)this + 0x2bc) = y0 >> 12;
-	*(s32 *)((u8 *)this + 0x2c0) = x1 >> 12;
-	*(s32 *)((u8 *)this + 0x2c4) = y1 >> 12;
+	primaryText.buttonPositions[0].x = x0 >> 12;
+	primaryText.buttonPositions[0].y = y0 >> 12;
+	primaryText.buttonPositions[1].x = x1 >> 12;
+	primaryText.buttonPositions[1].y = y1 >> 12;
 }
 
 bool VSConnectScene::startConsoleSearch()
 {
 	bool result = false;
-	switch (sceneWord(this, 0x168)) {
+	switch (searchType) {
 	case 1:
 		result = func_02010a60(this);
 		break;
@@ -951,7 +854,7 @@ bool VSConnectScene::startConsoleSearch()
 		result = func_02010a3c(this);
 		break;
 	case 0:
-		result = func_02010a14(sceneByte(this, 0x17c));
+		result = func_02010a14(inputScheme);
 		break;
 	}
 	return result;
@@ -966,10 +869,10 @@ NicknameInfo *VSConnectScene::getOpponentNickname()
 				continue;
 
 			u8 *address = Wifi::func_0200102c(aid);
-			if (!_180[0] || strncmp((char *)address, (char *)_174, 6)) {
-				_174[6] = aid;
-				MI_CpuCopy8(address, _174, 6);
-				_180[0] = 1;
+			if (!hasParentBssid || strncmp((char *)address, (char *)parentBssid, 6)) {
+				parentAid = aid;
+				NDS::Memory::copy8(address, parentBssid, 6);
+				hasParentBssid = 1;
 				_164 = 600;
 				return nickname;
 			}
@@ -987,18 +890,18 @@ NicknameInfo *VSConnectScene::getOpponentNickname()
 
 void VSConnectScene::syncInputScheme(int aid)
 {
-	u32 searchType = sceneWord(this, 0x168);
-	u32 entry = *(u32 *)((u8 *)this + 0x208 + aid * 4);
-	if (searchType == 0 && aid != 0)
+	u32 currentSearchType = searchType;
+	u8 *entry = packetBuffer.buffers[aid];
+	if (currentSearchType == 0 && aid != 0)
 		data_02085ad4[aid] = data_02085ad4[0];
 	else
-		data_02085ad4[aid] = *(u8 *)entry;
-	sceneByte(this, 0x17e) |= 1 << aid;
+		data_02085ad4[aid] = *entry;
+	syncedAidMask |= 1 << aid;
 }
 
 void VSConnectScene::Button::update()
 {
-	if (!func_02007cb0(&GlobalFader))
+	if (!GlobalFader.fadedIn())
 		return;
 
 	switch (animType) {

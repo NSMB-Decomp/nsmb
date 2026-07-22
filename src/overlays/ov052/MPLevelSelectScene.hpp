@@ -1,36 +1,27 @@
-#include "Scene.hpp"
-#include "../Vec.hpp"
+#pragma once
 
-class Unknwon2 {
-	public:
-	u32 a;
-	inline Unknwon2() {this->a = 0;};
-	inline ~Unknwon2() {};
-};
-
-extern "C" {
-	void func_02018104(void *);
-	void func_02018114(void *);
-}
-
-class Unknwon {
-	public:
-	inline Unknwon() { func_02018114(this); }
-	inline ~Unknwon() { func_02018104(this); }
-};
+#include "../../Scenes/Scene.hpp"
+#include "../../Vec.hpp"
+#include <nsmb/core/ui/text_label.hpp>
 
 class MPLevelSelectScene : public Scene
 {
       public:
-	u8 _64;
-	u8 _pad0[0x7];
-	Unknwon2 b;
-	u32 _70;
-	Unknwon a;
-	u8 _pad1[0xb4];
-	Vec2_32 _12c;
-	Vec2_32 _138;
-    i16 _144;
+	u8 state;
+	u8 selection;
+	s8 selectionTimer;
+	u8 reserved_67;
+	u8 confirmationVisible;
+	u8 reserved_69_6b[3];
+	u32 initializedState;
+	u32 subCellData;
+	TextLabel textLabel;
+	void *tilesetData;
+	u32 tilesetSize;
+	Vec2_32 mainBackgroundPosition;
+	Vec2_32 selectionBackgroundPosition;
+	i16 transitionTimer;
+	u8 reserved_146_147[2];
 
 	MPLevelSelectScene();
 	MPLevelSelectScene(u32);
@@ -87,6 +78,16 @@ class MPLevelSelectScene : public Scene
 	s32 onRender();
 	void pendingDestroy();
 };
+
+NTR_SIZE_GUARD(MPLevelSelectScene, 0x148);
+NTR_OFFSET_GUARD(MPLevelSelectScene, state, 0x64);
+NTR_OFFSET_GUARD(MPLevelSelectScene, initializedState, 0x6c);
+NTR_OFFSET_GUARD(MPLevelSelectScene, textLabel, 0x74);
+NTR_OFFSET_GUARD(MPLevelSelectScene, tilesetData, 0x124);
+NTR_OFFSET_GUARD(MPLevelSelectScene, tilesetSize, 0x128);
+NTR_OFFSET_GUARD(MPLevelSelectScene, mainBackgroundPosition, 0x12c);
+NTR_OFFSET_GUARD(MPLevelSelectScene, selectionBackgroundPosition, 0x138);
+NTR_OFFSET_GUARD(MPLevelSelectScene, transitionTimer, 0x144);
 
 struct T__ {
 	u32 a;

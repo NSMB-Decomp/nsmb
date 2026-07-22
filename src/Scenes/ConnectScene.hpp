@@ -1,4 +1,5 @@
 #include "Scene.hpp"
+#include <nsmb/game/connect/status_display.hpp>
 
 class Unknown
 {
@@ -10,8 +11,7 @@ class Unknown
 class ConnectScene : public Scene
 {
       public:
-	u32 _64;
-	u8 _pad0[0x7c]; 
+	ConnectionStatusDisplay connectionStatus;
 	Unknown _unknwon;
 	u8 _pad[0x20];
 

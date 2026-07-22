@@ -1,20 +1,13 @@
 #include "PlayerBase.hpp"
 #include "../StageEntity.hpp"
+#include <nsmb/arm9/symbols.hpp>
+#include <nsmb/overlays/ov000/symbols.hpp>
+#include <nsmb/overlays/ov011/symbols.hpp>
 
 const i16 data_ov011_0212e220[2] = {0x4000, -0x4000};
 const i16 data_ov011_0212e21c[2] = {0x3000, -0x3000};
 const i16 data_ov011_0212e218[2] = {0x3800,  -0x3800};
 
-struct UNKNOWN {
-	u16 _0;
-	u8 _pad[18];
-	u16 _1;
-	u8 _pad1[2];
-};
-
-extern UNKNOWN data_020876b2[2];
-extern u8 data_02085a0c;
-extern u32 data_ov000_020ca8d0;
 u16 data_02087660[2];
 u16 data_02087664[2];
 #pragma section autobss_3 begin
@@ -22,8 +15,6 @@ u16 data_02087664[2];
 // TODO: Confirm which of these autoloads are actually a part of PlayerBase
 u32 data_02085abc;
 #pragma section autobss_3 end
-extern PlayerBase *data_0208b35c[2];
-
 void PlayerBase::func_ov011_0212c950()
 {
 	this->_7a0 = data_02087660[this->linked_player];
@@ -78,32 +69,32 @@ u32 PlayerBase::func_ov011_0212c8ac()
 
 u32 PlayerBase::func_ov011_0212c880()
 {
-	return this->_7a2 & data_020876b2[this->linked_player]._1;
+	return this->_7a2 & data_020876b2[this->linked_player].pressedButtons;
 }
 
 u32 PlayerBase::func_ov011_0212c854()
 {
-	return this->_7a0 & data_020876b2[this->linked_player]._1;
+	return this->_7a0 & data_020876b2[this->linked_player].pressedButtons;
 }
 
 u32 PlayerBase::func_ov011_0212c828()
 {
-	return this->_7a2 & data_020876b2[this->linked_player]._0;
+	return this->_7a2 & data_020876b2[this->linked_player].heldButtons;
 }
 
 u32 PlayerBase::func_ov011_0212c7fc()
 {
-	return this->_7a0 & data_020876b2[this->linked_player]._0;
+	return this->_7a0 & data_020876b2[this->linked_player].heldButtons;
 }
 
 u32 PlayerBase::func_ov011_0212c7d0()
 {
-	return this->_7a2 & data_020876b2[this->linked_player]._1;
+	return this->_7a2 & data_020876b2[this->linked_player].pressedButtons;
 }
 
 u32 PlayerBase::func_ov011_0212c7a4()
 {
-	return this->_7a0 & data_020876b2[this->linked_player]._1;
+	return this->_7a0 & data_020876b2[this->linked_player].pressedButtons;
 }
 
 u32 PlayerBase::func_ov011_0212c78c()
@@ -240,10 +231,10 @@ u32 PlayerBase::func_ov011_0212c56c()
 
 u32 PlayerBase::func_ov011_0212c52c()
 {
-	return this->_7a2 & (data_020876b2[this->linked_player]._0 | 0xf0 | data_020876b2[this->linked_player]._1);
+	return this->_7a2 & (data_020876b2[this->linked_player].heldButtons | 0xf0 |
+		data_020876b2[this->linked_player].pressedButtons);
 }
 
-extern u32 data_0208b3d4[2][4];
 bool PlayerBase::func_ov011_0212c4ec()
 {
 	// TODO: Can this syntax be improved?
@@ -295,8 +286,6 @@ u32 PlayerBase::func_ov011_0212c27c(u32 param_1)
 	}
 }
 
-void func_020201c8(i32, i32);
-extern u8 data_02085a20;
 void PlayerBase::func_ov011_0212c200()
 {
 	i8 powerup = this->powerup;
@@ -597,7 +586,6 @@ void PlayerBase::func_ov011_0212bf24()
 {
 }
 
-void func_02022b64(u32, Vec3_32 *);
 void PlayerBase::func_ov011_0212bf00()
 {
 	func_02022b64(0xaa, &this->position);
@@ -737,9 +725,6 @@ bool PlayerBase::func_ov011_0212bb90()
 	return this->_7bf == TRUE;
 }
 
-extern u16 data_0208b344[2];
-void func_02020150(u32, u32);
-void func_02020128(u32, u32);
 void PlayerBase::func_ov011_0212bac8()
 {
 	switch (this->powerup) {
@@ -825,7 +810,6 @@ void PlayerBase::func_ov011_0212b984()
 	}
 }
 
-void func_ov011_0212cfe4(void *);
 void PlayerBase::func_ov011_0212b954()
 {
 	if ((this->_780 & 0x40) != 0) {
@@ -834,8 +818,6 @@ void PlayerBase::func_ov011_0212b954()
 	}
 }
 
-extern u8 data_ov000_020ca880;
-extern u8 data_ov000_020ca898;
 void PlayerBase::func_ov011_0212b908()
 {
 	data_ov000_020ca880 |= 0x10;
@@ -852,7 +834,6 @@ void PlayerBase::func_ov011_0212b8bc()
 	this->activeCollider._1c6 &= ~1;
 }
 
-extern u16 data_0208b350[2];
 void PlayerBase::func_ov011_0212b878(u16 a)
 {
 	if (this->powerup == 3) {
@@ -863,45 +844,37 @@ void PlayerBase::func_ov011_0212b878(u16 a)
 	this->func_ov011_0212b998();
 }
 
-void func_02012314(u32, u32);
 void PlayerBase::func_ov011_0212b864(u32 a, u32 b)
 {
 	func_02012314(a, b);
 }
 
-void func_020122d0(u32, u32, u32);
 void PlayerBase::func_ov011_0212b84c(u32 a, u32 b, u32 c)
 {
 	func_020122d0(a, b, c);
 }
 
-void func_02012290(u32, Vec3_32 *);
 void PlayerBase::func_ov011_0212b838(u32 a, Vec3_32 *b)
 {
-	func_02012290(a, b);
+	func_02012290(a, (u32)b);
 }
 
-void func_0201224c(u32, u32, u32);
 void PlayerBase::func_ov011_0212b820(u32 a, u32 b, u32 c)
 {
 	func_0201224c(a, b, c);
 }
 
-void func_020121e4(u32);
 void PlayerBase::func_ov011_0212b810(u32 a)
 {
 	func_020121e4(a);
 }
 
-void func_0204e87c(u32, u32);
-void func_02011e3c(u32);
 void PlayerBase::func_ov011_0212b7f0(u32 a)
 {
 	func_0204e87c(a, 0x1e);
 	func_02011e3c(a);
 }
 
-extern u32 data_02085a7c;
 void PlayerBase::func_ov011_0212b7bc(u32 a)
 {
 	if (this->linked_player == data_02085a7c) {
@@ -909,8 +882,6 @@ void PlayerBase::func_ov011_0212b7bc(u32 a)
 	}
 }
 
-extern u32 data_02085a84;
-void func_02011dc4(u32);
 void PlayerBase::func_ov011_0212b740(u32 a)
 {
 	if (this->linked_player != data_02085a7c) {
@@ -924,7 +895,6 @@ void PlayerBase::func_ov011_0212b740(u32 a)
 	this->_798 = a;
 }
 
-void func_02011d94(u32);
 void PlayerBase::func_ov011_0212b710()
 {
 	if ((this->st1 & 0x800000) != 0) {
@@ -944,9 +914,6 @@ NTR_SIZE_GUARD(Test940, 0x10 + 0xC + 0x10 + 0xC);
 // Still, 0x38 is not 0x3C nor 0x40
 // 0x3C - 0x38 = 0x4 -> u32 somewhere?
 
-extern Vec3_32 data_ov000_020caeb8[2];
-extern Vec3_32 data_ov000_020caed8[2];
-extern u8 data_ov000_020cacd0[2];
 void PlayerBase::func_ov011_0212b384(i16 player_id)
 {
 	Vec3_32 s0; // target
@@ -1047,12 +1014,6 @@ void PlayerBase::func_ov011_0212b384(i16 player_id)
 	data_ov000_020cacd0[player_id] = Stage::actorFreezeFlag & 4;
 }
 
-extern u8 func_020204e0(i8);
-void func_0202048c(i8);
-extern u8 data_02089508[2];
-void func_ov000_020a189c(u32);
-void func_ov000_020a183c(u32, u32);
-void func_02012d6c(u32, Save *);
 
 bool PlayerBase::func_ov011_0212b2bc()
 {

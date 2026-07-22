@@ -13,9 +13,9 @@ void *ConnectScene::create()
 u32 ConnectScene::func_020037e4(u32) {
 	func_0200917c(0x9, 0x0);
 	func_0200917c(0x5, 0x0);
-	Nitro::FS_Overlays_loadOverlay(OVERLAY_11);
-	Nitro::FS_Overlays_loadOverlay(OVERLAY_LEVEL);
-	Nitro::FS_Overlays_loadOverlay(OVERLAY_52);
+	FS::Overlay::load(OVERLAY_11);
+	FS::Overlay::load(OVERLAY_LEVEL);
+	FS::Overlay::load(OVERLAY_52);
 	func_ov052_021535a0();
 	func_020125c4();
 	func_02011c64();
@@ -33,9 +33,8 @@ u32 ConnectScene::func_0200379c(u32 a, u32 b) {
 	return ConnectScene::func_02003250(b, a, a);
 }
 
-void func_02003e20(u32);
 bool ConnectScene::func_020032ac(u32 param_r0) {
-	func_02003e20((u32)&this->_64);
+	func_02003e20(&this->connectionStatus);
 	return true;
 }
 

@@ -1,17 +1,8 @@
 #include "Scene.hpp"
+#include <nsmb/arm9/symbols.hpp>
+#include <nsmb/core/wifi.hpp>
+#include <nsmb/overlays/ov052/dependencies.hpp>
 
-bool func_02046c5c();
-bool Wifi_isMultiBootCart();
-void func_0200f3d8();
-void func_02009b64();
-void func_ov052_02152bf0();
-void func_0200e874(u32, u32, bool);
-void func_0200514c(u32);
-void sceneBaseInit();
-void func_02018ac0();
-void func_0200e944(u32, u32, u32);
-u32 data_02088f18();
-u32 func_02013050(u32);
 u32 data_02085a84;
 u32 data_0208ae58;
 u32 data_02089504;
@@ -45,7 +36,7 @@ Scene::~Scene()
 		}
 		if (a) {
 			bool c = func_02046c5c();
-			if (c != 0 && !Wifi_isMultiBootCart()) {
+			if (c != 0 && !Wifi::isMultiBootChild()) {
 				data_02085ad4[0] = save.options.controlOptions; // TODO: Do not offset using pointers
 			}
 			func_0200f3d8();
@@ -71,14 +62,14 @@ bool Scene::preCreate()
 	if (this->object_id != 0) {
 		GlobalFader.setupSceneFading(0, 0, 1);
 	}
-	this->_5c = 0x1fc;
-	this->_60 = 0xf;
+	this->wifiIconOBJIndex = 0x1fc;
+	this->wifiIconOBJPalette = 0xf;
 	return true;
 }
 
 void Scene::postCreate(u32 param_1)
 {
-	func_0200e944(this->_5c, this->_60, 1);
+	func_0200e944(this->wifiIconOBJIndex, this->wifiIconOBJPalette, 1);
 	if (param_1 == 2) {
 		PTR_02085b14 = &GlobalFader;
 	}
@@ -131,13 +122,13 @@ bool Scene::preUpdate()
 		// if (data_02087630 == '\0') {
 		//	data_02088f2c = '\x01';
 		// } else if ((data_02088f2c != '\0') && (data_02088f30 != '\0')) {
-		//	bVar1 = Wifi_isMultiBootCart();
+		//	bVar1 = Wifi::isMultiBootChild();
 		//	if (bVar1) {
 		//		data_0208883c |= 0x8000;
 		//	} else {
 		//		data_02088f2c = '\0';
 		//		func_02011e3c(0x1e);
-		//		func_02007c44(&GlobalFader);
+		//		GlobalFader.enableMainScreenFading();
 		//		func_02007bfc(&GlobalFader);
 		//		func_020131fc(4, 0);
 		//		data_02088f34 = 1;
@@ -146,10 +137,10 @@ bool Scene::preUpdate()
 		// }
 		// return 1;
 	}
-	if (GlobalFader.func_02007c68() == 0) {
+	if (GlobalFader.fadedOut() == 0) {
 		GlobalFader.func_02007df0(0x20);
 	} else {
-		if (GlobalFader.func_02007c68() != 0) {
+		if (GlobalFader.fadedOut() != 0) {
 			this->destroy();
 		}
 	}
@@ -164,7 +155,7 @@ void Scene::postUpdate(u32 a)
 bool Scene::preRender()
 {
 	if (Base::preRender()) {
-		func_0200e874(this->_5c, this->_60, true);
+		func_0200e874(this->wifiIconOBJIndex, this->wifiIconOBJPalette, true);
 		return true;
 	}
 	return false;
@@ -175,7 +166,6 @@ void Scene::postRender(u32 a)
 	Base::postRender(a);
 }
 
-void func_02008558();
 void Scene::prepareFirstScene()
 {
 	if (i32(&GlobalFader) != 0) {
@@ -183,7 +173,7 @@ void Scene::prepareFirstScene()
 		// GlobalFader = Fader();
 		//*(i32*)(&GlobalFader) = 1;
 	}
-	if (Wifi_isMultiBootCart()) {
+	if (Wifi::isMultiBootChild()) {
 		data_0203bd30 = 1;
 	} else {
 		u32 boot_scene = Game::getBootScene();

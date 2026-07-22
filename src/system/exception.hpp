@@ -26,7 +26,7 @@ namespace Exception {
 
 	NTR_INLINE void setupHandler() {
 
-		Nitro::Exception_SetHandler(
+		NDS::Exceptions::installHandler(
 			reinterpret_cast<void*>(&userExceptionHandler),
 			&launcherThread
 		);

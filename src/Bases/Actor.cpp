@@ -183,7 +183,7 @@ void Actor::applyVelocityToPosition(Vec3_32& velocity) {
 	// Vec3_32s* r = &position;
 	// const Vec3_32s* a = &position;
 	// const Vec3_32s* b = (const Vec3_32s*)&velocity.x;
-	// Nitro::Math_AddVec3_32s(a, b, r);
+	// NDS::Math::addVector32(a, b, r);
 
 }
 

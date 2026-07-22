@@ -1,5 +1,6 @@
 #pragma once
 #include "nsmb_nitro.hpp"
+#include <nds/math.hpp>
 
 struct FxRect {
 	fx32 x;
@@ -83,7 +84,7 @@ struct Vec3_32 : public Vec3_32s {
 
 	inline Vec3_32 operator+(const Vec3_32& rhs) {
 		Vec3_32 v = *this;
-		Nitro::Math_AddVec3_32s(&v, &rhs, &v);
+		NDS::Math::addVector32(&v, &rhs, &v);
 		return v;
 	}
 
@@ -100,31 +101,31 @@ struct Vec3_32 : public Vec3_32s {
 	inline void add1(const Vec3_32& rhs) {
 		const Vec3_32s* b = (const Vec3_32s*)(((const u8*)&rhs)+4);
 		Vec3_32s* v = this;
-		Nitro::Math_AddVec3_32s(v, b, v);
+		NDS::Math::addVector32(v, b, v);
 	}
 
 	inline void add2(const Vec3_32& rhs) {
 		const Vec3_32s* b = (const Vec3_32s*)&rhs.x;
 		Vec3_32s* a = this;
-		Nitro::Math_AddVec3_32s(a, b, a);
+		NDS::Math::addVector32(a, b, a);
 	}
 
 	// inline static void add3(const Vec3_32& lhs, const Vec3_32& rhs, Vec3_32& res) {
 	// 	Vec3_32s* r = &res;
 	// 	const Vec3_32s* a = &lhs;
 	// 	const Vec3_32s* b = (const Vec3_32s*)&rhs.x;
-	// 	Nitro::Math_AddVec3_32s(a, b, r);
+	// 	NDS::Math::addVector32(a, b, r);
 	// }
 
 	inline static void add4(const Vec3_32& lhs, const Vec3_32s* rhs, Vec3_32& res) {
 		Vec3_32s* r = &res;
 		const Vec3_32s* a = &lhs;
-		Nitro::Math_AddVec3_32s(a, rhs, r);
+		NDS::Math::addVector32(a, rhs, r);
 	}
 
 	// static inline Vec3_32 add(const Vec3_32& lhs, const Vec3_32& rhs) {
 	// 	Vec3_32 v = lhs;
-	// 	Nitro::Math_AddVec3_32s(&v, &rhs, &v);
+	// 	NDS::Math::addVector32(&v, &rhs, &v);
 	// 	return v;
 	// }
 

@@ -5,6 +5,8 @@
 //#include "ProcessManager.hpp"
 //#include "Vec.hpp"
 #include "base_types.hpp"
+#include <nsmb/core/filesystem.hpp>
+#include <nsmb/core/wifi.hpp>
 
 class Vec2_32;
 class Vec3_32;
@@ -78,11 +80,6 @@ namespace FS {
 
 }
 
-namespace Nitro_
-{
-u32 func_02063af0(u16[1], u32, u32);
-}
-
 namespace Wifi
 {
 u32 random();
@@ -90,7 +87,7 @@ BOOL isWmInitialized();
 }
 
 struct BNBL {
-
+	s16 getBox(s32 x, s32 y);
 };
 
 struct BNCL_Cell {
@@ -127,7 +124,7 @@ namespace Layout {
 	void initSub(const void* bncd, const void* bncl, const void* bnbl);
 
 	extern u16 subBgColor;
-	extern const BNBL* bnbl[2];
+	extern BNBL* bnbl[2];
 	extern const BNCL* bncl[2];
 	extern const BNCD* bncd[2];
 
@@ -186,6 +183,10 @@ class Fader
 	u8 fadingState[2];
 	u8 fadeMaskShape[2];
 	u8 fadingType; /* 5C2 */
+	u8 enableDelay;
+	u8 reserved_5c4;
+	bool fadingStopped;
+	u8 reserved_5c6_5c7[2];
 
 	Fader();
 
@@ -193,12 +194,19 @@ class Fader
 	u32 setupSceneFading(u32, bool, bool);
 	void func_02007e34(u32, u32);
 	void func_02007cf8(u32, u32);
-	bool func_02007c68();
+	bool fadedOut();
 	void func_02007df0(u32);
-	bool func_02007cb0();
+	bool fadedIn();
+	void enableMainScreenFading();
+	void disableMainScreenFading();
+	void prepareFadeIn();
+	void prepareFadeOut();
 	void func_02007bd8();
 	void func_02007bfc();
 };
+NTR_SIZE_GUARD(Fader, 0x5c8);
+NTR_OFFSET_GUARD(Fader, fadingType, 0x5c2);
+NTR_OFFSET_GUARD(Fader, fadingStopped, 0x5c5);
 extern Fader GlobalFader;
 
 extern ObjectProfile **CurrentProfileTable;
@@ -402,10 +410,8 @@ extern "C" {
 	void func_0200b83c(u32); // OAM::loadFilesToVRAM
 	void func_02009a30(u32, u32, u32); // FS::loadOBJPalette
 	u32 func_02017190(u32); // Font::getScriptFileID
-	extern u8 data_02088f30; // Scene::allowSoftReset
 	void func_020051ec(); // App::forceDisplayOn
 	void func_020045cc(); // Exception::terminateCaught
-	extern u32 data_02085a84; // Game::vsMode
 	extern u32 DAT_02039200; // vtable for Vec3
 	void func_02021808(); // TP::updatePlayer
 	void func_020180a4(void*); // TextLabel::unloadScript
@@ -528,30 +534,22 @@ u32 data_ov001_020ce84c;
 u32 data_ov001_020ce86c;
 u32 data_02085a88;
 u32 func_02011d40();
-void func_02011e3c(u32);
-void func_020131fc(u32, u32);
 void func_0200a42c(u32, u32);
 void func_0200a3d0(u32, u32);
 u32 func_02011e7c(u32, u32);
-void func_02012290(u32, u32);
 	extern "C" void func_0200917c(u32, u32);
 	extern "C" void func_ov052_021535a0();
 	void func_020125c4();
-	void func_02011c64();
-	u32 func_020090f8(u32);
 	extern u32 func_0201f5fc(u32);
 extern u32 func_0201f590(u32, u32);
 extern u32 func_0201f53c(u32, u32, u32);
 extern void func_02020580(u32, u32);
 extern u32 func_0200696c(u32, u32, u32, u32, IDK);
 extern void func_0200696c_(u8, u8, u8, u8, u8, u8, u8, u8, u8, u8, u8, u8, u8, u8, u8, u8);
-extern void func_02011e3c(u32);
 extern void func_020066f8();
 extern void func_02006740();
 extern u16 data_02087650[2][2];
-extern u8 data_02085a0c;
 extern u32 data_02085a90;
-extern u8 data_0208b4f0;
 extern u8 data_02085a1c;
 extern u8 data_02085a10;
 extern u8 data_02088e04;

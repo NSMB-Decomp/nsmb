@@ -1,33 +1,13 @@
 #pragma once
 
-#include "Scene.hpp"
-#include "../Vec.hpp"
+#include "../../Scenes/Scene.hpp"
+#include "../../Vec.hpp"
+#include <nsmb/core/net/packet.hpp>
+#include <nsmb/core/ui/text_label.hpp>
+#include <nsmb/game/connect/status_display.hpp>
 
 struct NicknameInfo;
 struct GXOamAttr;
-
-extern "C" {
-void func_02010cc8(void *);
-void func_02010c74(void *);
-void func_02018114(void *);
-void func_02018104(void *);
-}
-
-class VSConnectUnknown204
-{
-public:
-	inline VSConnectUnknown204() { func_02010cc8(this); }
-	inline ~VSConnectUnknown204() { func_02010c74(this); }
-	u8 data[0x1c];
-};
-
-class VSConnectText
-{
-public:
-	inline VSConnectText() { func_02018114(this); }
-	inline ~VSConnectText() { func_02018104(this); }
-	u8 data[0xb0];
-};
 
 class VSConnectScene : public Scene
 {
@@ -162,18 +142,38 @@ public:
 	u32 searchType;
 	s32 subMenuState;
 	s32 subMenuTimer;
-	u8 _174[7];
+	u8 parentBssid[6];
+	u8 parentAid;
 	u8 selectMode;
 	u8 inputScheme;
-	u8 _17d;
+	u8 selectedButton;
 	u8 syncedAidMask;
 	u8 specialMode;
-	u8 _180[0x84];
-	VSConnectUnknown204 _204;
-	VSConnectText primaryText;
-	VSConnectText secondaryText;
+	u8 hasParentBssid;
+	u8 reserved_181_183[3];
+	ConnectionStatusDisplay connectionStatus;
+	Net::PacketBuffer packetBuffer;
+	u8 syncSettings[2];
+	u8 reserved_21e_21f[2];
+	TextLabel primaryText;
+	TextLabel secondaryText;
 };
 
 NTR_SIZE_GUARD(VSConnectScene::Button, 0x28);
 NTR_SIZE_GUARD(VSConnectScene::TextButton, 0x2c);
 NTR_SIZE_GUARD(VSConnectScene, 0x380);
+NTR_OFFSET_GUARD(VSConnectScene, activeButtons, 0x134);
+NTR_OFFSET_GUARD(VSConnectScene, scheduledSubMenu, 0x15c);
+NTR_OFFSET_GUARD(VSConnectScene, subMenuChangeDelay, 0x160);
+NTR_OFFSET_GUARD(VSConnectScene, searchType, 0x168);
+NTR_OFFSET_GUARD(VSConnectScene, parentBssid, 0x174);
+NTR_OFFSET_GUARD(VSConnectScene, parentAid, 0x17a);
+NTR_OFFSET_GUARD(VSConnectScene, selectMode, 0x17b);
+NTR_OFFSET_GUARD(VSConnectScene, selectedButton, 0x17d);
+NTR_OFFSET_GUARD(VSConnectScene, specialMode, 0x17f);
+NTR_OFFSET_GUARD(VSConnectScene, hasParentBssid, 0x180);
+NTR_OFFSET_GUARD(VSConnectScene, connectionStatus, 0x184);
+NTR_OFFSET_GUARD(VSConnectScene, packetBuffer, 0x204);
+NTR_OFFSET_GUARD(VSConnectScene, syncSettings, 0x21c);
+NTR_OFFSET_GUARD(VSConnectScene, primaryText, 0x220);
+NTR_OFFSET_GUARD(VSConnectScene, secondaryText, 0x2d0);

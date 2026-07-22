@@ -1,36 +1,22 @@
 #include "MPLevelSelectScene.hpp"
-
-extern u8 data_ov052_0215c88c;
-extern u8 data_ov052_0215c890;
-extern u8 data_ov052_0215c894;
-extern u8 data_ov052_0215c898;
-extern u8 data_ov052_0215c8a0[];
-extern u8 data_ov052_0215aee4[];
-extern u8 data_ov052_0215aee8[];
-extern u8 data_ov052_0215aeec[];
-extern u16 data_ov052_0215aef4[];
-extern u16 data_ov052_0215af00[];
-extern u8 data_0208ae54;
-
-namespace Nitro {
-	void func_02066f28(void *, void *, u32);
-	u32 func_02062138();
-}
+#include <nsmb/arm9/symbols.hpp>
+#include <nsmb/overlays/ov052/dependencies.hpp>
+#include <nsmb/overlays/ov052/symbols.hpp>
+#include <nds/graphics.hpp>
+#include <nds/memory.hpp>
 
 extern "C" {
 
-void func_02007bb4(Fader *);
-
-void func_ov052_02153760()
+void func_ov052_02153760(MPLevelSelectScene *)
 {
-	Nitro::func_02066f28((void *)0x05000460, (void *)0x05000440, 0x20);
+	NDS::Memory::copyFast((void *)0x05000460, (void *)0x05000440, 0x20);
 }
 
-void func_ov052_02153780()
+void func_ov052_02153780(MPLevelSelectScene *)
 {
 	u8 topCount;
 	u8 bottomCount;
-	if (data_0208ae54 == 0) {
+	if (data_0208ae54[0] == 0) {
 		topCount = data_ov052_0215c8a0[0];
 		bottomCount = data_ov052_0215c8a0[1];
 	} else {
@@ -38,7 +24,7 @@ void func_ov052_02153780()
 		bottomCount = data_ov052_0215c8a0[0];
 	}
 
-	u16 *tiles = (u16 *)(Nitro::func_02062138() + 0x840);
+	u16 *tiles = (u16 *)(NDS::Graphics::subBackground2Map() + 0x840);
 	s32 player;
 	s32 row;
 	s32 column;
@@ -50,7 +36,7 @@ void func_ov052_02153780()
 	}
 
 	s32 selected = data_ov052_0215aee8[data_ov052_0215c894];
-	tiles = (u16 *)(Nitro::func_02062138() + 0x840);
+	tiles = (u16 *)(NDS::Graphics::subBackground2Map() + 0x840);
 	s32 tileOffset = selected * 3;
 	tiles += tileOffset;
 	for (; selected < 3; selected++, tiles += 3) {
@@ -60,7 +46,7 @@ void func_ov052_02153780()
 		}
 	}
 
-	tiles = (u16 *)(Nitro::func_02062138() + 0x87a);
+	tiles = (u16 *)(NDS::Graphics::subBackground2Map() + 0x87a);
 	for (player = 0; player < bottomCount; player++, tiles -= 3) {
 		for (row = 0; row < 3; row++) {
 			for (column = 0; column < 3; column++)
@@ -69,7 +55,7 @@ void func_ov052_02153780()
 	}
 
 	selected = data_ov052_0215aee8[data_ov052_0215c894];
-	tiles = (u16 *)(Nitro::func_02062138() + 0x87a);
+	tiles = (u16 *)(NDS::Graphics::subBackground2Map() + 0x87a);
 	tileOffset = selected * 3;
 	tiles -= tileOffset;
 	for (; selected < 3; selected++, tiles -= 3) {
@@ -88,17 +74,17 @@ static inline s32 negateOffset(u32 offset)
 void func_ov052_021539c8(MPLevelSelectScene *scene)
 {
 	u32 selection = data_ov052_0215c890;
-	scene->_138.x = scene->_12c.x +
+	scene->selectionBackgroundPosition.x = scene->mainBackgroundPosition.x +
 		negateOffset((u32)data_ov052_0215aef4[selection] << 12);
-	scene->_138.y = scene->_12c.y +
+	scene->selectionBackgroundPosition.y = scene->mainBackgroundPosition.y +
 		negateOffset((u32)data_ov052_0215af00[selection] << 12);
 }
 
 void func_ov052_02153a1c(MPLevelSelectScene *scene)
 {
 	data_ov052_0215c898 |= 1 << data_ov052_0215c890;
-	scene->_64 = 8;
-	func_02007bb4(&GlobalFader);
+	scene->state = 8;
+	GlobalFader.prepareFadeIn();
 }
 
 u8 func_ov052_02153a64()
