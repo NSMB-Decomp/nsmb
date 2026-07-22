@@ -24,8 +24,6 @@ s32 Scene8::onRender()
 	return true;
 };
 
-void func_02011e3c(u32);
-void func_020131fc(u32, u32);
 u16 data_02087650[2][2];
 s32 Scene8::onUpdate()
 {

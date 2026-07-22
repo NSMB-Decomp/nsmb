@@ -1,4 +1,5 @@
 #include "Scene.hpp"
+#include <nsmb/core/ui/text_label.hpp>
 
 struct TitleScreenButton {
 	i32 posX;
@@ -24,16 +25,6 @@ class TitleScreenCutscene
 	~TitleScreenCutscene();
 	void func_ov009_020cd994();
 };
-class TextLabel
-{
-      public:
-	u8 _pad[0xb0];
-	TextLabel();
-	~TextLabel();
-
-	void func_02018060();
-};
-
 class MainMenuScene : public Scene
 {
       public:

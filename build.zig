@@ -128,6 +128,8 @@ fn compileFile(io: std.Io, source_file: []const u8, destination_file: []const u8
         "-once",
         "-i",
         "lib/Nitro/",
+        "-i",
+        "include/",
         "-d",
         release_global.macroName(),
     };
@@ -157,6 +159,8 @@ fn generateContext(io: std.Io, source_file: []const u8, destination_file: []cons
         "-undef",
         "-I",
         "lib/Nitro/",
+        "-I",
+        "include/",
         "-D",
         "__MWERKS__",
         //"-dD",

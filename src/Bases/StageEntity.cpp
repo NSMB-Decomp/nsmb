@@ -1,4 +1,6 @@
 #include "StageEntity.hpp"
+#include <nsmb/overlays/ov000/symbols.hpp>
+#include <nsmb/overlays/ov010/symbols.hpp>
 #include "Player/PlayerActor.hpp"
 
 StageEntity::StageEntity()
@@ -156,7 +158,6 @@ bool StageEntity::_14()
 }
 
 PlayerActor *GAME_getPlayer(u32);
-void func_0201d954(PlatformMgr *, u32);
 void StageEntity::_16()
 {
 	PlayerBase *player;
@@ -216,7 +217,6 @@ void StageEntity::func_ov000_0209da00()
 }
 
 u32 uRam020cad40;
-void func_ov000_020af30c(u32, u32, u32, u32, u32);
 void StageEntity::func_ov000_0209e5a8(u32 param_1, u32 param_2)
 {
 	u32 uVar1;
@@ -236,7 +236,6 @@ void StageEntity::func_ov000_0209e5a8(u32 param_1, u32 param_2)
 	return;
 }
 
-void func_ov010_020e657c(i8, Vec3_32 *, u32);
 i8 data_ov000_020c1f50[2];
 void StageEntity::func_ov000_0209e264(u32 x, u32 y, u32 param_3)
 {
@@ -284,7 +283,6 @@ void StageEntity::_43(u32 param_1, u32 param_2, u32 param_3)
 }
 
 u16 data_ov000_020c1f44[2];
-bool func_ov000_020a76d4();
 void StageEntity::_18()
 {
 	PlayerBase *player;
@@ -692,7 +690,6 @@ u32 StageEntity::stopPlayerInShell(ActiveCollider *collider, PlayerActor *player
 	return 0;
 }
 
-void func_0201eef8(u32, FxRect *);
 bool StageEntity::isPlayerInZone(PlayerActor *player, u32 id)
 {
 	FxRect rect;
@@ -742,7 +739,6 @@ u16 *StageEntity::getObjectBank(u32 sprite_id)
 }
 
 
-extern s8 data_ov000_020c4ec4[2];
 
 bool StageEntity::func_ov000_0209ff98() {
 
@@ -767,7 +763,7 @@ bool StageEntity::func_ov000_0209ff98() {
 		//r->x = position.x;
 		//r->y = position.y;
 		//r->z = position.z;
-		//Nitro::Math_AddVec3_32s(&pos, &centerOffset, r);
+		//NDS::Math::addVector32(&pos, &centerOffset, r);
 
 		if (collisionMgr.getSolidTileType(pos.x, pos.y))
 			return true;

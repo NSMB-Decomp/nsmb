@@ -3,9 +3,9 @@ func_ov052_021528a0 kind:function(arm,size=0xd4) addr:0x021528a0
 func_ov052_02152974 kind:function(arm,size=0x4) addr:0x02152974
 func_ov052_02152978 kind:function(arm,size=0x3c) addr:0x02152978
 func_ov052_021529b4 kind:function(arm,size=0x1ac) addr:0x021529b4
-func_ov052_02152b60 kind:function(arm,size=0x28) addr:0x02152b60
-func_ov052_02152b88 kind:function(arm,size=0x20) addr:0x02152b88
-func_ov052_02152ba8 kind:function(arm,size=0x20) addr:0x02152ba8
+_ZN14Overlay52SceneD0Ev kind:function(arm,size=0x28) addr:0x02152b60
+_ZN14Overlay52SceneD2Ev kind:function(arm,size=0x20) addr:0x02152b88
+_ZN14Overlay52SceneC1Ev kind:function(arm,size=0x20) addr:0x02152ba8
 func_ov052_02152bc8 kind:function(arm,size=0x28) addr:0x02152bc8
 func_ov052_02152bf0 kind:function(arm,size=0x8c) addr:0x02152bf0
 func_ov052_02152c7c kind:function(arm,size=0x40) addr:0x02152c7c
@@ -63,8 +63,8 @@ _ZN18MPLevelSelectScene14pendingDestroyEv kind:function(arm,size=0x4) addr:0x021
 _ZN18MPLevelSelectScene9onDestroyEv kind:function(arm,size=0x20) addr:0x02155520
 _ZN18MPLevelSelectScene8onCreateEv kind:function(arm,size=0x500) addr:0x02155540
 _ZN18MPLevelSelectSceneD0Ev kind:function(arm,size=0x44) addr:0x02155a40
-_ZN18MPLevelSelectSceneD2Ev kind:function(arm,size=0x3c) addr:0x02155a84
-_ZN18MPLevelSelectSceneC2Ev kind:function(arm,size=0x40) addr:0x02155ac0
+_ZN18MPLevelSelectSceneD1Ev kind:function(arm,size=0x3c) addr:0x02155a84
+_ZN18MPLevelSelectSceneC1Ev kind:function(arm,size=0x40) addr:0x02155ac0
 _ZN18MPLevelSelectScene19func_ov052_02155b00Ev kind:function(arm,size=0xa8) addr:0x02155b00
 _ZN18MPLevelSelectScene19func_ov052_02155ba8Ev kind:function(arm,size=0xf4) addr:0x02155ba8
 _ZN18MPLevelSelectScene19func_ov052_02155c9cEv kind:function(arm,size=0x5c) addr:0x02155c9c
@@ -96,60 +96,60 @@ func_ov052_02156fa4 kind:function(arm,size=0x4c) addr:0x02156fa4
 func_ov052_02156ff0 kind:function(arm,size=0x44) addr:0x02156ff0
 func_ov052_02157034 kind:function(arm,size=0x54) addr:0x02157034
 func_ov052_02157088 kind:function(arm,size=0x28) addr:0x02157088
-func_ov052_021570b0 kind:function(arm,size=0x6c) addr:0x021570b0
-func_ov052_0215711c kind:function(arm,size=0x74) addr:0x0215711c
-func_ov052_02157190 kind:function(arm,size=0x20) addr:0x02157190
-func_ov052_021571b0 kind:function(arm,size=0x2c) addr:0x021571b0
-func_ov052_021571dc kind:function(arm,size=0x20) addr:0x021571dc
-func_ov052_021571fc kind:function(arm,size=0x60) addr:0x021571fc
-func_ov052_0215725c kind:function(arm,size=0x20) addr:0x0215725c
-func_ov052_0215727c kind:function(arm,size=0x1c) addr:0x0215727c
-func_ov052_02157298 kind:function(arm,size=0x1c) addr:0x02157298
-func_ov052_021572b4 kind:function(arm,size=0x14) addr:0x021572b4
-func_ov052_021572c8 kind:function(arm,size=0x28) addr:0x021572c8
-func_ov052_021572f0 kind:function(arm,size=0x5c) addr:0x021572f0
-func_ov052_0215734c kind:function(arm,size=0x108) addr:0x0215734c
-func_ov052_02157454 kind:function(arm,size=0x50) addr:0x02157454
-func_ov052_021574a4 kind:function(arm,size=0x104) addr:0x021574a4
-func_ov052_021575a8 kind:function(arm,size=0x5c) addr:0x021575a8
-func_ov052_02157604 kind:function(arm,size=0x34) addr:0x02157604
-func_ov052_02157638 kind:function(arm,size=0x24) addr:0x02157638
-func_ov052_0215765c kind:function(arm,size=0x3c) addr:0x0215765c
-func_ov052_02157698 kind:function(arm,size=0x40) addr:0x02157698
-func_ov052_021576d8 kind:function(arm,size=0x70) addr:0x021576d8
-func_ov052_02157748 kind:function(arm,size=0x48) addr:0x02157748
-func_ov052_02157790 kind:function(arm,size=0x5c) addr:0x02157790
-func_ov052_021577ec kind:function(arm,size=0x2fc) addr:0x021577ec
-func_ov052_02157ae8 kind:function(arm,size=0xc0) addr:0x02157ae8
-func_ov052_02157ba8 kind:function(arm,size=0x40) addr:0x02157ba8
-func_ov052_02157be8 kind:function(arm,size=0x44) addr:0x02157be8
-func_ov052_02157c2c kind:function(arm,size=0x6c) addr:0x02157c2c
-func_ov052_02157c98 kind:function(arm,size=0x40) addr:0x02157c98
-func_ov052_02157cd8 kind:function(arm,size=0x1ac) addr:0x02157cd8
-func_ov052_02157e84 kind:function(arm,size=0x60) addr:0x02157e84
-func_ov052_02157ee4 kind:function(arm,size=0x40) addr:0x02157ee4
-func_ov052_02157f24 kind:function(arm,size=0x394) addr:0x02157f24
-func_ov052_021582b8 kind:function(arm,size=0xe0) addr:0x021582b8
-func_ov052_02158398 kind:function(arm,size=0x40) addr:0x02158398
-func_ov052_021583d8 kind:function(arm,size=0x20c) addr:0x021583d8
-func_ov052_021585e4 kind:function(arm,size=0x98) addr:0x021585e4
-func_ov052_0215867c kind:function(arm,size=0x40) addr:0x0215867c
-func_ov052_021586bc kind:function(arm,size=0x204) addr:0x021586bc
-func_ov052_021588c0 kind:function(arm,size=0x11c) addr:0x021588c0
-func_ov052_021589dc kind:function(arm,size=0x4) addr:0x021589dc
-func_ov052_021589e0 kind:function(arm,size=0x210) addr:0x021589e0
-func_ov052_02158bf0 kind:function(arm,size=0x134) addr:0x02158bf0
-func_ov052_02158d24 kind:function(arm,size=0xc0) addr:0x02158d24
-func_ov052_02158de4 kind:function(arm,size=0x50) addr:0x02158de4
-func_ov052_02158e34 kind:function(arm,size=0x88) addr:0x02158e34
-func_ov052_02158ebc kind:function(arm,size=0x84) addr:0x02158ebc
-func_ov052_02158f40 kind:function(arm,size=0xa8) addr:0x02158f40
-func_ov052_02158fe8 kind:function(arm,size=0x364) addr:0x02158fe8
-func_ov052_0215934c kind:function(arm,size=0x24) addr:0x0215934c
-func_ov052_02159370 kind:function(arm,size=0x18) addr:0x02159370
-func_ov052_02159388 kind:function(arm,size=0xdc) addr:0x02159388
-func_ov052_02159464 kind:function(arm,size=0x38) addr:0x02159464
-func_ov052_0215949c kind:function(arm,size=0x28) addr:0x0215949c
+_ZN14VSConnectSceneD1Ev kind:function(arm,size=0x6c) addr:0x021570b0
+_ZN14VSConnectSceneD0Ev kind:function(arm,size=0x74) addr:0x0215711c
+_ZN14VSConnectScene6ButtonD1Ev kind:function(arm,size=0x20) addr:0x02157190
+_ZN14VSConnectScene10TextButtonD1Ev kind:function(arm,size=0x2c) addr:0x021571b0
+_ZN14VSConnectScene10TextButton5setupEllPS_ kind:function(arm,size=0x20) addr:0x021571dc
+_ZN14VSConnectScene10TextButton6renderEv kind:function(arm,size=0x60) addr:0x021571fc
+_ZN14VSConnectScene10TextButton6updateEv kind:function(arm,size=0x20) addr:0x0215725c
+_ZN14VSConnectScene6Button5clickEv kind:function(arm,size=0x1c) addr:0x0215727c
+_ZN14VSConnectScene6Button5setupEll kind:function(arm,size=0x1c) addr:0x02157298
+_ZN14VSConnectScene6Button4moveEll kind:function(arm,size=0x14) addr:0x021572b4
+_ZN14VSConnectScene6Button6createEllll kind:function(arm,size=0x28) addr:0x021572c8
+_ZN14VSConnectScene6Button6renderEv kind:function(arm,size=0x5c) addr:0x021572f0
+_ZN14VSConnectScene6Button6updateEv kind:function(arm,size=0x108) addr:0x0215734c
+_ZN14VSConnectScene15syncInputSchemeEi kind:function(arm,size=0x50) addr:0x02157454
+_ZN14VSConnectScene19getOpponentNicknameEv kind:function(arm,size=0x104) addr:0x021574a4
+_ZN14VSConnectScene18startConsoleSearchEv kind:function(arm,size=0x5c) addr:0x021575a8
+_ZN14VSConnectScene20updateTextButtonTextEv kind:function(arm,size=0x34) addr:0x02157604
+_ZN14VSConnectScene18loadSelectModeTextEv kind:function(arm,size=0x24) addr:0x02157638
+_ZN14VSConnectScene12selectButtonEi kind:function(arm,size=0x3c) addr:0x0215765c
+_ZN14VSConnectScene29renderConnectionInterruptedSMEv kind:function(arm,size=0x40) addr:0x02157698
+_ZN14VSConnectScene29updateConnectionInterruptedSMEv kind:function(arm,size=0x70) addr:0x021576d8
+_ZN14VSConnectScene29createConnectionInterruptedSMEv kind:function(arm,size=0x48) addr:0x02157748
+_ZN14VSConnectScene16renderLoadGameSMEv kind:function(arm,size=0x5c) addr:0x02157790
+_ZN14VSConnectScene16updateLoadGameSMEv kind:function(arm,size=0x2fc) addr:0x021577ec
+_ZN14VSConnectScene16createLoadGameSMEv kind:function(arm,size=0xc0) addr:0x02157ae8
+_ZN14VSConnectScene18renderPlayerLeftSMEv kind:function(arm,size=0x40) addr:0x02157ba8
+_ZN14VSConnectScene18updatePlayerLeftSMEv kind:function(arm,size=0x44) addr:0x02157be8
+_ZN14VSConnectScene18createPlayerLeftSMEv kind:function(arm,size=0x6c) addr:0x02157c2c
+_ZN14VSConnectScene23renderWaitHostConfirmSMEv kind:function(arm,size=0x40) addr:0x02157c98
+_ZN14VSConnectScene23updateWaitHostConfirmSMEv kind:function(arm,size=0x1ac) addr:0x02157cd8
+_ZN14VSConnectScene23createWaitHostConfirmSMEv kind:function(arm,size=0x60) addr:0x02157e84
+_ZN14VSConnectScene15renderConfirmSMEv kind:function(arm,size=0x40) addr:0x02157ee4
+_ZN14VSConnectScene15updateConfirmSMEv kind:function(arm,size=0x394) addr:0x02157f24
+_ZN14VSConnectScene15createConfirmSMEv kind:function(arm,size=0xe0) addr:0x021582b8
+_ZN14VSConnectScene14renderSearchSMEv kind:function(arm,size=0x40) addr:0x02158398
+_ZN14VSConnectScene14updateSearchSMEv kind:function(arm,size=0x20c) addr:0x021583d8
+_ZN14VSConnectScene14createSearchSMEv kind:function(arm,size=0x98) addr:0x021585e4
+_ZN14VSConnectScene18renderCharSelectSMEv kind:function(arm,size=0x40) addr:0x0215867c
+_ZN14VSConnectScene18updateCharSelectSMEv kind:function(arm,size=0x204) addr:0x021586bc
+_ZN14VSConnectScene18createCharSelectSMEv kind:function(arm,size=0x11c) addr:0x021588c0
+_ZN14VSConnectScene18renderSelectModeSMEv kind:function(arm,size=0x4) addr:0x021589dc
+_ZN14VSConnectScene18updateSelectModeSMEv kind:function(arm,size=0x210) addr:0x021589e0
+_ZN14VSConnectScene18createSelectModeSMEv kind:function(arm,size=0x134) addr:0x02158bf0
+_ZN14VSConnectScene13changeSubMenuEPNS_7SubMenuE kind:function(arm,size=0xc0) addr:0x02158d24
+_ZN14VSConnectScene21scheduleSubMenuChangeEPNS_7SubMenuElb kind:function(arm,size=0x50) addr:0x02158de4
+_ZN14VSConnectScene9onDestroyEv kind:function(arm,size=0x88) addr:0x02158e34
+_ZN14VSConnectScene8onRenderEv kind:function(arm,size=0x84) addr:0x02158ebc
+_ZN14VSConnectScene8onUpdateEv kind:function(arm,size=0xa8) addr:0x02158f40
+_ZN14VSConnectScene8onCreateEv kind:function(arm,size=0x364) addr:0x02158fe8
+_ZN14VSConnectScene19loadMvsLFilesThreadEv kind:function(arm,size=0x24) addr:0x0215934c
+_ZN14VSConnectScene22syncInputSchemeWrapperEiPS_ kind:function(arm,size=0x18) addr:0x02159370
+_ZN14VSConnectScene9constructEv kind:function(arm,size=0xdc) addr:0x02159388
+_ZN14VSConnectScene10TextButtonC1Ev kind:function(arm,size=0x38) addr:0x02159464
+_ZN14VSConnectScene6ButtonC1Ev kind:function(arm,size=0x28) addr:0x0215949c
 func_ov052_021594c4 kind:function(arm,size=0x44) addr:0x021594c4
 func_ov052_02159508 kind:function(arm,size=0x44) addr:0x02159508
 func_ov052_0215954c kind:function(arm,size=0x14) addr:0x0215954c
@@ -246,53 +246,53 @@ __sinit_ov052_0215b274 kind:function(arm,size=0x33c) addr:0x0215b274
 .p__sinit_ov052_0215afbc kind:data(word) addr:0x0215b5b4
 .p__sinit_ov052_0215b274 kind:data(word) addr:0x0215b5b8
 UnknownProfile::ov052_0215b5c0 kind:data(any) addr:0x0215b5c0
-data_ov052_0215b5d0 kind:data(any) addr:0x0215b5d0
+_ZTV14Overlay52Scene kind:data(any) addr:0x0215b5c8
 data_ov052_0215b618 kind:data(any) addr:0x0215b618
-data_ov052_0215b620 kind:data(any) addr:0x0215b620
+@788 kind:data(any) addr:0x0215b620 local
 data_ov052_0215b628 kind:data(any) addr:0x0215b628
-data_ov052_0215b630 kind:data(any) addr:0x0215b630
-data_ov052_0215b638 kind:data(any) addr:0x0215b638
-data_ov052_0215b640 kind:data(any) addr:0x0215b640
-data_ov052_0215b648 kind:data(any) addr:0x0215b648
-data_ov052_0215b650 kind:data(any) addr:0x0215b650
-data_ov052_0215b658 kind:data(any) addr:0x0215b658
-data_ov052_0215b660 kind:data(any) addr:0x0215b660
-data_ov052_0215b668 kind:data(any) addr:0x0215b668
-data_ov052_0215b670 kind:data(any) addr:0x0215b670
-data_ov052_0215b678 kind:data(any) addr:0x0215b678
-data_ov052_0215b680 kind:data(any) addr:0x0215b680
-data_ov052_0215b688 kind:data(any) addr:0x0215b688
-data_ov052_0215b690 kind:data(any) addr:0x0215b690
-data_ov052_0215b698 kind:data(any) addr:0x0215b698
+@792 kind:data(any) addr:0x0215b630 local
+@739 kind:data(any) addr:0x0215b638 local
+@796 kind:data(any) addr:0x0215b640 local
+@711 kind:data(any) addr:0x0215b648 local
+@798 kind:data(any) addr:0x0215b650 local
+@800 kind:data(any) addr:0x0215b658 local
+@737 kind:data(any) addr:0x0215b660 local
+@794 kind:data(any) addr:0x0215b668 local
+@731 kind:data(any) addr:0x0215b670 local
+@790 kind:data(any) addr:0x0215b678 local
+@723 kind:data(any) addr:0x0215b680 local
+@786 kind:data(any) addr:0x0215b688 local
+@784 kind:data(any) addr:0x0215b690 local
+@782 kind:data(any) addr:0x0215b698 local
 data_ov052_0215b6a0 kind:data(any) addr:0x0215b6a0
-data_ov052_0215b6a8 kind:data(any) addr:0x0215b6a8
+@802 kind:data(any) addr:0x0215b6a8 local
 data_ov052_0215b6b0 kind:data(any) addr:0x0215b6b0
-@ kind:data(any) addr:0x0215b6b8
-Object_4::profile kind:data(any) addr:0x0215b6c0
-@ kind:data(any) addr:0x0215b6c8
-data_ov052_0215b6d0 kind:data(any) addr:0x0215b6d0
-data_ov052_0215b6d8 kind:data(any) addr:0x0215b6d8
-data_ov052_0215b6e0 kind:data(any) addr:0x0215b6e0
-data_ov052_0215b6e8 kind:data(any) addr:0x0215b6e8
-data_ov052_0215b6f0 kind:data(any) addr:0x0215b6f0
-data_ov052_0215b6f8 kind:data(any) addr:0x0215b6f8
-data_ov052_0215b700 kind:data(any) addr:0x0215b700
-data_ov052_0215b708 kind:data(any) addr:0x0215b708
-data_ov052_0215b710 kind:data(any) addr:0x0215b710
-data_ov052_0215b718 kind:data(any) addr:0x0215b718
-data_ov052_0215b720 kind:data(any) addr:0x0215b720
+@764 kind:data(any) addr:0x0215b6b8 local
+_ZN8Object_47profileE kind:data(any) addr:0x0215b6c0
+@766 kind:data(any) addr:0x0215b6c8 local
+@768 kind:data(any) addr:0x0215b6d0 local
+@770 kind:data(any) addr:0x0215b6d8 local
+@772 kind:data(any) addr:0x0215b6e0 local
+@774 kind:data(any) addr:0x0215b6e8 local
+@776 kind:data(any) addr:0x0215b6f0 local
+@778 kind:data(any) addr:0x0215b6f8 local
+@747 kind:data(any) addr:0x0215b700 local
+@745 kind:data(any) addr:0x0215b708 local
+@743 kind:data(any) addr:0x0215b710 local
+@741 kind:data(any) addr:0x0215b718 local
+@780 kind:data(any) addr:0x0215b720 local
 data_ov052_0215b728 kind:data(any) addr:0x0215b728
-data_ov052_0215b730 kind:data(any) addr:0x0215b730
-data_ov052_0215b738 kind:data(any) addr:0x0215b738
-data_ov052_0215b740 kind:data(any) addr:0x0215b740
-data_ov052_0215b748 kind:data(any) addr:0x0215b748
-data_ov052_0215b750 kind:data(any) addr:0x0215b750
-data_ov052_0215b758 kind:data(any) addr:0x0215b758
-data_ov052_0215b760 kind:data(any) addr:0x0215b760
-data_ov052_0215b768 kind:data(any) addr:0x0215b768
-data_ov052_0215b770 kind:data(any) addr:0x0215b770
-data_ov052_0215b778 kind:data(any) addr:0x0215b778
-data_ov052_0215b780 kind:data(any) addr:0x0215b780
+@735 kind:data(any) addr:0x0215b730 local
+@733 kind:data(any) addr:0x0215b738 local
+@729 kind:data(any) addr:0x0215b740 local
+@727 kind:data(any) addr:0x0215b748 local
+@725 kind:data(any) addr:0x0215b750 local
+@709 kind:data(any) addr:0x0215b758 local
+@721 kind:data(any) addr:0x0215b760 local
+@719 kind:data(any) addr:0x0215b768 local
+@717 kind:data(any) addr:0x0215b770 local
+@715 kind:data(any) addr:0x0215b778 local
+@713 kind:data(any) addr:0x0215b780 local
 data_ov052_0215b788 kind:data(any) addr:0x0215b788
 data_ov052_0215b794 kind:data(any) addr:0x0215b794
 data_ov052_0215b7a0 kind:data(any) addr:0x0215b7a0
@@ -378,7 +378,7 @@ data_ov052_0215bdcc kind:data(any) addr:0x0215bdcc
 data_ov052_0215bdd4 kind:data(any) addr:0x0215bdd4
 data_ov052_0215bddc kind:data(any) addr:0x0215bddc
 data_ov052_0215bde4 kind:data(any) addr:0x0215bde4
-UnknownProfile::ov052_0215bdec kind:data(any) addr:0x0215bdec
+_ZN14VSConnectScene7profileE kind:data(any) addr:0x0215bdec
 data_ov052_0215bdf4 kind:data(any) addr:0x0215bdf4
 data_ov052_0215bdfc kind:data(any) addr:0x0215bdfc
 data_ov052_0215be04 kind:data(any) addr:0x0215be04
@@ -396,12 +396,12 @@ data_ov052_0215be5c kind:data(any) addr:0x0215be5c
 data_ov052_0215be64 kind:data(any) addr:0x0215be64
 data_ov052_0215be6c kind:data(any) addr:0x0215be6c
 data_ov052_0215be74 kind:data(any) addr:0x0215be74
-data_ov052_0215be84 kind:data(any) addr:0x0215be84
-data_ov052_0215be94 kind:data(any) addr:0x0215be94
-data_ov052_0215bea4 kind:data(any) addr:0x0215bea4
+_ZTVN14VSConnectScene6ButtonE kind:data(any) addr:0x0215be7c
+_ZTVN14VSConnectScene10TextButtonE kind:data(any) addr:0x0215be8c
+_ZTV14VSConnectScene kind:data(any) addr:0x0215be9c
 data_ov052_0215beec kind:data(any) addr:0x0215beec
 data_ov052_0215bef4 kind:data(any) addr:0x0215bef4
-data_ov052_0215befc kind:data(any) addr:0x0215befc
+_ZN14VSConnectScene14buttonOamAttrsE kind:data(any) addr:0x0215befc
 data_ov052_0215bf18 kind:data(any) addr:0x0215bf18
 data_ov052_0215bf58 kind:data(any) addr:0x0215bf58
 data_ov052_0215bf98 kind:data(any) addr:0x0215bf98
@@ -524,25 +524,25 @@ data_ov052_0215c894 kind:bss addr:0x0215c894
 data_ov052_0215c898 kind:bss addr:0x0215c898
 data_ov052_0215c89c kind:bss addr:0x0215c89c
 data_ov052_0215c8a0 kind:bss addr:0x0215c8a0
-_ZGVptmfs$372 kind:bss addr:0x0215c8a4
-data_ov052_0215c8a8 kind:bss addr:0x0215c8a8
+_ZGVptmfs$762 kind:bss addr:0x0215c8a4
+_ZGVptmfs$707 kind:bss addr:0x0215c8a8
 data_ov052_0215c8ac kind:bss addr:0x0215c8ac
 data_ov052_0215c8b4 kind:bss addr:0x0215c8b4
-data_ov052_0215c8c0 kind:bss addr:0x0215c8c0
-ptmfs$372 kind:bss addr:0x0215c960
+ptmfs$707 kind:bss addr:0x0215c8c0
+ptmfs$762 kind:bss addr:0x0215c960
 data_ov052_0215ca00 kind:bss addr:0x0215ca00
 data_ov052_0215ca04 kind:bss addr:0x0215ca04
 data_ov052_0215ca08 kind:bss addr:0x0215ca08
 data_ov052_0215ca0c kind:bss addr:0x0215ca0c
 data_ov052_0215ca3c kind:bss addr:0x0215ca3c
-data_ov052_0215ca6c kind:bss addr:0x0215ca6c
-data_ov052_0215ca88 kind:bss addr:0x0215ca88
-data_ov052_0215caa4 kind:bss addr:0x0215caa4
-data_ov052_0215cac0 kind:bss addr:0x0215cac0
-data_ov052_0215cadc kind:bss addr:0x0215cadc
-data_ov052_0215caf8 kind:bss addr:0x0215caf8
-data_ov052_0215cb14 kind:bss addr:0x0215cb14
-data_ov052_0215cb30 kind:bss addr:0x0215cb30
+_ZN14VSConnectScene12charSelectSME kind:bss addr:0x0215ca6c
+_ZN14VSConnectScene12playerLeftSME kind:bss addr:0x0215ca88
+_ZN14VSConnectScene8searchSME kind:bss addr:0x0215caa4
+_ZN14VSConnectScene9confirmSME kind:bss addr:0x0215cac0
+_ZN14VSConnectScene23connectionInterruptedSME kind:bss addr:0x0215cadc
+_ZN14VSConnectScene10loadGameSME kind:bss addr:0x0215caf8
+_ZN14VSConnectScene17waitHostConfirmSME kind:bss addr:0x0215cb14
+_ZN14VSConnectScene12selectModeSME kind:bss addr:0x0215cb30
 data_ov052_0215cb4c kind:bss addr:0x0215cb4c
 data_ov052_0215cb50 kind:bss addr:0x0215cb50
 data_ov052_0215cba0 kind:bss addr:0x0215cba0

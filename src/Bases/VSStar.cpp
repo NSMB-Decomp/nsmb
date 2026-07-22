@@ -1,4 +1,6 @@
 #include "VSStar.hpp"
+#include <nsmb/arm9/symbols.hpp>
+#include <nsmb/overlays/ov010/symbols.hpp>
 #include "Player/PlayerActor.hpp"
 
 void *VsStar::create()
@@ -137,7 +139,6 @@ s32 VsStar::onRender()
 	}
 }
 
-void func_ov010_020f9d64(void *);
 s32 VsStar::onDestroy()
 {
 	if (this->setting_0 == 1) {

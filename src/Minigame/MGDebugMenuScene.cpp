@@ -1,4 +1,5 @@
 #include "MGDebugMenuScene.hpp"
+#include <nsmb/overlays/ov130/symbols.hpp>
 
 struct STRS {
 	char *strings[27];
@@ -28,7 +29,6 @@ char *MGDebugMenuScene::virt_19(u32 param_1)
 	return MG_DEBUG_STRINGS.strings[param_1];
 }
 
-void func_ov130_02137518(u32);
 u16 data_ov130_02137de4;
 void MGDebugMenuScene::virt_20(u32 param_1)
 {

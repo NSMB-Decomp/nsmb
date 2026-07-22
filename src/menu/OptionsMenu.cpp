@@ -3,11 +3,7 @@
 #include "../system/vblank.hpp"  // for System::setSubBGPosition
 #include "../Scenes/Scene.hpp"   // for Scene::switchToCorruptedSave
 #include "../worldmap/scene.hpp" // for WM::NodeType
-
-extern "C" BOOL func_0201301c(void*);
-extern u16 data_0203bd34; // currentSceneID
-extern u32 data_02085acc; // levelStates
-extern u32 data_02085a9c; // wmNodeType
+#include <nsmb/arm9/symbols.hpp>
 
 namespace OptionsMenu {
 

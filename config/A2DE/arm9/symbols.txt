@@ -1,3 +1,11 @@
+OVERLAY_10_ID kind:label(arm) addr:0x0000000a
+OVERLAY_11_ID kind:label(arm) addr:0x0000000b
+OVERLAY_20_ID kind:label(arm) addr:0x00000014
+OVERLAY_22_ID kind:label(arm) addr:0x00000016
+OVERLAY_32_ID kind:label(arm) addr:0x00000020
+OVERLAY_42_ID kind:label(arm) addr:0x0000002a
+OVERLAY_52_ID kind:label(arm) addr:0x00000034
+OVERLAY_53_ID kind:label(arm) addr:0x00000035
 HuffUnCompReadByCallback kind:function(thumb,size=0x4) addr:0x02000074
 LZ77UnCompReadNormalWrite8bit kind:function(thumb,size=0x4) addr:0x020000e2
 IsDebugger kind:function(thumb,size=0x4) addr:0x02000154
@@ -17,17 +25,17 @@ LZ77UnCompReadByCallbackWrite16bit kind:function(thumb,size=0x4) addr:0x020006ce
 WaitByLoop kind:function(thumb,size=0x4) addr:0x02000738
 IntrWait kind:function(thumb,size=0x4) addr:0x020007a2
 Entry kind:function(arm,size=0x120) addr:0x02000800
-Nitro::func_02000920 kind:function(arm,size=0x14) addr:0x02000920
-Nitro::func_02000934 kind:function(arm,size=0xac) addr:0x02000934
-Nitro::func_020009e0 kind:function(arm,size=0x78) addr:0x020009e0
+func_02000920 kind:function(arm,size=0x14) addr:0x02000920
+func_02000934 kind:function(arm,size=0xac) addr:0x02000934
+func_020009e0 kind:function(arm,size=0x78) addr:0x020009e0
 AutoloadCallback kind:function(arm,size=0x4) addr:0x02000a58
-Nitro::func_02000a5c kind:function(arm,size=0xe8) addr:0x02000a5c
-Nitro::func_02000b44 kind:function(arm,size=0x4) addr:0x02000b44
+func_02000a5c kind:function(arm,size=0xe8) addr:0x02000a5c
+func_02000b44 kind:function(arm,size=0x4) addr:0x02000b44
 BuildInfo kind:data(any) addr:0x02000b48
-Wifi::func_02001000 kind:function(arm,size=0x2c) addr:0x02001000
-Wifi::func_0200102c kind:function(arm,size=0x24) addr:0x0200102c
-Wifi::func_02001050 kind:function(arm,size=0x58) addr:0x02001050
-Wifi::func_020010a8 kind:function(arm,size=0x40) addr:0x020010a8
+_ZN4Wifi13func_02001000Ev kind:function(arm,size=0x2c) addr:0x02001000
+_ZN4Wifi13func_0200102cEl kind:function(arm,size=0x24) addr:0x0200102c
+_ZN4Wifi13func_02001050El kind:function(arm,size=0x58) addr:0x02001050
+_ZN4Wifi13func_020010a8Ev kind:function(arm,size=0x40) addr:0x020010a8
 Wifi::func_020010e8 kind:function(arm,size=0xb0) addr:0x020010e8
 Wifi::func_02001198 kind:function(arm,size=0xd8) addr:0x02001198
 Wifi::func_02001270 kind:function(arm,size=0x158) addr:0x02001270
@@ -99,8 +107,8 @@ func_02003f3c kind:function(arm,size=0x260) addr:0x02003f3c
 
 // layout.cpp
 
-_ZN6Layout11drawCellSubEmPKvmhhPK7Vec2_32tPKsm kind:function(arm,size=0x80) addr:0x0200419c
-_ZN6Layout12drawCellMainEmPKvmhhPK7Vec2_32tPKsm kind:function(arm,size=0x80) addr:0x0200421c
+func_0200419c kind:function(arm,size=0x80) addr:0x0200419c
+_ZN6Layout12drawCellMainEmPKvmhhPK7Vec2_32tPKsmmm kind:function(arm,size=0x80) addr:0x0200421c
 _ZN6Layout14getCellPosMainER7Vec2_32m kind:function(arm,size=0x3c) addr:0x0200429c
 _ZN6Layout13drawCellSubExEPK9BNCL_CellS2_bPK7Vec2_32tllhm kind:function(arm,size=0x28c) addr:0x020042d8
 _ZN6Layout7initSubEPvS0_S0_ kind:function(arm,size=0x34) addr:0x02004564
@@ -109,7 +117,7 @@ _ZN6Layout7initSubEPvS0_S0_ kind:function(arm,size=0x34) addr:0x02004564
 
 func_02004598 kind:function(arm,size=0x34) addr:0x02004598
 func_020045cc kind:function(arm,size=0x20) addr:0x020045cc
-_ZN5Nitro9TerminateEv kind:function(arm,size=0xc) addr:0x020045ec
+_ZN3NDS6System4haltEv kind:function(arm,size=0xc) addr:0x020045ec
 func_020045f8 kind:function(arm,size=0x6c) addr:0x020045f8
 func_02004664 kind:function(arm,size=0x5c) addr:0x02004664
 _ZN9Exception20userExceptionHandlerEPNS_7ContextEPv kind:function(arm,size=0x18) addr:0x020046c0
@@ -220,8 +228,8 @@ GFX::resetWindows kind:function(arm,size=0x2c) addr:0x02006ee8
 GFX::FaderStep kind:function(arm,size=0x2c) addr:0x02006f14
 GFX::UnknownStep kind:function(arm,size=0x2c) addr:0x02006f40
 Graphics_2DStep kind:function(arm,size=0x40) addr:0x02006f6c
-_ZN5Nitro17Graphics_ResetOAMEv kind:function(arm,size=0xc) addr:0x02006fac
-_ZN5Nitro13Graphics_StepEv kind:function(arm,size=0x54) addr:0x02006fb8
+_Z13func_02006facv kind:function(arm,size=0xc) addr:0x02006fac
+_Z13func_02006fb8v kind:function(arm,size=0x54) addr:0x02006fb8
 Graphics_Init kind:function(arm,size=0x15c) addr:0x0200700c
 GFX::func_02007168 kind:function(arm,size=0x68) addr:0x02007168
 GFX::func_020071d0 kind:function(arm,size=0x68) addr:0x020071d0
@@ -236,14 +244,14 @@ func_02007684 kind:function(arm,size=0x28) addr:0x02007684
 func_020076ac kind:function(arm,size=0x2c4) addr:0x020076ac
 func_02007970 kind:function(arm,size=0x188) addr:0x02007970
 func_02007af8 kind:function(arm,size=0x98) addr:0x02007af8
-func_02007b90 kind:function(arm,size=0x24) addr:0x02007b90
-func_02007bb4 kind:function(arm,size=0x24) addr:0x02007bb4
+_ZN5Fader14prepareFadeOutEv kind:function(arm,size=0x24) addr:0x02007b90
+_ZN5Fader13prepareFadeInEv kind:function(arm,size=0x24) addr:0x02007bb4
 func_02007bd8 kind:function(arm,size=0x24) addr:0x02007bd8
 _ZN5Fader13func_02007bfcEv kind:function(arm,size=0x24) addr:0x02007bfc
-func_02007c20 kind:function(arm,size=0x24) addr:0x02007c20
-func_02007c44 kind:function(arm,size=0x24) addr:0x02007c44
-func_02007c68 kind:function(arm,size=0x48) addr:0x02007c68
-func_02007cb0 kind:function(arm,size=0x48) addr:0x02007cb0
+_ZN5Fader23disableMainScreenFadingEv kind:function(arm,size=0x24) addr:0x02007c20
+_ZN5Fader22enableMainScreenFadingEv kind:function(arm,size=0x24) addr:0x02007c44
+_ZN5Fader8fadedOutEv kind:function(arm,size=0x48) addr:0x02007c68
+_ZN5Fader7fadedInEv kind:function(arm,size=0x48) addr:0x02007cb0
 func_02007cf8 kind:function(arm,size=0xf8) addr:0x02007cf8
 func_02007df0 kind:function(arm,size=0x44) addr:0x02007df0
 func_02007e34 kind:function(arm,size=0x13c) addr:0x02007e34
@@ -285,7 +293,7 @@ func_02008ff4 kind:function(arm,size=0x38) addr:0x02008ff4
 func_0200902c kind:function(arm,size=0x58) addr:0x0200902c
 func_02009084 kind:function(arm,size=0x4c) addr:0x02009084
 func_020090d0 kind:function(arm,size=0x28) addr:0x020090d0
-func_020090f8 kind:function(arm,size=0x3c) addr:0x020090f8
+_Z13func_020090f8m kind:function(arm,size=0x3c) addr:0x020090f8
 func_02009134 kind:function(arm,size=0x48) addr:0x02009134
 func_0200917c kind:function(arm,size=0x14) addr:0x0200917c
 func_02009190 kind:function(arm,size=0x14) addr:0x02009190
@@ -296,14 +304,14 @@ FS::GetFileId kind:function(arm,size=0x28) addr:0x0200936c
 FS::calcFileID kind:function(arm,size=0x64) addr:0x02009394
 FS::SetFileIDOffset kind:function(arm,size=0x18) addr:0x020093f8
 FS::setFileCount kind:function(arm,size=0x14) addr:0x02009410
-_ZN5Nitro7FS_initEv kind:function(arm,size=0x54) addr:0x02009424
+_ZN2FS4initEv kind:function(arm,size=0x54) addr:0x02009424
 FS::getDecompressedSize kind:function(arm,size=0xc) addr:0x02009478
 FS::Overlays::init kind:function(arm,size=0x34) addr:0x02009484
-_ZN5Nitro18FS_Overlays_unloadEm kind:function(arm,size=0x58) addr:0x020094b8
-_ZN5Nitro23FS_Overlays_loadOverlayEm kind:function(arm,size=0x50) addr:0x02009510
+_ZN2FS7Overlay7untrackEm kind:function(arm,size=0x58) addr:0x020094b8
+_ZN2FS7Overlay4loadEm kind:function(arm,size=0x50) addr:0x02009510
 FS::Overlays::load kind:function(arm,size=0x238) addr:0x02009560
 FS::Overlays::invalidateRange kind:function(arm,size=0x38) addr:0x02009798
-_ZN5Nitro31FS_Archive_loadMainGameArchivesEv kind:function(arm,size=0x1c) addr:0x020097d0
+_ZN2FS7Archive20loadMainGameArchivesEv kind:function(arm,size=0x1c) addr:0x020097d0
 func_020097ec kind:function(arm,size=0x14) addr:0x020097ec
 func_02009800 kind:function(arm,size=0x1c) addr:0x02009800
 func_0200981c kind:function(arm,size=0xc) addr:0x0200981c
@@ -418,7 +426,7 @@ func_0200e564 kind:function(arm,size=0xb8) addr:0x0200e564
 func_0200e61c kind:function(arm,size=0x44) addr:0x0200e61c
 func_0200e660 kind:function(arm,size=0x44) addr:0x0200e660
 func_0200e6a4 kind:function(arm,size=0x50) addr:0x0200e6a4
-Wifi::random kind:function(arm,size=0x48) addr:0x0200e6f4
+_ZN4Wifi6randomEv kind:function(arm,size=0x48) addr:0x0200e6f4
 func_0200e73c kind:function(arm,size=0xc) addr:0x0200e73c
 func_0200e748 kind:function(arm,size=0x50) addr:0x0200e748
 func_0200e798 kind:function(arm,size=0x14) addr:0x0200e798
@@ -529,7 +537,7 @@ func_02011b64 kind:function(arm,size=0x20) addr:0x02011b64
 func_02011b84 kind:function(arm,size=0x74) addr:0x02011b84
 func_02011bf8 kind:function(arm,size=0x3c) addr:0x02011bf8
 func_02011c34 kind:function(arm,size=0x30) addr:0x02011c34
-func_02011c64 kind:function(arm,size=0x20) addr:0x02011c64
+_Z13func_02011c64v kind:function(arm,size=0x20) addr:0x02011c64
 func_02011c84 kind:function(arm,size=0x60) addr:0x02011c84
 func_02011ce4 kind:function(arm,size=0x40) addr:0x02011ce4
 func_02011d24 kind:function(arm,size=0x1c) addr:0x02011d24

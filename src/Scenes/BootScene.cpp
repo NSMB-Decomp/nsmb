@@ -20,25 +20,25 @@ i32 BootScene::onCreate() {
 	GlobalFader.setupSceneFading(0x0, 0x1, 0x0);
 	if ((App::getBootScene() == 0x0)) {
 		func_0201325c();
-		Nitro::func_02061ac4(0x1);
-		Nitro::func_02061958(0x2);
-		Nitro::func_020613c8(0x4);
-		Nitro::func_0206134c(0x8);
+		NDS::Graphics::assignMainBackgroundBank(0x1);
+		NDS::Graphics::assignMainObjectBank(0x2);
+		NDS::Graphics::assignSubBackgroundBank(0x4);
+		NDS::Graphics::assignSubObjectBank(0x8);
 		REG_DISPCNT &= 0xffcfffef;
 		REG_DISPCNT_SUB &= 0xffcfffef;
-		Nitro::func_02060d78(0x1, 0x0, 0x0);
-		Nitro::func_02060d5c(0x0);
+		NDS::Graphics::setMainDisplayMode(0x1, 0x0, 0x0);
+		NDS::Graphics::setSubDisplayMode(0x0);
 		REG_DISPCNT = ((REG_DISPCNT & ~0x38000000) | 0x8000000);
 		REG_POWER_CNT = ((REG_POWER_CNT & 0xfffffdf1) | 0x20e);
-		Nitro::EnableDisplay();
+		NDS::Graphics::enableDisplays();
 		REG_DISPCNT_SUB |= 0x10000;
 		REG_BG0CNT = (REG_BG0CNT & (~0x3)) | 0x1;
 		REG_BG0CNT = (REG_BG0CNT & 0x43) | 0x1700;
 		REG_BG0CNT &= ~0x40;
 		REG_BG0OFS = 0x0;
-		Nitro::func_02067258((u32)&data_ov001_020cd144, Nitro::func_02061ff8());
-		Nitro_::func_02063af0((u16*)&data_ov001_020cd734, 0x0, 0x200);
-		Nitro::func_02067258((u32)&data_ov001_020cd934, Nitro::func_020622b8());
+		NDS::Memory::decompressLz16((u32)&data_ov001_020cd144, NDS::Graphics::mainBackground0Tiles());
+		NDS::Graphics::uploadMainBackgroundPalette((u16*)&data_ov001_020cd734, 0x0, 0x200);
+		NDS::Memory::decompressLz16((u32)&data_ov001_020cd934, NDS::Graphics::mainBackground0Map());
 		REG_BG3CNT &= ~0x03;
 		REG_BG3CNT = (REG_BG3CNT & 0x43) | 0x1100;
 		REG_BG3CNT &= ~0x40;
@@ -55,9 +55,9 @@ i32 BootScene::onCreate() {
 		REG_BG2CNT_SUB &= ~0x40;
 		REG_BG2CNT_SUB = (REG_BG2CNT_SUB & 0x43) | 0x310;
 		REG_BG2OFS = 0x0;
-		Nitro::func_02067258((u32)&data_ov001_020cdb24, Nitro::func_02061ee4());
-		Nitro::func_02063a88((u32)&data_ov001_020ce84c, 0x0, 0x20);
-		Nitro::func_02067258((u32)&data_ov001_020ce86c, Nitro::func_02062138());
+		NDS::Memory::decompressLz16((u32)&data_ov001_020cdb24, NDS::Graphics::subBackground2Tiles());
+		NDS::Graphics::uploadSubBackgroundPalette((u32)&data_ov001_020ce84c, 0x0, 0x20);
+		NDS::Memory::decompressLz16((u32)&data_ov001_020ce86c, NDS::Graphics::subBackground2Map());
 		data_02085a88 = 0x1;
 		REG_DISPCNT_SUB = ((REG_DISPCNT_SUB & ~0x1f00) | 0x400);
 	}
@@ -138,7 +138,7 @@ i32 BootScene::func_ov001_020cc4b4() {
 		}
 		local_r0 = (local_r0 << 0x10);
 		local_r8 = (local_r0 >> 0x10);
-		(tmp_call0 = Nitro::func_02062244(local_r0));
+		(tmp_call0 = NDS::Graphics::subBackground1Map());
 		local_r0 = (tmp_call0 + 0x4c0);
 		local_r1 = local_r11;
 		local_r2 = (local_r0 + (local_r7 << 0x1));

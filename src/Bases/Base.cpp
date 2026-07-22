@@ -251,9 +251,6 @@ bool Base::preDestroy()
 }
 void Base::postDestroy(u32 a)
 {
-	void func_02045128();
-	void func_0204d908();
-	void func_02044ab0(Base *, void *);
 
 	if (a != 2) {
 		return;
@@ -441,7 +438,7 @@ void *Base::operator new(size_t count)
 {
 	Base *ptr = (Base *)Memory_gameHeap->allocate(count, -4);
 	if (ptr != (Base *)0x0) {
-		Nitro::func_02066fe8(ptr, 0, count);
+		NDS::Memory::fill8(ptr, 0, count);
 		return ptr;
 	}
 	return (Base *)0x0;

@@ -14,6 +14,7 @@ class Heap
 	void *allocate(u32, u32);
 	Heap *setCurrent();
 	u32 maxAllocationUnitSize();
+	void test();
 
 	virtual void _(); // Temp function to create vtable
 };

@@ -1,4 +1,5 @@
 #include "MGScene_338.hpp"
+#include <nsmb/overlays/ov130/symbols.hpp>
 
 struct STRS {
 	char *strings[27];
@@ -41,7 +42,6 @@ char *MGScene_338::virt_19(u32 param_1)
 }
 
 u16 data_0203d318;
-void func_ov130_02135230(void *, u32);
 u8 data_ov130_0213ace4;
 u16 data_ov130_02137de0;
 u16 data_ov130_02137dec;

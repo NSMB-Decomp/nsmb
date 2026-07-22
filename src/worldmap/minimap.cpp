@@ -231,8 +231,8 @@ void* WmMinimap::create() {
 
 
 WmNodeMarkBlinker::WmNodeMarkBlinker() {
-	Nitro::func_02066fe8(timers, 0, sizeof(timers));
-	Nitro::func_02066fe8(states, 0, sizeof(states));
+	NDS::Memory::fill8(timers, 0, sizeof(timers));
+	NDS::Memory::fill8(states, 0, sizeof(states));
 }
 
 WmNodeMarkBlinker::~WmNodeMarkBlinker() {}
@@ -246,7 +246,7 @@ void WmNodeMarkBlinker::create() {
 
 	u8* sta = states;
 
-	Nitro::func_02066fe8(states, 0, sizeof(states));
+	NDS::Memory::fill8(states, 0, sizeof(states));
 
 	while (dst != end) {
 		*dst = src[*sta];
@@ -735,7 +735,7 @@ void WmPathMap::writeTiles(const WmMapPathTile* tiles, u32 count) {
 		return;
 
 	const WmMapPathTile* end = tiles + count;
-	u16* scr = rcast<u16*>(G2S_GetBG0ScrPtr());
+	u16* scr = rcast<u16*>(NDS::Graphics::subBackground0Map());
 
 	for (; tiles != end; tiles++) {
 
@@ -743,7 +743,7 @@ void WmPathMap::writeTiles(const WmMapPathTile* tiles, u32 count) {
 		u16 tile = (*srcTile & 0xFC00) |
 			tiles->charNo & 0x3FF;
 
-		MI_CpuCopy8(&tile, srcTile, 2);
+		NDS::Memory::copy8(&tile, srcTile, 2);
 
 	}
 

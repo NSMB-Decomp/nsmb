@@ -3,9 +3,9 @@
 #include "../Scenes/Scene.hpp"
 #include "exception.hpp"
 #include "vblank.hpp"
+#include <nsmb/arm9/symbols.hpp>
+#include <nsmb/core/wifi.hpp>
 
-
-extern "C" void InitMiniGame();
 
 inline u32 enableIrq() {
 	u32 prev = *rcast<vu16*>(0x04000208);
@@ -98,8 +98,8 @@ namespace App {
 		if (backlightOff)
 			return;
 
-		Nitro::LCD_GetBacklightLevel(&backlightTop, &backlightBottom);
-		Nitro::LCD_SetBacklightLevel(2, 0);
+		NDS::Power::getBacklights(&backlightTop, &backlightBottom);
+		NDS::Power::setBacklight(2, 0);
 		backlightOff = true;
 
 	}
@@ -109,7 +109,7 @@ namespace App {
 		if (!backlightOff)
 			return;
 
-		if (!Nitro::LCD_SetBacklightLevel(0, backlightTop) && !Nitro::LCD_SetBacklightLevel(1, backlightBottom)) {
+		if (!NDS::Power::setBacklight(0, backlightTop) && !NDS::Power::setBacklight(1, backlightBottom)) {
 			backlightOff = false;
 			return;
 		}
@@ -119,13 +119,13 @@ namespace App {
 
 			System::sleepSystemThread();
 
-			if (!Nitro::LCD_SetBacklightLevel(0, backlightTop) && !Nitro::LCD_SetBacklightLevel(1, backlightBottom)) {
+			if (!NDS::Power::setBacklight(0, backlightTop) && !NDS::Power::setBacklight(1, backlightBottom)) {
 				backlightOff = false;
 				return;
 			}
 
 			if (++attempts >= 10) {
-				Nitro_Abort("[App] Failed to power on backlight\n");
+				NDS::System::halt();
 				return;
 			}
 
@@ -169,7 +169,7 @@ namespace App {
 		BOOL partialSleep = (sleepControl & SleepControl_PartialSleepMask) != 0;
 
 		u8 frames = frameLength;
-		BOOL lidClosed = Nitro::ReadHinge();
+		BOOL lidClosed = NDS::Input::isLidClosed();
 
 		if (phase == SleepPhase_Awake) {
 
@@ -200,7 +200,7 @@ namespace App {
 				if (timer <= 0) {
 
 					if (partialSleep) {
-						Nitro::LCD_SetPower(0);
+						NDS::Power::setDisplayPower(0);
 					}
 
 					phase = SleepPhase_Sleeping;
@@ -221,7 +221,7 @@ namespace App {
 			if (!partialSleep) {
 
 				stopDisplayDMA();
-				Nitro::Sleep(0xC, 0, 0);
+				NDS::Power::sleep(0xC, 0, 0);
 				phase = SleepPhase_LidOpening;
 
 			} else {
@@ -235,7 +235,7 @@ namespace App {
 
 		if (phase == SleepPhase_LidOpening) {
 
-			if (Nitro::LCD_GetPower() == 1 || Nitro::LCD_SetPower(1) == 1) {
+			if (NDS::Power::getDisplayPower() == 1 || NDS::Power::setDisplayPower(1) == 1) {
 				powerOnBacklight();
 				phase = SleepPhase_LidOpened;
 				timer = 1;
@@ -280,7 +280,7 @@ namespace App {
 
 	void forceDisplayOn() {
 
-		while (Nitro::LCD_GetPower() != 1 && Nitro::LCD_SetPower(true) != 1) {
+		while (NDS::Power::getDisplayPower() != 1 && NDS::Power::setDisplayPower(true) != 1) {
 			System::sleepSystemThread();
 		}
 
@@ -323,7 +323,7 @@ namespace App {
 
 		}
 
-		Nitro::OS_ResetSystem(param);
+		NDS::System::reset(param);
 
 	}
 
@@ -371,29 +371,29 @@ namespace App {
 
 	void gameInit() { // InitGame
 
-		Nitro::func_02063fd4();
+		NDS::Graphics::initializeInterruptTable();
 
 		System::setupGameVBlank();
 
-		Nitro::OS_EnableIrqMask(1);
+		NDS::Interrupts::enableMask(1);
 		enableIrq();
-		Nitro::func_01ffa5ec();
-		Nitro::func_02060e38(1);
+		NDS::Interrupts::enableCpuInterrupts();
+		NDS::Graphics::signalVerticalBlank(1);
 
-		BOOL multiboot = Nitro::Wifi_isMultiBootCart();
+		BOOL multiboot = Wifi::isMultiBootChild();
 
-		Nitro::Math__stub();
+		NDS::Math::initializeFixedPoint();
 		resetGpu();
-		Nitro::func_0206d554();
+		NDS::Power::initializeManagement();
 
 		Save_setupBackup(CONFIG_BACKUP_TYPE, backupSignature);
 		Save_clearLoadedSaves();
 
-		Nitro::FS_init();
-		Nitro::FS_Archive_loadMainGameArchives();
+		FS::init();
+		FS::Archive::loadMainGameArchives();
 
 		if (multiboot != 0) {
-			Nitro::func_01ff80e0(0x100000);
+			NDS::Interrupts::disableMask(0x100000);
 		}
 
 		if (multiboot == 0) {
@@ -428,9 +428,9 @@ namespace App {
 		func_0202187c();
 		Scene::prepareFirstScene();
 
-		Nitro::func_01ff9010();
+		NDS::Graphics::flushGeometry();
 
-		Nitro::func_02061588(3);
+		NDS::Graphics::assignTextureBank(3);
 
 		u32 *GFX_FIFO_LIGHT_DIRECTION = (u32 *)0x040004c8;
 		*GFX_FIFO_LIGHT_DIRECTION = 0x296a5800;
@@ -459,7 +459,7 @@ namespace App {
 		u32 *GFX_FIFO_SWAP_BUFFERS = (u32 *)0x04000540;
 
 		System::sleepSystemThread();
-		Nitro::EnableDisplay();
+		NDS::Graphics::enableDisplays();
 
 		while (true) {
 
@@ -468,16 +468,16 @@ namespace App {
 			TouchPad_update();
 			Input_update();
 
-			Nitro::Graphics_ResetOAM();
-			if (Nitro::Graphics_Step()) {
+			func_02006fac();
+			if (func_02006fb8()) {
 				Scene::tryChangeScene();
 				ProcessManager_ExecuteTasks();
 				Font_updateFont();
 			}
 
 			FrameCounter += 1;
-			Nitro::func_01ff9010();
-			Nitro::Graphics_SwapBuffer(data_02085a78, data_02085a74);
+			NDS::Graphics::flushGeometry();
+			NDS::Graphics::swapBuffers(data_02085a78, data_02085a74);
 
 			Wifi_updatePackets();
 
@@ -497,9 +497,9 @@ namespace App {
 
 	void initialize() {
 
-		Nitro::OS_InitTick();
-		Nitro::OS_InitAlarm();
-		Nitro::MultiThread_Init();
+		NDS::Clock::initializeCounter();
+		NDS::Clock::initializeAlarms();
+		NDS::Threads::initialize();
 
 		Exception::setupHandler();
 
@@ -515,11 +515,11 @@ namespace App {
 
 	void commonStartup() {
 
-		Nitro::MainInit();
+		NDS::System::initialize();
 
 		onStartup();
 
-		Nitro::func_0206f3cc(&onCardPulledOut);
+		NDS::Card::setRemovalCallback(&onCardPulledOut);
 		data_020850e8 = 1;
 
 		func_020455d8();
@@ -531,20 +531,20 @@ namespace App {
 	void initFileCount(BOOL multiboot) {
 
 		u32 overlay_id = OVERLAY_BOOT;
-		Nitro::FS_Overlays_loadOverlay(overlay_id);
+		FS::Overlay::load(overlay_id);
 		func_ov001_020cceb4();
-		Nitro::FS_Overlays_unload(overlay_id);
+		FS::Overlay::untrack(overlay_id);
 
 	}
 
 	void initBoot(u32) {
 
-		BOOL multiboot = Nitro::Wifi_isMultiBootCart();
+		BOOL multiboot = Wifi::isMultiBootChild();
 		if (multiboot) {
 			func_020125e8();
 		}
 
-		Nitro::FS_Overlays_loadOverlay(OVERLAY_MISC);
+		FS::Overlay::load(OVERLAY_MISC);
 		initFileCount(multiboot);
 
 		FS::Cache::setupCacheEntries();
@@ -563,30 +563,30 @@ namespace App {
 
 	void resetVram() {
 
-		Nitro::func_02060fac();
-		Nitro::func_0206106c();
-		Nitro::func_02061058();
-		Nitro::func_02060fc0();
-		Nitro::func_02060ffc();
-		Nitro::func_02060fe8();
-		Nitro::func_02060fd4();
-		Nitro::func_02061034();
-		Nitro::func_02061010();
-		Nitro::func_02060f98();
-		Nitro::func_02060f84();
-		Nitro::func_02060f5c();
-		Nitro::func_02060f34();
+		NDS::Graphics::disableLcdcBank();
+		NDS::Graphics::disableMainBackgroundBank();
+		NDS::Graphics::disableMainObjectBank();
+		NDS::Graphics::disableArm7Bank();
+		NDS::Graphics::disableTextureBank();
+		NDS::Graphics::disableTexturePaletteBank();
+		NDS::Graphics::disableClearImageBank();
+		NDS::Graphics::disableMainBackgroundPaletteBank();
+		NDS::Graphics::disableMainObjectPaletteBank();
+		NDS::Graphics::disableSubBackgroundBank();
+		NDS::Graphics::disableSubObjectBank();
+		NDS::Graphics::disableSubBackgroundPaletteBank();
+		NDS::Graphics::disableSubObjectPaletteBank();
 
 	}
 
 	void resetGpu() {
 
 		if (getBootScene() == Boot || getBootTarget() == Minigames) {
-			Nitro::CpuClear16(0xFFFF, rcast<void*>(0x05000000), 0x2);
-			Nitro::CpuClear16(0xFFFF, rcast<void*>(0x05000400), 0x2);
+			NDS::Memory::clear16(0xFFFF, rcast<void*>(0x05000000), 0x2);
+			NDS::Memory::clear16(0xFFFF, rcast<void*>(0x05000400), 0x2);
 		} else {
-			Nitro::CpuClear16(0x0000, rcast<void*>(0x05000000), 0x2);
-			Nitro::CpuClear16(0x0000, rcast<void*>(0x05000400), 0x2);
+			NDS::Memory::clear16(0x0000, rcast<void*>(0x05000000), 0x2);
+			NDS::Memory::clear16(0x0000, rcast<void*>(0x05000400), 0x2);
 		}
 
 		REG_POWER_CNT = REG_POWER_CNT | 0x8000;
@@ -594,10 +594,10 @@ namespace App {
 
 		resetVram();
 
-		Nitro::GX_HBlankIntr(FALSE);
-		Nitro::GX_VBlankIntr(TRUE);
+		NDS::Graphics::signalHorizontalBlank(FALSE);
+		NDS::Graphics::signalVerticalBlank(TRUE);
 
-		Nitro::GX_SetGraphicsMode(1, 0, 0);
+		NDS::Graphics::setMainDisplayMode(1, 0, 0);
 
 		// Hide all planes and windows
 		REG_DISPCNT = REG_DISPCNT & ~0x1F00;
@@ -639,8 +639,8 @@ namespace App {
 		REG_BG2OFS = 0;
 		REG_BG3OFS = 0;
 
-		Nitro::func_0206232c(rcast<void*>(0x04000020), &identityMtx, 0, 0, 0, 0);
-		Nitro::func_0206232c(rcast<void*>(0x04000030), &identityMtx, 0, 0, 0, 0);
+		NDS::Graphics::applyAffine2D(rcast<void*>(0x04000020), &identityMtx, 0, 0, 0, 0);
+		NDS::Graphics::applyAffine2D(rcast<void*>(0x04000030), &identityMtx, 0, 0, 0, 0);
 
 		REG_WININ = REG_WININ & ~0x3F;
 		REG_WININ = REG_WININ & ~0x3F00;
@@ -655,9 +655,9 @@ namespace App {
 		REG_MOSAIC_BG = 0;
 		REG_MOSAIC_OBJ = 0;
 
-		Nitro::func_02060d30(rcast<void*>(0x0400006C), 0);
+		NDS::Graphics::setMasterBrightness(rcast<void*>(0x0400006C), 0);
 
-		Nitro::GXS_SetGraphicsMode(0);
+		NDS::Graphics::setSubDisplayMode(0);
 
 		// Hide all planes and windows
 		REG_DISPCNT_SUB = REG_DISPCNT_SUB & ~0x1F00;
@@ -692,8 +692,8 @@ namespace App {
 		REG_BG2OFS_SUB = 0;
 		REG_BG3OFS_SUB = 0;
 
-		Nitro::func_0206232c(rcast<void*>(0x04001020), &identityMtx, 0, 0, 0, 0);
-		Nitro::func_0206232c(rcast<void*>(0x04001030), &identityMtx, 0, 0, 0, 0);
+		NDS::Graphics::applyAffine2D(rcast<void*>(0x04001020), &identityMtx, 0, 0, 0, 0);
+		NDS::Graphics::applyAffine2D(rcast<void*>(0x04001030), &identityMtx, 0, 0, 0, 0);
 
 		REG_WININ_SUB = REG_WININ_SUB & ~0x3F;
 		REG_WININ_SUB = REG_WININ_SUB & ~0x3F00;
@@ -708,7 +708,7 @@ namespace App {
 		REG_MOSAIC_BG_SUB = 0;
 		REG_MOSAIC_OBJ_SUB = 0;
 
-		Nitro::func_02060d30(rcast<void*>(0x0400106C), 0);
+		NDS::Graphics::setMasterBrightness(rcast<void*>(0x0400106C), 0);
 
 	}
 

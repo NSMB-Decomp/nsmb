@@ -1,4 +1,5 @@
 #include "app.hpp"
+#include <nsmb/core/wifi.hpp>
 
 inline u32 getResetParam() {
 	return *rcast<u32*>(0x027FFC20);
@@ -9,7 +10,7 @@ extern "C" void NitroMain() {
 	u32 bootTarget;
 	u32 bootScene;
 
-	if (Nitro::Wifi_isMultiBootCart()) {
+	if (Wifi::isMultiBootChild()) {
 		if ((func_020109c8() != 0)) {
 			bootTarget = 0;
 		} else {

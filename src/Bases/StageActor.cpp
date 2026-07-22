@@ -1,4 +1,5 @@
 #include "StageActor.hpp"
+#include <nsmb/overlays/ov000/symbols.hpp>
 #include "Player/PlayerActor.hpp"
 
 StageActor::StageActor()
@@ -14,8 +15,6 @@ StageActor::~StageActor()
 	this->activeCollider.unlink();
 }
 
-void func_ov000_020aba48(CollisionMgr *);
-void func_0201d794(PlatformMgr *);
 bool StageActor::preUpdate()
 {
 	this->empty = false;

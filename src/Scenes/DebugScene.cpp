@@ -1,4 +1,5 @@
 #include "DebugScene.hpp"
+#include <nsmb/arm9/symbols.hpp>
 
 struct SomethingElse {
 	char *a;
@@ -75,7 +76,7 @@ s32 DebugScene::onDestroy()
 	u16 a[1];
 	FS::Cache::clear();
 	a[0] = 0;
-	Nitro_::func_02063af0(a, 0, 2);
+	NDS::Graphics::uploadMainBackgroundPalette(a, 0, 2);
 	return true;
 }
 
@@ -454,11 +455,9 @@ void DebugScene::func_ov002_020cc514()
 	// };
 	// extern Somettting data_ov002_020cd114;
 
-	extern u32 func_0200696c__(u32, u16, u8, u8, u8, u32, u32, u32, u32, u8, u8, u8, u8, u8, u8, u8, u32);
 	func_0200696c__(0xd, 0, this->_1dc, this->_1e0, this->_1e4, 0, r6, r5, r4, data_ov002_020cd300, this->_1e8, data_ov002_020cd114[this->_1ec], this->_1f0, this->_20c, this->_210, this->_220, ~0);
 
 	u32 data_02088e04 = 0;
-	extern Save save;
 	switch (this->_22c) {
 	case 0:
 		save.game.mapEntities[0][0].node = 0xff;
@@ -483,7 +482,6 @@ void DebugScene::func_ov002_020cc514()
 	func_02011e3c(0x1e);
 }
 
-void func_020131fc(u32, u32);
 void DebugScene::func_ov002_020cc328()
 {
 	u16 local_console_id = Input::localConsoleID;
@@ -554,5 +552,3 @@ void DebugScene::func_ov002_020cc328()
 DebugScene::~DebugScene()
 {
 }
-
-
