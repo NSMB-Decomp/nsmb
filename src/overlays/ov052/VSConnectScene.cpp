@@ -395,27 +395,20 @@ void VSConnectScene::updateSearchSM()
 	BOOL invalidConnection;
 	BOOL invalidState;
 	NicknameInfo *nickname;
-	if (Input::consoleKeys[Input::localConsoleID][0] & 2)
-		goto cancel;
-	connected = BOOL(data_0208b4f0 != 0 && data_0208b4ec != 0);
-	if (connected != FALSE) {
-		if (Layout::bnbl[1]->getBox(data_0208b4e8, data_0208b4f4) == 2)
-			goto cancel;
+	if ((Input::consoleKeys[Input::localConsoleID][0] & 2) ||
+			((connected = BOOL(data_0208b4f0 != 0 && data_0208b4ec != 0)) != FALSE &&
+			Layout::bnbl[1]->getBox(data_0208b4e8, data_0208b4f4) == 2)) {
+		specialMode = 1;
+		buttons[2].click();
+		scheduleSubMenuChange(&charSelectSM, 0x1e, true);
+		searchType = 3;
+		hasParentBssid = 0;
+		_164 = 0;
+		func_0200f3d8();
+		func_02017a80(&primaryText);
+		return;
 	}
-	goto normal;
 
-cancel:
-	specialMode = 1;
-	buttons[2].click();
-	scheduleSubMenuChange(&charSelectSM, 0x1e, true);
-	searchType = 3;
-	hasParentBssid = 0;
-	_164 = 0;
-	func_0200f3d8();
-	func_02017a80(&primaryText);
-	return;
-
-normal:
 	if (subMenuState == 0) {
 		invalidConnection = false;
 		invalidState = false;
