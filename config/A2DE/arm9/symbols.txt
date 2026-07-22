@@ -1,7 +1,10 @@
+OVERLAY_10_ID kind:label(arm) addr:0x0000000a
+OVERLAY_11_ID kind:label(arm) addr:0x0000000b
 OVERLAY_20_ID kind:label(arm) addr:0x00000014
 OVERLAY_22_ID kind:label(arm) addr:0x00000016
 OVERLAY_32_ID kind:label(arm) addr:0x00000020
 OVERLAY_42_ID kind:label(arm) addr:0x0000002a
+OVERLAY_52_ID kind:label(arm) addr:0x00000034
 OVERLAY_53_ID kind:label(arm) addr:0x00000035
 HuffUnCompReadByCallback kind:function(thumb,size=0x4) addr:0x02000074
 LZ77UnCompReadNormalWrite8bit kind:function(thumb,size=0x4) addr:0x020000e2
@@ -29,10 +32,10 @@ AutoloadCallback kind:function(arm,size=0x4) addr:0x02000a58
 Nitro::func_02000a5c kind:function(arm,size=0xe8) addr:0x02000a5c
 Nitro::func_02000b44 kind:function(arm,size=0x4) addr:0x02000b44
 BuildInfo kind:data(any) addr:0x02000b48
-Wifi::func_02001000 kind:function(arm,size=0x2c) addr:0x02001000
-Wifi::func_0200102c kind:function(arm,size=0x24) addr:0x0200102c
-Wifi::func_02001050 kind:function(arm,size=0x58) addr:0x02001050
-Wifi::func_020010a8 kind:function(arm,size=0x40) addr:0x020010a8
+_ZN4Wifi13func_02001000Ev kind:function(arm,size=0x2c) addr:0x02001000
+_ZN4Wifi13func_0200102cEl kind:function(arm,size=0x24) addr:0x0200102c
+_ZN4Wifi13func_02001050El kind:function(arm,size=0x58) addr:0x02001050
+_ZN4Wifi13func_020010a8Ev kind:function(arm,size=0x40) addr:0x020010a8
 Wifi::func_020010e8 kind:function(arm,size=0xb0) addr:0x020010e8
 Wifi::func_02001198 kind:function(arm,size=0xd8) addr:0x02001198
 Wifi::func_02001270 kind:function(arm,size=0x158) addr:0x02001270
@@ -534,7 +537,7 @@ func_02011b64 kind:function(arm,size=0x20) addr:0x02011b64
 func_02011b84 kind:function(arm,size=0x74) addr:0x02011b84
 func_02011bf8 kind:function(arm,size=0x3c) addr:0x02011bf8
 func_02011c34 kind:function(arm,size=0x30) addr:0x02011c34
-func_02011c64 kind:function(arm,size=0x20) addr:0x02011c64
+_Z13func_02011c64v kind:function(arm,size=0x20) addr:0x02011c64
 func_02011c84 kind:function(arm,size=0x60) addr:0x02011c84
 func_02011ce4 kind:function(arm,size=0x40) addr:0x02011ce4
 func_02011d24 kind:function(arm,size=0x1c) addr:0x02011d24

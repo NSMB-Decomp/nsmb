@@ -16,3 +16,6 @@ src/Scenes/MPLevelSelectSceneData.cpp:
 
 src/Scenes/MPLevelSelectSceneSetup.cpp:
     .text       start:0x02152840 end:0x02152cbc
+
+src/Scenes/VSConnectScene.cpp:
+    .text       start:0x021570b0 end:0x021594c4

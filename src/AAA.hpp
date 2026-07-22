@@ -516,9 +516,9 @@ struct IDK {
 };
 
 void func_0201325c();
-u32 func_02006674(u32);
+extern "C" u32 func_02006674(u32);
 void func_02011c34(u32);
-u32 func_02004cb8(u32, u32, u32, u32, u32);
+extern "C" u32 func_02004cb8(u32, u32, u32, u32, u32);
 u8 data_ov001_020cebc0;
 u32 data_ov001_020cd144;
 u32 data_ov001_020cd934;
@@ -534,8 +534,8 @@ void func_0200a42c(u32, u32);
 void func_0200a3d0(u32, u32);
 u32 func_02011e7c(u32, u32);
 void func_02012290(u32, u32);
-	void func_0200917c(u32, u32);
-	void func_ov052_021535a0();
+	extern "C" void func_0200917c(u32, u32);
+	extern "C" void func_ov052_021535a0();
 	void func_020125c4();
 	void func_02011c64();
 	u32 func_020090f8(u32);
