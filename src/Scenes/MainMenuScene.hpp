@@ -140,6 +140,11 @@ extern "C" void func_ov009_020d25bc(MainMenuScene *scene);
 extern "C" void func_ov009_020d1490(MainMenuScene *scene);
 extern "C" void func_ov009_020d2c04(MainMenuScene *scene);
 extern "C" void func_ov009_020d0210(MainMenuScene *scene);
+extern "C" void func_ov009_020d2d74(MainMenuScene *scene);
+extern "C" void func_ov009_020d2f2c(MainMenuScene *scene);
+extern "C" void func_ov009_020d2690(MainMenuScene *scene);
+extern "C" void func_ov009_020cffb4(MainMenuScene *scene);
+extern "C" void func_ov009_020d00cc(MainMenuScene *scene);
 
 extern "C" void func_ov009_020cd9ac(TitleScreenCutscene *cutscene);
 extern "C" void func_ov009_020cd9bc(TitleScreenCutscene *cutscene);
