@@ -805,15 +805,15 @@ from:0x020d3808 kind:arm_call to:0x02018104 module:main
 from:0x020d3810 kind:arm_call to:0x020ce64c module:overlay(9)
 from:0x020d3818 kind:arm_call to:0x020137b8 module:main
 from:0x020d3820 kind:arm_call to:0x0204cc7c module:autoload(2)
-from:0x020d3830 kind:load to:0x020daa94 module:overlay(9)
+from:0x020d3830 kind:load to:0x020daa8c add:0x8 module:overlay(9)
 from:0x020d384c kind:arm_call to:0x02018104 module:main
 from:0x020d3854 kind:arm_call to:0x020ce64c module:overlay(9)
 from:0x020d385c kind:arm_call to:0x020137b8 module:main
-from:0x020d386c kind:load to:0x020daa94 module:overlay(9)
+from:0x020d386c kind:load to:0x020daa8c add:0x8 module:overlay(9)
 from:0x020d3878 kind:arm_call to:0x02013b2c module:main
 from:0x020d3888 kind:arm_call to:0x020ce698 module:overlay(9)
 from:0x020d3894 kind:arm_call to:0x02018114 module:main
-from:0x020d38a0 kind:load to:0x020daa94 module:overlay(9)
+from:0x020d38a0 kind:load to:0x020daa8c add:0x8 module:overlay(9)
 from:0x020d38b4 kind:arm_call to:0x0204cc98 module:autoload(2)
 from:0x020d38c4 kind:arm_call to:0x020d3870 module:overlay(9)
 from:0x020d3914 kind:arm_call to:0x0204d23c module:autoload(2)

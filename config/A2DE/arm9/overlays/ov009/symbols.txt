@@ -179,10 +179,10 @@ func_ov009_020d305c kind:function(arm,size=0x1a0) addr:0x020d305c
 func_ov009_020d31fc kind:function(arm,size=0x68) addr:0x020d31fc
 func_ov009_020d3264 kind:function(arm,size=0x30) addr:0x020d3264
 func_ov009_020d3294 kind:function(arm,size=0x108) addr:0x020d3294
-func_ov009_020d339c kind:function(arm,size=0x104) addr:0x020d339c
+_ZN13MainMenuScene8onUpdateEv kind:function(arm,size=0x104) addr:0x020d339c
 func_ov009_020d34a0 kind:function(arm,size=0x8c) addr:0x020d34a0
-func_ov009_020d352c kind:function(arm,size=0x10) addr:0x020d352c
-func_ov009_020d353c kind:function(arm,size=0x34) addr:0x020d353c
+_ZN13MainMenuScene14pendingDestroyEv kind:function(arm,size=0x10) addr:0x020d352c
+_ZN13MainMenuScene9onDestroyEv kind:function(arm,size=0x34) addr:0x020d353c
 _ZN13MainMenuScene8onCreateEv kind:function(arm,size=0x280) addr:0x020d3570
 _ZN13MainMenuSceneD0Ev kind:function(arm,size=0x44) addr:0x020d37f0
 _ZN13MainMenuSceneD1Ev kind:function(arm,size=0x3c) addr:0x020d3834
@@ -583,7 +583,7 @@ data_ov009_020daa34 kind:data(any) addr:0x020daa34
 data_ov009_020daa44 kind:data(any) addr:0x020daa44
 data_ov009_020daa54 kind:data(any) addr:0x020daa54
 data_ov009_020daa6c kind:data(any) addr:0x020daa6c
-_ZTV13MainMenuScene kind:data(any) addr:0x020daa94
+_ZTV13MainMenuScene kind:data(any) addr:0x020daa8c
 UnknownProfile::ov009_020daadc kind:data(any) addr:0x020daadc
 UnknownVtable::ov009_020daaec kind:data(any) addr:0x020daaec
 UnknownVtable::ov009_020dab3c kind:data(any) addr:0x020dab3c

@@ -17,13 +17,22 @@ struct SaveState {
 	u32 currentWorld;
 };
 
+class TitleScreenCutscene;
+extern "C" void func_ov009_020ce698(TitleScreenCutscene *cutscene);
+extern "C" void func_ov009_020ce64c(TitleScreenCutscene *cutscene);
+
 class TitleScreenCutscene
 {
       public:
 	u8 _pad[0x908];
-	TitleScreenCutscene();
-	~TitleScreenCutscene();
-	void func_ov009_020cd994();
+	inline TitleScreenCutscene()
+	{
+		func_ov009_020ce698(this);
+	}
+	inline ~TitleScreenCutscene()
+	{
+		func_ov009_020ce64c(this);
+	}
 };
 class MainMenuScene : public Scene
 {
@@ -76,9 +85,13 @@ class MainMenuScene : public Scene
 	TextLabel label;
 
 	MainMenuScene();
+	inline ~MainMenuScene();
 	void *create();
 	s32 onCreate();
+	s32 onDestroy();
+	s32 onUpdate();
 	s32 onRender();
+	void pendingDestroy();
 
 	u8 func_ov009_020ce8d8();
 	i32 func_ov009_020ce944(i32);
@@ -94,24 +107,124 @@ class MainMenuScene : public Scene
 	void onRender_4();
 };
 
+union MainMenuStateHandler {
+	struct {
+		void (*function)(MainMenuScene *);
+		s32 adjustment;
+	} parts;
+	void (MainMenuScene::*member)();
+};
+NTR_SIZE_GUARD(MainMenuStateHandler, 8);
+
+extern "C" MainMenuScene *_ZN13MainMenuSceneC2Ev(MainMenuScene *scene);
+
+extern MainMenuStateHandler data_ov009_020dbc04[7];
+extern u32 data_ov009_020dbb9c;
+extern MainMenuStateHandler data_ov009_020da82c;
+extern MainMenuStateHandler data_ov009_020da834;
+extern MainMenuStateHandler data_ov009_020da83c;
+extern MainMenuStateHandler data_ov009_020da844;
+extern MainMenuStateHandler data_ov009_020da84c;
+extern MainMenuStateHandler data_ov009_020da854;
+extern MainMenuStateHandler data_ov009_020da85c;
+extern MainMenuStateHandler data_ov009_020dbcb4[14];
+extern u32 data_ov009_020dbb90;
+extern MainMenuStateHandler data_ov009_020da874;
+extern MainMenuStateHandler data_ov009_020da87c;
+extern MainMenuStateHandler data_ov009_020da884;
+extern MainMenuStateHandler data_ov009_020da88c;
+extern MainMenuStateHandler data_ov009_020da894;
+extern MainMenuStateHandler data_ov009_020da89c;
+extern MainMenuStateHandler data_ov009_020da8a4;
+extern MainMenuStateHandler data_ov009_020da8ac;
+extern MainMenuStateHandler data_ov009_020da8b4;
+extern MainMenuStateHandler data_ov009_020da8bc;
+extern MainMenuStateHandler data_ov009_020da8c4;
+extern MainMenuStateHandler data_ov009_020da8cc;
+extern MainMenuStateHandler data_ov009_020da8d4;
+extern MainMenuStateHandler data_ov009_020da8dc;
+extern MainMenuStateHandler data_ov009_020dbda4[21];
+extern u32 data_ov009_020dbb8c;
+extern MainMenuStateHandler data_ov009_020da99c;
+extern MainMenuStateHandler data_ov009_020da93c;
+extern MainMenuStateHandler data_ov009_020da94c;
+extern MainMenuStateHandler data_ov009_020da984;
+extern MainMenuStateHandler data_ov009_020da97c;
+extern MainMenuStateHandler data_ov009_020da76c;
+extern MainMenuStateHandler data_ov009_020da974;
+extern MainMenuStateHandler data_ov009_020da684;
+extern MainMenuStateHandler data_ov009_020da95c;
+extern MainMenuStateHandler data_ov009_020da77c;
+extern MainMenuStateHandler data_ov009_020da964;
+extern MainMenuStateHandler data_ov009_020da944;
+extern MainMenuStateHandler data_ov009_020da764;
+extern MainMenuStateHandler data_ov009_020da934;
+extern MainMenuStateHandler data_ov009_020da75c;
+extern MainMenuStateHandler data_ov009_020da924;
+extern MainMenuStateHandler data_ov009_020da754;
+extern MainMenuStateHandler data_ov009_020da914;
+extern MainMenuStateHandler data_ov009_020da74c;
+extern MainMenuStateHandler data_ov009_020da904;
+extern MainMenuStateHandler data_ov009_020da744;
+extern MainMenuStateHandler data_ov009_020dbc74[8];
+extern u32 data_ov009_020dbb98;
+extern MainMenuStateHandler data_ov009_020da634;
+extern MainMenuStateHandler data_ov009_020da694;
+extern MainMenuStateHandler data_ov009_020da9dc;
+extern MainMenuStateHandler data_ov009_020da9d4;
+extern MainMenuStateHandler data_ov009_020da9cc;
+extern MainMenuStateHandler data_ov009_020da9c4;
+extern MainMenuStateHandler data_ov009_020da9bc;
+extern MainMenuStateHandler data_ov009_020da9b4;
+extern MainMenuStateHandler data_ov009_020dbc3c[7];
+extern u32 data_ov009_020dbba4;
+extern MainMenuStateHandler data_ov009_020da994;
+extern MainMenuStateHandler data_ov009_020da6cc;
+extern MainMenuStateHandler data_ov009_020da79c;
+extern MainMenuStateHandler data_ov009_020da654;
+extern MainMenuStateHandler data_ov009_020da7ac;
+extern MainMenuStateHandler data_ov009_020da7b4;
+extern MainMenuStateHandler data_ov009_020da7c4;
+extern MainMenuStateHandler data_ov009_020dbbdc[5];
+extern u32 data_ov009_020dbba0;
+extern MainMenuStateHandler data_ov009_020da7a4;
+extern MainMenuStateHandler data_ov009_020da8ec;
+extern MainMenuStateHandler data_ov009_020da6c4;
+extern MainMenuStateHandler data_ov009_020da63c;
+extern MainMenuStateHandler data_ov009_020da6ac;
+extern MainMenuStateHandler data_ov009_020dbbb4[5];
+extern u32 data_ov009_020dbb94;
+extern MainMenuStateHandler data_ov009_020da66c;
+extern MainMenuStateHandler data_ov009_020da6bc;
+extern MainMenuStateHandler data_ov009_020da78c;
+extern MainMenuStateHandler data_ov009_020da7fc;
+extern MainMenuStateHandler data_ov009_020da7f4;
+
 extern "C" void func_ov009_020cf950(MainMenuScene *scene);
 extern "C" void func_ov009_020cf984(MainMenuScene *scene);
 extern "C" void func_ov009_020cf9b0(MainMenuScene *scene);
+extern "C" void func_ov009_020cf9e0(MainMenuScene *scene);
 extern "C" void func_ov009_020d2fec(MainMenuScene *scene);
 extern "C" void func_ov009_020d3008(MainMenuScene *scene);
 extern "C" void func_ov009_020d302c(MainMenuScene *scene);
-extern "C" void func_ov009_020d352c(MainMenuScene *scene);
-extern "C" s32 func_ov009_020d353c(MainMenuScene *scene);
+extern "C" void func_ov009_020d305c(MainMenuScene *scene);
+extern "C" void func_ov009_020d31fc(MainMenuScene *scene);
+extern "C" void func_ov009_020d3294(MainMenuScene *scene);
 extern "C" void func_ov009_020d0674(MainMenuScene *scene);
 extern "C" void func_ov009_020d08e0(MainMenuScene *scene);
 extern "C" void func_ov009_020d0900(MainMenuScene *scene);
+extern "C" void func_ov009_020d0924(MainMenuScene *scene);
 extern "C" void func_ov009_020d1afc(MainMenuScene *scene);
+extern "C" void func_ov009_020d1c50(MainMenuScene *scene);
 extern "C" void func_ov009_020d1f0c(MainMenuScene *scene);
 extern "C" void func_ov009_020d1f3c(MainMenuScene *scene);
+extern "C" void func_ov009_020d1f64(MainMenuScene *scene);
 extern "C" void func_ov009_020d3264(MainMenuScene *scene);
 extern "C" void func_ov009_020d0624(MainMenuScene *scene, s32 offset);
 extern "C" void func_ov009_020d06a4(MainMenuScene *scene);
+extern "C" void func_ov009_020d0700(MainMenuScene *scene);
 extern "C" void func_ov009_020d0b20(MainMenuScene *scene);
+extern "C" void func_ov009_020d0c20(MainMenuScene *scene);
 extern "C" void func_ov009_020d1378(MainMenuScene *scene);
 extern "C" void func_ov009_020d13c4(MainMenuScene *scene);
 extern "C" void func_ov009_020d1830(MainMenuScene *scene);
@@ -125,6 +238,7 @@ extern "C" void func_ov009_020d10a8(MainMenuScene *scene);
 extern "C" void func_ov009_020d17b8(MainMenuScene *scene);
 extern "C" void func_ov009_020d1a94(MainMenuScene *scene);
 extern "C" void func_ov009_020d2160(MainMenuScene *scene);
+extern "C" void func_ov009_020d11a4(MainMenuScene *scene);
 extern "C" void func_ov009_020d018c(MainMenuScene *scene);
 extern "C" void func_ov009_020d1120(MainMenuScene *scene);
 extern "C" void func_ov009_020d1b2c(MainMenuScene *scene);
@@ -132,6 +246,7 @@ extern "C" void func_ov009_020d1dec(MainMenuScene *scene);
 extern "C" void func_ov009_020cf8a4(MainMenuScene *scene);
 extern "C" void func_ov009_020d0b80(MainMenuScene *scene);
 extern "C" void func_ov009_020d0e94(MainMenuScene *scene);
+extern "C" void func_ov009_020d0f38(MainMenuScene *scene);
 extern "C" void func_ov009_020d1e6c(MainMenuScene *scene);
 extern "C" void func_ov009_020d0dd8(MainMenuScene *scene);
 extern "C" void func_ov009_020d1bb0(MainMenuScene *scene);
@@ -141,26 +256,45 @@ extern "C" void func_ov009_020d1490(MainMenuScene *scene);
 extern "C" void func_ov009_020d2c04(MainMenuScene *scene);
 extern "C" void func_ov009_020d0210(MainMenuScene *scene);
 extern "C" void func_ov009_020d2d74(MainMenuScene *scene);
+extern "C" void func_ov009_020d2e0c(MainMenuScene *scene);
 extern "C" void func_ov009_020d2f2c(MainMenuScene *scene);
 extern "C" void func_ov009_020d2690(MainMenuScene *scene);
 extern "C" void func_ov009_020cffb4(MainMenuScene *scene);
 extern "C" void func_ov009_020d00cc(MainMenuScene *scene);
 extern "C" void func_ov009_020cfcf0(MainMenuScene *scene);
+extern "C" void func_ov009_020cfd88(MainMenuScene *scene);
+extern "C" void func_ov009_020cfe44(MainMenuScene *scene);
+extern "C" void func_ov009_020d0338(MainMenuScene *scene);
 extern "C" void func_ov009_020d0478(MainMenuScene *scene);
 extern "C" void func_ov009_020d054c(MainMenuScene *scene);
 
 extern "C" void func_ov009_020cd9ac(TitleScreenCutscene *cutscene);
 extern "C" void func_ov009_020cd9bc(TitleScreenCutscene *cutscene);
+extern "C" void func_ov009_020cd884(TitleScreenCutscene *cutscene);
+extern "C" void func_ov009_020cd994(TitleScreenCutscene *cutscene);
+extern "C" void func_ov009_020ce35c(TitleScreenCutscene *cutscene,
+	MainMenuScene *scene);
 extern "C" void func_ov009_020ce7a4(MainMenuScene *scene);
 extern "C" void func_ov009_020d34a0(MainMenuScene *scene);
 extern "C" void func_ov009_020d1408(MainMenuScene *scene, s32 offset);
+extern "C" void func_ov009_020d1568(MainMenuScene *scene);
+extern "C" void func_ov009_020d16b0(MainMenuScene *scene);
 extern "C" void func_ov009_020d21c0(MainMenuScene *scene);
+extern "C" void func_ov009_020d2288(MainMenuScene *scene);
 extern "C" void func_ov009_020ce744(MainMenuScene *scene);
+extern "C" s32 func_ov009_020ce6f0(MainMenuScene *scene);
+extern "C" void func_ov009_020ce7b4(MainMenuScene *scene, u8 previousState,
+	u8 state, u8 previousButton, u8 button, s32 distance);
 extern "C" void func_ov009_020d1864(MainMenuScene *scene);
+extern "C" void func_ov009_020d18bc(MainMenuScene *scene);
 extern "C" void func_ov009_020d278c(MainMenuScene *scene);
+extern "C" void func_ov009_020d28ac(MainMenuScene *scene);
 extern "C" void func_ov009_020d2cd8(MainMenuScene *scene);
+extern "C" s32 func_ov009_020ce6c4(MainMenuScene *scene);
 extern "C" u8 func_ov009_020ce824(MainMenuScene *scene, s32 buttonID);
 extern "C" i32 func_ov009_020ce944(MainMenuScene *scene, s32 fileID);
+extern "C" u8 func_ov009_020ce8d8(MainMenuScene *scene);
+extern "C" u8 func_ov009_020ce86c(MainMenuScene *scene);
 extern "C" void func_ov009_020cea44(MainMenuScene *scene, s32 value);
 extern "C" void func_ov009_020cea8c(MainMenuScene *scene);
 extern "C" void func_ov009_020ceaec(MainMenuScene *scene, s32 fileID, s32 value);
