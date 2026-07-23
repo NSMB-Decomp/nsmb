@@ -9,7 +9,7 @@ struct TitleScreenButton {
 };
 typedef enum SaveStateFlag { Empty = 1, Saved = 2, StoryCompleted = 4, StandardLevelsCompleted = 8, GameCompleted = 16 } SaveStateFlag;
 struct SaveState {
-	SaveStateFlag flags;
+	u32 flags;
 	u32 lives;
 	u32 coins;
 	u32 score;
@@ -125,6 +125,14 @@ extern "C" void func_ov009_020d10a8(MainMenuScene *scene);
 extern "C" void func_ov009_020d17b8(MainMenuScene *scene);
 extern "C" void func_ov009_020d1a94(MainMenuScene *scene);
 extern "C" void func_ov009_020d2160(MainMenuScene *scene);
+extern "C" void func_ov009_020d018c(MainMenuScene *scene);
+extern "C" void func_ov009_020d1120(MainMenuScene *scene);
+extern "C" void func_ov009_020d1b2c(MainMenuScene *scene);
+extern "C" void func_ov009_020d1dec(MainMenuScene *scene);
+extern "C" void func_ov009_020cf8a4(MainMenuScene *scene);
+extern "C" void func_ov009_020d0b80(MainMenuScene *scene);
+extern "C" void func_ov009_020d0e94(MainMenuScene *scene);
+extern "C" void func_ov009_020d1e6c(MainMenuScene *scene);
 
 extern "C" void func_ov009_020cd9ac(TitleScreenCutscene *cutscene);
 extern "C" void func_ov009_020cd9bc(TitleScreenCutscene *cutscene);
