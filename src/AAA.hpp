@@ -174,6 +174,12 @@ void func_ov001_020cceb4();
 class Fader
 {
       public:
+	enum FadingType {
+		FadeOnly,
+		StaticMask,
+		FadeMask
+	};
+
 	u8 _pad0[0x5a4];
 	i32 targetBrightness;
 	u32 fadingMode;
@@ -191,7 +197,7 @@ class Fader
 	Fader();
 
 	bool isComplete();
-	u32 setupSceneFading(u32, bool, bool);
+	void setupSceneFading(FadingType, bool, bool);
 	void func_02007e34(u32, u32);
 	void func_02007cf8(u32, u32);
 	bool fadedOut();
@@ -521,9 +527,7 @@ struct IDK {
 	u32 field15_0x30;
 };
 
-void func_0201325c();
 extern "C" u32 func_02006674(u32);
-void func_02011c34(u32);
 extern "C" u32 func_02004cb8(u32, u32, u32, u32, u32);
 u8 data_ov001_020cebc0;
 u32 data_ov001_020cd144;

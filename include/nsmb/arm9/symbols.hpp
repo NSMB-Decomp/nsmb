@@ -4,6 +4,7 @@
 
 struct NicknameInfo;
 class PlayerBase;
+struct MinigamesSave;
 
 struct PlayerControlState
 {
@@ -30,6 +31,8 @@ extern u32 data_02085a9c;
 extern u32 data_02085acc;
 extern u32 data_02085a8c;
 extern u32 data_02085c28;
+extern u32 data_0203996c;
+extern MinigamesSave data_02088e24;
 extern u8 data_02085e30[];
 extern u8 data_02086a30[];
 extern u8 data_020887f0;

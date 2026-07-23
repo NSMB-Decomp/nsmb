@@ -537,7 +537,7 @@ namespace App {
 
 	}
 
-	void initBoot(u32) {
+	void initBoot() {
 
 		BOOL multiboot = Wifi::isMultiBootChild();
 		if (multiboot) {

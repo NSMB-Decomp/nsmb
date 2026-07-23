@@ -60,7 +60,7 @@ bool Scene::preCreate()
 		return false;
 	}
 	if (this->object_id != 0) {
-		GlobalFader.setupSceneFading(0, 0, 1);
+		GlobalFader.setupSceneFading(Fader::FadeOnly, 0, 1);
 	}
 	this->wifiIconOBJIndex = 0x1fc;
 	this->wifiIconOBJPalette = 0xf;

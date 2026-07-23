@@ -24,7 +24,7 @@ u32 ConnectScene::func_020037e4(u32) {
 
 u32 data_0208ae58;
 void ConnectScene::func_020037b4() {
-	App::initBoot(0x0);
+	rcast<void (*)(u32)>(&App::initBoot)(0);
 	ConnectScene::func_020037e4(0x0);
 	data_0208ae58 = 0x1;
 }

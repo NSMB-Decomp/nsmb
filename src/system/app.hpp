@@ -140,7 +140,7 @@ namespace App {
 
 	void initFileCount(BOOL multiboot);
 
-	void initBoot(u32);
+	void initBoot();
 
 	void resetVram();
 
