@@ -1,4 +1,5 @@
 #include "manhole.hpp"
+#include <nsmb/file_ids.hpp>
 #include "../graphics/3d/util.hpp"
 #include "player/PlayerActor.hpp"
 
@@ -80,7 +81,7 @@ s32 Manhole::onDestroy()
 
 bool Manhole::onPrepareResources()
 {
-	void *modelBMD = FS::Cache::getFile(1549 - 131);
+	void *modelBMD = FS::Cache::getFile(NSMB_FILE_ID_enemy_m_hole_nsbmd);
 
 	return model.create(modelBMD, 0, 0) != false;
 }
@@ -347,7 +348,7 @@ Manhole::CollisionKind Manhole::getPlatformCollision()
 
 bool Manhole::loadResources()
 {
-	FS::Cache::loadFile(1549 - 131, false);
+	FS::Cache::loadFile(NSMB_FILE_ID_enemy_m_hole_nsbmd, false);
 
 	return true;
 }

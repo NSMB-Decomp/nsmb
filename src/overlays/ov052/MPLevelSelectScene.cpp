@@ -55,6 +55,8 @@ u32 data_ov052_0215b7d8[] = {
 };
 u32 data_ov052_0215b7ec[] = { 18, 19, 20, 21, 22, 23, 24, 25 };
 
+#include <nsmb/file_ids.hpp>
+
 namespace Object_4 {
 	ObjectProfile profile = {
 		MPLevelSelectScene::create,
@@ -71,50 +73,74 @@ void *MPLevelSelectScene::create()
 void MPLevelSelectScene::func_ov052_02155cf8()
 {
 	void *uVar1 = NDS::Graphics::mainBackground2Tiles();
-	FS::loadFileLZ77(0xc90d, uVar1);
+	FS::loadFileLZ77(0xc900 | NSMB_NARC_FILE_ID_ARCHIVE_Dat_2D_Dat_part_2D_UI_O_2P_game_in_d_ncg_bin, uVar1);
 	uVar1 = NDS::Graphics::subBackground1Tiles();
-	FS::loadFileLZ77(0xc90d, uVar1);
-	FS::loadFileLZ77(0xc920, (void *)0x6600000);
+	FS::loadFileLZ77(0xc900 | NSMB_NARC_FILE_ID_ARCHIVE_Dat_2D_Dat_part_2D_UI_O_2P_game_in_d_ncg_bin, uVar1);
+	FS::loadFileLZ77(
+		0xc900
+		+ NSMB_NARC_FILE_COUNT_ARCHIVE_Dat_2D
+		- NSMB_FILE_ID_uiStudio_UI_O_2P_game_in_d_bnbl
+		+ NSMB_FILE_ID_uiStudio_UI_O_2P_game_in_u_ncg_bin,
+		(void *)0x6600000
+	);
 }
 
 void MPLevelSelectScene::func_ov052_02155c9c()
 {
 	// TODO, these are paletes, how best to define them?
-	FS::loadFileLZ77(0xc90e, (void *)0x05000000);
-	FS::loadFileLZ77(0xc910, (void *)0x05000200);
+	FS::loadFileLZ77(0xc900 | NSMB_NARC_FILE_ID_ARCHIVE_Dat_2D_Dat_part_2D_UI_O_2P_game_in_u_bncl, (void *)0x05000000);
+	FS::loadFileLZ77(0xc900 | NSMB_NARC_FILE_ID_ARCHIVE_Dat_2D_Dat_part_2D_d_2d_A_J_jyotyu_B_ncl_bin, (void *)0x05000200);
 	NDS::Memory::copyFast((void *)0x05000000, (void *)0x05000400, 0xe0);
 	NDS::Memory::copyFast((void *)0x05000200, (void *)0x05000600, 0x1a0);
 }
 
 void MPLevelSelectScene::func_ov052_02155ba8()
 {
-	FS::loadFileLZ77(0xc916, (void *)NDS::Graphics::mainBackground2Map());
-	FS::loadFileLZ77(0xc90c, (void *)NDS::Graphics::mainBackground3Map());
-	FS::loadFileLZ77(0xc913, NDS::Graphics::subBackground0Map());
-	tilesetData = FS::Cache::loadFile(0xc912, true);
-	tilesetSize = func_02009acc(0xc912);
+	FS::loadFileLZ77(0xc900 | NSMB_NARC_FILE_ID_ARCHIVE_Dat_2D_Dat_part_2D_d_2d_UI_O_2P_game_in_VSmap_d_nsc_bin, (void *)NDS::Graphics::mainBackground2Map());
+	FS::loadFileLZ77(0xc900 | NSMB_NARC_FILE_ID_ARCHIVE_Dat_2D_Dat_part_2D_UI_O_2P_game_in_d_bncl, (void *)NDS::Graphics::mainBackground3Map());
+	FS::loadFileLZ77(0xc900 | NSMB_NARC_FILE_ID_ARCHIVE_Dat_2D_Dat_part_2D_d_2d_A_J_jyotyu_W_ncl_bin, NDS::Graphics::subBackground0Map());
+	tilesetData = FS::Cache::loadFile(0xc900 | NSMB_NARC_FILE_ID_ARCHIVE_Dat_2D_Dat_part_2D_d_2d_A_J_jyotyu_R_ncl_bin, true);
+	tilesetSize = func_02009acc(0xc900 | NSMB_NARC_FILE_ID_ARCHIVE_Dat_2D_Dat_part_2D_d_2d_A_J_jyotyu_R_ncl_bin);
 	NDS::Memory::copy8(
 		tilesetData,
 		(void *)NDS::Graphics::subBackground1Map(),
 		tilesetSize
 	);
-	FS::loadFileLZ77(0xc915, (void *)(NDS::Graphics::subBackground1Map() + 0x800));
+	FS::loadFileLZ77(0xc900 | NSMB_NARC_FILE_ID_ARCHIVE_Dat_2D_Dat_part_2D_d_2d_UI_O_2P_course_in_demo_o_u_ncl_bin, (void *)(NDS::Graphics::subBackground1Map() + 0x800));
 	NDS::Memory::fill8((void *)(NDS::Graphics::subBackground1Map() + 0x1000), 0, 0x1000);
-	FS::loadFileLZ77(0xc911, (void *)NDS::Graphics::subBackground2Map());
-	FS::loadFileLZ77(0xc914, (void *)(NDS::Graphics::subBackground2Map() + 0x800));
+	FS::loadFileLZ77(0xc900 | NSMB_NARC_FILE_ID_ARCHIVE_Dat_2D_Dat_part_2D_d_2d_A_J_jyotyu_F_ncl_bin, (void *)NDS::Graphics::subBackground2Map());
+	FS::loadFileLZ77(0xc900 | NSMB_NARC_FILE_ID_ARCHIVE_Dat_2D_Dat_part_2D_d_2d_A_J_jyotyu_ncl_bin, (void *)(NDS::Graphics::subBackground2Map() + 0x800));
 	NDS::Memory::fill8((void *)(NDS::Graphics::subBackground2Map() + 0x1000), 0, 0x1000);
-	FS::loadFileLZ77(0xc90f, (void *)NDS::Graphics::subBackground3Map());
+	FS::loadFileLZ77(0xc900 | NSMB_NARC_FILE_ID_ARCHIVE_Dat_2D_Dat_part_2D_UI_O_2P_game_in_u_ncg_bin, (void *)NDS::Graphics::subBackground3Map());
 }
 
 void MPLevelSelectScene::func_ov052_02155b00() {
   if ((this->state == 0) || (this->state == 0x10)) {
-    void* uVar1 = FS::Cache::loadFile(0xc91c, false);
-    void* uVar2 = FS::Cache::loadFile(0xc91d, false);
+    void* uVar1 = FS::Cache::loadFile(0xc900 + NSMB_NARC_FILE_COUNT_ARCHIVE_Dat_2D, false);
+    void* uVar2 = FS::Cache::loadFile(
+		0xc900
+		+ NSMB_NARC_FILE_COUNT_ARCHIVE_Dat_2D
+		- NSMB_FILE_ID_uiStudio_UI_O_2P_game_in_d_bnbl
+		+ NSMB_FILE_ID_uiStudio_UI_O_2P_game_in_d_bncl,
+		false
+	);
     Layout::initSub((void *)nullptr,uVar2,uVar1);
   }
   else {
-    void* uVar1 = FS::Cache::loadFile(0xc91e, false);
-    void* uVar2 = FS::Cache::loadFile(0xc91f, false);
+    void* uVar1 = FS::Cache::loadFile(
+		0xc900
+		+ NSMB_NARC_FILE_COUNT_ARCHIVE_Dat_2D
+		- NSMB_FILE_ID_uiStudio_UI_O_2P_game_in_d_bnbl
+		+ NSMB_FILE_ID_uiStudio_UI_O_2P_game_in_d_ncg_bin,
+		false
+	);
+    void* uVar2 = FS::Cache::loadFile(
+		0xc900
+		+ NSMB_NARC_FILE_COUNT_ARCHIVE_Dat_2D
+		- NSMB_FILE_ID_uiStudio_UI_O_2P_game_in_d_bnbl
+		+ NSMB_FILE_ID_uiStudio_UI_O_2P_game_in_u_bncl,
+		false
+	);
     Layout::initSub((void *)nullptr, uVar2,uVar1);
   }
   this->subCellData = (u32)Layout::bncl[1] + 8;

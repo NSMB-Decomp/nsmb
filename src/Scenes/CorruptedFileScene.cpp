@@ -1,4 +1,5 @@
 #include "CorruptedFileScene.hpp"
+#include <nsmb/file_ids.hpp>
 #include <nsmb/arm9/symbols.hpp>
 
 const u32 data_ov005_020ccd18[4] = {
@@ -65,11 +66,7 @@ s32 CorruptedFileScene::onCreate() {
 	func_0200b87c();
 	data_02087700 = 0;
 	func_0200b83c(0);
-#if defined(VER_A2DJ)
-	func_02009a30(0x75d,0,1);
-#else
-	func_02009a30(0x75c,0,1);
-#endif
+	func_02009a30(NSMB_FILE_ID_uiStudio_d_2d_UI_O_1P_gameover_demo_o_u_ncl_bin,0,1);
 	u32 scriptFileID = func_02017190(2);
 	this->bmg = FS::loadExtFile(scriptFileID);
 	this->_64.func_020144a8();
@@ -210,4 +207,3 @@ void CorruptedFileScene::func_ov005_020cc2e0() {
 	u32 b = this->_f0 + this->_64.func_020141b8() - 3;
 	this->_64.func_020141c0(b);
 }
-

@@ -1,9 +1,6 @@
 #include "playermodel.hpp"
 #include "../AAA.hpp"
-
-enum {
-	pl_map_file_id = 1894 - 131
-};
+#include <nsmb/file_ids.hpp>
 
 enum pl_map {
 	pl_map_run,
@@ -44,17 +41,17 @@ const WmPlayerModel::Config WmPlayerModel::configTbl[P_MAX] = {
 
 const WmPlayerModel::Anim WmPlayerModel::animTbl[A_MAX] = {
 	// Wait
-	{ pl_map_file_id, pl_map_small_wait, _FixedFlt(1.0), FrameCtrl::Looping,  10, 0 },
+	{ NSMB_FILE_ID_player_pl_map_LZ_bin, pl_map_small_wait, _FixedFlt(1.0), FrameCtrl::Looping,  10, 0 },
 	// Walk
-	{ pl_map_file_id, pl_map_walk,       _FixedFlt(1.0), FrameCtrl::Looping,  5,  0 },
+	{ NSMB_FILE_ID_player_pl_map_LZ_bin, pl_map_walk,       _FixedFlt(1.0), FrameCtrl::Looping,  5,  0 },
 	// Run
-	{ pl_map_file_id, pl_map_run,        _FixedFlt(1.0), FrameCtrl::Looping,  5,  0 },
+	{ NSMB_FILE_ID_player_pl_map_LZ_bin, pl_map_run,        _FixedFlt(1.0), FrameCtrl::Looping,  5,  0 },
 	// PipePose
-	{ pl_map_file_id, pl_map_pipe_pose,  _FixedFlt(1.0), FrameCtrl::Looping,  0,  0 },
+	{ NSMB_FILE_ID_player_pl_map_LZ_bin, pl_map_pipe_pose,  _FixedFlt(1.0), FrameCtrl::Looping,  0,  0 },
 	// CourseIn
-	{ pl_map_file_id, pl_map_course_in,  _FixedFlt(1.0), FrameCtrl::Standard, 0,  0 },
+	{ NSMB_FILE_ID_player_pl_map_LZ_bin, pl_map_course_in,  _FixedFlt(1.0), FrameCtrl::Standard, 0,  0 },
 	// CoinComp
-	{ pl_map_file_id, pl_map_coin_comp,  _FixedFlt(1.0), FrameCtrl::Standard, 0,  0 }
+	{ NSMB_FILE_ID_player_pl_map_LZ_bin, pl_map_coin_comp,  _FixedFlt(1.0), FrameCtrl::Standard, 0,  0 }
 };
 
 
@@ -65,7 +62,7 @@ WmPlayerModel::~WmPlayerModel() {}
 
 bool WmPlayerModel::create(u8 playerID, u8 powerup, u32 animID) {
 
-	if (!model.create(playerID, pl_map_file_id))
+	if (!model.create(playerID, NSMB_FILE_ID_player_pl_map_LZ_bin))
 		return false;
 
 	this->playerID = playerID;

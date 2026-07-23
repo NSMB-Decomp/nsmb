@@ -2,6 +2,7 @@
 #include <nsmb/arm9/symbols.hpp>
 #include <nsmb/overlays/ov052/dependencies.hpp>
 #include <nsmb/overlays/ov052/symbols.hpp>
+#include <nsmb/file_ids.hpp>
 
 class Overlay52Scene : public Scene {
 	public:
@@ -67,9 +68,25 @@ s32 func_ov052_021529b4(Overlay52Scene *scene)
 	NDS::Graphics::uploadMainBackgroundPalette(data_ov052_0215c880, 0, 2);
 	NDS::Graphics::uploadSubBackgroundPalette((u32)data_ov052_0215c880, 0, 2);
 	data_02085e0c = 1;
-	Layout::bncl[0] = (BNCL *)FS::Cache::loadFile(0xc00a078e, false);
-	FS::loadFileLZ77(0xc009078d, (void *)0x06400000);
-	func_02009a30(0xc015075e, 0, 1);
+	Layout::bncl[0] = (BNCL *)FS::Cache::loadFile(
+		0xc0000000
+		| (NSMB_NARC_FILE_ID_ARCHIVE_Dat_2D_Dat_part_2D_UI_O_2P_course_in_demo_u_bncl << 16)
+		| NSMB_FILE_ID_uiStudio_UI_O_2P_course_in_demo_u_bncl,
+		false
+	);
+	FS::loadFileLZ77(
+		0xc0000000
+		| (NSMB_NARC_FILE_ID_ARCHIVE_Dat_2D_Dat_part_2D_UI_O_2P_course_in_demo_o_u_ncg_bin << 16)
+		| NSMB_FILE_ID_uiStudio_UI_O_2P_course_in_demo_o_u_ncg_bin,
+		(void *)0x06400000
+	);
+	func_02009a30(
+		0xc0000000
+		| (NSMB_NARC_FILE_ID_ARCHIVE_Dat_2D_Dat_part_2D_d_2d_UI_O_2P_course_in_demo_o_u_ncl_bin << 16)
+		| NSMB_FILE_ID_uiStudio_d_2d_UI_O_2P_course_in_demo_o_u_ncl_bin,
+		0,
+		1
+	);
 	NDS::Graphics::assignSubObjectBank(0x100);
 	NDS::Graphics::setSubDisplayMode(0);
 

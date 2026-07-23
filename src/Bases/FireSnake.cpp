@@ -1,4 +1,5 @@
 #include "FireSnake.hpp"
+#include <nsmb/file_ids.hpp>
 
 FireSnake::FireSnake()
 {
@@ -18,9 +19,9 @@ void *FireSnake::create_unused()
 }
 
 bool FireSnake::loadResources() {
-	FS::Cache::loadFile(0x4fe, 0x0);
-	FS::Cache::loadFile(0x4ff, 0x0);
-	FS::Cache::loadFile(0x4fc, 0x0);
-	FS::Cache::loadFile(0x4fd, 0x0);
+	FS::Cache::loadFile(NSMB_FILE_ID_enemy_f_snake_nsbmd, 0x0);
+	FS::Cache::loadFile(NSMB_FILE_ID_enemy_f_snake_nsbtp, 0x0);
+	FS::Cache::loadFile(NSMB_FILE_ID_enemy_f_body_nsbmd, 0x0);
+	FS::Cache::loadFile(NSMB_FILE_ID_enemy_f_body_nsbtp, 0x0);
 	return true;
 }

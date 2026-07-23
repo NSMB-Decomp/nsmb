@@ -5,6 +5,7 @@
 #include <nsmb/overlays/ov011/symbols.hpp>
 #include <nsmb/overlays/ov052/dependencies.hpp>
 #include <nsmb/overlays/ov052/symbols.hpp>
+#include <nsmb/file_ids.hpp>
 
 struct NicknameInfo
 {
@@ -54,13 +55,13 @@ s32 VSConnectScene::onCreate()
 	REG_DISPCNT = (REG_DISPCNT & 0xffcfffef) | 0x00200010;
 	vu16 *bg3Main = (vu16 *)0x0400000e;
 	*bg3Main = (*bg3Main & 0x43) | 0x108;
-	FS::loadFileLZ77(0x75f, (void *)NDS::Graphics::mainBackground3Tiles());
-	FS::loadFileLZ77(0x761, (void *)NDS::Graphics::mainBackground3Map());
-	FS::loadFileLZ77(0x760, (void *)0x05000000);
+	FS::loadFileLZ77(NSMB_FILE_ID_uiStudio_d_2d_UI_O_2P_game_boot_b_d_ncg_bin, (void *)NDS::Graphics::mainBackground3Tiles());
+	FS::loadFileLZ77(NSMB_FILE_ID_uiStudio_d_2d_UI_O_2P_game_boot_b_u_nsc_bin, (void *)NDS::Graphics::mainBackground3Map());
+	FS::loadFileLZ77(NSMB_FILE_ID_uiStudio_d_2d_UI_O_2P_game_boot_b_d_ncl_bin, (void *)0x05000000);
 	func_0200b87c();
 	data_02087700 = 0;
 	func_0200b83c(0);
-	FS::loadFileLZ77(0x763, (void *)0x05000200);
+	FS::loadFileLZ77(NSMB_FILE_ID_uiStudio_d_2d_UI_O_2P_game_boot_o_ud_ncl_bin, (void *)0x05000200);
 	data_02085a88 = 0x18;
 	*bg3Main = (*bg3Main & ~3) | 3;
 	*(vu32 *)0x0400001c = 0;
@@ -71,13 +72,13 @@ s32 VSConnectScene::onCreate()
 
 	vu16 *bg3Sub = (vu16 *)0x0400100e;
 	*bg3Sub = (*bg3Sub & 0x43) | 0xd00;
-	FS::loadFileLZ77(0x75f, (void *)NDS::Graphics::subBackground3Tiles());
-	FS::loadFileLZ77(0x762, (void *)NDS::Graphics::subBackground3Map());
-	FS::loadFileLZ77(0x760, (void *)0x05000400);
-	FS::loadFileLZ77(0x78f, (void *)0x06600000);
+	FS::loadFileLZ77(NSMB_FILE_ID_uiStudio_d_2d_UI_O_2P_game_boot_b_d_ncg_bin, (void *)NDS::Graphics::subBackground3Tiles());
+	FS::loadFileLZ77(NSMB_FILE_ID_uiStudio_d_2d_UI_O_2P_game_boot_kabe_b_d_nsc_bin, (void *)NDS::Graphics::subBackground3Map());
+	FS::loadFileLZ77(NSMB_FILE_ID_uiStudio_d_2d_UI_O_2P_game_boot_b_d_ncl_bin, (void *)0x05000400);
+	FS::loadFileLZ77(NSMB_FILE_ID_uiStudio_UI_O_2P_game_boot_o_d_ncg_bin, (void *)0x06600000);
 	func_ov000_020bd604();
 	REG_DISPCNT_SUB = (REG_DISPCNT_SUB & 0xffcfffef) | 0x10;
-	FS::loadFileLZ77(0x763, (void *)0x05000600);
+	FS::loadFileLZ77(NSMB_FILE_ID_uiStudio_d_2d_UI_O_2P_game_boot_o_ud_ncl_bin, (void *)0x05000600);
 	*bg3Sub = (*bg3Sub & ~3) | 3;
 	*(vu32 *)0x0400101c = 0;
 	*bg3Sub &= ~0x40;
@@ -197,8 +198,8 @@ void VSConnectScene::changeSubMenu(SubMenu *subMenu)
 
 void VSConnectScene::createSelectModeSM()
 {
-	void *bnbl = FS::Cache::loadFile(0x790, false);
-	void *bncl = FS::Cache::loadFile(0x791, false);
+	void *bnbl = FS::Cache::loadFile(NSMB_FILE_ID_uiStudio_UI_O_2P_game_boot_select01_d_bnbl, false);
+	void *bncl = FS::Cache::loadFile(NSMB_FILE_ID_uiStudio_UI_O_2P_game_boot_select01_d_bncl, false);
 	Layout::initSub((void *)0, bncl, bnbl);
 	REG_DISPCNT = (REG_DISPCNT & ~0x1f00) | (data_02085a88 << 8);
 	REG_DISPCNT_SUB = (REG_DISPCNT_SUB & ~0x1f00) | 0x1800;
@@ -284,8 +285,8 @@ void VSConnectScene::renderSelectModeSM()
 
 void VSConnectScene::createCharSelectSM()
 {
-	void *bnbl = FS::Cache::loadFile(0x792, false);
-	void *bncl = FS::Cache::loadFile(0x793, false);
+	void *bnbl = FS::Cache::loadFile(NSMB_FILE_ID_uiStudio_UI_O_2P_game_boot_select02_d_bnbl, false);
+	void *bncl = FS::Cache::loadFile(NSMB_FILE_ID_uiStudio_UI_O_2P_game_boot_select02_d_bncl, false);
 	Layout::initSub((void *)0, bncl, bnbl);
 	REG_DISPCNT = (REG_DISPCNT & ~0x1f00) | (data_02085a88 << 8);
 	REG_DISPCNT_SUB = (REG_DISPCNT_SUB & ~0x1f00) | 0x1800;
