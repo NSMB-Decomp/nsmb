@@ -23,6 +23,65 @@ CPP_KEYWORDS = {
     "xor", "xor_eq",
 }
 
+# A2DE's FS archive table at 0x0203A6C0 assigns each mounted archive a
+# 0x100-file page. The final entry is a sentinel, and the two None entries are
+# embedded archives that do not have NitroFS NARC files to inspect here.
+MOUNTED_ARCHIVE_ORDER = (
+    "Dat_2D",
+    "Dat_Basement",
+    "Dat_Field",
+    "Dat_Fort",
+    "Dat_Ice",
+    "Dat_Init",
+    "Dat_Pipe",
+    "Dat_enemy",
+    None,
+    "menu_title",
+    None,
+    "ARC0",
+    "bomthrow",
+    "card",
+    "casino",
+    "flower_yoshi",
+    "hanasagase",
+    "jump",
+    "luigi_model_mg",
+    "mario_model_mg",
+    "mg_common",
+    "mg_entry",
+    "mg_flower",
+    "mg_luigi",
+    "mg_menu_common",
+    "mg_teresa",
+    "mg_trampoline",
+    "mgvs_common",
+    "p_heyho",
+    "pachinko",
+    "pazzle_panel",
+    "snowball",
+    "snowwar",
+    "tranpu",
+    "vs_amida",
+    "vs_balloon_fight",
+    "vs_escape",
+    "vs_flower",
+    "vs_mogura",
+    "vs_pachinko",
+    "vs_riversi",
+    "vs_snowball",
+    "vs_step_on",
+    "vs_tamaire",
+    "vs_teresa",
+    "vs_wrecking_crew",
+    "wrecking_crew",
+)
+
+MOUNTED_ARCHIVE_STARTS = {
+    name: 0xC000 + slot * 0x100
+    for slot, name in enumerate(MOUNTED_ARCHIVE_ORDER)
+    if name is not None
+}
+
 
 def read_u16(data: bytes, offset: int) -> int:
     return struct.unpack_from("<H", data, offset)[0]
@@ -172,7 +231,7 @@ def read_rom_files(
 
 
 def path_identifier(path: str) -> str:
-    return "_".join(identifier(part, "part_") for part in path.split("/"))
+    return identifier(path.replace("/", "_"), "part_")
 
 
 def render_header(
@@ -188,6 +247,11 @@ def render_header(
         f"// Source ROM: {rom_name}; NitroFS first file ID: {first_file_id}.",
         "// Macros are intentional: MWCC ARM 1.2sp3 then sees only integer",
         "// literals, preserving its private-symbol numbering and exact output.",
+        "",
+        "#define NSMB_FID(name) NSMB_FID_##name",
+        "#define NSMB_ARC_FID(name) NSMB_ARC_FID_##name",
+        "#define NSMB_VS_FID(fid, arcFid) \\",
+        "    ((NSMB_ARC_FID(arcFid) << 16) | NSMB_FID(fid))",
         "",
     ]
 
@@ -205,7 +269,7 @@ def render_header(
 
     for file_id, path in files:
         add_macro(
-            "NSMB_FILE_ID_" + path_identifier(path),
+            "NSMB_FID_" + path_identifier(path),
             file_id - first_file_id,
             path,
         )
@@ -214,18 +278,22 @@ def render_header(
     for archive_path, archive_files in sorted(archives):
         archive_base = str(Path(archive_path).with_suffix(""))
         archive_identifier = path_identifier(archive_base)
+        archive_name = Path(archive_base).name
+        archive_start = MOUNTED_ARCHIVE_STARTS.get(archive_name)
+        if archive_start is None:
+            raise ValueError(
+                f"{archive_path!r} has no A2DE mounted archive range"
+            )
         add_macro(
-            "NSMB_NARC_FILE_COUNT_" + archive_identifier,
+            "NSMB_ARC_FILE_COUNT_" + archive_identifier,
             len(archive_files),
             archive_path,
         )
         for file_id, path in archive_files:
             add_macro(
-                "NSMB_NARC_FILE_ID_"
-                + archive_identifier
-                + "_"
+                "NSMB_ARC_FID_"
                 + path_identifier(path),
-                file_id,
+                archive_start + file_id,
                 f"{archive_path}:{path}",
             )
 

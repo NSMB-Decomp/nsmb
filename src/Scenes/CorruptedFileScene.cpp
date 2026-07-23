@@ -66,7 +66,7 @@ s32 CorruptedFileScene::onCreate() {
 	func_0200b87c();
 	data_02087700 = 0;
 	func_0200b83c(0);
-	func_02009a30(NSMB_FILE_ID_uiStudio_d_2d_UI_O_1P_gameover_demo_o_u_ncl_bin,0,1);
+	func_02009a30(NSMB_FID(uiStudio_d_2d_UI_O_1P_gameover_demo_o_u_ncl_bin),0,1);
 	u32 scriptFileID = func_02017190(2);
 	this->bmg = FS::loadExtFile(scriptFileID);
 	this->_64.func_020144a8();

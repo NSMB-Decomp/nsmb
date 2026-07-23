@@ -8,8 +8,8 @@ u32 WmEntityModel::subAnimTbl[2];
 u32 WmEntityModel::mainAnimTbl[WM::ET_MAX][2];
 
 WmEntityModel::FileInfo WmEntityModel::fileInfo[WM::ET_MAX] = {
-	{ NSMB_FILE_ID_enemy_hammer_bros_nsbmd, NSMB_FILE_ID_enemy_hammer_bros_nsbca }, // HammerBro
-	{ NSMB_FILE_ID_enemy_pata_block_nsbmd,  NSMB_FILE_ID_map_map_swing_nsbca     }  // FlyingBlock
+	{ NSMB_FID(enemy_hammer_bros_nsbmd), NSMB_FID(enemy_hammer_bros_nsbca) }, // HammerBro
+	{ NSMB_FID(enemy_pata_block_nsbmd),  NSMB_FID(map_map_swing_nsbca)     }  // FlyingBlock
 };
 
 
@@ -27,24 +27,24 @@ bool WmEntityModel::create(u32 type) {
 
 	if (type == ET_HammerBro) {
 
-		modelFile = FS::Cache::getFile(NSMB_FILE_ID_map_hammer_map_nsbmd);
+		modelFile = FS::Cache::getFile(NSMB_FID(map_hammer_map_nsbmd));
 		if (!subModel.create(modelFile, 0, 0))
 			return false;
 
 	} else if (type == ET_FlyingBlock) {
 
-		animFile = FS::Cache::getFile(NSMB_FILE_ID_enemy_pata_block_nsbtp);
+		animFile = FS::Cache::getFile(NSMB_FID(enemy_pata_block_nsbtp));
 		if (!anim.createCtrl(&model.drawable, animFile, 0, model.texture))
 			return false;
 
 		// Set flying ? block color to red
 		anim.setFrame(1);
 
-		modelFile = FS::Cache::getFile(NSMB_FILE_ID_map_map_shadow_nsbmd);
+		modelFile = FS::Cache::getFile(NSMB_FID(map_map_shadow_nsbmd));
 		if (!subModel.create(modelFile, 0, 0))
 			return false;
 
-		animFile = FS::Cache::getFile(NSMB_FILE_ID_map_map_shadow_nsbca);
+		animFile = FS::Cache::getFile(NSMB_FID(map_map_shadow_nsbca));
 		if (!subAnim.createCtrl(&subModel.drawable, animFile, 0, nullptr))
 			return false;
 
@@ -124,7 +124,7 @@ void WmEntityModel::init(u32 animID) {
 
 bool WmEntityModel::loadResources() {
 
-	void* modelFile = FS::Cache::loadFile(NSMB_FILE_ID_enemy_hammer_bros_nsbmd, false);
+	void* modelFile = FS::Cache::loadFile(NSMB_FID(enemy_hammer_bros_nsbmd), false);
 	if (modelFile != nullptr) {
 		Ns3dModelList* modelList = Ns_3dGetModelList(scast<Ns3dFileHeader*>(modelFile));
 		Ns3dModelData* modelData = Ns_3dGetModel(modelList, 0);
@@ -133,13 +133,13 @@ bool WmEntityModel::loadResources() {
 		paletteBase = matData->paletteParam;
 	}
 
-	FS::Cache::loadFile(NSMB_FILE_ID_enemy_hammer_bros_nsbca, false);
-	FS::Cache::loadFile(NSMB_FILE_ID_map_hammer_map_nsbmd, false);
-	FS::Cache::loadFile(NSMB_FILE_ID_enemy_pata_block_nsbmd, false);
-	FS::Cache::loadFile(NSMB_FILE_ID_enemy_pata_block_nsbtp, false);
-	FS::Cache::loadFile(NSMB_FILE_ID_map_map_swing_nsbca, false);
-	FS::Cache::loadFile(NSMB_FILE_ID_map_map_shadow_nsbmd, false);
-	FS::Cache::loadFile(NSMB_FILE_ID_map_map_shadow_nsbca, false);
+	FS::Cache::loadFile(NSMB_FID(enemy_hammer_bros_nsbca), false);
+	FS::Cache::loadFile(NSMB_FID(map_hammer_map_nsbmd), false);
+	FS::Cache::loadFile(NSMB_FID(enemy_pata_block_nsbmd), false);
+	FS::Cache::loadFile(NSMB_FID(enemy_pata_block_nsbtp), false);
+	FS::Cache::loadFile(NSMB_FID(map_map_swing_nsbca), false);
+	FS::Cache::loadFile(NSMB_FID(map_map_shadow_nsbmd), false);
+	FS::Cache::loadFile(NSMB_FID(map_map_shadow_nsbca), false);
 
 	return true;
 

@@ -139,17 +139,17 @@ void TitleScreenScene::loadMainMenuGraphics()
 {
 	NDS::Memory::clearFast(0xc0, 0x07000400, 0x400);
 	void *buttonHitboxes = FS::Cache::loadFile(
-		NSMB_FILE_ID_uiStudio_UI_O_menu_title_d_bnbl, false);
+		NSMB_FID(uiStudio_UI_O_menu_title_d_bnbl), false);
 	void *buttonCells = FS::Cache::loadFile(
-		NSMB_FILE_ID_uiStudio_UI_O_menu_title_d_bncl, false);
+		NSMB_FID(uiStudio_UI_O_menu_title_d_bncl), false);
 	Layout::initSub(0, buttonCells, buttonHitboxes);
 
 	NDS::Graphics::setSubObjectTileMapping2D();
 	FS::loadFileLZ77(
-		NSMB_FILE_ID_uiStudio_UI_O_menu_title_o_d_ncg_bin,
+		NSMB_FID(uiStudio_UI_O_menu_title_o_d_ncg_bin),
 		(void *)0x06600000);
 	FS::loadFileLZ77(
-		NSMB_FILE_ID_uiStudio_d_2d_UI_O_menu_title_o_d_ncl_bin,
+		NSMB_FID(uiStudio_d_2d_UI_O_menu_title_o_d_ncl_bin),
 		(void *)0x05000600);
 }
 
@@ -339,17 +339,17 @@ void TitleScreenScene::loadFileSelectGraphics()
 {
 	NDS::Memory::clearFast(0xc0, 0x07000400, 0x400);
 	void *buttonHitboxes = FS::Cache::loadFile(
-		NSMB_FILE_ID_uiStudio_UI_O_menu_select_d_bnbl, false);
+		NSMB_FID(uiStudio_UI_O_menu_select_d_bnbl), false);
 	void *buttonCells = FS::Cache::loadFile(
-		NSMB_FILE_ID_uiStudio_UI_O_menu_select_d_bncl, false);
+		NSMB_FID(uiStudio_UI_O_menu_select_d_bncl), false);
 	Layout::initSub(0, buttonCells, buttonHitboxes);
 
 	NDS::Graphics::setSubObjectTileMapping1D32K();
 	FS::loadFileLZ77(
-		NSMB_FILE_ID_uiStudio_UI_O_menu_select_o_d_ncg_bin,
+		NSMB_FID(uiStudio_UI_O_menu_select_o_d_ncg_bin),
 		(void *)0x06600000);
 	FS::loadFileLZ77(
-		NSMB_FILE_ID_uiStudio_d_2d_UI_O_menu_select_o_d_ncl_bin,
+		NSMB_FID(uiStudio_d_2d_UI_O_menu_select_o_d_ncl_bin),
 		(void *)0x05000600);
 	func_ov000_020bd604();
 }
@@ -1868,17 +1868,17 @@ void TitleScreenScene::updateOptions()
 void TitleScreenScene::initializeOptions()
 {
 	void *buttonHitboxes = FS::Cache::loadFile(
-		NSMB_FILE_ID_uiStudio_UI_O_menu_option_d_bnbl, false);
+		NSMB_FID(uiStudio_UI_O_menu_option_d_bnbl), false);
 	void *buttonCells = FS::Cache::loadFile(
-		NSMB_FILE_ID_uiStudio_UI_O_menu_option_d_bncl, false);
+		NSMB_FID(uiStudio_UI_O_menu_option_d_bncl), false);
 	Layout::initSub(0, buttonCells, buttonHitboxes);
 
 	NDS::Graphics::setSubObjectTileMapping1D32K();
 	FS::loadFileLZ77(
-		NSMB_FILE_ID_uiStudio_UI_O_menu_option_o_d_ncg_bin,
+		NSMB_FID(uiStudio_UI_O_menu_option_o_d_ncg_bin),
 		(void *)0x06600000);
 	FS::loadFileLZ77(
-		NSMB_FILE_ID_uiStudio_d_2d_UI_O_menu_option_o_d_ncl_bin,
+		NSMB_FID(uiStudio_d_2d_UI_O_menu_option_o_d_ncl_bin),
 		(void *)0x05000600);
 
 	this->stateID = OptionsState_Enter;

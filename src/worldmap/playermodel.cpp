@@ -41,17 +41,17 @@ const WmPlayerModel::Config WmPlayerModel::configTbl[P_MAX] = {
 
 const WmPlayerModel::Anim WmPlayerModel::animTbl[A_MAX] = {
 	// Wait
-	{ NSMB_FILE_ID_player_pl_map_LZ_bin, pl_map_small_wait, _FixedFlt(1.0), FrameCtrl::Looping,  10, 0 },
+	{ NSMB_FID(player_pl_map_LZ_bin), pl_map_small_wait, _FixedFlt(1.0), FrameCtrl::Looping,  10, 0 },
 	// Walk
-	{ NSMB_FILE_ID_player_pl_map_LZ_bin, pl_map_walk,       _FixedFlt(1.0), FrameCtrl::Looping,  5,  0 },
+	{ NSMB_FID(player_pl_map_LZ_bin), pl_map_walk,       _FixedFlt(1.0), FrameCtrl::Looping,  5,  0 },
 	// Run
-	{ NSMB_FILE_ID_player_pl_map_LZ_bin, pl_map_run,        _FixedFlt(1.0), FrameCtrl::Looping,  5,  0 },
+	{ NSMB_FID(player_pl_map_LZ_bin), pl_map_run,        _FixedFlt(1.0), FrameCtrl::Looping,  5,  0 },
 	// PipePose
-	{ NSMB_FILE_ID_player_pl_map_LZ_bin, pl_map_pipe_pose,  _FixedFlt(1.0), FrameCtrl::Looping,  0,  0 },
+	{ NSMB_FID(player_pl_map_LZ_bin), pl_map_pipe_pose,  _FixedFlt(1.0), FrameCtrl::Looping,  0,  0 },
 	// CourseIn
-	{ NSMB_FILE_ID_player_pl_map_LZ_bin, pl_map_course_in,  _FixedFlt(1.0), FrameCtrl::Standard, 0,  0 },
+	{ NSMB_FID(player_pl_map_LZ_bin), pl_map_course_in,  _FixedFlt(1.0), FrameCtrl::Standard, 0,  0 },
 	// CoinComp
-	{ NSMB_FILE_ID_player_pl_map_LZ_bin, pl_map_coin_comp,  _FixedFlt(1.0), FrameCtrl::Standard, 0,  0 }
+	{ NSMB_FID(player_pl_map_LZ_bin), pl_map_coin_comp,  _FixedFlt(1.0), FrameCtrl::Standard, 0,  0 }
 };
 
 
@@ -62,7 +62,7 @@ WmPlayerModel::~WmPlayerModel() {}
 
 bool WmPlayerModel::create(u8 playerID, u8 powerup, u32 animID) {
 
-	if (!model.create(playerID, NSMB_FILE_ID_player_pl_map_LZ_bin))
+	if (!model.create(playerID, NSMB_FID(player_pl_map_LZ_bin)))
 		return false;
 
 	this->playerID = playerID;

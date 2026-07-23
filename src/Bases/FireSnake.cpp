@@ -19,9 +19,9 @@ void *FireSnake::create_unused()
 }
 
 bool FireSnake::loadResources() {
-	FS::Cache::loadFile(NSMB_FILE_ID_enemy_f_snake_nsbmd, 0x0);
-	FS::Cache::loadFile(NSMB_FILE_ID_enemy_f_snake_nsbtp, 0x0);
-	FS::Cache::loadFile(NSMB_FILE_ID_enemy_f_body_nsbmd, 0x0);
-	FS::Cache::loadFile(NSMB_FILE_ID_enemy_f_body_nsbtp, 0x0);
+	FS::Cache::loadFile(NSMB_FID(enemy_f_snake_nsbmd), 0x0);
+	FS::Cache::loadFile(NSMB_FID(enemy_f_snake_nsbtp), 0x0);
+	FS::Cache::loadFile(NSMB_FID(enemy_f_body_nsbmd), 0x0);
+	FS::Cache::loadFile(NSMB_FID(enemy_f_body_nsbtp), 0x0);
 	return true;
 }

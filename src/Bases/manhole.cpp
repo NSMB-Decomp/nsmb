@@ -81,7 +81,7 @@ s32 Manhole::onDestroy()
 
 bool Manhole::onPrepareResources()
 {
-	void *modelBMD = FS::Cache::getFile(NSMB_FILE_ID_enemy_m_hole_nsbmd);
+	void *modelBMD = FS::Cache::getFile(NSMB_FID(enemy_m_hole_nsbmd));
 
 	return model.create(modelBMD, 0, 0) != false;
 }
@@ -348,7 +348,7 @@ Manhole::CollisionKind Manhole::getPlatformCollision()
 
 bool Manhole::loadResources()
 {
-	FS::Cache::loadFile(NSMB_FILE_ID_enemy_m_hole_nsbmd, false);
+	FS::Cache::loadFile(NSMB_FID(enemy_m_hole_nsbmd), false);
 
 	return true;
 }
