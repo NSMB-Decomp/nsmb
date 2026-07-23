@@ -1009,6 +1009,77 @@ extern "C" void func_ov009_020d00cc(MainMenuScene *scene)
 	scene->fileConfirmRequest = true;
 }
 
+extern "C" void func_ov009_020cfcf0(MainMenuScene *scene)
+{
+	if (scene->stateTimer != 0) {
+		scene->stateTimer--;
+	} else {
+		scene->stateID = 2;
+		scene->button2Offset = 0;
+	}
+
+	if (scene->stateTimer < 3) {
+		scene->button1Offset = 0;
+		scene->button2Offset = (scene->stateTimer * 80) / 3;
+	} else {
+		scene->button1Offset = ((scene->stateTimer - 3) * 320) / 12;
+	}
+
+	scene->optionsOKButtonOffset = (scene->button1Offset + scene->button2Offset) >> 2;
+}
+
+extern "C" void func_ov009_020d0478(MainMenuScene *scene)
+{
+	if (scene->buttonAnimTimer == 0) {
+		if (func_02012ee0(scene->fileEraseFile, &save) == 0) {
+			Scene::switchToCorruptedSave(16);
+			scene->fileOperationFailed = true;
+		}
+
+		if (data_0203bd30 != 11) {
+			scene->stateID = 13;
+			func_ov009_020ce7a4(scene);
+			if (data_0203bd30 == 11) {
+				Scene::switchToCorruptedSave(16);
+				scene->fileOperationFailed = true;
+			}
+		}
+
+		scene->fileCopiedTimer = 24;
+		App::finishWritingSave();
+		data_02088f30 = 1;
+		func_02012398(0x115, 0);
+	} else {
+		func_ov009_020d054c(scene);
+		scene->buttonAnimTimer--;
+	}
+}
+
+extern "C" void func_ov009_020d054c(MainMenuScene *scene)
+{
+	if (scene->fileCopiedTimer != 0) {
+		scene->fileCopiedTimer--;
+		if (scene->fileCopiedTimer > 12) {
+			scene->guiTimer = ((24 - scene->fileCopiedTimer) << 6) / 12;
+			scene->buttonHitTimer = scene->guiTimer;
+		} else {
+			scene->guiTimer = (scene->fileCopiedTimer << 6) / 12;
+		}
+
+		if (scene->fileCopiedTimer == 12) {
+			u32 value = 8;
+			func_02017bc4(&scene->label, &value, 0, 0);
+			scene->fileConfirmRequest = false;
+		}
+
+		s32 guiTimer = scene->guiTimer;
+		scene->label.buttonPositions[0].x = 0;
+		scene->label.buttonPositions[0].y = -guiTimer;
+	}
+
+	func_02012314(0x114, 0);
+}
+
 extern "C" void func_ov009_020d1408(MainMenuScene *scene, s32 offset)
 {
 	s32 buttonID = scene->fileCopyCurrentButton;

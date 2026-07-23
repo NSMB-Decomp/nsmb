@@ -145,6 +145,9 @@ extern "C" void func_ov009_020d2f2c(MainMenuScene *scene);
 extern "C" void func_ov009_020d2690(MainMenuScene *scene);
 extern "C" void func_ov009_020cffb4(MainMenuScene *scene);
 extern "C" void func_ov009_020d00cc(MainMenuScene *scene);
+extern "C" void func_ov009_020cfcf0(MainMenuScene *scene);
+extern "C" void func_ov009_020d0478(MainMenuScene *scene);
+extern "C" void func_ov009_020d054c(MainMenuScene *scene);
 
 extern "C" void func_ov009_020cd9ac(TitleScreenCutscene *cutscene);
 extern "C" void func_ov009_020cd9bc(TitleScreenCutscene *cutscene);
