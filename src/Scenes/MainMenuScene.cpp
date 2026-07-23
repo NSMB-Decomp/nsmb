@@ -717,6 +717,187 @@ extern "C" void func_ov009_020d1e6c(MainMenuScene *scene)
 	scene->stateTimer = 12;
 }
 
+extern "C" void func_ov009_020d0dd8(MainMenuScene *scene)
+{
+	if (scene->stateTimer < 12) {
+		scene->stateTimer++;
+		scene->guiTimer = (scene->stateTimer << 6) / 12;
+		scene->buttonHitTimer = scene->guiTimer;
+		s32 guiTimer = scene->guiTimer;
+		scene->label.buttonPositions[0].x = 0;
+		scene->label.buttonPositions[0].y = -guiTimer;
+		return;
+	}
+
+	scene->fileConfirmRequest = false;
+	scene->guiTimer = 64;
+	u32 value = 2;
+	func_02017bc4(&scene->label, &value, 0, -scene->guiTimer);
+	scene->stateID = 6;
+	scene->fileSelectionCompleted = false;
+	scene->buttonsTimer = scene->guiTimer;
+}
+
+extern "C" void func_ov009_020d1bb0(MainMenuScene *scene)
+{
+	if (scene->stateTimer == 0) {
+		scene->stateID = 5;
+		scene->guiTimer = 0;
+	} else {
+		scene->stateTimer--;
+		scene->guiTimer = (scene->stateTimer << 6) / 12;
+	}
+
+	s32 guiTimer = scene->guiTimer;
+	scene->label.buttonPositions[0].x = 0;
+	scene->label.buttonPositions[0].y = -guiTimer;
+	scene->fileSelectFileButtons[scene->fileCopyIgnoredFile].posX =
+		(scene->stateTimer * 320) / 12;
+	scene->buttonsTimer = scene->guiTimer;
+}
+
+extern "C" void func_ov009_020d24ec(MainMenuScene *scene)
+{
+	if (scene->stateTimer < 12) {
+		scene->stateTimer++;
+		scene->guiTimer = (scene->stateTimer << 6) / 12;
+		scene->buttonHitTimer = scene->guiTimer;
+		s32 guiTimer = scene->guiTimer;
+		scene->label.buttonPositions[0].x = 0;
+		scene->label.buttonPositions[0].y = -guiTimer;
+		return;
+	}
+
+	switch (scene->fileSelectCurrentButton) {
+	case 3:
+		scene->menuID = 2;
+		scene->stateID = 0;
+		func_ov009_020d21c0(scene);
+		return;
+	case 4:
+		scene->menuID = 3;
+		scene->stateID = 0;
+		func_ov009_020d0b80(scene);
+		return;
+	default:
+		scene->menuID = 2;
+		scene->stateID = 0;
+		func_ov009_020d21c0(scene);
+		return;
+	}
+}
+
+extern "C" void func_ov009_020d25bc(MainMenuScene *scene)
+{
+	if (scene->stateTimer < 16) {
+		scene->stateTimer++;
+		s32 fileID = 0;
+		s32 delay = 0;
+		for (; fileID < 3; fileID++) {
+			scene->fileSelectFileButtons[fileID].posX =
+				((scene->stateTimer - delay) * 320) / 12;
+			delay += 2;
+			if (scene->fileSelectFileButtons[fileID].posX < 0)
+				scene->fileSelectFileButtons[fileID].posX = 0;
+		}
+
+		scene->guiTimer = (scene->stateTimer << 6) / 12;
+		scene->buttonsTimer = scene->guiTimer;
+		scene->buttonHitTimer = scene->guiTimer;
+		s32 guiTimer = scene->guiTimer;
+		scene->label.buttonPositions[0].x = 0;
+		scene->label.buttonPositions[0].y = -guiTimer;
+		return;
+	}
+
+	scene->menuID = 0;
+	scene->stateID = 0;
+}
+
+extern "C" void func_ov009_020d1490(MainMenuScene *scene)
+{
+	if (scene->stateTimer < 14) {
+		scene->stateTimer++;
+		scene->fileSelectFileButtons[scene->fileCopySourceFile].posX =
+			(scene->stateTimer * 320) / 12;
+		if (scene->stateTimer > 2) {
+			scene->fileSelectFileButtons[scene->fileCopyDestinationFile].posX =
+				((scene->stateTimer - 2) * 320) / 12;
+		}
+
+		scene->guiTimer = (scene->stateTimer << 6) / 12;
+		scene->buttonHitTimer = scene->guiTimer;
+		s32 guiTimer = scene->guiTimer;
+		scene->label.buttonPositions[0].x = 0;
+		scene->label.buttonPositions[0].y = -guiTimer;
+		return;
+	}
+
+	scene->fileConfirmRequest = false;
+	scene->menuID = 1;
+	scene->stateID = 0;
+	scene->fileSelectCurrentButton = 0;
+	func_ov009_020d2cd8(scene);
+}
+
+extern "C" void func_ov009_020d2c04(MainMenuScene *scene)
+{
+	if (scene->stateTimer == 0) {
+		scene->stateID = 2;
+		scene->guiTimer = 0;
+		scene->buttonsVisible = false;
+	} else {
+		scene->stateTimer--;
+		scene->guiTimer = (scene->stateTimer << 6) / 12;
+	}
+
+	scene->buttonHitTimer = scene->guiTimer;
+	s32 zero = 0;
+	s32 guiTimer = scene->guiTimer;
+	scene->label.buttonPositions[0].x = zero;
+	scene->label.buttonPositions[0].y = -guiTimer;
+	if (scene->buttonsVisible)
+		return;
+
+	scene->buttonsTimer = scene->guiTimer;
+	for (s32 fileID = 0; fileID < 3; fileID++) {
+		scene->fileSelectFileButtons[fileID].posX =
+			((scene->stateTimer - ((2 - fileID) * 2)) * 320) / 12;
+		if (scene->fileSelectFileButtons[fileID].posX < 0)
+			scene->fileSelectFileButtons[fileID].posX = zero;
+	}
+}
+
+extern "C" void func_ov009_020d0210(MainMenuScene *scene)
+{
+	if (scene->buttonAnimTimer == 0) {
+		switch (scene->fileEraseCurrentButton) {
+		case 3:
+			scene->backButtonSelected = false;
+			scene->backButtonHighlighted = false;
+			scene->stateID = 6;
+			scene->stateTimer = 0;
+			break;
+		case 0:
+		case 1:
+		case 2:
+			scene->stateID = 7;
+			scene->stateTimer = 0;
+			break;
+		case 4:
+			scene->stateID = 12;
+			scene->buttonAnimTimer = 120;
+			break;
+		case 5:
+			scene->stateID = 9;
+			scene->stateTimer = 0;
+			break;
+		}
+	} else {
+		scene->buttonAnimTimer--;
+	}
+}
+
 extern "C" void func_ov009_020d1408(MainMenuScene *scene, s32 offset)
 {
 	s32 buttonID = scene->fileCopyCurrentButton;
