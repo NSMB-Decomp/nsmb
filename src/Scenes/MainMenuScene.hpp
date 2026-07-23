@@ -30,7 +30,7 @@ class MainMenuScene : public Scene
       public:
 	u8 menuID;
 	u8 stateID;
-	u8 _pad0;	    /* unused? */
+	u8 unk66;
 	i8 buttonAnimTimer; /* used to animate the button pressed animation */
 	u8 fileSelectCurrentButton;
 	u8 fileCopySourceFile;	       /* 0-2=file id */
@@ -52,7 +52,7 @@ class MainMenuScene : public Scene
 	u8 fileEraseSelected;
 	u8 fileCopiedTimer;
 	u8 fileCopyCurrentButton;
-	u8 _pad1;		  /* used? */
+	u8 unk7c;
 	bool fileOperationFailed; /* set to true when a file operation fails */
 	u8 _pad2;
 	u8 _pad3;
@@ -93,6 +93,54 @@ class MainMenuScene : public Scene
 	void onRender_3();
 	void onRender_4();
 };
+
+extern "C" void func_ov009_020cf950(MainMenuScene *scene);
+extern "C" void func_ov009_020cf984(MainMenuScene *scene);
+extern "C" void func_ov009_020cf9b0(MainMenuScene *scene);
+extern "C" void func_ov009_020d2fec(MainMenuScene *scene);
+extern "C" void func_ov009_020d3008(MainMenuScene *scene);
+extern "C" void func_ov009_020d302c(MainMenuScene *scene);
+extern "C" void func_ov009_020d352c(MainMenuScene *scene);
+extern "C" s32 func_ov009_020d353c(MainMenuScene *scene);
+extern "C" void func_ov009_020d0674(MainMenuScene *scene);
+extern "C" void func_ov009_020d08e0(MainMenuScene *scene);
+extern "C" void func_ov009_020d0900(MainMenuScene *scene);
+extern "C" void func_ov009_020d1afc(MainMenuScene *scene);
+extern "C" void func_ov009_020d1f0c(MainMenuScene *scene);
+extern "C" void func_ov009_020d1f3c(MainMenuScene *scene);
+extern "C" void func_ov009_020d3264(MainMenuScene *scene);
+extern "C" void func_ov009_020d0624(MainMenuScene *scene, s32 offset);
+extern "C" void func_ov009_020d06a4(MainMenuScene *scene);
+extern "C" void func_ov009_020d0b20(MainMenuScene *scene);
+extern "C" void func_ov009_020d1378(MainMenuScene *scene);
+extern "C" void func_ov009_020d13c4(MainMenuScene *scene);
+extern "C" void func_ov009_020d1830(MainMenuScene *scene);
+extern "C" void func_ov009_020d2814(MainMenuScene *scene);
+extern "C" void func_ov009_020d2858(MainMenuScene *scene, s32 offset);
+extern "C" void func_ov009_020cff4c(MainMenuScene *scene);
+extern "C" void func_ov009_020d0064(MainMenuScene *scene);
+extern "C" void func_ov009_020d02a8(MainMenuScene *scene);
+extern "C" void func_ov009_020d02f4(MainMenuScene *scene);
+extern "C" void func_ov009_020d10a8(MainMenuScene *scene);
+extern "C" void func_ov009_020d17b8(MainMenuScene *scene);
+extern "C" void func_ov009_020d1a94(MainMenuScene *scene);
+extern "C" void func_ov009_020d2160(MainMenuScene *scene);
+
+extern "C" void func_ov009_020cd9ac(TitleScreenCutscene *cutscene);
+extern "C" void func_ov009_020cd9bc(TitleScreenCutscene *cutscene);
+extern "C" void func_ov009_020ce7a4(MainMenuScene *scene);
+extern "C" void func_ov009_020d34a0(MainMenuScene *scene);
+extern "C" void func_ov009_020d1408(MainMenuScene *scene, s32 offset);
+extern "C" void func_ov009_020d21c0(MainMenuScene *scene);
+extern "C" void func_ov009_020ce744(MainMenuScene *scene);
+extern "C" void func_ov009_020d1864(MainMenuScene *scene);
+extern "C" void func_ov009_020d278c(MainMenuScene *scene);
+extern "C" void func_ov009_020d2cd8(MainMenuScene *scene);
+extern "C" u8 func_ov009_020ce824(MainMenuScene *scene, s32 buttonID);
+extern "C" i32 func_ov009_020ce944(MainMenuScene *scene, s32 fileID);
+extern "C" void func_ov009_020cea44(MainMenuScene *scene, s32 value);
+extern "C" void func_ov009_020cea8c(MainMenuScene *scene);
+extern "C" void func_ov009_020ceaec(MainMenuScene *scene, s32 fileID, s32 value);
 
 // #include "base_types.hpp"
 
