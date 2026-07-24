@@ -48,6 +48,9 @@ void func_020180c0(void *, u32);
 void func_02011d24(u32);
 void func_02012314(u32, u32);
 void func_02011c34(u32);
+void func_02008558(Fader *);
+bool func_02046c5c();
+void func_0200e874(u32, u32, bool);
 void func_0201325c();
 void func_02010a84();
 void func_020125c4();
@@ -79,11 +82,6 @@ int strncmp(const char *, const char *, u32);
 }
 
 void func_02011b64();
-bool func_02046c5c();
-void func_02009b64();
-void func_0200e874(u32, u32, bool);
-void func_0200514c(u32);
-void func_02008558();
 void func_02045128();
 void func_0204d908();
 void func_02044ab0(Base *, void *);

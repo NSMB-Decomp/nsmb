@@ -174,6 +174,8 @@ void func_ov001_020cceb4();
 class Fader
 {
       public:
+	static Fader *current;
+
 	enum FadingType {
 		FadeOnly,
 		StaticMask,
@@ -198,10 +200,7 @@ class Fader
 
 	bool isComplete();
 	void setupSceneFading(FadingType, bool, bool);
-	void func_02007e34(u32, u32);
-	void func_02007cf8(u32, u32);
 	bool fadedOut();
-	void func_02007df0(u32);
 	bool fadedIn();
 	void enableMainScreenFading();
 	void disableMainScreenFading();
@@ -213,6 +212,9 @@ class Fader
 NTR_SIZE_GUARD(Fader, 0x5c8);
 NTR_OFFSET_GUARD(Fader, fadingType, 0x5c2);
 NTR_OFFSET_GUARD(Fader, fadingStopped, 0x5c5);
+extern "C" void func_02007cf8(Fader *, u32, u32);
+extern "C" void func_02007df0(Fader *, u32);
+extern "C" void func_02007e34(Fader *, u32, u32);
 extern Fader GlobalFader;
 
 extern ObjectProfile **CurrentProfileTable;

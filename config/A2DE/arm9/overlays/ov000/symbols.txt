@@ -1303,7 +1303,7 @@ data_ov000_020ca4cc kind:bss addr:0x020ca4cc
 data_ov000_020ca4d0 kind:bss addr:0x020ca4d0
 data_ov000_020ca64c kind:bss addr:0x020ca64c
 data_ov000_020ca84c kind:bss addr:0x020ca84c
-Stage::actorFreezeFlag kind:bss addr:0x020ca850
+_ZN5Stage15actorFreezeFlagE kind:bss addr:0x020ca850
 data_ov000_020ca854 kind:bss addr:0x020ca854
 data_ov000_020ca858 kind:bss addr:0x020ca858
 ActorSpawnPosition kind:bss addr:0x020ca85c
