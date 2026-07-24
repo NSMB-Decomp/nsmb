@@ -622,7 +622,7 @@ normal:
 			func_02017a80(&primaryText);
 			return;
 		}
-		ready = data_0208883c & 4;
+		ready = Net::errorState & 4;
 		if (ready == 0)
 			return;
 	}
@@ -696,7 +696,7 @@ void VSConnectScene::updateLoadGameSM()
 		if (BOOL(Net::connectionState == 1) != FALSE) {
 			subMenuTimer++;
 			if (subMenuTimer >= 0x708)
-				data_0208883c |= 0x8000;
+				Net::errorState |= 0x8000;
 		} else {
 			subMenuState = 1;
 			subMenuTimer = 0;
@@ -706,7 +706,7 @@ void VSConnectScene::updateLoadGameSM()
 	case 1:
 		if (BOOL(data_02088800 == 2) != FALSE) {
 			if (data_02088804 != 2) {
-				data_0208883c |= 0x8000;
+				Net::errorState |= 0x8000;
 				break;
 			}
 			if (func_02046c78() != 0)
@@ -720,7 +720,7 @@ void VSConnectScene::updateLoadGameSM()
 		} else {
 			subMenuTimer++;
 			if (subMenuTimer >= 900)
-				data_0208883c |= 0x8000;
+				Net::errorState |= 0x8000;
 		}
 		break;
 
@@ -774,7 +774,7 @@ void VSConnectScene::updateLoadGameSM()
 	if (subMenuState >= 2 && subMenuState < 7) {
 		subMenuTimer++;
 		if (subMenuTimer >= 0x1518)
-			data_0208883c |= 0x8000;
+			Net::errorState |= 0x8000;
 	}
 	if (searchType == 0)
 		func_02003ed8(&connectionStatus);

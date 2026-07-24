@@ -1285,10 +1285,10 @@ from:0x0200a2a0 kind:arm_call to:0x02065ccc module:autoload(2)
 from:0x0200a2ac kind:load to:0x0208b72c module:autoload(3)
 from:0x0200a2dc kind:arm_call to:0x0200a10c module:main
 from:0x0200a2f4 kind:arm_call to:0x0204c0b8 module:autoload(2)
-from:0x0200a300 kind:load to:0x0203ab60 module:main
+from:0x0200a300 kind:load to:0x0203ab58 add:0x8 module:main
 from:0x0200a334 kind:arm_call to:0x0200a10c module:main
-from:0x0200a350 kind:load to:0x0203ab60 module:main
-from:0x0200a380 kind:load to:0x0203ab60 module:main
+from:0x0200a350 kind:load to:0x0203ab58 add:0x8 module:main
+from:0x0200a380 kind:load to:0x0203ab58 add:0x8 module:main
 from:0x0200a3a0 kind:load to:0x0207ff4c module:autoload(2)
 from:0x0200a3a4 kind:load to:0x02085e30 module:autoload(3)
 from:0x0200a3a8 kind:load to:0x0200a308 module:main

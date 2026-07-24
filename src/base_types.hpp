@@ -46,6 +46,8 @@ typedef u32 EmitterT;
 
 // https://forum.vcfed.org/index.php?threads/c-item-size-check-at-compile-time.1244920/
 #define NITRO_SIZE_ASSERT(what, howmuch) typedef char what##_size_wrong_[(!!(sizeof(what) == howmuch)) * 2 - 1]
+#define NITRO_OFFSET_ASSERT(what, member, offset) \
+	typedef char what##_##member##_offset_wrong_[((u32)&(((what *)0)->member) == (offset)) * 2 - 1]
 // #define NITRO_SIZE_ASSERT( what, howmuch )
 
 //

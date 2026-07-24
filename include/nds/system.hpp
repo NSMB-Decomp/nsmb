@@ -46,6 +46,7 @@ void halt();
 namespace Threads {
 
 void initialize();
+void exitCurrent();
 
 }
 

@@ -12,6 +12,10 @@ class Heap
 	void resizeToFit();
 	void destroy();
 	void *allocate(u32, u32);
+	void deallocate(void *memory);
+	u32 sizeOf(void *memory);
+	u32 setFlags(u32 flags);
+	u32 maxAllocatableSize(s32 alignment);
 	Heap *setCurrent();
 	u32 maxAllocationUnitSize();
 	void test();

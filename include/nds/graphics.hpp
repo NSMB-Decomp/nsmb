@@ -5,6 +5,14 @@
 union Mat2x2;
 
 namespace NDS {
+
+namespace Graphics3D {
+
+bool setupResource(void *resource);
+void *getTexture(void *resource);
+
+}
+
 namespace Graphics {
 
 void setMainDisplayMode(u32 displayMode, u32 backgroundMode, u32 backgroundZeroMode);
@@ -69,6 +77,13 @@ void applyAffine2D(void *registers, const Mat2x2 *matrix,
 	s32 centerX, s32 centerY, s32 offsetX, s32 offsetY);
 u32 uploadSubBackgroundPalette(u32 source, u32 offset, u32 size);
 u32 uploadMainBackgroundPalette(u16 *source, u32 offset, u32 size);
+void beginMainBackgroundExtendedPaletteUpload();
+void uploadMainBackgroundExtendedPalette(void *source, u32 offset, u32 size);
+void endMainBackgroundExtendedPaletteUpload();
+void beginMainObjectExtendedPaletteUpload();
+void uploadMainObjectExtendedPalette(void *source, u32 offset, u32 size);
+void endMainObjectExtendedPaletteUpload();
+void uploadMainObjectPalette(void *source, u32 offset, u32 size);
 
 void flushGeometry();
 void initializeInterruptTable();

@@ -239,8 +239,8 @@ GFX::func_020072b4 kind:function(arm,size=0xd8) addr:0x020072b4
 GFX::func_0200738c kind:function(arm,size=0x290) addr:0x0200738c
 GFX::__stub kind:function(arm,size=0x4) addr:0x0200761c
 func_02007620 kind:function(arm,size=0x3c) addr:0x02007620
-func_0200765c kind:function(arm,size=0x28) addr:0x0200765c
-func_02007684 kind:function(arm,size=0x28) addr:0x02007684
+_ZN4Game14storeDataCacheEPKvm kind:function(arm,size=0x28) addr:0x0200765c
+_ZN4Game14flushDataCacheEPKvm kind:function(arm,size=0x28) addr:0x02007684
 func_020076ac kind:function(arm,size=0x2c4) addr:0x020076ac
 func_02007970 kind:function(arm,size=0x188) addr:0x02007970
 func_02007af8 kind:function(arm,size=0x98) addr:0x02007af8
@@ -258,101 +258,103 @@ func_02007e34 kind:function(arm,size=0x13c) addr:0x02007e34
 Fader::step kind:function(arm,size=0x45c) addr:0x02007f70
 _ZN5Fader16setupSceneFadingENS_10FadingTypeEbb kind:function(arm,size=0x18c) addr:0x020083cc
 func_02008558 kind:function(arm,size=0x30) addr:0x02008558
-func_02008588 kind:function(arm,size=0xc) addr:0x02008588
-func_02008594 kind:function(arm,size=0xc) addr:0x02008594
-func_020085a0 kind:function(arm,size=0xc) addr:0x020085a0
-func_020085ac kind:function(arm,size=0x38) addr:0x020085ac
-func_020085e4 kind:function(arm,size=0x28) addr:0x020085e4
-func_0200860c kind:function(arm,size=0x3c) addr:0x0200860c
-func_02008648 kind:function(arm,size=0x28) addr:0x02008648
-func_02008670 kind:function(arm,size=0x2c) addr:0x02008670
-func_0200869c kind:function(arm,size=0xe8) addr:0x0200869c
+_ZN2FS8Internal13unloadOverlayEmm kind:function(arm,size=0xc) addr:0x02008588
+_ZN2FS8Internal11loadOverlayEmm kind:function(arm,size=0xc) addr:0x02008594
+_ZN2FS8Internal15loadOverlayInfoEPN3NDS10Filesystem11OverlayInfoEmm kind:function(arm,size=0xc) addr:0x020085a0
+_ZN2FS8Internal8readFileEPN3NDS10Filesystem4FileEPvl kind:function(arm,size=0x38) addr:0x020085ac
+_ZN2FS8Internal8openFileEPN3NDS10Filesystem4FileEPKc kind:function(arm,size=0x28) addr:0x020085e4
+_ZN2FS8Internal8openFileEPN3NDS10Filesystem4FileENS2_6FileIdE kind:function(arm,size=0x3c) addr:0x0200860c
+_ZN2FS8Internal12pathToFileIDEPN3NDS10Filesystem6FileIdEPKc kind:function(arm,size=0x28) addr:0x02008648
+_ZN2FS8Internal12setAssertionEPKc kind:function(arm,size=0x2c) addr:0x02008670
+_ZN2FS12loadFileLZ77Em kind:function(arm,size=0xe8) addr:0x0200869c
 _ZN2FS12loadFileLZ77EmPv kind:function(arm,size=0x3c) addr:0x02008784
 _ZN2FS10unloadFileEPv kind:function(arm,size=0x20) addr:0x020087c0
-func_020087e0 kind:function(arm,size=0x10) addr:0x020087e0
+_ZN2FS8loadFileEt kind:function(arm,size=0x10) addr:0x020087e0
 _ZN2FS11loadExtFileEm kind:function(arm,size=0x10) addr:0x020087f0
-func_02008800 kind:function(arm,size=0x10) addr:0x02008800
-func_02008810 kind:function(arm,size=0x18) addr:0x02008810
-func_02008828 kind:function(arm,size=0xd4) addr:0x02008828
-func_020088fc kind:function(arm,size=0x38) addr:0x020088fc
-func_02008934 kind:function(arm,size=0x10) addr:0x02008934
-func_02008944 kind:function(arm,size=0x2c) addr:0x02008944
-func_02008970 kind:function(arm,size=0x10) addr:0x02008970
-func_02008980 kind:function(arm,size=0x10) addr:0x02008980
-func_02008990 kind:function(arm,size=0x10) addr:0x02008990
-func_020089a0 kind:function(arm,size=0xcc) addr:0x020089a0
-func_02008a6c kind:function(arm,size=0x26c) addr:0x02008a6c
-func_02008cd8 kind:function(arm,size=0x3c) addr:0x02008cd8
-func_02008d14 kind:function(arm,size=0x6c) addr:0x02008d14
-func_02008d80 kind:function(arm,size=0x80) addr:0x02008d80
-func_02008e00 kind:function(arm,size=0x2c) addr:0x02008e00
-func_02008e2c kind:function(arm,size=0x28) addr:0x02008e2c
-func_02008e54 kind:function(arm,size=0xfc) addr:0x02008e54
-func_02008f50 kind:function(arm,size=0xa4) addr:0x02008f50
-func_02008ff4 kind:function(arm,size=0x38) addr:0x02008ff4
-func_0200902c kind:function(arm,size=0x58) addr:0x0200902c
-func_02009084 kind:function(arm,size=0x4c) addr:0x02009084
-func_020090d0 kind:function(arm,size=0x28) addr:0x020090d0
-_Z13func_020090f8m kind:function(arm,size=0x3c) addr:0x020090f8
-func_02009134 kind:function(arm,size=0x48) addr:0x02009134
-func_0200917c kind:function(arm,size=0x14) addr:0x0200917c
-func_02009190 kind:function(arm,size=0x14) addr:0x02009190
-func_020091a4 kind:function(arm,size=0xe4) addr:0x020091a4
-func_02009288 kind:function(arm,size=0x28) addr:0x02009288
-func_020092b0 kind:function(arm,size=0xbc) addr:0x020092b0
-FS::GetFileId kind:function(arm,size=0x28) addr:0x0200936c
-FS::calcFileID kind:function(arm,size=0x64) addr:0x02009394
-FS::SetFileIDOffset kind:function(arm,size=0x18) addr:0x020093f8
-FS::setFileCount kind:function(arm,size=0x14) addr:0x02009410
+_ZN2FS20loadExtFileUnflushedEm kind:function(arm,size=0x10) addr:0x02008800
+_ZN2FS11loadExtFileEmb kind:function(arm,size=0x18) addr:0x02008810
+_ZN2FS8loadFileEtb kind:function(arm,size=0xd4) addr:0x02008828
+_ZN2FS11loadExtFileEmPvl kind:function(arm,size=0x38) addr:0x020088fc
+_ZN2FS11loadExtFileEmPv kind:function(arm,size=0x10) addr:0x02008934
+_ZN2FS8readFileEPN3NDS10Filesystem4FileEb kind:function(arm,size=0x2c) addr:0x02008944
+_ZN2FS15setReadModeFastEv kind:function(arm,size=0x10) addr:0x02008970
+_ZN2FS15setReadModeSafeEv kind:function(arm,size=0x10) addr:0x02008980
+_ZN2FS11setReadModeENS_8ReadModeE kind:function(arm,size=0x10) addr:0x02008990
+_ZN2FS13readFileMode1EPN3NDS10Filesystem4FileEb kind:function(arm,size=0xcc) addr:0x020089a0
+_ZN2FS13readFileMode0EPN3NDS10Filesystem4FileEb kind:function(arm,size=0x26c) addr:0x02008a6c
+_ZN2FS8loadFileEPKcPvl kind:function(arm,size=0x3c) addr:0x02008cd8
+_ZN2FS8loadFileEN3NDS10Filesystem6FileIdEPvl kind:function(arm,size=0x6c) addr:0x02008d14
+_ZN2FS8readFileEPN3NDS10Filesystem4FileEPvl kind:function(arm,size=0x80) addr:0x02008d80
+_ZN2FS13hasLZ77HeaderEPKv kind:function(arm,size=0x2c) addr:0x02008e00
+_ZN2FS9getFileIDEm kind:function(arm,size=0x28) addr:0x02008e2c
+_ZN2FS8openFileEPN3NDS10Filesystem4FileEt kind:function(arm,size=0xfc) addr:0x02008e54
+_ZN2FS7Archive7getFileEt kind:function(arm,size=0xa4) addr:0x02008f50
+_ZN2FS7Archive14unmountCurrentEv kind:function(arm,size=0x38) addr:0x02008ff4
+_ZN2FS7Archive20unmountAndMountListsEPKmS2_bP4Heap kind:function(arm,size=0x58) addr:0x0200902c
+_ZN2FS7Archive10unmountAllEv kind:function(arm,size=0x4c) addr:0x02009084
+_ZN2FS7Archive11unmountListEPKm kind:function(arm,size=0x28) addr:0x020090d0
+_ZN2FS7Archive7unmountEm kind:function(arm,size=0x3c) addr:0x020090f8
+_ZN2FS7Archive9mountListEPKmbP4Heap kind:function(arm,size=0x48) addr:0x02009134
+_ZN2FS7Archive10mountFrontEmP4Heap kind:function(arm,size=0x14) addr:0x0200917c
+_ZN2FS7Archive9mountBackEmP4Heap kind:function(arm,size=0x14) addr:0x02009190
+_ZN2FS7Archive5mountEmlP4Heap kind:function(arm,size=0xe4) addr:0x020091a4
+_ZN2FS7Archive7unmountEPvP4Heap kind:function(arm,size=0x28) addr:0x02009288
+_ZN2FS7Archive5mountEPKcS2_P4Heapl kind:function(arm,size=0xbc) addr:0x020092b0
+_ZN2FS9getFileIDEPKc kind:function(arm,size=0x28) addr:0x0200936c
+_ZN2FS8toFileIDEm kind:function(arm,size=0x64) addr:0x02009394
+_ZN2FS15setFileIDOffsetEmt kind:function(arm,size=0x18) addr:0x020093f8
+_ZN2FS12setFileCountEt kind:function(arm,size=0x14) addr:0x02009410
 _ZN2FS4initEv kind:function(arm,size=0x54) addr:0x02009424
-FS::getDecompressedSize kind:function(arm,size=0xc) addr:0x02009478
-FS::Overlays::init kind:function(arm,size=0x34) addr:0x02009484
+_ZN2FS23getLZ77DecompressedSizeEPv kind:function(arm,size=0xc) addr:0x02009478
+_ZN2FS7Overlay22initLoadedOverlayTableEv kind:function(arm,size=0x34) addr:0x02009484
 _ZN2FS7Overlay7untrackEm kind:function(arm,size=0x58) addr:0x020094b8
 _ZN2FS7Overlay4loadEm kind:function(arm,size=0x50) addr:0x02009510
-FS::Overlays::load kind:function(arm,size=0x238) addr:0x02009560
-FS::Overlays::invalidateRange kind:function(arm,size=0x38) addr:0x02009798
+_ZN2FS7Overlay12trackAndLoadEm kind:function(arm,size=0x238) addr:0x02009560
+_ZN2FS7Overlay5flushEPKN3NDS10Filesystem11OverlayInfoE kind:function(arm,size=0x38) addr:0x02009798
 _ZN2FS7Archive20loadMainGameArchivesEv kind:function(arm,size=0x1c) addr:0x020097d0
-func_020097ec kind:function(arm,size=0x14) addr:0x020097ec
-func_02009800 kind:function(arm,size=0x1c) addr:0x02009800
+_ZN2FS7Archive22unloadMinigameArchivesEv kind:function(arm,size=0x14) addr:0x020097ec
+_ZN2FS7Archive20loadMinigameArchivesEv kind:function(arm,size=0x1c) addr:0x02009800
 func_0200981c kind:function(arm,size=0xc) addr:0x0200981c
 func_02009828 kind:function(arm,size=0x24) addr:0x02009828
 func_0200984c kind:function(arm,size=0x18) addr:0x0200984c
 func_02009864 kind:function(arm,size=0x14) addr:0x02009864
-func_02009878 kind:function(arm,size=0x54) addr:0x02009878
-func_020098cc kind:function(arm,size=0x4c) addr:0x020098cc
-func_02009918 kind:function(arm,size=0x68) addr:0x02009918
-func_02009980 kind:function(arm,size=0x48) addr:0x02009980
-func_020099c8 kind:function(arm,size=0x68) addr:0x020099c8
-func_02009a30 kind:function(arm,size=0x68) addr:0x02009a30
-func_02009a98 kind:function(arm,size=0x34) addr:0x02009a98
-func_02009acc kind:function(arm,size=0x24) addr:0x02009acc
-func_02009af0 kind:function(arm,size=0x74) addr:0x02009af0
+_ZN2FS16loadBGSubPaletteEmm kind:function(arm,size=0x54) addr:0x02009878
+_ZN2FS22loadBGExtPaletteCachedEmm kind:function(arm,size=0x4c) addr:0x020098cc
+_ZN2FS13loadBGPaletteEmmb kind:function(arm,size=0x68) addr:0x02009918
+_ZN2FS23loadOBJExtPaletteCachedEmm kind:function(arm,size=0x48) addr:0x02009980
+_ZN2FS17loadOBJExtPaletteEmmb kind:function(arm,size=0x68) addr:0x020099c8
+_ZN2FS14loadOBJPaletteEmmb kind:function(arm,size=0x68) addr:0x02009a30
+_ZN2FS17loadFileToOBJVramEmm kind:function(arm,size=0x34) addr:0x02009a98
+_ZN2FS23getDecompressedFileSizeEm kind:function(arm,size=0x24) addr:0x02009acc
+_ZN2FS11getFileSizeEm kind:function(arm,size=0x74) addr:0x02009af0
 _ZN2FS5Cache5clearEv kind:function(arm,size=0x30) addr:0x02009b64
 _ZN2FS5Cache10unloadFileEm kind:function(arm,size=0x34) addr:0x02009b94
 _ZN2FS5Cache8loadDataEm kind:function(arm,size=0x4c) addr:0x02009bc8
 _ZN2FS5Cache17loadFileToOverlayEmb kind:function(arm,size=0x50) addr:0x02009c14
 _ZN2FS5Cache8loadFileEmb kind:function(arm,size=0x50) addr:0x02009c64
 _ZN2FS5Cache7getFileEm kind:function(arm,size=0x20) addr:0x02009cb4
-func_02009cd4 kind:function(arm,size=0x5c) addr:0x02009cd4
-func_02009d30 kind:function(arm,size=0x3c) addr:0x02009d30
-func_02009d6c kind:function(arm,size=0x54) addr:0x02009d6c
-func_02009dc0 kind:function(arm,size=0x2c) addr:0x02009dc0
-func_02009dec kind:function(arm,size=0x90) addr:0x02009dec
-func_02009e7c kind:function(arm,size=0x58) addr:0x02009e7c
-func_02009ed4 kind:function(arm,size=0x58) addr:0x02009ed4
-func_02009f2c kind:function(arm,size=0x60) addr:0x02009f2c
-func_02009f8c kind:function(arm,size=0x94) addr:0x02009f8c
-func_0200a020 kind:function(arm,size=0x94) addr:0x0200a020
+_ZN2FS5Cache8Internal8findFileEm kind:function(arm,size=0x5c) addr:0x02009cd4
+_ZN2FS5Cache8Internal5clearEPNS0_10CacheEntryEm kind:function(arm,size=0x3c) addr:0x02009d30
+_ZN2FS5Cache8Internal10unloadFileEmPNS0_10CacheEntryEm kind:function(arm,size=0x54) addr:0x02009d6c
+_ZN2FS5Cache8Internal8loadDataEmPNS0_10CacheEntryEm kind:function(arm,size=0x2c) addr:0x02009dc0
+_ZN2FS5Cache8Internal11setup3DFileEPvb kind:function(arm,size=0x90) addr:0x02009dec
+_ZN2FS5Cache8Internal17loadFileToOverlayEmPNS0_10CacheEntryEmb kind:function(arm,size=0x58) addr:0x02009e7c
+_ZN2FS5Cache8Internal8loadFileEmPNS0_10CacheEntryEmb kind:function(arm,size=0x58) addr:0x02009ed4
+_ZN2FS5Cache8Internal7getDataEmPNS0_10CacheEntryEm kind:function(arm,size=0x60) addr:0x02009f2c
+_ZN2FS5Cache8Internal16getFileInOverlayEmPNS0_10CacheEntryEmbb kind:function(arm,size=0x94) addr:0x02009f8c
+_ZN2FS5Cache8Internal7getFileEmPNS0_10CacheEntryEmbb kind:function(arm,size=0x94) addr:0x0200a020
 _ZN2FS5Cache17setupCacheEntriesEv kind:function(arm,size=0x58) addr:0x0200a0b4
-func_0200a10c kind:function(arm,size=0x2c) addr:0x0200a10c
-func_0200a138 kind:function(arm,size=0x5c) addr:0x0200a138
-func_0200a194 kind:function(arm,size=0xa0) addr:0x0200a194
-func_0200a234 kind:function(arm,size=0x7c) addr:0x0200a234
-func_0200a2b0 kind:function(arm,size=0x58) addr:0x0200a2b0
-func_0200a308 kind:function(arm,size=0x50) addr:0x0200a308
-func_0200a358 kind:function(arm,size=0x30) addr:0x0200a358
-func_0200a388 kind:function(arm,size=0x24) addr:0x0200a388
-func_0200a3ac kind:function(arm,size=0x24) addr:0x0200a3ac
+_ZN2FS5Cache10CacheEntry6unloadEv kind:function(arm,size=0x2c) addr:0x0200a10c
+_ZN2FS5Cache10CacheEntry8loadDataEm kind:function(arm,size=0x5c) addr:0x0200a138
+_ZN2FS5Cache10CacheEntry17loadFileToOverlayEmb kind:function(arm,size=0xa0) addr:0x0200a194
+_ZN2FS5Cache10CacheEntry8loadFileEmb kind:function(arm,size=0x7c) addr:0x0200a234
+_ZN2FS5Cache10CacheEntryD0Ev kind:function(arm,size=0x58) addr:0x0200a2b0
+_ZN2FS5Cache10CacheEntryD2Ev kind:function(arm,size=0x50) addr:0x0200a308
+_ZN2FS5Cache10CacheEntryD1Ev kind:function(arm,size=0x50) addr:0x0200a308
+_ZN2FS5Cache10CacheEntryC2Ev kind:function(arm,size=0x30) addr:0x0200a358
+_ZN2FS5Cache10CacheEntryC1Ev kind:function(arm,size=0x30) addr:0x0200a358
+__arraydtor$644 kind:function(arm,size=0x24) addr:0x0200a388
+__arraydtor$642 kind:function(arm,size=0x24) addr:0x0200a3ac
 _Z13func_0200a3d0mm kind:function(arm,size=0x5c) addr:0x0200a3d0
 _Z13func_0200a42cmm kind:function(arm,size=0x5c) addr:0x0200a42c
 func_0200a488 kind:function(arm,size=0x40) addr:0x0200a488
@@ -424,7 +426,7 @@ func_0200e544 kind:function(arm,size=0x10) addr:0x0200e544
 func_0200e554 kind:function(arm,size=0x10) addr:0x0200e554
 func_0200e564 kind:function(arm,size=0xb8) addr:0x0200e564
 func_0200e61c kind:function(arm,size=0x44) addr:0x0200e61c
-func_0200e660 kind:function(arm,size=0x44) addr:0x0200e660
+_ZN3Net6assertEi kind:function(arm,size=0x44) addr:0x0200e660
 func_0200e6a4 kind:function(arm,size=0x50) addr:0x0200e6a4
 _ZN4Wifi6randomEv kind:function(arm,size=0x48) addr:0x0200e6f4
 func_0200e73c kind:function(arm,size=0xc) addr:0x0200e73c
@@ -1392,7 +1394,7 @@ data_02025910 kind:data(any) addr:0x02025910
 data_02025924 kind:data(any) addr:0x02025924
 __sinit_math_cpp kind:function(arm,size=0x38) addr:0x02025a44
 __sinit_02025a7c kind:function(arm,size=0x4) addr:0x02025a7c
-__sinit_file_cpp kind:function(arm,size=0x88) addr:0x02025a80
+__sinit_file.cpp kind:function(arm,size=0x88) addr:0x02025a80
 __sinit_02025b08 kind:function(arm,size=0x4) addr:0x02025b08
 __sinit_oam_cpp kind:function(arm,size=0x50) addr:0x02025b0c
 __sinit_02025b5c kind:function(arm,size=0x40) addr:0x02025b5c
@@ -1424,8 +1426,8 @@ _ZN3App11identityMtxE kind:data(word[4]) addr:0x02026248
 data_02026258 kind:data(byte[55]) addr:0x02026258
 
 data_02026290 kind:data(any) addr:0x02026290
-data_020262d0 kind:data(any) addr:0x020262d0
-data_020262dc kind:data(any) addr:0x020262dc
+_ZN2FS7Archive16mainGameArchivesE kind:data(word[3]) addr:0x020262d0
+_ZN2FS7Archive16minigameArchivesE kind:data(word[4]) addr:0x020262dc
 data_020262ec kind:data(any) addr:0x020262ec
 data_0202630c kind:data(any) addr:0x0202630c
 data_02026314 kind:data(any) addr:0x02026314
@@ -1469,7 +1471,7 @@ data_020360c2 kind:data(any) addr:0x020360c2
 data_02037450 kind:data(any) addr:0x02037450
 .p__sinit_02025a44 kind:data(word) addr:0x02039170
 .p__sinit_02025a7c kind:data(word) addr:0x02039174
-.p__sinit_02025a80 kind:data(word) addr:0x02039178
+.p__sinit_file.cpp kind:data(word) addr:0x02039178
 .p__sinit_02025b08 kind:data(word) addr:0x0203917c
 .p__sinit_02025b0c kind:data(word) addr:0x02039180
 .p__sinit_02025b5c kind:data(word) addr:0x02039184
@@ -1553,113 +1555,113 @@ data_0203996c kind:data(any) addr:0x0203996c
 data_02039970 kind:data(any) addr:0x02039970
 MainProfileTable kind:data(any) addr:0x0203997c
 data_02039f80 kind:data(any) addr:0x02039f80
-data_0203a280 kind:data(any) addr:0x0203a280
-data_0203a290 kind:data(any) addr:0x0203a290
-data_0203a2a0 kind:data(any) addr:0x0203a2a0
-data_0203a2b4 kind:data(any) addr:0x0203a2b4
-data_0203a2cc kind:data(any) addr:0x0203a2cc
-data_0203a2d0 kind:data(any) addr:0x0203a2d0
-data_0203a2d4 kind:data(any) addr:0x0203a2d4
-data_0203a2d8 kind:data(any) addr:0x0203a2d8
-data_0203a2dc kind:data(any) addr:0x0203a2dc
-data_0203a2e0 kind:data(any) addr:0x0203a2e0
-data_0203a2e4 kind:data(any) addr:0x0203a2e4
-data_0203a2e8 kind:data(any) addr:0x0203a2e8
-data_0203a2ec kind:data(any) addr:0x0203a2ec
-data_0203a2f0 kind:data(any) addr:0x0203a2f0
-data_0203a2f4 kind:data(any) addr:0x0203a2f4
-data_0203a2f8 kind:data(any) addr:0x0203a2f8
-data_0203a2fc kind:data(any) addr:0x0203a2fc
-data_0203a300 kind:data(any) addr:0x0203a300
-data_0203a304 kind:data(any) addr:0x0203a304
-data_0203a308 kind:data(any) addr:0x0203a308
-data_0203a30c kind:data(any) addr:0x0203a30c
-data_0203a310 kind:data(any) addr:0x0203a310
-data_0203a314 kind:data(any) addr:0x0203a314
-data_0203a318 kind:data(any) addr:0x0203a318
-data_0203a31c kind:data(any) addr:0x0203a31c
-data_0203a320 kind:data(any) addr:0x0203a320
-data_0203a324 kind:data(any) addr:0x0203a324
-data_0203a328 kind:data(any) addr:0x0203a328
-data_0203a32c kind:data(any) addr:0x0203a32c
-data_0203a330 kind:data(any) addr:0x0203a330
-data_0203a334 kind:data(any) addr:0x0203a334
-data_0203a338 kind:data(any) addr:0x0203a338
-data_0203a33c kind:data(any) addr:0x0203a33c
-data_0203a340 kind:data(any) addr:0x0203a340
-data_0203a344 kind:data(any) addr:0x0203a344
-data_0203a348 kind:data(any) addr:0x0203a348
-data_0203a34c kind:data(any) addr:0x0203a34c
-data_0203a350 kind:data(any) addr:0x0203a350
-data_0203a354 kind:data(any) addr:0x0203a354
-data_0203a358 kind:data(any) addr:0x0203a358
-data_0203a35c kind:data(any) addr:0x0203a35c
-data_0203a360 kind:data(any) addr:0x0203a360
-data_0203a364 kind:data(any) addr:0x0203a364
-data_0203a368 kind:data(any) addr:0x0203a368
-data_0203a36c kind:data(any) addr:0x0203a36c
-data_0203a370 kind:data(any) addr:0x0203a370
-data_0203a374 kind:data(any) addr:0x0203a374
-data_0203a378 kind:data(any) addr:0x0203a378
-data_0203a37c kind:data(any) addr:0x0203a37c
-data_0203a380 kind:data(any) addr:0x0203a380
-data_0203a384 kind:data(any) addr:0x0203a384
-data_0203a388 kind:data(any) addr:0x0203a388
-data_0203a38c kind:data(any) addr:0x0203a38c
-data_0203a390 kind:data(any) addr:0x0203a390
-data_0203a398 kind:data(any) addr:0x0203a398
-data_0203a3a4 kind:data(any) addr:0x0203a3a4
-data_0203a3b0 kind:data(any) addr:0x0203a3b0
-data_0203a3bc kind:data(any) addr:0x0203a3bc
-data_0203a3c8 kind:data(any) addr:0x0203a3c8
-data_0203a3d4 kind:data(any) addr:0x0203a3d4
-data_0203a3e0 kind:data(any) addr:0x0203a3e0
-data_0203a3ec kind:data(any) addr:0x0203a3ec
-data_0203a3fc kind:data(any) addr:0x0203a3fc
-data_0203a40c kind:data(any) addr:0x0203a40c
-data_0203a41c kind:data(any) addr:0x0203a41c
-data_0203a42c kind:data(any) addr:0x0203a42c
-data_0203a43c kind:data(any) addr:0x0203a43c
-data_0203a44c kind:data(any) addr:0x0203a44c
-data_0203a45c kind:data(any) addr:0x0203a45c
-data_0203a46c kind:data(any) addr:0x0203a46c
-data_0203a47c kind:data(any) addr:0x0203a47c
-data_0203a48c kind:data(any) addr:0x0203a48c
-data_0203a49c kind:data(any) addr:0x0203a49c
-data_0203a4ac kind:data(any) addr:0x0203a4ac
-data_0203a4bc kind:data(any) addr:0x0203a4bc
-data_0203a4cc kind:data(any) addr:0x0203a4cc
-data_0203a4dc kind:data(any) addr:0x0203a4dc
-data_0203a4ec kind:data(any) addr:0x0203a4ec
-data_0203a4fc kind:data(any) addr:0x0203a4fc
-data_0203a50c kind:data(any) addr:0x0203a50c
-data_0203a51c kind:data(any) addr:0x0203a51c
-data_0203a52c kind:data(any) addr:0x0203a52c
-data_0203a53c kind:data(any) addr:0x0203a53c
-data_0203a54c kind:data(any) addr:0x0203a54c
-data_0203a55c kind:data(any) addr:0x0203a55c
-data_0203a56c kind:data(any) addr:0x0203a56c
-data_0203a57c kind:data(any) addr:0x0203a57c
-data_0203a58c kind:data(any) addr:0x0203a58c
-data_0203a5a0 kind:data(any) addr:0x0203a5a0
-data_0203a5b4 kind:data(any) addr:0x0203a5b4
-data_0203a5c8 kind:data(any) addr:0x0203a5c8
-data_0203a5dc kind:data(any) addr:0x0203a5dc
-data_0203a5f0 kind:data(any) addr:0x0203a5f0
-data_0203a604 kind:data(any) addr:0x0203a604
-data_0203a618 kind:data(any) addr:0x0203a618
-data_0203a62c kind:data(any) addr:0x0203a62c
-data_0203a640 kind:data(any) addr:0x0203a640
-data_0203a654 kind:data(any) addr:0x0203a654
-data_0203a668 kind:data(any) addr:0x0203a668
-data_0203a67c kind:data(any) addr:0x0203a67c
-data_0203a690 kind:data(any) addr:0x0203a690
-data_0203a6a8 kind:data(any) addr:0x0203a6a8
-data_0203a6c0 kind:data(any) addr:0x0203a6c0
-data_0203ab40 kind:data(any) addr:0x0203ab40
-data_0203ab48 kind:data(any) addr:0x0203ab48
-data_0203ab54 kind:data(any) addr:0x0203ab54
-data_0203ab60 kind:data(any) addr:0x0203ab60
+_ZN2FS8Internal13openFileCrashE kind:data(byte[13]) addr:0x0203a280
+_ZN2FS8Internal13readFileCrashE kind:data(byte[13]) addr:0x0203a290
+_ZN2FS8Internal17readFileFastCrashE kind:data(byte[17]) addr:0x0203a2a0
+_ZN2FS8Internal24convertPathToFileIDCrashE kind:data(byte[24]) addr:0x0203a2b4
+@686 kind:data(byte[4]) addr:0x0203a2d0 local
+@678 kind:data(byte[4]) addr:0x0203a2d4 local
+@690 kind:data(byte[4]) addr:0x0203a2d8 local
+@710 kind:data(byte[4]) addr:0x0203a2dc local
+@650 kind:data(byte[4]) addr:0x0203a2e0 local
+@680 kind:data(byte[4]) addr:0x0203a2e4 local
+@724 kind:data(byte[4]) addr:0x0203a2e8 local
+@668 kind:data(byte[4]) addr:0x0203a2ec local
+@660 kind:data(byte[4]) addr:0x0203a2f0 local
+@728 kind:data(byte[4]) addr:0x0203a2f4 local
+@740 kind:data(byte[4]) addr:0x0203a2f8 local
+@716 kind:data(byte[4]) addr:0x0203a2fc local
+@698 kind:data(byte[4]) addr:0x0203a300 local
+@730 kind:data(byte[4]) addr:0x0203a304 local
+@702 kind:data(byte[4]) addr:0x0203a308 local
+@672 kind:data(byte[4]) addr:0x0203a30c local
+@674 kind:data(byte[4]) addr:0x0203a310 local
+@662 kind:data(byte[4]) addr:0x0203a314 local
+@670 kind:data(byte[4]) addr:0x0203a318 local
+@706 kind:data(byte[4]) addr:0x0203a31c local
+@666 kind:data(byte[4]) addr:0x0203a320 local
+@738 kind:data(byte[4]) addr:0x0203a324 local
+@646 kind:data(byte[4]) addr:0x0203a328 local
+@720 kind:data(byte[4]) addr:0x0203a32c local
+@714 kind:data(byte[4]) addr:0x0203a330 local
+@682 kind:data(byte[4]) addr:0x0203a334 local
+@712 kind:data(byte[4]) addr:0x0203a338 local
+@708 kind:data(byte[4]) addr:0x0203a33c local
+@676 kind:data(byte[4]) addr:0x0203a340 local
+@648 kind:data(byte[4]) addr:0x0203a344 local
+@656 kind:data(byte[4]) addr:0x0203a348 local
+@736 kind:data(byte[4]) addr:0x0203a34c local
+@726 kind:data(byte[4]) addr:0x0203a350 local
+@700 kind:data(byte[4]) addr:0x0203a354 local
+@722 kind:data(byte[4]) addr:0x0203a358 local
+@664 kind:data(byte[4]) addr:0x0203a35c local
+@658 kind:data(byte[4]) addr:0x0203a360 local
+@654 kind:data(byte[4]) addr:0x0203a364 local
+@704 kind:data(byte[4]) addr:0x0203a368 local
+@684 kind:data(byte[4]) addr:0x0203a36c local
+@734 kind:data(byte[4]) addr:0x0203a370 local
+@688 kind:data(byte[4]) addr:0x0203a374 local
+@652 kind:data(byte[4]) addr:0x0203a378 local
+@696 kind:data(byte[4]) addr:0x0203a37c local
+@694 kind:data(byte[4]) addr:0x0203a380 local
+@732 kind:data(byte[4]) addr:0x0203a384 local
+@692 kind:data(byte[4]) addr:0x0203a388 local
+@718 kind:data(byte[4]) addr:0x0203a38c local
+@669 kind:data(byte[10]) addr:0x0203a398 local
+@673 kind:data(byte[10]) addr:0x0203a3a4 local
+@681 kind:data(byte[10]) addr:0x0203a3b0 local
+@647 kind:data(byte[12]) addr:0x0203a3bc local
+@675 kind:data(byte[12]) addr:0x0203a3c8 local
+@741 kind:data(byte[12]) addr:0x0203a3d4 local
+@713 kind:data(byte[12]) addr:0x0203a3e0 local
+@655 kind:data(byte[13]) addr:0x0203a3ec local
+@703 kind:data(byte[13]) addr:0x0203a3fc local
+@711 kind:data(byte[13]) addr:0x0203a40c local
+@715 kind:data(byte[14]) addr:0x0203a41c local
+@689 kind:data(byte[14]) addr:0x0203a42c local
+@693 kind:data(byte[14]) addr:0x0203a43c local
+@653 kind:data(byte[14]) addr:0x0203a44c local
+@657 kind:data(byte[14]) addr:0x0203a45c local
+@659 kind:data(byte[14]) addr:0x0203a46c local
+@705 kind:data(byte[14]) addr:0x0203a47c local
+@671 kind:data(byte[14]) addr:0x0203a48c local
+@709 kind:data(byte[14]) addr:0x0203a49c local
+@687 kind:data(byte[15]) addr:0x0203a4ac local
+@691 kind:data(byte[15]) addr:0x0203a4bc local
+@719 kind:data(byte[15]) addr:0x0203a4cc local
+@697 kind:data(byte[15]) addr:0x0203a4dc local
+@721 kind:data(byte[15]) addr:0x0203a4ec local
+@651 kind:data(byte[15]) addr:0x0203a4fc local
+@723 kind:data(byte[15]) addr:0x0203a50c local
+@661 kind:data(byte[15]) addr:0x0203a51c local
+@735 kind:data(byte[15]) addr:0x0203a52c local
+@731 kind:data(byte[16]) addr:0x0203a53c local
+@733 kind:data(byte[16]) addr:0x0203a54c local
+@665 kind:data(byte[16]) addr:0x0203a55c local
+@727 kind:data(byte[16]) addr:0x0203a56c local
+@679 kind:data(byte[16]) addr:0x0203a57c local
+@701 kind:data(byte[17]) addr:0x0203a58c local
+@663 kind:data(byte[17]) addr:0x0203a5a0 local
+@725 kind:data(byte[17]) addr:0x0203a5b4 local
+@729 kind:data(byte[17]) addr:0x0203a5c8 local
+@649 kind:data(byte[18]) addr:0x0203a5dc local
+@707 kind:data(byte[18]) addr:0x0203a5f0 local
+@677 kind:data(byte[18]) addr:0x0203a604 local
+@739 kind:data(byte[19]) addr:0x0203a618 local
+@699 kind:data(byte[19]) addr:0x0203a62c local
+@683 kind:data(byte[20]) addr:0x0203a640 local
+@685 kind:data(byte[20]) addr:0x0203a654 local
+@695 kind:data(byte[20]) addr:0x0203a668 local
+@667 kind:data(byte[20]) addr:0x0203a67c local
+@717 kind:data(byte[22]) addr:0x0203a690 local
+@737 kind:data(byte[22]) addr:0x0203a6a8 local
+@1842 kind:data(byte[5]) addr:0x0203ab40 local
+@1989 kind:data(byte[9]) addr:0x0203ab48 local
+@2025 kind:data(byte[4]) addr:0x0203ab54 local
+_ZN2FS7Archive16currentArchiveIDE kind:data(byte) addr:0x0203a2cc
+_ZN2FS17readFunctionTableE kind:data(word[2]) addr:0x0203a390
+_ZN2FS7Archive8archivesE kind:data(any) addr:0x0203a6c0
+_ZTVN2FS5Cache10CacheEntryE kind:data(word[4]) addr:0x0203ab58
 data_0203ab68 kind:data(any) addr:0x0203ab68
 data_0203ab6c kind:data(any) addr:0x0203ab6c
 data_0203ab70 kind:data(any) addr:0x0203ab70

@@ -529,14 +529,13 @@ struct IDK {
 
 extern "C" u32 func_02006674(u32);
 extern "C" u32 func_02004cb8(u32, u32, u32, u32, u32);
-u8 data_ov001_020cebc0;
-u32 data_ov001_020cd144;
-u32 data_ov001_020cd934;
-u32 data_ov001_020cdb24;
-u16* data_ov001_020cd734;
-u32 data_ov001_020ce84c;
-u32 data_ov001_020ce86c;
-u32 data_02085a88;
+extern u8 data_ov001_020cebc0;
+extern u32 data_ov001_020cd144;
+extern u32 data_ov001_020cd934;
+extern u32 data_ov001_020cdb24;
+extern u16* data_ov001_020cd734;
+extern u32 data_ov001_020ce84c;
+extern u32 data_ov001_020ce86c;
 u32 func_02011d40();
 void func_0200a42c(u32, u32);
 void func_0200a3d0(u32, u32);

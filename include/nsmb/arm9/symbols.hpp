@@ -22,6 +22,8 @@ NTR_OFFSET_GUARD(PlayerControlState, pressedButtons, 0x14);
 // supports semantic names; each declaration is authoritative for its address.
 extern u16 data_0203bd2c;
 extern u16 data_0203bd34;
+extern u8 data_02026ce0[];
+extern u8 data_0203267c[];
 extern u8 data_02085a58;
 extern u8 data_02085a0c;
 extern u8 data_02085a20;
@@ -36,9 +38,9 @@ extern MinigamesSave data_02088e24;
 extern u8 data_02085e30[];
 extern u8 data_02086a30[];
 extern u8 data_020887f0;
+extern u8 data_020887f8;
 extern u8 data_02088800;
 extern u8 data_02088804;
-extern u16 data_0208883c;
 extern NicknameInfo *data_02088850;
 extern u8 data_02088f30;
 extern u8 data_0208adcc[];
@@ -60,8 +62,10 @@ extern u16 data_0208b350[2];
 extern PlayerBase *data_0208b35c[2];
 extern u32 data_0208b3d4[2][4];
 extern u8 data_02089508[2];
+extern void *(*data_0208b690)(u16 fileID);
 
 extern "C" BOOL func_0201301c(void *);
+extern "C" void func_02044418(void *object, u16 fileID);
 u32 func_0200696c__(u32, u16, u8, u8, u8, u32, u32, u32, u32,
 	u8, u8, u8, u8, u8, u8, u8, u32);
 u8 func_020204e0(i8 playerID);
