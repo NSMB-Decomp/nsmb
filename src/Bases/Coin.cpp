@@ -1,6 +1,7 @@
 #include "Coin.hpp"
 #include "Player/PlayerActor.hpp"
 #include "../ProcessManager.hpp"
+#include <nsmb/arm9/symbols.hpp>
 #include <nsmb/overlays/ov000/symbols.hpp>
 #include <nsmb/overlays/ov010/symbols.hpp>
 // bool (Coin::*data_ov010_0212942c)() = Coin::func_ov010_020d923c; (TODO: This is part of a different sinit)
@@ -47,7 +48,6 @@ void Coin::func_ov010_020d9d84()
 	(this->**_430)();
 }
 
-StageEntity *func_020205ec();
 void Coin::func_ov010_020d9cf0(StageEntity *param_1)
 {
 	if (BOOL(param_1->actorType == 2) == FALSE) {
@@ -74,7 +74,7 @@ bool Coin::func_ov010_020d9c78()
 {
 	if ((this->_4a8 & 0x400000) != 0) {
 		if (this->coinType == 0) {
-			func_ov000_020af844(data_ov000_020cad40, this->_408.x >> 0xc, -(this->_408.y >> 0xc));
+			func_ov000_020af844(Stage::stageLayout, this->_408.x >> 0xc, -(this->_408.y >> 0xc));
 		}
 		Base::destroy();
 		return true;
@@ -88,7 +88,7 @@ void Coin::_21()
 
 	i8 linked_player = this->linked_player;
 	if (2 <= linked_player) {
-		StageEntity *stage_entity = func_020205ec();
+		PlayerActor *stage_entity = func_020205ec();
 		linked_player = stage_entity->linked_player;
 	}
 	func_02020354(linked_player);
@@ -100,7 +100,7 @@ void Coin::_21()
 		if (iVar2 < 0) {
 			iVar2 = 7;
 		}
-		StageEntity::func_ov000_0209aad0(&this->position, iVar2, linked_player);
+		StageEntity::spawnRedCoinNumber(this->position, iVar2, linked_player);
 	}
 	func_02012398(0x16c, &this->position);
 	Base::destroy();
@@ -205,23 +205,20 @@ void Coin::func_ov010_020d99a8()
 	return;
 }
 
-u8 data_ov000_020cace0[2];
-i32 data_ov000_020cae0c[2];
-u32 data_02085a7c;
 bool Coin::func_ov010_020d9890()
 {
 	if (this->_4e4 == 0) {
 		this->_4e4 += 1;
 	} else if (this->_4e4 != ~0) {
 		this->func_ov010_020d9c78();
-		if (this->_3be != 0) {
+		if (this->liquidFlag != 0) {
 			this->func_ov010_020d9acc();
 		}
 		if (((func_020202a0() != 2) && (data_ov000_020cace0[data_02085a7c] == 2)) && data_ov000_020cae0c[data_02085a7c] >= this->position.y) {
 			Vec3_32 pos = position;
 			pos.add1(centerOffset);
 			pos.y += 0x8000;
-			this->_3e4 = 1;
+			this->permanentDestroy = 1;
 			func_02022220(&pos);
 			this->_444.unlink();
 			this->destroy(true);
@@ -250,7 +247,7 @@ bool Coin::func_ov010_020d923c()
 		this->minVelocity.z = 0x0;
 		this->accelV = -0x280;
 		this->collisionMgr.func_ov000_020ab010(this, &data_ov010_02121684, 0, &data_ov010_0212169c, 0);
-		this->_2c6 |= 4;
+		this->properties |= 4;
 		this->_4dc = 0;
 	} else if (this->_4e4 != ~0) {
 		bVar1 = this->func_ov010_020d9c78();
@@ -258,7 +255,7 @@ bool Coin::func_ov010_020d923c()
 			return true;
 		}
 		this->updateVerticalVelocity();
-		this->func_ov000_0209c85c();
+		this->applyMovement();
 		iVar2 = this->updateBottomSensors();
 		if (iVar2 != 0) {
 			this->velocity.y = 0x0;
@@ -273,11 +270,11 @@ bool Coin::func_ov010_020d923c()
 				this->velocity.x = 0x0;
 			}
 		}
-		iVar2 = this->collisionMgr.func_01ffe778(0, 0);
+		iVar2 = func_01ffe778(&this->collisionMgr, 0, 0);
 		if (iVar2 != 0) {
 			this->velocity.x = -this->velocity.x;
 		}
-		this->func_ov000_0209c820(-0x280);
+		this->updateLiquids(-0x280);
 		this->func_ov010_020d9b84();
 	}
 	return true;
@@ -363,13 +360,13 @@ bool Coin::func_ov010_020d8eec()
 		this->applyVelocity();
 		if (this->_4ce == 0) {
 			this->_444.link();
-			this->func_ov000_0209c820(0xfffffd00);
+			this->updateLiquids(0xfffffd00);
 		} else {
 			this->_4ce = this->_4ce - 1;
 		}
 		if (this->_4ce == 1) {
-			this->_3be = 0x1;
-			this->_3ea = 0;
+			this->liquidFlag = 0x1;
+			this->quicksandFlag = 0;
 		}
 		this->func_ov010_020d9acc();
 	}
@@ -389,7 +386,7 @@ bool Coin::func_ov010_020d8d9c()
 		this->coinType = 9;
 	} else if (this->_4e4 != ~0) {
 		this->updateVerticalVelocity();
-		this->func_ov000_0209c85c();
+		this->applyMovement();
 		if (this->_4f1 != 0) {
 			this->_4f1 -= 1;
 		}
@@ -403,14 +400,14 @@ bool Coin::func_ov010_020d8d9c()
 		} else {
 			func_02020354(this->_4e3);
 			if (func_020202a0() == 1) {
-				this->func_ov000_0209ab90(0, 0, 0, this->_4e3);
+				this->getScorePointsRegular(0, 0, 0, this->_4e3);
 			} else {
 				i32 iVar1 = func_0202040c(this->_4e3);
 				iVar1 = iVar1 + -1;
 				if (iVar1 < 0) {
 					iVar1 = 7;
 				}
-				StageEntity::func_ov000_0209aad0(&this->position, iVar1, this->_4e3);
+				StageEntity::spawnRedCoinNumber(this->position, iVar1, this->_4e3);
 			}
 			this->func_ov000_0209e264(0, 0, 2);
 			Base::destroy();
@@ -436,14 +433,14 @@ bool Coin::func_ov010_020d8b9c()
 		this->_4dc = 0;
 		this->_4e2 = 0;
 		this->_4e0 = 6;
-		this->_2c6 = this->_2c6 | 4;
+		this->properties = this->properties | 4;
 	} else if (this->_4e4 != ~0) {
 		iVar1 = this->func_ov010_020d9c78();
 		if (iVar1 != 0) {
 			return true;
 		}
 		this->updateVerticalVelocity();
-		this->func_ov000_0209c85c();
+		this->applyMovement();
 		if (this->_4e2 == 0) {
 			if (this->_4e0 != 0) {
 				this->_4e0 = this->_4e0 - 1;
@@ -470,11 +467,11 @@ bool Coin::func_ov010_020d8b9c()
 			if (iVar1 != 0) {
 				this->velocity.y = -0x2000;
 			}
-			bool iVar2 = this->collisionMgr.func_01ffe778(0, 0);
+			bool iVar2 = func_01ffe778(&this->collisionMgr, 0, 0);
 			if (iVar2 != 0) {
 				this->velocity.x = -(this->velocity).x;
 			}
-			this->func_ov000_0209c820(0xfffffd80);
+			this->updateLiquids(0xfffffd80);
 		}
 		this->func_ov010_020d9b84();
 	}
@@ -513,7 +510,7 @@ s32 Coin::onCreate()
 	this->_4d0 = 0x1c2;
 	this->_4d8 = 4;
 	this->_4da = 0;
-	this->_3ea = 0;
+	this->quicksandFlag = 0;
 	this->_4ef = 0;
 	this->_4e8 = 0;
 	this->_4ea = 0;
@@ -530,7 +527,7 @@ s32 Coin::onCreate()
 	} else {
 		this->_4ad = 0;
 	}
-	this->func_ov000_0209c820(0xfffffd80);
+	this->updateLiquids(0xfffffd80);
 
 	u32 _4c0 = this->coinType;
 	if (_4c0 == 0) {
@@ -540,13 +537,13 @@ s32 Coin::onCreate()
 		if (READ_NIBBLE(settings, 6) != 0) {
 			this->position.x += 0x8000;
 		}
-		if (this->_3be != 0) {
+		if (this->liquidFlag != 0) {
 			this->_4ef = 1;
 			this->_4ed = 0;
 			this->_418.x = 0x1000;
 			this->_418.y = 0x1000;
 		}
-		bool iVar2 = func_ov000_020af790(data_ov000_020cad40, this->_408.x >> 0xc, -(this->_408.y >> 0xc));
+		bool iVar2 = func_ov000_020af790(Stage::stageLayout, this->_408.x >> 0xc, -(this->_408.y >> 0xc));
 		if (iVar2 != 0) {
 			*data_ov000_020ca2ac |= 1;
 			return false;
@@ -561,11 +558,11 @@ s32 Coin::onCreate()
 			this->_4e8 = 0;
 		} else if (_4c0 == 1) {
 			this->func_ov010_020d8b40();
-			this->direction = this->func_ov000_0209acd4(&this->position);
+			this->direction = this->getHorizontalDirectionToPlayer(this->position);
 			this->func_ov010_020d9dcc(&data_ov010_021293e4);
 		} else if (_4c0 == 2) {
 			this->func_ov010_020d8b40();
-			this->direction = this->func_ov000_0209acd4(&this->position);
+			this->direction = this->getHorizontalDirectionToPlayer(this->position);
 			this->_4eb = 2;
 			this->_4ea = 2;
 			this->func_ov010_020d9dcc(&data_ov010_021293e4);
@@ -587,8 +584,8 @@ s32 Coin::onCreate()
 			this->velocity.x = data_ov010_021216ec[READ_NIBBLE(settings, 1)];
 			this->velocity.y = data_ov010_021216c4[READ_NIBBLE(settings, 1)];
 			this->visible = false;
-			this->_3be = 0;
-			this->_3ea = 1;
+			this->liquidFlag = 0;
+			this->quicksandFlag = 1;
 			this->func_ov010_020d9dcc(&data_ov010_021293ec);
 		} else if (_4c0 == 9) {
 			this->_4e3 = READ_NIBBLE(settings, 3);
@@ -644,13 +641,13 @@ s32 Coin::onDestroy()
 	return true;
 }
 
-void Coin::onStageComplete(PlayerActor *player)
+void Coin::onStageBeaten(PlayerActor &player)
 {
 	//Vec3_32& center = this->centerOffset;
 	Vec3_32 pos = position;
 	Vec3_32& center = centerOffset;
-	this->func_ov000_0209ab90(0, 0, 0x18000, player->linked_player);
-	func_02020354(player->linked_player);
+	this->getScorePointsRegular(0, 0, 0x18000, player.linked_player);
+	func_02020354(player.linked_player);
 	Vec3_32::add4(pos, (Vec3_32s*)&center.x, pos);
 	func_02012398(0x70, &pos);
 	this->destroy(true);
@@ -664,7 +661,7 @@ bool Coin::onUpdate_0()
 	func_ov000_020ab350(&this->_444);
 	this->func_ov010_020d9d84();
 	if ((this->coinType - 1 <= 1) && (this->_01() == false)) {
-		this->_3e4 = 1;
+		this->permanentDestroy = 1;
 	}
 	this->func_ov010_020d9b40();
 	this->func_ov010_020d99a8();

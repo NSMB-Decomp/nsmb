@@ -259,7 +259,7 @@ PlayerBase::PlayerBase()
 	i8 a = this->settings & 0xf;
 	this->linkPlayer(a);
 	this->_7b4 = a;
-	this->collisionMgr._25e = a;
+	this->collisionMgr.sensorState = a;
 	this->_7a8 = 0;
 }
 
@@ -348,7 +348,7 @@ void PlayerBase::func_ov011_0212c110()
 	data_ov000_020ca8d0 |= 4;
 	this->func_ov011_0212c170();
 }
-bool PlayerBase::virt_20(i32, i32, i32, u8, i8)
+bool PlayerBase::doJump(fx32, u16, bool, bool, s8)
 {
 	return false;
 }
@@ -472,7 +472,7 @@ bool PlayerBase::virt_51()
 {
 }
 
-Vec3_32 PlayerBase::func_ov011_0212bff0()
+Vec3_32 PlayerBase::getHandsPosition()
 {
 	Vec3_32 result;
 	i32 *v = this->model.nodeTransforms.s.rightWrist.v[3];
@@ -594,7 +594,7 @@ void PlayerBase::func_ov011_0212bf00()
 
 bool PlayerBase::func_ov011_0212beb8(i32 a, i32 b, i32 c, u8 d, i8 e)
 {
-	if (this->virt_20(a, b, c, d, e) != false) {
+	if (this->doJump(a, b, c, d, e) != false) {
 		this->_780 |= 0x2000;
 		return true;
 	}
@@ -603,7 +603,7 @@ bool PlayerBase::func_ov011_0212beb8(i32 a, i32 b, i32 c, u8 d, i8 e)
 
 bool PlayerBase::func_ov011_0212be70(i32 a, i32 b, i32 c, u8 d, i8 e)
 {
-	if (this->virt_20(a, b, c, d, e) != false) {
+	if (this->doJump(a, b, c, d, e) != false) {
 		this->_780 |= 0x40000;
 		return true;
 	}
@@ -612,7 +612,7 @@ bool PlayerBase::func_ov011_0212be70(i32 a, i32 b, i32 c, u8 d, i8 e)
 
 bool PlayerBase::func_ov011_0212be28(i32 a, i32 b, i32 c, u8 d, i8 e)
 {
-	if (this->virt_20(a, b, c, d, e) != false) {
+	if (this->doJump(a, b, c, d, e) != false) {
 		this->_778 |= 0x80000;
 		return true;
 	}
@@ -629,13 +629,15 @@ bool PlayerBase::func_ov011_0212bde0(Actor *a)
 	return true;
 }
 
-u32 PlayerBase::func_ov011_0212bdb8(i32 x)
+bool PlayerBase::limitedHorizontalWarp(fx32 x)
 {
 	return this->func_ov011_0212bca4(x < -0x4000 ? -0x4000 : (x > 0x4000 ? 0x4000 : x));
 }
 
-bool PlayerBase::func_ov011_0212bd68(i32 x, i32 y, i32 z)
+bool PlayerBase::pushingHorizontalWarp(fx32 x)
 {
+	i32 y;
+	i32 z;
 	if (x < 0) {
 		z = this->_778 | 0x40000;
 		y = 0xffff1000;
@@ -657,14 +659,14 @@ bool PlayerBase::func_ov011_0212bca4(i32 x)
 {
 	if ((BOOL)(this->_7a9 == 2) == FALSE) {
 		if (x < 0) {
-			if ((this->_788 & 0x400) == 0) {
+			if ((this->collisionFlag & 0x400) == 0) {
 				this->position.x += x;
-				this->collisionMgr.func_01ffe778(&x, 0);
+				func_01ffe778(&this->collisionMgr, &x, 0);
 				return true;
 			}
-		} else if ((0 < x) && ((this->_788 & 0x800) == 0)) {
+		} else if ((0 < x) && ((this->collisionFlag & 0x800) == 0)) {
 			this->position.x += x;
-			this->collisionMgr.func_01ffe778(&x, 0);
+			func_01ffe778(&this->collisionMgr, &x, 0);
 			return true;
 		}
 	}
@@ -674,12 +676,12 @@ bool PlayerBase::func_ov011_0212bca4(i32 x)
 bool PlayerBase::func_ov011_0212bc50(i32 a)
 {
 	if ((a < 0)) {
-		if ((this->_788 & 1) == 0) {
+		if ((this->collisionFlag & CF_Ground) == 0) {
 			this->position.y += a;
 			return true;
 		}
 	} else if (0 < a) {
-		if ((this->_788 & 2) == 0) {
+		if ((this->collisionFlag & 2) == 0) {
 			this->position.y += a;
 			return true;
 		}
@@ -706,7 +708,7 @@ void PlayerBase::func_ov011_0212bbcc()
 	this->_780 &= ~0x200;
 }
 
-u32 PlayerBase::getShellStatus()
+u32 PlayerBase::getShellState() const
 {
 	u32 result;
 
@@ -823,7 +825,7 @@ void PlayerBase::func_ov011_0212b908()
 	data_ov000_020ca880 |= 0x10;
 	data_ov000_020ca898 |= 0x40;
 	this->_7b0 = 1;
-	this->activeCollider._1c6 |= 1;
+	this->activeCollider.collisionState |= 1;
 }
 
 void PlayerBase::func_ov011_0212b8bc()
@@ -831,7 +833,7 @@ void PlayerBase::func_ov011_0212b8bc()
 	data_ov000_020ca880 &= ~0x10;
 	data_ov000_020ca898 &= ~0x40;
 	this->_7b0 = 0;
-	this->activeCollider._1c6 &= ~1;
+	this->activeCollider.collisionState &= ~1;
 }
 
 void PlayerBase::func_ov011_0212b878(u16 a)

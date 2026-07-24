@@ -4,6 +4,32 @@
 class PlayerBase;
 class PlayerActor;
 
+typedef u8 ScoreType;
+
+enum PlayerStompType {
+	PlayerStomp_None,
+	PlayerStomp_Stomp,
+	PlayerStomp_MiniStomp
+};
+
+struct SimplePlayerCollision {
+	PlayerActor *player;
+	fx32 dx;
+	fx32 dy;
+};
+NTR_SIZE_GUARD(SimplePlayerCollision, 0xc);
+
+struct SimplePlayerSpecialCollision {
+	PlayerActor *player;
+	fx32 dx;
+	fx32 dy;
+	u16 flags;
+	u16 padding;
+};
+NTR_SIZE_GUARD(SimplePlayerSpecialCollision, 0x10);
+
+typedef u64 EventMask;
+
 struct ObjectInfo {
 
 	enum EntityProperties {
@@ -115,70 +141,92 @@ public:
 
 	};
 
-	u8 _2c4;	 /* 0x2C4 */
-	u8 _2c5;	 /* 0x2C5 */
-	u16 _2c6;	 /* 0x2C6 */
-	u8 _pad13[0x02]; /* 0x2C0 */
-	u16 _2ca;	 /* 0x2CA */
-	u8 _pad9[0x2];
-	u32 _2d0; /* 0x2D0 */
-	u8 _pad1[0x38];
-	Vec3_32 _30c; /* 0x30C */
-	Vec3_32 _31c; /* 0x31C */
-	u8 _pad2[8];
-	u64 _334; /* 0x334 */
-	u8 _pad99[4];
-	i32 _340; /* 0x340 */
-	u8 _pad14[0x8];
-	u32 _34c;     /* 0x34C */
-	i32 _350;     /* 0x350 */
-	u32 _354;     /* 0x354 */
-	u32 _358;     /* 0x358 */
-	Vec3_32 _35c; /* 0x35C */
+	u8 unused2C4;
+	u8 align2C5;
+	u16 properties;
+	u16 spawnSettings;
+	u16 inactiveDestroyFlag;
+	u8 cooldownA;
+	u8 cooldownB;
+	u8 align2CE[2];
+	u32 unused2D0;
+	SimplePlayerCollision simplePlayerCollision[2];
+	SimplePlayerSpecialCollision simplePlayerSpecialCollision[2];
+	Vec3_32 unusedVec;
+	Vec3_32 externalForce;
+	fx32 releaseForceX;
+	fx32 releaseForceY;
+	EventMask eventMask;
+	u8 events[2];
+	u8 align33E[2];
+	i32 updateStateID;
+	u32 unk344;
+	u8 spawnPlayerID;
+	u8 align349[3];
+	u32 defeatSFX;
+	fx32 liquidWaveHeight;
+	u32 carriedAction;
+	u32 collisionData;
+	Vec3_32 wiggleScale;
 	Vec2_32 activeSize; /* 0x36C */
 	Vec2_32 renderSize; /* 0x378 */
 	Vec2_32 viewOffset; /* 0x384 */
-	Vec2_32 _390; /* 0x390 */
-	Vec2_32 _39c; /* 0x39C */
-	u32 _3a8;     /* 0x3A8 */
-	u8 _pad3[0x8];
+	Vec2_32 collisionSelfPos;
+	Vec2_32 collisionActorPos;
+	u32 wiggleFactor;
+	u32 unused3AC;
+	u32 unused3B0;
 	u32 collisionType; /* 0x3B4 */
-	u32 _3b8; /* 0x3B8 */
-	u16 _3bc; /* 0x3BC */
-	u16 _3be /* 0x3BE */;
-	u16 _3c0; /* 0x3C0 */
-	u16 _3c2; /* 0x3C2 */
-	u8 _pad_3c4[2];
-	u16 _3c6[2]; /* 0x3C6 */
-	u8 _pad_3ca[1];
-	u16 *_3cc; /* 0x3CC */
-	u8 _3d0;   /* 0x3D0 */
-	u8 _pad15[0x1];
-	u8 _3d2; /* 0x3D2 */
-	u8 Pad5[0x3];
-	u8 *_3d8; /* 0x3D8 */
-	u8 _pad4[0x2];
-	u8 _3de; /* 0x3DE */
-	u8 _3df; /* 0x3DF */
-	u8 _pad16[0x4];
-	u8 _3e4; /* 0x3E4 */
-	u8 _pad8[2];
-	i8 _3e7; /* 0x3E7 */
-	u8 _3e8; /* 0x3E8 */
-	u8 _3e9; /* 0x3E9 */
-	u8 _3ea; /* 0x3EA */
-	u8 _3eb; /* 0x3EB */
-	u8 _3ec; /* 0x3EC */
-	u8 _3ed; /* 0x3ED */
-	u8 _3ee; /* 0x3EE */
-	u8 _3ef; /* 0x3EF */
-	u8 _3f0; /* 0x3F0 */
-	u8 _3f1; /* 0x3F1 */
+	u32 kickedInWallDistance;
+	u16 wiggleTimer;
+	u16 liquidFlag;
+	u16 releaseMode;
+	u16 thrownFlag;
+	u16 unused3C4;
+	u16 playerCollisionCooldown[2];
+	u16 simplePlayerCollisionResult;
+	u16 *objectRespawnTimer;
+	u8 defeatedLeftLiquid;
+	u8 defeatedInLiquid;
+	u8 manualTimerA;
+	u8 unk3CF;
+	u8 cooldownC;
+	u8 align3D1;
+	u8 align3D2;
+	u8 align3D3;
+	u8 *objectSpawnFlags;
+	u8 playerDirection;
+	u8 scoreCombo;
+	ScoreType scoreType;
+	bool kickedFaster;
+	bool unused3DC;
+	u8 unused3DD;
+	u8 blockHitDirection;
+	u8 defeatedArg;
+	bool permanentDestroy;
+	u8 unused3E1;
+	bool forceUpdate;
+	s8 unused3E3;
+	bool relativeDefeatSpin;
+	bool forceRender;
+	bool quicksandFlag;
+	bool slipperyFlag;
+	u8 stompTriggerHeight;
+	u8 unused3E9;
+	u8 collisionDirection;
+	bool freezeFlag;
+	u8 backLayer;
+	bool kickedInWall;
+	s8 functionStep;
+	u8 tailPadding;
 
 	StageEntity();
 	inline ~StageEntity() {};
 
-	void func_ov000_0209c820(u32);
+	static u32 checkLiquidCollision(const Vec3_32 &, const Vec3_32 &, fx32, bool = true);
+	bool updateLiquidPhysics(const Vec3_32 &, fx32);
+	void updateLiquidCollision(const Vec3_32 &, fx32);
+	u32 updateLiquids(fx32);
 	s32 onUpdate();
 	bool preUpdate();
 	void postUpdate(u32);
@@ -191,45 +239,62 @@ public:
 	void assignView(Vec3_32 *);
 	bool isPlayerInZone(PlayerActor *, u32);
 	u32 stopPlayerInShell(ActiveCollider *, PlayerActor *);
-	static bool isBelowPlayer(i32, ActiveCollider *, u8);
-	bool setGroundPoundCollision(PlayerActor *);
+	static bool isBelowCamera(fx32, ActiveCollider &, s8);
+	bool setGroundPoundCollision(const PlayerActor &);
+	void setStompCollision(const PlayerActor &);
+	bool setMegaKickCollision(const PlayerActor &);
+	bool setMegaCollision(const PlayerActor &);
+	bool setFenceSlamCollision(const PlayerActor &);
+	bool setSlidingCollision(const PlayerActor &);
+	bool setStarmanCollision(const PlayerActor &);
+	bool setSpinDrillCollision(const PlayerActor &);
 	bool checkSquished();
 	u32 updateSideSensors();
 	u32 updateBottomSensors();
 	bool checkLavaCollision(Vec3_32 *);
 	u32 updateCollisionSensors();
-	bool checkPlayersInOffset(i32, i32);
-	bool checkPlayersInOffset(i32);
+	bool checkPlayersInRange(fx32, fx32) const;
+	bool checkPlayersInRange(fx32) const;
 	bool rotateToTarget(i16[2], i16[2]);
 	void applyFireballWiggle();
 	u16 getActorID(u8);
 	void setTimedEvent(u32, i32, bool, bool, bool);
 	void destroy(bool);
 	void updateBounce(i32, i32, i32);
-	static void damagePlayerCallback(ActiveCollider *, ActiveCollider *); // These callbacks should not be static, set as static temporarily to match code.
-	static void damageEntityCallback(ActiveCollider *);
-	static void shellCallback(ActiveCollider *);
-	static void simpleCallback(ActiveCollider *);
+	static void damagePlayerCallback(ActiveCollider &, ActiveCollider &);
+	static void damageEntityCallback(ActiveCollider *, ActiveCollider *);
+	static void shellActiveCallback(ActiveCollider &, ActiveCollider &);
+	static void simpleCallback(ActiveCollider *, ActiveCollider *);
 	static bool spawnBrokenPipe(i32, i32, u32, u32, u8, u8, i8);
-	static u8 func_ov000_0209aad0(Vec3_32 *, u32, u32);
+	static s8 unitDirection[2];
+	static s16 directionalRotationY[2];
+	void getScorePointsStageBeaten(u32, fx32, fx32, s32) const;
+	static void getScorePointsStageBeaten(const Vec3_32 &, u32, s32);
+	static void getScorePointsEnhanced(const Vec3_32 &, u32, s32);
+	static void spawnRedCoinNumber(const Vec3_32 &, u32, s32);
+	static void getCollectablePoints(u32, s32);
+	void getScorePointsRegular(u32, fx32, fx32, s32) const;
+	static void getScorePointsRegular(const Vec3_32 &, u32, s32);
+	u8 getVerticalDirectionToPlayer(const Vec3_32 &) const;
+	u8 getHorizontalDirectionToPlayer(const Vec3_32 &) const;
 	u32 random();
 	i32 tryAttachToPlayerHands(i32, i32, i32);
-	i32 attachToPlayerHands(i32, i32, i32);
-	void func_ov000_0209c85c();
+	void attachToPlayerHands(fx32, fx32, fx32);
+	void applyMovement();
 	bool destroyInactive(u32 flags);
+	static bool isOutOfView(const Vec3_32 &, const FxRect &, u8);
 	void func_ov000_0209e264(u32, u32, u32);
-	bool func_ov000_0209ccd0(PlayerBase *);
+	bool setBlueShellCollision(const PlayerActor &);
 	void func_ov000_0209da00();
 	void func_ov000_0209da0c();
-	void func_ov000_0209e5a8(u32, u32);
 	void func_ov000_020a020c();
 	void func_ov000_020a01b4();
-	i32 func_ov000_0209acd4(Vec3_32 *);
-	i32 func_ov000_0209a23c();
-	i32 func_ov000_0209a4f0();
-	void func_ov000_0209aa04(u32 type,i32 x,i32 y,i32 player_id);
-	void func_ov000_0209aa5c(Vec3_32*, i32, i32);
-	bool func_ov000_0209ff98();
+	u32 updateSolidActiveCollider(bool, u32, u8);
+	bool canPlayerStomp(ActiveCollider &, PlayerBase &, bool);
+	void onPlayerStomp(PlayerBase &, fx32, bool);
+	PlayerStompType updatePlayerStomp(ActiveCollider &, fx32, bool, bool);
+	void getScorePointsEnhanced(u32, fx32, fx32, s32) const;
+	bool updateCarriedCollision();
 
 	virtual bool onUpdate_0();
 	virtual bool _01();
@@ -237,11 +302,11 @@ public:
 	virtual bool onUpdate_defeated();
 	virtual bool onUpdate_3();
 	virtual bool onUpdate_4();
-	virtual bool onUpdate_5();
+	virtual bool updateCarried();
 	virtual bool onUpdate_6();
 	virtual bool onUpdate_7();
-	virtual bool onUpdate_8();
-	virtual bool onUpdate_9();
+	virtual bool updateDroppedHeavy();
+	virtual bool updateRolling();
 	virtual void _11();
 	virtual void _12();
 	virtual void _13();
@@ -249,7 +314,7 @@ public:
 	virtual void _15();
 	virtual void _16();
 	virtual void _17();
-	virtual void _18();
+	virtual void shellKicked();
 	virtual void _19();
 	virtual void onUpdate_xx();
 	virtual void _21();
@@ -259,23 +324,40 @@ public:
 	virtual void _25();
 	virtual void _26();
 	virtual void _27();
-	virtual void stopVelocity();
+	virtual void onSpinDrillHit();
 	virtual void onStomped();
 	virtual void _30();
 	virtual void _31();
 	virtual void _32();
 	virtual void onMegaGroundPound();
-	virtual void onStageComplete(PlayerActor *);
+	virtual void onStageBeaten(PlayerActor &);
 	virtual void _35();
 	virtual void _36();
 	virtual void _37();
 	virtual void _38();
-	virtual bool playerCollision(ActiveCollider *, ActiveCollider *);
-	virtual void entityCollision();
-	virtual void damagePlayer(ActiveCollider *, PlayerBase *);
+	virtual bool playerCollision(ActiveCollider &, ActiveCollider &);
+	virtual void entityCollision(ActiveCollider &, StageActor &);
+	virtual void damagePlayer(ActiveCollider &, PlayerBase &);
 	virtual void _42(u32, u32, u32, u32);
 	virtual void _43(u32, u32, u32);
 	virtual void _44();
 	virtual void _45();
-	virtual void _46();
+	virtual void doPlayerJump(PlayerBase &, fx32);
 };
+
+NTR_SIZE_GUARD(StageEntity, 0x3f4);
+NTR_OFFSET_GUARD(StageEntity, properties, 0x2c6);
+NTR_OFFSET_GUARD(StageEntity, spawnSettings, 0x2c8);
+NTR_OFFSET_GUARD(StageEntity, simplePlayerCollision, 0x2d4);
+NTR_OFFSET_GUARD(StageEntity, simplePlayerSpecialCollision, 0x2ec);
+NTR_OFFSET_GUARD(StageEntity, externalForce, 0x31c);
+NTR_OFFSET_GUARD(StageEntity, eventMask, 0x334);
+NTR_OFFSET_GUARD(StageEntity, updateStateID, 0x340);
+NTR_OFFSET_GUARD(StageEntity, spawnPlayerID, 0x348);
+NTR_OFFSET_GUARD(StageEntity, activeSize, 0x36c);
+NTR_OFFSET_GUARD(StageEntity, collisionType, 0x3b4);
+NTR_OFFSET_GUARD(StageEntity, simplePlayerCollisionResult, 0x3ca);
+NTR_OFFSET_GUARD(StageEntity, objectRespawnTimer, 0x3cc);
+NTR_OFFSET_GUARD(StageEntity, objectSpawnFlags, 0x3d8);
+NTR_OFFSET_GUARD(StageEntity, blockHitDirection, 0x3e2);
+NTR_OFFSET_GUARD(StageEntity, functionStep, 0x3f2);

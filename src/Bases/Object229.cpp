@@ -1,4 +1,5 @@
 #include "Object229.hpp"
+#include <nsmb/arm9/symbols.hpp>
 
 void *Object229::create()
 {
@@ -21,7 +22,6 @@ struct UNKWN_STRUCT {
 	u32 a;
 	u32 b;
 };
-u64 data_0208af3c;
 u8 data_ov000_020cac9c;
 s32 Object229::onCreate()
 {
@@ -45,7 +45,7 @@ s32 Object229::onCreate()
 		uVar1 = 3;
 	}
 	this->setting_2 = (char)(1 << (uVar1 - 1));
-	if (data_0208af3c & this->_334) {
+	if (data_0208af3c & this->eventMask) {
 		this->_404 = 3;
 		this->func_ov099_02185f30(2);
 		data_ov000_020cac9c |= this->setting_2;
@@ -85,7 +85,7 @@ void Object229::func_ov099_021860f0()
 
 void Object229::func_ov099_021860a4()
 {
-	if ((data_0208af3c & this->_334) != 0) {
+	if ((data_0208af3c & this->eventMask) != 0) {
 		this->func_ov099_02185f30(1);
 		return;
 	}
@@ -119,7 +119,7 @@ void Object229::func_ov099_02186028()
 
 void Object229::func_ov099_02185fdc()
 {
-	if ((data_0208af3c & this->_334) == 0) {
+	if ((data_0208af3c & this->eventMask) == 0) {
 		this->func_ov099_02185f30(3);
 	}
 }

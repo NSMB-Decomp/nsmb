@@ -25,6 +25,19 @@ NTR_SIZE_GUARD(PlayerControlState, 0x18);
 NTR_OFFSET_GUARD(PlayerControlState, heldButtons, 0x0);
 NTR_OFFSET_GUARD(PlayerControlState, pressedButtons, 0x14);
 
+struct StageRuntimeInfo
+{
+	u8 reserved_00_01[2];
+	u16 value02;
+	u8 reserved_04_1b[0x18];
+	u16 value1C;
+	u8 reserved_1e_33[0x16];
+	u32 value34;
+};
+NTR_OFFSET_GUARD(StageRuntimeInfo, value02, 0x2);
+NTR_OFFSET_GUARD(StageRuntimeInfo, value1C, 0x1c);
+NTR_OFFSET_GUARD(StageRuntimeInfo, value34, 0x34);
+
 // Unresolved main-ARM9/autoload data. Keep address names until binary evidence
 // supports semantic names; each declaration is authoritative for its address.
 extern u16 data_0203bd2c;
@@ -35,6 +48,11 @@ extern u8 data_02085a58;
 extern u8 data_02085a0c;
 extern u8 data_02085a20;
 extern u32 data_02085a7c;
+extern i32 data_02085aa4;
+extern u32 data_02085abc;
+extern u64 data_0208af3c;
+extern u8 data_0208af44[64];
+extern i32 data_0208af84[64];
 extern u32 data_02085a84;
 extern u32 data_02085a9c;
 extern u32 data_02085acc;
@@ -57,7 +75,7 @@ extern u8 data_02088f30;
 extern u8 data_0208adcc[];
 extern u8 data_0208ae54[2];
 extern u32 data_0208ae58;
-extern u8 data_0208b168[];
+extern StageRuntimeInfo *data_0208b168;
 extern u8 data_0208b4c4;
 extern u8 data_0208b4c8[];
 extern u8 data_0208b4c9[];
@@ -69,7 +87,7 @@ extern u8 data_0208b4f0;
 extern u8 data_0208b4f4;
 extern PlayerControlState data_020876b2[2];
 extern u16 data_0208b344[2];
-extern u16 data_0208b350[2];
+extern s16 data_0208b350[2];
 extern PlayerBase *data_0208b35c[2];
 extern u32 data_0208b3d4[2][4];
 extern u8 data_02089508[2];

@@ -20,6 +20,7 @@ struct Vec3_32 : public Vec3_32s {
 	// 	return (Vec3_32s *)(((u32)this) + 4);
 	// }
 	Vec3_32 sub(Vec3_32s *a);
+	Vec3_32 normalize();
 
 	inline Vec3_32(const Vec3_32 &v)
 	{
@@ -45,14 +46,9 @@ struct Vec3_32 : public Vec3_32s {
 	}
 	inline Vec3_32(i32 x, i32 y, i32 z)
 	{
-		/*
-			Can either be in order z, y, x or x, z, y
-			But NOT in order x, y, z
-			(messes up LDR/STR order in Model functions)
-		*/
-		this->z = z;
-		this->y = y;
 		this->x = x;
+		this->y = y;
+		this->z = z;
 	}
 	inline void set(i32 v) {
 		x = v;

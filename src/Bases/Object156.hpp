@@ -5,7 +5,6 @@
 class Object156 : public StageEntity
 {
       public:
-	  u8 _pad0[0x2];
 	Model model;
 	u8 _pad1[0x58];
 	inline Object156();

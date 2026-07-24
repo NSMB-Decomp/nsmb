@@ -132,7 +132,7 @@ namespace Layout {
 
 namespace Stage
 {
-extern u16 ObjectBankTable[2];
+extern u16 objectBankTable[2];
 extern u8 actorFreezeFlag;
 extern u8 stageGroup;
 extern u8 stageID;
@@ -329,7 +329,6 @@ extern "C" {
 	//
 	bool func_0204d82c();
 	void func_020067dc();
-	extern i32 data_02085aa4;
 
 	class SceneGraph;
 	class ProcessLink;
@@ -388,7 +387,6 @@ extern "C" {
 	void func_020050d8();
 	void func_020050c0();
 	void onRender_3();
-	bool(func_0200ae9c)(Vec3_32 *);
 	bool(func_0201f000)(Vec3_32 *);
 	bool isMultiBootCart();
 	bool func_020109c8();

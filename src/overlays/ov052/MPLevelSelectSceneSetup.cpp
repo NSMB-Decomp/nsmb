@@ -145,7 +145,7 @@ void func_ov052_02152bf0()
 void func_ov052_02152c7c()
 {
 	StageScene::func_ov000_020a2eec();
-	func_0200dee0(*(u32 *)(data_0208b168 + 0x34), 0);
+	func_0200dee0(data_0208b168->value34, 0);
 	func_02009d30(data_02085e30, 0x80);
 	func_02011d60(0x100);
 }

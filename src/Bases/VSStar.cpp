@@ -20,11 +20,11 @@ void VsStar::func_ov020_02132618()
 //{
 //}
 
-void VsStar::damagePlayer(ActiveCollider *collider, PlayerBase *player)
+void VsStar::damagePlayer(ActiveCollider &collider, PlayerBase &player)
 {
-	if ((collider->_8 + 0x4e4) == 0) {
-		collider->_1c0 = 1;
-		this->func_ov020_02132510(player, (void*)player->linked_player);
+	if ((collider._8 + 0x4e4) == 0) {
+		collider.collidedGroups = 1;
+		this->func_ov020_02132510(&player, (void*)player.linked_player);
 	}
 }
 
@@ -126,7 +126,7 @@ s32 VsStar::onRender()
 			return true;
 		}
 		u32 a = 0;
-		if (this->_3ea != 0) {
+		if (this->quicksandFlag != 0) {
 			a = 0x20;
 		}
 		Vec2_32 scale;

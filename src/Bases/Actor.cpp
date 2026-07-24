@@ -1,5 +1,7 @@
 #include "Actor.hpp"
 #include "../Math.hpp"
+#include <nsmb/arm9/symbols.hpp>
+#include <nsmb/overlays/ov000/symbols.hpp>
 
 // TODO: Some of this may be a part of inline Object::Object(). To comapre Actor::Actor() to Scene::Scene() and confirm if any comparisons
 Actor::Actor()
@@ -136,7 +138,7 @@ Actor *Actor::spawnActor(u16 a, u32 b, Vec3_32 *c, Vec3_16 *d, i32 *e, i8 *f)
 	return (Actor *)Object::spawnObject(a, pBVar1, b, 2);
 }
 
-void Actor::linkPlayer(i32 player_id)
+void Actor::linkPlayer(s8 player_id)
 {
 	this->linked_player = player_id;
 }
@@ -335,7 +337,6 @@ bool Actor::isOutOfViewVertical(FxRect *rect, int player_id)
 	       -(cameraY[player_id] + Game::cameraZoomY[player_id]);
 }
 
-Actor *(*data_ov000_020ca858)(i32, i32, i32 *, i32 *);
 Actor *(*data_ov000_020c6c14[3])(i32, i32, i32 *, i32 *) = {
     Actor::calcDistanceToPlayerNoWrap,
     Actor::calcDistanceToPlayerWrap,

@@ -32,7 +32,7 @@ class Actor : public Object
 	i8 linked_player; // 0x11E
 	u8 actorCategory; // 0x11F
 
-	void linkPlayer(i32);
+	void linkPlayer(s8);
 	u32 getActorCount(u8);
 	void applyVelocity();
 	void updateVerticalVelocity();
