@@ -2,7 +2,14 @@
 
 #include "../../../src/nsmb_nitro.hpp"
 
-struct NicknameInfo;
+struct NicknameInfo
+{
+	u8 data[0x1d];
+	u8 valid;
+};
+NTR_SIZE_GUARD(NicknameInfo, 0x1e);
+NTR_OFFSET_GUARD(NicknameInfo, valid, 0x1d);
+
 class PlayerBase;
 struct MinigamesSave;
 
@@ -34,6 +41,7 @@ extern u32 data_02085acc;
 extern u32 data_02085a8c;
 extern u32 data_02085c28;
 extern u32 data_0203996c;
+extern u32 data_02039678;
 extern MinigamesSave data_02088e24;
 extern u8 data_02085e30[];
 extern u8 data_02086a30[];
@@ -41,6 +49,7 @@ extern u8 data_020887f0;
 extern u8 data_020887f8;
 extern u8 data_02088800;
 extern u8 data_02088804;
+extern u8 data_0208884c[4];
 extern NicknameInfo *data_02088850;
 extern u8 data_02088f30;
 extern u8 data_0208adcc[];

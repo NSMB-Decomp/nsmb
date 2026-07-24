@@ -7,12 +7,6 @@
 #include <nsmb/overlays/ov052/symbols.hpp>
 #include <nsmb/file_ids.hpp>
 
-struct NicknameInfo
-{
-	u8 data[0x1d];
-	u8 valid;
-};
-
 static inline void renderSubMenuBackground()
 {
 	func_0200d87c(data_ov011_0212f54c, 0x80, 0x60, 0, 0, 0, 0, 0, 0, 0);
@@ -98,7 +92,7 @@ s32 VSConnectScene::onCreate()
 	for (s32 i = 0; i < 6; i++)
 		parentBssid[i] = 0;
 	parentAid = 0;
-	func_02010bb0(&packetBuffer, 2, syncInputSchemeWrapper, this);
+	func_02010bb0(&packetBuffer, 2, rcast<void *>(syncInputSchemeWrapper), this);
 	syncSettings[0] = data_02085ad4[0];
 	syncSettings[1] = save.options.soundMode;
 	syncedAidMask = 0;
@@ -851,7 +845,7 @@ bool VSConnectScene::startConsoleSearch()
 		result = func_02010a60(this);
 		break;
 	case 2:
-		result = func_02010a3c(this);
+		result = func_02010a3c();
 		break;
 	case 0:
 		result = func_02010a14(inputScheme);

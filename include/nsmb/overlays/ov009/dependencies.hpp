@@ -15,7 +15,6 @@ extern "C" s32 func_02012e08(u32 fileID, u32, Save *saveData);
 extern "C" s32 func_02012d98(u32 fileID, Save *saveData);
 extern "C" u32 func_02012934();
 extern "C" void func_0204dad8(u32 character);
-extern "C" void func_02010a84();
 extern "C" void func_02007bd8(Fader *fader);
 extern "C" void func_02011c84(const void *, const void *);
 extern "C" void func_02011ce4(u32, u32);

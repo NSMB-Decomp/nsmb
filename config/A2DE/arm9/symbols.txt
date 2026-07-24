@@ -77,14 +77,14 @@ _ZN7Vec2_32D0Ev kind:function(arm,size=0x20) addr:0x020031d0
 
 // connect.cpp
 
-_ZN12ConnectSceneD2Ev kind:function(arm,size=0x2c) addr:0x020031f0
+_ZN12ConnectSceneD1Ev kind:function(arm,size=0x2c) addr:0x020031f0
 _ZN12ConnectSceneD0Ev kind:function(arm,size=0x34) addr:0x0200321c
-ConnectScene::func_02003250 kind:function(arm,size=0x54) addr:0x02003250
-_ZN12ConnectScene13func_020032a4Ev kind:function(arm,size=0x8) addr:0x020032a4
-_ZN12ConnectScene13func_020032acEm kind:function(arm,size=0x1c) addr:0x020032ac
-ConnectScene::func_020032c8 kind:function(arm,size=0x1fc) addr:0x020032c8
-ConnectScene::func_020034c4 kind:function(arm,size=0xbc) addr:0x020034c4
-ConnectScene::func_02003580 kind:function(arm,size=0x21c) addr:0x02003580
+_ZN12ConnectScene13func_02003250Emm kind:function(arm,size=0x54) addr:0x02003250
+_ZN12ConnectScene9onDestroyEv kind:function(arm,size=0x8) addr:0x020032a4
+_ZN12ConnectScene8onRenderEv kind:function(arm,size=0x1c) addr:0x020032ac
+_ZN12ConnectScene8onUpdateEv kind:function(arm,size=0x1fc) addr:0x020032c8
+_ZN12ConnectScene8onCreateEv kind:function(arm,size=0xbc) addr:0x020034c4
+_ZN12ConnectScene13func_02003580Ev kind:function(arm,size=0x21c) addr:0x02003580
 _ZN12ConnectScene13func_0200379cEmm kind:function(arm,size=0x18) addr:0x0200379c
 _ZN12ConnectScene13func_020037b4Ev kind:function(arm,size=0x30) addr:0x020037b4
 _ZN12ConnectScene13func_020037e4Em kind:function(arm,size=0x60) addr:0x020037e4
@@ -1502,7 +1502,7 @@ data_02039210 kind:data(any) addr:0x02039210
 data_02039218 kind:data(any) addr:0x02039218
 data_02039678 kind:data(any) addr:0x02039678
 ConnectScene::profile kind:data(any) addr:0x0203967c
-ConnectScene::vtable kind:data(any) addr:0x0203968c
+_ZTV12ConnectScene kind:data(any) addr:0x02039684
 data_020396d4 kind:data(any) addr:0x020396d4
 data_020396dc kind:data(any) addr:0x020396dc
 data_020396e4 kind:data(any) addr:0x020396e4

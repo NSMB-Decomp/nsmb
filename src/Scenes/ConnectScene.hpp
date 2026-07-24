@@ -1,33 +1,36 @@
 #include "Scene.hpp"
+#include <nsmb/core/net/packet.hpp>
 #include <nsmb/game/connect/status_display.hpp>
-
-class Unknown
-{
-      public:
-	Unknown();
-	~Unknown();
-};
 
 class ConnectScene : public Scene
 {
       public:
 	ConnectionStatusDisplay connectionStatus;
-	Unknown _unknwon;
-	u8 _pad[0x20];
+	Net::PacketBuffer packetBuffer;
+	s32 connectionSubstate;
+	s32 connectionTimer;
+	u8 syncedAidMask;
+	u8 reserved_105_107[3];
 
 	inline ConnectScene();
 	~ConnectScene();
-	void *create();
+	static void *create();
 
-	s32 onCreate();
-	s32 onDestroy();
-	s32 onUpdate();
-	s32 onRender();
-	static u32 func_020037e4(u32);
+	static ObjectProfile profile;
+
+	virtual s32 onCreate();
+	virtual s32 onDestroy();
+	virtual s32 onUpdate();
+	virtual s32 onRender();
+	static void func_020037e4(u32);
 	static void func_020037b4();
-	static u32 func_0200379c(u32, u32);
-	static u32 func_02003250(u32, u32, u32);
-	bool func_020032ac(u32);
-	bool func_020032a4();
+	static void func_0200379c(u32, u32);
+	void func_02003250(u32, u32);
+	void func_02003580();
 };
 NITRO_SIZE_ASSERT(ConnectScene, 0x108);
+NTR_OFFSET_GUARD(ConnectScene, connectionStatus, 0x64);
+NTR_OFFSET_GUARD(ConnectScene, packetBuffer, 0xe4);
+NTR_OFFSET_GUARD(ConnectScene, connectionSubstate, 0xfc);
+NTR_OFFSET_GUARD(ConnectScene, connectionTimer, 0x100);
+NTR_OFFSET_GUARD(ConnectScene, syncedAidMask, 0x104);

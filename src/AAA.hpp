@@ -541,7 +541,6 @@ void func_0200a3d0(u32, u32);
 u32 func_02011e7c(u32, u32);
 	extern "C" void func_0200917c(u32, u32);
 	extern "C" void func_ov052_021535a0();
-	void func_020125c4();
 	extern u32 func_0201f5fc(u32);
 extern u32 func_0201f590(u32, u32);
 extern u32 func_0201f53c(u32, u32, u32);

@@ -11,10 +11,57 @@
 namespace NDS {
 namespace Graphics {
 
+inline void setMainObjectTileMapping1D128K()
+{
+	volatile u32 &displayControl = *reinterpret_cast<volatile u32 *>(0x04000000);
+	displayControl =
+		(displayControl & ~((3 << 20) | (1 << 4))) | (2 << 20) | (1 << 4);
+}
+
+inline void setMainObjectCharacterBase(u32 base)
+{
+	volatile u32 &displayControl = *reinterpret_cast<volatile u32 *>(0x04000000);
+	displayControl = (displayControl & ~(7 << 24)) | (base << 24);
+}
+
+inline void setMainObjectScreenBase(u32 base)
+{
+	volatile u32 &displayControl = *reinterpret_cast<volatile u32 *>(0x04000000);
+	displayControl = (displayControl & ~(7 << 27)) | (base << 27);
+}
+
 inline void setMainVisiblePlanes(u32 planes)
 {
 	volatile u32 &displayControl = *reinterpret_cast<volatile u32 *>(0x04000000);
 	displayControl = (displayControl & ~0x1f00) | (planes << 8);
+}
+
+inline void configureMainTextBackground(
+	u32 background,
+	u32 screenSize,
+	u32 colorMode,
+	u32 screenBase,
+	u32 characterBase,
+	u32 extendedPaletteSlot
+)
+{
+	volatile u16 &backgroundControl =
+		*reinterpret_cast<volatile u16 *>(0x04000008 + background * 2);
+	backgroundControl = (backgroundControl & 0x43) |
+		(screenSize << 14) | (colorMode << 7) | (screenBase << 8) |
+		(characterBase << 2) | (extendedPaletteSlot << 13);
+}
+
+inline void setMainBackgroundPriority(u32 background, u32 priority)
+{
+	volatile u16 &backgroundControl =
+		*reinterpret_cast<volatile u16 *>(0x04000008 + background * 2);
+	backgroundControl = (backgroundControl & ~3) | priority;
+}
+
+inline void setMainBackgroundHorizontalOffset(u32 background, u32 offset)
+{
+	*reinterpret_cast<volatile u32 *>(0x04000010 + background * 4) = offset;
 }
 
 inline u32 getSubVisiblePlanes()
