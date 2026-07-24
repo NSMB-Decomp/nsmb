@@ -4,8 +4,21 @@
 #include "exception.hpp"
 #include "vblank.hpp"
 #include <nsmb/arm9/symbols.hpp>
+#include <nsmb/core/memory.hpp>
+#include <nsmb/core/thread.hpp>
 #include <nsmb/core/wifi.hpp>
 
+extern "C" {
+
+#pragma section autobss_3 begin
+	u8 data_0208589c;
+	u8 data_020858a0;
+	Heap* data_020858a4;
+	void* data_020858a8;
+	NDS::Threads::Context data_020858ac;
+#pragma section autobss_3 end
+
+}
 
 inline u32 enableIrq() {
 	u32 prev = *rcast<vu16*>(0x04000208);
@@ -555,6 +568,71 @@ namespace App {
 
 	}
 
+
+}
+
+namespace Game {
+
+	u32 runTask(
+		TaskEntry entry,
+		void *argument,
+		u32 priority,
+		void *stack,
+		u32 stackSize
+	) {
+
+		if (data_0208589c) {
+			entry(argument);
+			return TRUE;
+		}
+
+		data_0208589c = TRUE;
+
+		const u32 size = stackSize;
+
+		if (stack == nullptr) {
+			data_020858a4 = Memory_gameHeap;
+			stack = Memory::allocate(data_020858a4, size, -4);
+			data_020858a8 = stack;
+		}
+
+		NDS::Threads::createThread(
+			&data_020858ac,
+			entry,
+			argument,
+			static_cast<u8 *>(stack) + size,
+			size,
+			priority
+		);
+		NDS::Threads::setStackWarning(&data_020858ac, 0x400);
+		Memory::associateThreadHeap(&data_020858ac, Memory::currentHeapPtr);
+		NDS::Threads::wakeThread(&data_020858ac);
+
+		return FALSE;
+
+	}
+
+	u32 taskCleanup() {
+
+		if (!data_0208589c)
+			return TRUE;
+
+		if (!NDS::Threads::hasThreadTerminated(&data_020858ac))
+			return FALSE;
+
+		if (data_020858a8 != nullptr) {
+			Memory::deallocate(data_020858a4, data_020858a8);
+			data_020858a8 = nullptr;
+		}
+
+		data_0208589c = FALSE;
+		return TRUE;
+
+	}
+
+}
+
+namespace App {
 
 	extern "C" void NitroStartUp() {
 		App::branchToStartup();

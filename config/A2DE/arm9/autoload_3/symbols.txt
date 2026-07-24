@@ -16,12 +16,12 @@ data_020858ac kind:bss addr:0x020858ac
 
 // app.cpp
 
-_ZN3App10sleepPhaseE kind:bss addr:0x0208596c
-_ZN3App12backlightOffE kind:bss addr:0x02085970
-_ZN3App12sleepControlE kind:bss addr:0x02085974
-_ZN3App8sleepingE kind:bss addr:0x02085978
-_ZN3App15sleepPhaseTimerE kind:bss addr:0x0208597c
-_ZN3App16sleepWakeUpTimerE kind:bss addr:0x02085980
+_ZN3App10sleepPhaseE kind:bss(size=0x1) addr:0x0208596c
+_ZN3App12backlightOffE kind:bss(size=0x1) addr:0x02085970
+_ZN3App12sleepControlE kind:bss(size=0x1) addr:0x02085974
+_ZN3App8sleepingE kind:bss(size=0x1) addr:0x02085978
+_ZN3App15sleepPhaseTimerE kind:bss(size=0x2) addr:0x0208597c
+_ZN3App16sleepWakeUpTimerE kind:bss(size=0x2) addr:0x02085980
 _ZN3App12backlightTopE kind:bss addr:0x02085984
 _ZN3App15backlightBottomE kind:bss addr:0x02085988
 _ZN3App9bootParamE kind:bss addr:0x0208598c

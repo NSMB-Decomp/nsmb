@@ -86,7 +86,9 @@ i32 BootScene::onCreate() {
 		func_02012398(0xe8, 0x0);
 	}
 
-	data_ov001_020cebc0 = func_02004cb8((u32)&App::initBoot, 0x0, 0xf, 0x0, 0x1000);
+	data_ov001_020cebc0 = Game::runTask(
+		rcast<Game::TaskEntry>(&App::initBoot), nullptr, 0xf, nullptr, 0x1000
+	);
 	if (App::getBootScene() == 0x0) {
 		GlobalFader.brightnessFactor[0] = 0x1000;
 		GlobalFader.brightnessFactor[1] = 0x1000;
@@ -118,7 +120,7 @@ s32 BootScene::onUpdate()
 	func_02043398(&_78);
 
 	if (data_ov001_020cebc0 == 0) {
-		data_ov001_020cebc0 = func_02004c30();
+		data_ov001_020cebc0 = Game::taskCleanup();
 		if (data_ov001_020cebc0 == 0) {
 			return true;
 		}

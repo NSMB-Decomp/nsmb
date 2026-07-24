@@ -1,3 +1,5 @@
+OVERLAY_0_ID kind:label(arm) addr:0x00000000
+OVERLAY_1_ID kind:label(arm) addr:0x00000001
 OVERLAY_10_ID kind:label(arm) addr:0x0000000a
 OVERLAY_11_ID kind:label(arm) addr:0x0000000b
 OVERLAY_20_ID kind:label(arm) addr:0x00000014
@@ -128,8 +130,8 @@ _ZN3App8resetGpuEv kind:function(arm,size=0x508) addr:0x020046d8
 _ZN3App9resetVramEv kind:function(arm,size=0x44) addr:0x02004be0
 
 NitroStartUp kind:function(arm,size=0xc) addr:0x02004c24
-func_02004c30 kind:function(arm,size=0x88) addr:0x02004c30
-func_02004cb8 kind:function(arm,size=0xd8) addr:0x02004cb8
+_ZN4Game11taskCleanupEv kind:function(arm,size=0x88) addr:0x02004c30
+_ZN4Game7runTaskEPFvPvES0_mS0_m kind:function(arm,size=0xd8) addr:0x02004cb8
 
 _ZN3App8initBootEv kind:function(arm,size=0x6c) addr:0x02004d90
 _ZN3App13initFileCountEi kind:function(arm,size=0x24) addr:0x02004dfc

@@ -528,7 +528,6 @@ struct IDK {
 };
 
 extern "C" u32 func_02006674(u32);
-extern "C" u32 func_02004cb8(u32, u32, u32, u32, u32);
 extern u8 data_ov001_020cebc0;
 extern u32 data_ov001_020cd144;
 extern u32 data_ov001_020cd934;

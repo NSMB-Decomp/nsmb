@@ -726,13 +726,19 @@ void VSConnectScene::updateLoadGameSM()
 
 	case 2:
 		if (func_0200ec2c() == 0 || func_02047694() != 0) {
-			func_02004cb8((u32)&loadMvsLFilesThread, 0, 0x14, 0, 0x1000);
+			Game::runTask(
+				rcast<Game::TaskEntry>(&loadMvsLFilesThread),
+				nullptr,
+				0x14,
+				nullptr,
+				0x1000
+			);
 			subMenuState = 3;
 		}
 		break;
 
 	case 3:
-		if (BOOL(data_02088800 == 2) == FALSE || func_02004c30() == 0)
+		if (BOOL(data_02088800 == 2) == FALSE || Game::taskCleanup() == 0)
 			break;
 		subMenuState = 4;
 	case 4:

@@ -242,3 +242,18 @@ namespace App {
 	}
 
 }
+
+namespace Game {
+
+	typedef void (*TaskEntry)(void *);
+
+	u32 taskCleanup();
+	u32 runTask(
+		TaskEntry entry,
+		void *argument,
+		u32 priority,
+		void *stack,
+		u32 stackSize
+	);
+
+}

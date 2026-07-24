@@ -376,6 +376,7 @@ from:0x02004da0 kind:arm_call to:0x020125e8 module:main
 from:0x02004da8 kind:arm_call to:0x02009510 module:main
 from:0x02004db0 kind:arm_call to:0x02004dfc module:main
 from:0x02004db4 kind:arm_call to:0x0200a0b4 module:main
+from:0x02004de0 kind:load to:0x00000000 module:main
 from:0x02004de4 kind:load to:0x020050ec module:main
 from:0x02004de8 kind:load to:0x0203981c module:main
 from:0x02004dec kind:load to:0x020050d8 module:main
@@ -385,6 +386,7 @@ from:0x02004df8 kind:load to:0x02039824 module:main
 from:0x02004e08 kind:arm_call to:0x02009510 module:main
 from:0x02004e0c kind:arm_call to:0x020cceb4 module:overlay(1)
 from:0x02004e14 kind:arm_call to:0x020094b8 module:main
+from:0x02004e1c kind:load to:0x00000001 module:main
 from:0x02004e28 kind:arm_call to:0x02065d40 module:autoload(2)
 from:0x02004e2c kind:arm_call to:0x020050bc module:main
 from:0x02004e34 kind:arm_call to:0x0206f3cc module:autoload(2)

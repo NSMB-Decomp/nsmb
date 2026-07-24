@@ -38,7 +38,6 @@ void func_02003ed8(void *);
 void func_02046b80();
 s32 func_0200ec2c();
 s32 func_02047694();
-s32 func_02004c30();
 s32 func_02010b34(void *, void *);
 void func_0200e7c4(u32);
 s32 func_0200e7ac(u32);
