@@ -322,7 +322,7 @@ extern "C" {
 	extern Heap *data_0208b720;
 	void func_02020354(i8);
 	u32 func_02012398(i32, Vec3_32 *); // SND::playSFX(u32,Vec3*)
-	u32 func_020202a0();
+	i32 func_020202a0();
 	i32 func_0202040c(i32);
 	extern u16 data_0203bd30;
 

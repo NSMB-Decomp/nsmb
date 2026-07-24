@@ -75,7 +75,7 @@ void Actor::postDestroy(u32 a)
 
 bool Actor::preUpdate()
 {
-	if (!Base::preCreate()) {
+	if (!Base::preUpdate()) {
 		return false;
 	}
 
@@ -193,12 +193,31 @@ void Actor::applyVelocity()
 	this->applyVelocityToPosition(newVelocity);
 }
 
-void Actor::applyDirectionalVelocity()
+void Actor::applyDirectionalVelocity(u32 rotation)
 {
+	Vec3_32 velocity;
+	rotation = (u16)rotation;
+	i32 speed = this->velocity.x;
+	if (speed < 0) {
+		speed = -speed;
+	}
+	velocity.x = _FixedMul(speed, _FixedCos(rotation));
+	velocity.y = this->velocity.y + _FixedMul(speed, _FixedSin(rotation));
+	velocity.z = this->velocity.z;
+
+	Vec3_32 newVelocity = this->applyAcceleration(&velocity);
+	this->applyVelocityToPosition(newVelocity);
 }
 
 void Actor::setDirectionalVelocity3D()
 {
+	u16 rotation = this->lastRotation.y;
+	i32 velocityZ = _FixedMul(this->velH, _FixedCos(rotation));
+	i32 velocityY = Math::max(this->velocity.y + this->accelV, this->minVelV);
+	i32 velocityX = _FixedMul(this->velH, _FixedSin(rotation));
+	this->velocity.x = velocityX;
+	this->velocity.y = velocityY;
+	this->velocity.z = velocityZ;
 }
 
 void Actor::updateHorizontalVelocity()
@@ -310,27 +329,105 @@ Vec3_32 Actor::getCenteredPosition()
 
 bool Actor::isOutOfViewVertical(FxRect *rect, int player_id)
 {
-	return ((rect->y + this->position.y) + 0x18000) + rect->halfHeight < -(Game::cameraY[player_id] + Game::cameraZoomY[player_id]);
+	i32 *cameraY = Game::cameraY;
+	i32 screenY = this->position.y + rect->y;
+	return screenY + 0x18000 + rect->halfHeight <
+	       -(cameraY[player_id] + Game::cameraZoomY[player_id]);
 }
 
-i32 (*data_ov000_020ca858)(i32, i32, i32, i32);
-i32 (*data_ov000_020c6c14[3])(i32, i32, i32, i32) = {
+Actor *(*data_ov000_020ca858)(i32, i32, i32 *, i32 *);
+Actor *(*data_ov000_020c6c14[3])(i32, i32, i32 *, i32 *) = {
     Actor::calcDistanceToPlayerNoWrap,
     Actor::calcDistanceToPlayerWrap,
     Actor::calcDistanceToPlayerWrap,
 };
 
-i32 Actor::calcDistanceToPlayerNoWrap(i32, i32, i32, i32)
+Actor *Actor::calcDistanceToPlayerNoWrap(i32 x, i32 y, i32 *distanceX, i32 *distanceY)
 {
+	i32 playerIndex;
+	i32 closestDistance;
+	Actor *closestPlayer;
+	closestPlayer = NULL;
+	playerIndex = 0;
+	closestDistance = 0x7fffffff;
+
+	if (func_020202a0() > 0) {
+		do {
+			Actor *player = (Actor *)Game::getPlayer(playerIndex);
+			if (player != NULL) {
+				i32 playerX = ((player->position.x + player->centerOffset.x) >> 12) - x;
+				i32 playerY = ((player->position.y + player->centerOffset.y) >> 12) - y;
+				i32 distance = playerX * playerX + playerY * playerY;
+				if (closestDistance > distance) {
+					if (distanceX != NULL) {
+						*distanceX = playerX;
+					}
+					closestPlayer = player;
+					if (distanceY != NULL) {
+						*distanceY = playerY;
+					}
+					closestDistance = distance;
+				}
+			}
+			playerIndex++;
+		} while (playerIndex < func_020202a0());
+	}
+
+	return closestPlayer;
 }
 
-i32 Actor::calcDistanceToPlayerWrap(i32, i32, i32, i32)
+Actor *Actor::calcDistanceToPlayerWrap(i32 x, i32 y, i32 *distanceX, i32 *distanceY)
 {
+	i32 playerIndex;
+	i32 closestDistance;
+	Actor *closestPlayer;
+	closestPlayer = NULL;
+	playerIndex = 0;
+	closestDistance = 0x7fffffff;
+	x &= data_02085aa4 >> 12;
+
+	if (func_020202a0() > 0) {
+		do {
+			Actor *player = (Actor *)Game::getPlayer(playerIndex);
+			if (player != NULL) {
+				i32 playerY = (player->position.y + player->centerOffset.y) >> 12;
+				i32 wrapDistance = ((data_02085aa4 + 1) / 2) >> 12;
+				i32 playerPositionX = player->position.x + player->centerOffset.x;
+				i32 playerX = (playerPositionX & data_02085aa4) >> 12;
+				playerX -= x;
+				if (playerX < 0) {
+					if (playerX < -wrapDistance) {
+						playerX += wrapDistance * 2;
+					}
+				} else if (playerX > wrapDistance) {
+					playerX = -(wrapDistance * 2 - playerX);
+				}
+
+				playerY -= y;
+				i32 distance = playerX * playerX + playerY * playerY;
+				if (closestDistance > distance) {
+					if (distanceX != NULL) {
+						*distanceX = playerX;
+					}
+					closestPlayer = player;
+					if (distanceY != NULL) {
+						*distanceY = playerY;
+					}
+					closestDistance = distance;
+				}
+			}
+			playerIndex++;
+		} while (playerIndex < func_020202a0());
+	}
+
+	return closestPlayer;
 }
 
-i32 Actor::getDistanceToPlayer(i32 x, i32 y)
+Actor *Actor::getDistanceToPlayer(i32 *distanceX, i32 *distanceY)
 {
-	(*data_ov000_020ca858)((this->position.x + this->centerOffset.x) >> 0xc, (this->position.y + this->centerOffset.y) >> 0xc, x, y);
+	return (*data_ov000_020ca858)((this->position.x + this->centerOffset.x) >> 0xc,
+				     (this->position.y + this->centerOffset.y) >> 0xc, distanceX,
+				     distanceY);
 }
 
 void Actor::setCalcPositionToPlayerFunction(u32 param_1)
