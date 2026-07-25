@@ -3,6 +3,14 @@
 #include "../Bases/Actor.hpp"
 #include "../graphics/3d/modelanm.hpp"
 
+struct ActorProfile;
+
+struct WmCharacterResource {
+	u32 modelFileID;
+	u32 animFileID;
+};
+NTR_SIZE_GUARD(WmCharacterResource, 0x8);
+
 class WmCharacter : public Actor {
 public:
 	typedef void (WmCharacter::*TaskFunc)();
@@ -25,6 +33,16 @@ public:
 	inline ~WmCharacter()
 	{
 	}
+
+	virtual s32 onCreate() override;
+	virtual s32 onDestroy() override;
+	virtual s32 onUpdate() override;
+	virtual s32 onRender() override;
+	virtual void pendingDestroy() override;
+	virtual bool onHeapCreated() override;
+
+	static ActorProfile profile;
+	static WmCharacterResource resources[2];
 
 	ModelAnm model;
 	ModelAnm cursorModel;
@@ -60,39 +78,45 @@ NTR_OFFSET_GUARD(WmCharacter, savedY, 0x2AC);
 NTR_OFFSET_GUARD(WmCharacter, unk2B0, 0x2B0);
 NTR_OFFSET_GUARD(WmCharacter, playerID, 0x2B1);
 
-struct WmCharacterResource {
-	u32 fileID;
-	u32 unk4;
+struct WmCharacterTaskRaw {
+	void (*function)(WmCharacter*);
+	s32 adjustment;
 };
-NTR_SIZE_GUARD(WmCharacterResource, 0x8);
+NTR_SIZE_GUARD(WmCharacterTaskRaw, 0x8);
+
+union WmCharacterTaskEntry {
+	WmCharacterTaskRaw raw;
+	WmCharacter::TaskFunc member;
+};
+NTR_SIZE_GUARD(WmCharacterTaskEntry, 0x8);
 
 extern WmCharacter::TaskFunc data_ov008_020ee79c[4];
 extern WmCharacter::TaskFunc data_ov008_020ee7bc[4];
+extern WmCharacterTaskEntry data_ov008_020e988c;
+extern WmCharacterTaskEntry data_ov008_020e9894;
+extern WmCharacterTaskEntry data_ov008_020e989c;
+extern WmCharacterTaskEntry data_ov008_020e98a4;
+extern WmCharacterTaskEntry data_ov008_020e98ac;
+extern WmCharacterTaskEntry data_ov008_020e98b4;
+extern WmCharacterTaskEntry data_ov008_020e98bc;
+extern WmCharacterTaskEntry data_ov008_020e98c4;
 
 extern u8 data_ov008_020ee384;
-extern u8 data_ov008_020ee388;
 extern u8 data_ov008_020ee3ac;
 extern u8 data_ov008_020ee3b0;
 extern u32 data_ov008_020ee3e8;
-extern WmCharacterResource data_ov008_020e98d8[];
-extern WmCharacterResource data_ov008_020e98dc[];
 
 extern "C" WmCharacter* func_ov008_020db204(WmCharacter* character);
 extern "C" WmCharacter* func_ov008_020db244(WmCharacter* character);
 extern "C" bool func_ov008_020db28c();
 extern "C" void func_ov008_020db2e0(WmCharacter* character);
 extern "C" void func_ov008_020db354(WmCharacter* character, u32 taskID);
-extern "C" void func_ov008_020db380(WmCharacter* character);
-extern "C" void func_ov008_020db3d8(WmCharacter* character);
-extern "C" void func_ov008_020db404(WmCharacter* character);
-extern "C" void func_ov008_020db48c(WmCharacter* character);
-extern "C" void func_ov008_020db790(WmCharacter* character);
-extern "C" void func_ov008_020db7c4(WmCharacter* character);
-extern "C" void func_ov008_020db7f4();
-extern "C" bool func_ov008_020db7f8(WmCharacter* character);
-extern "C" bool func_ov008_020db840(WmCharacter* character);
-extern "C" void func_ov008_020db9fc();
-extern "C" bool func_ov008_020dba00();
-extern "C" bool func_ov008_020dba1c(WmCharacter* character);
-extern "C" s32 func_ov008_020dbaf0(WmCharacter* character);
-extern "C" WmCharacter* func_ov008_020dbc40();
+extern "C" void WmCharacter_mainTask3(WmCharacter* character);
+extern "C" void WmCharacter_setupTask3(WmCharacter* character);
+extern "C" void WmCharacter_mainTask2(WmCharacter* character);
+extern "C" void WmCharacter_setupTask2(WmCharacter* character);
+extern "C" void WmCharacter_mainTask1(WmCharacter* character);
+extern "C" void WmCharacter_setupTask1(WmCharacter* character);
+extern "C" void WmCharacter_mainTask0(WmCharacter* character);
+extern "C" void WmCharacter_setupTask0(WmCharacter* character);
+extern "C" void* func_ov008_020dbc40();

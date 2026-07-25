@@ -12,7 +12,7 @@ ModelAnm::ModelAnm() {
 
 ModelAnm::~ModelAnm() {}
 
-bool ModelAnm::create(void* bmd, void* bca, u32 modelID, u32 animID, u32 polygonID) {
+BOOL ModelAnm::create(void* bmd, void* bca, u32 modelID, u32 animID, u32 polygonID) {
 
 	if (!Model::create(bmd, modelID, polygonID))
 		return false;

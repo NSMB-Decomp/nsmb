@@ -15,10 +15,11 @@ struct Vec3_32 : public Vec3_32s {
 	inline Vec3_32() {};
 	virtual inline ~Vec3_32() {};
 
-	// operator Vec3_32s *()
-	// {
-	// 	return (Vec3_32s *)(((u32)this) + 4);
-	// }
+	inline operator Vec3_32s *()
+	{
+		return this;
+	}
+
 	Vec3_32 sub(Vec3_32s *a);
 	Vec3_32 normalize();
 

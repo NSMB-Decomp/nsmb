@@ -1,4 +1,5 @@
 #include "controller.hpp"
+#include <nsmb/overlays/ov008/symbols.hpp>
 
 using namespace WM;
 
@@ -22,13 +23,31 @@ extern "C" void func_ov008_020d24b0(void* callbackContext) {
 	func_ov008_020d23b4(scast<WmController*>(context->drawable->userData), callbackContext);
 }
 
+extern "C" void func_ov008_020d3e58(WmController* controller) {
+	controller->unk2208 = 0x1e;
+	data_ov008_020ee3e0 = 0;
+	controller->unk221C = 0;
+}
+
 extern "C" void func_ov008_020d4368(WmController* controller) {
 	controller->unk2208 = 0x40;
+}
+
+extern "C" void func_ov008_020d4a5c(WmController* controller) {
+	controller->unk2208 = 10;
+	controller->unk221C = 0;
 }
 
 extern "C" void func_ov008_020d45c0(WmController*) {}
 
 extern "C" void func_ov008_020d4784(WmController*) {}
+
+extern "C" void func_ov008_020d4cdc(WmController* controller) {
+	controller->unk22EF = 1;
+	controller->unk2208 = 10;
+	controller->unk220C = 0;
+	controller->unk221C = 0;
+}
 
 extern "C" void func_ov008_020d5284(WmController* controller) {
 	func_ov008_020d32c4(controller, 0);
@@ -36,6 +55,10 @@ extern "C" void func_ov008_020d5284(WmController* controller) {
 
 extern "C" void func_ov008_020d6a40(WmController* controller) {
 	controller->unk2208 = 0x14;
+}
+
+extern "C" void func_ov008_020d6e1c() {
+	data_ov008_020ee388 = 1;
 }
 
 extern "C" void func_ov008_020d81cc(WmController*) {}

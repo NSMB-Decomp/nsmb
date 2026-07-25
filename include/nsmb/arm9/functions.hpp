@@ -19,6 +19,7 @@ extern "C" {
 void InitMiniGame();
 void func_0200419c(u32, u32, u32, u32, u32, u32, u32, u32, u32, u32, s32);
 void func_02043fe0(Vec2_32 *, Vec2_32 *, s32, s32, s32);
+s32 func_02044120(Vec3_32 *, Vec3_32 *, s32, s32, s32);
 bool func_02010a14(u8);
 bool func_02010a3c();
 bool func_02010a60(VSConnectScene *);

@@ -229,7 +229,7 @@ _ZN10StageScene6createEv kind:function(arm,size=0x2c) addr:0x020a3a0c
 func_ov000_020a3a38 kind:function(arm,size=0x24) addr:0x020a3a38
 func_ov000_020a3a5c kind:function(arm,size=0x2c) addr:0x020a3a5c
 func_ov000_020a3a88 kind:function(arm,size=0x34) addr:0x020a3a88
-func_ov000_020a3abc kind:function(arm,size=0x1c) addr:0x020a3abc
+_ZN4View8onRenderEv kind:function(arm,size=0x1c) addr:0x020a3abc
 func_ov000_020a3ad8 kind:function(arm,size=0x4c) addr:0x020a3ad8
 func_ov000_020a3b24 kind:function(arm,size=0x11c) addr:0x020a3b24
 func_ov000_020a3c40 kind:function(arm,size=0x5c) addr:0x020a3c40
@@ -839,7 +839,7 @@ data_ov000_020c6de5 kind:data(any) addr:0x020c6de5
 data_ov000_020c6e0c kind:data(any) addr:0x020c6e0c
 data_ov000_020c6e10 kind:data(any) addr:0x020c6e10
 _ZTV10StageScene kind:data(any) addr:0x020c6e64
-UnknownVtable::ov000_020c6eb4 kind:data(any) addr:0x020c6eac
+_ZTV4View kind:data(any) addr:0x020c6eac
 data_ov000_020c6efc kind:data(any) addr:0x020c6efc
 data_ov000_020c6f10 kind:data(any) addr:0x020c6f10
 data_ov000_020c6f18 kind:data(any) addr:0x020c6f18

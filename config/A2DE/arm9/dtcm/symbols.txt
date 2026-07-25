@@ -7,7 +7,7 @@ data_027e0088 kind:data(any) addr:0x027e0088
 data_027e008c kind:data(any) addr:0x027e008c
 data_027e0090 kind:data(any) addr:0x027e0090
 data_027e00b8 kind:data(any) addr:0x027e00b8
-Ns_3dGs kind:data(any) addr:0x027e00c8
+_ZN3NDS10Graphics3D12runtimeStateE kind:data(any) addr:0x027e00c8
 data_027e032c kind:data(any) addr:0x027e032c
 data_027e038c kind:data(any) addr:0x027e038c
 data_027e0390 kind:data(any) addr:0x027e0390

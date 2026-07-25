@@ -3,6 +3,8 @@
 #include "../../src/base_types.hpp"
 
 union Mat2x2;
+union Mat4x3;
+struct Vec3_32s;
 
 namespace NDS {
 
@@ -10,6 +12,14 @@ namespace Graphics3D {
 
 bool setupResource(void *resource);
 void *getTexture(void *resource);
+void buildLookAtMatrix(const Vec3_32s *position, const Vec3_32s *up,
+	const Vec3_32s *target, BOOL applyToHardware, Mat4x3 *matrix);
+void setLightVector(u32 lightID, s16 x, s16 y, s16 z);
+void setLightColor(u32 lightID, u32 color);
+void setMaterialDiffuseAmbient(u32 diffuse, u32 ambient, BOOL useVertexColor);
+void setMaterialSpecularEmission(u32 specular, u32 emission, BOOL shininess);
+void setPolygonAttributes(u32 lightMask, u32 polygonMode, u32 cullMode,
+	u32 polygonID, u32 alpha, u32 depth);
 
 }
 

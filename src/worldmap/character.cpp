@@ -1,7 +1,10 @@
 #include "character.hpp"
+#include "../AAA.hpp"
 #include "camera.hpp"
+#include "../objectid.hpp"
 #include <nsmb/core/filesystem.hpp>
 #include <nsmb/file_ids.hpp>
+#include <nsmb/game/particle.hpp>
 #include <nsmb/overlays/ov008/symbols.hpp>
 
 namespace {
@@ -15,8 +18,63 @@ union WmCharacterSettings {
 };
 }
 
-WmCharacter::TaskFunc data_ov008_020ee79c[4];
-WmCharacter::TaskFunc data_ov008_020ee7bc[4];
+WmCharacterTaskEntry data_ov008_020e988c = {
+	{ WmCharacter_setupTask1, 0 },
+};
+
+WmCharacterTaskEntry data_ov008_020e9894 = {
+	{ WmCharacter_setupTask0, 0 },
+};
+
+WmCharacterTaskEntry data_ov008_020e989c = {
+	{ WmCharacter_mainTask2, 0 },
+};
+
+WmCharacterTaskEntry data_ov008_020e98a4 = {
+	{ WmCharacter_mainTask1, 0 },
+};
+
+WmCharacterTaskEntry data_ov008_020e98ac = {
+	{ WmCharacter_mainTask0, 0 },
+};
+
+WmCharacterTaskEntry data_ov008_020e98b4 = {
+	{ WmCharacter_mainTask3, 0 },
+};
+
+WmCharacterTaskEntry data_ov008_020e98bc = {
+	{ WmCharacter_setupTask3, 0 },
+};
+
+WmCharacterTaskEntry data_ov008_020e98c4 = {
+	{ WmCharacter_setupTask2, 0 },
+};
+
+WmCharacter::TaskFunc data_ov008_020ee79c[4] = {
+	data_ov008_020e9894.member,
+	data_ov008_020e988c.member,
+	data_ov008_020e98c4.member,
+	data_ov008_020e98bc.member,
+};
+
+WmCharacter::TaskFunc data_ov008_020ee7bc[4] = {
+	data_ov008_020e98ac.member,
+	data_ov008_020e98a4.member,
+	data_ov008_020e989c.member,
+	data_ov008_020e98b4.member,
+};
+
+ActorProfile WmCharacter::profile = {
+	func_ov008_020dbc40,
+	WM_Character,
+	0x127,
+	func_ov008_020db28c,
+};
+
+WmCharacterResource WmCharacter::resources[2] = {
+	{ NSMB_FID(map_cursor_koopa_jr_nsbmd), NSMB_FID(map_cursor_koopa_jr_nsbca) },
+	{ NSMB_FID(map_cursor_peach_nsbmd), NSMB_FID(map_cursor_peach_nsbca) },
+};
 
 extern "C" WmCharacter* func_ov008_020db204(WmCharacter* character)
 {
@@ -57,7 +115,7 @@ extern "C" void func_ov008_020db354(WmCharacter* character, u32 taskID)
 	character->startTask = 1;
 }
 
-extern "C" void func_ov008_020db380(WmCharacter* character)
+extern "C" void WmCharacter_mainTask3(WmCharacter* character)
 {
 	if (character->unk2A8 != 0) {
 		return;
@@ -72,7 +130,7 @@ extern "C" void func_ov008_020db380(WmCharacter* character)
 	character->destroy();
 }
 
-extern "C" void func_ov008_020db3d8(WmCharacter* character)
+extern "C" void WmCharacter_setupTask3(WmCharacter* character)
 {
 	if (character->unk2A0 == 0) {
 		data_ov008_020ee388 = 1;
@@ -82,7 +140,7 @@ extern "C" void func_ov008_020db3d8(WmCharacter* character)
 	character->timer = 10;
 }
 
-extern "C" void func_ov008_020db404(WmCharacter* character)
+extern "C" void WmCharacter_mainTask2(WmCharacter* character)
 {
 	character->model.update();
 	character->timer--;
@@ -101,12 +159,118 @@ extern "C" void func_ov008_020db404(WmCharacter* character)
 	func_ov008_020db354(character, 3);
 }
 
-extern "C" void func_ov008_020db48c(WmCharacter* character)
+extern "C" void WmCharacter_setupTask2(WmCharacter* character)
 {
 	character->timer = 60;
 }
 
-extern "C" void func_ov008_020db790(WmCharacter* character)
+extern "C" void WmCharacter_mainTask1(WmCharacter* character)
+{
+	u8 flags = character->anim->flag;
+	if ((flags & WM::AF_PeachSfxJump) != 0) {
+		if (character->scale.x != 0) {
+			character->scale.x -= 0x40;
+			character->scale.y -= 0x40;
+			character->scale.z -= 0x40;
+		}
+	} else if ((flags & WM::AF_ScaleUp) != 0) {
+		if (character->scale.x < 0x1000) {
+			character->scale.x += 0x40;
+			character->scale.y += 0x40;
+			character->scale.z += 0x40;
+		}
+	} else {
+		fx32 currentY = character->targetPosition.y;
+		fx32 previousY = character->savedY;
+		character->savedY = currentY;
+		fx32 distance = currentY - previousY;
+
+		if (character->unk2B0 != 0) {
+			if (distance < 0) {
+				distance = -distance;
+			}
+			if (distance < 0x10) {
+				func_02022b64(0xd, &character->targetPosition);
+				character->unk2B0 = 0;
+			}
+		} else {
+			if (distance > 0x10) {
+				func_02022b64(0xd, &character->targetPosition);
+				character->unk2B0 = 1;
+			} else {
+				character->unk2A4 = func_02022890(
+					character->unk2A4,
+					0x15,
+					&character->targetPosition,
+					0,
+					0,
+					0,
+					0);
+			}
+
+			if (character->playerID == 0
+				&& (character->model.frameController.passing(3)
+					|| character->model.frameController.passing(0x12))) {
+				func_02012398(0x1a, 0);
+			}
+		}
+	}
+
+	character->model.frameController.update();
+	character->cursorModel.frameController.update();
+	if (!character->cursorModel.frameController.finished()) {
+		return;
+	}
+
+	flags = character->anim->flag;
+	if ((flags & WM::AF_PeachSfxJump) != 0) {
+		data_ov008_020ee3b0 = flags & WM::AF_ModelType;
+		WM::state |= WM::ST_Unk10;
+	} else if ((flags & WM::AF_ScaleUp) != 0) {
+		character->scale.x = 0x1000;
+		character->scale.y = 0x1000;
+		character->scale.z = 0x1000;
+	}
+
+	character->anim++;
+
+	if ((character->anim->flag & WM::AF_PeachSfxJump) != 0 && character->playerID != 0) {
+		func_02012398(0x1b, 0);
+	}
+	if ((character->anim->flag & WM::AF_PeachSfxHelp) != 0 && character->playerID != 0) {
+		func_02012398(0x27, 0);
+	}
+
+	if (character->anim->path == 0xff) {
+		u16 nodeFlag = WM::wxNodes[save.game.currentWorldNode].flag & WM::NF_Final;
+		if (nodeFlag != 0) {
+			character->destroy();
+			return;
+		}
+		func_ov008_020db354(character, 2);
+		return;
+	}
+
+	character->unk298 = 0;
+	s32 speed = 0x1000;
+	if ((character->anim->flag & WM::AF_Reverse) != 0) {
+		character->unk298 = 1;
+		speed = -speed;
+	}
+
+	character->cursorModel.init(
+		WM::wxPaths[character->anim->path].animID,
+		FrameCtrl::Standard,
+		speed,
+		0);
+
+	if (character->unk298 != 0) {
+		character->cursorModel.frameController.currentFrame =
+			character->cursorModel.frameController.getFrameCount() << 12;
+	}
+}
+
+extern "C" void WmCharacter_setupTask1(WmCharacter* character)
 {
 	character->unk2A4 = 0;
 	character->savedY = character->targetPosition.y;
@@ -117,19 +281,20 @@ extern "C" void func_ov008_020db790(WmCharacter* character)
 	}
 }
 
-extern "C" void func_ov008_020db7c4(WmCharacter* character)
+extern "C" void WmCharacter_mainTask0(WmCharacter* character)
 {
 	if (data_ov008_020ee3d0 != 0) {
 		func_ov008_020db354(character, 1);
 	}
 }
 
-extern "C" void func_ov008_020db7f4()
+extern "C" void WmCharacter_setupTask0(WmCharacter*)
 {
 }
 
-extern "C" bool func_ov008_020db7f8(WmCharacter* character)
+s32 WmCharacter::onUpdate()
 {
+	WmCharacter* character = this;
 	if (data_ov008_020ee384 != 0) {
 		return true;
 	}
@@ -141,8 +306,9 @@ extern "C" bool func_ov008_020db7f8(WmCharacter* character)
 	return true;
 }
 
-extern "C" bool func_ov008_020db840(WmCharacter* character)
+s32 WmCharacter::onRender()
 {
+	WmCharacter* character = this;
 	if ((WM::state & WmCharacter::SF_UnkBit0) != 0) {
 		if (character->unk29C != 0) {
 			Vec3_32 scale(0x1000);
@@ -194,27 +360,28 @@ extern "C" bool func_ov008_020db840(WmCharacter* character)
 	return true;
 }
 
-extern "C" void func_ov008_020db9fc()
+void WmCharacter::pendingDestroy()
 {
 }
 
-extern "C" bool func_ov008_020dba00()
+s32 WmCharacter::onDestroy()
 {
 	WM::state |= WmCharacter::SF_UnkBit2;
 	return true;
 }
 
-extern "C" bool func_ov008_020dba1c(WmCharacter* character)
+bool WmCharacter::onHeapCreated()
 {
+	WmCharacter* character = this;
 	u32 world = save.game.currentWorld;
 	WmCharacterSettings settings;
 	settings.raw = character->settings;
 	character->playerID = settings.bits.playerBits & 1;
 
 	void* modelFile = FS::Cache::getFile(
-		data_ov008_020e98d8[character->playerID].fileID);
+		resources[character->playerID].modelFileID);
 	void* animFile = FS::Cache::getFile(
-		data_ov008_020e98dc[character->playerID].fileID);
+		resources[character->playerID].animFileID);
 	if (!character->model.create(modelFile, animFile, 0, 0, 0)) {
 		return false;
 	}
@@ -228,8 +395,9 @@ extern "C" bool func_ov008_020dba1c(WmCharacter* character)
 	return true;
 }
 
-extern "C" s32 func_ov008_020dbaf0(WmCharacter* character)
+s32 WmCharacter::onCreate()
 {
+	WmCharacter* character = this;
 	if (!character->prepareResourcesSafe(0xA0, Memory_gameHeap)) {
 		return 0;
 	}
@@ -276,7 +444,7 @@ extern "C" s32 func_ov008_020dbaf0(WmCharacter* character)
 	return 1;
 }
 
-extern "C" WmCharacter* func_ov008_020dbc40()
+extern "C" void* func_ov008_020dbc40()
 {
 	return new WmCharacter;
 }

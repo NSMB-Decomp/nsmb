@@ -6,6 +6,38 @@
 #include <nds/input_buttons.hpp>
 #include <nsmb/overlays/ov008/symbols.hpp>
 
+extern "C" u8 func_ov008_020cda24(u32 world, u32 path, u8 mask)
+{
+	return mask & data_ov008_020e79c8[world].paths[path].flag;
+}
+
+extern "C" u16 func_ov008_020cda4c(u32 world, u32 node, u16 mask)
+{
+	return mask & data_ov008_020e79c4[world].nodes[node].flag;
+}
+
+extern "C" u16 func_ov008_020cda7c(u32 world)
+{
+	return data_ov008_020e79e4[world].nodeCount;
+}
+
+extern "C" WM::NodeLink* func_ov008_020cda94(u32 world, u32 node)
+{
+	return data_ov008_020e79c4[world].nodes[node].links;
+}
+
+extern "C" void func_ov008_020cdb44(u32 sceneID, u32 settings)
+{
+	func_02011e3c(0x1e);
+	func_020131fc(sceneID, settings);
+}
+
+extern "C" u8 func_ov008_020cdcac(u32 index)
+{
+	u8* values = &data_ov008_020e5cc8[index * 2];
+	return values[data_ov008_020ee380];
+}
+
 extern "C" void func_ov008_020ce0a0()
 {
 	save.game.starCoinsCollected = func_ov008_020cdf9c();
@@ -48,6 +80,20 @@ extern "C" u32 func_ov008_020ce16c(u32 index)
 	return data_ov008_020e6bf0[index][0];
 }
 
+extern "C" u32 func_ov008_020ce184(u32 index)
+{
+	u32 result = data_ov008_020e6718[index][0];
+	if (index != 7) {
+		return result;
+	}
+
+	u8 nodeState = save.game.nodeStates[7][6] & WM::NS_Completed;
+	if (nodeState != 0) {
+		result = 0x420000;
+	}
+	return result;
+}
+
 extern "C" u32 func_ov008_020ce1b4(u32 index)
 {
 	return data_ov008_020e6714[index][0];
@@ -79,6 +125,19 @@ extern "C" u32 func_ov008_020ce214(u32 row, u32 column)
 }
 
 extern "C" void func_ov008_020ce228() {}
+
+extern "C" void func_ov008_020ce22c()
+{
+	u32 world = save.game.currentWorld;
+	data_ov008_020ee3f0 = 4;
+	data_ov008_020ee3d0 = 0;
+	save.game.worldStates[world] |= WM::WS_Completed;
+
+	if (world != 7) {
+		world = func_ov008_020ce298(world);
+	}
+	func_ov008_020cdb44(9, world | 0x3000);
+}
 
 extern "C" u32 func_ov008_020ce298(u32 nodeType)
 {

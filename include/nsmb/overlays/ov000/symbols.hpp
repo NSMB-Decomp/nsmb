@@ -88,6 +88,7 @@ void func_ov000_0209c288();
 void func_ov000_0209c2f8(u8 playerID);
 void func_ov000_0209c350();
 extern "C" PlayerBase *func_ov000_020a3d68(ActiveCollider *);
+extern "C" void func_ov000_020a3c40(u32 lightID, Vec3_32 *vector);
 extern "C" Vec3_32 func_02045bdc(
 	const Vec3_32 &left, const Vec3_32s &right);
 
@@ -112,6 +113,9 @@ extern i32 data_ov000_020cae0c[2];
 extern i32 data_ov000_020cadac[2];
 extern Vec3_32 data_ov000_020caeb8[2];
 extern Vec3_32 data_ov000_020caed8[2];
+extern fx32 data_ov000_020caa3c;
+extern u16 data_ov000_020caa40[4];
+extern Mat4x3 data_ov000_020caa54;
 extern u32 data_ov000_020ca2dc[2];
 extern u32 data_ov000_020ca2e4[2];
 extern u32 data_ov000_020ca2ec[2];

@@ -145,6 +145,7 @@ namespace WM {
 	enum AnimFlag {
 		AF_ModelType    = 0x3,
 		AF_PeachSfxJump = 0x4,  // maybe?
+		AF_ScaleUp      = 0x8,
 		AF_Reverse      = 0x10, // maybe?
 		AF_PeachSfxHelp = 0x20, // maybe?
 	};
@@ -186,6 +187,7 @@ namespace WM {
 	extern s32 wxPathCount; // u32->s32 (some for loops did not match with u32)
 
 	enum State {
+		ST_Unk10      = 0x10,
 		ST_PlayerMove = 0x20,
 		ST_EntityMove = 0x40,
 		ST_CourseLeft = 0x80,
