@@ -228,3 +228,19 @@ public:
 
 };
 NTR_SIZE_GUARD(WmController, 0x22FC);
+
+extern "C" {
+	void func_ov008_020d23b4(WmController* controller, void* callbackContext);
+	void func_ov008_020d32c4(WmController* controller, u32 task);
+	u32 func_ov008_020da730();
+
+	void func_ov008_020d24b0(void* callbackContext);
+	void func_ov008_020d4368(WmController* controller);
+	void func_ov008_020d45c0(WmController* controller);
+	void func_ov008_020d4784(WmController* controller);
+	void func_ov008_020d5284(WmController* controller);
+	void func_ov008_020d6a40(WmController* controller);
+	void func_ov008_020d81cc(WmController* controller);
+	bool func_ov008_020d81d0(WmController* controller);
+	u32 func_ov008_020da724();
+}

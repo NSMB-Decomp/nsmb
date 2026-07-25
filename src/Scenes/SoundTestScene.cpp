@@ -1,4 +1,5 @@
 #include "SoundTestScene.hpp"
+#include <nds/input_buttons.hpp>
 
 
 void *SoundTestScene::create()
@@ -58,51 +59,43 @@ s32 SoundTestScene::onRender()
 
 i32 SoundTestScene::onUpdate()
 {
-	u32 local_r0;
-	u32 local_r1;
-	if ((GlobalFader.fadedIn() == 0x0)) {
-		return 0x1;
+	if (!GlobalFader.fadedIn()) {
+		return true;
 	}
-	local_r0 = ((((*rcast<u16 *>(((u32)&data_02087650 + ((*rcast<u8 *>(&Input::localConsoleID)) << 0x2)))) & 0xc) << 0x10) >> 0x10);
-	if ((local_r0 == 0xc)) {
-		func_02011e3c(0x1e);
-		func_020131fc(0x2, 0x0);
-	}
-	func_0200a42c(this->_64, 0x2);
 
-	if ((this->_64 != 0x0)) {
-		func_0200a3d0(this->_68, 0x70);
-		local_r0 = ((*rcast<u8 *>(&Input::localConsoleID)) << 0x2);
-		local_r1 = (*rcast<u16 *>(((u32)&Input::consoleKeys + local_r0)));
-		local_r0 = (local_r1 & 0x2);
-		if (((local_r1 & 0x2) != 0x0)) {
-			local_r0 = func_02011d40();
-		} else {
-			local_r0 = (local_r1 & 0x1);
-			if (((local_r1 & 0x1) != 0x0)) {
-				local_r0 = func_02011e7c(this->_68, 0x0);
-			}
-		}
-	} else {
-		if ((local_r0 != 0x1)) {
-			func_0200a3d0(this->_6c, 0x1c3);
-			local_r0 = ((*rcast<u8 *>(&Input::localConsoleID)) << 0x2);
-			local_r1 = (*rcast<u16 *>(((u32)&Input::consoleKeys + local_r0)));
-			local_r0 = (local_r1 & 0x2);
-			if (((local_r1 & 0x2) != 0x0)) {
-				func_02011d40();
-			} else {
-				local_r0 = (local_r1 & 0x1);
-				if (((local_r1 & 0x1) != 0x0)) {
-					func_02012398(this->_6c, 0x0);
-				} else {
-					local_r0 = (local_r1 & 0x400);
-					if (((local_r1 & 0x400) != 0x0)) {
-						func_02012290(this->_6c, 0x0);
-					}
-				}
-			}
-		}
+	if ((u16)(data_02087650[Input::localConsoleID][0] &
+			(NDS_PAD_BUTTON_SELECT | NDS_PAD_BUTTON_START)) ==
+		(NDS_PAD_BUTTON_SELECT | NDS_PAD_BUTTON_START)) {
+		func_02011e3c(0x1e);
+		func_020131fc(2, 0);
 	}
-	return 0x1;
+
+	func_0200a42c((u32)&this->_64, 2);
+
+	switch (this->_64) {
+	case 0: {
+		func_0200a3d0((u32)&this->_68, 0x70);
+		u16 pressedButtons = Input::consoleKeys[Input::localConsoleID][0];
+		if (pressedButtons & NDS_PAD_BUTTON_B) {
+			func_02011d40();
+		} else if (pressedButtons & NDS_PAD_BUTTON_A) {
+			func_02011e7c(this->_68, 0);
+		}
+		break;
+	}
+	case 1: {
+		func_0200a3d0((u32)&this->_6c, 0x1c3);
+		u16 pressedButtons = Input::consoleKeys[Input::localConsoleID][0];
+		if (pressedButtons & NDS_PAD_BUTTON_B) {
+			func_02011d40();
+		} else if (pressedButtons & NDS_PAD_BUTTON_A) {
+			func_02012398(this->_6c, 0);
+		} else if (pressedButtons & NDS_PAD_BUTTON_X) {
+			func_02012290(this->_6c, 0);
+		}
+		break;
+	}
+	}
+
+	return true;
 }

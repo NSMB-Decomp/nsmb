@@ -9,9 +9,48 @@ struct __Work {
 	u32 a;
 };
 
+struct WmModelCallbackContextPrefix {
+	u32 unknown0;
+	Ns3dDrawable* drawable;
+};
+NTR_SIZE_GUARD(WmModelCallbackContextPrefix, 0x8);
+NTR_OFFSET_GUARD(WmModelCallbackContextPrefix, drawable, 0x4);
+
+extern "C" void func_ov008_020d24b0(void* callbackContext) {
+	WmModelCallbackContextPrefix* context =
+		scast<WmModelCallbackContextPrefix*>(callbackContext);
+	func_ov008_020d23b4(scast<WmController*>(context->drawable->userData), callbackContext);
+}
+
+extern "C" void func_ov008_020d4368(WmController* controller) {
+	controller->unk2208 = 0x40;
+}
+
+extern "C" void func_ov008_020d45c0(WmController*) {}
+
+extern "C" void func_ov008_020d4784(WmController*) {}
+
+extern "C" void func_ov008_020d5284(WmController* controller) {
+	func_ov008_020d32c4(controller, 0);
+}
+
+extern "C" void func_ov008_020d6a40(WmController* controller) {
+	controller->unk2208 = 0x14;
+}
+
+extern "C" void func_ov008_020d81cc(WmController*) {}
+
+extern "C" bool func_ov008_020d81d0(WmController*) {
+	return true;
+}
+
 WmController::WmController() {}
 
 WmController::~WmController() {}
+
+extern "C" u32 func_ov008_020da724() {
+	return func_ov008_020da730();
+}
 
 
 void WmController::moveEntities() {

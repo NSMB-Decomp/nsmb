@@ -81,7 +81,7 @@ void func_02018b40();
 int strncmp(const char *, const char *, u32);
 }
 
-void func_02011b64();
+extern "C" void func_02011b64();
 void func_02045128();
 void func_0204d908();
 void func_02044ab0(Base *, void *);
