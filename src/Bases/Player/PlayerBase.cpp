@@ -392,7 +392,7 @@ bool PlayerBase::virt_30()
 {
 	return false;
 }
-bool PlayerBase::virt_31()
+bool PlayerBase::carry(StageActor &)
 {
 	return false;
 }

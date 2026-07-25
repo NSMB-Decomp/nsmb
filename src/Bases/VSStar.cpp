@@ -42,7 +42,7 @@ void VsStar::_27()
 	return VsStar::_24();
 }
 
-void VsStar::_30()
+void VsStar::onGroundPound()
 {
 	return VsStar::_24();
 }

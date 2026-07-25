@@ -71,8 +71,11 @@ class PlayerBase : public StageActor
 	u8 _pad7b6;
 	s8 scoreComboStandard;
 	s8 scoreJumpVariation;
-	u8 _7b9;
-	u8 _pad8[0x5];
+	s8 scoreComboStarman;
+	s8 scoreComboSliding;
+	u8 _7bb;
+	s8 scoreComboFenceSlam;
+	u8 _pad8[0x2];
 	u8 _7bf;
 	u8 _7c0;
 	u8 _7c1;
@@ -134,6 +137,18 @@ class PlayerBase : public StageActor
 	bool func_ov011_0212be70(i32, i32, i32, u8, i8);
 	bool func_ov011_0212beb8(i32, i32, i32, u8, i8);
 	void func_ov011_0212bf00();
+	inline s8 cycleStandardScoreCombo()
+	{
+		if (this->scoreComboStandard < 10) {
+			++this->scoreComboStandard;
+		}
+		++this->scoreJumpVariation;
+		this->scoreJumpVariation %= 4;
+		if (this->scoreComboStandard > 8) {
+			this->scoreComboStandard = 8;
+		}
+		return this->scoreComboStandard;
+	}
 	virtual bool doJump(fx32, u16, bool, bool, s8);
 	virtual bool virt_21();
 	virtual bool virt_22();
@@ -145,7 +160,7 @@ class PlayerBase : public StageActor
 	virtual bool virt_28();
 	virtual bool virt_29();
 	virtual bool virt_30();
-	virtual bool virt_31();
+	virtual bool carry(StageActor &);
 	virtual bool virt_32();
 	virtual bool virt_33();
 	virtual bool virt_34();
@@ -233,6 +248,9 @@ class PlayerBase : public StageActor
 	u32 func_ov011_0212c52c();
 	bool func_ov011_0212c4ec();
 };
+NTR_OFFSET_GUARD(PlayerBase, scoreComboStarman, 0x7b9);
+NTR_OFFSET_GUARD(PlayerBase, scoreComboSliding, 0x7ba);
+NTR_OFFSET_GUARD(PlayerBase, scoreComboFenceSlam, 0x7bc);
 NTR_OFFSET_GUARD(PlayerBase, unk68C, 0x68c);
 NTR_OFFSET_GUARD(PlayerBase, collisionFlag, 0x788);
 // NTR_SIZE_GUARD(PlayerBase, 0x0);

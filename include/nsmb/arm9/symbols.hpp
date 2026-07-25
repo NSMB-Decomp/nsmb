@@ -38,8 +38,47 @@ NTR_OFFSET_GUARD(StageRuntimeInfo, value02, 0x2);
 NTR_OFFSET_GUARD(StageRuntimeInfo, value1C, 0x1c);
 NTR_OFFSET_GUARD(StageRuntimeInfo, value34, 0x34);
 
+struct StageRuntimeEntry
+{
+	u16 id;
+	u16 x;
+	u16 y;
+	u16 eventIDs;
+	u32 settings;
+};
+NTR_SIZE_GUARD(StageRuntimeEntry, 0xc);
+NTR_OFFSET_GUARD(StageRuntimeEntry, id, 0x0);
+NTR_OFFSET_GUARD(StageRuntimeEntry, x, 0x2);
+NTR_OFFSET_GUARD(StageRuntimeEntry, y, 0x4);
+NTR_OFFSET_GUARD(StageRuntimeEntry, eventIDs, 0x6);
+NTR_OFFSET_GUARD(StageRuntimeEntry, settings, 0x8);
+
+struct StageRuntimeRoot
+{
+	StageRuntimeInfo *info;
+	u8 reserved_04_17[0x14];
+	StageRuntimeEntry *entries;
+};
+NTR_SIZE_GUARD(StageRuntimeRoot, 0x1c);
+NTR_OFFSET_GUARD(StageRuntimeRoot, info, 0x0);
+NTR_OFFSET_GUARD(StageRuntimeRoot, entries, 0x18);
+
+struct Unk0201ef94Input
+{
+	i16 x;
+	i16 y;
+	i16 width;
+	i16 height;
+};
+NTR_SIZE_GUARD(Unk0201ef94Input, 0x8);
+NTR_OFFSET_GUARD(Unk0201ef94Input, x, 0x0);
+NTR_OFFSET_GUARD(Unk0201ef94Input, y, 0x2);
+NTR_OFFSET_GUARD(Unk0201ef94Input, width, 0x4);
+NTR_OFFSET_GUARD(Unk0201ef94Input, height, 0x6);
+
 // Unresolved main-ARM9/autoload data. Keep address names until binary evidence
 // supports semantic names; each declaration is authoritative for its address.
+extern "C" u8 func_0201ef94(const Unk0201ef94Input *input);
 extern u16 data_0203bd2c;
 extern u16 data_0203bd34;
 extern u8 data_02026ce0[];
@@ -75,7 +114,10 @@ extern u8 data_02088f30;
 extern u8 data_0208adcc[];
 extern u8 data_0208ae54[2];
 extern u32 data_0208ae58;
-extern StageRuntimeInfo *data_0208b168;
+extern StageRuntimeRoot data_0208b168;
+extern StageRuntimeEntry *data_0208b1a0[];
+extern u32 data_0208b220[];
+extern u32 data_0208b2a0[];
 extern u8 data_0208b4c4;
 extern u8 data_0208b4c8[];
 extern u8 data_0208b4c9[];

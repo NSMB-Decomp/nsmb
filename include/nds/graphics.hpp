@@ -88,6 +88,13 @@ void uploadMainObjectPalette(void *source, u32 offset, u32 size);
 void flushGeometry();
 void initializeInterruptTable();
 void enableDisplays();
+void setFogTable(const u32 *table);
+void configureFog(BOOL enabled, u32 alpha, u32 depthShift, u32 offset);
+
+inline void setClearImageOffset(u32 packedOffset)
+{
+	*reinterpret_cast<volatile u32 *>(0x04000358) = packedOffset;
+}
 
 inline void swapBuffers(u32 sortMode, u32 bufferMode)
 {

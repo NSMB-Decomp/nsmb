@@ -1,5 +1,6 @@
 #include "StageEntity.hpp"
 #include <nsmb/arm9/symbols.hpp>
+#include <nsmb/game/score.hpp>
 #include <nsmb/overlays/ov000/symbols.hpp>
 #include <nsmb/overlays/ov010/symbols.hpp>
 #include <nsmb/overlays/ov054/symbols.hpp>
@@ -95,82 +96,35 @@ s32 StageEntity::onUpdate()
 	return this->onUpdate_0();
 }
 
-bool StageEntity::_01()
-{
-	if (this->forceRender != 0) {
-		return false;
-	}
-	if (this->updateStateID == 5) {
-		return false;
-	}
 
-	FxRect view;
-	view.x = this->viewOffset.x << 12;
-	view.y = this->viewOffset.y << 12;
-	view.halfWidth = this->renderSize.x << 11;
-	view.halfHeight = this->renderSize.y << 11;
-	return func_0200ae9c(&this->position, &view, (s8)data_02085a7c) != 0;
-}
 
-bool StageEntity::destroyInactive(u32 flags)
-{
-	if (data_02085abc & 2) {
-		return false;
-	}
-	if (func_ov000_020a6c9c(&this->collisionMgr)) {
-		return false;
-	}
 
-	FxRect range;
-	range.x = this->viewOffset.x << 12;
-	range.y = this->viewOffset.y << 12;
-	range.halfWidth = this->activeSize.x << 11;
-	range.halfHeight = this->activeSize.y << 11;
 
-	if ((((flags & 2) == 0 &&
-	      func_0200aed8(&this->position, &range, this->_2be)) ||
-	     isOutOfView(this->position, range, this->_2be)) &&
-	    (flags & 1) == 0) {
-		this->destroy(this->permanentDestroy);
-		return true;
-	}
-	return false;
-}
 
-bool StageEntity::isOutOfView(
-	const Vec3_32 &position, const FxRect &boundingBox, u8 viewID)
-{
-	FxRect view;
-	Vec2_32 relativeStart;
-	Vec2_32 expandedStart;
-	Vec2_32 expandedSize;
 
-	if (func_0201f184(viewID, &view) == 0) {
-		return true;
-	}
 
-	expandedSize.x = boundingBox.halfWidth + 0x80000;
-	expandedSize.y = boundingBox.halfHeight + 0x80000;
-	expandedStart.x = position.x + boundingBox.x - expandedSize.x;
-	i32 verticalStart = position.y + boundingBox.y;
-	expandedStart.y = -(verticalStart + expandedSize.y);
-	relativeStart.x = expandedStart.x - view.x;
-	relativeStart.y = expandedStart.y + view.y;
-	expandedSize.x *= 2;
-	expandedSize.y *= 2;
 
-	if ((data_ov000_020ca8d0 & 0x1000) == 0 &&
-	    (u8)(data_0208b168->value02 & 0x20) == 0 &&
-	    (u32)(relativeStart.x + expandedSize.x) >
-		    (u32)(view.halfWidth + expandedSize.x)) {
-		return true;
-	}
-	if ((u32)(relativeStart.y + expandedSize.y) >
-	    (u32)(view.halfHeight + expandedSize.y)) {
-		return true;
-	}
-	return false;
-}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 void StageEntity::_12()
 {
@@ -348,6 +302,23 @@ void StageEntity::_16()
 	return;
 }
 
+void StageEntity::grabbed()
+{
+	PlayerActor *player =
+		static_cast<PlayerActor *>(Game::getPlayer(this->linked_player));
+	BOOL frontLayer = BOOL(player->zLayer == 0x8000);
+	if (frontLayer != FALSE) {
+		this->backLayer = FALSE;
+	} else {
+		this->backLayer = TRUE;
+	}
+	this->activeCollider._a4 = data_ov000_020c4ec0[this->backLayer];
+	this->collisionMgr._b7 = data_ov000_020c4ec0[this->backLayer];
+	this->activeCollider.detectGroups |= 1 << AC_GRP_Bullet;
+	this->activeCollider.attack = AC_ATK_EntityAsWeapon;
+	this->activeCollider.callback = (void *)damageEntityCallback;
+}
+
 void StageEntity::_37()
 {
 }
@@ -357,6 +328,163 @@ void StageEntity::_36()
 {
 	this->velocity.y = 0x2000;
 	return;
+}
+
+void StageEntity::_35()
+{
+	s32 playerID;
+	Vec3_32 effectPosition(this->position);
+	Vec3_32 &center = this->centerOffset;
+	this->activeCollider.unlink();
+	this->permanentDestroy = true;
+
+	playerID = 0;
+	if (func_020202a0() > 0) {
+		do {
+			PlayerBase *player =
+				static_cast<PlayerBase *>(Game::getPlayer(playerID));
+			if (player != 0 && player->linkedActor == this) {
+				player->func_ov011_0212bde0(this);
+			}
+			++playerID;
+		} while (playerID < func_020202a0());
+	}
+
+	effectPosition.add2(center);
+	func_02022220(&effectPosition);
+	func_02012398(0x70, &effectPosition);
+	this->destroy(true);
+}
+
+void StageEntity::_32()
+{
+	PlayerBase *player =
+		static_cast<PlayerBase *>(Game::getPlayer(this->linked_player));
+	this->activeCollider.unlink();
+	this->direction = this->collisionDirection;
+	if (player->scoreComboFenceSlam < 10) {
+		++player->scoreComboFenceSlam;
+	}
+	if (player->scoreComboFenceSlam > 8) {
+		player->scoreComboFenceSlam = 8;
+	}
+
+	u32 scoreCombo = player->scoreComboFenceSlam;
+	if (this->scoreType == 0) {
+		this->getScorePointsRegular(
+			scoreCombo, 0, 0x18000, this->linked_player);
+	} else if (this->scoreType == 1) {
+		this->getScorePointsEnhanced(
+			scoreCombo, 0, 0x18000, this->linked_player);
+	}
+	if (scoreCombo < 8) {
+		func_02012398(scoreCombo + 0x70, &this->position);
+	} else {
+		func_02012398(0x77, &this->position);
+	}
+	this->minVelocity.y = -0x4000;
+	this->defeat(
+		data_ov000_020c4ed4[this->direction] >> 1,
+		0x6000, -0x600, 0);
+}
+
+void StageEntity::_31()
+{
+	Game::getPlayer(this->linked_player);
+	this->activeCollider.unlink();
+	this->direction = this->collisionDirection;
+	if (this->scoreType == 0) {
+		this->getScorePointsRegular(1, 0, 0x18000, this->linked_player);
+	} else if (this->scoreType == 1) {
+		this->getScorePointsRegular(4, 0, 0x18000, this->linked_player);
+	}
+	func_02012398(0x70, &this->position);
+	this->minVelocity.y = -0x4000;
+	this->defeat(data_ov000_020c4ed4[this->direction], 0x3000, -0x300, 0);
+}
+
+void StageEntity::onGroundPound()
+{
+	PlayerBase *player =
+		static_cast<PlayerBase *>(Game::getPlayer(this->linked_player));
+	Vec3_32 soundPosition =
+		func_02045bdc(this->position, this->centerOffset);
+	this->permanentDestroy = true;
+	this->activeCollider.unlink();
+
+	s32 playerID = 0;
+	if (func_020202a0() > 0) {
+		do {
+			PlayerBase *linkedPlayer =
+				static_cast<PlayerBase *>(Game::getPlayer(playerID));
+			if (linkedPlayer != 0 && linkedPlayer->linkedActor == this) {
+				linkedPlayer->func_ov011_0212bde0(this);
+			}
+			++playerID;
+		} while (playerID < func_020202a0());
+	}
+
+	if (player->scoreComboStandard < 10) {
+		++player->scoreComboStandard;
+	}
+	++player->scoreJumpVariation;
+	player->scoreJumpVariation %= 4;
+	if (player->scoreComboStandard > 8) {
+		player->scoreComboStandard = 8;
+	}
+	if (this->scoreType == 0) {
+		this->getScorePointsRegular(
+			player->scoreComboStandard, 0, 0x18000,
+			this->linked_player);
+	} else if (this->scoreType == 1) {
+		this->getScorePointsEnhanced(
+			player->scoreComboStandard, 0, 0x18000,
+			this->linked_player);
+	}
+
+	{
+		Vec3_32 effectPosition;
+		effectPosition.set(
+			(this->collisionSelfPos.x + this->collisionActorPos.x) >> 1,
+			(this->collisionSelfPos.y + this->collisionActorPos.y) >> 1,
+			0x200000);
+		func_02022b64(0xba, &effectPosition);
+		func_02022b64(0xbb, &effectPosition);
+		func_02022b64(0xbc, &effectPosition);
+	}
+	func_02012398(0x70, &soundPosition);
+	this->destroy(true);
+}
+
+void StageEntity::shellStarted(PlayerActor &player)
+{
+	this->linked_player = player.linked_player;
+	this->getScorePointsRegular(
+		player.cycleStandardScoreCombo(), 0, 0x18000,
+		this->linked_player);
+
+	{
+		Vec3_32 effectPosition;
+		effectPosition.set(
+			(this->collisionSelfPos.x + this->collisionActorPos.x) >> 1,
+			(this->collisionSelfPos.y + this->collisionActorPos.y) >> 1,
+			0x200000);
+		func_02022b64(0xd2, &effectPosition);
+		func_02022b64(0xd3, &effectPosition);
+	}
+
+	this->direction = this->isBehindTarget(&player);
+	fx32 playerVelocity = player.velocity.x;
+	fx32 shellVelocity = data_ov000_020c1f40[this->direction];
+	u8 playerVelocityDirection =
+		((u32)playerVelocity & 0x80000000) >> 31;
+	if (this->direction == playerVelocityDirection) {
+		shellVelocity += playerVelocity >> 1;
+	}
+	this->velocity.x = shellVelocity;
+	func_02012398(0x70, &this->position);
+	this->shellKicked();
+	this->updateStateID = 9;
 }
 
 void StageEntity::onSpinDrillHit()
@@ -371,7 +499,39 @@ void StageEntity::onSpinDrillHit()
 	this->direction = this->collisionDirection;
 	func_02012398(0x70, &this->position);
 	this->minVelocity.y = -0x4000;
-	this->_42(data_ov000_020c4ed4[this->direction], 0x3000, -0x300, 0);
+	this->defeat(data_ov000_020c4ed4[this->direction], 0x3000, -0x300, 0);
+}
+
+bool StageEntity::setSpinDrillCollision(const PlayerActor &player)
+{
+	if ((this->properties & ObjectInfo::EP_SpinDrill) == 0) {
+		return false;
+	}
+	i32 delta = (this->position.x + this->centerOffset.x) -
+		    (player.position.x + player.centerOffset.x);
+	this->linked_player = player.linked_player;
+	this->collisionDirection = ((u32)delta & 0x80000000) >> 31;
+	this->collisionType |= CT_SpinDrill;
+	return true;
+}
+
+void StageEntity::_27()
+{
+	Game::getPlayer(this->linked_player);
+	if (this->scoreType == 0) {
+		this->getScorePointsRegular(1, 0, 0x18000, this->linked_player);
+	} else if (this->scoreType == 1) {
+		this->getScorePointsRegular(4, 0, 0x18000, this->linked_player);
+	}
+	this->activeCollider.unlink();
+	this->direction = this->collisionDirection;
+
+	{
+		Vec3_32 effectPosition(
+			this->collisionSelfPos.x, this->collisionSelfPos.y, 0x200000);
+		func_02022b64(0x86, &effectPosition);
+	}
+	this->_43(data_ov000_020c1f68[this->direction], 0x4000, 0);
 }
 
 bool StageEntity::setBlueShellCollision(const PlayerActor &player)
@@ -390,6 +550,15 @@ bool StageEntity::setBlueShellCollision(const PlayerActor &player)
 void StageEntity::func_ov000_0209da00()
 {
 	StageEntity::func_ov000_0209da0c();
+}
+
+void StageEntity::func_ov000_0209da0c()
+{
+	for (u16 i = 0; i < 32; ++i) {
+		data_ov000_020ca4cc[i].unk0 = 0;
+		data_ov000_020ca4cc[i].unk4 = 0;
+		data_ov000_020ca4cc[i].unk8 = 0;
+	}
 }
 
 void func_ov000_0209e5a8(u32 x, u32 y, s32 playerId)
@@ -453,9 +622,45 @@ void StageEntity::func_ov000_020a020c()
 	return;
 }
 
+void StageEntity::defeat(
+	i32 velocityX, i32 velocityY, i32 accelerationY, u8 defeatArgument)
+{
+	s32 playerID = 0;
+	if (func_020202a0() > 0) {
+		do {
+			PlayerBase *player =
+				static_cast<PlayerBase *>(Game::getPlayer(playerID));
+			if (player != 0 && player->linkedActor == this) {
+				player->func_ov011_0212bde0(this);
+			}
+			++playerID;
+		} while (playerID < func_020202a0());
+	}
+
+	if (this->backLayer) {
+		this->rotation.y = 0;
+		this->position.z = -0x180000;
+	} else {
+		this->rotation.y =
+			StageEntity::directionalRotationY[this->direction] << 1;
+		this->position.z = 0x180000;
+	}
+	this->defeatedArg = defeatArgument;
+	this->quicksandFlag = false;
+	this->permanentDestroy = true;
+	this->accelV = accelerationY;
+	this->defeatedInLiquid = this->liquidFlag;
+	this->velocity.x = velocityX;
+	this->velocity.y = velocityY;
+	this->velocity.z = 0;
+	this->minVelocity.y = -0x4000;
+	this->collisionMgr.flags = 0;
+	this->updateStateID = 2;
+}
+
 void StageEntity::_43(u32 param_1, u32 param_2, u32 param_3)
 {
-	this->_42(param_1, param_2, param_3, 0);
+	this->defeat(param_1, param_2, param_3, 0);
 	this->updateStateID = 3;
 	func_02012398(0x178, &this->position);
 	return;
@@ -523,7 +728,7 @@ void StageEntity::_21()
 	(this->minVelocity).y = -0x4000;
 	func_02012398(0x70, &this->position);
 	this->direction = this->blockHitDirection;
-	this->_42(data_ov000_020c4ed4[this->direction], 0x3000, 0xfffffd00, 0);
+	this->defeat(data_ov000_020c4ed4[this->direction], 0x3000, 0xfffffd00, 0);
 }
 
 void StageEntity::_22()
@@ -531,7 +736,7 @@ void StageEntity::_22()
 	this->direction = this->collisionDirection;
 	this->activeCollider.unlink();
 	this->minVelocity.y = -0x4000;
-	this->_42(data_ov000_020c4ed4[this->direction], 0x3000, 0xfffffd00, 0);
+	this->defeat(data_ov000_020c4ed4[this->direction], 0x3000, 0xfffffd00, 0);
 }
 
 void StageEntity::postUpdate(u32 a)
@@ -597,6 +802,52 @@ bool StageEntity::onUpdate_4()
 {
 	return true;
 }
+
+bool StageEntity::updateCarriedCollision() {
+
+	fx32 dummy = StageEntity::unitDirection[direction];
+	func_01ffe778(&collisionMgr, &dummy, 0);
+
+	if (properties & 0x8000) {
+
+		// Vec3_32 pos;
+		// pos.x = position.x;
+		// pos.y = position.y;
+		// pos.z = position.z;
+		// pos.add(centerOffset);
+
+		// Not allowed to be inlined!!
+		//Vec3_32 pos = position.add(centerOffset);
+
+		Vec3_32 pos;
+		pos = position;
+		pos.add2(centerOffset);
+		//Vec3_32s* r = &pos;
+		//r->x = position.x;
+		//r->y = position.y;
+		//r->z = position.z;
+		//NDS::Math::addVector32(&pos, &centerOffset, r);
+
+		if (collisionMgr.getSolidTileType(pos.x, pos.y))
+			return true;
+
+	}
+
+	return false;
+
+}
+
+bool StageEntity::tryGrab(PlayerActor &player)
+{
+	if (!player.carry(*this)) {
+		return false;
+	}
+	this->linked_player = player.linked_player;
+	this->updateStateID = 5;
+	this->grabbed();
+	return true;
+}
+
 bool StageEntity::updateCarried()
 {
 	if (linked_player == -1) {
@@ -607,26 +858,26 @@ bool StageEntity::updateCarried()
 	tryAttachToPlayerHands(0x4000, -0x2000, 0);
 
 	if (carriedAction & 1) {
-		_16();
-		Vec3_32 *playerVelocity = &player->velocity;
-		if (carriedAction & 2) {
-			fx32 throwX;
-			direction = playerDirection;
-			rotation.y = directionalRotationY[direction];
-			fx32 halfPlayerVelocity =
-				playerVelocity->x >> 1;
-			if (object_id == 0x23 || object_id == 0xed) {
-				throwX = data_ov000_020c1f44[direction];
-			} else {
+			_16();
+			Vec3_32 *playerVelocity = &player->velocity;
+			if (carriedAction & 2) {
+				fx32 throwX;
+				direction = playerDirection;
+				rotation.y = directionalRotationY[direction];
+				fx32 halfPlayerVelocity =
+					playerVelocity->x >> 1;
+				if (object_id == 0x23 || object_id == 0xed) {
+					throwX = data_ov000_020c1f44[direction];
+				} else {
 				throwX = data_ov000_020c1f40[direction];
 			}
 
 			u8 playerVelocityDirection =
-				((u32)player->velocity.x &
-				 0x80000000) >> 31;
-			if (direction == playerVelocityDirection) {
-				throwX += halfPlayerVelocity;
-			}
+					((u32)player->velocity.x &
+					 0x80000000) >> 31;
+				if (direction == playerVelocityDirection) {
+					throwX += halfPlayerVelocity;
+				}
 
 			if (throwX < minVelocity.x) {
 				throwX = Math::min(throwX, minVelocity.x);
@@ -641,7 +892,7 @@ bool StageEntity::updateCarried()
 				getScorePointsRegular(
 					1, 0, 0x18000,
 					player->linked_player);
-				_42(0, 0x3000, -0x300, 0);
+				defeat(0, 0x3000, -0x300, 0);
 				_11();
 				return true;
 			}
@@ -673,7 +924,7 @@ bool StageEntity::updateCarried()
 				getScorePointsRegular(
 					1, 0, 0x18000,
 					player->linked_player);
-				_42(0, 0x3000, -0x300, 0);
+				defeat(0, 0x3000, -0x300, 0);
 				_11();
 				return true;
 			}
@@ -894,6 +1145,1346 @@ bool StageEntity::updateRolling()
 }
 void StageEntity::_11()
 {
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+u16 data_ov000_020c22b8[2];
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+void StageEntity::onStomped()
+{
+}
+
+
+
+void StageEntity::setStompCollision(const PlayerActor &player)
+{
+	i32 delta = (this->position.x + this->centerOffset.x) -
+		    (player.position.x + player.centerOffset.x);
+	this->linked_player = player.linked_player;
+	this->collisionDirection = ((u32)delta & 0x80000000) >> 31;
+	this->collisionType |= CT_Stomp;
+}
+
+bool StageEntity::setMegaKickCollision(const PlayerActor &player)
+{
+	if (this->properties & ObjectInfo::EP_NoMegaKick) {
+		return false;
+	}
+	i32 delta = (this->position.x + this->centerOffset.x) -
+		    (player.position.x + player.centerOffset.x);
+	this->linked_player = player.linked_player;
+	this->collisionDirection = ((u32)delta & 0x80000000) >> 31;
+	return true;
+}
+
+void StageEntity::_26()
+{
+	PlayerActor *player =
+		static_cast<PlayerActor *>(Game::getPlayer(this->linked_player));
+	if (this->scoreType == 0) {
+		this->getScorePointsRegular(1, 0, 0x18000, this->linked_player);
+	} else if (this->scoreType == 1) {
+		this->getScorePointsRegular(4, 0, 0x18000, this->linked_player);
+	}
+	Game::addMegaDestructionScore(this->linked_player, 10);
+	this->activeCollider.unlink();
+	this->direction = this->collisionDirection;
+
+	fx32 knockback = player->velocity.x - this->velocity.x +
+			  ((fx32)StageEntity::unitDirection[this->direction] << 12);
+	if (knockback > 0x6000) {
+		knockback = 0x6000;
+	} else if (knockback < -0x6000) {
+		knockback = -0x6000;
+	}
+
+	{
+		Vec3_32 effectPosition(
+			this->collisionSelfPos.x, this->collisionSelfPos.y, 0x200000);
+		func_02022b64(0x86, &effectPosition);
+	}
+	this->_43(knockback, 0x3000, -0x300);
+}
+
+void StageEntity::_25()
+{
+	PlayerBase *player =
+		static_cast<PlayerBase *>(Game::getPlayer(this->linked_player));
+	if (player->scoreComboSliding < 10) {
+		++player->scoreComboSliding;
+	}
+	if (player->scoreComboSliding > 8) {
+		player->scoreComboSliding = 8;
+	}
+
+	s8 scoreCombo = player->scoreComboSliding;
+	if (this->scoreType == 0) {
+		this->getScorePointsRegular(
+			scoreCombo, 0, 0x18000, this->linked_player);
+	} else if (this->scoreType == 1) {
+		this->getScorePointsEnhanced(
+			scoreCombo, 0, 0x18000, this->linked_player);
+	}
+
+	this->direction = this->collisionDirection;
+	this->activeCollider.unlink();
+	if (player->scoreComboSliding < 8) {
+		func_02012398(scoreCombo + 0x70, &this->position);
+	} else {
+		func_02012398(0x77, &this->position);
+	}
+	this->minVelocity.y = -0x4000;
+	this->defeat(data_ov000_020c4ed4[this->direction], 0x3000, -0x300, 0);
+}
+
+void StageEntity::_24()
+{
+	PlayerBase *player =
+		static_cast<PlayerBase *>(Game::getPlayer(this->linked_player));
+	if (player->scoreComboStarman < 10) {
+		++player->scoreComboStarman;
+	}
+	if (player->scoreComboStarman > 8) {
+		player->scoreComboStarman = 8;
+	}
+
+	s8 scoreCombo = player->scoreComboStarman;
+	if (this->scoreType == 0) {
+		this->getScorePointsRegular(
+			scoreCombo, 0, 0x18000, this->linked_player);
+	} else if (this->scoreType == 1) {
+		this->getScorePointsEnhanced(
+			scoreCombo, 0, 0x18000, this->linked_player);
+	}
+
+	this->direction = this->collisionDirection;
+	this->activeCollider.unlink();
+	if (player->scoreComboStarman < 8) {
+		func_02012398(scoreCombo + 0x70, &this->position);
+	} else {
+		func_02012398(0x77, &this->position);
+	}
+	this->minVelocity.y = -0x4000;
+	this->defeat(data_ov000_020c4ed4[this->direction], 0x3000, -0x300, 0);
+}
+
+void StageEntity::_23()
+{
+	this->direction = this->collisionDirection;
+	this->activeCollider.unlink();
+	this->spawnCoin();
+	if (this->scoreType == 0) {
+		this->getScorePointsRegular(1, 0, 0x18000, this->linked_player);
+	} else if (this->scoreType == 1) {
+		this->getScorePointsRegular(4, 0, 0x18000, this->linked_player);
+	}
+	func_02012398(0x70, &this->position);
+	this->minVelocity.y = -0x4000;
+	this->defeat(data_ov000_020c4ed4[this->direction], 0x3000, -0x300, 0);
+}
+
+bool StageEntity::setMegaCollision(const PlayerActor &player)
+{
+	if (this->properties & ObjectInfo::EP_NoMega) {
+		return false;
+	}
+	i32 delta = (this->position.x + this->centerOffset.x) -
+		    (player.position.x + player.centerOffset.x);
+	this->linked_player = player.linked_player;
+	this->collisionDirection = ((u32)delta & 0x80000000) >> 31;
+	this->collisionType |= CT_Mega;
+	return true;
+}
+
+void StageEntity::spawnCoin()
+{
+	Vec3_32 coinPosition = func_02045bdc(position, centerOffset);
+	coinPosition.x &= data_02085aa4;
+	Actor *coin = Actor::spawnActor(0x42, 5, &coinPosition, 0, 0, 0);
+	if (coin != 0) {
+		coin->position.x -= 0x8000;
+	}
+}
+
+bool StageEntity::setFenceSlamCollision(const PlayerActor &player)
+{
+	if ((this->properties & ObjectInfo::EP_FenceSlam) == 0) {
+		return false;
+	}
+	i32 delta = (this->position.x + this->centerOffset.x) -
+		    (player.position.x + player.centerOffset.x);
+	this->linked_player = player.linked_player;
+	this->collisionDirection = ((u32)delta & 0x80000000) >> 31;
+	this->collisionType |= CT_FenceSlam;
+	return true;
+}
+
+bool StageEntity::setSlidingCollision(const PlayerActor &player)
+{
+	if (this->properties & ObjectInfo::EP_NoSliding) {
+		return false;
+	}
+	i32 delta = (this->position.x + this->centerOffset.x) -
+		    (player.position.x + player.centerOffset.x);
+	this->linked_player = player.linked_player;
+	this->collisionDirection = ((u32)delta & 0x80000000) >> 31;
+	this->collisionType |= CT_Sliding;
+	return true;
+}
+
+bool StageEntity::setStarmanCollision(const PlayerActor &player)
+{
+	if (this->properties & ObjectInfo::EP_NoStarman) {
+		return false;
+	}
+	i32 delta = (this->position.x + this->centerOffset.x) -
+		    (player.position.x + player.centerOffset.x);
+	this->linked_player = player.linked_player;
+	this->collisionDirection = ((u32)delta & 0x80000000) >> 31;
+	this->collisionType |= CT_Starman;
+	return true;
+}
+
+void func_ov000_0209c350()
+{
+	NDS::Graphics::setClearImageOffset(0x001f001f);
+	NDS::Graphics::setFogTable(data_ov000_020c1ff0);
+	NDS::Graphics::configureFog(TRUE, 0, 6, 0);
+
+	NDS::Memory::clearFast(0, (u32)data_ov000_020ca3cc, 0x100);
+	NDS::Memory::clearFast(0, (u32)data_ov000_020ca64c, 0x100);
+
+	u8 entryIndex = 0;
+	do {
+		data_ov000_020ca32c[entryIndex].value = 0;
+		++entryIndex;
+	} while (entryIndex < 10);
+
+	u8 timerIndex = 0;
+	do {
+		data_ov000_020ca2fc[timerIndex] = 0;
+		++timerIndex;
+	} while (timerIndex < 24);
+
+	u8 flagIndex = 0;
+	do {
+		data_ov000_020ca2d4[flagIndex] = 0;
+		++flagIndex;
+	} while (flagIndex < 8);
+
+	bool spawnForBothPlayers = false;
+	data_ov000_020ca2ec[0] = 0;
+	data_ov000_020ca2ec[1] = 0;
+	data_ov000_020ca2e4[0] = 0;
+	data_ov000_020ca2b4 = 0;
+	data_ov000_020ca2e4[1] = 0;
+	data_ov000_020ca2f4[0] = 0;
+	data_ov000_020ca2f4[1] = 0;
+	data_ov000_020ca2dc[0] = 0;
+	data_ov000_020ca2dc[1] = 0;
+	data_ov000_020ca2a8 = 0;
+	data_ov000_020ca2b8 = 0;
+	data_ov000_020ca2a0 = 0;
+	data_ov000_020ca280 = 0;
+	data_ov000_020ca290 = 0;
+	data_ov000_020ca2b0 = 0;
+	data_ov000_020ca294 = 0;
+	data_ov000_020ca288 = 0;
+	data_ov000_020ca29c = 0;
+	data_ov000_020ca298 = -1;
+
+	if (data_02085abc & 1) {
+		return;
+	}
+
+	if (data_02085a84 != 0) {
+		spawnForBothPlayers = true;
+	}
+	if (spawnForBothPlayers) {
+		Vec3_32 position(0);
+		Actor::spawnActor(0x21, 0, &position, 0, 0, 0);
+		func_ov000_0209aff8(0, false);
+		func_ov000_0209aff8(1, false);
+		return;
+	}
+	func_ov000_0209aff8(data_020887f0, false);
+}
+
+void func_ov000_0209c2f8(u8 playerID)
+{
+	if (data_02085abc & 1) {
+		return;
+	}
+	data_ov000_020ca2ec[playerID] = 0;
+	data_ov000_020ca2e4[playerID] = 0;
+	data_ov000_020ca2f4[playerID] = 0;
+	data_ov000_020ca2dc[playerID] = 0;
+	func_ov000_0209aff8(playerID, true);
+}
+
+void func_ov000_0209c288()
+{
+	u8 *flags = data_ov000_020ca3cc;
+	u16 *timers = data_ov000_020ca64c;
+	StageRuntimeEntry *entry = data_0208b168.entries;
+
+	if (entry->id == 0xffff) {
+		return;
+	}
+	do {
+		if (*timers != 0) {
+			--*timers;
+			if (*timers == 1) {
+				*flags &= ~1;
+			}
+		}
+		++entry;
+		++flags;
+		++timers;
+	} while (entry->id != 0xffff);
+}
+
+StageEntity *func_ov000_0209c178(
+	u32 spriteID, u32 settings, Vec3_32 *position)
+{
+	u16 actorID = data_ov000_020c22b8[spriteID];
+	if (actorID == 0x145) {
+		return 0;
+	}
+
+	ObjectInfo &objectInfo = data_ov000_020c529c[spriteID];
+	StageEntity *entity = static_cast<StageEntity *>(
+		Actor::spawnActor(actorID, settings, position, 0, 0, 0));
+	if (entity == 0) {
+		return entity;
+	}
+	if (spriteID < 10) {
+		return entity;
+	}
+
+	entity->properties = objectInfo.properties;
+	entity->spawnSettings = objectInfo.spawnSettings;
+	entity->unused3E0 = false;
+
+	if (entity->activeSize.x == 0 &&
+	    entity->activeSize.y == 0) {
+		entity->activeSize.x = (u16)objectInfo.size.x << 4;
+		entity->activeSize.y = (u16)objectInfo.size.y << 4;
+	}
+	if (entity->viewOffset.x == 0 &&
+	    entity->viewOffset.y == 0) {
+		entity->viewOffset.x = objectInfo.viewOffset.x;
+		entity->viewOffset.y = -objectInfo.viewOffset.y;
+	}
+	if (entity->renderSize.x == 0 &&
+	    entity->renderSize.y == 0) {
+		entity->renderSize.x = entity->activeSize.x;
+		entity->renderSize.y = entity->activeSize.y;
+	}
+	return entity;
+}
+
+StageEntity *func_ov000_0209bf10(
+	StageRuntimeEntry *entry, const ObjectInfo *objectInfo,
+	u8 *spawnFlags, u16 *spawnTimer, u8 viewID, u32 playerID)
+{
+	if (data_ov000_020c22b8[entry->id] == 0x145) {
+		return 0;
+	}
+
+	Vec3_32 position(
+		((entry->x << 4) + objectInfo->position.x) << 12,
+		-(((entry->y << 4) + objectInfo->position.y) << 12),
+		0x80000);
+
+	data_ov000_020ca2ac = spawnFlags;
+	data_ov000_020ca2a4.value = entry->eventIDs;
+	data_ov000_020ca2cc = 0;
+	if (data_ov000_020ca2a4.ids[0] != 0) {
+		data_ov000_020ca2cc |=
+			1ULL <<
+			(data_ov000_020ca2a4.ids[0] - 1);
+	}
+	if (data_ov000_020ca2a4.ids[1] != 0) {
+		data_ov000_020ca2cc |=
+			1ULL <<
+			(data_ov000_020ca2a4.ids[1] - 1);
+	}
+
+	StageEntity *entity = static_cast<StageEntity *>(
+		Actor::spawnActor(
+			data_ov000_020c22b8[entry->id],
+			entry->settings, &position,
+			0, 0, 0));
+	if (entity != 0) {
+		if (entry->id >= 10) {
+			entity->_2be = viewID;
+			entity->objectSpawnFlags = spawnFlags;
+			entity->objectRespawnTimer = spawnTimer;
+			entity->eventIDs =
+				data_ov000_020ca2a4.value;
+			entity->eventMask =
+				data_ov000_020ca2cc;
+			entity->properties =
+				objectInfo->properties;
+			entity->spawnSettings =
+				objectInfo->spawnSettings;
+			entity->unused3E0 = false;
+
+			if (entity->activeSize.x == 0 &&
+			    entity->activeSize.y == 0) {
+				entity->activeSize.x =
+					(u16)objectInfo->size.x
+					<< 4;
+				entity->activeSize.y =
+					(u16)objectInfo->size.y
+					<< 4;
+			}
+			if (entity->viewOffset.x == 0 &&
+			    entity->viewOffset.y == 0) {
+				entity->viewOffset.x =
+					objectInfo->viewOffset.x;
+				entity->viewOffset.y =
+					-objectInfo->viewOffset.y;
+			}
+			if (entity->renderSize.x == 0 &&
+			    entity->renderSize.y == 0) {
+				entity->renderSize.x =
+					entity->activeSize.x;
+				entity->renderSize.y =
+					entity->activeSize.y;
+			}
+			entity->updateStateID = 0;
+			entity->spawnPlayerID = playerID;
+		}
+		*spawnFlags |= 1;
+	}
+	return entity;
+}
+
+bool func_ov000_0209bddc(
+	const StageRuntimeEntry *entry, const ObjectInfo *objectInfo,
+	u32 playerID)
+{
+	u8 wrapEnabled =
+		data_0208b168.info->value02 & 0x20;
+	i32 cameraHalfWidth =
+		data_ov000_020cada4[playerID] >> 13;
+	i32 cameraCenterX =
+		cameraHalfWidth +
+		(data_ov000_020cae1c[playerID] >> 12);
+	i32 cameraHalfHeight =
+		Game::cameraZoomY[playerID] >> 13;
+	i32 cameraCenterY =
+		cameraHalfHeight +
+		(Game::cameraY[playerID] >> 12);
+
+	i32 objectWidth = (u16)objectInfo->size.x << 4;
+	i32 objectHeight = (u16)objectInfo->size.y << 4;
+	i32 objectX =
+		(entry->x + objectInfo->spawnOffset.x) << 4;
+	i32 objectY =
+		(entry->y + objectInfo->spawnOffset.y) << 4;
+	i32 objectHalfWidth = objectWidth >> 1;
+	i32 objectCenterX = objectX + objectHalfWidth;
+	i32 objectHalfHeight = objectHeight >> 1;
+	i32 objectCenterY = objectY + objectHalfHeight;
+
+	if (wrapEnabled != 0 &&
+	    data_02085a98 != 1) {
+		i32 wrappedDistance = cameraCenterX - objectCenterX;
+		wrappedDistance = wrappedDistance < 0
+					  ? -wrappedDistance
+					  : wrappedDistance;
+		i32 wrapWidth = (data_02085aa4 + 1) >> 12;
+		i32 wrapHalfWidth = wrapWidth >> 1;
+		if (wrappedDistance >= wrapHalfWidth) {
+			if (cameraCenterX > wrapHalfWidth) {
+				if (objectCenterX < wrapHalfWidth) {
+					objectCenterX += wrapWidth;
+				}
+			} else if (objectCenterX > wrapHalfWidth) {
+				objectCenterX -= wrapWidth;
+			}
+		}
+	}
+
+	i32 distanceX = cameraCenterX - objectCenterX;
+	distanceX = distanceX < 0 ? -distanceX : distanceX;
+	i32 maxDistanceX = cameraHalfWidth + objectHalfWidth;
+	maxDistanceX =
+		maxDistanceX < 0 ? -maxDistanceX : maxDistanceX;
+	if (distanceX <= maxDistanceX) {
+		i32 distanceY = cameraCenterY - objectCenterY;
+		distanceY =
+			distanceY < 0 ? -distanceY : distanceY;
+		i32 maxDistanceY =
+			cameraHalfHeight + objectHalfHeight;
+		maxDistanceY = maxDistanceY < 0
+				       ? -maxDistanceY
+				       : maxDistanceY;
+		if (distanceY <= maxDistanceY) {
+			return true;
+		}
+	}
+	return false;
+}
+
+void func_ov000_0209ba94(
+	StageEntityTileSweep *sweep, u32 playerID, bool moving)
+{
+	PlayerBase *player =
+		static_cast<PlayerBase *>(Game::getPlayer(playerID));
+	u8 viewID = player->_2be;
+	u32 entryCount = data_0208b220[viewID];
+	if (entryCount == 0) {
+		return;
+	}
+
+	u16 *spawnTimer;
+	i32 entryIndex;
+	i32 checkX;
+	i32 checkY;
+	i32 horizontalDirection;
+	i32 verticalDirection;
+	u32 otherPlayerID;
+	i32 left;
+	i32 right;
+	i32 top;
+	i32 bottom;
+	const ObjectInfo *objectInfo;
+	StageRuntimeEntry *entry;
+	u16 collisionCount;
+	i32 objectCheckX;
+	i32 objectCheckY;
+	i32 objectLeft;
+	i32 objectRight;
+	i32 objectBottom;
+	i32 objectTop;
+	u8 *spawnFlags;
+
+	entry = data_0208b1a0[viewID];
+	u32 entryOffset = data_0208b2a0[viewID];
+	spawnFlags = &data_ov000_020ca3cc[entryOffset];
+	spawnTimer = &data_ov000_020ca64c[entryOffset];
+
+	checkX = sweep->checkX;
+	checkY = sweep->checkY;
+	left = sweep->left;
+	entryIndex = 0;
+	horizontalDirection = sweep->horizontalDirection;
+	right = sweep->right;
+	verticalDirection = sweep->verticalDirection;
+	top = sweep->top;
+	bottom = sweep->bottom;
+
+	if (entryCount == 0) {
+		return;
+	}
+
+	otherPlayerID = playerID ^ 1;
+	do {
+		if ((*spawnFlags & 1) == 0) {
+			objectInfo =
+				&data_ov000_020c529c[entry->id];
+			objectLeft =
+				entry->x +
+				objectInfo->spawnOffset.x;
+			objectTop =
+				entry->y +
+				objectInfo->spawnOffset.y;
+			objectRight =
+				objectLeft +
+				(u16)objectInfo->size.x;
+			collisionCount = 0;
+			objectBottom =
+				objectTop +
+				(u16)objectInfo->size.y;
+
+			u8 wrapEnabled =
+				data_0208b168.info->value02 &
+				0x20;
+			if (wrapEnabled != 0 &&
+			    data_02085aa4 != 0xfffff) {
+				i32 wrapMask =
+					data_02085aa4 >> 16;
+				objectLeft &= wrapMask;
+				objectRight &= wrapMask;
+			}
+
+			objectCheckX =
+				horizontalDirection != 0
+					? objectLeft
+					: objectRight;
+			objectCheckY =
+				verticalDirection != 0
+					? objectTop
+					: objectBottom;
+
+			if (moving == true) {
+				if (objectCheckX == checkX) {
+					if (horizontalDirection != 1) {
+						if (horizontalDirection < 0) {
+							if (right == objectLeft &&
+							    bottom >= objectTop &&
+							    top <= objectBottom) {
+								++collisionCount;
+							}
+						} else {
+							if (left == objectRight &&
+							    bottom >= objectTop &&
+							    top <= objectBottom) {
+								++collisionCount;
+							}
+						}
+					}
+				} else if (objectCheckY == checkY) {
+					if (verticalDirection != 1) {
+						if (verticalDirection < 0) {
+							if (bottom == objectTop &&
+							    right >= objectLeft &&
+							    left <= objectRight) {
+								++collisionCount;
+							}
+						} else {
+							if (top == objectBottom &&
+							    right >= objectLeft &&
+							    left <= objectRight) {
+								++collisionCount;
+							}
+						}
+					}
+				}
+			} else {
+				if (objectCheckX == checkX &&
+				    bottom >= objectTop &&
+				    top <= objectBottom) {
+					++collisionCount;
+				}
+				if (objectCheckY == checkY &&
+				    right >= objectLeft &&
+				    left <= objectRight) {
+					++collisionCount;
+				}
+			}
+
+			if (collisionCount != 0 &&
+			    func_020202a0() == 2 &&
+			    func_ov000_0209bddc(
+				    entry, objectInfo,
+				    otherPlayerID)) {
+				collisionCount = 0;
+			}
+			if (collisionCount != 0) {
+				func_ov000_0209bf10(
+					entry, objectInfo,
+					spawnFlags, spawnTimer,
+					viewID, playerID);
+			}
+		}
+
+		++entry;
+		++spawnFlags;
+		++spawnTimer;
+		++entryIndex;
+	} while (entryIndex != entryCount);
+}
+
+void func_ov000_0209b7e8(u32 playerID)
+{
+	i32 checkX;
+	i32 checkY;
+	i32 bottom;
+	Vec3_32 position;
+	i32 cameraZoomY = Game::cameraZoomY[playerID] >> 12;
+	i32 cameraExtent = data_ov000_020cada4[playerID] >> 12;
+	i32 currentX = data_ov000_020cae1c[playerID] >> 12;
+	i32 currentY = Game::cameraY[playerID] >> 12;
+
+	i32 left = (currentX - 0x20) >> 4;
+	i32 right = (cameraExtent + 0x30 + currentX) >> 4;
+	i32 top = (currentY - 0x10) >> 4;
+	bottom = (cameraZoomY + 0x20 + currentY) >> 4;
+
+	i32 horizontalDirection = 0;
+	i32 verticalDirection = 0;
+	u8 wrapEnabled =
+		data_0208b168.info->value02 & 0x20;
+	if (wrapEnabled != 0 &&
+	    data_02085aa4 != 0xfffff) {
+		i32 wrapMask = data_02085aa4 >> 16;
+		right &= wrapMask;
+		left &= wrapMask;
+	}
+
+	StageEntityTileSweep sweep;
+	if (data_ov000_020cadb4[playerID] !=
+	    data_ov010_0212ae6c[playerID]) {
+		sweep.checkX = left;
+		sweep.checkY = bottom;
+		sweep.left = left;
+		sweep.right = right;
+		sweep.top = top;
+		sweep.bottom = bottom;
+
+		sweep.horizontalDirection = 0;
+		sweep.verticalDirection = -1;
+		func_ov000_0209ba94(&sweep, playerID, false);
+
+		sweep.checkX = right;
+		sweep.checkY = bottom;
+		sweep.left = left;
+		sweep.right = right;
+		sweep.top = top;
+		sweep.bottom = bottom;
+		sweep.horizontalDirection = -1;
+		sweep.verticalDirection = -1;
+		func_ov000_0209ba94(&sweep, playerID, false);
+
+		data_ov000_020ca2ec[playerID] = currentX;
+		data_ov000_020ca2e4[playerID] = currentY;
+
+		checkX = right;
+		checkY = top;
+		sweep.checkX = checkX;
+		sweep.checkY = checkY;
+		sweep.horizontalDirection = -1;
+		sweep.verticalDirection = 0;
+		func_ov000_0209ba94(&sweep, playerID, false);
+	} else {
+		i32 deltaX =
+			currentX - data_ov000_020ca2ec[playerID];
+		i32 deltaY =
+			currentY - data_ov000_020ca2e4[playerID];
+		if (deltaX != 0) {
+			if (deltaX > 0) {
+				checkX = right;
+				horizontalDirection = -1;
+			} else {
+				checkX = left;
+			}
+		} else {
+			horizontalDirection = 1;
+		}
+
+		if (deltaY != 0) {
+			if (deltaY > 0) {
+				checkY = bottom;
+				verticalDirection = -1;
+			} else {
+				checkY = top;
+			}
+		} else {
+			verticalDirection = 1;
+		}
+
+		if (checkX ==
+			    (i32)data_ov000_020ca2f4[playerID] &&
+		    checkY ==
+			    (i32)data_ov000_020ca2dc[playerID]) {
+			data_ov000_020ca2ec[playerID] = currentX;
+			data_ov000_020ca2e4[playerID] = currentY;
+			data_ov000_020ca2f4[playerID] = checkX;
+			data_ov000_020ca2dc[playerID] = checkY;
+			return;
+		}
+
+		sweep.checkX = checkX;
+		sweep.checkY = checkY;
+		sweep.left = left;
+		sweep.right = right;
+		sweep.top = top;
+		sweep.bottom = bottom;
+		sweep.horizontalDirection = horizontalDirection;
+		sweep.verticalDirection = verticalDirection;
+		func_ov000_0209ba94(&sweep, playerID, true);
+	}
+
+	data_ov000_020ca2ec[playerID] = currentX;
+	data_ov000_020ca2e4[playerID] = currentY;
+	data_ov000_020ca2f4[playerID] = checkX;
+	data_ov000_020ca2dc[playerID] = checkY;
+}
+
+void func_ov000_0209b764()
+{
+	if (data_ov000_020ca288 != 0) {
+		return;
+	}
+	if (data_02085abc & 1) {
+		return;
+	}
+	if (data_02085abc & 2) {
+		return;
+	}
+
+	if (func_020202a0() == 1) {
+		func_ov000_0209b7e8(data_020887f0);
+		return;
+	}
+
+	func_ov000_0209c288();
+	func_ov000_0209b7e8(0);
+	func_ov000_0209b7e8(1);
+}
+
+void func_ov000_0209b688(u8 playerID)
+{
+	const ObjectInfo *objectInfo;
+	StageRuntimeEntry *entry = data_0208b168.entries;
+	u8 *spawnFlags = data_ov000_020ca3cc;
+	u16 *spawnTimer = data_ov000_020ca64c;
+	if (entry->id == 0xffff) {
+		return;
+	}
+
+	do {
+		if ((*spawnFlags & 1) == 0) {
+			objectInfo =
+				&data_ov000_020c529c[entry->id];
+			Unk0201ef94Input input;
+			input.x =
+				(entry->x +
+				 objectInfo->spawnOffset.x) << 4;
+			input.y =
+				(entry->y +
+				 objectInfo->spawnOffset.y) << 4;
+			input.width =
+				(u16)objectInfo->size.x << 4;
+			input.height =
+				(u16)objectInfo->size.y << 4;
+			u8 viewID = func_0201ef94(&input);
+			func_ov000_0209bf10(
+				entry, objectInfo, spawnFlags,
+				spawnTimer, viewID, playerID);
+		}
+
+		++entry;
+		++spawnFlags;
+		++spawnTimer;
+	} while (entry->id != 0xffff);
+}
+
+void func_ov000_0209b320(u8 playerID)
+{
+	const ObjectInfo *objectInfo;
+	StageRuntimeEntry *entry = data_0208b168.entries;
+	u16 *spawnTimer = data_ov000_020ca64c;
+	u8 *spawnFlags = data_ov000_020ca3cc;
+	u16 collisionCount;
+	PlayerBase *player =
+		static_cast<PlayerBase *>(Game::getPlayer(playerID));
+	u8 playerViewID = player->_2be;
+	u8 viewID;
+
+	i32 cameraZoomY =
+		Game::cameraZoomY[playerID] >> 12;
+	i32 cameraExtent =
+		data_ov000_020cada4[playerID] >> 12;
+	i32 cameraX =
+		data_ov000_020cae1c[playerID] >> 12;
+	i32 cameraY =
+		Game::cameraY[playerID] >> 12;
+	i32 top = cameraY - 0x10;
+	i32 cameraHalfHeight =
+		(cameraZoomY + 0x20 + cameraY - top) >> 1;
+	i32 cameraCenterY = top + cameraHalfHeight;
+	i32 left = cameraX - 0x20;
+	i32 cameraHalfWidth =
+		(cameraExtent + 0x30 + cameraX - left) >> 1;
+	i32 wrapWidth = (data_02085aa4 + 1) >> 12;
+	i32 cameraCenterX = left + cameraHalfWidth;
+	i32 wrapHalfWidth = wrapWidth >> 1;
+
+	if (entry->id == 0xffff) {
+		return;
+	}
+
+	do {
+		if ((*spawnFlags & 1) == 0) {
+			objectInfo =
+				&data_ov000_020c529c[entry->id];
+			collisionCount = 0;
+			u16 listIndex = 0;
+			while (data_ov000_020c4ee0[listIndex] !=
+			       0xffff) {
+				if (entry->id ==
+				    data_ov000_020c4ee0[listIndex]) {
+					break;
+				}
+				++listIndex;
+			}
+
+			if (data_ov000_020c4ee0[listIndex] !=
+			    0xffff) {
+				++collisionCount;
+			} else {
+				Unk0201ef94Input input;
+				input.x =
+					(entry->x +
+					 objectInfo->spawnOffset.x)
+					<< 4;
+				input.y =
+					(entry->y +
+					 objectInfo->spawnOffset.y)
+					<< 4;
+				input.width =
+					(u16)objectInfo->size.x
+					<< 4;
+				input.height =
+					(u16)objectInfo->size.y
+					<< 4;
+				viewID = func_0201ef94(&input);
+
+				if (viewID == playerViewID) {
+					if (entry->id == 0x12a &&
+					    (u8)(data_0208b168
+							 .info
+							 ->value02 &
+						 0x20) != 0 &&
+					    data_02085aa4 != 0xfffff) {
+						++collisionCount;
+					}
+
+					if (objectInfo->spawnSettings &
+					    ObjectInfo::SS_AlwaysLoad) {
+						++collisionCount;
+					} else {
+						i32 objectWidth =
+							(u16)objectInfo
+								->size.x
+							<< 4;
+						i32 objectHeight =
+							(u16)objectInfo
+								->size.y
+							<< 4;
+						i32 objectX =
+							(entry->x +
+							 objectInfo
+								 ->spawnOffset
+								 .x)
+							<< 4;
+						i32 objectY =
+							(entry->y +
+							 objectInfo
+								 ->spawnOffset
+								 .y)
+							<< 4;
+						i32 objectCenterX =
+							objectX +
+							(objectWidth >>
+							 1);
+						i32 objectCenterY =
+							objectY +
+							(objectHeight >>
+							 1);
+
+						if ((u8)(data_0208b168
+								 .info
+								 ->value02 &
+							 0x20) != 0 &&
+						    data_02085a98 != 1) {
+							i32 wrappedDistance =
+								cameraCenterX -
+								objectCenterX;
+							wrappedDistance =
+								wrappedDistance <
+										0
+									? -wrappedDistance
+									: wrappedDistance;
+							if (wrappedDistance >=
+							    wrapHalfWidth) {
+								if (cameraCenterX >
+								    wrapHalfWidth) {
+									if (objectCenterX <
+									    wrapHalfWidth) {
+										objectCenterX +=
+											wrapWidth;
+									}
+								} else if (
+									objectCenterX >
+									wrapHalfWidth) {
+									objectCenterX -=
+										wrapWidth;
+								}
+							}
+						}
+
+						i32 distanceX =
+							cameraCenterX -
+							objectCenterX;
+						distanceX =
+							distanceX < 0
+								? -distanceX
+								: distanceX;
+						i32 maxDistanceX =
+							cameraHalfWidth +
+							(objectWidth >>
+							 1);
+						maxDistanceX =
+							maxDistanceX < 0
+								? -maxDistanceX
+								: maxDistanceX;
+						if (distanceX <=
+						    maxDistanceX) {
+							i32 distanceY =
+								cameraCenterY -
+								objectCenterY;
+							distanceY =
+								distanceY < 0
+									? -distanceY
+									: distanceY;
+							i32 maxDistanceY =
+								cameraHalfHeight +
+								(objectHeight >>
+								 1);
+							maxDistanceY =
+								maxDistanceY < 0
+									? -maxDistanceY
+									: maxDistanceY;
+							if (distanceY <=
+							    maxDistanceY) {
+								++collisionCount;
+							}
+						}
+					}
+				}
+			}
+
+			if (collisionCount != 0) {
+				func_ov000_0209bf10(
+					entry, objectInfo,
+					spawnFlags, spawnTimer,
+					viewID, playerID);
+			}
+		}
+
+		++entry;
+		++spawnFlags;
+		++spawnTimer;
+	} while (entry->id != 0xffff);
+}
+
+void func_ov000_0209b040(u8 playerID)
+{
+	PlayerBase *player =
+		static_cast<PlayerBase *>(Game::getPlayer(playerID));
+	u8 viewID = player->_2be;
+	u32 entryCount = data_0208b220[viewID];
+	if (entryCount == 0) {
+		return;
+	}
+
+	i32 entryIndex;
+	const ObjectInfo *objectInfo;
+	StageRuntimeEntry *entry;
+	u8 *spawnFlags;
+	u16 *spawnTimer;
+	StageRuntimeEntry **entryTable = data_0208b1a0;
+	u32 *entryOffsetTable = data_0208b2a0;
+	i32 cameraExtent;
+	i32 cameraZoomY;
+	i32 cameraX;
+	i32 cameraY;
+	i32 left;
+	i32 top;
+	i32 cameraHalfWidth;
+	i32 cameraCenterX;
+	i32 cameraHalfHeight;
+	i32 cameraCenterY;
+
+	cameraExtent =
+		data_ov000_020cada4[playerID] >> 12;
+	cameraZoomY =
+		Game::cameraZoomY[playerID] >> 12;
+	cameraX = data_ov000_020cae1c[playerID];
+	cameraY = Game::cameraY[playerID];
+	top = (cameraY >> 12) - 0x10;
+	left = (cameraX >> 12) - 0x20;
+	cameraHalfWidth =
+		(cameraExtent + 0x30 + (cameraX >> 12) -
+		 left) >>
+		1;
+	cameraCenterX = left + cameraHalfWidth;
+	cameraHalfHeight =
+		(cameraZoomY + 0x20 + (cameraY >> 12) -
+		 top) >>
+		1;
+
+	entry = entryTable[viewID];
+	u32 entryOffset = entryOffsetTable[viewID];
+	spawnFlags = &data_ov000_020ca3cc[entryOffset];
+	spawnTimer = &data_ov000_020ca64c[entryOffset];
+	cameraCenterY = top + cameraHalfHeight;
+	entryIndex = 0;
+	if (entryCount == 0) {
+		return;
+	}
+
+	u32 otherPlayerID = playerID ^ 1;
+	do {
+		if ((*spawnFlags & 1) == 0) {
+			objectInfo =
+				&data_ov000_020c529c[entry->id];
+			u16 collisionCount = 0;
+			if (entry->id == 0x12a &&
+			    (u8)(data_0208b168.info->value02 &
+				 0x20) != 0 &&
+			    data_02085aa4 != 0xfffff) {
+				++collisionCount;
+			}
+
+			if (objectInfo->spawnSettings &
+			    ObjectInfo::SS_AlwaysLoad) {
+				++collisionCount;
+			} else {
+				i32 objectWidth =
+					(u16)objectInfo->size.x
+					<< 4;
+				i32 objectHeight =
+					(u16)objectInfo->size.y
+					<< 4;
+				i32 objectX =
+					(entry->x +
+					 objectInfo->spawnOffset.x)
+					<< 4;
+				i32 objectY =
+					(entry->y +
+					 objectInfo->spawnOffset.y)
+					<< 4;
+				i32 objectHalfWidth =
+					objectWidth >> 1;
+				i32 objectCenterX =
+					objectX + objectHalfWidth;
+				i32 objectHalfHeight =
+					objectHeight >> 1;
+				i32 objectCenterY =
+					objectY + objectHalfHeight;
+
+				i32 distanceX =
+					cameraCenterX -
+					objectCenterX;
+				distanceX = distanceX < 0
+						    ? -distanceX
+						    : distanceX;
+				i32 maxDistanceX =
+					cameraHalfWidth +
+					objectHalfWidth;
+				maxDistanceX =
+					maxDistanceX < 0
+						? -maxDistanceX
+						: maxDistanceX;
+				if (distanceX <= maxDistanceX) {
+					i32 distanceY =
+						cameraCenterY -
+						objectCenterY;
+					distanceY =
+						distanceY < 0
+							? -distanceY
+							: distanceY;
+					i32 maxDistanceY =
+						cameraHalfHeight +
+						objectHalfHeight;
+					maxDistanceY =
+						maxDistanceY < 0
+							? -maxDistanceY
+							: maxDistanceY;
+					if (distanceY <=
+					    maxDistanceY) {
+						++collisionCount;
+					}
+				}
+
+				if (collisionCount != 0 &&
+				    func_020202a0() == 2 &&
+				    (u8)(GlobalFader.fadingState
+						 [otherPlayerID] &
+					 0x49) == 0 &&
+				    func_ov000_0209bddc(
+					    entry, objectInfo,
+					    otherPlayerID)) {
+					collisionCount = 0;
+				}
+			}
+
+			if (collisionCount != 0) {
+				func_ov000_0209bf10(
+					entry, objectInfo,
+					spawnFlags, spawnTimer,
+					viewID, playerID);
+			}
+		}
+
+		++entry;
+		++spawnFlags;
+		++spawnTimer;
+		++entryIndex;
+	} while (entryIndex != entryCount);
+}
+
+void func_ov000_0209aff8(u8 playerID, bool mode)
+{
+	if (data_02085abc & 2) {
+		func_ov000_0209b688(playerID);
+		return;
+	}
+	if (!mode) {
+		func_ov000_0209b320(playerID);
+		return;
+	}
+	func_ov000_0209b040(playerID);
+}
+
+bool StageEntity::isOutOfView(
+	const Vec3_32 &position, const FxRect &boundingBox, u8 viewID)
+{
+	FxRect view;
+	Vec2_32 relativeStart;
+	Vec2_32 expandedStart;
+	Vec2_32 expandedSize;
+
+	if (func_0201f184(viewID, &view) == 0) {
+		return true;
+	}
+
+	expandedSize.x = boundingBox.halfWidth + 0x80000;
+	expandedSize.y = boundingBox.halfHeight + 0x80000;
+	expandedStart.x = position.x + boundingBox.x - expandedSize.x;
+	i32 verticalStart = position.y + boundingBox.y;
+	expandedStart.y = -(verticalStart + expandedSize.y);
+	relativeStart.x = expandedStart.x - view.x;
+	relativeStart.y = expandedStart.y + view.y;
+	expandedSize.x *= 2;
+	expandedSize.y *= 2;
+
+	if ((data_ov000_020ca8d0 & 0x1000) == 0 &&
+	    (u8)(data_0208b168.info->value02 & 0x20) == 0 &&
+	    (u32)(relativeStart.x + expandedSize.x) >
+		    (u32)(view.halfWidth + expandedSize.x)) {
+		return true;
+	}
+	if ((u32)(relativeStart.y + expandedSize.y) >
+	    (u32)(view.halfHeight + expandedSize.y)) {
+		return true;
+	}
+	return false;
+}
+
+bool StageEntity::destroyInactive(u32 flags)
+{
+	if (data_02085abc & 2) {
+		return false;
+	}
+	if (func_ov000_020a6c9c(&this->collisionMgr)) {
+		return false;
+	}
+
+	FxRect range;
+	range.x = this->viewOffset.x << 12;
+	range.y = this->viewOffset.y << 12;
+	range.halfWidth = this->activeSize.x << 11;
+	range.halfHeight = this->activeSize.y << 11;
+
+	if ((((flags & 2) == 0 &&
+	      func_0200aed8(&this->position, &range, this->_2be)) ||
+	     isOutOfView(this->position, range, this->_2be)) &&
+	    (flags & 1) == 0) {
+		this->destroy(this->permanentDestroy);
+		return true;
+	}
+	return false;
+}
+
+bool StageEntity::_01()
+{
+	if (this->forceRender != 0) {
+		return false;
+	}
+	if (this->updateStateID == 5) {
+		return false;
+	}
+
+	FxRect view;
+	view.x = this->viewOffset.x << 12;
+	view.y = this->viewOffset.y << 12;
+	view.halfWidth = this->renderSize.x << 11;
+	view.halfHeight = this->renderSize.y << 11;
+	return func_0200ae9c(&this->position, &view, (s8)data_02085a7c) != 0;
 }
 
 u8 StageEntity::getHorizontalDirectionToPlayer(const Vec3_32 &position) const
@@ -1466,14 +3057,10 @@ void StageEntity::shellActiveCallback(
 
 	if (!entity->kickedFaster && direction == entity->direction) {
 		Vec3_32 *entityVelocity = &entity->velocity;
-		fx32 playerSpeed = player->velocity.x;
-		fx32 entitySpeed = entityVelocity->x;
-		if (playerSpeed < 0) {
-			playerSpeed = -playerSpeed;
-		}
-		if (entitySpeed < 0) {
-			entitySpeed = -entitySpeed;
-		}
+		fx32 playerSpeed = player->velocity.x < 0
+			? -player->velocity.x : player->velocity.x;
+		fx32 entitySpeed = entityVelocity->x < 0
+			? -entityVelocity->x : entityVelocity->x;
 		if (playerSpeed > entitySpeed) {
 			entity->kickedFaster = true;
 			Vec3_32 *minimumVelocity = &entity->minVelocity;
@@ -1660,7 +3247,6 @@ void StageEntity::setTimedEvent(u32 event_id, i32 time, bool enable, bool switch
 	}
 }
 
-u16 data_ov000_020c22b8[2];
 u16 getActorID(u8 sprite_id)
 {
 	return data_ov000_020c22b8[sprite_id];
@@ -1840,7 +3426,6 @@ bool StageEntity::checkLavaCollision(Vec3_32 *pos)
 	return hit;
 }
 
-
 void StageEntity::_38() {
 	this->velocity.x = 0;
 	this->velocity.y = 0;
@@ -1903,11 +3488,7 @@ bool StageEntity::checkSquished()
 void StageEntity::onMegaGroundPound()
 {
 	this->activeCollider.unlink();
-	this->_42(0, 0x2000, 0xfffffd00, 0);
-}
-
-void StageEntity::onStomped()
-{
+	this->defeat(0, 0x2000, 0xfffffd00, 0);
 }
 
 void StageEntity::onStageBeaten(PlayerActor &player)
@@ -1931,79 +3512,6 @@ void StageEntity::onStageBeaten(PlayerActor &player)
 		func_02012398(0x70, &position);
 		this->destroy(true);
 	}
-}
-
-void StageEntity::setStompCollision(const PlayerActor &player)
-{
-	i32 delta = (this->position.x + this->centerOffset.x) -
-		    (player.position.x + player.centerOffset.x);
-	this->linked_player = player.linked_player;
-	this->collisionDirection = ((u32)delta & 0x80000000) >> 31;
-	this->collisionType |= CT_Stomp;
-}
-
-bool StageEntity::setMegaKickCollision(const PlayerActor &player)
-{
-	if (this->properties & ObjectInfo::EP_NoMegaKick) {
-		return false;
-	}
-	i32 delta = (this->position.x + this->centerOffset.x) -
-		    (player.position.x + player.centerOffset.x);
-	this->linked_player = player.linked_player;
-	this->collisionDirection = ((u32)delta & 0x80000000) >> 31;
-	return true;
-}
-
-bool StageEntity::setMegaCollision(const PlayerActor &player)
-{
-	if (this->properties & ObjectInfo::EP_NoMega) {
-		return false;
-	}
-	i32 delta = (this->position.x + this->centerOffset.x) -
-		    (player.position.x + player.centerOffset.x);
-	this->linked_player = player.linked_player;
-	this->collisionDirection = ((u32)delta & 0x80000000) >> 31;
-	this->collisionType |= CT_Mega;
-	return true;
-}
-
-bool StageEntity::setFenceSlamCollision(const PlayerActor &player)
-{
-	if ((this->properties & ObjectInfo::EP_FenceSlam) == 0) {
-		return false;
-	}
-	i32 delta = (this->position.x + this->centerOffset.x) -
-		    (player.position.x + player.centerOffset.x);
-	this->linked_player = player.linked_player;
-	this->collisionDirection = ((u32)delta & 0x80000000) >> 31;
-	this->collisionType |= CT_FenceSlam;
-	return true;
-}
-
-bool StageEntity::setSlidingCollision(const PlayerActor &player)
-{
-	if (this->properties & ObjectInfo::EP_NoSliding) {
-		return false;
-	}
-	i32 delta = (this->position.x + this->centerOffset.x) -
-		    (player.position.x + player.centerOffset.x);
-	this->linked_player = player.linked_player;
-	this->collisionDirection = ((u32)delta & 0x80000000) >> 31;
-	this->collisionType |= CT_Sliding;
-	return true;
-}
-
-bool StageEntity::setStarmanCollision(const PlayerActor &player)
-{
-	if (this->properties & ObjectInfo::EP_NoStarman) {
-		return false;
-	}
-	i32 delta = (this->position.x + this->centerOffset.x) -
-		    (player.position.x + player.centerOffset.x);
-	this->linked_player = player.linked_player;
-	this->collisionDirection = ((u32)delta & 0x80000000) >> 31;
-	this->collisionType |= CT_Starman;
-	return true;
 }
 
 bool StageEntity::setGroundPoundCollision(const PlayerActor &player)
@@ -2212,7 +3720,7 @@ u32 StageEntity::getSpritePriority(u32 a)
 	if (a != 0) {
 		index = (u16)(a << 2);
 	} else {
-		index = (u16)(data_0208b168->value1C << 2);
+		index = (u16)(data_0208b168.info->value1C << 2);
 	}
 
 	u8 state = 0;
@@ -2232,40 +3740,4 @@ u32 StageEntity::getSpritePriority(u32 a)
 u16 *StageEntity::getObjectBank(u32 sprite_id)
 {
 	return &Stage::objectBankTable[sprite_id];
-}
-
-
-
-bool StageEntity::updateCarriedCollision() {
-
-	fx32 dummy = StageEntity::unitDirection[direction];
-	func_01ffe778(&collisionMgr, &dummy, 0);
-
-	if (properties & 0x8000) {
-
-		// Vec3_32 pos;
-		// pos.x = position.x;
-		// pos.y = position.y;
-		// pos.z = position.z;
-		// pos.add(centerOffset);
-
-		// Not allowed to be inlined!!
-		//Vec3_32 pos = position.add(centerOffset);
-
-		Vec3_32 pos;
-		pos = position;
-		pos.add2(centerOffset);
-		//Vec3_32s* r = &pos;
-		//r->x = position.x;
-		//r->y = position.y;
-		//r->z = position.z;
-		//NDS::Math::addVector32(&pos, &centerOffset, r);
-
-		if (collisionMgr.getSolidTileType(pos.x, pos.y))
-			return true;
-
-	}
-
-	return false;
-
 }

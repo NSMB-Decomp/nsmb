@@ -68,6 +68,7 @@ PlayerBase *player =
     if (carriedAction & 2)
     {
 
+      u8 playerVelocityDirection;
       fx32 throwX;
       direction = playerDirection;
       rotation.y = directionalRotationY[direction];
@@ -80,7 +81,7 @@ PlayerBase *player =
       {
         throwX = data_ov000_020c1f40[direction];
       }
-      u8 playerVelocityDirection = (((u32) player->velocity.x) & 0x80000000) >> 31;
+      playerVelocityDirection = (((u32) player->velocity.x) & 0x80000000) >> 31;
       if (direction == playerVelocityDirection)
       {
         throwX += halfPlayerVelocity;
@@ -109,7 +110,7 @@ throwX =
         activeCollider.unlink();
         func_02012398(0x70, &position);
         getScorePointsRegular(1, 0, 0x18000, player->linked_player);
-        _42(0, 0x3000, -0x300, 0);
+        defeat(0, 0x3000, -0x300, 0);
         _11();
         return true;
       }
@@ -141,7 +142,7 @@ throwX =
         activeCollider.unlink();
         func_02012398(0x70, &position);
         getScorePointsRegular(1, 0, 0x18000, player->linked_player);
-        _42(0, 0x3000, -0x300, 0);
+        defeat(0, 0x3000, -0x300, 0);
         _11();
         return true;
       }

@@ -106,6 +106,13 @@ struct ObjectInfo {
 	// {}
 
 };
+NTR_SIZE_GUARD(ObjectInfo, 0x14);
+NTR_OFFSET_GUARD(ObjectInfo, position, 0x0);
+NTR_OFFSET_GUARD(ObjectInfo, size, 0x4);
+NTR_OFFSET_GUARD(ObjectInfo, spawnOffset, 0x8);
+NTR_OFFSET_GUARD(ObjectInfo, viewOffset, 0xc);
+NTR_OFFSET_GUARD(ObjectInfo, properties, 0x10);
+NTR_OFFSET_GUARD(ObjectInfo, spawnSettings, 0x12);
 
 class StageEntity : public StageActor {
 public:
@@ -157,12 +164,11 @@ public:
 	fx32 releaseForceX;
 	fx32 releaseForceY;
 	EventMask eventMask;
-	u8 events[2];
+	u16 eventIDs;
 	u8 align33E[2];
 	i32 updateStateID;
 	u32 unk344;
-	u8 spawnPlayerID;
-	u8 align349[3];
+	u32 spawnPlayerID;
 	u32 defeatSFX;
 	fx32 liquidWaveHeight;
 	u32 carriedAction;
@@ -199,7 +205,7 @@ public:
 	u8 scoreCombo;
 	ScoreType scoreType;
 	bool kickedFaster;
-	bool unused3DC;
+	bool unused3E0;
 	u8 unused3DD;
 	u8 blockHitDirection;
 	u8 defeatedArg;
@@ -244,6 +250,7 @@ public:
 	void setStompCollision(const PlayerActor &);
 	bool setMegaKickCollision(const PlayerActor &);
 	bool setMegaCollision(const PlayerActor &);
+	void spawnCoin();
 	bool setFenceSlamCollision(const PlayerActor &);
 	bool setSlidingCollision(const PlayerActor &);
 	bool setStarmanCollision(const PlayerActor &);
@@ -294,6 +301,7 @@ public:
 	void onPlayerStomp(PlayerBase &, fx32, bool);
 	PlayerStompType updatePlayerStomp(ActiveCollider &, fx32, bool, bool);
 	void getScorePointsEnhanced(u32, fx32, fx32, s32) const;
+	bool tryGrab(PlayerActor &);
 	bool updateCarriedCollision();
 
 	virtual bool onUpdate_0();
@@ -311,9 +319,9 @@ public:
 	virtual void _12();
 	virtual void _13();
 	virtual bool _14();
-	virtual void _15();
+	virtual void grabbed();
 	virtual void _16();
-	virtual void _17();
+	virtual void shellStarted(PlayerActor &);
 	virtual void shellKicked();
 	virtual void _19();
 	virtual void onUpdate_xx();
@@ -326,7 +334,7 @@ public:
 	virtual void _27();
 	virtual void onSpinDrillHit();
 	virtual void onStomped();
-	virtual void _30();
+	virtual void onGroundPound();
 	virtual void _31();
 	virtual void _32();
 	virtual void onMegaGroundPound();
@@ -338,7 +346,7 @@ public:
 	virtual bool playerCollision(ActiveCollider &, ActiveCollider &);
 	virtual void entityCollision(ActiveCollider &, StageActor &);
 	virtual void damagePlayer(ActiveCollider &, PlayerBase &);
-	virtual void _42(u32, u32, u32, u32);
+	virtual void defeat(i32, i32, i32, u8);
 	virtual void _43(u32, u32, u32);
 	virtual void _44();
 	virtual void _45();
@@ -352,6 +360,7 @@ NTR_OFFSET_GUARD(StageEntity, simplePlayerCollision, 0x2d4);
 NTR_OFFSET_GUARD(StageEntity, simplePlayerSpecialCollision, 0x2ec);
 NTR_OFFSET_GUARD(StageEntity, externalForce, 0x31c);
 NTR_OFFSET_GUARD(StageEntity, eventMask, 0x334);
+NTR_OFFSET_GUARD(StageEntity, eventIDs, 0x33c);
 NTR_OFFSET_GUARD(StageEntity, updateStateID, 0x340);
 NTR_OFFSET_GUARD(StageEntity, spawnPlayerID, 0x348);
 NTR_OFFSET_GUARD(StageEntity, activeSize, 0x36c);
@@ -360,4 +369,6 @@ NTR_OFFSET_GUARD(StageEntity, simplePlayerCollisionResult, 0x3ca);
 NTR_OFFSET_GUARD(StageEntity, objectRespawnTimer, 0x3cc);
 NTR_OFFSET_GUARD(StageEntity, objectSpawnFlags, 0x3d8);
 NTR_OFFSET_GUARD(StageEntity, blockHitDirection, 0x3e2);
+NTR_OFFSET_GUARD(StageEntity, unused3E0, 0x3e0);
+NTR_OFFSET_GUARD(StageEntity, collisionDirection, 0x3ee);
 NTR_OFFSET_GUARD(StageEntity, functionStep, 0x3f2);

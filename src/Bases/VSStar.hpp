@@ -38,7 +38,7 @@ class VsStar : public StageEntity
 	void _25();
 	void _26();
 	void _27();
-	void _30();
+	void onGroundPound();
 	void _31();
 	bool onUpdate_0();
 	void damagePlayer(ActiveCollider &, PlayerBase &);
