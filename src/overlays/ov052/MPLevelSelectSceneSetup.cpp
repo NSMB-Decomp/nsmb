@@ -42,7 +42,7 @@ void func_ov052_02152974()
 
 s32 func_ov052_02152978()
 {
-	func_02009d30(data_02085e30, 0x80);
+	FS::Cache::Internal::clear(FS::Cache::fileCache1, 128);
 	GlobalFader.func_02007bfc();
 	func_0200e7b8(0);
 	func_0201dfe8();
@@ -67,7 +67,7 @@ s32 func_ov052_021529b4(Overlay52Scene *scene)
 
 	NDS::Graphics::uploadMainBackgroundPalette(data_ov052_0215c880, 0, 2);
 	NDS::Graphics::uploadSubBackgroundPalette((u32)data_ov052_0215c880, 0, 2);
-	data_02085e0c = 1;
+	FS::Cache::activeFileCache = 1;
 	Layout::bncl[0] = (BNCL *)FS::Cache::loadFile(
 		NSMB_VS_FID(
 			uiStudio_UI_O_2P_course_in_demo_u_bncl,
@@ -82,13 +82,13 @@ s32 func_ov052_021529b4(Overlay52Scene *scene)
 		),
 		(void *)0x06400000
 	);
-	func_02009a30(
+	FS::loadOBJPalette(
 		NSMB_VS_FID(
 			uiStudio_d_2d_UI_O_2P_course_in_demo_o_u_ncl_bin,
 			Dat_2D_d_2d_UI_O_2P_course_in_demo_o_u_ncl_bin
 		),
 		0,
-		1
+		true
 	);
 	NDS::Graphics::assignSubObjectBank(0x100);
 	NDS::Graphics::setSubDisplayMode(0);
@@ -126,27 +126,27 @@ extern "C" {
 
 void func_ov052_02152bf0()
 {
-	func_02009d30(data_02086a30, 0x80);
-	func_020090f8(0);
-	func_020090f8(7);
+	FS::Cache::Internal::clear(FS::Cache::fileCache0, 128);
+	FS::Archive::unmount(0);
+	FS::Archive::unmount(7);
 	void *resource = func_020232e8();
 	if (resource != nullptr)
 		FS::unloadFile(resource);
-	func_020090f8(9);
+	FS::Archive::unmount(9);
 	func_ov053_0215cc70();
 	FS::Overlay::untrack(OVERLAY_ID(22));
 	FS::Overlay::untrack(OVERLAY_ID(32));
 	FS::Overlay::untrack(OVERLAY_ID(42));
 	FS::Overlay::untrack(OVERLAY_ID(20));
 	FS::Overlay::untrack(OVERLAY_ID(53));
-	func_02008970();
+	FS::setReadModeFast();
 }
 
 void func_ov052_02152c7c()
 {
 	StageScene::func_ov000_020a2eec();
-	func_0200dee0(data_0208b168.info->value34, 0);
-	func_02009d30(data_02085e30, 0x80);
+	func_0200dee0(data_0208b168.value34, 0);
+	FS::Cache::Internal::clear(FS::Cache::fileCache1, 128);
 	func_02011d60(0x100);
 }
 

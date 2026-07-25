@@ -407,13 +407,11 @@ extern "C" {
 
 	extern void (*data_02039968)(i32, i32);
 	extern u32 data_02085a88;
-	extern u32 data_02085e0c;
 
 	void func_01ff8378(u32);
 	void func_0200b87c(); // OAM::setFilesUnloaded
 	extern u32 data_02087700; // OAM::curTileOffset
 	void func_0200b83c(u32); // OAM::loadFilesToVRAM
-	void func_02009a30(u32, u32, u32); // FS::loadOBJPalette
 	u32 func_02017190(u32); // Font::getScriptFileID
 	void func_020051ec(); // App::forceDisplayOn
 	void func_020045cc(); // Exception::terminateCaught
@@ -526,7 +524,6 @@ struct IDK {
 	u32 field15_0x30;
 };
 
-extern "C" u32 func_02006674(u32);
 extern u8 data_ov001_020cebc0;
 extern u32 data_ov001_020cd144;
 extern u32 data_ov001_020cd934;

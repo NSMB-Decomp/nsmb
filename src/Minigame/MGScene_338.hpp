@@ -8,9 +8,10 @@ class MGScene_338 : public MGDebugScene
 	u32 _68;
 	u8 _pa2[0x10];
 
+	static ObjectProfile profile;
 	~MGScene_338();
 	inline MGScene_338();
-	void *create();
+	static void *create();
 
 	s32 onCreate();
 	s32 onDestroy();

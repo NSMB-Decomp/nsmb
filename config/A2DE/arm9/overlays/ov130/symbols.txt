@@ -703,34 +703,34 @@ data_ov130_02138f8c kind:data(any) addr:0x02138f8c
 UnknownProfile::ov130_02138f90 kind:data(any) addr:0x02138f90
 data_ov130_02138fa0 kind:data(any) addr:0x02138fa0
 data_ov130_02138fb8 kind:data(any) addr:0x02138fb8
-@ kind:data(byte[5]) addr:0x02139000 local
-@ kind:data(byte[5]) addr:0x02139008 local
-@ kind:data(byte[5]) addr:0x02139010 local
-@ kind:data(byte[6]) addr:0x02139018 local
-@ kind:data(byte[6]) addr:0x02139020 local
-@ kind:data(byte[6]) addr:0x02139028 local
-@ kind:data(byte[6]) addr:0x02139030 local
-@ kind:data(byte[6]) addr:0x02139038 local
-@ kind:data(byte[6]) addr:0x02139040 local
-@ kind:data(byte[7]) addr:0x02139048 local
-@ kind:data(byte[7]) addr:0x02139050 local
-@ kind:data(byte[7]) addr:0x02139058 local
-@ kind:data(byte[7]) addr:0x02139060 local
-@ kind:data(byte[7]) addr:0x02139068 local
-@ kind:data(byte[8]) addr:0x02139070 local
-@ kind:data(byte[8]) addr:0x02139078 local
-@ kind:data(byte[8]) addr:0x02139080 local
-@ kind:data(byte[8]) addr:0x02139088 local
-@ kind:data(byte[8]) addr:0x02139090 local
-MGScene_338::profile kind:data(any) addr:0x02139098
-@ kind:data(byte[9]) addr:0x021390a0 local
-@ kind:data(byte[9]) addr:0x021390ac local
-@ kind:data(byte[9]) addr:0x021390b8 local
-@ kind:data(byte[9]) addr:0x021390c4 local
-@ kind:data(byte[9]) addr:0x021390d0 local
-@ kind:data(byte[10]) addr:0x021390dc local
-@ kind:data(byte[11]) addr:0x021390e8 local
-@ kind:data(byte[12]) addr:0x021390f4 local
+@667 kind:data(byte[5]) addr:0x02139000 local
+@662 kind:data(byte[5]) addr:0x02139008 local
+@673 kind:data(byte[5]) addr:0x02139010 local
+@669 kind:data(byte[6]) addr:0x02139018 local
+@668 kind:data(byte[6]) addr:0x02139020 local
+@685 kind:data(byte[6]) addr:0x02139028 local
+@676 kind:data(byte[6]) addr:0x02139030 local
+@672 kind:data(byte[6]) addr:0x02139038 local
+@661 kind:data(byte[6]) addr:0x02139040 local
+@663 kind:data(byte[7]) addr:0x02139048 local
+@678 kind:data(byte[7]) addr:0x02139050 local
+@670 kind:data(byte[7]) addr:0x02139058 local
+@674 kind:data(byte[7]) addr:0x02139060 local
+@684 kind:data(byte[7]) addr:0x02139068 local
+@681 kind:data(byte[8]) addr:0x02139070 local
+@682 kind:data(byte[8]) addr:0x02139078 local
+@664 kind:data(byte[8]) addr:0x02139080 local
+@683 kind:data(byte[8]) addr:0x02139088 local
+@666 kind:data(byte[8]) addr:0x02139090 local
+_ZN11MGScene_3387profileE kind:data(any) addr:0x02139098
+@659 kind:data(byte[9]) addr:0x021390a0 local
+@660 kind:data(byte[9]) addr:0x021390ac local
+@665 kind:data(byte[9]) addr:0x021390b8 local
+@679 kind:data(byte[9]) addr:0x021390c4 local
+@671 kind:data(byte[9]) addr:0x021390d0 local
+@675 kind:data(byte[10]) addr:0x021390dc local
+@680 kind:data(byte[11]) addr:0x021390e8 local
+@677 kind:data(byte[12]) addr:0x021390f4 local
 data_ov130_02139100 kind:data(short[27]) addr:0x02139100
 _ZTV11MGScene_338 kind:data(any) addr:0x02139138
 data_ov130_02139194 kind:data(any) addr:0x02139194

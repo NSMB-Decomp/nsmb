@@ -62,11 +62,15 @@ s32 CorruptedFileScene::onCreate() {
 	REG_BG1CNT = REG_BG1CNT & ~3 | 3;
 	REG_BG2CNT = REG_BG2CNT & ~3 | 1;
 	REG_BG3CNT = REG_BG3CNT & ~3 | 2;
-	data_02085e0c = 0;
+	FS::Cache::activeFileCache = 0;
 	func_0200b87c();
 	data_02087700 = 0;
 	func_0200b83c(0);
-	func_02009a30(NSMB_FID(uiStudio_d_2d_UI_O_1P_gameover_demo_o_u_ncl_bin),0,1);
+	FS::loadOBJPalette(
+		NSMB_FID(uiStudio_d_2d_UI_O_1P_gameover_demo_o_u_ncl_bin),
+		0,
+		true
+	);
 	u32 scriptFileID = func_02017190(2);
 	this->bmg = FS::loadExtFile(scriptFileID);
 	this->_64.func_020144a8();

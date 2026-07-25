@@ -15,6 +15,7 @@ src/overlays/ov052/MPLevelSelectSceneData.cpp:
     .text       start:0x02153760 end:0x02153ab8
 
 src/overlays/ov052/MPLevelSelectSceneSetup.cpp:
+    complete
     .text       start:0x02152840 end:0x02152cbc
 
 src/overlays/ov052/VSConnectScene.cpp:

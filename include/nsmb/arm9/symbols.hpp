@@ -58,10 +58,13 @@ struct StageRuntimeRoot
 	StageRuntimeInfo *info;
 	u8 reserved_04_17[0x14];
 	StageRuntimeEntry *entries;
+	u8 reserved_1c_33[0x18];
+	u32 value34;
 };
-NTR_SIZE_GUARD(StageRuntimeRoot, 0x1c);
+NTR_SIZE_GUARD(StageRuntimeRoot, 0x38);
 NTR_OFFSET_GUARD(StageRuntimeRoot, info, 0x0);
 NTR_OFFSET_GUARD(StageRuntimeRoot, entries, 0x18);
+NTR_OFFSET_GUARD(StageRuntimeRoot, value34, 0x34);
 
 struct Unk0201ef94Input
 {
@@ -81,6 +84,8 @@ NTR_OFFSET_GUARD(Unk0201ef94Input, height, 0x6);
 extern "C" u8 func_0201ef94(const Unk0201ef94Input *input);
 extern u16 data_0203bd2c;
 extern u16 data_0203bd34;
+extern u16 data_0203d2b0;
+extern u16 data_0203d318;
 extern u8 data_02026ce0[];
 extern u8 data_0203267c[];
 extern u8 data_02085a58;
@@ -100,8 +105,6 @@ extern u32 data_02085c28;
 extern u32 data_0203996c;
 extern u32 data_02039678;
 extern MinigamesSave data_02088e24;
-extern u8 data_02085e30[];
-extern u8 data_02086a30[];
 extern u8 data_02087630;
 extern u8 data_020887f0;
 extern u8 data_020887f8;
@@ -127,6 +130,7 @@ extern u8 data_0208b4e8;
 extern u8 data_0208b4ec;
 extern u8 data_0208b4f0;
 extern u8 data_0208b4f4;
+extern u8 data_0208b594;
 extern PlayerControlState data_020876b2[2];
 extern u16 data_0208b344[2];
 extern s16 data_0208b350[2];

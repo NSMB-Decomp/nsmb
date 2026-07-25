@@ -149,11 +149,11 @@ s32 VSConnectScene::onDestroy()
 	FS::Overlay::untrack(OVERLAY_ID(11));
 	FS::Overlay::untrack(OVERLAY_ID(52));
 	if (data_0203bd30 == 5) {
-		func_020090f8(5);
+		FS::Archive::unmount(5);
 		func_0200917c(9, 0);
 	} else {
-		func_020090f8(5);
-		func_02008970();
+		FS::Archive::unmount(5);
+		FS::setReadModeFast();
 	}
 	func_0200f608();
 	func_02011e3c(0);
