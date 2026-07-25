@@ -1,0 +1,1095 @@
+#include "../../../../Bases/Player/PlayerBase.hpp"
+#include "../../../../Bases/StageEntity.hpp"
+#include <nsmb/arm9/symbols.hpp>
+#include <nsmb/overlays/ov000/symbols.hpp>
+#include <nsmb/overlays/ov011/symbols.hpp>
+
+const i16 data_ov011_0212e220[2] = {0x4000, -0x4000};
+const i16 data_ov011_0212e21c[2] = {0x3000, -0x3000};
+const i16 data_ov011_0212e218[2] = {0x3800,  -0x3800};
+
+u16 data_02087660[2];
+u16 data_02087664[2];
+#pragma section autobss_3 begin
+// autoload test
+// TODO: Confirm which of these autoloads are actually a part of PlayerBase
+u32 data_02085abc;
+#pragma section autobss_3 end
+void PlayerBase::func_ov011_0212c950()
+{
+	this->_7a0 = data_02087660[this->linked_player];
+	this->_7a2 = data_02087664[this->linked_player];
+}
+
+void PlayerBase::func_ov011_0212c93c()
+{
+	this->_7a0 = 0;
+	this->_7a2 = 0;
+}
+
+void PlayerBase::func_ov011_0212c91c()
+{
+	this->_7a0 &= ~0x30;
+	this->_7a2 &= ~0x30;
+}
+
+u32 PlayerBase::func_ov011_0212c90c()
+{
+	return this->_7a0 & 0xf0;
+}
+u32 PlayerBase::func_ov011_0212c8fc()
+{
+	return this->_7a2 & 0xf0;
+}
+
+u32 PlayerBase::func_ov011_0212c8ec()
+{
+	return this->_7a0 & 0x40;
+}
+
+u32 PlayerBase::func_ov011_0212c8dc()
+{
+	return this->_7a0 & 0x80;
+}
+
+u32 PlayerBase::func_ov011_0212c8cc()
+{
+	return this->_7a0 & 0x20;
+}
+
+u32 PlayerBase::func_ov011_0212c8bc()
+{
+	return this->_7a0 & 0x10;
+}
+
+u32 PlayerBase::func_ov011_0212c8ac()
+{
+	return this->_7a2 & 0x80;
+}
+
+u32 PlayerBase::func_ov011_0212c880()
+{
+	return this->_7a2 & data_020876b2[this->linked_player].pressedButtons;
+}
+
+u32 PlayerBase::func_ov011_0212c854()
+{
+	return this->_7a0 & data_020876b2[this->linked_player].pressedButtons;
+}
+
+u32 PlayerBase::func_ov011_0212c828()
+{
+	return this->_7a2 & data_020876b2[this->linked_player].heldButtons;
+}
+
+u32 PlayerBase::func_ov011_0212c7fc()
+{
+	return this->_7a0 & data_020876b2[this->linked_player].heldButtons;
+}
+
+u32 PlayerBase::func_ov011_0212c7d0()
+{
+	return this->_7a2 & data_020876b2[this->linked_player].pressedButtons;
+}
+
+u32 PlayerBase::func_ov011_0212c7a4()
+{
+	return this->_7a0 & data_020876b2[this->linked_player].pressedButtons;
+}
+
+u32 PlayerBase::func_ov011_0212c78c()
+{
+	if ((this->_7a0 & 0xb0) != 0) {
+		return 0;
+	} else {
+		return this->_7a0 & 0x40;
+	}
+}
+
+u32 PlayerBase::func_ov011_0212c774()
+{
+	if ((this->_7a0 & 0x70) != 0) {
+		return 0;
+	} else {
+		return this->_7a0 & 0x80;
+	}
+}
+
+u32 PlayerBase::func_ov011_0212c768()
+{
+	return this->func_ov011_0212c7a4();
+}
+
+u32 PlayerBase::func_ov011_0212c75c()
+{
+	return this->func_ov011_0212c7d0();
+}
+
+u32 PlayerBase::func_ov011_0212c720()
+{
+	if ((u32)1 >= (data_02085a0c + 0xff & 0xff)) {
+		return this->func_ov011_0212c854();
+	}
+	return this->func_ov011_0212c7a4();
+}
+
+u32 PlayerBase::func_ov011_0212c6e4()
+{
+	if ((u32)1 >= (data_02085a0c + 0xff & 0xff)) {
+		return this->func_ov011_0212c880();
+	}
+	return this->func_ov011_0212c7d0();
+}
+
+u32 PlayerBase::func_ov011_0212c6b0()
+{
+	if (data_02085a0c == 0x2) {
+		return this->func_ov011_0212c854();
+	}
+	return this->func_ov011_0212c7a4();
+}
+
+u32 PlayerBase::func_ov011_0212c67c()
+{
+	if (data_02085a0c == 0x2) {
+		return this->func_ov011_0212c880();
+	}
+	return this->func_ov011_0212c7d0();
+}
+
+u32 PlayerBase::func_ov011_0212c648()
+{
+	if (data_02085a0c == 0x2) {
+		return this->func_ov011_0212c880();
+	}
+	return this->func_ov011_0212c7d0();
+}
+
+u32 PlayerBase::func_ov011_0212c63c()
+{
+	return this->func_ov011_0212c828();
+}
+
+u32 PlayerBase::func_ov011_0212c630()
+{
+	return this->func_ov011_0212c7fc();
+}
+
+u32 PlayerBase::func_ov011_0212c61c()
+{
+	return (this->_7a0 & 0x30) >> 4;
+}
+
+u32 PlayerBase::func_ov011_0212c610()
+{
+	return this->func_ov011_0212c8dc();
+}
+
+u32 PlayerBase::func_ov011_0212c5ec()
+{
+	if ((this->func_ov011_0212c90c() & 0x70)) {
+		return false;
+	}
+	return this->func_ov011_0212c8dc();
+}
+
+u32 PlayerBase::func_ov011_0212c5c8()
+{
+	if ((this->func_ov011_0212c90c() & 0x70)) {
+		return false;
+	}
+	return this->func_ov011_0212c8dc();
+}
+
+u32 PlayerBase::func_ov011_0212c5bc()
+{
+	return this->func_ov011_0212c8cc();
+}
+
+u32 PlayerBase::func_ov011_0212c5b0()
+{
+	return this->func_ov011_0212c8cc();
+}
+
+u32 PlayerBase::func_ov011_0212c5a4()
+{
+	return this->func_ov011_0212c8cc();
+}
+
+u32 PlayerBase::func_ov011_0212c598()
+{
+	return this->func_ov011_0212c8cc();
+}
+
+u32 PlayerBase::func_ov011_0212c56c()
+{
+	if ((this->_7a0 & 0x30) == 0) {
+		return this->func_ov011_0212c8ec();
+	}
+	return false;
+}
+
+u32 PlayerBase::func_ov011_0212c52c()
+{
+	return this->_7a2 & (data_020876b2[this->linked_player].heldButtons | 0xf0 |
+		data_020876b2[this->linked_player].pressedButtons);
+}
+
+bool PlayerBase::func_ov011_0212c4ec()
+{
+	// TODO: Can this syntax be improved?
+	i32 i = 0;
+	u32 *v = (u32 *)&data_0208b3d4[this->linked_player];
+	do {
+		if (*v != 0) {
+			return true;
+		}
+		i += 1;
+		v += 1;
+	} while (i < 4);
+	return false;
+}
+
+PlayerBase::PlayerBase()
+{
+	this->actorType = 1;
+	this->actorCategory = (1 << this->actorType) | 0x80;
+	this->_7aa = (this->settings & 0xf0) >> 4;
+	this->_7b0 = 0;
+	i8 a = this->settings & 0xf;
+	this->linkPlayer(a);
+	this->_7b4 = a;
+	this->collisionMgr.sensorState = a;
+	this->_7a8 = 0;
+}
+
+PlayerBase::~PlayerBase()
+{
+}
+
+u32 PlayerBase::func_ov011_0212c27c(u32 param_1)
+{
+	switch (this->powerup) {
+
+	case POWERUP_SHELL:
+		if (this->st1 & ST1_CARRYING) {
+			return data_ov011_0212e21c[param_1];
+		} else {
+			return data_ov011_0212e220[param_1];
+		}
+
+	case POWERUP_MEGA:
+		return data_ov011_0212e218[param_1];
+
+	default:
+		return data_ov011_0212e21c[param_1];
+	}
+}
+
+void PlayerBase::func_ov011_0212c200()
+{
+	i8 powerup = this->powerup;
+	i8 linked_player = this->linked_player;
+	switch (powerup) {
+	case 0:
+	case 1:
+	case 2:
+	case 4:
+	case 5:
+		func_020201c8(linked_player, powerup);
+		break;
+	case 3:
+		if ((u8)((u16)data_02085a20 & 2) == 0) {
+			func_020201c8(linked_player, powerup);
+			return;
+		}
+	default:
+		func_020201c8(linked_player, 1);
+		return;
+	}
+}
+
+void PlayerBase::func_ov011_0212c1b8()
+{
+	i32 i = 0;
+	do {
+		PlayerBase *v = data_0208b35c[i];
+		if ((v != NULL) && (this->linked_player != v->linked_player)) {
+			v->_7a8 = 0x1;
+		}
+		i += 1;
+	} while (i < 2);
+	return;
+}
+
+void PlayerBase::func_ov011_0212c170()
+{
+	i32 i = 0;
+	do {
+		PlayerBase *v = data_0208b35c[i];
+		if ((v != NULL) && (this->linked_player != v->linked_player)) {
+			v->_7a8 = 0x0;
+		}
+		i += 1;
+	} while (i < 2);
+	return;
+}
+
+void PlayerBase::func_ov011_0212c130()
+{
+	if ((data_02085abc & 0x10) != 0) {
+		data_ov000_020ca8d0 |= 1;
+		this->func_ov011_0212c1b8();
+		return;
+	}
+}
+void PlayerBase::func_ov011_0212c110()
+{
+	data_ov000_020ca8d0 |= 4;
+	this->func_ov011_0212c170();
+}
+bool PlayerBase::doJump(fx32, u16, bool, bool, s8)
+{
+	return false;
+}
+bool PlayerBase::virt_21()
+{
+	return false;
+}
+bool PlayerBase::virt_22()
+{
+	return false;
+}
+bool PlayerBase::virt_23()
+{
+	return false;
+}
+bool PlayerBase::virt_24()
+{
+	return false;
+}
+bool PlayerBase::virt_25(void *a, u32 b, u32 c, u32 d)
+{
+	return false;
+}
+bool PlayerBase::virt_26()
+{
+	return false;
+}
+bool PlayerBase::virt_27()
+{
+	return false;
+}
+bool PlayerBase::virt_28()
+{
+	return false;
+}
+bool PlayerBase::virt_29()
+{
+	return false;
+}
+bool PlayerBase::virt_30()
+{
+	return false;
+}
+bool PlayerBase::carry(StageActor &)
+{
+	return false;
+}
+bool PlayerBase::virt_32()
+{
+	return false;
+}
+bool PlayerBase::virt_33()
+{
+	return false;
+}
+bool PlayerBase::virt_34()
+{
+	return false;
+}
+bool PlayerBase::virt_35()
+{
+	return false;
+}
+bool PlayerBase::virt_36()
+{
+	return false;
+}
+bool PlayerBase::virt_37()
+{
+	return false;
+}
+bool PlayerBase::virt_38()
+{
+	return false;
+}
+bool PlayerBase::virt_39()
+{
+	return false;
+}
+bool PlayerBase::virt_40()
+{
+	return false;
+}
+bool PlayerBase::virt_41()
+{
+	return false;
+}
+bool PlayerBase::virt_42()
+{
+}
+bool PlayerBase::virt_43()
+{
+}
+bool PlayerBase::virt_44()
+{
+	return false;
+}
+bool PlayerBase::virt_45()
+{
+	return false;
+}
+bool PlayerBase::virt_46()
+{
+	return true;
+}
+bool PlayerBase::virt_47()
+{
+}
+u32 PlayerBase::virt_48()
+{
+	return ~0;
+}
+u32 PlayerBase::virt_49()
+{
+	return ~0;
+}
+bool PlayerBase::virt_50()
+{
+}
+bool PlayerBase::virt_51()
+{
+}
+
+Vec3_32 PlayerBase::getHandsPosition()
+{
+	Vec3_32 result;
+	i32 *v = this->model.nodeTransforms.s.rightWrist.v[3];
+	result.x = v[0];
+	result.y = v[1];
+	result.z = v[2];
+
+	return result;
+}
+
+void PlayerBase::func_ov011_0212bfec()
+{
+}
+
+void PlayerBase::func_ov011_0212bfe8()
+{
+}
+
+void PlayerBase::func_ov011_0212bfe4()
+{
+}
+
+bool PlayerBase::func_ov011_0212bfdc()
+{
+	return false;
+}
+
+bool PlayerBase::func_ov011_0212bfd4()
+{
+	return false;
+}
+
+bool PlayerBase::func_ov011_0212bfcc()
+{
+	return false;
+}
+
+bool PlayerBase::func_ov011_0212bfc4()
+{
+	return false;
+}
+
+void PlayerBase::func_ov011_0212bfc0()
+{
+}
+
+void PlayerBase::func_ov011_0212bfbc()
+{
+}
+
+void PlayerBase::func_ov011_0212bfb8()
+{
+}
+
+bool PlayerBase::func_ov011_0212bfb0()
+{
+	return false;
+}
+
+bool PlayerBase::func_ov011_0212bf6c()
+{
+	// TODO: Is this possible without goto?
+	switch (this->_7a9) {
+	case 0:
+	case 1:
+	case 2:
+		break;
+	case 3:
+	case 4:
+	case 5:
+		goto LAB_arm9_ov011__0212bfa8;
+	case 6:
+		break;
+	default:
+		goto LAB_arm9_ov011__0212bfa8;
+	}
+	if (this->_7b0 == 0) {
+		return true;
+	}
+LAB_arm9_ov011__0212bfa8:
+	return false;
+}
+
+bool PlayerBase::func_ov011_0212bf64()
+{
+	return false;
+}
+
+void PlayerBase::func_ov011_0212bf60()
+{
+}
+
+bool PlayerBase::func_ov011_0212bf58()
+{
+	return false;
+}
+
+bool PlayerBase::func_ov011_0212bf50()
+{
+	return false;
+}
+
+Vec3_32 PlayerBase::func_ov011_0212bf28()
+{
+	Vec3_32 result;
+	result = this->position;
+	return result;
+}
+
+void PlayerBase::func_ov011_0212bf24()
+{
+}
+
+void PlayerBase::func_ov011_0212bf00()
+{
+	func_02022b64(0xaa, &this->position);
+	func_02022b64(0xab, &this->position);
+}
+
+bool PlayerBase::func_ov011_0212beb8(i32 a, i32 b, i32 c, u8 d, i8 e)
+{
+	if (this->doJump(a, b, c, d, e) != false) {
+		this->_780 |= 0x2000;
+		return true;
+	}
+	return false;
+}
+
+bool PlayerBase::func_ov011_0212be70(i32 a, i32 b, i32 c, u8 d, i8 e)
+{
+	if (this->doJump(a, b, c, d, e) != false) {
+		this->_780 |= 0x40000;
+		return true;
+	}
+	return false;
+}
+
+bool PlayerBase::func_ov011_0212be28(i32 a, i32 b, i32 c, u8 d, i8 e)
+{
+	if (this->doJump(a, b, c, d, e) != false) {
+		this->_778 |= 0x80000;
+		return true;
+	}
+	return false;
+}
+
+bool PlayerBase::func_ov011_0212bde0(Actor *a)
+{
+	this->st1 = this->st1 & ~ST1_CARRYING;
+	if ((BOOL)(this->linkedActor == a) == FALSE) {
+		return false;
+	}
+	this->func_ov011_0212b26c(0);
+	return true;
+}
+
+bool PlayerBase::limitedHorizontalWarp(fx32 x)
+{
+	return this->func_ov011_0212bca4(x < -0x4000 ? -0x4000 : (x > 0x4000 ? 0x4000 : x));
+}
+
+bool PlayerBase::pushingHorizontalWarp(fx32 x)
+{
+	i32 y;
+	i32 z;
+	if (x < 0) {
+		z = this->_778 | 0x40000;
+		y = 0xffff1000;
+		this->_778 = z;
+		if (x < -0xf000) {
+			x = y;
+		}
+	} else if (0 < x) {
+		y = this->_778 | 0x20000;
+		this->_778 = y;
+		if (0xf000 < x) {
+			x = 0xf000;
+		}
+	}
+	return this->func_ov011_0212bca4(x);
+}
+
+bool PlayerBase::func_ov011_0212bca4(i32 x)
+{
+	if ((BOOL)(this->_7a9 == 2) == FALSE) {
+		if (x < 0) {
+			if ((this->collisionFlag & 0x400) == 0) {
+				this->position.x += x;
+				func_01ffe778(&this->collisionMgr, &x, 0);
+				return true;
+			}
+		} else if ((0 < x) && ((this->collisionFlag & 0x800) == 0)) {
+			this->position.x += x;
+			func_01ffe778(&this->collisionMgr, &x, 0);
+			return true;
+		}
+	}
+	return false;
+}
+
+bool PlayerBase::func_ov011_0212bc50(i32 a)
+{
+	if ((a < 0)) {
+		if ((this->collisionFlag & CF_Ground) == 0) {
+			this->position.y += a;
+			return true;
+		}
+	} else if (0 < a) {
+		if ((this->collisionFlag & 2) == 0) {
+			this->position.y += a;
+			return true;
+		}
+	}
+	return false;
+}
+
+Vec3_32 PlayerBase::func_ov011_0212bbdc()
+{
+	Vec3_32 result;
+
+	// TODO: Is there a conversion operator/constructor for this?
+	i32 *v = this->model.nodeTransforms.s.face.v[3];
+	result.x = v[0];
+	result.y = v[1];
+	result.z = v[2];
+
+	result.y += _FixedMul(this->_758, 0x8000);
+	return result;
+}
+
+void PlayerBase::func_ov011_0212bbcc()
+{
+	this->_780 &= ~0x200;
+}
+
+u32 PlayerBase::getShellState() const
+{
+	u32 result;
+
+	if ((this->_778 & 0x400000) != 0) {
+		if (this->minVelH != 0) {
+			return 2;
+		} else {
+			return 1;
+		}
+	}
+	return 0;
+}
+
+bool PlayerBase::func_ov011_0212bb90()
+{
+	return this->_7bf == TRUE;
+}
+
+void PlayerBase::func_ov011_0212bac8()
+{
+	switch (this->powerup) {
+	case POWERUP_MEGA:
+		func_02020150(this->linked_player, 0x348);
+		data_0208b344[this->linked_player] = 0;
+		func_02020128(this->linked_player, 0);
+		break;
+	case POWERUP_MINI:
+		func_02020150(this->linked_player, 0);
+		data_0208b344[this->linked_player] = 0x168;
+		this->func_ov011_0212b838(0x167, &this->position);
+		break;
+	default:
+		func_02020150(this->linked_player, 0);
+		data_0208b344[this->linked_player] = 0;
+	}
+}
+
+bool PlayerBase::checkAndApplyPowerup(u8 new_powerup)
+{
+	bool bVar2;
+
+	i8 current_powerup = this->powerup;
+	if (current_powerup == POWERUP_MEGA) {
+		return false;
+	}
+	switch (new_powerup) {
+	case 3:
+		return this->applyPowerup(new_powerup);
+	case 2:
+		if (((current_powerup == 0) || (current_powerup == 1)) || (current_powerup == 4)) {
+			return this->applyPowerup(new_powerup);
+		}
+		break;
+	case 5:
+		if (current_powerup != 5) {
+			return this->applyPowerup(new_powerup);
+		}
+		break;
+	case 4:
+		if (current_powerup != 4) {
+			return this->applyPowerup(new_powerup);
+		}
+		break;
+	case 1:
+		if ((current_powerup == 0) || (current_powerup == 4)) {
+			return this->applyPowerup(new_powerup);
+		}
+		break;
+	case 0:
+	default:
+		return this->applyPowerup(new_powerup);
+	}
+	return false;
+}
+
+bool PlayerBase::applyPowerup(u8 new_powerup)
+{
+	if (BOOL(this->_7a9 == 0x5) != FALSE) {
+		return false;
+	}
+	if (this->runtimePowerup == new_powerup) {
+		return false;
+	}
+	this->runtimePowerup = new_powerup;
+	return this->powerup != this->runtimePowerup;
+}
+
+void PlayerBase::func_ov011_0212b9a8()
+{
+}
+
+void PlayerBase::func_ov011_0212b998()
+{
+	this->_780 |= 0x20;
+}
+
+void PlayerBase::func_ov011_0212b984()
+{
+	if ((this->_780 & 0x20) != 0) {
+		this->_780 &= 0xffffffdf;
+	}
+}
+
+void PlayerBase::func_ov011_0212b954()
+{
+	if ((this->_780 & 0x40) != 0) {
+		this->_780 &= 0xffffffbf;
+		func_ov011_0212cfe4(&this->model);
+	}
+}
+
+void PlayerBase::func_ov011_0212b908()
+{
+	data_ov000_020ca880 |= 0x10;
+	data_ov000_020ca898 |= 0x40;
+	this->_7b0 = 1;
+	this->activeCollider.collisionState |= 1;
+}
+
+void PlayerBase::func_ov011_0212b8bc()
+{
+	data_ov000_020ca880 &= ~0x10;
+	data_ov000_020ca898 &= ~0x40;
+	this->_7b0 = 0;
+	this->activeCollider.collisionState &= ~1;
+}
+
+void PlayerBase::func_ov011_0212b878(u16 a)
+{
+	if (this->powerup == 3) {
+		return;
+	}
+	data_0208b350[this->linked_player] = a;
+	this->func_ov011_0212b740(2);
+	this->func_ov011_0212b998();
+}
+
+void PlayerBase::func_ov011_0212b864(u32 a, u32 b)
+{
+	func_02012314(a, b);
+}
+
+void PlayerBase::func_ov011_0212b84c(u32 a, u32 b, u32 c)
+{
+	func_020122d0(a, b, c);
+}
+
+void PlayerBase::func_ov011_0212b838(u32 a, Vec3_32 *b)
+{
+	func_02012290(a, (u32)b);
+}
+
+void PlayerBase::func_ov011_0212b820(u32 a, u32 b, u32 c)
+{
+	func_0201224c(a, b, c);
+}
+
+void PlayerBase::func_ov011_0212b810(u32 a)
+{
+	func_020121e4(a);
+}
+
+void PlayerBase::func_ov011_0212b7f0(u32 a)
+{
+	func_0204e87c(a, 0x1e);
+	func_02011e3c(a);
+}
+
+void PlayerBase::func_ov011_0212b7bc(u32 a)
+{
+	if (this->linked_player == data_02085a7c) {
+		this->func_ov011_0212b7f0(a);
+	}
+}
+
+void PlayerBase::func_ov011_0212b740(u32 a)
+{
+	if (this->linked_player != data_02085a7c) {
+		return;
+	}
+	if (BOOL(data_02085a84 != 0) != FALSE && (a == 3)) {
+		return;
+	}
+	this->st1 = this->st1 | 0x800000;
+	func_02011dc4(a);
+	this->_798 = a;
+}
+
+void PlayerBase::func_ov011_0212b710()
+{
+	if ((this->st1 & 0x800000) != 0) {
+		this->st1 &= 0xff7fffff;
+		func_02011d94(this->_798);
+	}
+}
+
+struct Test940 {
+	Vec3_32 s0;
+	Vec2_32 s1;
+	Vec3_32 s2;
+	Vec3_16 s3;
+};
+NTR_SIZE_GUARD(Test940, 0x10 + 0xC + 0x10 + 0xC);
+// Well that makes sense (size = 0x38)
+// Still, 0x38 is not 0x3C nor 0x40
+// 0x3C - 0x38 = 0x4 -> u32 somewhere?
+
+void PlayerBase::func_ov011_0212b384(i16 player_id)
+{
+	Vec3_32 s0; // target
+	Vec2_32 s1; // pos_2d
+	Vec3_32 s2; // pos_3d
+	Vec3_32 *t;
+
+	s2 = position;
+
+	Vec3_16 s3 = Vec3_16(this->rotation);
+
+	switch (this->_7b2) {
+	case 0:
+		s0.x = s2.x;
+		s0.y = s2.y;
+		s0.z = s2.z;
+		break;
+	case 1: // 88
+		t = &data_ov000_020caeb8[player_id];
+
+		s0 = *t;
+
+		s0.y = s2.y;
+		s0.z = s2.z;
+
+		s1.x = this->spin.pos.x;
+
+		Math::expLerp(&s0.x, s1.x, 0x200, 0x6000, 0x1000);
+		break;
+	case 2: // 98
+		t = &data_ov000_020caeb8[player_id];
+		s0 = *t;
+		s0.z = s2.z;
+		s1.x = this->spin.pos.x;
+		s1.y = this->spin.pos.y;
+		Math::expLerp(&s0.x, s1.x, 0x200, 0x6000, 0x1000);
+		Math::expLerp(&s0.y, s1.y, 0x200, 0x6000, 0x1000);
+
+		break;
+	case 3: // e8
+		t = &data_ov000_020caeb8[player_id];
+		s0 = *t;
+		break;
+	case 4: { //
+		t = &data_ov000_020caeb8[player_id];
+
+		s0 = *t;
+
+		s1.y = s2.y;
+		s0.x = s2.x;
+		s0.z = s2.z;
+		i32 iVar3 = Math::expLerp(&s0.y, s1.y, 0x200, 0x8000, 0x1000);
+		if (iVar3 == 0) {
+			this->_7b2 = 0;
+		}
+		break;
+	}
+	case 5: {
+		t = &data_ov000_020caeb8[player_id];
+
+		s0 = *t;
+
+		s0.z = s2.z;
+		s1.x = s2.x;
+		s1.y = s2.y;
+
+		i32 iVar3 = Math::expLerp(&s0.x, s1.x, 0x800, 0x8000, 0x2000);
+		i32 iVar4 = Math::expLerp(&s0.y, s1.y, 0x800, 0x8000, 0x2000);
+		if ((iVar3 == 0) && (iVar4 == 0)) {
+			this->_7b2 = 0;
+		}
+		break;
+	}
+	default: {
+		t = &data_ov000_020caeb8[player_id];
+
+		s0 = *t;
+
+		s0.z = s2.z;
+		s1.x = s2.x;
+		s1.y = s2.y;
+
+		i32 iVar3 = Math::expLerp(&s0.x, s1.x, 0x200, 0x8000, 0x1000);
+		i32 iVar4 = Math::expLerp(&s0.y, s1.y, 0x200, 0x8000, 0x1000);
+		if ((iVar3 == 0) && (iVar4 == 0)) {
+			this->_7b2 = 0;
+		}
+		break;
+	}
+	}
+
+	data_ov000_020caeb8[player_id].x = s0.x;
+	data_ov000_020caeb8[player_id].y = s0.y;
+	data_ov000_020caeb8[player_id].z = s0.z;
+	data_ov000_020caed8[player_id].x = this->velocity.x;
+	data_ov000_020caed8[player_id].y = this->velocity.y;
+	data_ov000_020caed8[player_id].z = this->velocity.z;
+	data_ov000_020cacd0[player_id] = Stage::actorFreezeFlag & 4;
+}
+
+
+bool PlayerBase::func_ov011_0212b2bc()
+{
+	if (this->_7b3 == 0) {
+		i8 linked_player = this->linked_player;
+		u8 b = func_020204e0(linked_player);
+		this->_7b3 = 1;
+		func_0202048c(linked_player);
+		if (data_02088f34 == 0) {
+			data_02089508[this->linked_player] = 2;
+		}
+
+		if (BOOL(data_02085a84 != 0) != FALSE) {
+			if (b != 0) {
+				return true;
+			}
+		} else {
+			if (b != 0) {
+				func_ov000_020a189c(0);
+			} else {
+				func_02012d6c(save.options.currentSlot, &save);
+				func_ov000_020a183c(0xe, 0);
+			}
+		}
+	}
+	return false;
+}
+
+void PlayerBase::func_ov011_0212b26c(Actor *a)
+{
+	this->linkedActor = a;
+	Actor *linkedActor = this->linkedActor;
+	if (linkedActor == NULL) {
+		return;
+	}
+	if ((BOOL)(linkedActor->actorType == 1) == FALSE) {
+		linkedActor->linkPlayer(this->linked_player);
+	}
+}
+
+void PlayerBase::setPosition(Vec3_32 *newPos)
+{
+	this->position.x = newPos->x;
+	this->position.y = newPos->y;
+}
+
+i32 PlayerBase::func_ov011_0212b210(i32 gravity)
+{
+
+	switch (this->powerup) {
+
+	case POWERUP_MINI:
+		return _FixedMul(gravity, 0xD00);
+
+	default:
+		return gravity;
+	}
+}
+
+u8 PlayerBase::func_ov011_0212b1d4()
+
+{
+	int scale = this->scale.y;
+	if (scale < 0xacc) {
+		i32 a = 0;
+		return a;
+	}
+
+	if (0x1599 > scale) {
+		return 1;
+	}
+
+	if (scale < 0x2000) {
+		return 2;
+	}
+	return 3;
+}

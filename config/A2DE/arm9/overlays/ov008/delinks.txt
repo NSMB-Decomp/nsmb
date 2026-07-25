@@ -5,27 +5,27 @@
     .data       start:0x020e5820 end:0x020ee340 kind:data align:32
     .bss        start:0x020ee340 end:0x020f1700 kind:bss align:32
 
-src/Scenes/Scene8.cpp:
+src/overlays/ov008/Scenes/Scene8.cpp:
     .text       start:0x020cc630 end:0x020ccc04
     .data       start:0x020e5878 end:0x020e58d0
 
 
-src/worldmap/scene.cpp:
+src/overlays/ov008/worldmap/scene.cpp:
     .text       start:0x020CD9AC end:0x020D1544
     .data       start:0x020E5A2C end:0x020E8BD4
     .bss        start:0x020EE374 end:0x020EE388
 
-src/worldmap/camera.cpp:
+src/overlays/ov008/worldmap/camera.cpp:
     .text       start:0x020D1544 end:0x020D2024
     .data       start:0x020E8BD4 end:0x020E9394
     .bss        start:0x020EE388 end:0x020EE624
 
-src/worldmap/controller.cpp:
+src/overlays/ov008/worldmap/controller.cpp:
     .text       start:0x020D2024 end:0x020DB204
     .data       start:0x020E9394 end:0x020E988C
     .bss        start:0x020EE624 end:0x020EE79C
 
-src/worldmap/character.cpp:
+src/overlays/ov008/worldmap/character.cpp:
     complete
     .text       start:0x020DB204 end:0x020DBC88
     .init       start:0x020E53EC end:0x020E54CC
@@ -33,19 +33,19 @@ src/worldmap/character.cpp:
     .data       start:0x020E988C end:0x020E9940
     .bss        start:0x020EE79C end:0x020EE7DC
 
-src/worldmap/entitymodel.cpp:
+src/overlays/ov008/worldmap/entitymodel.cpp:
     complete
     .text       start:0x020DBC88 end:0x020DC1F8
     .data       start:0x020E9940 end:0x020E9960
     .bss        start:0x020EE7DC end:0x020EE7F8
 
-src/worldmap/minimap.cpp:
+src/overlays/ov008/worldmap/minimap.cpp:
     .text       start:0x020DC1F8 end:0x020DD21C
     .rodata     start:0x020E2E58 end:0x020E3FEC
     .data       start:0x020E9960 end:0x020E9B68
     .bss        start:0x020EE7F8 end:0x020EE888
 
-src/worldmap/playermodel.cpp:
+src/overlays/ov008/worldmap/playermodel.cpp:
     complete
     .text       start:0x020DD21C end:0x020DDD74
     .rodata     start:0x020E3FEC end:0x020E40A0

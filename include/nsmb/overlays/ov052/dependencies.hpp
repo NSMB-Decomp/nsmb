@@ -2,7 +2,7 @@
 
 #include "../../../../src/base_types.hpp"
 
-class MPLevelSelectScene;
+class VSMenuScene;
 class Fader;
 struct NicknameInfo;
 
@@ -23,11 +23,11 @@ u32 func_02009acc(u32);
 void func_ov052_021535a0();
 void func_ov052_02152bf0();
 void func_ov000_020bd604();
-void func_ov052_02153a1c(MPLevelSelectScene *);
+void func_ov052_02153a1c(VSMenuScene *);
 u8 func_ov052_02153a80();
-void func_ov052_02153760(MPLevelSelectScene *scene);
-void func_ov052_02153780(MPLevelSelectScene *scene);
-void func_ov052_021539c8(MPLevelSelectScene *);
+void func_ov052_02153760(VSMenuScene *scene);
+void func_ov052_02153780(VSMenuScene *scene);
+void func_ov052_021539c8(VSMenuScene *);
 void func_ov053_0215cc70();
 }
 
