@@ -32,6 +32,14 @@ inline i16 _FixedCos(int a) {
 	return _FixedSinCosTbl[(a >> 4) * 2 + 1];
 }
 
+inline i16 _FixedSinTable(int index) {
+	return _FixedSinCosTbl[index];
+}
+
+inline i16 _FixedCosTable(int index) {
+	return _FixedSinCosTbl[index + 1];
+}
+
 struct ObjectProfile {
 	void *(*constructor)();
 	u16 updatePriority;
@@ -108,7 +116,7 @@ struct BNCL {
 };
 
 struct BNCD {
-
+	u32 getDisplayFlags();
 };
 
 namespace Layout {
@@ -168,6 +176,7 @@ namespace Input
 extern u8 localConsoleID;
 extern u16 consoleKeys[4][2];
 extern u16 consoleKeysRepeated[4];
+void updatePlayerInput();
 } // namespace Input
 
 void func_ov001_020cceb4();
@@ -237,6 +246,7 @@ namespace Net {
 	};
 
 	extern u8 connectionState;
+	void stopConnection();
 
 	inline BOOL isError() {
 		return connectionState == CS_Error;
@@ -302,6 +312,10 @@ struct Save {
 	GameSave game;
 	MinigamesSave minigames;
 	OptionSave options;
+
+	static u8 getLevelStarCoins(u32 world, u8 nodeID);
+	static u32 getStarCoinAmount();
+	static void loadPlayerData();
 };
 NTR_SIZE_GUARD(Save, 0x350);
 extern Save save;
@@ -412,7 +426,6 @@ extern "C" {
 	void func_0200b87c(); // OAM::setFilesUnloaded
 	extern u32 data_02087700; // OAM::curTileOffset
 	void func_0200b83c(u32); // OAM::loadFilesToVRAM
-	u32 func_02017190(u32); // Font::getScriptFileID
 	void func_020051ec(); // App::forceDisplayOn
 	void func_020045cc(); // Exception::terminateCaught
 	extern u32 DAT_02039200; // vtable for Vec3
@@ -422,6 +435,12 @@ extern "C" {
 
 	extern class Heap* Memory_gameHeap;
 	extern Mat4x3 Game_modelMatrix;
+
+}
+
+namespace Font {
+
+	u32 getScriptFileID(u32 language);
 
 }
 
@@ -543,7 +562,6 @@ extern u32 func_0201f53c(u32, u32, u32);
 extern void func_02020580(u32, u32);
 extern u32 func_0200696c(u32, u32, u32, u32, IDK);
 extern void func_0200696c_(u8, u8, u8, u8, u8, u8, u8, u8, u8, u8, u8, u8, u8, u8, u8, u8);
-extern void func_020066f8();
 extern void func_02006740();
 extern u16 data_02087650[2][2];
 extern u32 data_02085a90;

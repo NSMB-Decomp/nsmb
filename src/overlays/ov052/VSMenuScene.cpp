@@ -1,5 +1,6 @@
 #include "VSMenuScene.hpp"
 #include <nsmb/arm9/symbols.hpp>
+#include <nsmb/game/game.hpp>
 #include <nsmb/overlays/ov052/dependencies.hpp>
 #include <nsmb/overlays/ov052/symbols.hpp>
 #include <nds/graphics.hpp>
@@ -761,7 +762,7 @@ void VSMenuScene::func_ov052_0215459c()
 	func_02020580(1, data_ov052_0215af0c[data_ov052_0215c89c]);
 	u32 mode = data_02085a84;
 	u8 value = func_ov052_02153a80();
-	func_0200696c__(
+	Game::loadLevel(
 		0xf, (u8)mode, 9, value, 0,
 		data_020887f0, 3, data_0208ae54[0], data_0208ae54[1],
 		0, 0xff, 1, 1, 0xff, 0, 0, ~0

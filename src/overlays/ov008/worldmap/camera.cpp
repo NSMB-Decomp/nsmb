@@ -1,9 +1,55 @@
 #include "../../../worldmap/camera.hpp"
+#include "../../../worldmap/scene.hpp"
 #include "../../../AAA.hpp"
 #include <nds/graphics.hpp>
 #include <nds/graphics_state.hpp>
 #include <nsmb/overlays/ov000/symbols.hpp>
 #include <nsmb/overlays/ov008/symbols.hpp>
+
+WmCameraTaskEntry data_ov008_020e8bd4 = {
+	{ func_ov008_020d1880, 0 },
+};
+
+WmCameraMemberTaskEntry data_ov008_020e8bdc = {
+	&WorldMapCamera::func_ov008_020d16cc,
+};
+
+WmCameraTaskEntry data_ov008_020e8be4 = {
+	{ func_ov008_020d1850, 0 },
+};
+
+ObjectProfile WorldMapCamera::profile = {
+	func_ov008_020d1f98,
+	0x142,
+	2,
+};
+
+WmCameraTaskEntry data_ov008_020e8bf4 = {
+	{ func_ov008_020d1808, 0 },
+};
+
+s32 data_ov008_020e8bfc[8][2] = {
+	{  0,  1 },
+	{  1,  1 },
+	{  1,  0 },
+	{  1, -1 },
+	{  0, -1 },
+	{ -1, -1 },
+	{ -1,  0 },
+	{ -1,  1 },
+};
+
+WorldMapCamera::TaskFunc data_ov008_020ee604[2] = {
+	data_ov008_020e8bd4.member,
+	data_ov008_020e8bdc.member,
+};
+
+WorldMapCamera::TaskFunc data_ov008_020ee614[2] = {
+	data_ov008_020e8be4.member,
+	data_ov008_020e8bf4.member,
+};
+
+WorldMapCamera::~WorldMapCamera() {}
 
 void WorldMapCamera::func_ov008_020d16cc()
 {
@@ -90,6 +136,110 @@ extern "C" void func_ov008_020d1880(WorldMapCamera*) {}
 
 extern "C" void* func_ov008_020d1f98() {
 	return new WorldMapCamera();
+}
+
+s32 WorldMapCamera::onUpdate()
+{
+	Vec3_32 cameraTarget;
+	Vec3_32 cameraPosition;
+
+	NDS::Graphics::flushGeometry();
+	updateState();
+
+	fx32 targetX = unk138.x;
+	u8 playMovementSound = data_ov008_020ee394;
+
+	if (targetX <= leftBound) {
+		targetX = leftBound;
+		playMovementSound = false;
+	} else if (targetX >= rightBound) {
+		targetX = rightBound;
+		playMovementSound = false;
+	}
+
+	if (playMovementSound) {
+		func_02012314(0xec, 0);
+	}
+
+	data_ov008_020ee3c4 = targetX;
+	rotation.x = unk114.x >> 4;
+
+	fx32 cameraDistance = _FixedMul(unk114.z, data_ov008_020ee3dc);
+	cameraPosition.x = targetX;
+	cameraPosition.y = unk138.y;
+	cameraPosition.z = unk138.z + cameraDistance;
+	MTX::setRotationX(Game_modelMatrix, rotation.x);
+	NDS::Math::transformVector43(
+		&cameraPosition, &Game_modelMatrix, &cameraPosition);
+
+	if ((WM::wxFlags & WM::WF_Bit2) == 0) {
+		if (cameraPosition.z < 0) {
+			up.set(0, -0x1000, 0);
+		} else {
+			up.set(0, 0x1000, 0);
+		}
+	}
+
+	cameraTarget.x = targetX;
+	cameraTarget.y = unk138.y + unk114.y;
+	cameraTarget.z = unk138.z;
+	cameraPosition.x = 0;
+	cameraPosition.y = 0;
+	cameraPosition.z = cameraDistance;
+
+	MTX::setRotationY(Game_modelMatrix, rotation.y);
+	MTX::rotateX(Game_modelMatrix, rotation.x);
+	NDS::Math::transformVector43(
+		&cameraPosition, &Game_modelMatrix, &cameraPosition);
+
+	data_ov000_020caa54 = Game_modelMatrix;
+	cameraPosition.add2(cameraTarget);
+
+	Vec3_32 shake;
+	fx32 shakeAmount = data_ov008_020ee3ec;
+	if (shakeAmount != 0) {
+		u32 direction =
+			((Wifi::random() & 0x7fff) << 3) >> 15;
+
+		shake.x = shakeAmount * data_ov008_020e8bfc[direction][0];
+		shake.y = shakeAmount * data_ov008_020e8c00[direction][0];
+		shake.z = 0;
+		NDS::Math::transformVector43(&shake, &Game_modelMatrix, &shake);
+		cameraTarget.add2(shake);
+		cameraPosition.add2(shake);
+	}
+
+	fx32 targetZ = cameraTarget.z;
+	fx32 targetY = cameraTarget.y;
+	fx32 targetXValue = cameraTarget.x;
+	target.x = targetXValue;
+	target.y = targetY;
+	target.z = targetZ;
+
+	fx32 positionZ = cameraPosition.z;
+	fx32 positionY = cameraPosition.y;
+	fx32 positionX = cameraPosition.x;
+	position.x = positionX;
+	position.y = positionY;
+	position.z = positionZ;
+
+	s32 complement;
+	s32 angle = fovy >> 12;
+	complement = (angle + 90) % 360;
+
+	NDS::Graphics3D::buildPerspectiveMatrix(
+		data_ov008_020e8c8c[angle],
+		data_ov008_020e8c8c[complement],
+		0x1555, 0x1000, 0x800000, 0x1000, TRUE, nullptr);
+	NDS::Graphics3D::buildPerspectiveMatrix(
+		data_ov008_020e8c8c[angle],
+		data_ov008_020e8c8c[complement],
+		0x1555, 0x1000, 0x800000, 0x1000, FALSE,
+		&NDS::Graphics3D::runtimeState.projectionMatrix);
+
+	NDS::Graphics3D::runtimeState.flags &=
+		~NDS::Graphics3D::GeometryStateFlagBits4_6;
+	return 1;
 }
 
 s32 WorldMapCamera::onCreate()
@@ -195,3 +345,63 @@ s32 WorldMapCamera::onRender()
 		~NDS::Graphics3D::GeometryStateFlagBits3_5_6_7;
 	return View::onRender();
 }
+
+fx32 data_ov008_020e8c8c[450] = {
+	0, 71, 143, 214, 286, 357, 428, 499,
+	570, 641, 711, 782, 852, 921, 991, 1060,
+	1129, 1198, 1266, 1334, 1401, 1468, 1534, 1600,
+	1666, 1731, 1796, 1860, 1923, 1986, 2048, 2110,
+	2171, 2231, 2290, 2349, 2408, 2465, 2522, 2578,
+	2633, 2687, 2741, 2793, 2845, 2896, 2946, 2996,
+	3044, 3091, 3138, 3183, 3228, 3271, 3314, 3355,
+	3396, 3435, 3474, 3511, 3547, 3582, 3617, 3650,
+	3681, 3712, 3742, 3770, 3798, 3824, 3849, 3873,
+	3896, 3917, 3937, 3956, 3974, 3991, 4006, 4021,
+	4034, 4046, 4056, 4065, 4074, 4080, 4086, 4090,
+	4094, 4095, 4096, 4095, 4094, 4090, 4086, 4080,
+	4074, 4065, 4056, 4046, 4034, 4021, 4006, 3991,
+	3974, 3956, 3937, 3917, 3896, 3873, 3849, 3824,
+	3798, 3770, 3742, 3712, 3681, 3650, 3617, 3582,
+	3547, 3511, 3474, 3435, 3396, 3355, 3314, 3271,
+	3228, 3183, 3138, 3091, 3044, 2996, 2946, 2896,
+	2845, 2793, 2741, 2687, 2633, 2578, 2522, 2465,
+	2408, 2349, 2290, 2231, 2171, 2110, 2048, 1986,
+	1923, 1860, 1796, 1731, 1666, 1600, 1534, 1468,
+	1401, 1334, 1266, 1198, 1129, 1060, 991, 921,
+	852, 782, 711, 641, 570, 499, 428, 357,
+	286, 214, 143, 71, 0, -71, -143, -214,
+	-286, -357, -428, -499, -570, -641, -711, -782,
+	-852, -921, -991, -1060, -1129, -1198, -1266, -1334,
+	-1401, -1468, -1534, -1600, -1666, -1731, -1796, -1860,
+	-1923, -1986, -2048, -2110, -2171, -2231, -2290, -2349,
+	-2408, -2465, -2522, -2578, -2633, -2687, -2741, -2793,
+	-2845, -2896, -2946, -2996, -3044, -3091, -3138, -3183,
+	-3228, -3271, -3314, -3355, -3396, -3435, -3474, -3511,
+	-3547, -3582, -3617, -3650, -3681, -3712, -3742, -3770,
+	-3798, -3824, -3849, -3873, -3896, -3917, -3937, -3956,
+	-3974, -3991, -4006, -4021, -4034, -4046, -4056, -4065,
+	-4074, -4080, -4086, -4090, -4094, -4095, -4096, -4095,
+	-4094, -4090, -4086, -4080, -4074, -4065, -4056, -4046,
+	-4034, -4021, -4006, -3991, -3974, -3956, -3937, -3917,
+	-3896, -3873, -3849, -3824, -3798, -3770, -3742, -3712,
+	-3681, -3650, -3617, -3582, -3547, -3511, -3474, -3435,
+	-3396, -3355, -3314, -3271, -3228, -3183, -3138, -3091,
+	-3044, -2996, -2946, -2896, -2845, -2793, -2741, -2687,
+	-2633, -2578, -2522, -2465, -2408, -2349, -2290, -2231,
+	-2171, -2110, -2048, -1986, -1923, -1860, -1796, -1731,
+	-1666, -1600, -1534, -1468, -1401, -1334, -1266, -1198,
+	-1129, -1060, -991, -921, -852, -782, -711, -641,
+	-570, -499, -428, -357, -286, -214, -143, -71,
+	0, 71, 143, 214, 286, 357, 428, 499,
+	570, 641, 711, 782, 852, 921, 991, 1060,
+	1129, 1198, 1266, 1334, 1401, 1468, 1534, 1600,
+	1666, 1731, 1796, 1860, 1923, 1986, 2048, 2110,
+	2171, 2231, 2290, 2349, 2408, 2465, 2522, 2578,
+	2633, 2687, 2741, 2793, 2845, 2896, 2946, 2996,
+	3044, 3091, 3138, 3183, 3228, 3271, 3314, 3355,
+	3396, 3435, 3474, 3511, 3547, 3582, 3617, 3650,
+	3681, 3712, 3742, 3770, 3798, 3824, 3849, 3873,
+	3896, 3917, 3937, 3956, 3974, 3991, 4006, 4021,
+	4034, 4046, 4056, 4065, 4074, 4080, 4086, 4090,
+	4094, 4095,
+};

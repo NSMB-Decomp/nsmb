@@ -101,10 +101,9 @@ extern WmCharacterTaskEntry data_ov008_020e98b4;
 extern WmCharacterTaskEntry data_ov008_020e98bc;
 extern WmCharacterTaskEntry data_ov008_020e98c4;
 
-extern u8 data_ov008_020ee384;
 extern u8 data_ov008_020ee3ac;
 extern u8 data_ov008_020ee3b0;
-extern u32 data_ov008_020ee3e8;
+extern fx32 data_ov008_020ee3e8;
 
 extern "C" WmCharacter* func_ov008_020db204(WmCharacter* character);
 extern "C" WmCharacter* func_ov008_020db244(WmCharacter* character);

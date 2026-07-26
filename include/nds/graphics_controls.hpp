@@ -59,6 +59,14 @@ inline void setMainBackgroundPriority(u32 background, u32 priority)
 	backgroundControl = (backgroundControl & ~3) | priority;
 }
 
+inline void setMainBackgroundMosaicEnabled(u32 background, BOOL enabled)
+{
+	volatile u16 &backgroundControl =
+		*reinterpret_cast<volatile u16 *>(0x04000008 + background * 2);
+	backgroundControl =
+		(backgroundControl & ~(1 << 6)) | (enabled << 6);
+}
+
 inline void setMainBackgroundHorizontalOffset(u32 background, u32 offset)
 {
 	*reinterpret_cast<volatile u32 *>(0x04000010 + background * 4) = offset;
@@ -112,6 +120,22 @@ inline void configureSubTextBackground1(u32 screenSize, u32 colorMode,
 	u32 screenBase, u32 characterBase, u32 extendedPaletteSlot)
 {
 	volatile u16 &backgroundControl = *reinterpret_cast<volatile u16 *>(0x0400100a);
+	backgroundControl = (backgroundControl & 0x43) |
+		(screenSize << 14) | (colorMode << 7) | (screenBase << 8) |
+		(characterBase << 2) | (extendedPaletteSlot << 13);
+}
+
+inline void configureSubTextBackground(
+	u32 background,
+	u32 screenSize,
+	u32 colorMode,
+	u32 screenBase,
+	u32 characterBase,
+	u32 extendedPaletteSlot
+)
+{
+	volatile u16 &backgroundControl =
+		*reinterpret_cast<volatile u16 *>(0x04001008 + background * 2);
 	backgroundControl = (backgroundControl & 0x43) |
 		(screenSize << 14) | (colorMode << 7) | (screenBase << 8) |
 		(characterBase << 2) | (extendedPaletteSlot << 13);

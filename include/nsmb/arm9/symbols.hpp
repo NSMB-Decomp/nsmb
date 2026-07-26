@@ -79,6 +79,20 @@ NTR_OFFSET_GUARD(Unk0201ef94Input, y, 0x2);
 NTR_OFFSET_GUARD(Unk0201ef94Input, width, 0x4);
 NTR_OFFSET_GUARD(Unk0201ef94Input, height, 0x6);
 
+struct WorldmapTransitionState
+{
+	u32 flags;
+	u8 returnNode;
+	u8 reverse;
+	u8 path;
+	u8 reserved07;
+};
+NTR_SIZE_GUARD(WorldmapTransitionState, 0x8);
+NTR_OFFSET_GUARD(WorldmapTransitionState, flags, 0x0);
+NTR_OFFSET_GUARD(WorldmapTransitionState, returnNode, 0x4);
+NTR_OFFSET_GUARD(WorldmapTransitionState, reverse, 0x5);
+NTR_OFFSET_GUARD(WorldmapTransitionState, path, 0x6);
+
 // Unresolved main-ARM9/autoload data. Keep address names until binary evidence
 // supports semantic names; each declaration is authoritative for its address.
 extern "C" u8 func_0201ef94(const Unk0201ef94Input *input);
@@ -91,17 +105,31 @@ extern u8 data_0203267c[];
 extern u8 data_02085a58;
 extern u8 data_02085a0c;
 extern u8 data_02085a20;
+extern u8 data_02085a2c;
+extern u8 data_02085a34;
+extern u8 data_02085a38;
+extern u16 data_02085a6c;
 extern u32 data_02085a7c;
+extern u32 data_02085aa0;
 extern i32 data_02085aa4;
 extern u32 data_02085abc;
+extern u32 data_02085ac4;
+extern u8 data_02085ac8;
 extern u64 data_0208af3c;
 extern u8 data_0208af44[64];
 extern i32 data_0208af84[64];
 extern u32 data_02085a84;
 extern u32 data_02085a9c;
-extern u32 data_02085acc;
+extern WorldmapTransitionState data_02085acc;
+extern u8 data_02088c4c[][25];
+extern u32 data_02088b94[];
 extern u32 data_02085a8c;
+extern u32 data_02085b18;
+extern u32 data_02085c24;
 extern u32 data_02085c28;
+extern u32 data_02085c2c;
+extern u32 data_02085c30;
+extern u32 data_02085c34;
 extern u32 data_0203996c;
 extern u32 data_02039678;
 extern MinigamesSave data_02088e24;
@@ -112,6 +140,7 @@ extern u8 data_02088800;
 extern u8 data_02088804;
 extern u8 data_0208884c[4];
 extern NicknameInfo *data_02088850;
+extern u16 data_02088c3c[8];
 extern u8 data_02088f2c;
 extern u8 data_02088f30;
 extern u8 data_0208adcc[];
@@ -141,8 +170,6 @@ extern void *(*data_0208b690)(u16 fileID);
 
 extern "C" BOOL func_0201301c(void *);
 extern "C" void func_02044418(void *object, u16 fileID);
-u32 func_0200696c__(u32, u16, u8, u8, u8, u32, u32, u32, u32,
-	u8, u8, u8, u8, u8, u8, u8, u32);
 u8 func_020204e0(i8 playerID);
 void func_02006fac();
 bool func_02006fb8();

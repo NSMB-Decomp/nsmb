@@ -182,7 +182,7 @@ namespace OptionsMenu {
 
 		CommonMenu::transVramStage();
 
-		if ((data_02085acc & 0x20) != 0 || data_02085a9c == WM::NT_Cannon) {
+		if ((data_02085acc.flags & 0x20) != 0 || data_02085a9c == WM::NT_Cannon) {
 			u32 visiblePlane = (REG_DISPCNT_SUB & 0x1F00) >> 8;
 			REG_DISPCNT_SUB = (REG_DISPCNT_SUB & ~0x1F00) | ((visiblePlane | 0x4) << 8);
 		} else {

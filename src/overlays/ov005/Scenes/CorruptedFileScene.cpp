@@ -71,7 +71,7 @@ s32 CorruptedFileScene::onCreate() {
 		0,
 		true
 	);
-	u32 scriptFileID = func_02017190(2);
+	u32 scriptFileID = Font::getScriptFileID(2);
 	this->bmg = FS::loadExtFile(scriptFileID);
 	this->_64.func_020144a8();
 	this->_64.func_0201443c();

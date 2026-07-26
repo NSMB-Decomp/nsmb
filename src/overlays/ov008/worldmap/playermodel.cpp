@@ -109,7 +109,7 @@ void WmPlayerModel::render(Mat4x3* mtx, Vec3_32* scale) {
 		data_ov000_020caa30, data_ov000_020caa2c, FALSE);
 }
 
-void WmPlayerModel::update(u8 moveState) {
+void WmPlayerModel::update(u32 moveState) {
 
 	if (moveState == 0)
 		model.update();

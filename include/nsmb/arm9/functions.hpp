@@ -49,6 +49,11 @@ void func_0201e00c();
 void func_020180c0(void *, u32);
 void func_02011d24(u32);
 void func_02012314(u32, u32);
+s32 func_02012d98(u32, Save *);
+void func_0200b580(u8 *, u8 *, u32, u32, u32);
+u32 func_0201ec88(u16);
+u32 func_0201ed0c(u16);
+void func_0201f468(u32, u32 *, u32 *, u32 *);
 void func_02011c34(u32);
 void func_02008558(Fader *);
 bool func_02046c5c();
@@ -79,6 +84,8 @@ void func_0201dfe8();
 void *func_020232e8();
 void func_0200ee9c(void *, u32, u32, u32);
 void func_02018b40();
+void *func_02014a9c();
+void func_02016268(void *, u32);
 int strncmp(const char *, const char *, u32);
 }
 
@@ -87,10 +94,13 @@ void func_02045128();
 void func_0204d908();
 void func_02044ab0(Base *, void *);
 void func_020201c8(i32, i32);
+extern "C" void func_02022a50(
+	u32 particleID, const Vec3_32* position, const s32* radius);
 extern "C" void func_02022b64(u32, Vec3_32 *);
 void func_02020150(u32, u32);
 void func_02020128(u32, u32);
-void func_020122d0(u32, u32, u32);
+extern "C" void func_0204d98c(bool enabled);
+extern "C" void func_020122d0(u32, u32, u32);
 void func_02012290(u32, u32);
 void func_0201224c(u32, u32, u32);
 void func_020121e4(u32);

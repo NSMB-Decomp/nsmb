@@ -15,6 +15,16 @@ class StageLayout {
 	void changeTile(u32 x, u32 y, u32 tile, u32 layer);
 };
 
+struct WorldCameraTransformState {
+	u8 reserved000_E0[0xE0];
+	Vec3_32s position;
+	u8 reserved0EC_0FC[0x10];
+	Vec3_16 rotation;
+};
+NTR_SIZE_GUARD(WorldCameraTransformState, 0x108);
+NTR_OFFSET_GUARD(WorldCameraTransformState, position, 0xE0);
+NTR_OFFSET_GUARD(WorldCameraTransformState, rotation, 0xFC);
+
 struct Unk020ca4ccEntry {
 	u32 unk0;
 	u32 unk4;
@@ -91,6 +101,9 @@ extern "C" PlayerBase *func_ov000_020a3d68(ActiveCollider *);
 extern "C" void func_ov000_020a3c40(u32 lightID, Vec3_32 *vector);
 extern "C" Vec3_32 func_02045bdc(
 	const Vec3_32 &left, const Vec3_32s &right);
+extern "C" void func_ov000_020a3b24(u32 mode);
+extern "C" void func_ov000_020bd240();
+extern "C" void func_ov000_020bd594();
 
 extern u8 data_ov000_020c4ec0[2];
 extern i16 data_ov000_020c4ed4[2];
@@ -114,6 +127,7 @@ extern i32 data_ov000_020cadac[2];
 extern Vec3_32 data_ov000_020caeb8[2];
 extern Vec3_32 data_ov000_020caed8[2];
 extern fx32 data_ov000_020caa3c;
+extern WorldCameraTransformState *data_ov000_020caa38;
 extern u16 data_ov000_020caa40[4];
 extern Mat4x3 data_ov000_020caa54;
 extern u32 data_ov000_020ca2dc[2];

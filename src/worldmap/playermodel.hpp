@@ -56,7 +56,7 @@ public:
 
 	void render(Mat4x3* mtx, Vec3_32* scale);
 
-	void update(u8 moveState);
+	void update(u32 moveState);
 
 	void init(u32 animID, BOOL resume);
 

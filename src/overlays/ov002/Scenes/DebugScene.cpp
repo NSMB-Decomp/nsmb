@@ -1,5 +1,6 @@
 #include "../../../Scenes/DebugScene.hpp"
 #include <nsmb/arm9/symbols.hpp>
+#include <nsmb/game/game.hpp>
 
 struct SomethingElse {
 	char *a;
@@ -513,7 +514,7 @@ void DebugScene::func_ov002_020cc514()
 		func_02006740();
 		data_02085a1c = 1;
 	} else {
-		func_020066f8();
+		Game::resetStageCheckpoint();
 		data_02085a1c = 0;
 	}
 
@@ -525,7 +526,7 @@ void DebugScene::func_ov002_020cc514()
 	// };
 	// extern Somettting data_ov002_020cd114;
 
-	func_0200696c__(0xd, 0, this->_1dc, this->_1e0, this->_1e4, 0, r6, r5, r4, data_ov002_020cd300, this->_1e8, data_ov002_020cd114[this->_1ec], this->_1f0, this->_20c, this->_210, this->_220, ~0);
+	Game::loadLevel(0xd, 0, this->_1dc, this->_1e0, this->_1e4, 0, r6, r5, r4, data_ov002_020cd300, this->_1e8, data_ov002_020cd114[this->_1ec], this->_1f0, this->_20c, this->_210, this->_220, ~0);
 
 	u32 data_02088e04 = 0;
 	switch (this->_22c) {
