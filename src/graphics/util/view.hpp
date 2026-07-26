@@ -1,6 +1,7 @@
 #pragma once
 #include "../../Bases/Object.hpp"
 #include "../../Vec.hpp"
+#include <nds/math.hpp>
 
 class View : public Object
 {
@@ -9,12 +10,18 @@ public:
 	Mat4x4 unk5C;
 	Mat4x3 viewMatrix;
 
+	View()
+	{
+		NDS::Math::identityMatrix44(&unk5C);
+		NDS::Math::identityMatrix43(&viewMatrix);
+	}
+
 	//020a3abc
 	virtual s32 onRender() override;
 
 	//D0:020a3a88
 	//D1:020a3a5c
-	virtual ~View();
+	virtual ~View() {}
 
 
 };

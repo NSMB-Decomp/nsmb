@@ -21,6 +21,7 @@ src/system/exception.cpp:
     .text       start:0x02004598 end:0x020046d8
 
 src/system/app.cpp:
+    complete
     .text       start:0x020046d8 end:0x020056d4
     .rodata     start:0x02026248 end:0x02026258
     .data       start:0x02039808 end:0x02039838
@@ -34,16 +35,27 @@ src/system/exceptionscreen.cpp:
     .rodata     start:0x02026258 end:0x02026290
     .data       start:0x02039838 end:0x02039968
 
+src/system/file.cpp:
+    .text       start:0x02008588 end:0x0200a3d0
+    .init       start:0x02025a80 end:0x02025b08
+    .rodata     start:0x020262d0 end:0x020262ec
+    .ctor       start:0x02039178 end:0x0203917c
+    .data       start:0x0203a280 end:0x0203ab68
+    .autobss_3  start:0x02085cf8 end:0x02087630
+    complete
+
 src/Bases/Object.cpp:
     complete
     .text       start:0x0201311c end:0x020131d8
     .data       start:0x0203bcd8 end:0x0203bd28
 
 src/Scenes/Scene.cpp:
+    complete
     .text       start:0x020132a0 end:0x02013b98
     .data       start:0x0203bd28 end:0x0203bd88
 
 src/Scenes/ConnectScene.cpp:
+    complete
     .text       start:0x020031f0 end:0x02003878
     .data       start:0x0203967c end:0x020396d4
 

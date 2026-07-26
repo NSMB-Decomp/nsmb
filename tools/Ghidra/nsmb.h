@@ -633,7 +633,7 @@ struct SoundTestScene {
 	SoundTestScene_data _;
 };
 
-// Class: MainMenuScene
+// Class: TitleScreenScene
 struct TitleScreenButton {
 	i32 posX;
 	i32 posY;
@@ -656,8 +656,8 @@ struct TitleScreenCutscene {
 struct TextLabel {
 	u8 _pad[0xb0];
 };
-typedef Scene_vtable MainMenuScene_vtable;
-struct MainMenuScene_data {
+typedef Scene_vtable TitleScreenScene_vtable;
+struct TitleScreenScene_data {
 	Scene_data _;
 	u8 menuID;
 	u8 stateID;
@@ -706,9 +706,9 @@ struct MainMenuScene_data {
 	TitleScreenCutscene cutscene;
 	TextLabel label;
 };
-struct MainMenuScene {
-	MainMenuScene_vtable *_;
-	MainMenuScene_data _;
+struct TitleScreenScene {
+	TitleScreenScene_vtable *_;
+	TitleScreenScene_data _;
 };
 
 struct Fader {

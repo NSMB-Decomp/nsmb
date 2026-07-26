@@ -3,6 +3,14 @@
 #include "../graphics/3d/modelanm.hpp"
 #include "../graphics/3d/animationctrl.hpp"
 
+extern u16 data_ov000_020caa2c;
+extern u16 data_ov000_020caa30;
+
+namespace Game {
+	void setPlayerTextureParams(s32 slot, u32 params);
+	void setPlayerPaletteParams(s32 slot, u16 params);
+}
+
 class WmPlayerModel {
 public:
 
@@ -48,7 +56,7 @@ public:
 
 	void render(Mat4x3* mtx, Vec3_32* scale);
 
-	void update(u8 moveState);
+	void update(u32 moveState);
 
 	void init(u32 animID, BOOL resume);
 

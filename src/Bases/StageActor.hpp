@@ -22,5 +22,4 @@ class StageActor : public Actor
 	bool preUpdate();
 	void postUpdate(u32);
 	bool isInActiveView();
-	void func_ov000_0209ab90(u32, u32, u32, i8);
 };

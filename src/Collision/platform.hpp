@@ -16,7 +16,14 @@ public:
 	Platform* platform;
 
 	CollisionMgr* linkedCollisionMgr;
-	u8 _pad1[0x18];
+	Vec2_32 collisionPositionMaybe;
+	fx32 distance;
+	s16 angle;
+	u16 unk1;
+	u8 groupID;
+	u8 unk31;
+	u8 unk32;
+	u8 unk33;
 
 	PlatformMgr();
 	virtual ~PlatformMgr();

@@ -46,6 +46,8 @@ typedef u32 EmitterT;
 
 // https://forum.vcfed.org/index.php?threads/c-item-size-check-at-compile-time.1244920/
 #define NITRO_SIZE_ASSERT(what, howmuch) typedef char what##_size_wrong_[(!!(sizeof(what) == howmuch)) * 2 - 1]
+#define NITRO_OFFSET_ASSERT(what, member, offset) \
+	typedef char what##_##member##_offset_wrong_[((u32)&(((what *)0)->member) == (offset)) * 2 - 1]
 // #define NITRO_SIZE_ASSERT( what, howmuch )
 
 //
@@ -68,7 +70,12 @@ EXTERN_OVERLAY_ID(0);
 EXTERN_OVERLAY_ID(1);
 EXTERN_OVERLAY_ID(10);
 EXTERN_OVERLAY_ID(11);
+EXTERN_OVERLAY_ID(20);
+EXTERN_OVERLAY_ID(22);
+EXTERN_OVERLAY_ID(32);
+EXTERN_OVERLAY_ID(42);
 EXTERN_OVERLAY_ID(52);
+EXTERN_OVERLAY_ID(53);
 
 #define OVERLAY_MISC OVERLAY_ID(0)
 #define OVERLAY_BOOT OVERLAY_ID(1)
@@ -76,4 +83,3 @@ EXTERN_OVERLAY_ID(52);
 #define OVERLAY_11 OVERLAY_ID(11)
 #define OVERLAY_VS_MENU OVERLAY_ID(11)
 #define OVERLAY_52 OVERLAY_ID(52)
-

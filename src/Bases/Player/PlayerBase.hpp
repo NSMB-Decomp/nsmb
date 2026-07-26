@@ -5,12 +5,29 @@
 #include "SpinClass.hpp"
 
 #define ST1_CARRYING 0x1
+
+struct PlayerConstants {
+	u8 padding[0x20];
+	fx32 jumpVelocity;
+};
+NTR_OFFSET_GUARD(PlayerConstants, jumpVelocity, 0x20);
+
+enum PlayerPowerupState {
+	PlayerPowerup_Mega = 4
+};
+
 class PlayerBase : public StageActor
 {
       public:
+	enum CollisionFlag {
+		CF_Ground = 1 << 0
+	};
+
 	PlayerModel model;
 	Actor *linkedActor;
-	u8 _pad10[0x40];
+	Mat4x3 unk68C;
+	PlayerConstants *constants;
+	u8 _pad10b[0xc];
 	i32 _6cc;
 	SpinClass spin;
 	u8 _pad11[0x10];
@@ -30,7 +47,7 @@ class PlayerBase : public StageActor
 	u32 st1;
 	u32 _780;
 	u8 _pad7[0x4];
-	u32 _788;
+	u32 collisionFlag;
 	u8 _pad2[0xc];
 	i32 _798;
 	i16 _79c;
@@ -51,9 +68,14 @@ class PlayerBase : public StageActor
 	u8 _7b3;
 	i8 _7b4;
 	u8 _7b5;
-	u8 _pad6[0x3];
-	u8 _7b9;
-	u8 _pad8[0x5];
+	u8 _pad7b6;
+	s8 scoreComboStandard;
+	s8 scoreJumpVariation;
+	s8 scoreComboStarman;
+	s8 scoreComboSliding;
+	u8 _7bb;
+	s8 scoreComboFenceSlam;
+	u8 _pad8[0x2];
 	u8 _7bf;
 	u8 _7c0;
 	u8 _7c1;
@@ -103,19 +125,31 @@ class PlayerBase : public StageActor
 	bool checkAndApplyPowerup(u8);
 	void func_ov011_0212bac8();
 	bool func_ov011_0212bb90();
-	u32 getShellStatus();
+	u32 getShellState() const;
 	void func_ov011_0212bbcc();
 	Vec3_32 func_ov011_0212bbdc();
 	bool func_ov011_0212bc50(i32);
 	bool func_ov011_0212bca4(i32);
-	bool func_ov011_0212bd68(i32, i32, i32);
-	u32 func_ov011_0212bdb8(i32);
+	bool pushingHorizontalWarp(fx32);
+	bool limitedHorizontalWarp(fx32);
 	bool func_ov011_0212bde0(Actor *);
 	bool func_ov011_0212be28(i32, i32, i32, u8, i8);
 	bool func_ov011_0212be70(i32, i32, i32, u8, i8);
 	bool func_ov011_0212beb8(i32, i32, i32, u8, i8);
 	void func_ov011_0212bf00();
-	virtual bool virt_20(i32, i32, i32, u8, i8);
+	inline s8 cycleStandardScoreCombo()
+	{
+		if (this->scoreComboStandard < 10) {
+			++this->scoreComboStandard;
+		}
+		++this->scoreJumpVariation;
+		this->scoreJumpVariation %= 4;
+		if (this->scoreComboStandard > 8) {
+			this->scoreComboStandard = 8;
+		}
+		return this->scoreComboStandard;
+	}
+	virtual bool doJump(fx32, u16, bool, bool, s8);
 	virtual bool virt_21();
 	virtual bool virt_22();
 	virtual bool virt_23();
@@ -126,7 +160,7 @@ class PlayerBase : public StageActor
 	virtual bool virt_28();
 	virtual bool virt_29();
 	virtual bool virt_30();
-	virtual bool virt_31();
+	virtual bool carry(StageActor &);
 	virtual bool virt_32();
 	virtual bool virt_33();
 	virtual bool virt_34();
@@ -147,7 +181,7 @@ class PlayerBase : public StageActor
 	virtual u32 virt_49();
 	virtual bool virt_50();
 	virtual bool virt_51();
-	virtual Vec3_32 func_ov011_0212bff0();
+	virtual Vec3_32 getHandsPosition();
 	virtual void func_ov011_0212bfec();
 	virtual void func_ov011_0212bfe8();
 	virtual void func_ov011_0212bfe4();
@@ -214,4 +248,9 @@ class PlayerBase : public StageActor
 	u32 func_ov011_0212c52c();
 	bool func_ov011_0212c4ec();
 };
+NTR_OFFSET_GUARD(PlayerBase, scoreComboStarman, 0x7b9);
+NTR_OFFSET_GUARD(PlayerBase, scoreComboSliding, 0x7ba);
+NTR_OFFSET_GUARD(PlayerBase, scoreComboFenceSlam, 0x7bc);
+NTR_OFFSET_GUARD(PlayerBase, unk68C, 0x68c);
+NTR_OFFSET_GUARD(PlayerBase, collisionFlag, 0x788);
 // NTR_SIZE_GUARD(PlayerBase, 0x0);

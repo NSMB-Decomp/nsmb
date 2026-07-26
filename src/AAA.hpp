@@ -5,6 +5,8 @@
 //#include "ProcessManager.hpp"
 //#include "Vec.hpp"
 #include "base_types.hpp"
+#include <nsmb/core/filesystem.hpp>
+#include <nsmb/core/wifi.hpp>
 
 class Vec2_32;
 class Vec3_32;
@@ -28,6 +30,14 @@ inline i16 _FixedSin(int a) {
 
 inline i16 _FixedCos(int a) {
 	return _FixedSinCosTbl[(a >> 4) * 2 + 1];
+}
+
+inline i16 _FixedSinTable(int index) {
+	return _FixedSinCosTbl[index];
+}
+
+inline i16 _FixedCosTable(int index) {
+	return _FixedSinCosTbl[index + 1];
 }
 
 struct ObjectProfile {
@@ -78,11 +88,6 @@ namespace FS {
 
 }
 
-namespace Nitro_
-{
-u32 func_02063af0(u16[1], u32, u32);
-}
-
 namespace Wifi
 {
 u32 random();
@@ -90,7 +95,7 @@ BOOL isWmInitialized();
 }
 
 struct BNBL {
-
+	s16 getBox(s32 x, s32 y);
 };
 
 struct BNCL_Cell {
@@ -111,14 +116,14 @@ struct BNCL {
 };
 
 struct BNCD {
-
+	u32 getDisplayFlags();
 };
 
 namespace Layout {
 
 	void drawCellSub(u32 cellIdx, const void* oamAttrs, u32 oamFlags, u8 palette, u8 affineSet, const Vec2_32* scale, u16 rot, const s16* rotCenter, u32 oamSettings);
 
-	void drawCellMain(u32 cellIdx, const void* oamAttrs, u32 oamFlags, u8 palette, u8 affineSet, const Vec2_32* scale, u16 rot, const s16* rotCenter, u32 oamSettings);
+	void drawCellMain(u32 cellIdx, const void* oamAttrs, u32 oamFlags, u8 palette, u8 affineSet, const Vec2_32* scale, u16 rot, const s16* rotCenter, u32 oamSettings, u32, u32);
 
 	void getCellPosMain(Vec2_32& pos, u32 cellIdx);
 
@@ -127,7 +132,7 @@ namespace Layout {
 	void initSub(const void* bncd, const void* bncl, const void* bnbl);
 
 	extern u16 subBgColor;
-	extern const BNBL* bnbl[2];
+	extern BNBL* bnbl[2];
 	extern const BNCL* bncl[2];
 	extern const BNCD* bncd[2];
 
@@ -135,7 +140,7 @@ namespace Layout {
 
 namespace Stage
 {
-extern u16 ObjectBankTable[2];
+extern u16 objectBankTable[2];
 extern u8 actorFreezeFlag;
 extern u8 stageGroup;
 extern u8 stageID;
@@ -171,12 +176,21 @@ namespace Input
 extern u8 localConsoleID;
 extern u16 consoleKeys[4][2];
 extern u16 consoleKeysRepeated[4];
+void updatePlayerInput();
 } // namespace Input
 
 void func_ov001_020cceb4();
 class Fader
 {
       public:
+	static Fader *current;
+
+	enum FadingType {
+		FadeOnly,
+		StaticMask,
+		FadeMask
+	};
+
 	u8 _pad0[0x5a4];
 	i32 targetBrightness;
 	u32 fadingMode;
@@ -186,19 +200,30 @@ class Fader
 	u8 fadingState[2];
 	u8 fadeMaskShape[2];
 	u8 fadingType; /* 5C2 */
+	u8 enableDelay;
+	u8 reserved_5c4;
+	bool fadingStopped;
+	u8 reserved_5c6_5c7[2];
 
 	Fader();
 
 	bool isComplete();
-	u32 setupSceneFading(u32, bool, bool);
-	void func_02007e34(u32, u32);
-	void func_02007cf8(u32, u32);
-	bool func_02007c68();
-	void func_02007df0(u32);
-	bool func_02007cb0();
+	void setupSceneFading(FadingType, bool, bool);
+	bool fadedOut();
+	bool fadedIn();
+	void enableMainScreenFading();
+	void disableMainScreenFading();
+	void prepareFadeIn();
+	void prepareFadeOut();
 	void func_02007bd8();
 	void func_02007bfc();
 };
+NTR_SIZE_GUARD(Fader, 0x5c8);
+NTR_OFFSET_GUARD(Fader, fadingType, 0x5c2);
+NTR_OFFSET_GUARD(Fader, fadingStopped, 0x5c5);
+extern "C" void func_02007cf8(Fader *, u32, u32);
+extern "C" void func_02007df0(Fader *, u32);
+extern "C" void func_02007e34(Fader *, u32, u32);
 extern Fader GlobalFader;
 
 extern ObjectProfile **CurrentProfileTable;
@@ -221,6 +246,7 @@ namespace Net {
 	};
 
 	extern u8 connectionState;
+	void stopConnection();
 
 	inline BOOL isError() {
 		return connectionState == CS_Error;
@@ -286,6 +312,10 @@ struct Save {
 	GameSave game;
 	MinigamesSave minigames;
 	OptionSave options;
+
+	static u8 getLevelStarCoins(u32 world, u8 nodeID);
+	static u32 getStarCoinAmount();
+	static void loadPlayerData();
 };
 NTR_SIZE_GUARD(Save, 0x350);
 extern Save save;
@@ -306,14 +336,13 @@ extern "C" {
 	extern Heap *data_0208b720;
 	void func_02020354(i8);
 	u32 func_02012398(i32, Vec3_32 *); // SND::playSFX(u32,Vec3*)
-	u32 func_020202a0();
+	i32 func_020202a0();
 	i32 func_0202040c(i32);
 	extern u16 data_0203bd30;
 
 	//
 	bool func_0204d82c();
 	void func_020067dc();
-	extern i32 data_02085aa4;
 
 	class SceneGraph;
 	class ProcessLink;
@@ -372,7 +401,6 @@ extern "C" {
 	void func_020050d8();
 	void func_020050c0();
 	void onRender_3();
-	bool(func_0200ae9c)(Vec3_32 *);
 	bool(func_0201f000)(Vec3_32 *);
 	bool isMultiBootCart();
 	bool func_020109c8();
@@ -391,21 +419,15 @@ extern "C" {
 	void func_02014824(u32, u32);
 	void func_0201486c(u32, u32, u32);
 
-	extern u32 data_ov000_020ca2b8;
 	extern void (*data_02039968)(i32, i32);
 	extern u32 data_02085a88;
-	extern u32 data_02085e0c;
 
 	void func_01ff8378(u32);
 	void func_0200b87c(); // OAM::setFilesUnloaded
 	extern u32 data_02087700; // OAM::curTileOffset
 	void func_0200b83c(u32); // OAM::loadFilesToVRAM
-	void func_02009a30(u32, u32, u32); // FS::loadOBJPalette
-	u32 func_02017190(u32); // Font::getScriptFileID
-	extern u8 data_02088f30; // Scene::allowSoftReset
 	void func_020051ec(); // App::forceDisplayOn
 	void func_020045cc(); // Exception::terminateCaught
-	extern u32 data_02085a84; // Game::vsMode
 	extern u32 DAT_02039200; // vtable for Vec3
 	void func_02021808(); // TP::updatePlayer
 	void func_020180a4(void*); // TextLabel::unloadScript
@@ -413,6 +435,12 @@ extern "C" {
 
 	extern class Heap* Memory_gameHeap;
 	extern Mat4x3 Game_modelMatrix;
+
+}
+
+namespace Font {
+
+	u32 getScriptFileID(u32 language);
 
 }
 
@@ -515,43 +543,28 @@ struct IDK {
 	u32 field15_0x30;
 };
 
-void func_0201325c();
-u32 func_02006674(u32);
-void func_02011c34(u32);
-u32 func_02004cb8(u32, u32, u32, u32, u32);
-u8 data_ov001_020cebc0;
-u32 data_ov001_020cd144;
-u32 data_ov001_020cd934;
-u32 data_ov001_020cdb24;
-u16* data_ov001_020cd734;
-u32 data_ov001_020ce84c;
-u32 data_ov001_020ce86c;
-u32 data_02085a88;
+extern u8 data_ov001_020cebc0;
+extern u32 data_ov001_020cd144;
+extern u32 data_ov001_020cd934;
+extern u32 data_ov001_020cdb24;
+extern u16* data_ov001_020cd734;
+extern u32 data_ov001_020ce84c;
+extern u32 data_ov001_020ce86c;
 u32 func_02011d40();
-void func_02011e3c(u32);
-void func_020131fc(u32, u32);
 void func_0200a42c(u32, u32);
 void func_0200a3d0(u32, u32);
 u32 func_02011e7c(u32, u32);
-void func_02012290(u32, u32);
-	void func_0200917c(u32, u32);
-	void func_ov052_021535a0();
-	void func_020125c4();
-	void func_02011c64();
-	u32 func_020090f8(u32);
+	extern "C" void func_0200917c(u32, u32);
+	extern "C" void func_ov052_021535a0();
 	extern u32 func_0201f5fc(u32);
 extern u32 func_0201f590(u32, u32);
 extern u32 func_0201f53c(u32, u32, u32);
 extern void func_02020580(u32, u32);
 extern u32 func_0200696c(u32, u32, u32, u32, IDK);
 extern void func_0200696c_(u8, u8, u8, u8, u8, u8, u8, u8, u8, u8, u8, u8, u8, u8, u8, u8);
-extern void func_02011e3c(u32);
-extern void func_020066f8();
 extern void func_02006740();
 extern u16 data_02087650[2][2];
-extern u8 data_02085a0c;
 extern u32 data_02085a90;
-extern u8 data_0208b4f0;
 extern u8 data_02085a1c;
 extern u8 data_02085a10;
 extern u8 data_02088e04;

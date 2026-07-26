@@ -32,8 +32,9 @@ void MGScene::postUpdate(u32)
 bool MGScene::preRender()
 {
 }
-void MGScene::postRender(u32)
+void MGScene::postRender(u32 state)
 {
+	Base::postRender(state);
 }
 
 #pragma thumb off

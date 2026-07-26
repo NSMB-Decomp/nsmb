@@ -1,6 +1,12 @@
 #pragma once
 
 #include "../lib/Nitro/Nitro.hpp"
+#include <nds/graphics.hpp>
+#include <nds/input.hpp>
+#include <nds/math.hpp>
+#include <nds/memory.hpp>
+#include <nds/system.hpp>
+#include <nsmb/arm9/functions.hpp>
 
 #define scast static_cast
 #define rcast reinterpret_cast
@@ -22,6 +28,7 @@
 
 #define NTR_SIZEOF_ARRAY(x)			(sizeof(x) / sizeof(*x))
 #define NTR_SIZE_GUARD(t, s)		static_assert(sizeof(t) == s, "Type '" #t "' has the wrong size")
+#define NTR_OFFSET_GUARD(t, m, o)	static_assert(((::size_t)&(((t *)0)->m)) == o, "Member '" #t "::" #m "' has the wrong offset")
 
 #define __NTR_FOURCC_BSWAP16(x)		(((x) & 0xFF) << 8) | (((x) & 0xFF00) >> 8)
 #define __NTR_FOURCC_BSWAP32(x)		((__NTR_FOURCC_BSWAP16(x) & 0xFFFF) << 16) | __NTR_FOURCC_BSWAP16(((x) & 0xFFFF0000) >> 16)

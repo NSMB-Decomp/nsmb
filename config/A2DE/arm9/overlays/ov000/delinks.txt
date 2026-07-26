@@ -5,31 +5,32 @@
     .data       start:0x020c4ec0 end:0x020ca280 kind:data align:32
     .bss        start:0x020ca280 end:0x020cc2e0 kind:bss align:32
 
-src/Bases/StageEntity.cpp:
+src/overlays/ov000/Bases/StageEntity.cpp:
     .text       start:0x020986e0 end:0x020a03ac
     .data       start:0x020c4efc end:0x020c5010
 
-src/Bases/Actor.cpp:
+src/overlays/ov000/Bases/Actor.cpp:
+    complete
     .text       start:0x020a03ac end:0x020a10a0
     .data       start:0x020c6c14 end:0x020c6c84
     .bss        start:0x020ca854 end:0x020ca858
 
-src/Bases/StageActor.cpp:
+src/overlays/ov000/Bases/StageActor.cpp:
     .text       start:0x020a10a0 end:0x020a12dc
     .data       start:0x020c6c84 end:0x020c6cdc
 
-src/Scenes/StageScene.cpp:
+src/overlays/ov000/Scenes/StageScene.cpp:
     .text       start:0x020a12dc end:0x020a3a38
     .data       start:0x020c6d28 end:0x020c6eac
 
-src/Collision/Collider.cpp:
+src/overlays/ov000/Collision/Collider.cpp:
     .text       start:0x020ab18c end:0x020ab918
     .init       start:0x020c341c end:0x020c356c
     .ctor       start:0x020c4e94 end:0x020c4e98
     .data       start:0x020c71cc end:0x020c7234
     .bss        start:0x020cac0c end:0x020cac6c
 
-src/menu/OptionsMenu.cpp:
+src/overlays/ov000/menu/OptionsMenu.cpp:
     .text       start:0x020c0fa0 end:0x020c1f38
     .data       start:0x020ca210 end:0x020ca268
     .bss        start:0x020cc2b4 end:0x020cc2e0

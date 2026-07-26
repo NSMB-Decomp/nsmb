@@ -11,6 +11,17 @@ pub fn build(b: *std.Build) void {
     const extract_directory = b.path(b.pathJoin(&.{ "extracted", release.name(), "" }));
     const config_file = b.path(b.pathJoin(&.{ "config", release.name(), "arm9/config.yaml" }));
 
+    // Generate compile-time NitroFS file IDs from the selected ROM. The generated
+    // header uses macros so MWCC ARM 1.2sp3 emits the original integer literals.
+    const file_ids_cmd = b.addSystemCommand(&.{"python3"});
+    file_ids_cmd.addFileArg(b.path("tools/gen_file_ids.py"));
+    file_ids_cmd.addArg("--rom");
+    file_ids_cmd.addFileArg(rom_file);
+    file_ids_cmd.addArgs(&.{ "--output", "build/generated/include/nsmb/file_ids.hpp" });
+
+    const file_ids_step = b.step("file-ids", "Generate NitroFS file IDs");
+    file_ids_step.dependOn(&file_ids_cmd.step);
+
     // step - extract
     const extract_cmd = b.addSystemCommand(&.{"dsd"});
     extract_cmd.addArgs(&.{ "rom", "extract" });
@@ -45,13 +56,14 @@ pub fn build(b: *std.Build) void {
 
     // Step - single
     var single_step = b.step("single", "");
-    //single_step.dependOn(objdiff_step);
+    single_step.dependOn(&file_ids_cmd.step);
     single_step.makeFn = &taskSingle;
     config_file.addStepDependencies(single_step);
 
     // Step - all
     var all_step = b.step("all", "");
     all_step.dependOn(objdiff_step);
+    all_step.dependOn(&file_ids_cmd.step);
     all_step.makeFn = &taskAll;
 
     // Step - report
@@ -128,6 +140,10 @@ fn compileFile(io: std.Io, source_file: []const u8, destination_file: []const u8
         "-once",
         "-i",
         "lib/Nitro/",
+        "-i",
+        "include/",
+        "-i",
+        "build/generated/include/",
         "-d",
         release_global.macroName(),
     };
@@ -157,6 +173,10 @@ fn generateContext(io: std.Io, source_file: []const u8, destination_file: []cons
         "-undef",
         "-I",
         "lib/Nitro/",
+        "-I",
+        "include/",
+        "-I",
+        "build/generated/include/",
         "-D",
         "__MWERKS__",
         //"-dD",

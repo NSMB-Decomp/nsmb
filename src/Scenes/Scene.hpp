@@ -3,8 +3,8 @@
 class Scene : public Object
 {
       public:
-	u32 _5c;
-	u32 _60;
+	u32 wifiIconOBJIndex;
+	u32 wifiIconOBJPalette;
 
 	~Scene();
 	Scene();
@@ -22,3 +22,7 @@ class Scene : public Object
 	bool preRender();
 	void postRender(u32);
 };
+
+NTR_SIZE_GUARD(Scene, 0x64);
+NTR_OFFSET_GUARD(Scene, wifiIconOBJIndex, 0x5c);
+NTR_OFFSET_GUARD(Scene, wifiIconOBJPalette, 0x60);

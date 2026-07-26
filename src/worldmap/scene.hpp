@@ -1,12 +1,25 @@
 #pragma once
 #include "../Scenes/Scene.hpp"
+#include "../Vec.hpp"
+#include <nsmb/game/particle.hpp>
 
 namespace WM {
 
 	// For save data
 	enum WorldState {
+		WS_Initialized    = 1 << 0,
+		WS_Bit1           = 1 << 1,
+		WS_Bit2           = 1 << 2,
+		WS_Bit3           = 1 << 3,
+		WS_Bit4           = 1 << 4,
+		WS_Bit5           = 1 << 5,
+		WS_Bits1Through5  = 0x3E,
 		WS_Visited        = 0x40,
 		WS_Completed      = 0x80, // maybe?
+		WS_Bit8           = 1 << 8,
+		WS_Bit9           = 1 << 9,
+		WS_Bit10          = 1 << 10,
+		WS_Bit11          = 1 << 11,
 		WS_ArrowToadHouse = 0x1000,
 	};
 
@@ -22,6 +35,7 @@ namespace WM {
 	};
 
 	enum PathState {
+		PS_Bit20    = 0x20,
 		PS_Unk40    = 0x40, // actually unlocked?
 		PS_Unlocked = 0x80,
 	};
@@ -93,6 +107,8 @@ namespace WM {
 		PF_Unk1 = 0x1,
 		PF_Sign = 0x2,
 		PF_Pipe = 0x4,
+		PF_Bit6 = 1 << 6,
+		PF_Bit7 = 1 << 7,
 	};
 
 	struct Path {
@@ -117,14 +133,25 @@ namespace WM {
 	NTR_SIZE_GUARD(Entity, 0x2);
 
 	struct Point {
-		u32 unk0;
-		u32 unk4;
-		u32 unk8;
+		u8 transitPaths01[2][4];
+		union {
+			u8 transitPaths2[4];
+			u16 transitValues[2];
+		};
 		fx32 x;
 		fx32 y;
 		fx32 z;
+
+		u8 transitPath(u32 set, u32 index) const {
+			return set < 2
+				? transitPaths01[set][index]
+				: transitPaths2[index];
+		}
 	};
 	NTR_SIZE_GUARD(Point, 0x18);
+	NTR_OFFSET_GUARD(Point, transitPaths01, 0x0);
+	NTR_OFFSET_GUARD(Point, transitValues, 0x8);
+	NTR_OFFSET_GUARD(Point, x, 0xC);
 
 	struct Sign {
 		u32 path;
@@ -142,9 +169,22 @@ namespace WM {
 	};
 	NTR_SIZE_GUARD(ToadHouse, 0x10);
 
+	struct Fort {
+		u32 node;
+		fx32 x;
+		fx32 y;
+		fx32 z;
+	};
+	NTR_SIZE_GUARD(Fort, 0x10);
+	NTR_OFFSET_GUARD(Fort, node, 0x0);
+	NTR_OFFSET_GUARD(Fort, x, 0x4);
+	NTR_OFFSET_GUARD(Fort, y, 0x8);
+	NTR_OFFSET_GUARD(Fort, z, 0xC);
+
 	enum AnimFlag {
 		AF_ModelType    = 0x3,
 		AF_PeachSfxJump = 0x4,  // maybe?
+		AF_ScaleUp      = 0x8,
 		AF_Reverse      = 0x10, // maybe?
 		AF_PeachSfxHelp = 0x20, // maybe?
 	};
@@ -163,7 +203,7 @@ namespace WM {
 		Entity* entities;
 		Point* points;
 		Sign* signs;
-		void* unk14;
+		Fort* forts;
 		ToadHouse* toadHouses;
 		Anim** anims;
 		u16 nodeCount;
@@ -171,6 +211,11 @@ namespace WM {
 		u16 flag;
 		u16 unk26;
 	};
+	NTR_SIZE_GUARD(World, 0x28);
+	NTR_OFFSET_GUARD(World, nodes, 0x0);
+	NTR_OFFSET_GUARD(World, paths, 0x4);
+	NTR_OFFSET_GUARD(World, forts, 0x14);
+	NTR_OFFSET_GUARD(World, nodeCount, 0x20);
 
 
 	extern World worlds[8];
@@ -179,19 +224,32 @@ namespace WM {
 	extern Entity* wxEntities;
 	extern Point* wxPoints;
 	extern Sign* wxSigns;
-	extern u8* wxUnk14;
+	extern Fort* wxForts;
 	extern ToadHouse* wxToadHouses;
 	extern Anim** wxAnims;
-	extern u32 wxNodeCount;
+	extern s32 wxNodeCount;
 	extern s32 wxPathCount; // u32->s32 (some for loops did not match with u32)
 
 	enum State {
+		ST_Bit0       = 0x1,
+		ST_Bit2       = 0x4,
+		ST_Bit3       = 0x8,
+		ST_Unk10      = 0x10,
 		ST_PlayerMove = 0x20,
 		ST_EntityMove = 0x40,
 		ST_CourseLeft = 0x80,
+		ST_Bit8       = 0x100,
+		ST_Bit9       = 0x200,
+		ST_Bit10      = 0x400,
+	};
+
+	enum WorldFlag {
+		WF_Bit2 = 1 << 2,
 	};
 
 	extern u32 state;
+	extern u32 wxFlags;
+	extern u32 currentWorld;
 
 	extern u16 entityPlttOfsTbl[ET_MAX];
 
@@ -199,8 +257,53 @@ namespace WM {
 
 class WorldmapScene : public Scene {
 public:
+	WorldmapScene() {}
+	virtual ~WorldmapScene();
 
+	static WorldmapScene* create();
 
+	void func_ov008_020d06b0();
+	void func_ov008_020d06bc();
+	void func_ov008_020d06c8();
+	void func_ov008_020d06fc();
+	void func_ov008_020d0708();
+	void func_ov008_020d0788();
+	void func_ov008_020d08dc();
+	void func_ov008_020d0a4c();
+	void func_ov008_020d0a58();
+	void func_ov008_020d113c();
 
+	Particle::Handler particleHandler;
+	Vec2_32 unknown858;
+	u32 menuExitRequested;
+	u32 dialogActionTimer;
+	s32 displayedStarCoins;
+	s32 starCoinTickTimer;
+	u32 dialogInitFlag;
+	u8 reserved_878_879[0x2];
+	u16 starCoinIconPhase;
+	u8 unk87C;
+	u8 menuLastSelection;
+	u8 unk87E;
+	u8 dialogState;
+	u8 menuState;
+	u8 reserved_881;
+	u16 uiCellFrame;
+	const BNCL_Cell* uiCells;
 };
-NTR_SIZE_GUARD(WorldmapScene, 0x64);
+NTR_SIZE_GUARD(WorldmapScene, 0x888);
+NTR_OFFSET_GUARD(WorldmapScene, particleHandler, 0x64);
+NTR_OFFSET_GUARD(WorldmapScene, unknown858, 0x858);
+NTR_OFFSET_GUARD(WorldmapScene, menuExitRequested, 0x864);
+NTR_OFFSET_GUARD(WorldmapScene, dialogActionTimer, 0x868);
+NTR_OFFSET_GUARD(WorldmapScene, displayedStarCoins, 0x86C);
+NTR_OFFSET_GUARD(WorldmapScene, starCoinTickTimer, 0x870);
+NTR_OFFSET_GUARD(WorldmapScene, dialogInitFlag, 0x874);
+NTR_OFFSET_GUARD(WorldmapScene, starCoinIconPhase, 0x87A);
+NTR_OFFSET_GUARD(WorldmapScene, unk87C, 0x87C);
+NTR_OFFSET_GUARD(WorldmapScene, menuLastSelection, 0x87D);
+NTR_OFFSET_GUARD(WorldmapScene, unk87E, 0x87E);
+NTR_OFFSET_GUARD(WorldmapScene, dialogState, 0x87F);
+NTR_OFFSET_GUARD(WorldmapScene, menuState, 0x880);
+NTR_OFFSET_GUARD(WorldmapScene, uiCellFrame, 0x882);
+NTR_OFFSET_GUARD(WorldmapScene, uiCells, 0x884);

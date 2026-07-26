@@ -140,7 +140,7 @@ namespace App {
 
 	void initFileCount(BOOL multiboot);
 
-	void initBoot(u32);
+	void initBoot();
 
 	void resetVram();
 
@@ -240,5 +240,20 @@ namespace App {
 	NTR_INLINE void finishUnloadingStage() {
 		sleepControl &= ~SleepControl_UnloadingStage;
 	}
+
+}
+
+namespace Game {
+
+	typedef void (*TaskEntry)(void *);
+
+	u32 taskCleanup();
+	u32 runTask(
+		TaskEntry entry,
+		void *argument,
+		u32 priority,
+		void *stack,
+		u32 stackSize
+	);
 
 }

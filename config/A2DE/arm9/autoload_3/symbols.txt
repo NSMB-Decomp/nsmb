@@ -16,12 +16,12 @@ data_020858ac kind:bss addr:0x020858ac
 
 // app.cpp
 
-_ZN3App10sleepPhaseE kind:bss addr:0x0208596c
-_ZN3App12backlightOffE kind:bss addr:0x02085970
-_ZN3App12sleepControlE kind:bss addr:0x02085974
-_ZN3App8sleepingE kind:bss addr:0x02085978
-_ZN3App15sleepPhaseTimerE kind:bss addr:0x0208597c
-_ZN3App16sleepWakeUpTimerE kind:bss addr:0x02085980
+_ZN3App10sleepPhaseE kind:bss(size=0x1) addr:0x0208596c
+_ZN3App12backlightOffE kind:bss(size=0x1) addr:0x02085970
+_ZN3App12sleepControlE kind:bss(size=0x1) addr:0x02085974
+_ZN3App8sleepingE kind:bss(size=0x1) addr:0x02085978
+_ZN3App15sleepPhaseTimerE kind:bss(size=0x2) addr:0x0208597c
+_ZN3App16sleepWakeUpTimerE kind:bss(size=0x2) addr:0x02085980
 _ZN3App12backlightTopE kind:bss addr:0x02085984
 _ZN3App15backlightBottomE kind:bss addr:0x02085988
 _ZN3App9bootParamE kind:bss addr:0x0208598c
@@ -105,7 +105,7 @@ data_02085adc kind:bss addr:0x02085adc
 data_02085ae4 kind:bss addr:0x02085ae4
 data_02085af0 kind:bss addr:0x02085af0
 _CurrentWindow kind:bss addr:0x02085b10
-Fader::current kind:data(word) addr:0x02085b14
+_ZN5Fader7currentE kind:data(word) addr:0x02085b14
 data_02085b18 kind:data(word) addr:0x02085b18
 data_02085b1c kind:bss addr:0x02085b1c
 data_02085b20 kind:bss addr:0x02085b20
@@ -125,19 +125,19 @@ data_02085c2c kind:bss addr:0x02085c2c
 data_02085c30 kind:bss addr:0x02085c30
 data_02085c34 kind:bss addr:0x02085c34
 data_02085c38 kind:bss addr:0x02085c38
-data_02085cf8 kind:bss addr:0x02085cf8
-data_02085cfc kind:bss addr:0x02085cfc
-FileCount kind:bss addr:0x02085d00
-data_02085d04 kind:bss addr:0x02085d04
-data_02085d08 kind:bss addr:0x02085d08
-LoadedOverlays kind:bss addr:0x02085d0c
-data_02085e0c kind:bss addr:0x02085e0c
-data_02085e10 kind:bss addr:0x02085e10
-data_02085e14 kind:bss addr:0x02085e14
-data_02085e18 kind:bss addr:0x02085e18
-data_02085e24 kind:bss addr:0x02085e24
-data_02085e30 kind:bss addr:0x02085e30
-data_02086a30 kind:bss addr:0x02086a30
+_ZN2FS8Internal12assertSourceE kind:bss addr:0x02085cf8
+_ZN2FS8readModeE kind:bss(size=0x1) addr:0x02085cfc
+_ZN2FS9fileCountE kind:bss(size=0x2) addr:0x02085d00
+_ZN2FS12fileIDOffsetE kind:bss(size=0x2) addr:0x02085d04
+_ZN2FS10romArchiveE kind:bss addr:0x02085d08
+_ZN2FS7Overlay14loadedOverlaysE kind:bss addr:0x02085d0c
+_ZN2FS5Cache15activeFileCacheE kind:bss addr:0x02085e0c
+_ZN2FS5Cache22overlayFileDestinationE kind:bss addr:0x02085e10
+_ZN2FS5Cache20overlayFileRemainingE kind:bss addr:0x02085e14
+@643 kind:bss addr:0x02085e18
+@645 kind:bss addr:0x02085e24
+_ZN2FS5Cache10fileCache1E kind:bss addr:0x02085e30
+_ZN2FS5Cache10fileCache0E kind:bss addr:0x02086a30
 data_02087630 kind:bss addr:0x02087630
 _ZN5Input14localConsoleIDE kind:bss addr:0x02087634
 data_02087638 kind:bss addr:0x02087638
@@ -210,7 +210,7 @@ data_0208882c kind:bss addr:0x0208882c
 data_02088830 kind:bss addr:0x02088830
 data_02088834 kind:bss addr:0x02088834
 data_02088838 kind:bss addr:0x02088838
-data_0208883c kind:bss addr:0x0208883c
+_ZN3Net10errorStateE kind:bss addr:0x0208883c
 data_02088840 kind:bss addr:0x02088840
 data_02088844 kind:bss addr:0x02088844
 data_02088848 kind:bss addr:0x02088848
@@ -501,8 +501,8 @@ data_0208b71c kind:bss addr:0x0208b71c
 Memory_gameHeap kind:bss addr:0x0208b720
 data_0208b724 kind:bss addr:0x0208b724
 data_0208b728 kind:bss addr:0x0208b728
-data_0208b72c kind:bss addr:0x0208b72c
-data_0208b730 kind:bss addr:0x0208b730
+_ZN6Memory14currentHeapPtrE kind:bss addr:0x0208b72c
+_ZN6Memory11rootHeapPtrE kind:bss addr:0x0208b730
 data_0208b734 kind:bss addr:0x0208b734
 data_0208b738 kind:bss addr:0x0208b738
 data_0208b73c kind:bss addr:0x0208b73c

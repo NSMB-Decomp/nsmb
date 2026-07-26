@@ -82,7 +82,7 @@ class Coin : public StageEntity
 	bool onUpdate_0();
 	void _11();
 	void _21();
-	void onStageComplete(PlayerActor *player);
+	void onStageBeaten(PlayerActor &player);
 };
 NTR_SIZE_GUARD(Coin, 0x4e8);
 

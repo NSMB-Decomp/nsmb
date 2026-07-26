@@ -1,0 +1,23 @@
+{
+  "units": [
+    {
+      "name": "src/overlays/ov052/VSMenuScene",
+      "symbol_mappings": {
+        "@747": "@1003",
+        "@766": "@1022",
+        "@794": "@1050",
+        "@796": "@1052"
+      }
+    },
+    {
+      "name": "src/overlays/ov008/worldmap/controller",
+      "symbol_mappings": {
+        "func_02064cb4": "_ZN3NDS4Text6formatEPcPKcz",
+        "strcpy": "_ZN3NDS4Text10copyStringEPcPKc"
+      }
+    },
+    {
+      "name": "src/overlays/ov008/worldmap/scene"
+    }
+  ]
+}
