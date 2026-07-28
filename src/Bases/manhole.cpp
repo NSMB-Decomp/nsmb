@@ -1,6 +1,6 @@
 #include "manhole.hpp"
 #include "../graphics/3d/util.hpp"
-#include "player/PlayerActor.hpp"
+#include "Player/PlayerActor.hpp"
 
 ActorProfile Manhole::profile = {
     Manhole::create,
