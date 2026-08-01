@@ -5,18 +5,23 @@
 > [!NOTE]
 > To speed up compiling on linux run "wineserver -p" after each reboot, this will start a persistent wineserver so it does not need to start wine up every time you compile.
 
+## Setting up your development environment.
+1. Download and install [dsd](https://github.com/AetiasHax/ds-decomp)
+2. Download and install [zig 0.16.0](https://ziglang.org/)
+2. Download and install [objdiff](https://github.com/encounter/objdiff)
+4. If you're on Linux or macOS, download and install the latest version of [wine](https://gitlab.winehq.org/wine/wine/-/wikis/Download)
+5. Somehow obtain a copy of mwccarm 1.2sp3 and place this under `build/compiler/mwccarm/1.2/sp3/`
+
 ## Setting up this repository
 1. Dump a copy of your DS game onto your computer, you can find guides for this on the internet
 2. Rename the file to the release code in the table below, for example the USA rom will bnecome A2DE.nds and place it in the root of this repository
-3. Download and install the latest version of [dsd](https://github.com/AetiasHax/ds-decomp)
-4. Download and install version 0.16.0 of [zig](https://ziglang.org/)
-5. If you're on Linux or macOS, download and install the latest version of [wine](https://gitlab.winehq.org/wine/wine/-/wikis/Download)
-6. Somehow obtain a copy of mwccarm 1.2sp3 and place this under build/compiler/mwccarm/1.2/sp3/
-7. Run `zig build extract`, this will extract all the files in the rom to the extracted/ directory
-8. Run `zig build delink`, this will create delinked files which are used within objdiff
-9. Run `zig build objdiff` this will generate a new objdiff configuration to allow comparing your code with the games code
+3. Run `zig build extract`, this will extract all the files in the rom to the `extracted/` directory
+4. Run `zig build delink`, this will create delinked files which are used within objdiff
+5. Run `zig build objdiff` this will generate a new objdiff configuration to allow comparing your code with the games code
 
-## Importing nsmb.h into Ghidra
+## Importing nsmb.h into 
+> [!NOTE]
+> This will be replaced by [dsd-ghidra typesync](https://github.com/AetiasHax/dsd-ghidra/pull/11) once it is released.
 1. Open Ghidra
 2. Open your nsmb project
 3. Click **File** on the top left
