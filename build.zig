@@ -3,7 +3,8 @@ const builtin = @import("builtin");
 
 pub fn build(b: *std.Build) !void {
     b.resolveInstallPrefix(b.build_root.path orelse ".", .{});
-    const release = b.option(Release, "Release", "") orelse Release.A2DE;
+    const release =
+        b.option(Release, "Release", "") orelse std.meta.stringToEnum(Release, b.graph.environ_map.get("NSMB_RELEASE") orelse "A2DE") orelse Release.A2DE;
 
     // Define paths that are used in the build steps
     const rom_file = b.path(release.romName());
