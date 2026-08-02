@@ -15,10 +15,11 @@
 | [2006-Nen 10-Gatsu Taikenban Soft (Japan) (Demo) (Kiosk)](https://datomatic.no-intro.org/index.php?page=show_record&s=28&n=z126)[^1]    | A85J_1[^2]   | 2006-09-01 20:30:18 | None        |
 | [New Super Mario Bros. (Korea) ](https://datomatic.no-intro.org/index.php?page=show_record&s=28&n=0879)                                 | A2DK         | 2006-12-27 14:32:43 | None        |
 | [New Chaoji Maliou Xiongdi (China) (iDS)](https://datomatic.no-intro.org/index.php?page=show_record&s=28&n=x142)                        | A2DC         | 2009-04-27 20:29:28 | None        |
-| [New Super Mario Bros. (Japan) (Demo) (Kiosk, Y7QJ)](https://datomatic.no-intro.org/index.php?page=show_record&s=28&n=z393)             | Y7QJ         | 2009-10-23 16:23:25 | None        |
+| [New Super Mario Bros. (Japan) (Demo) (Kiosk, Y7QJ)](https://datomatic.no-intro.org/index.php?page=show_record&s=28&n=z393)             | Y7QJ[^3]     | 2009-10-23 16:23:25 | None        |
 
 [^1]: Multi-demo cart
 [^2]: This NSMB ROM has the same Product Code as the standard JP demo, so "_1" is appended here
+[^3]: This build uses a 2.0 version of the mwcc compiler
 <!--
 This build is identical to A85P above but it also includes a autoboot flag 
 | [x168 - New Super Mario Bros. (Europe) (En,Fr,De,Es,It) (Demo) (Kiosk, Y78P)](https://datomatic.no-intro.org/index.php?page=show_record&s=28&n=x168) | A85P         | None        | 2006-04-27 11:13:34 |
