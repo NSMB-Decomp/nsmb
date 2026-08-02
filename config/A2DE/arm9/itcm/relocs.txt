@@ -1,3 +1,10 @@
+from:0x01ffd220 kind:load to:0x01ffd1c0 module:itcm
+from:0x01ffd224 kind:load to:0x01ffd1a8 module:itcm
+from:0x01ffd228 kind:load to:0x01ffd1a0 module:itcm
+from:0x01ffd284 kind:load to:0x01ffd198 module:itcm
+from:0x01ffd288 kind:load to:0x01ffd1b8 module:itcm
+from:0x01ffd28c kind:load to:0x01ffd1b0 module:itcm
+
 from:0x01ff81a4 kind:load to:0x01ff8000 module:itcm
 from:0x01ff8224 kind:load to:0x01ff806c module:itcm
 from:0x01ff82d4 kind:arm_call to:0x01ff80e0 module:itcm

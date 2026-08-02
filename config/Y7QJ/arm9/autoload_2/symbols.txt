@@ -1679,7 +1679,7 @@ data_020726fc kind:data(any) addr:0x020726fc
 data_0207271c kind:data(any) addr:0x0207271c
 data_0207273c kind:data(any) addr:0x0207273c
 data_0207275c kind:data(any) addr:0x0207275c
-data_02085224 kind:data(any) addr:0x02072760
+next_guid kind:data(any) addr:0x02072760
 @0 kind:data(any) addr:0x02072764
 @0 kind:data(any) addr:0x0207276c
 @0 kind:data(any) addr:0x02072774

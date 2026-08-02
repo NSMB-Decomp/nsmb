@@ -1790,7 +1790,7 @@ data_02085200 kind:data(any) addr:0x02085200
 data_02085204 kind:data(any) addr:0x02085204
 data_02085208 kind:data(any) addr:0x02085208
 data_02085220 kind:data(any) addr:0x02085220
-data_02085224 kind:data(word) addr:0x02085224
+next_guid kind:data(word) addr:0x02085224
 @868 kind:data(word[2]) addr:0x02085228 local
 @876 kind:data(word[2]) addr:0x02085230 local
 @865 kind:data(word[2]) addr:0x02085238 local

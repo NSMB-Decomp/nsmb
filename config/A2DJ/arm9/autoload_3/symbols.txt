@@ -103,7 +103,7 @@ data_02085200 kind:bss addr:0x02085200
 data_02085204 kind:bss addr:0x02085204
 data_0208520c kind:bss addr:0x0208520c
 data_02085214 kind:bss addr:0x02085214
-data_02085224 kind:bss addr:0x02085224
+next_guid kind:bss addr:0x02085224
 data_02085234 kind:bss addr:0x02085234
 data_02085244 kind:bss addr:0x02085244
 data_02085254 kind:bss addr:0x02085254

@@ -149,7 +149,7 @@ i32 Base::procesRender()
 }
 #pragma section itcm end
 
-u32 data_02085224 = 1;
+u32 next_guid = 1;
 
 ProcessLink *func_02043b58(ProcessLink *);
 Base::Base()
@@ -173,8 +173,8 @@ Base::Base()
 	pl->idLookup.next = (ProcessNode *)0x00;
 	pl->idLookup.object = this;
 
-	this->guid = data_02085224;
-	data_02085224 += 1;
+	this->guid = next_guid;
+	next_guid += 1;
 	this->settings = SpawnParam_Settings;
 	this->object_id = SpawnParam_ObjectId;
 	this->_12 = SpawnParam_Type;
