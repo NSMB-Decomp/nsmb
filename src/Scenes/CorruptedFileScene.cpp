@@ -66,11 +66,7 @@ s32 CorruptedFileScene::onCreate() {
 	func_0200b87c();
 	data_02087700 = 0;
 	func_0200b83c(0);
-#if defined(VER_A2DJ)
-	func_02009a30(0x75d,0,1);
-#else
 	func_02009a30(0x75c,0,1);
-#endif
 	u32 scriptFileID = func_02017190(2);
 	this->bmg = FS::loadExtFile(scriptFileID);
 	this->_64.func_020144a8();
@@ -116,9 +112,14 @@ s32 CorruptedFileScene::onCreate() {
 	if (settings_2 == 0) {
 		this->func_ov005_020cc2e0();
 	}
+#if !defined(VER_Y7QJ)
 	func_02012398(0xee,0);
+#endif
 	GlobalFader.func_02007bd8();
 	data_02088f30 = 0;
+#if defined(VER_Y7QJ)
+	func_02012398(0xee,0);
+#endif
 	return true;
 }
 s32 CorruptedFileScene::onDestroy() {

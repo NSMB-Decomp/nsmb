@@ -9,3 +9,6 @@
 
 src/system/main.cpp:
     .text       start:0x02003000 end:0x0200306c
+
+src/Scenes/Scene.cpp:
+    .text       start:0x02010db0 end:0x020115d8

@@ -224,9 +224,11 @@ Scene *Scene::tryChangeScene()
 		data_02085a84 = 0;
 		data_02088f30 = 1;
 	}
+#if !defined(VER_Y7QJ)
 	if (data_0203bd30 == 0x146) {
 		func_0200514c(0x10101);
 	}
+#endif
 	Scene *result = (Scene *)Object::spawnScene(data_0203bd30, data_02088f38, 1);
 	if (result != NULL) {
 		data_0203bd30 = 0x181;

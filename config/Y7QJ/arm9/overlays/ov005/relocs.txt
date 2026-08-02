@@ -2,7 +2,7 @@ from:0x020bc4a8 kind:arm_call to:0x0203f080 module:autoload(2)
 from:0x020bc4b4 kind:arm_call to:0x020bc4bc module:overlay(5)
 from:0x020bc4c4 kind:arm_call to:0x02010db0 module:main
 from:0x020bc4d4 kind:arm_call to:0x02014164 module:main
-from:0x020bc4e0 kind:load to:0x020bceb0 module:overlay(5)
+from:0x020bc4e0 kind:load to:0x020bcea8 add:0x8 module:overlay(5)
 from:0x020bc4f0 kind:arm_call to:0x02014168 module:main
 from:0x020bc4f8 kind:arm_call to:0x0201102c module:main
 from:0x020bc510 kind:arm_call to:0x02014168 module:main

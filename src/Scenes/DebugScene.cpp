@@ -7,6 +7,7 @@ struct SomethingElse {
 	u32 d;
 };
 
+#if !defined(VER_Y7QJ)
 i32 data_ov002_020cd300;
 i32 data_ov002_020cd304;
 char S_ENDIN[] = "ENDIN";
@@ -30,7 +31,6 @@ char S_KINOK[] = "KINOK";
 char S_ENTRY[] = "ENTRY";
 char S_ERROR[] = "ERROR";
 char S_KINO3[] = "KINO3";
-ObjectProfile DebugScene_Profile = {DebugScene::create, 2, 9};
 
 const SomethingElse data_ov002_020cd11c[] = {
     {S_KINOK, 0x9, 0x9, 0xA000}, 
@@ -50,7 +50,8 @@ const SomethingElse data_ov002_020cd11c[] = {
 };
 
 void (DebugScene::*data_ov002_020cd308[])() = {DebugScene::func_ov002_020cc328, DebugScene::func_ov002_020cc514};
-
+#endif
+ObjectProfile DebugScene_Profile = {DebugScene::create, 2, 9};
 
 DebugScene::DebugScene()
 {
@@ -93,6 +94,7 @@ s32 DebugScene::onUpdate()
 	return true;
 }
 
+#if !defined(VER_Y7QJ)
 void DebugScene::func_ov002_020cc514()
 {
 	u32 console_id = (u32)Input::localConsoleID;
@@ -550,6 +552,7 @@ void DebugScene::func_ov002_020cc328()
 	func_020131fc(uVar1, data_ov002_020cd11c[this->_1fc].d);
 	GlobalFader.func_02007bfc();
 }
+#endif
 
 DebugScene::~DebugScene()
 {

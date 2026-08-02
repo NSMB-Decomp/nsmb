@@ -1,6 +1,6 @@
 from:0x020bc4a8 kind:arm_call to:0x0203f080 module:autoload(2)
 from:0x020bc4b4 kind:arm_call to:0x02010db0 module:main
-from:0x020bc4c8 kind:load to:0x020bc570 module:overlay(2)
+from:0x020bc4c8 kind:load to:0x020bc568 add:0x8 module:overlay(2)
 from:0x020bc4e0 kind:arm_call to:0x02009500 module:main
 from:0x020bc4f4 kind:arm_call to:0x02054418 module:autoload(2)
 from:0x020bc51c kind:arm_call to:0x0201102c module:main

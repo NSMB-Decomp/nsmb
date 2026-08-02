@@ -46,8 +46,10 @@ class DebugScene : public Scene
 	inline ~DebugScene();
 	static void *create();
 
+#if !defined(VER_Y7QJ)
 	void func_ov002_020cc328();
 	void func_ov002_020cc514();
+#endif
 
 	s32 onCreate();
 	s32 onDestroy();
