@@ -1,0 +1,35 @@
+func_ov110_02166a20 kind:function(arm,size=0x74) addr:0x02166a20
+func_ov110_02166a94 kind:function(arm,size=0x1c) addr:0x02166a94
+func_ov110_02166ab0 kind:function(arm,size=0x8c) addr:0x02166ab0
+func_ov110_02166b3c kind:function(arm,size=0x4c) addr:0x02166b3c
+func_ov110_02166b88 kind:function(arm,size=0x14c) addr:0x02166b88
+func_ov110_02166cd4 kind:function(arm,size=0x3c) addr:0x02166cd4
+func_ov110_02166d10 kind:function(arm,size=0x4) addr:0x02166d10
+func_ov110_02166d14 kind:function(arm,size=0x4) addr:0x02166d14
+func_ov110_02166d18 kind:function(arm,size=0x4) addr:0x02166d18
+func_ov110_02166d1c kind:function(arm,size=0x4) addr:0x02166d1c
+func_ov110_02166d20 kind:function(arm,size=0xa4) addr:0x02166d20
+func_ov110_02166dc4 kind:function(arm,size=0x40) addr:0x02166dc4
+func_ov110_02166e04 kind:function(arm,size=0x164) addr:0x02166e04
+func_ov110_02166f68 kind:function(arm,size=0x1b0) addr:0x02166f68
+func_ov110_02167118 kind:function(arm,size=0x90) addr:0x02167118
+func_ov110_021671a8 kind:function(arm,size=0x74) addr:0x021671a8
+func_ov110_0216721c kind:function(arm,size=0x94) addr:0x0216721c
+func_ov110_021672b0 kind:function(arm,size=0x38) addr:0x021672b0
+func_ov110_021672e8 kind:function(arm,size=0x14c) addr:0x021672e8
+func_ov110_02167434 kind:function(arm,size=0x20) addr:0x02167434
+func_ov110_02167454 kind:function(arm,size=0xe0) addr:0x02167454
+func_ov110_02167534 kind:function(arm,size=0x3c) addr:0x02167534
+func_ov110_02167570 kind:function(arm,size=0x44) addr:0x02167570
+data_ov110_021675b4 kind:data(any) addr:0x021675b4
+__sinit_ov110_021675d0 kind:function(arm,size=0x54) addr:0x021675d0
+.p__sinit_ov110_021675d0 kind:data(word) addr:0x02167624
+data_ov110_02167640 kind:data(any) addr:0x02167640
+data_ov110_02167660 kind:data(any) addr:0x02167660 ambiguous
+data_ov110_02167674 kind:data(any) addr:0x02167674
+data_ov110_02167680 kind:data(any) addr:0x02167680 ambiguous
+data_ov110_021676a4 kind:data(any) addr:0x021676a4 ambiguous
+data_ov110_021677a0 kind:bss addr:0x021677a0
+data_ov110_021677a8 kind:bss addr:0x021677a8
+data_ov110_021677b0 kind:bss addr:0x021677b0
+data_ov110_021677b8 kind:bss addr:0x021677b8

@@ -3,14 +3,14 @@
 #include "../Heap.hpp"
 
 #pragma section autobss_3 begin
-u32 data_0208fae0;
+u8 SpawnParam_Type;
 u8 data_0208fae8;
 u16 data_0208faf0;
 u16 SpawnParam_ObjectId;
-ProcessLink *SpawnParam_Parent;
+u32 data_0208fae0;
 u32 spawnFunctionCtor;
 u32 spawnFunctionDtor;
-u8 SpawnParam_Type;
+ProcessLink *SpawnParam_Parent;
 u32 SpawnParam_Settings;
 u32 data_0208fb08;
 #pragma section autobss_3 end
@@ -153,7 +153,7 @@ u32 data_02085224 = 1;
 
 ProcessLink *func_02043b58(ProcessLink *);
 Base::Base()
-{
+{ // TODO: The below Priority node changes may actually be inline PriorityNode::PriorityNode() 
 	ProcessLink *pl = &this->process_link;
 	func_02043b58(pl);
 	pl->connect.object = this;
@@ -471,9 +471,9 @@ void Base::create()
 }
 i32 Base::processCreate()
 {
+	void (Base::*post)(u32) = Base::postCreate;
 	s32 (Base::*on)() = Base::onCreate;
 	bool (Base::*pre)() = Base::preCreate;
-	void (Base::*post)(u32) = Base::postCreate;
 	return this->process(on, pre, post);
 }
 

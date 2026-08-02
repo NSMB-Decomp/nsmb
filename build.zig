@@ -3,7 +3,7 @@ const std = @import("std");
 var release_global: Release = undefined;
 
 pub fn build(b: *std.Build) void {
-    const release = b.option(Release, "Release", "") orelse Release.A2DE;
+    const release = b.option(Release, "Release", "") orelse Release.Y7QJ;
     release_global = release;
 
     // Define paths that are used in the build steps
@@ -36,7 +36,7 @@ pub fn build(b: *std.Build) void {
     objdiff_cmd.addArgs(&.{ "objdiff", "-c" });
     objdiff_cmd.addFileArg(config_file);
     objdiff_cmd.addArgs(&.{ "-m", "zig" });
-    objdiff_cmd.addArgs(&.{ "-M", "build", "-M", "single", "-M", "--" });
+    objdiff_cmd.addArgs(&.{ "-M", "build", "-M", "single", "-M", release.commandName(), "-M", "--" });
     objdiff_cmd.addArgs(&.{ "-s", "-C", "mwcc_20_84", "-p", "201" });
     objdiff_cmd.addArgs(&.{ "-f", "-O4,p -interworking -proc=arm946e -w=off -gccinc -nolink -c -Cpp_exceptions off -lang=c++ -RTTI off -sym on" });
 
@@ -110,7 +110,7 @@ fn compileFile(io: std.Io, source_file: []const u8, destination_file: []const u8
     const builtin = @import("builtin");
     const command = .{
         if (builtin.target.os.tag != .windows) "wine" else "start",
-        "./build/compiler/mwccarm/1.2/sp3/mwccarm.exe",
+        release_global.compilerPath(),
         source_file,
         "-o",
         destination_file,
@@ -229,6 +229,19 @@ const Release = enum {
     pub fn macroName(self: Release) []const u8 {
         return switch (self) {
             inline else => |en| "VER_" ++ @tagName(en),
+        };
+    }
+
+    pub fn commandName(self: Release) []const u8 {
+        return switch (self) {
+            inline else => |en| "-DRelease=" ++ @tagName(en),
+        };
+    }
+
+    pub fn compilerPath(self: Release) []const u8 {
+        return switch (self) {
+            .Y7QJ => "./build/compiler/mwccarm/2.0/sp2p4/mwccarm.exe", // TODO: Confirm the exact version this it should use.
+            else => "./build/compiler/mwccarm/1.2/sp3/mwccarm.exe", // TODO: Confirm is sp3 or sp4
         };
     }
 };
