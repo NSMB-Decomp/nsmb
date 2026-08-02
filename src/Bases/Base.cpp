@@ -5,9 +5,9 @@
 #pragma section autobss_3 begin
 u8 SpawnParam_Type;
 u8 data_0208fae8;
-u16 data_0208faf0;
 u16 SpawnParam_ObjectId;
-u32 data_0208fae0;
+u16 data_0207cdea;
+u16 data_0208faf0;
 u32 spawnFunctionCtor;
 u32 spawnFunctionDtor;
 ProcessLink *SpawnParam_Parent;

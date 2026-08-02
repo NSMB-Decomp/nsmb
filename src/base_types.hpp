@@ -52,7 +52,9 @@ typedef u32 EmitterT;
 #define READ_NIBBLE(data, nybble) ((settings >> (nybble * 4)) & 0xf)
 
 // Sections
-#pragma define_section autobss_3 ".autobss_3" ".autobss_3"
+// It appears attributes can significantly effect compilation
+// RW required here to get Y7QJ to match.
+#pragma define_section autobss_3 ".autobss_3" ".autobss_3" RW
 #pragma define_section itcm ".itcm" ".itcm"
 
 // To fix code that has weird bool logic

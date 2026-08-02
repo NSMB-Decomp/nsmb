@@ -135,6 +135,12 @@ func_01ffd264 kind:function(arm,size=0x4) addr:0x01ffd264
 func_01ffd268 kind:function(arm,size=0x38) addr:0x01ffd268
 func_01ffd2a0 kind:function(arm,size=0x48) addr:0x01ffd2a0
 func_01ffd2e8 kind:function(arm,size=0x4c) addr:0x01ffd2e8
+@0 kind:data(any) addr:0x01ffd35c local
+@0 kind:data(any) addr:0x01ffd344 local
+@0 kind:data(any) addr:0x01ffd33c local
+@0 kind:data(any) addr:0x01ffd334 local
+@0 kind:data(any) addr:0x01ffd354 local
+@0 kind:data(any) addr:0x01ffd34c local
 _ZN4Base7processEMS_FlvEMS_FbvEMS_FvmE kind:function(arm,size=0xc4) addr:0x01ffd364
 _ZN4Base8onUpdateEv kind:function(arm,size=0x8) addr:0x01ffd428
 _ZN4Base9preUpdateEv kind:function(arm,size=0x28) addr:0x01ffd430

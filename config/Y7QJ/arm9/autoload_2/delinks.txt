@@ -6,5 +6,5 @@
 src/Bases/Base.cpp:
     .text       start:0x0203e9b4 end:0x0203f3c8
     .data       start:0x02072760 end:0x020727e4
-    .itcm       start:0x01ffd364 end:0x01ffd764
+    .itcm       start:0x01ffd334 end:0x01ffd764
     .autobss_3  start:0x0207cde8 end:0x0207ce04
