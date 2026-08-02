@@ -6,7 +6,7 @@ pub fn build(b: *std.Build) !void {
     const release = b.option(Release, "Release", "") orelse Release.A2DE;
 
     // Define paths that are used in the build steps
-    const rom_file = b.path(release.fileName());
+    const rom_file = b.path(release.romName());
     const extract_directory = b.path(b.pathJoin(&.{ "extracted", release.name(), "" }));
     const config_file = b.path(b.pathJoin(&.{ "config", release.name(), "arm9/config.yaml" }));
 
@@ -42,9 +42,14 @@ pub fn build(b: *std.Build) !void {
     var single_step = b.step("single", "");
     if (b.args) |args| {
         for (args) |destination| {
-            const source = try getSourceByDest(b.graph.io, b.allocator, destination);
-            const compile = BuildMWCC.create(b, b.path(source), release);
-            const install = b.addInstallFileWithDir(compile.getOutput(), .prefix, destination);
+            const output = if (std.mem.endsWith(u8, destination, ".ctx.cpp")) output: {
+                const source = try getSourceByScratch(b.graph.io, b.allocator, destination);
+                break :output BuildCTX.create(b, b.path(source), release).getOutput();
+            } else output: {
+                const source = try getSourceByDest(b.graph.io, b.allocator, destination);
+                break :output BuildMWCC.create(b, b.path(source), release).getOutput();
+            };
+            const install = b.addInstallFileWithDir(output, .prefix, destination);
             single_step.dependOn(&install.step);
         }
     }
@@ -175,6 +180,129 @@ fn getSourceByScratch(io: std.Io, allocator: std.mem.Allocator, destination: []c
 //    }
 //}
 
+pub fn cache_dependencies(
+    io: std.Io,
+    b: *std.Build,
+    release: Release,
+    dep_path: []const u8,
+    full_src_path: []const u8,
+) std.process.SpawnError!std.process.Child {
+    return try std.process.spawn(io, .{ .argv = &.{
+        b.graph.zig_exe,
+        "c++",
+        full_src_path,
+        "-MM",
+        "-MV",
+        "-MF",
+        dep_path,
+        "-I",
+        "lib/Nitro/",
+        "-D",
+        "__MWERKS__",
+        "-D",
+        release.macroName(),
+    } });
+}
+
+const BuildCTX = struct {
+    step: std.Build.Step,
+    input_file: std.Build.LazyPath,
+    output_file: std.Build.GeneratedFile,
+    release: Release,
+
+    pub fn create(owner: *std.Build, input_file: std.Build.LazyPath, release: Release) *@This() {
+        const self = owner.allocator.create(@This()) catch @panic("OOM");
+        self.* = .{
+            .step = .init(.{
+                .id = .custom,
+                .name = "Compile Single",
+                .owner = owner,
+                .makeFn = make,
+            }),
+            .input_file = input_file,
+            .output_file = std.Build.GeneratedFile{ .step = &self.step },
+            .release = release,
+        };
+        input_file.addStepDependencies(&self.step);
+        return self;
+    }
+
+    pub fn getOutput(this: *const @This()) std.Build.LazyPath {
+        return .{ .generated = .{ .file = &this.output_file } };
+    }
+
+    pub fn make(step: *std.Build.Step, options: std.Build.Step.MakeOptions) !void {
+        _ = options;
+        const self: *@This() = @fieldParentPtr("step", step);
+        const b = step.owner;
+        const io = b.graph.io;
+
+        var man = b.graph.cache.obtain();
+        defer man.deinit();
+
+        const full_src_path = self.input_file.getPath2(b, step);
+        _ = try man.addFile(full_src_path, null);
+        man.hash.add(self.release);
+        man.hash.addBytes("ctx");
+
+        // Check the cache and early return if it is hit.
+        const cache_hit = try step.cacheHit(&man);
+
+        const cache_path = "o" ++ std.fs.path.sep_str ++ man.hex_digest;
+        const full_dest_path = try b.cache_root.join(b.allocator, &.{
+            cache_path, std.fs.path.basename(full_src_path),
+        });
+
+        if (cache_hit) {
+            self.output_file.path = full_dest_path;
+            return;
+        }
+
+        b.cache_root.handle.createDirPath(io, cache_path) catch |err| {
+            return step.fail("unable to make path {s}: {s}", .{ cache_path, @errorName(err) });
+        };
+
+        // Preprocess the source into a single self-contained context file
+        var child = try std.process.spawn(io, .{ .argv = &.{
+            b.graph.zig_exe,
+            "c++",
+            full_src_path,
+            "-o",
+            full_dest_path,
+            "-E",
+            "-P",
+            "-undef",
+            "-I",
+            "lib/Nitro/",
+            "-D",
+            "__MWERKS__",
+            "-D",
+            self.release.macroName(),
+        } });
+        const exit_code = try child.wait(io);
+        switch (exit_code) {
+            .exited => |id| {
+                if (id > 0) return error.BUILD_ERROR;
+            },
+            else => {},
+        }
+
+        // Add any include declerations into cache.
+        // https://ziglang.org/documentation/0.16.0/std/#src/std/Build/Step/Run.zig
+        const dep_path = try b.cache_root.join(b.allocator, &.{ cache_path, "deps.d" });
+        var dep_scan = try cache_dependencies(io, b, self.release, dep_path, full_src_path);
+        switch (try dep_scan.wait(io)) {
+            .exited => |code| if (code > 0) return step.fail("exited: {s}", .{full_src_path}),
+            else => return step.fail("else: {s}", .{full_src_path}),
+        }
+        try man.addDepFilePost(b.cache_root.handle, b.pathJoin(&.{ cache_path, "deps.d" }));
+
+        // Output the file and save the cache
+        self.output_file.path = full_dest_path;
+        try step.writeManifest(&man);
+    }
+};
+
 // Build Steps - modified from https://ziglang.org/documentation/0.16.0/std/#src/std/Build/Step/ObjCopy.zig
 const BuildMWCC = struct {
     step: std.Build.Step,
@@ -237,7 +365,7 @@ const BuildMWCC = struct {
         var argv = std.array_list.Managed([]const u8).init(b.allocator);
         if (builtin.target.os.tag != .windows) try argv.append("wine");
         try argv.appendSlice(&.{
-            "./build/compiler/mwccarm/1.2/sp3/mwccarm.exe",
+            self.release.compilerPath(),
             full_src_path,
             "-o",
             full_dest_path,
@@ -268,30 +396,17 @@ const BuildMWCC = struct {
             else => {},
         }
 
-        // Add the C++ file's includes into cache check
+        // Add any include declerations into cache.
         // https://ziglang.org/documentation/0.16.0/std/#src/std/Build/Step/Run.zig
         const dep_path = try b.cache_root.join(b.allocator, &.{ cache_path, "deps.d" });
-        var dep_scan = try std.process.spawn(io, .{ .argv = &.{
-            b.graph.zig_exe,
-            "c++",
-            full_src_path,
-            "-MM",
-            "-MV",
-            "-MF",
-            dep_path,
-            "-I",
-            "lib/Nitro/",
-            "-D",
-            "__MWERKS__",
-            "-D",
-            self.release.macroName(),
-        } });
+        var dep_scan = try cache_dependencies(io, b, self.release, dep_path, full_dest_path);
         switch (try dep_scan.wait(io)) {
             .exited => |code| if (code > 0) return step.fail("exited: {s}", .{full_src_path}),
             else => return step.fail("else: {s}", .{full_src_path}),
         }
         try man.addDepFilePost(b.cache_root.handle, b.pathJoin(&.{ cache_path, "deps.d" }));
 
+        // Output the file and save the cache
         self.output_file.path = full_dest_path;
         try step.writeManifest(&man);
     }
@@ -316,7 +431,7 @@ const Release = enum {
     }
 
     // Returns the enum name with .nds appended (e.g. A2DE.nds)
-    pub fn fileName(self: Release) []const u8 {
+    pub fn romName(self: Release) []const u8 {
         return switch (self) {
             inline else => |en| @tagName(en) ++ ".nds",
         };
