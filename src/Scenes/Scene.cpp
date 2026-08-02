@@ -1,5 +1,6 @@
 #include "Scene.hpp"
 
+void func_02008558();
 bool func_02046c5c();
 bool Wifi_isMultiBootCart();
 void func_0200f3d8();
@@ -15,13 +16,12 @@ u32 func_02013050(u32);
 u32 data_02085a84;
 u32 data_0208ae58;
 u32 data_02089504;
-u8 data_0203bd28;
 u8 data_02085974;
+u8 data_0203bd28;
 u16 data_0203bd2c;
 u16 data_0203bd34;
 u32 data_02088f38;
-
-Fader *PTR_02085b14;
+Fader *data_02085b14;
 
 Scene::Scene()
 {
@@ -80,7 +80,7 @@ void Scene::postCreate(u32 param_1)
 {
 	func_0200e944(this->_5c, this->_60, 1);
 	if (param_1 == 2) {
-		PTR_02085b14 = &GlobalFader;
+		data_02085b14 = &GlobalFader;
 	}
 	Object::postCreate(param_1);
 	return;
@@ -175,7 +175,6 @@ void Scene::postRender(u32 a)
 	Base::postRender(a);
 }
 
-void func_02008558();
 void Scene::prepareFirstScene()
 {
 	if (i32(&GlobalFader) != 0) {

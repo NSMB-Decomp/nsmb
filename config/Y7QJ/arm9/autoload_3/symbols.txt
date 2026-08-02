@@ -187,7 +187,7 @@ data_02076494 kind:bss addr:0x02076494
 data_020764a8 kind:bss addr:0x020764a8
 data_020764a9 kind:bss addr:0x020764a9
 data_020764b0 kind:bss addr:0x020764b0
-data_020764bc kind:bss addr:0x020764bc
+GlobalFader kind:bss addr:0x020764bc
 data_02076a78 kind:bss addr:0x02076a78
 data_02076a7a kind:bss addr:0x02076a7a
 data_02076a7c kind:bss addr:0x02076a7c

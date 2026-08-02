@@ -516,7 +516,7 @@ func_02010ccc kind:function(arm,size=0x30) addr:0x02010ccc
 func_02010cfc kind:function(arm,size=0x24) addr:0x02010cfc
 func_02010d20 kind:function(arm,size=0x14) addr:0x02010d20
 func_02010d34 kind:function(arm,size=0x20) addr:0x02010d34
-func_02010d54 kind:function(arm,size=0x28) addr:0x02010d54
+_ZN6Object10postCreateEm kind:function(arm,size=0x28) addr:0x02010d54
 func_02010d7c kind:function(arm,size=0x18) addr:0x02010d7c
 func_02010d94 kind:function(arm,size=0x18) addr:0x02010d94
 func_02010dac kind:function(arm,size=0x4) addr:0x02010dac
@@ -1346,7 +1346,7 @@ data_02034fb4 kind:data(any) addr:0x02034fb4
 data_02034fb6 kind:data(any) addr:0x02034fb6
 data_02034fb8 kind:data(any) addr:0x02034fb8
 data_02034fba kind:data(any) addr:0x02034fba
-data_02034fc4 kind:data(any) addr:0x02034fc4
+_ZTV5Scene kind:data(any) addr:0x02034fbc
 data_0203500c kind:data(any) addr:0x0203500c
 data_02035018 kind:data(any) addr:0x02035018
 data_02035020 kind:data(any) addr:0x02035020

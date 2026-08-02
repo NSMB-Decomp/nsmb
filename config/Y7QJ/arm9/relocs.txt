@@ -1893,7 +1893,7 @@ from:0x02010d74 kind:arm_call to:0x0203eb64 module:autoload(2)
 from:0x02010d80 kind:arm_call to:0x0203f394 module:autoload(2)
 from:0x02010d98 kind:arm_call to:0x0203f3b0 module:autoload(2)
 from:0x02010db8 kind:arm_call to:0x0203e9b4 module:autoload(2)
-from:0x02010df4 kind:load to:0x02034fc4 module:main
+from:0x02010df4 kind:load to:0x02034fbc add:0x8 module:main
 from:0x02010df8 kind:load to:0x020bbac1 module:overlay(0)
 from:0x02010dfc kind:load to:0x020bbac0 module:overlay(0)
 from:0x02010e00 kind:load to:0x020764a8 module:autoload(3)
@@ -1903,7 +1903,7 @@ from:0x02010e7c kind:arm_call to:0x0200e1ec module:main
 from:0x02010e80 kind:arm_call to:0x02009500 module:main
 from:0x02010eac kind:arm_call to:0x021366a4 module:overlay(52)
 from:0x02010ee8 kind:arm_call to:0x0203eb2c module:autoload(2)
-from:0x02010ef4 kind:load to:0x02034fc4 module:main
+from:0x02010ef4 kind:load to:0x02034fbc add:0x8 module:main
 from:0x02010ef8 kind:load to:0x020764a8 module:autoload(3)
 from:0x02010efc kind:load to:0x02075dcd module:autoload(3)
 from:0x02010f00 kind:load to:0x02076158 module:autoload(3)
@@ -1918,7 +1918,7 @@ from:0x02010f90 kind:arm_call to:0x02009500 module:main
 from:0x02010fbc kind:arm_call to:0x021366a4 module:overlay(52)
 from:0x02010ff8 kind:arm_call to:0x0203eb2c module:autoload(2)
 from:0x02011000 kind:arm_call to:0x0203f0c0 module:autoload(2)
-from:0x0201100c kind:load to:0x02034fc4 module:main
+from:0x0201100c kind:load to:0x02034fbc add:0x8 module:main
 from:0x02011010 kind:load to:0x020764a8 module:autoload(3)
 from:0x02011014 kind:load to:0x02075dcd module:autoload(3)
 from:0x02011018 kind:load to:0x02076158 module:autoload(3)
@@ -1932,7 +1932,7 @@ from:0x020110a4 kind:arm_call to:0x0200e1ec module:main
 from:0x020110a8 kind:arm_call to:0x02009500 module:main
 from:0x020110d4 kind:arm_call to:0x021366a4 module:overlay(52)
 from:0x02011110 kind:arm_call to:0x0203eb2c module:autoload(2)
-from:0x0201111c kind:load to:0x02034fc4 module:main
+from:0x0201111c kind:load to:0x02034fbc add:0x8 module:main
 from:0x02011120 kind:load to:0x020764a8 module:autoload(3)
 from:0x02011124 kind:load to:0x02075dcd module:autoload(3)
 from:0x02011128 kind:load to:0x02076158 module:autoload(3)
