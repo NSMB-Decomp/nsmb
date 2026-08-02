@@ -407,7 +407,7 @@ const BuildMWCC = struct {
         // Add any include declerations into cache.
         // https://ziglang.org/documentation/0.16.0/std/#src/std/Build/Step/Run.zig
         const dep_path = try b.cache_root.join(b.allocator, &.{ cache_path, "deps.d" });
-        var dep_scan = try cache_dependencies(io, b, self.release, dep_path, full_dest_path);
+        var dep_scan = try cache_dependencies(io, b, self.release, dep_path, full_src_path);
         switch (try dep_scan.wait(io)) {
             .exited => |code| if (code > 0) return step.fail("exited: {s}", .{full_src_path}),
             else => return step.fail("else: {s}", .{full_src_path}),
