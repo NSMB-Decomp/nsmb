@@ -168,8 +168,8 @@ func_ov010_020d4e64 kind:function(arm,size=0x54) addr:0x020d4e64
 func_ov010_020d4eb8 kind:function(arm,size=0x98) addr:0x020d4eb8
 func_ov010_020d4f50 kind:function(arm,size=0x88) addr:0x020d4f50
 func_ov010_020d4fd8 kind:function(arm,size=0x94) addr:0x020d4fd8
-func_ov010_020d506c kind:function(arm,size=0x60) addr:0x020d506c
-func_ov010_020d50cc kind:function(arm,size=0x54) addr:0x020d50cc
+_ZN8ToadItem6createEv kind:function(arm,size=0x60) addr:0x020d506c
+_ZN4Item6createEv kind:function(arm,size=0x54) addr:0x020d50cc
 func_ov010_020d5120 kind:function(arm,size=0x8c) addr:0x020d5120
 func_ov010_020d51ac kind:function(arm,size=0x94) addr:0x020d51ac
 func_ov010_020d5240 kind:function(arm,size=0x88) addr:0x020d5240
@@ -1954,8 +1954,8 @@ data_ov010_02124340 kind:data(any) addr:0x02124340
 data_ov010_02124348 kind:data(any) addr:0x02124348
 UnknownProfile::ov010_02124350 kind:data(any) addr:0x02124350
 UnknownProfile::ov010_0212435c kind:data(any) addr:0x0212435c
-data_ov010_02124370 kind:data(any) addr:0x02124370
-data_ov010_02124484 kind:data(any) addr:0x02124484
+_ZTV4Item kind:data(any) addr:0x02124368
+_ZTV8ToadItem kind:data(any) addr:0x0212447c
 data_ov010_02124590 kind:data(any) addr:0x02124590
 data_ov010_02124598 kind:data(any) addr:0x02124598
 data_ov010_021245a0 kind:data(any) addr:0x021245a0
