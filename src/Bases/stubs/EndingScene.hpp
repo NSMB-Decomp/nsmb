@@ -1,13 +1,14 @@
 #pragma once
-#include "../StageEntity.hpp"
+#include "../../Scenes/Scene.hpp"
 #include "../../AAA.hpp"
 
 // MainProfileTable slot 12  |  ov008  |  profile @ 0x020e9b88
-class Object12 : public StageEntity {
+class EndingScene : public Scene {
 public:
+	u8 _pad0[0x4];
 	static void *create();
-	inline Object12() {};
-	inline ~Object12() {};
+	inline EndingScene() {};
+	inline ~EndingScene() {};
 };
 
 extern ObjectProfile Object12_Profile;

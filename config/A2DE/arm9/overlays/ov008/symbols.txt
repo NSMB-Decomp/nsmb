@@ -322,7 +322,7 @@ func_ov008_020dddd8 kind:function(arm,size=0x1c) addr:0x020dddd8
 func_ov008_020dddf4 kind:function(arm,size=0x4) addr:0x020dddf4
 func_ov008_020dddf8 kind:function(arm,size=0x24) addr:0x020dddf8
 func_ov008_020dde1c kind:function(arm,size=0x2bc) addr:0x020dde1c
-_ZN8Object126createEv kind:function(arm,size=0x2c) addr:0x020de0d8
+_ZN11EndingScene6createEv kind:function(arm,size=0x2c) addr:0x020de0d8
 func_ov008_020de104 kind:function(arm,size=0x68) addr:0x020de104
 func_ov008_020de16c kind:function(arm,size=0x70) addr:0x020de16c
 func_ov008_020de1dc kind:function(arm,size=0xac) addr:0x020de1dc
@@ -1147,7 +1147,7 @@ _ZTV13WmPlayerModel kind:data(any) addr:0x020e9b68
 data_ov008_020e9b78 kind:data(any) addr:0x020e9b78
 data_ov008_020e9b80 kind:data(any) addr:0x020e9b80
 Object12_Profile kind:data(any) addr:0x020e9b88
-_ZTV8Object12 kind:data(any) addr:0x020e9b90
+_ZTV11EndingScene kind:data(any) addr:0x020e9b90
 data_ov008_020e9be0 kind:data(any) addr:0x020e9be0
 data_ov008_020e9be8 kind:data(any) addr:0x020e9be8
 Object324_Profile kind:data(any) addr:0x020e9bf0 ambiguous
