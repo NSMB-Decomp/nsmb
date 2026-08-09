@@ -7,6 +7,7 @@ public:
 	u8 _pad0[0x12];
 	u8 _404;
 	u16 _406;
+	u8 _pad1[0x4];
 
 	static void *create();
 	inline Object125() {};
