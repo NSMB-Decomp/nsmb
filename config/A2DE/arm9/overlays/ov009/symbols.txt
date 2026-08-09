@@ -360,8 +360,8 @@ func_ov009_020d85b0 kind:function(arm,size=0xcc) addr:0x020d85b0
 func_ov009_020d867c kind:function(arm,size=0x18) addr:0x020d867c
 func_ov009_020d8694 kind:function(arm,size=0x54) addr:0x020d8694
 func_ov009_020d86e8 kind:function(arm,size=0x4c) addr:0x020d86e8
-func_ov009_020d8734 kind:function(arm,size=0x10) addr:0x020d8734
-func_ov009_020d8744 kind:function(arm,size=0x18) addr:0x020d8744
+_ZN17Object310_UnknownD1Ev kind:function(arm,size=0x10) addr:0x020d8734
+_ZN17Object310_UnknownC1Ev kind:function(arm,size=0x18) addr:0x020d8744
 func_ov009_020d875c kind:function(arm,size=0x4c) addr:0x020d875c
 func_ov009_020d87a8 kind:function(arm,size=0x44) addr:0x020d87a8
 _ZN9Object310C1Ev kind:function(arm,size=0x5c) addr:0x020d87ec
@@ -655,7 +655,7 @@ data_ov009_020dae88 kind:data(any) addr:0x020dae88
 data_ov009_020dae90 kind:data(any) addr:0x020dae90
 data_ov009_020dae98 kind:data(any) addr:0x020dae98
 Object308_Profile kind:data(any) addr:0x020daea0
-_ZTV9Object308 kind:data(any) addr:0x020daeb4
+_ZTV9Object308 kind:data(any) addr:0x020daeac
 data_ov009_020daf04 kind:data(any) addr:0x020daf04
 data_ov009_020daf0c kind:data(any) addr:0x020daf0c
 data_ov009_020daf14 kind:data(any) addr:0x020daf14

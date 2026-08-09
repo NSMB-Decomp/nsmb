@@ -6,7 +6,7 @@ void *Object310::create()
 }
 
 Object310::Object310() {
-	
+	this->_1c8 = 0;
 }
 
 // 0x020dafd0
