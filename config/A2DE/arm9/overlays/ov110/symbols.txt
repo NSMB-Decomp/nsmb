@@ -1,9 +1,9 @@
-func_ov110_021899e0 kind:function(arm,size=0xa0) addr:0x021899e0
-func_ov110_02189a80 kind:function(arm,size=0xa8) addr:0x02189a80
-func_ov110_02189b28 kind:function(arm,size=0x110) addr:0x02189b28
-func_ov110_02189c38 kind:function(arm,size=0x20) addr:0x02189c38
-func_ov110_02189c58 kind:function(arm,size=0x150) addr:0x02189c58
-func_ov110_02189da8 kind:function(arm,size=0x38) addr:0x02189da8
+_ZN9Object124D1Ev kind:function(arm,size=0xa0) addr:0x021899e0
+_ZN9Object124D0Ev kind:function(arm,size=0xa8) addr:0x02189a80
+_ZN9Object1248onRenderEv kind:function(arm,size=0x110) addr:0x02189b28
+_ZN9Object12410onUpdate_0Ev kind:function(arm,size=0x20) addr:0x02189c38
+_ZN9Object1248onCreateEv kind:function(arm,size=0x150) addr:0x02189c58
+_ZN9Object12413onHeapCreatedEv kind:function(arm,size=0x38) addr:0x02189da8
 func_ov110_02189de0 kind:function(arm,size=0x98) addr:0x02189de0
 func_ov110_02189e78 kind:function(arm,size=0x84) addr:0x02189e78
 func_ov110_02189efc kind:function(arm,size=0x94) addr:0x02189efc

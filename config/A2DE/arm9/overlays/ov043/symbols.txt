@@ -1,13 +1,13 @@
-func_ov043_02146c60 kind:function(arm,size=0x12c) addr:0x02146c60
-func_ov043_02146d8c kind:function(arm,size=0x134) addr:0x02146d8c
+_ZN9Object116D1Ev kind:function(arm,size=0x12c) addr:0x02146c60
+_ZN9Object116D0Ev kind:function(arm,size=0x134) addr:0x02146d8c
 func_ov043_02146ec0 kind:function(arm,size=0xc8) addr:0x02146ec0
 func_ov043_02146f88 kind:function(arm,size=0xc8) addr:0x02146f88
 func_ov043_02147050 kind:function(arm,size=0x10) addr:0x02147050
 func_ov043_02147060 kind:function(arm,size=0x10) addr:0x02147060
-func_ov043_02147070 kind:function(arm,size=0x2d4) addr:0x02147070
+_ZN9Object1168onRenderEv kind:function(arm,size=0x2d4) addr:0x02147070
 func_ov043_02147344 kind:function(arm,size=0x4c) addr:0x02147344
-func_ov043_02147390 kind:function(arm,size=0x1a4) addr:0x02147390
-func_ov043_02147534 kind:function(arm,size=0x28) addr:0x02147534
+_ZN9Object1168onCreateEv kind:function(arm,size=0x1a4) addr:0x02147390
+_ZN9Object11610onUpdate_0Ev kind:function(arm,size=0x28) addr:0x02147534
 func_ov043_0214755c kind:function(arm,size=0x3c) addr:0x0214755c
 func_ov043_02147598 kind:function(arm,size=0xec) addr:0x02147598
 func_ov043_02147684 kind:function(arm,size=0x124) addr:0x02147684
@@ -19,7 +19,7 @@ func_ov043_02147ddc kind:function(arm,size=0x2c4) addr:0x02147ddc
 func_ov043_021480a0 kind:function(arm,size=0x11c) addr:0x021480a0
 func_ov043_021481bc kind:function(arm,size=0x3c4) addr:0x021481bc
 func_ov043_02148580 kind:function(arm,size=0xf8) addr:0x02148580
-func_ov043_02148678 kind:function(arm,size=0x158) addr:0x02148678
+_ZN9Object11613onHeapCreatedEv kind:function(arm,size=0x158) addr:0x02148678
 func_ov043_021487d0 kind:function(arm,size=0xb8) addr:0x021487d0
 _ZN9Object1166createEv kind:function(arm,size=0x128) addr:0x02148888
 data_ov043_021489b0 kind:data(any) addr:0x021489b0

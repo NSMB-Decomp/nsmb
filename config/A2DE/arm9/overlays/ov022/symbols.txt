@@ -1,7 +1,7 @@
-func_ov022_0213bf00 kind:function(arm,size=0x5c) addr:0x0213bf00
-func_ov022_0213bf5c kind:function(arm,size=0x64) addr:0x0213bf5c
-func_ov022_0213bfc0 kind:function(arm,size=0x18) addr:0x0213bfc0
-func_ov022_0213bfd8 kind:function(arm,size=0x5c) addr:0x0213bfd8
+_ZN8Object64D1Ev kind:function(arm,size=0x5c) addr:0x0213bf00
+_ZN8Object64D0Ev kind:function(arm,size=0x64) addr:0x0213bf5c
+_ZN8Object648onUpdateEv kind:function(arm,size=0x18) addr:0x0213bfc0
+_ZN8Object648onCreateEv kind:function(arm,size=0x5c) addr:0x0213bfd8
 func_ov022_0213c034 kind:function(arm,size=0x214) addr:0x0213c034
 func_ov022_0213c248 kind:function(arm,size=0xa4) addr:0x0213c248
 func_ov022_0213c2ec kind:function(arm,size=0x9c) addr:0x0213c2ec

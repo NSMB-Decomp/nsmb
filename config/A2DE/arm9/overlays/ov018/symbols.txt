@@ -1,11 +1,11 @@
 func_ov018_0212f900 kind:function(arm,size=0x88) addr:0x0212f900
 func_ov018_0212f988 kind:function(arm,size=0x90) addr:0x0212f988
-func_ov018_0212fa18 kind:function(arm,size=0x1c) addr:0x0212fa18
-func_ov018_0212fa34 kind:function(arm,size=0x10) addr:0x0212fa34
-func_ov018_0212fa44 kind:function(arm,size=0x140) addr:0x0212fa44
+_ZN9Object1359onDestroyEv kind:function(arm,size=0x1c) addr:0x0212fa18
+_ZN9Object13514pendingDestroyEv kind:function(arm,size=0x10) addr:0x0212fa34
+_ZN9Object1358onRenderEv kind:function(arm,size=0x140) addr:0x0212fa44
 func_ov018_0212fb84 kind:function(arm,size=0x50) addr:0x0212fb84
 func_ov018_0212fbd4 kind:function(arm,size=0xd8) addr:0x0212fbd4
-func_ov018_0212fcac kind:function(arm,size=0x1b0) addr:0x0212fcac
+_ZN9Object1358onCreateEv kind:function(arm,size=0x1b0) addr:0x0212fcac
 func_ov018_0212fe5c kind:function(arm,size=0x130) addr:0x0212fe5c
 func_ov018_0212ff8c kind:function(arm,size=0x150) addr:0x0212ff8c
 func_ov018_021300dc kind:function(arm,size=0xd0) addr:0x021300dc
