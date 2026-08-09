@@ -207,7 +207,7 @@ func_ov009_020d4870 kind:function(arm,size=0x68) addr:0x020d4870
 func_ov009_020d48d8 kind:function(arm,size=0x90) addr:0x020d48d8
 func_ov009_020d4968 kind:function(arm,size=0x2c) addr:0x020d4968
 func_ov009_020d4994 kind:function(arm,size=0x24) addr:0x020d4994
-func_ov009_020d49b8 kind:function(arm,size=0x24) addr:0x020d49b8
+_ZN15Object308_ModelC1Ev kind:function(arm,size=0x24) addr:0x020d49b8
 func_ov009_020d49dc kind:function(arm,size=0x8) addr:0x020d49dc
 func_ov009_020d49e4 kind:function(arm,size=0x70) addr:0x020d49e4
 func_ov009_020d4a54 kind:function(arm,size=0x100) addr:0x020d4a54
@@ -655,7 +655,7 @@ data_ov009_020dae88 kind:data(any) addr:0x020dae88
 data_ov009_020dae90 kind:data(any) addr:0x020dae90
 data_ov009_020dae98 kind:data(any) addr:0x020dae98
 Object308_Profile kind:data(any) addr:0x020daea0
-UnknownVtable::ov009_020daeb4 kind:data(any) addr:0x020daeb4
+_ZTV9Object308 kind:data(any) addr:0x020daeb4
 data_ov009_020daf04 kind:data(any) addr:0x020daf04
 data_ov009_020daf0c kind:data(any) addr:0x020daf0c
 data_ov009_020daf14 kind:data(any) addr:0x020daf14
