@@ -59,10 +59,10 @@ func_ov010_020ce624 kind:function(arm,size=0x34) addr:0x020ce624
 func_ov010_020ce658 kind:function(arm,size=0x84) addr:0x020ce658
 func_ov010_020ce6dc kind:function(arm,size=0x58) addr:0x020ce6dc
 func_ov010_020ce734 kind:function(arm,size=0x60) addr:0x020ce734
-func_ov010_020ce794 kind:function(arm,size=0x20) addr:0x020ce794
-func_ov010_020ce7b4 kind:function(arm,size=0x28) addr:0x020ce7b4
-func_ov010_020ce7dc kind:function(arm,size=0x18) addr:0x020ce7dc
-func_ov010_020ce7f4 kind:function(arm,size=0x1c) addr:0x020ce7f4
+_ZN9Object325D1Ev kind:function(arm,size=0x20) addr:0x020ce794
+_ZN9Object325D0Ev kind:function(arm,size=0x28) addr:0x020ce7b4
+_ZN9Object3258onUpdateEv kind:function(arm,size=0x18) addr:0x020ce7dc
+_ZN9Object3258onRenderEv kind:function(arm,size=0x1c) addr:0x020ce7f4
 _ZN9Object3256createEv kind:function(arm,size=0x2c) addr:0x020ce810
 func_ov010_020ce83c kind:function(arm,size=0x7c) addr:0x020ce83c
 func_ov010_020ce8b8 kind:function(arm,size=0x74) addr:0x020ce8b8
@@ -584,7 +584,7 @@ func_ov010_020e6414 kind:function(arm,size=0xc8) addr:0x020e6414
 func_ov010_020e64dc kind:function(arm,size=0x14) addr:0x020e64dc
 func_ov010_020e64f0 kind:function(arm,size=0x1c) addr:0x020e64f0
 func_ov010_020e650c kind:function(arm,size=0x18) addr:0x020e650c
-func_ov010_020e6524 kind:function(arm,size=0x18) addr:0x020e6524
+_Z19func_ov010_020e6524v kind:function(arm,size=0x18) addr:0x020e6524
 func_ov010_020e653c kind:function(arm,size=0x40) addr:0x020e653c
 func_ov010_020e657c kind:function(arm,size=0x38) addr:0x020e657c
 func_ov010_020e65b4 kind:function(arm,size=0x18) addr:0x020e65b4
@@ -1910,7 +1910,7 @@ data_ov010_02123c90 kind:data(any) addr:0x02123c90
 data_ov010_02123cc0 kind:data(any) addr:0x02123cc0
 data_ov010_02123d10 kind:data(any) addr:0x02123d10
 Object325_Profile kind:data(any) addr:0x02123d58
-_ZTV9Object325 kind:data(any) addr:0x02123d64
+_ZTV9Object325 kind:data(word[22]) addr:0x02123d64
 data_ov010_02123dc4 kind:data(any) addr:0x02123dc4
 data_ov010_02123dd8 kind:data(any) addr:0x02123dd8 ambiguous
 data_ov010_02123df8 kind:data(any) addr:0x02123df8 ambiguous
