@@ -132,8 +132,8 @@ data_02085d04 kind:bss addr:0x02085d04
 data_02085d08 kind:bss addr:0x02085d08
 LoadedOverlays kind:bss addr:0x02085d0c
 data_02085e0c kind:bss addr:0x02085e0c
-data_02085e10 kind:bss addr:0x02085e10
-data_02085e14 kind:bss addr:0x02085e14
+currentHeap kind:bss addr:0x02085e10
+currentHeapLength kind:bss addr:0x02085e14
 data_02085e18 kind:bss addr:0x02085e18
 data_02085e24 kind:bss addr:0x02085e24
 data_02085e30 kind:bss addr:0x02085e30

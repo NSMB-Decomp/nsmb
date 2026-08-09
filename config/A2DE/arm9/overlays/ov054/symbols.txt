@@ -1,13 +1,13 @@
-func_ov054_02152840 kind:function(arm,size=0x44) addr:0x02152840
-func_ov054_02152884 kind:function(arm,size=0x200) addr:0x02152884
-func_ov054_02152a84 kind:function(arm,size=0x4) addr:0x02152a84
-func_ov054_02152a88 kind:function(arm,size=0x80) addr:0x02152a88
-func_ov054_02152b08 kind:function(arm,size=0x32c) addr:0x02152b08
-func_ov054_02152e34 kind:function(arm,size=0x28) addr:0x02152e34
-func_ov054_02152e5c kind:function(arm,size=0x20) addr:0x02152e5c
-func_ov054_02152e7c kind:function(arm,size=0x20) addr:0x02152e7c
-func_ov054_02152e9c kind:function(arm,size=0x28) addr:0x02152e9c
-func_ov054_02152ec4 kind:function(arm,size=0x18) addr:0x02152ec4
+_ZN15StageIntroScene8onUpdateEv kind:function(arm,size=0x44) addr:0x02152840
+_ZN15StageIntroScene8onRenderEv kind:function(arm,size=0x200) addr:0x02152884
+_ZN15StageIntroScene14pendingDestroyEv kind:function(arm,size=0x4) addr:0x02152a84
+_ZN15StageIntroScene9onDestroyEv kind:function(arm,size=0x80) addr:0x02152a88
+_ZN15StageIntroScene8onCreateEv kind:function(arm,size=0x32c) addr:0x02152b08
+_ZN15StageIntroSceneD0Ev kind:function(arm,size=0x28) addr:0x02152e34
+_ZN15StageIntroSceneD1Ev kind:function(arm,size=0x20) addr:0x02152e5c
+_ZN15StageIntroSceneC1Ev kind:function(arm,size=0x20) addr:0x02152e7c
+StageIntroScene::_02152e9c kind:function(arm,size=0x28) addr:0x02152e9c
+StageIntroScene::_02152ec4 kind:function(arm,size=0x18) addr:0x02152ec4
 func_ov054_02152edc kind:function(arm,size=0xb4) addr:0x02152edc
 func_ov054_02152f90 kind:function(arm,size=0xbc) addr:0x02152f90
 func_ov054_0215304c kind:function(arm,size=0x8) addr:0x0215304c
@@ -673,7 +673,7 @@ __sinit_ov054_0216cafc kind:function(arm,size=0x150) addr:0x0216cafc
 .p__sinit_ov054_0216cafc kind:data(word) addr:0x0216cc8c
 UnknownProfile::ov054_0216cca0 kind:data(any) addr:0x0216cca0 ambiguous
 data_ov054_0216cca8 kind:data(any) addr:0x0216cca8
-data_ov054_0216ccd8 kind:data(any) addr:0x0216ccd8
+_ZTV15StageIntroScene kind:data(any) addr:0x0216ccd0
 data_ov054_0216cd20 kind:data(any) addr:0x0216cd20
 data_ov054_0216cd24 kind:data(any) addr:0x0216cd24
 data_ov054_0216cd80 kind:data(any) addr:0x0216cd80
