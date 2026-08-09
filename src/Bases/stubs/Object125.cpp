@@ -14,7 +14,7 @@ bool Object125::func_ov117_0218c9b0(u32 a)
 	if (this->_3f4 == NULL) {
 		return true;
 	} else {
-	 	return (this->**_3f4)(a);
+	 	return (this->*_3f4)(a);
 	}
 }
 s32 Object125::onCreate()

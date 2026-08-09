@@ -4,8 +4,8 @@
 // MainProfileTable slot 125  |  ov117  |  profile @ 0x0218dee0
 class Object125 : public StageEntity {
 public:
-	bool (StageEntity::**_3f4)(u32);
-	u8 _pad0[0xc];
+	bool (StageEntity::*_3f4)(u32);
+	u8 _pad0[0x8];
 	u8 _404;
 	u16 _406;
 	u8 _pad1[0x4];
