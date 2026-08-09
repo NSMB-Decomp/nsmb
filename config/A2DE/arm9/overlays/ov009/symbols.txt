@@ -408,11 +408,11 @@ func_ov009_020d936c kind:function(arm,size=0xbc) addr:0x020d936c
 func_ov009_020d9428 kind:function(arm,size=0x18) addr:0x020d9428
 func_ov009_020d9440 kind:function(arm,size=0x58) addr:0x020d9440
 func_ov009_020d9498 kind:function(arm,size=0x4c) addr:0x020d9498
-func_ov009_020d94e4 kind:function(arm,size=0x10) addr:0x020d94e4
-func_ov009_020d94f4 kind:function(arm,size=0x18) addr:0x020d94f4
+_ZN17Object313_UnknwonD1Ev kind:function(arm,size=0x10) addr:0x020d94e4
+_ZN17Object313_UnknwonC1Ev kind:function(arm,size=0x18) addr:0x020d94f4
 func_ov009_020d950c kind:function(arm,size=0x4c) addr:0x020d950c
 func_ov009_020d9558 kind:function(arm,size=0x44) addr:0x020d9558
-func_ov009_020d959c kind:function(arm,size=0x5c) addr:0x020d959c
+_ZN9Object313C1Ev kind:function(arm,size=0x5c) addr:0x020d959c
 _ZN9Object3136createEv kind:function(arm,size=0x28) addr:0x020d95f8
 data_ov009_020d9620 kind:data(any) addr:0x020d9620
 data_ov009_020d9621 kind:data(any) addr:0x020d9621

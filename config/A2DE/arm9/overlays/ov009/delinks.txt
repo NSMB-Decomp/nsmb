@@ -46,5 +46,5 @@ src/Bases/stubs/Object312.cpp:
     .data       start:0x020db0b0 end:0x020db0bc
 
 src/Bases/stubs/Object313.cpp:
-    .text       start:0x020d95f8 end:0x020d9620
+    .text       start:0x020d959c end:0x020d9620
     .data       start:0x020db134 end:0x020db140
