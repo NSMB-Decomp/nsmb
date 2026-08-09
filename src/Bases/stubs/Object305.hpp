@@ -1,12 +1,15 @@
 #pragma once
-#include "../StageEntity.hpp"
+#include "../Actor.hpp"
 #include "../../AAA.hpp"
 
 // MainProfileTable slot 305  |  ov009  |  profile @ 0x020dabb4
-class Object305 : public StageEntity {
+class Object305 : public Actor {
 public:
+	u8 _120;
+	u8 _121;
+	u8 _pad0[0x3a];
 	static void *create();
-	inline Object305() {};
+	Object305();
 	inline ~Object305() {};
 };
 

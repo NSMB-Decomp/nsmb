@@ -1971,7 +1971,7 @@ Object284_Profile kind:data(any) addr:0x02124920
 Object283_Profile kind:data(any) addr:0x0212492c
 Object275_Profile kind:data(any) addr:0x02124938
 Object274_Profile kind:data(any) addr:0x02124944
-data_ov010_02124958 kind:data(any) addr:0x02124958
+_ZTV9Object283 kind:data(any) addr:0x02124958
 data_ov010_021249d8 kind:data(any) addr:0x021249d8 ambiguous
 data_ov010_02124a48 kind:data(any) addr:0x02124a48 ambiguous
 Object282_Profile kind:data(any) addr:0x02124a64
