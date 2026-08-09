@@ -2,3 +2,7 @@
     .ctor       start:0x020cc604 end:0x020cc604 kind:rodata align:4
     .data       start:0x020cc620 end:0x020cc6a0 kind:data align:32
     .bss        start:0x020cc6a0 end:0x020cc6a0 kind:bss align:32
+
+src/Bases/stubs/Object17.cpp:
+    .text       start:0x020cc5d8 end:0x020cc604
+    .data       start:0x020cc620 end:0x020cc628

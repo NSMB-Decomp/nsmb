@@ -5,3 +5,75 @@
     .ctor       start:0x020fdd98 end:0x020fdddc kind:rodata align:4
     .data       start:0x020fdde0 end:0x02104380 kind:data align:32
     .bss        start:0x02104380 end:0x02106620 kind:bss align:32
+
+src/Bases/stubs/Object345.cpp:
+    .text       start:0x020c8224 end:0x020c8318
+    .data       start:0x020feb50 end:0x020feb6c
+
+src/Bases/stubs/Object344.cpp:
+    .text       start:0x020cbb38 end:0x020cbb68
+    .data       start:0x020fed84 end:0x020fed98
+
+src/Bases/stubs/Object349.cpp:
+    .text       start:0x020ce1b4 end:0x020ce280
+    .data       start:0x020feea8 end:0x020feec4
+
+src/Bases/stubs/Object348.cpp:
+    .text       start:0x020d0e7c end:0x020d0eac
+    .data       start:0x020ff0e0 end:0x020ff0fc
+
+src/Bases/stubs/Object353.cpp:
+    .text       start:0x020d49b4 end:0x020d4a18
+    .data       start:0x020ff2bc end:0x020ff2d8
+
+src/Bases/stubs/Object346.cpp:
+    .text       start:0x020d58fc end:0x020d59f8
+    .data       start:0x020ff3a8 end:0x020ff3c4
+
+src/Bases/stubs/Object341.cpp:
+    .text       start:0x020d937c end:0x020d93ac
+    .data       start:0x020ff560 end:0x020ff574
+
+src/Bases/stubs/Object340.cpp:
+    .text       start:0x020db350 end:0x020db3bc
+    .data       start:0x020ff76c end:0x020ff780
+
+src/Bases/stubs/Object351.cpp:
+    .text       start:0x020dcaf4 end:0x020dcb94
+    .data       start:0x020ff9a0 end:0x020ff9b4
+
+src/Bases/stubs/Object342.cpp:
+    .text       start:0x020e1544 end:0x020e1574
+    .data       start:0x020ffbb0 end:0x020ffbc4
+
+src/Bases/stubs/Object343.cpp:
+    .text       start:0x020e6064 end:0x020e6094
+    .data       start:0x020ffda8 end:0x020ffdbc
+
+src/Bases/stubs/Object350.cpp:
+    .text       start:0x020e9090 end:0x020e90c0
+    .data       start:0x02100000 end:0x02100014
+
+src/Bases/stubs/Object354.cpp:
+    .text       start:0x020ec91c end:0x020ec94c
+    .data       start:0x021005f0 end:0x02100604
+
+src/Bases/stubs/Object352.cpp:
+    .text       start:0x020ee494 end:0x020ee598
+    .data       start:0x021006fc end:0x02100718
+
+src/Bases/stubs/Object347.cpp:
+    .text       start:0x020f31ac end:0x020f31d8
+    .data       start:0x02100828 end:0x02100844
+
+src/Bases/stubs/Object356.cpp:
+    .text       start:0x020f5434 end:0x020f553c
+    .data       start:0x02100938 end:0x02100954
+
+src/Bases/stubs/Object357.cpp:
+    .text       start:0x020f7860 end:0x020f7940
+    .data       start:0x02100a34 end:0x02100a50
+
+src/Bases/stubs/Object355.cpp:
+    .text       start:0x020fb27c end:0x020fb2a8
+    .data       start:0x02100c00 end:0x02100c14

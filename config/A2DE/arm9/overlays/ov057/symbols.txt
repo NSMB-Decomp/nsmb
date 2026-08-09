@@ -19,7 +19,7 @@ func_ov057_02172f4c kind:function(arm,size=0x3c) addr:0x02172f4c
 func_ov057_02172f88 kind:function(arm,size=0xe4) addr:0x02172f88
 func_ov057_0217306c kind:function(arm,size=0x10) addr:0x0217306c
 func_ov057_0217307c kind:function(arm,size=0x1c) addr:0x0217307c
-func_ov057_02173098 kind:function(arm,size=0x40) addr:0x02173098
+_ZN8Object446createEv kind:function(arm,size=0x40) addr:0x02173098
 func_ov057_021730d8 kind:function(arm,size=0x68) addr:0x021730d8
 func_ov057_02173140 kind:function(arm,size=0x54) addr:0x02173140
 func_ov057_02173194 kind:function(arm,size=0x2c) addr:0x02173194
@@ -70,7 +70,7 @@ func_ov057_0217522c kind:function(arm,size=0x3c) addr:0x0217522c
 func_ov057_02175268 kind:function(arm,size=0xe4) addr:0x02175268
 func_ov057_0217534c kind:function(arm,size=0x6c) addr:0x0217534c
 func_ov057_021753b8 kind:function(arm,size=0x38) addr:0x021753b8
-func_ov057_021753f0 kind:function(arm,size=0xbc) addr:0x021753f0
+_ZN8Object456createEv kind:function(arm,size=0xbc) addr:0x021753f0
 func_ov057_021754ac kind:function(arm,size=0x20) addr:0x021754ac
 data_ov057_021754cc kind:data(any) addr:0x021754cc
 data_ov057_021754d0 kind:data(any) addr:0x021754d0
@@ -90,8 +90,8 @@ data_ov057_02175540 kind:data(any) addr:0x02175540
 data_ov057_02175548 kind:data(any) addr:0x02175548
 data_ov057_02175550 kind:data(any) addr:0x02175550
 data_ov057_02175558 kind:data(any) addr:0x02175558
-UnknownProfile::ov057_02175560 kind:data(any) addr:0x02175560 ambiguous
-data_ov057_02175574 kind:data(any) addr:0x02175574
+Object44_Profile kind:data(any) addr:0x02175560 ambiguous
+_ZTV8Object44 kind:data(any) addr:0x0217556c
 data_ov057_02175680 kind:data(any) addr:0x02175680
 data_ov057_02175688 kind:data(any) addr:0x02175688
 data_ov057_02175690 kind:data(any) addr:0x02175690
@@ -118,6 +118,6 @@ data_ov057_02175730 kind:data(any) addr:0x02175730
 data_ov057_02175738 kind:data(any) addr:0x02175738
 data_ov057_02175740 kind:data(any) addr:0x02175740
 data_ov057_02175748 kind:data(any) addr:0x02175748
-UnknownProfile::ov057_02175750 kind:data(any) addr:0x02175750 ambiguous
-data_ov057_02175764 kind:data(any) addr:0x02175764
+Object45_Profile kind:data(any) addr:0x02175750 ambiguous
+_ZTV8Object45 kind:data(any) addr:0x0217575c
 data_ov057_02175818 kind:data(any) addr:0x02175818 ambiguous

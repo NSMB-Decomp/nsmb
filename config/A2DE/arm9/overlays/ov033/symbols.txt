@@ -35,7 +35,7 @@ func_ov033_02144184 kind:function(arm,size=0x3c) addr:0x02144184
 func_ov033_021441c0 kind:function(arm,size=0x9c) addr:0x021441c0
 func_ov033_0214425c kind:function(arm,size=0x64) addr:0x0214425c
 func_ov033_021442c0 kind:function(arm,size=0x11c) addr:0x021442c0
-func_ov033_021443dc kind:function(arm,size=0x11c) addr:0x021443dc
+_ZN9Object1116createEv kind:function(arm,size=0x11c) addr:0x021443dc
 data_ov033_021444f8 kind:data(any) addr:0x021444f8
 data_ov033_021444fc kind:data(any) addr:0x021444fc
 data_ov033_02144500 kind:data(any) addr:0x02144500
@@ -71,5 +71,5 @@ data_ov033_021446b0 kind:data(any) addr:0x021446b0
 data_ov033_021446b8 kind:data(any) addr:0x021446b8
 data_ov033_021446c0 kind:data(any) addr:0x021446c0
 data_ov033_021446c8 kind:data(any) addr:0x021446c8
-UnknownProfile::ov033_021446d0 kind:data(any) addr:0x021446d0
-data_ov033_021446e4 kind:data(any) addr:0x021446e4
+Object111_Profile kind:data(any) addr:0x021446d0
+_ZTV9Object111 kind:data(any) addr:0x021446dc

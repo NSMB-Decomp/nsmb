@@ -11,7 +11,7 @@ func_ov111_0218a160 kind:function(arm,size=0x54) addr:0x0218a160
 func_ov111_0218a1b4 kind:function(arm,size=0xcc) addr:0x0218a1b4
 func_ov111_0218a280 kind:function(arm,size=0x48) addr:0x0218a280
 func_ov111_0218a2c8 kind:function(arm,size=0x8c) addr:0x0218a2c8
-func_ov111_0218a354 kind:function(arm,size=0x64) addr:0x0218a354
+_ZN8Object826createEv kind:function(arm,size=0x64) addr:0x0218a354
 func_ov111_0218a3b8 kind:function(arm,size=0x60) addr:0x0218a3b8
 func_ov111_0218a418 kind:function(arm,size=0x68) addr:0x0218a418
 data_ov111_0218a480 kind:data(any) addr:0x0218a480
@@ -20,7 +20,7 @@ __sinit_ov111_0218a490 kind:function(arm,size=0x68) addr:0x0218a490
 data_ov111_0218a500 kind:data(any) addr:0x0218a500
 data_ov111_0218a508 kind:data(any) addr:0x0218a508
 data_ov111_0218a510 kind:data(any) addr:0x0218a510
-UnknownProfile::ov111_0218a518 kind:data(any) addr:0x0218a518 ambiguous
+Object82_Profile kind:data(any) addr:0x0218a518 ambiguous
 data_ov111_0218a52c kind:data(any) addr:0x0218a52c
 data_ov111_0218a640 kind:data(any) addr:0x0218a640
 data_ov111_0218a760 kind:bss addr:0x0218a760

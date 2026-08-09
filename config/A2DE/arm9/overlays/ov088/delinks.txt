@@ -4,3 +4,27 @@
     .ctor       start:0x02181e90 end:0x02181e94 kind:rodata align:4
     .data       start:0x02181ea0 end:0x021826a0 kind:data align:32
     .bss        start:0x021826a0 end:0x02182720 kind:bss align:32
+
+src/Bases/stubs/Object230.cpp:
+    .text       start:0x0217e4c8 end:0x0217e550
+    .data       start:0x02181f00 end:0x02181f0c
+
+src/Bases/stubs/Object228.cpp:
+    .text       start:0x0217e9e4 end:0x0217ea2c
+    .data       start:0x02182050 end:0x0218205c
+
+src/Bases/stubs/Object186.cpp:
+    .text       start:0x0217f384 end:0x0217f418
+    .data       start:0x021821a0 end:0x021821ac
+
+src/Bases/stubs/Object198.cpp:
+    .text       start:0x021803e0 end:0x02180428
+    .data       start:0x021822e0 end:0x021822ec
+
+src/Bases/stubs/Object174.cpp:
+    .text       start:0x02180bfc end:0x02180c78
+    .data       start:0x02182440 end:0x0218244c
+
+src/Bases/stubs/Object209.cpp:
+    .text       start:0x02181be4 end:0x02181cb4
+    .data       start:0x02182578 end:0x02182584

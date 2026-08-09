@@ -13,7 +13,7 @@ func_ov086_0217e1e0 kind:function(arm,size=0x34) addr:0x0217e1e0
 func_ov086_0217e214 kind:function(arm,size=0x74) addr:0x0217e214
 func_ov086_0217e288 kind:function(arm,size=0x5c) addr:0x0217e288
 func_ov086_0217e2e4 kind:function(arm,size=0x40) addr:0x0217e2e4
-func_ov086_0217e324 kind:function(arm,size=0xa0) addr:0x0217e324
+_ZN9Object1756createEv kind:function(arm,size=0xa0) addr:0x0217e324
 func_ov086_0217e3c4 kind:function(arm,size=0x1c) addr:0x0217e3c4
 func_ov086_0217e3e0 kind:function(arm,size=0x68) addr:0x0217e3e0
 func_ov086_0217e448 kind:function(arm,size=0xf4) addr:0x0217e448
@@ -26,7 +26,7 @@ func_ov086_0217e84c kind:function(arm,size=0x78) addr:0x0217e84c
 func_ov086_0217e8c4 kind:function(arm,size=0x38) addr:0x0217e8c4
 func_ov086_0217e8fc kind:function(arm,size=0x1a8) addr:0x0217e8fc
 func_ov086_0217eaa4 kind:function(arm,size=0x44) addr:0x0217eaa4
-func_ov086_0217eae8 kind:function(arm,size=0x2c) addr:0x0217eae8
+_ZN9Object2256createEv kind:function(arm,size=0x2c) addr:0x0217eae8
 data_ov086_0217eb14 kind:data(any) addr:0x0217eb14
 data_ov086_0217eb18 kind:data(any) addr:0x0217eb18
 data_ov086_0217eb20 kind:data(any) addr:0x0217eb20
@@ -34,11 +34,11 @@ data_ov086_0217eb28 kind:data(any) addr:0x0217eb28
 data_ov086_0217eb30 kind:data(any) addr:0x0217eb30
 data_ov086_0217eb38 kind:data(any) addr:0x0217eb38
 data_ov086_0217eb40 kind:data(any) addr:0x0217eb40
-UnknownProfile::ov086_0217eb60 kind:data(any) addr:0x0217eb60 ambiguous
-data_ov086_0217eb74 kind:data(any) addr:0x0217eb74
+Object175_Profile kind:data(any) addr:0x0217eb60 ambiguous
+_ZTV9Object175 kind:data(any) addr:0x0217eb6c
 data_ov086_0217ec80 kind:data(any) addr:0x0217ec80
-UnknownProfile::ov086_0217ec88 kind:data(any) addr:0x0217ec88 ambiguous
-data_ov086_0217ec9c kind:data(any) addr:0x0217ec9c
+Object225_Profile kind:data(any) addr:0x0217ec88 ambiguous
+_ZTV9Object225 kind:data(any) addr:0x0217ec94
 data_ov086_0217edc0 kind:bss addr:0x0217edc0
 data_ov086_0217edc4 kind:bss addr:0x0217edc4
 data_ov086_0217edd0 kind:bss addr:0x0217edd0

@@ -5,3 +5,111 @@
     .ctor       start:0x0211833c end:0x02118384 kind:rodata align:4
     .data       start:0x021183a0 end:0x021214c0 kind:data align:32
     .bss        start:0x021214c0 end:0x021226e0 kind:bss align:32
+
+src/Bases/stubs/Object363.cpp:
+    .text       start:0x020c952c end:0x020c961c
+    .data       start:0x02118e0c end:0x02118e20
+
+src/Bases/stubs/Object362.cpp:
+    .text       start:0x020c961c end:0x020c970c
+    .data       start:0x02118e20 end:0x02118e3c
+
+src/Bases/stubs/Object374.cpp:
+    .text       start:0x020ccc6c end:0x020ccd58
+    .data       start:0x02118fd0 end:0x02118fec
+
+src/Bases/stubs/Object381.cpp:
+    .text       start:0x020d0ae8 end:0x020d0b14
+    .data       start:0x021191a0 end:0x021191b4
+
+src/Bases/stubs/Object367.cpp:
+    .text       start:0x020d2fe8 end:0x020d3018
+    .data       start:0x021193ac end:0x021193c0
+
+src/Bases/stubs/Object368.cpp:
+    .text       start:0x020d51d8 end:0x020d5208
+    .data       start:0x02119598 end:0x021195ac
+
+src/Bases/stubs/Object372.cpp:
+    .text       start:0x020d9000 end:0x020d9124
+    .data       start:0x0211981c end:0x02119830
+
+src/Bases/stubs/Object379.cpp:
+    .text       start:0x020dbb30 end:0x020dbc48
+    .data       start:0x021199f8 end:0x02119a14
+
+src/Bases/stubs/Object365.cpp:
+    .text       start:0x020deec4 end:0x020def04
+    .data       start:0x02119ba0 end:0x02119bbc
+
+src/Bases/stubs/Object364.cpp:
+    .text       start:0x020e093c end:0x020e0a18
+    .data       start:0x02119c9c end:0x02119cb8
+
+src/Bases/stubs/Object358.cpp:
+    .text       start:0x020e4064 end:0x020e4128
+    .data       start:0x02119e1c end:0x02119e38
+
+src/Bases/stubs/Object359.cpp:
+    .text       start:0x020e5550 end:0x020e55e0
+    .data       start:0x02119f30 end:0x02119f4c
+
+src/Bases/stubs/Object360.cpp:
+    .text       start:0x020e701c end:0x020e717c
+    .data       start:0x0211a01c end:0x0211a038
+
+src/Bases/stubs/Object384.cpp:
+    .text       start:0x020eac90 end:0x020ead20
+    .data       start:0x0211a2ac end:0x0211a2c8
+
+src/Bases/stubs/Object366.cpp:
+    .text       start:0x020ec1c4 end:0x020ec240
+    .data       start:0x0211a460 end:0x0211a474
+
+src/Bases/stubs/Object377.cpp:
+    .text       start:0x020ee638 end:0x020ee6cc
+    .data       start:0x0211a6a0 end:0x0211a6bc
+
+src/Bases/stubs/Object383.cpp:
+    .text       start:0x020f09f4 end:0x020f0ab8
+    .data       start:0x0211a78c end:0x0211a7a0
+
+src/Bases/stubs/Object369.cpp:
+    .text       start:0x020f53a4 end:0x020f53e4
+    .data       start:0x0211a948 end:0x0211a964
+
+src/Bases/stubs/Object370.cpp:
+    .text       start:0x020f97ec end:0x020f9824
+    .data       start:0x0211ab44 end:0x0211ab58
+
+src/Bases/stubs/Object375.cpp:
+    .text       start:0x020fc6d8 end:0x020fc778
+    .data       start:0x0211ad68 end:0x0211ad84
+
+src/Bases/stubs/Object380.cpp:
+    .text       start:0x02100318 end:0x02100490
+    .data       start:0x0211b294 end:0x0211b2b0
+
+src/Bases/stubs/Object373.cpp:
+    .text       start:0x02102ec4 end:0x02102f54
+    .data       start:0x0211b3cc end:0x0211b3e8
+
+src/Bases/stubs/Object361.cpp:
+    .text       start:0x02108780 end:0x021087ac
+    .data       start:0x0211b510 end:0x0211b524
+
+src/Bases/stubs/Object382.cpp:
+    .text       start:0x0210d474 end:0x0210d594
+    .data       start:0x0211b6e8 end:0x0211b704
+
+src/Bases/stubs/Object378.cpp:
+    .text       start:0x02110304 end:0x021103d8
+    .data       start:0x0211b838 end:0x0211b854
+
+src/Bases/stubs/Object371.cpp:
+    .text       start:0x02113768 end:0x021137ac
+    .data       start:0x0211b988 end:0x0211b99c
+
+src/Bases/stubs/Object376.cpp:
+    .text       start:0x02114db0 end:0x02114ebc
+    .data       start:0x0211ba78 end:0x0211ba94

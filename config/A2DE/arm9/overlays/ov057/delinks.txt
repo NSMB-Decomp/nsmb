@@ -3,3 +3,11 @@
     .ctor       start:0x02175528 end:0x02175528 kind:rodata align:4
     .data       start:0x02175540 end:0x02175880 kind:data align:32
     .bss        start:0x02175880 end:0x02175880 kind:bss align:32
+
+src/Bases/stubs/Object44.cpp:
+    .text       start:0x02173098 end:0x021730d8
+    .data       start:0x02175560 end:0x0217556c
+
+src/Bases/stubs/Object45.cpp:
+    .text       start:0x021753f0 end:0x021754ac
+    .data       start:0x02175750 end:0x0217575c

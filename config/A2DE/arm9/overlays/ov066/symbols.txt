@@ -11,7 +11,7 @@ func_ov066_02175ec4 kind:function(arm,size=0x70) addr:0x02175ec4
 func_ov066_02175f34 kind:function(arm,size=0x48) addr:0x02175f34
 func_ov066_02175f7c kind:function(arm,size=0x8c) addr:0x02175f7c
 func_ov066_02176008 kind:function(arm,size=0x18) addr:0x02176008
-func_ov066_02176020 kind:function(arm,size=0x30) addr:0x02176020
+_ZN8Object596createEv kind:function(arm,size=0x30) addr:0x02176020
 func_ov066_02176050 kind:function(arm,size=0xa0) addr:0x02176050
 func_ov066_021760f0 kind:function(arm,size=0xa8) addr:0x021760f0
 func_ov066_02176198 kind:function(arm,size=0x16c) addr:0x02176198
@@ -43,7 +43,7 @@ func_ov066_02178598 kind:function(arm,size=0x34) addr:0x02178598
 func_ov066_021785cc kind:function(arm,size=0xe4) addr:0x021785cc
 func_ov066_021786b0 kind:function(arm,size=0xfc) addr:0x021786b0
 func_ov066_021787ac kind:function(arm,size=0x64) addr:0x021787ac
-func_ov066_02178810 kind:function(arm,size=0x88) addr:0x02178810
+_ZN8Object396createEv kind:function(arm,size=0x88) addr:0x02178810
 data_ov066_02178898 kind:data(any) addr:0x02178898
 data_ov066_0217889c kind:data(any) addr:0x0217889c
 data_ov066_021788a4 kind:data(any) addr:0x021788a4
@@ -53,8 +53,8 @@ data_ov066_021788e8 kind:data(any) addr:0x021788e8
 __sinit_ov066_02178908 kind:function(arm,size=0x24) addr:0x02178908
 .p__sinit_ov066_02178908 kind:data(word) addr:0x0217892c
 data_ov066_02178940 kind:data(any) addr:0x02178940
-UnknownProfile::ov066_02178948 kind:data(any) addr:0x02178948 ambiguous
-data_ov066_0217895c kind:data(any) addr:0x0217895c
+Object59_Profile kind:data(any) addr:0x02178948 ambiguous
+_ZTV8Object59 kind:data(any) addr:0x02178954
 data_ov066_02178a68 kind:data(any) addr:0x02178a68
 data_ov066_02178a70 kind:data(any) addr:0x02178a70
 data_ov066_02178a78 kind:data(any) addr:0x02178a78
@@ -72,6 +72,6 @@ data_ov066_02178ad0 kind:data(any) addr:0x02178ad0
 data_ov066_02178ad8 kind:data(any) addr:0x02178ad8
 data_ov066_02178ae0 kind:data(any) addr:0x02178ae0
 data_ov066_02178ae8 kind:data(any) addr:0x02178ae8
-UnknownProfile::ov066_02178af0 kind:data(any) addr:0x02178af0 ambiguous
-data_ov066_02178b04 kind:data(any) addr:0x02178b04
+Object39_Profile kind:data(any) addr:0x02178af0 ambiguous
+_ZTV8Object39 kind:data(any) addr:0x02178afc
 data_ov066_02178c20 kind:bss addr:0x02178c20

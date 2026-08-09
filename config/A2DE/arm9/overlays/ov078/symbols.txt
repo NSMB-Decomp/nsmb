@@ -27,7 +27,7 @@ func_ov078_0217a8d4 kind:function(arm,size=0x30) addr:0x0217a8d4
 func_ov078_0217a904 kind:function(arm,size=0x48) addr:0x0217a904
 func_ov078_0217a94c kind:function(arm,size=0x8c) addr:0x0217a94c
 func_ov078_0217a9d8 kind:function(arm,size=0x34) addr:0x0217a9d8
-func_ov078_0217aa0c kind:function(arm,size=0x3c) addr:0x0217aa0c
+_ZN8Object746createEv kind:function(arm,size=0x3c) addr:0x0217aa0c
 func_ov078_0217aa48 kind:function(arm,size=0x60) addr:0x0217aa48
 func_ov078_0217aaa8 kind:function(arm,size=0x68) addr:0x0217aaa8
 func_ov078_0217ab10 kind:function(arm,size=0x24) addr:0x0217ab10
@@ -41,7 +41,7 @@ func_ov078_0217b060 kind:function(arm,size=0x70) addr:0x0217b060
 func_ov078_0217b0d0 kind:function(arm,size=0x48) addr:0x0217b0d0
 func_ov078_0217b118 kind:function(arm,size=0x8c) addr:0x0217b118
 func_ov078_0217b1a4 kind:function(arm,size=0x18) addr:0x0217b1a4
-func_ov078_0217b1bc kind:function(arm,size=0x3c) addr:0x0217b1bc
+_ZN8Object616createEv kind:function(arm,size=0x3c) addr:0x0217b1bc
 data_ov078_0217b1f8 kind:data(any) addr:0x0217b1f8
 data_ov078_0217b1fc kind:data(any) addr:0x0217b1fc
 data_ov078_0217b200 kind:data(any) addr:0x0217b200
@@ -71,11 +71,11 @@ __sinit_ov078_0217b340 kind:function(arm,size=0x24) addr:0x0217b340
 .p__sinit_ov078_0217b340 kind:data(word) addr:0x0217b368
 data_ov078_0217b380 kind:data(any) addr:0x0217b380
 data_ov078_0217b388 kind:data(any) addr:0x0217b388
-UnknownProfile::ov078_0217b390 kind:data(any) addr:0x0217b390 ambiguous
-data_ov078_0217b3a4 kind:data(any) addr:0x0217b3a4
+Object74_Profile kind:data(any) addr:0x0217b390 ambiguous
+_ZTV8Object74 kind:data(any) addr:0x0217b39c
 data_ov078_0217b4b8 kind:data(any) addr:0x0217b4b8
-UnknownProfile::ov078_0217b4c0 kind:data(any) addr:0x0217b4c0 ambiguous
-data_ov078_0217b4d4 kind:data(any) addr:0x0217b4d4
+Object61_Profile kind:data(any) addr:0x0217b4c0 ambiguous
+_ZTV8Object61 kind:data(any) addr:0x0217b4cc
 data_ov078_0217b5e0 kind:bss addr:0x0217b5e0
 data_ov078_0217b5e8 kind:bss addr:0x0217b5e8
 data_ov078_0217b5f0 kind:bss addr:0x0217b5f0

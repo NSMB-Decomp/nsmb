@@ -1824,6 +1824,7 @@ _ZTV7MGScene kind:data(any) addr:0x0203d2c8
 data_0203d318 kind:data(any) addr:0x0203d318
 data_0203d31c kind:data(any) addr:0x0203d31c
 MGVsMenu::profile kind:data(any) addr:0x0203d320
+_ZTV9Object327 kind:data(any) addr:0x0203d328
 MGVsMenu::vtable kind:data(any) addr:0x0203d330
 data_0203d378 kind:data(any) addr:0x0203d378
 data_0203d380 kind:data(any) addr:0x0203d380

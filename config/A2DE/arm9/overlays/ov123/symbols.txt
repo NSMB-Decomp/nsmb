@@ -20,7 +20,7 @@ func_ov123_0218d614 kind:function(arm,size=0x80) addr:0x0218d614
 func_ov123_0218d694 kind:function(arm,size=0x48) addr:0x0218d694
 func_ov123_0218d6dc kind:function(arm,size=0x8c) addr:0x0218d6dc
 func_ov123_0218d768 kind:function(arm,size=0x48) addr:0x0218d768
-func_ov123_0218d7b0 kind:function(arm,size=0x3c) addr:0x0218d7b0
+_ZN9Object1346createEv kind:function(arm,size=0x3c) addr:0x0218d7b0
 func_ov123_0218d7ec kind:function(arm,size=0x84) addr:0x0218d7ec
 func_ov123_0218d870 kind:function(arm,size=0x8c) addr:0x0218d870
 func_ov123_0218d8fc kind:function(arm,size=0x1c) addr:0x0218d8fc
@@ -44,7 +44,7 @@ func_ov123_0218ee40 kind:function(arm,size=0x24) addr:0x0218ee40
 func_ov123_0218ee64 kind:function(arm,size=0xb4) addr:0x0218ee64
 func_ov123_0218ef18 kind:function(arm,size=0x48) addr:0x0218ef18
 func_ov123_0218ef60 kind:function(arm,size=0x8c) addr:0x0218ef60
-func_ov123_0218efec kind:function(arm,size=0x5c) addr:0x0218efec
+_ZN9Object2646createEv kind:function(arm,size=0x5c) addr:0x0218efec
 func_ov123_0218f048 kind:function(arm,size=0x60) addr:0x0218f048
 func_ov123_0218f0a8 kind:function(arm,size=0x68) addr:0x0218f0a8
 data_ov123_0218f110 kind:data(any) addr:0x0218f110
@@ -66,8 +66,8 @@ data_ov123_0218f3c8 kind:data(any) addr:0x0218f3c8
 data_ov123_0218f3d0 kind:data(any) addr:0x0218f3d0
 data_ov123_0218f3d8 kind:data(any) addr:0x0218f3d8
 data_ov123_0218f3e0 kind:data(any) addr:0x0218f3e0
-UnknownProfile::ov123_0218f3e8 kind:data(any) addr:0x0218f3e8
-data_ov123_0218f3fc kind:data(any) addr:0x0218f3fc
+Object134_Profile kind:data(any) addr:0x0218f3e8
+_ZTV9Object134 kind:data(any) addr:0x0218f3f4
 data_ov123_0218f510 kind:data(any) addr:0x0218f510
 data_ov123_0218f518 kind:data(any) addr:0x0218f518
 data_ov123_0218f520 kind:data(any) addr:0x0218f520
@@ -76,7 +76,7 @@ data_ov123_0218f530 kind:data(any) addr:0x0218f530
 data_ov123_0218f538 kind:data(any) addr:0x0218f538
 data_ov123_0218f540 kind:data(any) addr:0x0218f540
 data_ov123_0218f548 kind:data(any) addr:0x0218f548
-UnknownProfile::ov123_0218f550 kind:data(any) addr:0x0218f550
+Object264_Profile kind:data(any) addr:0x0218f550
 data_ov123_0218f564 kind:data(any) addr:0x0218f564
 data_ov123_0218f678 kind:data(any) addr:0x0218f678
 data_ov123_0218f7a0 kind:bss addr:0x0218f7a0

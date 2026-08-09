@@ -54,7 +54,7 @@ func_ov017_02132ee8 kind:function(arm,size=0x48) addr:0x02132ee8
 func_ov017_02132f30 kind:function(arm,size=0x8) addr:0x02132f30
 func_ov017_02132f38 kind:function(arm,size=0x8c) addr:0x02132f38
 func_ov017_02132fc4 kind:function(arm,size=0x3c) addr:0x02132fc4
-func_ov017_02133000 kind:function(arm,size=0x40) addr:0x02133000
+_ZN9Object1296createEv kind:function(arm,size=0x40) addr:0x02133000
 func_ov017_02133040 kind:function(arm,size=0x78) addr:0x02133040
 func_ov017_021330b8 kind:function(arm,size=0x80) addr:0x021330b8
 func_ov017_02133138 kind:function(arm,size=0xc8) addr:0x02133138
@@ -68,7 +68,7 @@ func_ov017_02133288 kind:function(arm,size=0x7c) addr:0x02133288
 func_ov017_02133304 kind:function(arm,size=0x430) addr:0x02133304
 func_ov017_02133734 kind:function(arm,size=0x34) addr:0x02133734
 func_ov017_02133768 kind:function(arm,size=0xd4) addr:0x02133768
-func_ov017_0213383c kind:function(arm,size=0x58) addr:0x0213383c
+_ZN8Object976createEv kind:function(arm,size=0x58) addr:0x0213383c
 data_ov017_02133894 kind:data(any) addr:0x02133894
 data_ov017_02133898 kind:data(any) addr:0x02133898
 data_ov017_0213389c kind:data(any) addr:0x0213389c
@@ -107,12 +107,12 @@ data_ov017_02133bb0 kind:data(any) addr:0x02133bb0
 data_ov017_02133bb8 kind:data(any) addr:0x02133bb8
 data_ov017_02133bc0 kind:data(any) addr:0x02133bc0
 data_ov017_02133bc8 kind:data(any) addr:0x02133bc8
-UnknownProfile::ov017_02133bd0 kind:data(any) addr:0x02133bd0 ambiguous
-data_ov017_02133be4 kind:data(any) addr:0x02133be4
+Object129_Profile kind:data(any) addr:0x02133bd0 ambiguous
+_ZTV9Object129 kind:data(any) addr:0x02133bdc
 data_ov017_02133cf8 kind:data(any) addr:0x02133cf8
 data_ov017_02133d00 kind:data(any) addr:0x02133d00
-UnknownProfile::ov017_02133d08 kind:data(any) addr:0x02133d08
-data_ov017_02133d1c kind:data(any) addr:0x02133d1c
+Object97_Profile kind:data(any) addr:0x02133d08
+_ZTV8Object97 kind:data(any) addr:0x02133d14
 data_ov017_02133e40 kind:bss addr:0x02133e40
 data_ov017_02133e48 kind:bss addr:0x02133e48
 data_ov017_02133e50 kind:bss addr:0x02133e50

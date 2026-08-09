@@ -22,7 +22,7 @@ func_ov034_02142e5c kind:function(arm,size=0xf4) addr:0x02142e5c
 func_ov034_02142f50 kind:function(arm,size=0x58) addr:0x02142f50
 func_ov034_02142fa8 kind:function(arm,size=0x28) addr:0x02142fa8
 func_ov034_02142fd0 kind:function(arm,size=0x68) addr:0x02142fd0
-func_ov034_02143038 kind:function(arm,size=0x38) addr:0x02143038
+_ZN8Object966createEv kind:function(arm,size=0x38) addr:0x02143038
 func_ov034_02143070 kind:function(arm,size=0x20) addr:0x02143070
 func_ov034_02143090 kind:function(arm,size=0x28) addr:0x02143090
 func_ov034_021430b8 kind:function(arm,size=0x184) addr:0x021430b8
@@ -55,7 +55,7 @@ func_ov034_02144d6c kind:function(arm,size=0xa8) addr:0x02144d6c
 func_ov034_02144e14 kind:function(arm,size=0x48) addr:0x02144e14
 func_ov034_02144e5c kind:function(arm,size=0x8c) addr:0x02144e5c
 func_ov034_02144ee8 kind:function(arm,size=0x34) addr:0x02144ee8
-func_ov034_02144f1c kind:function(arm,size=0x30) addr:0x02144f1c
+_ZN8Object736createEv kind:function(arm,size=0x30) addr:0x02144f1c
 data_ov034_02144f4c kind:data(any) addr:0x02144f4c
 data_ov034_02144f50 kind:data(any) addr:0x02144f50
 data_ov034_02144f54 kind:data(any) addr:0x02144f54
@@ -83,8 +83,8 @@ data_ov034_021451e0 kind:data(any) addr:0x021451e0
 data_ov034_021451e8 kind:data(any) addr:0x021451e8
 data_ov034_021451f0 kind:data(any) addr:0x021451f0
 data_ov034_021451f8 kind:data(any) addr:0x021451f8
-UnknownProfile::ov034_02145200 kind:data(any) addr:0x02145200
-data_ov034_02145214 kind:data(any) addr:0x02145214
+Object96_Profile kind:data(any) addr:0x02145200
+_ZTV8Object96 kind:data(any) addr:0x0214520c
 data_ov034_02145320 kind:data(any) addr:0x02145320
 data_ov034_02145328 kind:data(any) addr:0x02145328
 data_ov034_02145330 kind:data(any) addr:0x02145330
@@ -98,8 +98,8 @@ data_ov034_02145368 kind:data(any) addr:0x02145368
 data_ov034_02145370 kind:data(any) addr:0x02145370
 data_ov034_02145378 kind:data(any) addr:0x02145378
 data_ov034_02145380 kind:data(any) addr:0x02145380
-UnknownProfile::ov034_02145388 kind:data(any) addr:0x02145388
-data_ov034_0214539c kind:data(any) addr:0x0214539c
+Object73_Profile kind:data(any) addr:0x02145388
+_ZTV8Object73 kind:data(any) addr:0x02145394
 data_ov034_021454c0 kind:bss addr:0x021454c0
 data_ov034_021454c4 kind:bss addr:0x021454c4
 data_ov034_021454cc kind:bss addr:0x021454cc

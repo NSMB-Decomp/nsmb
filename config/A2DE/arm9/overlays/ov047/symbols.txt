@@ -14,7 +14,7 @@ func_ov047_02147cac kind:function(arm,size=0x4) addr:0x02147cac
 func_ov047_02147cb0 kind:function(arm,size=0x3c) addr:0x02147cb0
 func_ov047_02147cec kind:function(arm,size=0x58) addr:0x02147cec
 func_ov047_02147d44 kind:function(arm,size=0x3d0) addr:0x02147d44
-func_ov047_02148114 kind:function(arm,size=0xd0) addr:0x02148114
+_ZN8Object796createEv kind:function(arm,size=0xd0) addr:0x02148114
 __sinit_ov047_021481e4 kind:function(arm,size=0x70) addr:0x021481e4
 .p__sinit_ov047_021481e4 kind:data(word) addr:0x02148254
 data_ov047_02148260 kind:data(any) addr:0x02148260
@@ -22,11 +22,11 @@ data_ov047_02148264 kind:data(any) addr:0x02148264
 data_ov047_0214826c kind:data(any) addr:0x0214826c
 data_ov047_02148274 kind:data(any) addr:0x02148274
 data_ov047_0214827c kind:data(any) addr:0x0214827c
-UnknownProfile::ov047_02148284 kind:data(any) addr:0x02148284
+Object79_Profile kind:data(any) addr:0x02148284
 data_ov047_02148298 kind:data(any) addr:0x02148298
 data_ov047_0214829c kind:data(any) addr:0x0214829c
 data_ov047_021482ac kind:data(any) addr:0x021482ac
 data_ov047_021482bc kind:data(any) addr:0x021482bc
-data_ov047_021482f4 kind:data(any) addr:0x021482f4
+_ZTV8Object79 kind:data(any) addr:0x021482ec
 data_ov047_021483b0 kind:data(any) addr:0x021483b0 ambiguous
 data_ov047_02148400 kind:bss addr:0x02148400

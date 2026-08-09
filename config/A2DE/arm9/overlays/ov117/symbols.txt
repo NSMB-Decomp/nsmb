@@ -7,7 +7,7 @@ func_ov117_0218c8a8 kind:function(arm,size=0x94) addr:0x0218c8a8
 func_ov117_0218c93c kind:function(arm,size=0x24) addr:0x0218c93c
 func_ov117_0218c960 kind:function(arm,size=0x50) addr:0x0218c960
 func_ov117_0218c9b0 kind:function(arm,size=0x48) addr:0x0218c9b0
-func_ov117_0218c9f8 kind:function(arm,size=0x30) addr:0x0218c9f8
+_ZN9Object1256createEv kind:function(arm,size=0x30) addr:0x0218c9f8
 func_ov117_0218ca28 kind:function(arm,size=0x8c) addr:0x0218ca28
 func_ov117_0218cab4 kind:function(arm,size=0x94) addr:0x0218cab4
 func_ov117_0218cb48 kind:function(arm,size=0x3f8) addr:0x0218cb48
@@ -25,7 +25,7 @@ func_ov117_0218dd34 kind:function(arm,size=0x18) addr:0x0218dd34
 func_ov117_0218dd4c kind:function(arm,size=0x38) addr:0x0218dd4c
 func_ov117_0218dd84 kind:function(arm,size=0x6c) addr:0x0218dd84
 func_ov117_0218ddf0 kind:function(arm,size=0x34) addr:0x0218ddf0
-func_ov117_0218de24 kind:function(arm,size=0x6c) addr:0x0218de24
+_ZN9Object2136createEv kind:function(arm,size=0x6c) addr:0x0218de24
 data_ov117_0218de90 kind:data(any) addr:0x0218de90
 data_ov117_0218de94 kind:data(any) addr:0x0218de94
 data_ov117_0218de98 kind:data(any) addr:0x0218de98 ambiguous
@@ -35,8 +35,8 @@ data_ov117_0218deb0 kind:data(any) addr:0x0218deb0 ambiguous
 data_ov117_0218deb8 kind:data(any) addr:0x0218deb8
 data_ov117_0218debc kind:data(any) addr:0x0218debc ambiguous
 data_ov117_0218dec8 kind:data(any) addr:0x0218dec8 ambiguous
-UnknownProfile::ov117_0218dee0 kind:data(any) addr:0x0218dee0 ambiguous
-data_ov117_0218def4 kind:data(any) addr:0x0218def4
+Object125_Profile kind:data(any) addr:0x0218dee0 ambiguous
+_ZTV9Object125 kind:data(any) addr:0x0218deec
 data_ov117_0218dfa8 kind:data(any) addr:0x0218dfa8 ambiguous
 data_ov117_0218e000 kind:data(any) addr:0x0218e000
 data_ov117_0218e008 kind:data(any) addr:0x0218e008
@@ -60,7 +60,7 @@ data_ov117_0218e090 kind:data(any) addr:0x0218e090
 data_ov117_0218e098 kind:data(any) addr:0x0218e098
 data_ov117_0218e0a0 kind:data(any) addr:0x0218e0a0
 data_ov117_0218e0a8 kind:data(any) addr:0x0218e0a8
-UnknownProfile::ov117_0218e0b0 kind:data(any) addr:0x0218e0b0 ambiguous
-data_ov117_0218e0c4 kind:data(any) addr:0x0218e0c4
+Object213_Profile kind:data(any) addr:0x0218e0b0 ambiguous
+_ZTV9Object213 kind:data(any) addr:0x0218e0bc
 data_ov117_0218e0d0 kind:data(any) addr:0x0218e0d0 ambiguous
 data_ov117_0218e180 kind:data(any) addr:0x0218e180 ambiguous
