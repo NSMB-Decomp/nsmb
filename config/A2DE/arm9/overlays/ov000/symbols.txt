@@ -447,7 +447,7 @@ func_ov000_020b04c4 kind:function(arm,size=0xe8) addr:0x020b04c4
 func_ov000_020b05ac kind:function(arm,size=0x18) addr:0x020b05ac
 func_ov000_020b05c4 kind:function(arm,size=0x3c) addr:0x020b05c4
 func_ov000_020b0600 kind:function(arm,size=0x3c) addr:0x020b0600
-func_ov000_020b063c kind:function(arm,size=0x3c) addr:0x020b063c
+_ZN15StageLayoutBaseC2Ev kind:function(arm,size=0x3c) addr:0x020b063c
 func_ov000_020b0678 kind:function(arm,size=0x9c) addr:0x020b0678
 func_ov000_020b0714 kind:function(arm,size=0x288) addr:0x020b0714
 func_ov000_020b099c kind:function(arm,size=0x88) addr:0x020b099c
@@ -597,7 +597,7 @@ func_ov000_020bcdbc kind:function(arm,size=0x84) addr:0x020bcdbc
 func_ov000_020bce40 kind:function(arm,size=0x100) addr:0x020bce40
 func_ov000_020bcf40 kind:function(arm,size=0x84) addr:0x020bcf40
 func_ov000_020bcfc4 kind:function(arm,size=0x108) addr:0x020bcfc4
-_ZN9Object3036createEv kind:function(arm,size=0x30) addr:0x020bd0cc
+_ZN11StageLayout6createEv kind:function(arm,size=0x30) addr:0x020bd0cc
 func_ov000_020bd0fc kind:function(arm,size=0xc) addr:0x020bd0fc
 func_ov000_020bd108 kind:function(arm,size=0x28) addr:0x020bd108
 func_ov000_020bd130 kind:function(arm,size=0x28) addr:0x020bd130
@@ -1165,12 +1165,12 @@ data_ov000_020c9368 kind:data(any) addr:0x020c9368
 data_ov000_020c9370 kind:data(any) addr:0x020c9370
 data_ov000_020c9378 kind:data(any) addr:0x020c9378
 data_ov000_020c9380 kind:data(any) addr:0x020c9380
-Object303_Profile kind:data(any) addr:0x020c9388
+StageLayout_Profile kind:data(any) addr:0x020c9388
 data_ov000_020c9394 kind:data(any) addr:0x020c9394
 data_ov000_020c93a0 kind:data(any) addr:0x020c93a0
 data_ov000_020c93ac kind:data(any) addr:0x020c93ac
 data_ov000_020c93b8 kind:data(any) addr:0x020c93b8
-_ZTV9Object303 kind:data(any) addr:0x020c9404
+_ZTV11StageLayout kind:data(any) addr:0x020c9404
 data_ov000_020c9454 kind:data(any) addr:0x020c9454
 data_ov000_020c9584 kind:data(any) addr:0x020c9584
 data_ov000_020c96b4 kind:data(any) addr:0x020c96b4
