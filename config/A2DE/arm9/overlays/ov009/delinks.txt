@@ -34,7 +34,7 @@ src/Bases/stubs/Object309.cpp:
     .data       start:0x020daf4c end:0x020daf58
 
 src/Bases/stubs/Object310.cpp:
-    .text       start:0x020d8848 end:0x020d8870
+    .text       start:0x020d87ec end:0x020d8870
     .data       start:0x020dafd0 end:0x020dafdc
 
 src/Bases/stubs/Object311.cpp:
