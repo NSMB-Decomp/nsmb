@@ -5,8 +5,10 @@
 // MainProfileTable slot 337  |  ov130  |  profile @ 0x02138e44
 class Object337 : public StageEntity {
 public:
+	u8 _pad0[0xfc];
+
 	static void *create();
-	inline Object337() {};
+	Object337();
 	inline ~Object337() {};
 };
 
