@@ -8,7 +8,7 @@ func_ov008_020cc46c kind:function(arm,size=0x8) addr:0x020cc46c
 func_ov008_020cc474 kind:function(arm,size=0x4) addr:0x020cc474
 func_ov008_020cc478 kind:function(arm,size=0x8) addr:0x020cc478
 func_ov008_020cc480 kind:function(arm,size=0x184) addr:0x020cc480
-_ZN7Object76createEv kind:function(arm,size=0x2c) addr:0x020cc604
+_ZN9SaveScene6createEv kind:function(arm,size=0x2c) addr:0x020cc604
 _ZN6Scene8D1Ev kind:function(arm,size=0x20) addr:0x020cc630
 _ZN6Scene8D0Ev kind:function(arm,size=0x28) addr:0x020cc650
 _ZN6Scene88onUpdateEv kind:function(arm,size=0x60) addr:0x020cc678
@@ -697,7 +697,7 @@ __sinit_ov008_020e57e0 kind:function(arm,size=0x4) addr:0x020e57e0
 // .data
 
 Object7_Profile kind:data(any) addr:0x020e5820
-_ZTV7Object7 kind:data(any) addr:0x020e5828
+_ZTV9SaveScene kind:data(any) addr:0x020e5828
 UnknownProfile::ov008_020e5878 kind:data(any) addr:0x020e5878
 _ZTV6Scene8 kind:data(any) addr:0x020e5880
 Object318_Profile kind:data(any) addr:0x020e58d0
