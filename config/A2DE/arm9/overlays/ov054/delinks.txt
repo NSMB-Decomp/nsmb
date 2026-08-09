@@ -42,16 +42,16 @@ src/Bases/stubs/Object62.cpp:
     .data       start:0x0216d60c end:0x0216d72c
 
 src/Bases/stubs/Object257.cpp:
-    .text       start:0x02158574 end:0x021585e4
-    .data       start:0x0216d744 end:0x0216d750
+    .text       start:0x02157a40 end:0x021586ac
+    .data       start:0x0216d744 end:0x0216d994
 
 src/Bases/stubs/Object251.cpp:
-    .text       start:0x021592cc end:0x02159404
-    .data       start:0x0216d9ac end:0x0216d9d0
+    .text       start:0x021586ac end:0x02159404
+    .data       start:0x0216d9ac end:0x0216db08
 
 src/Bases/stubs/Object86.cpp:
-    .text       start:0x02159e6c end:0x02159ed0
-    .data       start:0x0216dd40 end:0x0216dd4c
+    .text       start:0x02159664 end:0x02159ed0
+    .data       start:0x0216dd40 end:0x0216de7c
 
 src/Bases/stubs/Object260.cpp:
     .text       start:0x02159ed0 end:0x0215b778
@@ -69,13 +69,9 @@ src/Bases/stubs/Object160.cpp:
     .text       start:0x0215f208 end:0x0215fed0
     .data       start:0x0216e2b0 end:0x0216e358
 
-src/Bases/stubs/Object159.cpp:
-    .text       start:0x02162684 end:0x021626cc
-    .data       start:0x0216ff58 end:0x0216ff64
-
 src/Bases/stubs/Object158.cpp:
-    .text       start:0x021626cc end:0x02162714
-    .data       start:0x0216ff64 end:0x0216ff78
+    .text       start:0x02161fa4 end:0x02162714
+    .data       start:0x0216ff58 end:0x02170084
 
 src/Bases/stubs/Object302.cpp:
     .text       start:0x02162714 end:0x021629d4
@@ -93,13 +89,9 @@ src/Bases/stubs/Object278.cpp:
     .text       start:0x02165f14 end:0x02165f6c
     .data       start:0x021702a8 end:0x021702c8
 
-src/Bases/stubs/Object286.cpp:
-    .text       start:0x02166ad4 end:0x02166b00
-    .data       start:0x021703f4 end:0x02170400
-
 src/Bases/stubs/Object285.cpp:
-    .text       start:0x02166b00 end:0x02166b2c
-    .data       start:0x02170400 end:0x02170414
+    .text       start:0x021668ec end:0x02166b2c
+    .data       start:0x021703f4 end:0x02170528
 
 src/Bases/stubs/Object71.cpp:
     .text       start:0x0216705c end:0x0216763c

@@ -89,7 +89,7 @@ func_ov100_021889dc kind:function(arm,size=0x8c) addr:0x021889dc
 func_ov100_02188a68 kind:function(arm,size=0x48) addr:0x02188a68
 func_ov100_02188ab0 kind:function(arm,size=0x128) addr:0x02188ab0
 func_ov100_02188bd8 kind:function(arm,size=0x50) addr:0x02188bd8
-_ZN8Object486createEv kind:function(arm,size=0x74) addr:0x02188c28
+_ZN8Object477create2Ev kind:function(arm,size=0x74) addr:0x02188c28
 _ZN8Object476createEv kind:function(arm,size=0x68) addr:0x02188c9c
 func_ov100_02188d04 kind:function(arm,size=0xa0) addr:0x02188d04
 func_ov100_02188da4 kind:function(arm,size=0xa8) addr:0x02188da4
@@ -140,7 +140,7 @@ data_ov100_021891b4 kind:data(any) addr:0x021891b4
 data_ov100_021891bc kind:data(any) addr:0x021891bc
 data_ov100_021891cc kind:data(any) addr:0x021891cc
 Object179_Profile kind:data(any) addr:0x021892d8 ambiguous
-data_ov100_021892ec kind:data(any) addr:0x021892ec
+_ZTV9Object179 kind:data(any) addr:0x021892e4
 Object180_Profile kind:data(any) addr:0x021893f8 ambiguous
 data_ov100_0218940c kind:data(any) addr:0x0218940c
 data_ov100_02189478 kind:data(any) addr:0x02189478 ambiguous

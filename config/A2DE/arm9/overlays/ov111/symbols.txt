@@ -21,8 +21,8 @@ data_ov111_0218a500 kind:data(any) addr:0x0218a500
 data_ov111_0218a508 kind:data(any) addr:0x0218a508
 data_ov111_0218a510 kind:data(any) addr:0x0218a510
 Object82_Profile kind:data(any) addr:0x0218a518 ambiguous
-data_ov111_0218a52c kind:data(any) addr:0x0218a52c
-data_ov111_0218a640 kind:data(any) addr:0x0218a640
+_ZTV8Object82 kind:data(any) addr:0x0218a524
+_ZTV8Object82 kind:data(any) addr:0x0218a638
 data_ov111_0218a760 kind:bss addr:0x0218a760
 data_ov111_0218a768 kind:bss addr:0x0218a768
 data_ov111_0218a770 kind:bss addr:0x0218a770

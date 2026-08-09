@@ -77,8 +77,8 @@ data_ov123_0218f538 kind:data(any) addr:0x0218f538
 data_ov123_0218f540 kind:data(any) addr:0x0218f540
 data_ov123_0218f548 kind:data(any) addr:0x0218f548
 Object264_Profile kind:data(any) addr:0x0218f550
-data_ov123_0218f564 kind:data(any) addr:0x0218f564
-data_ov123_0218f678 kind:data(any) addr:0x0218f678
+_ZTV9Object264 kind:data(any) addr:0x0218f55c
+_ZTV9Object264 kind:data(any) addr:0x0218f670
 data_ov123_0218f7a0 kind:bss addr:0x0218f7a0
 data_ov123_0218f7a8 kind:bss addr:0x0218f7a8
 data_ov123_0218f7b0 kind:bss addr:0x0218f7b0
