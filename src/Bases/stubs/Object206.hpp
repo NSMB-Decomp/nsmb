@@ -5,6 +5,8 @@
 // MainProfileTable slot 206  |  ov054  |  profile @ 0x0216d3b4
 class Object206 : public StageEntity {
 public:
+	u8 _pad0[0x28];
+
 	static void *create();
 	inline Object206() {};
 	inline ~Object206() {};
