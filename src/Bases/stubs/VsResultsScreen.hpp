@@ -7,7 +7,7 @@ class VsResultsScreen : public Scene {
 public:
 	u8 _pad[0xe8];
 	static void *create();
-	inline VsResultsScreen() {};
+	VsResultsScreen();
 	inline ~VsResultsScreen() {};
 };
 

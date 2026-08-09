@@ -7,7 +7,7 @@ class VsIntroScene : public Scene {
 public:
 	u8 _pad[0x4];
 	static void *create();
-	inline VsIntroScene() {};
+	VsIntroScene();
 	inline ~VsIntroScene() {};
 };
 

@@ -94,7 +94,7 @@ func_ov052_021568d8 kind:function(arm,size=0x64) addr:0x021568d8
 func_ov052_0215693c kind:function(arm,size=0x668) addr:0x0215693c
 func_ov052_02156fa4 kind:function(arm,size=0x4c) addr:0x02156fa4
 func_ov052_02156ff0 kind:function(arm,size=0x44) addr:0x02156ff0
-func_ov052_02157034 kind:function(arm,size=0x54) addr:0x02157034
+_ZN15VsResultsScreenC2Ev kind:function(arm,size=0x54) addr:0x02157034
 _ZN15VsResultsScreen6createEv kind:function(arm,size=0x28) addr:0x02157088
 func_ov052_021570b0 kind:function(arm,size=0x6c) addr:0x021570b0
 func_ov052_0215711c kind:function(arm,size=0x74) addr:0x0215711c
@@ -368,7 +368,7 @@ data_ov052_0215bc44 kind:data(any) addr:0x0215bc44
 data_ov052_0215bc5c kind:data(any) addr:0x0215bc5c
 data_ov052_0215bc74 kind:data(any) addr:0x0215bc74
 data_ov052_0215bc8c kind:data(any) addr:0x0215bc8c
-_ZTV8Object10 kind:data(any) addr:0x0215bca4
+_ZTV15VsResultsScreen kind:data(any) addr:0x0215bca4
 data_ov052_0215bcf4 kind:data(any) addr:0x0215bcf4
 data_ov052_0215bd54 kind:data(any) addr:0x0215bd54
 data_ov052_0215bdb4 kind:data(any) addr:0x0215bdb4
