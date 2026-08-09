@@ -5,8 +5,8 @@ func_ov004_020cc2f4 kind:function(arm,size=0x28) addr:0x020cc2f4
 func_ov004_020cc31c kind:function(arm,size=0x238) addr:0x020cc31c
 func_ov004_020cc554 kind:function(arm,size=0x28) addr:0x020cc554
 func_ov004_020cc57c kind:function(arm,size=0x20) addr:0x020cc57c
-func_ov004_020cc59c kind:function(arm,size=0x20) addr:0x020cc59c
-_ZN8Object146createEv kind:function(arm,size=0x28) addr:0x020cc5bc
+_ZN13GameOverSceneC1Ev kind:function(arm,size=0x20) addr:0x020cc59c
+_ZN13GameOverScene6createEv kind:function(arm,size=0x28) addr:0x020cc5bc
 func_ov004_020cc5e4 kind:function(arm,size=0x4) addr:0x020cc5e4
 func_ov004_020cc5e8 kind:function(arm,size=0xc0) addr:0x020cc5e8
 func_ov004_020cc6a8 kind:function(arm,size=0x78) addr:0x020cc6a8
@@ -29,7 +29,7 @@ data_ov004_020ccc28 kind:data(any) addr:0x020ccc28
 data_ov004_020ccc38 kind:data(any) addr:0x020ccc38
 __sinit_ov004_020ccc58 kind:function(arm,size=0x58) addr:0x020ccc58
 .p__sinit_ov004_020ccc58 kind:data(word) addr:0x020cccb0
-Object14_Profile kind:data(any) addr:0x020cccc0
+GameOverScene_Profile kind:data(any) addr:0x020cccc0
 _ZTV8Object14 kind:data(any) addr:0x020cccc8
 data_ov004_020ccd18 kind:data(any) addr:0x020ccd18
 data_ov004_020ccd20 kind:data(any) addr:0x020ccd20
