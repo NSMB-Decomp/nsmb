@@ -321,7 +321,7 @@ func_ov010_020da9cc kind:function(arm,size=0x4) addr:0x020da9cc
 func_ov010_020da9d0 kind:function(arm,size=0x34) addr:0x020da9d0
 _ZN9Object2566createEv kind:function(arm,size=0x74) addr:0x020daa04
 _ZN9Object2556createEv kind:function(arm,size=0x74) addr:0x020daa78
-_ZN9Object2546createEv kind:function(arm,size=0x68) addr:0x020daaec
+_ZN9SpinBlock6createEv kind:function(arm,size=0x68) addr:0x020daaec
 func_ov010_020dab54 kind:function(arm,size=0x9c) addr:0x020dab54
 func_ov010_020dabf0 kind:function(arm,size=0xa4) addr:0x020dabf0
 func_ov010_020dac94 kind:function(arm,size=0x9c) addr:0x020dac94
@@ -2034,10 +2034,10 @@ data_ov010_02125334 kind:data(any) addr:0x02125334
 Object255_Profile kind:data(any) addr:0x0212533c
 Object254_Profile kind:data(any) addr:0x02125348
 Object256_Profile kind:data(any) addr:0x02125354
-SpinBlock::vtable kind:data(any) addr:0x02125368
-data_ov010_02125484 kind:data(any) addr:0x02125484
-data_ov010_021255a0 kind:data(any) addr:0x021255a0
-data_ov010_021256bc kind:data(any) addr:0x021256bc
+_ZTV9SpinBlock kind:data(any) addr:0x02125360
+_ZTV9Object256 kind:data(any) addr:0x0212547c
+_ZTV9Object255 kind:data(any) addr:0x02125598
+data_ov010_021256b4 kind:data(any) addr:0x021256b4
 data_ov010_021257d0 kind:data(any) addr:0x021257d0
 data_ov010_021258dc kind:data(any) addr:0x021258dc
 data_ov010_021258e4 kind:data(any) addr:0x021258e4

@@ -106,9 +106,9 @@ src/Bases/stubs/Object49.cpp:
     .text       start:0x020d809c end:0x020d80cc
     .data       start:0x02125088 end:0x02125094
 
-src/Bases/stubs/Object254.cpp:
+src/Bases/stubs/SpinBlock.cpp:
     .text       start:0x020daa04 end:0x020dab54
-    .data       start:0x0212533c end:0x02125368
+    .data       start:0x0212533c end:0x021256b4
 
 src/Bases/stubs/Object161.cpp:
     .text       start:0x020dbc84 end:0x020dbcfc

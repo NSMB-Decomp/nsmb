@@ -1,8 +1,8 @@
-#include "Object254.hpp"
+#include "SpinBlock.hpp"
 
-void *Object254::create()
+void *SpinBlock::create()
 {
-	return new Object254();
+	return new SpinBlock();
 }
 
 void *Object255::create()
@@ -16,7 +16,7 @@ void *Object256::create()
 }
 
 // 0x02125348
-ActorProfile Object254_Profile = { Object254::create, 254, 91, NULL /* TODO: 0x020da9a8 */ };
+ActorProfile Object254_Profile = { SpinBlock::create, 254, 91, NULL /* TODO: 0x020da9a8 */ };
 
 // 0x0212533c
 ActorProfile Object255_Profile = { Object255::create, 255, 92, NULL };
