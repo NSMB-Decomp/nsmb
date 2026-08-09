@@ -8,7 +8,13 @@ public:
 	u8 _pad0[0x1c];
 	static void *create();
 	inline KeyScene() {};
-	inline ~KeyScene() {};
+	~KeyScene();
+
+	virtual s32 onCreate();
+	virtual s32 onDestroy();
+	virtual s32 onUpdate();
+	virtual s32 onRender();
+	virtual void pendingDestroy();
 };
 
 extern ObjectProfile KeyScene_Profile;
