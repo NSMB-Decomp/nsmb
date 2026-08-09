@@ -1,5 +1,21 @@
 #include "Object20.hpp"
 
+s32 Object20::onCreate() {
+
+}
+
+s32 Object20::onDestroy() {
+	return true;
+}
+
+bool Object20::onUpdate_0() {
+
+}
+
+void Object20::pendingDestroy() {
+
+}
+
 void *Object20::create()
 {
 	return new Object20();
