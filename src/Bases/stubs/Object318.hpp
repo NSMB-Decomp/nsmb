@@ -1,9 +1,9 @@
 #pragma once
-#include "../StageEntity.hpp"
+#include "../Base.hpp"
 #include "../../AAA.hpp"
 
 // MainProfileTable slot 318  |  ov008  |  profile @ 0x020e58d0
-class Object318 : public StageEntity {
+class Object318 : public Base {
 public:
 	static void *create();
 	inline Object318() {};

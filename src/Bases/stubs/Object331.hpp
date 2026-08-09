@@ -1,9 +1,9 @@
 #pragma once
-#include "../StageEntity.hpp"
+#include "../../Minigame/MGScene.hpp"
 #include "../../AAA.hpp"
 
 // MainProfileTable slot 331  |  ov130  |  profile @ 0x02138c20
-class Object331 : public StageEntity {
+class Object331 : public MGScene {
 public:
 	static void *create();
 	inline Object331() {};
