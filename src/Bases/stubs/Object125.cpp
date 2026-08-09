@@ -1,9 +1,54 @@
 #include "Object125.hpp"
 
+u8 data_ov117_0218de94[4];
+extern void* data_ov053_0216fc30[8];
+
 void *Object125::create()
 {
 	return new Object125();
 }
 
+void Object125::func_ov117_0218c9b0(u32)
+{
+}
+s32 Object125::onCreate()
+{
+}
+bool Object125::onUpdate_0()
+{
+	this->func_ov117_0218c9b0(0);
+	this->destroyInactive(0);
+	return true;
+}
+s32 Object125::onRender()
+{
+	drawSprite(
+		(u32)data_ov053_0216fc30[data_ov117_0218de94[this->settings >> 0x18 & 7]],
+		this->position.x,
+		this->position.y,
+		this->_404, 
+		0, 
+		3, 
+		&Vec2_32(0x1000, 0x1000), 
+		this->_406,
+		0, 
+		0
+	);
+
+	return true;
+}
+bool Object125::loadResources()
+{
+	func_0200b83c(0x18);
+	return true;
+}
+void Object125::pendingDestroy()
+{
+}
+s32 Object125::onDestroy()
+{
+	return true;
+}
+
 // 0x0218dee0
-ActorProfile Object125_Profile = { Object125::create, 125, 182, NULL /* TODO: 0x0218c88c */ };
+ActorProfile Object125_Profile = {Object125::create, 125, 182, Object125::loadResources};
