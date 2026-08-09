@@ -1151,7 +1151,7 @@ _ZTV11EndingScene kind:data(any) addr:0x020e9b90
 data_ov008_020e9be0 kind:data(any) addr:0x020e9be0
 data_ov008_020e9be8 kind:data(any) addr:0x020e9be8
 Object324_Profile kind:data(any) addr:0x020e9bf0 ambiguous
-data_ov008_020e9c00 kind:data(any) addr:0x020e9c00
+_ZTV9Object324 kind:data(any) addr:0x020e9bf8
 data_ov008_020e9c48 kind:data(any) addr:0x020e9c48
 data_ov008_020e9c4c kind:data(any) addr:0x020e9c4c
 data_ov008_020e9c50 kind:data(any) addr:0x020e9c50

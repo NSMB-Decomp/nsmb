@@ -4,13 +4,13 @@
     .bss        start:0x02174ac0 end:0x02174ac0 kind:bss align:32
 
 src/Bases/stubs/Object204.cpp:
-    .text       start:0x021737a0 end:0x021737e0
-    .data       start:0x02174718 end:0x02174724
+    .text       start:0x02172dd4 end:0x021737e0
+    .data       start:0x02174718 end:0x02174838
 
 src/Bases/stubs/Object203.cpp:
-    .text       start:0x02174118 end:0x02174160
-    .data       start:0x02174868 end:0x02174874
+    .text       start:0x021737e0 end:0x02174160
+    .data       start:0x02174868 end:0x02174988
 
 src/Bases/stubs/Object205.cpp:
-    .text       start:0x02174694 end:0x021746d8
-    .data       start:0x02174990 end:0x0217499c
+    .text       start:0x02174160 end:0x021746d8
+    .data       start:0x02174990 end:0x02174ac0

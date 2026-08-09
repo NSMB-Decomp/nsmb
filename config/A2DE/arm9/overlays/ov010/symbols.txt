@@ -2122,7 +2122,7 @@ data_ov010_021261a4 kind:data(any) addr:0x021261a4
 data_ov010_021261ac kind:data(any) addr:0x021261ac
 Object94_Profile kind:data(any) addr:0x021261b4
 Object95_Profile kind:data(any) addr:0x021261c0
-data_ov010_021261d4 kind:data(any) addr:0x021261d4
+_ZTV8Object94 kind:data(any) addr:0x021261cc
 data_ov010_021262e4 kind:data(any) addr:0x021262e4
 data_ov010_021262ec kind:data(any) addr:0x021262ec
 data_ov010_021262f4 kind:data(any) addr:0x021262f4
@@ -2283,7 +2283,7 @@ data_ov010_02126d08 kind:data(any) addr:0x02126d08
 data_ov010_02126d18 kind:data(any) addr:0x02126d18
 data_ov010_02126e24 kind:data(any) addr:0x02126e24
 Object176_Profile kind:data(any) addr:0x02126e2c
-data_ov010_02126e40 kind:data(any) addr:0x02126e40
+_ZTV9Object176 kind:data(any) addr:0x02126e38
 data_ov010_02126f4c kind:data(any) addr:0x02126f4c
 data_ov010_02126f54 kind:data(any) addr:0x02126f54
 data_ov010_02126f5c kind:data(any) addr:0x02126f5c

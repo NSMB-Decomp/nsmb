@@ -14,37 +14,37 @@ src/Bases/stubs/Object323.cpp:
     .data       start:0x020daadc end:0x020daaec
 
 src/Bases/stubs/Object305.cpp:
-    .text       start:0x020d5280 end:0x020d52d0
-    .data       start:0x020dabb4 end:0x020dabc0
+    .text       start:0x020d5014 end:0x020d52d0
+    .data       start:0x020dabb4 end:0x020dac18
 
 src/Bases/stubs/Object306.cpp:
-    .text       start:0x020d5958 end:0x020d598c
-    .data       start:0x020dac58 end:0x020dac64
+    .text       start:0x020d52d0 end:0x020d598c
+    .data       start:0x020dac58 end:0x020dacbc
 
 src/Bases/stubs/Object307.cpp:
-    .text       start:0x020d5d58 end:0x020d5d8c
-    .data       start:0x020dacdc end:0x020dace8
+    .text       start:0x020d598c end:0x020d5d8c
+    .data       start:0x020dacdc end:0x020dad40
 
 src/Bases/stubs/Object308.cpp:
-    .text       start:0x020d76a8 end:0x020d76e0
-    .data       start:0x020daea0 end:0x020daeac
+    .text       start:0x020d5d8c end:0x020d76e0
+    .data       start:0x020daea0 end:0x020daf04
 
 src/Bases/stubs/Object309.cpp:
-    .text       start:0x020d7cf0 end:0x020d7d24
-    .data       start:0x020daf4c end:0x020daf58
+    .text       start:0x020d76e0 end:0x020d7d24
+    .data       start:0x020daf4c end:0x020dafb0
 
 src/Bases/stubs/Object310.cpp:
-    .text       start:0x020d87ec end:0x020d8870
-    .data       start:0x020dafd0 end:0x020dafdc
+    .text       start:0x020d8564 end:0x020d8870
+    .data       start:0x020dafd0 end:0x020db034
 
 src/Bases/stubs/Object311.cpp:
-    .text       start:0x020d8c1c end:0x020d8c50
-    .data       start:0x020db04c end:0x020db058
+    .text       start:0x020d8918 end:0x020d8c50
+    .data       start:0x020db04c end:0x020db0b0
 
 src/Bases/stubs/Object312.cpp:
-    .text       start:0x020d8fb4 end:0x020d8fe8
-    .data       start:0x020db0b0 end:0x020db0bc
+    .text       start:0x020d8c50 end:0x020d8fe8
+    .data       start:0x020db0b0 end:0x020db114
 
 src/Bases/stubs/Object313.cpp:
-    .text       start:0x020d959c end:0x020d9620
-    .data       start:0x020db134 end:0x020db140
+    .text       start:0x020d9320 end:0x020d9620
+    .data       start:0x020db134 end:0x020db198

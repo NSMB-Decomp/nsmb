@@ -8,8 +8,8 @@ src/Bases/Object229.cpp:
     .text       start:0x02185df4 end:0x02186278
     .init       start:0x02186278 end:0x02186358
     .ctor       start:0x02186358 end:0x02186360
-    .data       start:0x02186490 end:0x021865f0
+    .data       start:0x02186490 end:0x02186600
 
 src/Bases/stubs/Object233.cpp:
-    .text       start:0x02185db4 end:0x02185df4
-    .data       start:0x02186370 end:0x0218637c
+    .text       start:0x02185600 end:0x02185df4
+    .data       start:0x02186370 end:0x02186490

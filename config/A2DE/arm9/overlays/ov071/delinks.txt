@@ -6,17 +6,17 @@
     .bss        start:0x021799a0 end:0x021799c0 kind:bss align:32
 
 src/Bases/stubs/Object41.cpp:
-    .text       start:0x021774c8 end:0x02177584
-    .data       start:0x02179378 end:0x02179390
+    .text       start:0x021759a0 end:0x02177584
+    .data       start:0x02179378 end:0x02179420
 
 src/Bases/stubs/Object152.cpp:
-    .text       start:0x02177c84 end:0x02177cb0
-    .data       start:0x021795d0 end:0x021795dc
+    .text       start:0x021778f4 end:0x02177cb0
+    .data       start:0x021795d0 end:0x021796f0
 
 src/Bases/stubs/Object153.cpp:
-    .text       start:0x02178350 end:0x02178378
-    .data       start:0x02179710 end:0x0217971c
+    .text       start:0x02177f68 end:0x02178378
+    .data       start:0x02179710 end:0x02179830
 
 src/Bases/stubs/Object127.cpp:
-    .text       start:0x021790e4 end:0x0217912c
-    .data       start:0x02179880 end:0x0217988c
+    .text       start:0x02178378 end:0x0217912c
+    .data       start:0x02179880 end:0x021799a0

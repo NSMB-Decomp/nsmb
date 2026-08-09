@@ -87,24 +87,24 @@ src/Bases/stubs/Object274.cpp:
     .data       start:0x02124944 end:0x02124958
 
 src/Bases/stubs/Object282.cpp:
-    .text       start:0x020d634c end:0x020d6378
-    .data       start:0x02124a64 end:0x02124a70
+    .text       start:0x020d61c4 end:0x020d6378
+    .data       start:0x02124a64 end:0x02124b84
 
 src/Bases/stubs/Object276.cpp:
-    .text       start:0x020d64f8 end:0x020d6524
-    .data       start:0x02124b84 end:0x02124b90
+    .text       start:0x020d6378 end:0x020d6524
+    .data       start:0x02124b84 end:0x02124ca4
 
 src/Bases/stubs/Object277.cpp:
-    .text       start:0x020d67a0 end:0x020d67cc
-    .data       start:0x02124ca4 end:0x02124cb0
+    .text       start:0x020d6524 end:0x020d67cc
+    .data       start:0x02124ca4 end:0x02124dc4
 
 src/Bases/stubs/Object287.cpp:
     .text       start:0x020d7954 end:0x020d7e00
     .data       start:0x02124e34 end:0x02124ee8
 
 src/Bases/stubs/Object49.cpp:
-    .text       start:0x020d809c end:0x020d80cc
-    .data       start:0x02125088 end:0x02125094
+    .text       start:0x020d7e00 end:0x020d80cc
+    .data       start:0x02125088 end:0x021251a8
 
 src/Bases/stubs/SpinBlock.cpp:
     .text       start:0x020daa04 end:0x020dab54
@@ -131,20 +131,20 @@ src/Bases/stubs/Object166.cpp:
     .data       start:0x02125f34 end:0x02125f48
 
 src/Bases/stubs/Object94.cpp:
-    .text       start:0x020e0638 end:0x020e0698
-    .data       start:0x021261b4 end:0x021261d4
+    .text       start:0x020dddb0 end:0x020e0698
+    .data       start:0x021261b4 end:0x021262e4
 
 src/Bases/stubs/Object176.cpp:
-    .text       start:0x020e9eb0 end:0x020e9f24
-    .data       start:0x02126e2c end:0x02126e40
+    .text       start:0x020e9598 end:0x020e9f24
+    .data       start:0x02126e2c end:0x02126f4c
 
 src/Bases/stubs/Object211.cpp:
-    .text       start:0x020f584c end:0x020f5898
-    .data       start:0x0212704c end:0x02127058
+    .text       start:0x020f4a00 end:0x020f5898
+    .data       start:0x0212704c end:0x021271d4
 
 src/Bases/stubs/Object268.cpp:
-    .text       start:0x020f5d1c end:0x020f5d4c
-    .data       start:0x021271dc end:0x021271e8
+    .text       start:0x020f5898 end:0x020f5d4c
+    .data       start:0x021271dc end:0x021272fc
 
 src/Bases/stubs/Object202.cpp:
     .text       start:0x020f8e14 end:0x020f8e78

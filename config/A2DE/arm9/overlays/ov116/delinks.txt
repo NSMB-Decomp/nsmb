@@ -5,9 +5,9 @@
     .bss        start:0x0218f2a0 end:0x0218f2a0 kind:bss align:32
 
 src/Bases/stubs/Object200.cpp:
-    .text       start:0x0218d678 end:0x0218d758
-    .data       start:0x0218efc0 end:0x0218efcc
+    .text       start:0x0218cb8c end:0x0218d758
+    .data       start:0x0218efc0 end:0x0218f0e0
 
 src/Bases/stubs/Object212.cpp:
-    .text       start:0x0218ee90 end:0x0218ef14
-    .data       start:0x0218f168 end:0x0218f174
+    .text       start:0x0218d758 end:0x0218ef14
+    .data       start:0x0218f168 end:0x0218f2a0

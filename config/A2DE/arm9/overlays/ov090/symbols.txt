@@ -199,7 +199,7 @@ data_ov090_02184c70 kind:data(any) addr:0x02184c70
 data_ov090_02184c78 kind:data(any) addr:0x02184c78
 data_ov090_02184c80 kind:data(any) addr:0x02184c80
 Object189_Profile kind:data(any) addr:0x02184c88 ambiguous
-data_ov090_02184c9c kind:data(any) addr:0x02184c9c
+_ZTV9Object189 kind:data(any) addr:0x02184c94
 data_ov090_02184da8 kind:data(any) addr:0x02184da8
 data_ov090_02184db0 kind:data(any) addr:0x02184db0
 Object195_Profile kind:data(any) addr:0x02184db8 ambiguous

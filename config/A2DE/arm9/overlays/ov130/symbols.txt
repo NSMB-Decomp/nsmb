@@ -628,7 +628,7 @@ _ZTV12MGDebugScene kind:data(any) addr:0x02138868
 Object328_Profile kind:data(any) addr:0x021388c4
 data_ov130_021388d4 kind:data(any) addr:0x021388d4
 data_ov130_021388ec kind:data(any) addr:0x021388ec
-data_ov130_02138904 kind:data(any) addr:0x02138904
+_ZTV9Object328 kind:data(any) addr:0x021388fc
 data_ov130_0213894c kind:data(any) addr:0x0213894c
 UnknownProfile::ov130_02138954 kind:data(any) addr:0x02138954
 data_ov130_0213895c kind:data(any) addr:0x0213895c
@@ -643,13 +643,13 @@ Object333_Profile kind:data(any) addr:0x02138a28
 data_ov130_02138a30 kind:data(any) addr:0x02138a30
 data_ov130_02138a32 kind:data(any) addr:0x02138a32
 data_ov130_02138a40 kind:data(any) addr:0x02138a40
-data_ov130_02138a58 kind:data(any) addr:0x02138a58
+_ZTV9Object333 kind:data(any) addr:0x02138a50
 data_ov130_02138aa0 kind:data(any) addr:0x02138aa0
 Object334_Profile kind:data(any) addr:0x02138aa4
 data_ov130_02138aac kind:data(any) addr:0x02138aac
 data_ov130_02138ac8 kind:data(any) addr:0x02138ac8
 data_ov130_02138ae0 kind:data(any) addr:0x02138ae0
-data_ov130_02138af8 kind:data(any) addr:0x02138af8
+_ZTV9Object334 kind:data(any) addr:0x02138af0
 data_ov130_02138b40 kind:data(any) addr:0x02138b40
 data_ov130_02138b44 kind:data(any) addr:0x02138b44
 data_ov130_02138b48 kind:data(any) addr:0x02138b48
@@ -660,7 +660,7 @@ data_ov130_02138b68 kind:data(any) addr:0x02138b68
 data_ov130_02138b80 kind:data(any) addr:0x02138b80
 data_ov130_02138b98 kind:data(any) addr:0x02138b98
 data_ov130_02138bb0 kind:data(any) addr:0x02138bb0
-data_ov130_02138bc8 kind:data(any) addr:0x02138bc8
+_ZTV9Object335 kind:data(any) addr:0x02138bc0
 data_ov130_02138c10 kind:data(any) addr:0x02138c10
 data_ov130_02138c14 kind:data(any) addr:0x02138c14
 data_ov130_02138c18 kind:data(any) addr:0x02138c18
@@ -669,7 +669,7 @@ data_ov130_02138c28 kind:data(any) addr:0x02138c28
 data_ov130_02138c3c kind:data(any) addr:0x02138c3c
 data_ov130_02138c54 kind:data(any) addr:0x02138c54
 data_ov130_02138c6c kind:data(any) addr:0x02138c6c
-data_ov130_02138c98 kind:data(any) addr:0x02138c98
+_ZTV9Object331 kind:data(any) addr:0x02138c90
 data_ov130_02138ce0 kind:data(any) addr:0x02138ce0
 Object332_Profile kind:data(any) addr:0x02138ce4
 data_ov130_02138cec kind:data(any) addr:0x02138cec
@@ -679,7 +679,7 @@ _ZTV9Object332 kind:data(any) addr:0x02138d40
 Object336_Profile kind:data(any) addr:0x02138d90
 data_ov130_02138da0 kind:data(any) addr:0x02138da0
 data_ov130_02138db8 kind:data(any) addr:0x02138db8
-data_ov130_02138de4 kind:data(any) addr:0x02138de4
+_ZTV9Object336 kind:data(any) addr:0x02138ddc
 data_ov130_02138e2c kind:data(any) addr:0x02138e2c
 data_ov130_02138e30 kind:data(any) addr:0x02138e30
 data_ov130_02138e34 kind:data(any) addr:0x02138e34

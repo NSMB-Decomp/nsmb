@@ -5,5 +5,5 @@
     .bss        start:0x02134860 end:0x02134860 kind:bss align:32
 
 src/Bases/stubs/Object119.cpp:
-    .text       start:0x02134444 end:0x021344e8
-    .data       start:0x02134728 end:0x02134734
+    .text       start:0x0212f900 end:0x021344e8
+    .data       start:0x02134728 end:0x02134860

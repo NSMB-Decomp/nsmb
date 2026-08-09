@@ -1563,7 +1563,7 @@ data_ov128_020fe728 kind:data(any) addr:0x020fe728
 data_ov128_020fe748 kind:data(any) addr:0x020fe748
 data_ov128_020feb48 kind:data(any) addr:0x020feb48
 Object345_Profile kind:data(any) addr:0x020feb50
-data_ov128_020feb6c kind:data(any) addr:0x020feb6c
+_ZTV9Object345 kind:data(any) addr:0x020feb64
 data_ov128_020fec04 kind:data(any) addr:0x020fec04
 data_ov128_020fec08 kind:data(any) addr:0x020fec08
 data_ov128_020fec0c kind:data(any) addr:0x020fec0c

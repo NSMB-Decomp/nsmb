@@ -57,7 +57,7 @@ data_ov082_0217b8e4 kind:data(any) addr:0x0217b8e4
 data_ov082_0217b8f0 kind:data(any) addr:0x0217b8f0
 data_ov082_0217b920 kind:data(any) addr:0x0217b920
 Object156::profile kind:data(any) addr:0x0217b928 ambiguous
-_ZTV10Object156 kind:data(any) addr:0x0217b934
+_ZTV9Object156 kind:data(any) addr:0x0217b934
 data_ov082_0217ba48 kind:data(any) addr:0x0217ba48
 data_ov082_0217ba50 kind:data(any) addr:0x0217ba50
 data_ov082_0217ba58 kind:data(any) addr:0x0217ba58

@@ -5,8 +5,8 @@
     .bss        start:0x0217f9c0 end:0x0217f9c0 kind:bss align:32
 
 src/Bases/stubs/Object227.cpp:
-    .text       start:0x0217dfe8 end:0x0217e030
-    .data       start:0x0217f600 end:0x0217f60c
+    .text       start:0x0217db60 end:0x0217e030
+    .data       start:0x0217f600 end:0x0217f738
 
 src/Bases/stubs/Object51.cpp:
     .text       start:0x0217ea04 end:0x0217eb3c
@@ -17,5 +17,5 @@ src/Bases/stubs/Object50.cpp:
     .data       start:0x0217f75c end:0x0217f770
 
 src/Bases/stubs/Object226.cpp:
-    .text       start:0x0217f4c0 end:0x0217f4ec
-    .data       start:0x0217f89c end:0x0217f8a8
+    .text       start:0x0217efd4 end:0x0217f4ec
+    .data       start:0x0217f89c end:0x0217f9c0

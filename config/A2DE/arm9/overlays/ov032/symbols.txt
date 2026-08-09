@@ -71,5 +71,5 @@ Object23_Profile kind:data(any) addr:0x021439c8
 Object24_Profile kind:data(any) addr:0x021439d4
 Object25_Profile kind:data(any) addr:0x021439e0
 Object26_Profile kind:data(any) addr:0x021439ec ambiguous
-data_ov032_02143a00 kind:data(any) addr:0x02143a00
+_ZTV8Object23 kind:data(any) addr:0x021439f8
 data_ov032_02143af0 kind:data(any) addr:0x02143af0 ambiguous

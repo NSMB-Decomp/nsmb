@@ -84,5 +84,5 @@ data_ov081_0217b874 kind:data(any) addr:0x0217b874
 data_ov081_0217b87c kind:data(any) addr:0x0217b87c
 Object101_Profile kind:data(any) addr:0x0217b884 ambiguous
 Object102_Profile kind:data(any) addr:0x0217b890 ambiguous
-data_ov081_0217b8a4 kind:data(any) addr:0x0217b8a4
+_ZTV9Object101 kind:data(any) addr:0x0217b89c
 data_ov081_0217b928 kind:data(any) addr:0x0217b928 ambiguous

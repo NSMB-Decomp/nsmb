@@ -11,13 +11,13 @@ src/Bases/manhole.cpp:
     .data       start:0x02189838 end:0x02189990
 
 src/Bases/stubs/Object250.cpp:
-    .text       start:0x02186664 end:0x02186748
-    .data       start:0x02189478 end:0x02189484
+    .text       start:0x02185600 end:0x02186748
+    .data       start:0x02189478 end:0x02189518
 
 src/Bases/stubs/Object258.cpp:
-    .text       start:0x021879e0 end:0x02187aa0
-    .data       start:0x021895d4 end:0x021895e0
+    .text       start:0x02186748 end:0x02187aa0
+    .data       start:0x021895d4 end:0x02189650
 
 src/Bases/stubs/Object232.cpp:
-    .text       start:0x0218882c end:0x02188920
-    .data       start:0x02189718 end:0x02189724
+    .text       start:0x02187aa0 end:0x02188920
+    .data       start:0x02189718 end:0x02189780

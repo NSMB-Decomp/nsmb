@@ -337,7 +337,7 @@ data_ov042_021526b0 kind:data(any) addr:0x021526b0
 data_ov042_021526b8 kind:data(any) addr:0x021526b8
 Object40_Profile kind:data(any) addr:0x021526c0
 Object123_Profile kind:data(any) addr:0x021526cc
-data_ov042_021526e0 kind:data(any) addr:0x021526e0
+_ZTV8Object40 kind:data(any) addr:0x021526d8
 data_ov042_02152800 kind:bss addr:0x02152800
 data_ov042_02152808 kind:bss addr:0x02152808
 data_ov042_02152810 kind:bss addr:0x02152810

@@ -10,13 +10,13 @@ src/Bases/VSStar.cpp:
     .data       start:0x021331d4 end:0x021332f4
 
 src/Bases/stubs/Object168.cpp:
-    .text       start:0x021314a0 end:0x021315b8
-    .data       start:0x02133090 end:0x0213309c
+    .text       start:0x0212f900 end:0x021315b8
+    .data       start:0x02133090 end:0x021330e8
 
 src/Bases/stubs/Object177.cpp:
-    .text       start:0x02132984 end:0x021329b0
-    .data       start:0x021332f4 end:0x02133300
+    .text       start:0x02132744 end:0x021329b0
+    .data       start:0x021332f4 end:0x02133414
 
 src/Bases/stubs/Object178.cpp:
-    .text       start:0x02132e38 end:0x02132ea8
-    .data       start:0x02133414 end:0x02133420
+    .text       start:0x021329b0 end:0x02132ea8
+    .data       start:0x02133414 end:0x02133540
