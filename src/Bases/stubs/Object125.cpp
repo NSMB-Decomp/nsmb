@@ -1,7 +1,7 @@
 #include "Object125.hpp"
 
-u8 data_ov117_0218de94[4];
-u8 data_ov117_0218de90[4];
+const u8 data_ov117_0218de90[4] = {0x00, 0x10, 0x20, 0x30};
+const u8 data_ov117_0218de94[4] = {0 ,4, 2, 6};
 extern void* data_ov053_0216fc30[8];
 
 void *Object125::create()
@@ -9,8 +9,13 @@ void *Object125::create()
 	return new Object125();
 }
 
-void Object125::func_ov117_0218c9b0(u32)
+bool Object125::func_ov117_0218c9b0(u32 a)
 {
+	if (this->_3f4 == NULL) {
+		return true;
+	} else {
+	 	return (this->**_3f4)(a);
+	}
 }
 s32 Object125::onCreate()
 {

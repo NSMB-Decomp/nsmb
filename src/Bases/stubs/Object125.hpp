@@ -4,7 +4,8 @@
 // MainProfileTable slot 125  |  ov117  |  profile @ 0x0218dee0
 class Object125 : public StageEntity {
 public:
-	u8 _pad0[0x12];
+	bool (StageEntity::**_3f4)(u32);
+	u8 _pad0[0xc];
 	u8 _404;
 	u16 _406;
 	u8 _pad1[0x4];
@@ -14,7 +15,7 @@ public:
 	inline ~Object125() {};
 	static bool loadResources();
 	
-	void func_ov117_0218c9b0(u32);
+	bool func_ov117_0218c9b0(u32);
 
 	virtual s32 onCreate();
 	virtual s32 onDestroy();
