@@ -1,14 +1,30 @@
 #pragma once
 #include "../StageEntity.hpp"
-#include "../../AAA.hpp"
 
-// MainProfileTable slot 304  |  ov052  |  profile @ 0x0215c67c
-class Object304 : public StageEntity {
-public:
-	static void *create();
-	inline Object304() {};
-	inline ~Object304() {};
+class Object304_Unknown
+{
+	u8 _pad0[0xd8];
+
+      public:
+	Object304_Unknown();
+	~Object304_Unknown();
 };
 
-extern ActorProfile Object304_Profile;
+// MainProfileTable slot 304  |  ov052  |  profile @ 0x0215c67c
+class Object304 : public Object
+{
+      public:
+	Object304_Unknown _00[2];
+	u8 _pad0[0x8];
 
+	static void *create();
+	Object304();
+	inline ~Object304() {};
+
+	virtual s32 onCreate();
+	virtual s32 onDestroy();
+	virtual s32 onUpdate();
+	virtual s32 onRender();
+};
+
+extern ObjectProfile Object304_Profile;
