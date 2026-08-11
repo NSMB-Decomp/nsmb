@@ -801,10 +801,10 @@ data_ov000_020b5a4c kind:data(any) addr:0x020b5a4c
 data_ov000_020b5b58 kind:data(any) addr:0x020b5b58
 data_ov000_020b5de4 kind:data(any) addr:0x020b5de4
 data_ov000_020b7722 kind:data(any) addr:0x020b7722
-data_ov000_020b775c kind:data(any) addr:0x020b775c
-data_ov000_020b776c kind:data(any) addr:0x020b776c
+ActorSpawnPosition kind:data(any) addr:0x020b775c
+data_ov000_020c6c14 kind:data(any) addr:0x020b776c
 data_ov000_020b7778 kind:data(any) addr:0x020b7778
-data_ov000_020b778c kind:data(any) addr:0x020b778c
+_ZTV5Actor kind:data(any) addr:0x020b778c
 data_ov000_020b77e4 kind:data(any) addr:0x020b77e4
 data_ov000_020b7834 kind:data(any) addr:0x020b7834
 data_ov000_020b7838 kind:data(any) addr:0x020b7838

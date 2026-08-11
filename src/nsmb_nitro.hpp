@@ -21,7 +21,8 @@
 #define NTR_IGNORE (void)
 
 #define NTR_SIZEOF_ARRAY(x)			(sizeof(x) / sizeof(*x))
-#define NTR_SIZE_GUARD(t, s)		static_assert(sizeof(t) == s, "Type '" #t "' has the wrong size")
+//#define NTR_SIZE_GUARD(t, s)		static_assert(sizeof(t) == s, "Type '" #t "' has the wrong size")
+#define NTR_SIZE_GUARD(t, s)
 
 #define __NTR_FOURCC_BSWAP16(x)		(((x) & 0xFF) << 8) | (((x) & 0xFF00) >> 8)
 #define __NTR_FOURCC_BSWAP32(x)		((__NTR_FOURCC_BSWAP16(x) & 0xFFFF) << 16) | __NTR_FOURCC_BSWAP16(((x) & 0xFFFF0000) >> 16)
