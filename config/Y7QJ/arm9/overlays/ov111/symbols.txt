@@ -1,4 +1,4 @@
-func_ov111_02166a20 kind:function(arm,size=0x38) addr:0x02166a20
+_ZN8Object826createEv kind:function(arm,size=0x38) addr:0x02166a20
 func_ov111_02166a58 kind:function(arm,size=0x8c) addr:0x02166a58
 func_ov111_02166ae4 kind:function(arm,size=0x4c) addr:0x02166ae4
 func_ov111_02166b30 kind:function(arm,size=0xd0) addr:0x02166b30

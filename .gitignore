@@ -4,6 +4,8 @@ objdiff_report.json
 *.ids
 *.sav
 *.mch
+*.ml*
+*.bin
 temp
 .vscode
 

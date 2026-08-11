@@ -1,11 +1,11 @@
-func_ov007_020bc4a0 kind:function(arm,size=0x2c) addr:0x020bc4a0
-func_ov007_020bc4cc kind:function(arm,size=0x15c) addr:0x020bc4cc
-func_ov007_020bc628 kind:function(arm,size=0x8) addr:0x020bc628
-func_ov007_020bc630 kind:function(arm,size=0x4) addr:0x020bc630
-func_ov007_020bc634 kind:function(arm,size=0x8) addr:0x020bc634
-func_ov007_020bc63c kind:function(arm,size=0x11c) addr:0x020bc63c
+_ZN8KeyScene6createEv kind:function(arm,size=0x2c) addr:0x020bc4a0
+_ZN8KeyScene8onCreateEv kind:function(arm,size=0x15c) addr:0x020bc4cc
+_ZN8KeyScene9onDestroyEv kind:function(arm,size=0x8) addr:0x020bc628
+_ZN8KeyScene14pendingDestroyEv kind:function(arm,size=0x4) addr:0x020bc630
+_ZN8KeyScene8onRenderEv kind:function(arm,size=0x8) addr:0x020bc634
+_ZN8KeyScene8onUpdateEv kind:function(arm,size=0x11c) addr:0x020bc63c
 func_ov007_020bc758 kind:function(arm,size=0x14) addr:0x020bc758
-func_ov007_020bc76c kind:function(arm,size=0x1c) addr:0x020bc76c
+_ZN8KeySceneD0Ev kind:function(arm,size=0x1c) addr:0x020bc76c
 data_ov007_020bc7a0 kind:data(any) addr:0x020bc7a0 ambiguous
 data_ov007_020bc7a8 kind:data(any) addr:0x020bc7a8
 data_ov007_020bc7b4 kind:data(any) addr:0x020bc7b4

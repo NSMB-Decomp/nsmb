@@ -4,3 +4,63 @@
     .ctor       start:0x0214c67c end:0x0214c6c0 kind:rodata align:4
     .data       start:0x0214c6e0 end:0x02151000 kind:data align:32
     .bss        start:0x02151000 end:0x02151ee0 kind:bss align:32
+
+src/Scenes/StageIntroScene.cpp:
+    .text       start:0x021358a0 end:0x02135ed8
+
+src/Bases/stubs/Object151.cpp:
+    .text       start:0x02135ed8 end:0x02136830
+
+src/Bases/stubs/Object80.cpp:
+    .text       start:0x02136830 end:0x02137154
+
+src/Bases/stubs/Object67.cpp:
+    .text       start:0x02137154 end:0x02137aa0
+
+src/Bases/stubs/Object237.cpp:
+    .text       start:0x02137aa0 end:0x02138940
+
+src/Bases/stubs/Object87.cpp:
+    .text       start:0x02138940 end:0x02138fa0
+
+src/Bases/stubs/Object206.cpp:
+    .text       start:0x02138fa0 end:0x021395a8
+
+src/Bases/stubs/Object62.cpp:
+    .text       start:0x02139928 end:0x0213a060
+
+src/Bases/stubs/Object251.cpp:
+    .text       start:0x0213aa70 end:0x0213b614
+
+src/Bases/stubs/Object86.cpp:
+    .text       start:0x0213b6a4 end:0x0213bdb0
+
+src/Bases/stubs/Object260.cpp:
+    .text       start:0x0213bdb0 end:0x0213d3b8
+
+src/Bases/stubs/Object261.cpp:
+    .text       start:0x0213d3b8 end:0x0213eac4
+
+src/Bases/stubs/Object69.cpp:
+    .text       start:0x0213eac4 end:0x0213fb20
+
+src/Bases/stubs/Object160.cpp:
+    .text       start:0x0214093c end:0x021414fc
+
+src/Bases/stubs/Object158.cpp:
+    .text       start:0x02143288 end:0x021438b4
+
+src/Bases/stubs/Object302.cpp:
+    .text       start:0x021438b4 end:0x02143b40
+
+src/Bases/stubs/Object121.cpp:
+    .text       start:0x02143b40 end:0x02145364
+
+src/Bases/stubs/Object71.cpp:
+    .text       start:0x02147954 end:0x02147e68
+
+src/Bases/stubs/Object20.cpp:
+    .text       start:0x02148274 end:0x02149a94
+
+src/Bases/stubs/Object242.cpp:
+    .text       start:0x02149bb4 end:0x0214bafc

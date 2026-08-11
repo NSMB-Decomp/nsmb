@@ -3,3 +3,33 @@
     .ctor       start:0x020c86e0 end:0x020c86e0 kind:rodata align:4
     .data       start:0x020c8700 end:0x020c9c40 kind:data align:32
     .bss        start:0x020c9c40 end:0x020c9ca0 kind:bss align:32
+
+src/Scenes/MainMenuScene.cpp:
+    .text       start:0x020bc4a0 end:0x020c0674
+
+src/Bases/stubs/Object305.cpp:
+    .text       start:0x020c3b40 end:0x020c3d6c
+
+src/Bases/stubs/Object306.cpp:
+    .text       start:0x020c4320 end:0x020c4984
+
+src/Bases/stubs/Object307.cpp:
+    .text       start:0x020c4984 end:0x020c4d2c
+
+src/Bases/stubs/Object308.cpp:
+    .text       start:0x020c4d2c end:0x020c6574
+
+src/Bases/stubs/Object309.cpp:
+    .text       start:0x020c6574 end:0x020c6b60
+
+src/Bases/stubs/Object310.cpp:
+    .text       start:0x020c6be8 end:0x020c6eac
+
+src/Bases/stubs/Object311.cpp:
+    .text       start:0x020c7680 end:0x020c7980
+
+src/Bases/stubs/Object312.cpp:
+    .text       start:0x020c7980 end:0x020c7cb8
+
+src/Bases/stubs/Object313.cpp:
+    .text       start:0x020c7cb8 end:0x020c7f6c

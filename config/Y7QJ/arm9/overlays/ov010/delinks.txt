@@ -4,3 +4,54 @@
     .ctor       start:0x0210ae6c end:0x0210ae94 kind:rodata align:4
     .data       start:0x0210aea0 end:0x021102e0 kind:data align:32
     .bss        start:0x021102e0 end:0x02111b80 kind:bss align:32
+
+src/Bases/Object316.cpp:
+    .text       start:0x020bddf0 end:0x020be4c4
+
+src/Bases/stubs/Object325.cpp:
+    .text       start:0x020be4c4 end:0x020be544
+
+src/Bases/stubs/Object240.cpp:
+    .text       start:0x020beee8 end:0x020c0344
+
+src/Bases/Item.cpp:
+    .text       start:0x020c0344 end:0x020c443c
+
+src/Bases/stubs/Object241.cpp:
+    .text       start:0x020c4590 end:0x020c4aa4
+
+src/Bases/Coin.cpp:
+    .text       start:0x020c6b5c end:0x020c86f0
+
+src/Bases/stubs/Object161.cpp:
+    .text       start:0x020c9214 end:0x020c95fc
+
+src/Bases/stubs/Object165.cpp:
+    .text       start:0x020caa70 end:0x020caf40
+
+src/Bases/stubs/Object166.cpp:
+    .text       start:0x020cafc0 end:0x020cb944
+
+src/Bases/stubs/Object94.cpp:
+    .text       start:0x020cb944 end:0x020cde4c
+
+src/Bases/Goomba.cpp:
+    .text       start:0x020cded0 end:0x020cf808
+
+src/Bases/stubs/Object176.cpp:
+    .text       start:0x020d5bcc end:0x020d60e0
+
+src/Bases/stubs/Object211.cpp:
+    .text       start:0x020df4b8 end:0x020e023c
+
+src/Bases/stubs/Object268.cpp:
+    .text       start:0x020e023c end:0x020e064c
+
+src/Bases/stubs/Object202.cpp:
+    .text       start:0x020e280c end:0x020e36d8
+
+src/Bases/Object18.cpp:
+    .text       start:0x020e5528 end:0x020e65bc
+
+src/Bases/Player/PlayerActor.cpp:
+    .text       start:0x020fcd40 end:0x020fce24

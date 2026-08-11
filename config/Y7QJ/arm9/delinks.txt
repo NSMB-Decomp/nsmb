@@ -10,6 +10,51 @@
 src/system/main.cpp:
     .text       start:0x02003000 end:0x0200306c
 
+src/Scenes/ConnectScene.cpp:
+    .text       start:0x0200306c end:0x020038a8
+
+src/system/layout.cpp:
+    .text       start:0x02003f2c end:0x02004300
+
+src/system/app.cpp:
+    .text       start:0x02004300 end:0x02004bf4
+
+src/system/exception.cpp:
+    .text       start:0x02004bf4 end:0x02004d30
+
+src/system/vblank.cpp:
+    .text       start:0x02005254 end:0x02005530
+
+src/system/exceptionscreen.cpp:
+    .text       start:0x02005530 end:0x02005cf8
+
+src/Bases/Object.cpp:
+    .text       start:0x02010d54 end:0x02010db0
+
 src/Scenes/Scene.cpp:
     .text       start:0x02010db0 end:0x020115d8
     .data       start:0x02034fbc end:0x0203500c
+
+src/graphics/3d/util.cpp:
+    .text       start:0x020158f8 end:0x02015a18
+
+src/graphics/3d/model.cpp:
+    .text       start:0x02015a18 end:0x02015e9c
+
+src/graphics/3d/modelanm.cpp:
+    .text       start:0x02015e9c end:0x0201608c
+
+src/graphics/3d/blendmodelanm.cpp:
+    .text       start:0x0201608c end:0x020164d0
+
+src/graphics/3d/animation.cpp:
+    .text       start:0x020164d0 end:0x02016694
+
+src/graphics/3d/animationctrl.cpp:
+    .text       start:0x02016694 end:0x020167d8
+
+src/graphics/3d/texture.cpp:
+    .text       start:0x020167d8 end:0x02016880
+
+src/graphics/util/framectrl.cpp:
+    .text       start:0x0201bfc8 end:0x0201c1b0

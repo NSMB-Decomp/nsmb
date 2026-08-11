@@ -1,4 +1,4 @@
-func_ov055_02151ee0 kind:function(arm,size=0x28) addr:0x02151ee0
+_Z12initOv55Heapv kind:function(arm,size=0x28) addr:0x02151ee0
 data_ov055_02151f20 kind:bss addr:0x02151f20
 data_ov055_02152ae0 kind:bss addr:0x02152ae0 ambiguous
 data_ov055_02152c80 kind:bss addr:0x02152c80 ambiguous

@@ -4,3 +4,21 @@
     .ctor       start:0x020b59ec end:0x020b59fc kind:rodata align:4
     .data       start:0x020b5a00 end:0x020bb500 kind:data align:32
     .bss        start:0x020bb500 end:0x020bc4a0 kind:bss align:32
+
+src/Bases/StageEntity.cpp:
+    .text       start:0x0208db20 end:0x02094cf4
+
+src/Bases/Actor.cpp:
+    .text       start:0x02094cf4 end:0x0209577c
+
+src/Bases/StageActor.cpp:
+    .text       start:0x0209577c end:0x020959a4
+
+src/Scenes/StageScene.cpp:
+    .text       start:0x020959a4 end:0x02097e88
+
+src/Collision/Collider.cpp:
+    .text       start:0x020a0054 end:0x020a070c
+
+src/menu/OptionsMenu.cpp:
+    .text       start:0x020b3120 end:0x020b3eb4

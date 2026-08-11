@@ -4,3 +4,36 @@
     .ctor       start:0x020d2f58 end:0x020d2f70 kind:rodata align:4
     .data       start:0x020d2f80 end:0x020db940 kind:data align:32
     .bss        start:0x020db940 end:0x020de860 kind:bss align:32
+
+src/Scenes/Scene8.cpp:
+    .text       start:0x020bc7a4 end:0x020bccd8
+
+src/Bases/stubs/Object317.cpp:
+    .text       start:0x020bd2c8 end:0x020bd814
+
+src/worldmap/scene.cpp:
+    .text       start:0x020bd814 end:0x020c0c8c
+
+src/worldmap/camera.cpp:
+    .text       start:0x020c0c90 end:0x020c15b8
+
+src/worldmap/controller.cpp:
+    .text       start:0x020c15b8 end:0x020c9e90
+
+src/worldmap/character.cpp:
+    .text       start:0x020c9e90 end:0x020ca858
+
+src/worldmap/entitymodel.cpp:
+    .text       start:0x020ca858 end:0x020cade8
+
+src/worldmap/minimap.cpp:
+    .text       start:0x020cade8 end:0x020cbc40
+
+src/worldmap/playermodel.cpp:
+    .text       start:0x020cbc40 end:0x020cc4fc
+
+src/Bases/stubs/Object324.cpp:
+    .text       start:0x020cc8fc end:0x020ccdb8
+
+src/Bases/stubs/Object314.cpp:
+    .text       start:0x020ce82c end:0x020d0424

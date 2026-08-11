@@ -4,3 +4,6 @@
     .ctor       start:0x02167dbc end:0x02167dc0 kind:rodata align:4
     .data       start:0x02167de0 end:0x02167f40 kind:data align:32
     .bss        start:0x02167f40 end:0x02167f80 kind:bss align:32
+
+src/Bases/stubs/Object120.cpp:
+    .text       start:0x02166a20 end:0x02167d1c

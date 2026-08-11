@@ -3,3 +3,9 @@
     .ctor       start:0x020bcd7c end:0x020bcd7c kind:rodata align:4
     .data       start:0x020bcd80 end:0x020bce60 kind:data align:32
     .bss        start:0x020bce60 end:0x020bce60 kind:bss align:32
+
+src/Bases/stubs/GameOverScene.cpp:
+    .text       start:0x020bc4a0 end:0x020bc4dc
+
+src/Bases/stubs/Object315.cpp:
+    .text       start:0x020bc758 end:0x020bcbb4
