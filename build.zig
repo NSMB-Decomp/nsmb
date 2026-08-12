@@ -461,7 +461,7 @@ const Release = enum {
     pub fn compilerPath(self: Release) []const u8 {
         return switch (self) {
             .Y7QJ => "./build/compiler/mwccarm/2.0/sp2p4/mwccarm.exe", // TODO: Confirm the exact version this it should use.
-            else => "./build/compiler/mwccarm/1.2/sp3/mwccarm.exe", // TODO: Confirm is sp3 or sp4
+            else => "./build/compiler/mwccarm/1.2/sp3/mwccarm.exe", // Confirmed to be sp3, sp3 & sp4 seem to result in the same output. However sp4 was build after A2DE.
         };
     }
 };
