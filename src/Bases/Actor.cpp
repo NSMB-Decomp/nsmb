@@ -1,6 +1,12 @@
 #include "Actor.hpp"
 #include "../Math.hpp"
 
+// TODO: Actually is A2DE this defined in init but in Y7 this defined statically?
+ i8 *ActorSpawnPlayer;
+ Vec3_16 *ActorSpawnRotation;
+ Vec3_32 *ActorSpawnPosition;
+ i32 *ActorSpawnScale;
+
 // TODO: Some of this may be a part of inline Object::Object(). To comapre Actor::Actor() to Scene::Scene() and confirm if any comparisons
 Actor::Actor()
 {
@@ -39,7 +45,7 @@ Actor::Actor()
 	this->lastPosition.z = this->position.z;
 	this->visible = true;
 	this->actorType = 0;
-	this->actorCategory = (u8)(1 << this->actorType | 0x80); // unsigned to signed conversion?
+	this->actorCategory = 1 << this->actorType | 0x80; // Bitmask?
 	this->acceleration.x = 0;
 	this->acceleration.y = 0;
 	this->acceleration.z = 0;
@@ -310,7 +316,8 @@ Vec3_32 Actor::getCenteredPosition()
 
 bool Actor::isOutOfViewVertical(FxRect *rect, int player_id)
 {
-	return ((rect->y + this->position.y) + 0x18000) + rect->halfHeight < -(Game::cameraY[player_id] + Game::cameraZoomY[player_id]);
+	fx32 y = this->position.y + rect->y;
+	return y + 0x18000 + rect->halfHeight < -(Game::cameraY[player_id] + Game::cameraZoomY[player_id]);
 }
 
 i32 (*data_ov000_020ca858)(i32, i32, i32, i32);

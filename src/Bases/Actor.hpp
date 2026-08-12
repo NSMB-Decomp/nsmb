@@ -2,12 +2,6 @@
 #include "../Vec.hpp"
 #include "Object.hpp"
 
- // TODO: Actually is A2DE this defined in init but in Y7 this defined statically?
-i8 *ActorSpawnPlayer;
-Vec3_16 *ActorSpawnRotation;
-Vec3_32 *ActorSpawnPosition;
-i32 *ActorSpawnScale;
-
 class Actor : public Object
 {
       public:
