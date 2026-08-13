@@ -8,8 +8,11 @@ from:0x020008e4 kind:arm_call to:0x0207e528 module:autoload(2)
 from:0x020008e8 kind:arm_call to:0x02004c24 module:main
 from:0x020008ec kind:arm_call to:0x0207fca4 module:autoload(2)
 from:0x020008fc kind:load to:0x027e0000 module:dtcm
+from:0x0200090c kind:load to:0x02000b48 module:main
 from:0x02000914 kind:load to:0x01ffd5e4 module:itcm
 from:0x02000918 kind:load to:0x02003000 module:main
+from:0x02000a50 kind:arm_branch to:0x02000a58 module:main
+from:0x02000a54 kind:load to:0x02000b48 module:main
 from:0x02000b20 kind:load to:0x027e0021 module:dtcm
 from:0x02000b28 kind:load to:0x027e0000 module:dtcm
 from:0x02001008 kind:arm_call to:0x02046c78 module:autoload(2)
