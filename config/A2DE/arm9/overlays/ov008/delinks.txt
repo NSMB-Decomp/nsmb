@@ -5,50 +5,13 @@
     .data       start:0x020e5820 end:0x020ee340 kind:data align:32
     .bss        start:0x020ee340 end:0x020f1700 kind:bss align:32
 
-src/Scenes/Scene8.cpp:
-    .text       start:0x020cc630 end:0x020ccc04
-    .data       start:0x020e5878 end:0x020e58d0
-
-
-src/worldmap/scene.cpp:
-    .text       start:0x020CD9AC end:0x020D1544
-    .data       start:0x020E5A2C end:0x020E8BD4
-    .bss        start:0x020EE374 end:0x020EE388
-
-src/worldmap/camera.cpp:
-    .text       start:0x020D1544 end:0x020D2024
-    .data       start:0x020E8BD4 end:0x020E9394
-    .bss        start:0x020EE388 end:0x020EE624
-
-src/worldmap/controller.cpp:
-    .text       start:0x020D2024 end:0x020DB204
-    .data       start:0x020E9394 end:0x020E988C
-    .bss        start:0x020EE624 end:0x020EE79C
-
-src/worldmap/character.cpp:
-    .text       start:0x020DB204 end:0x020DBC88
-    .data       start:0x020E988C end:0x020E9940
-    .bss        start:0x020EE79C end:0x020EE7DC
-
-src/worldmap/entitymodel.cpp:
-    .text       start:0x020DBC88 end:0x020DC1F8
-    .data       start:0x020E9940 end:0x020E9960
-    .bss        start:0x020EE7DC end:0x020EE7F8
-
-src/worldmap/minimap.cpp:
-    .text       start:0x020DC1F8 end:0x020DD21C
-    .rodata     start:0x020E2E58 end:0x020E3FEC
-    .data       start:0x020E9960 end:0x020E9B68
-    .bss        start:0x020EE7F8 end:0x020EE888
-
-src/worldmap/playermodel.cpp:
-    .text       start:0x020DD21C end:0x020DDD74
-    .rodata     start:0x020E3FEC end:0x020E40A0
-    .data       start:0x020E9B68 end:0x020E9B78
-
 src/Bases/stubs/SaveScene.cpp:
     .text       start:0x020cc604 end:0x020cc630
     .data       start:0x020e5820 end:0x020e5878
+
+src/Scenes/Scene8.cpp:
+    .text       start:0x020cc630 end:0x020ccc04
+    .data       start:0x020e5878 end:0x020e58d0
 
 src/Bases/stubs/Object318.cpp:
     .text       start:0x020cd2c0 end:0x020cd340
@@ -57,6 +20,42 @@ src/Bases/stubs/Object318.cpp:
 src/Bases/stubs/Object317.cpp:
     .text       start:0x020cd3f8 end:0x020cd9ac
     .data       start:0x020e59a8 end:0x020e5a2c
+
+src/worldmap/scene.cpp:
+    .text       start:0x020cd9ac end:0x020d1544
+    .data       start:0x020e5a2c end:0x020e8bd4
+    .bss        start:0x020ee374 end:0x020ee388
+
+src/worldmap/camera.cpp:
+    .text       start:0x020d1544 end:0x020d2024
+    .data       start:0x020e8bd4 end:0x020e9394
+    .bss        start:0x020ee388 end:0x020ee624
+
+src/worldmap/controller.cpp:
+    .text       start:0x020d2024 end:0x020db204
+    .data       start:0x020e9394 end:0x020e988c
+    .bss        start:0x020ee624 end:0x020ee79c
+
+src/worldmap/character.cpp:
+    .text       start:0x020db204 end:0x020dbc88
+    .data       start:0x020e988c end:0x020e9940
+    .bss        start:0x020ee79c end:0x020ee7dc
+
+src/worldmap/entitymodel.cpp:
+    .text       start:0x020dbc88 end:0x020dc1f8
+    .data       start:0x020e9940 end:0x020e9960
+    .bss        start:0x020ee7dc end:0x020ee7f8
+
+src/worldmap/minimap.cpp:
+    .text       start:0x020dc1f8 end:0x020dd21c
+    .rodata     start:0x020e2e58 end:0x020e3fec
+    .data       start:0x020e9960 end:0x020e9b68
+    .bss        start:0x020ee7f8 end:0x020ee888
+
+src/worldmap/playermodel.cpp:
+    .text       start:0x020dd21c end:0x020ddd74
+    .rodata     start:0x020e3fec end:0x020e40a0
+    .data       start:0x020e9b68 end:0x020e9b78
 
 src/Bases/stubs/EndingScene.cpp:
     .text       start:0x020de0d8 end:0x020de104

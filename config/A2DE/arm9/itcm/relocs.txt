@@ -1,9 +1,3 @@
-from:0x01ffd220 kind:load to:0x01ffd1c0 module:itcm
-from:0x01ffd224 kind:load to:0x01ffd1a8 module:itcm
-from:0x01ffd228 kind:load to:0x01ffd1a0 module:itcm
-from:0x01ffd284 kind:load to:0x01ffd198 module:itcm
-from:0x01ffd288 kind:load to:0x01ffd1b8 module:itcm
-from:0x01ffd28c kind:load to:0x01ffd1b0 module:itcm
 
 from:0x01ff81a4 kind:load to:0x01ff8000 module:itcm
 from:0x01ff8224 kind:load to:0x01ff806c module:itcm
@@ -250,7 +244,13 @@ from:0x01ffd18c kind:load to:0x020859a8 module:autoload(3)
 from:0x01ffd190 kind:load to:0x020859b0 module:autoload(3)
 from:0x01ffd194 kind:load to:0x027e0000 module:dtcm
 from:0x01ffd214 kind:arm_call to:0x01ffd524 module:itcm
+from:0x01ffd220 kind:load to:0x01ffd1c0 module:itcm
+from:0x01ffd224 kind:load to:0x01ffd1a8 module:itcm
+from:0x01ffd228 kind:load to:0x01ffd1a0 module:itcm
 from:0x01ffd278 kind:arm_call to:0x01ffd524 module:itcm
+from:0x01ffd284 kind:load to:0x01ffd198 module:itcm
+from:0x01ffd288 kind:load to:0x01ffd1b8 module:itcm
+from:0x01ffd28c kind:load to:0x01ffd1b0 module:itcm
 from:0x01ffd2c8 kind:arm_call to:0x02043920 module:autoload(2)
 from:0x01ffd2d4 kind:arm_call to:0x02043920 module:autoload(2)
 from:0x01ffd2e4 kind:arm_call to:0x02043920 module:autoload(2)

@@ -9,39 +9,6 @@ src/Bases/Object316.cpp:
     .text       start:0x020cdd1c end:0x020ce540
     .data       start:0x02123c80 end:0x02123d10
 
-src/Bases/Coin.cpp:
-    .text       start:0x020d80cc end:0x020d9ebc
-    .init       start:0x02123698 end:0x021237e8
-    .ctor       start:0x02123bcc end:0x02123bd0
-    .data       start:0x021251a8 end:0x02125334
-    .bss        start:0x021293e4 end:0x02129434
-
-src/Bases/Item.cpp:
-    .text       start:0x020d0d80 end:0x020d5120
-    .data       start:0x02124350 end:0x02124590
-
-src/Bases/Goomba.cpp:
-    .text       start:0x020e0ab4 end:0x020e27d4
-
-src/Bases/Object19.cpp:
-    .text       start:0x020e9258 end:0x020e933c
-    .data       start:0x02126b7c end:0x02126be0
-
-src/Bases/Object22.cpp:
-    .text       start:0x020e933c end:0x020e9428
-    .data       start:0x02126be0 end:0x02126d00
-
-src/Bases/Object176.cpp:
-    .text       start:0x020e9428 end:0x020e94cc
-    .data       start:0x02126d18 end:0x02126e24
-
-src/Bases/Object18.cpp:
-    .text       start:0x020fb57c end:0x020fc988
-    .data       start:0x02127838 end:0x02127890
-
-src/Bases/Player/PlayerActor.cpp:
-    .text       start:0x02108fe4 end:0x02109180
-
 src/Bases/stubs/Object325.cpp:
     .text       start:0x020ce794 end:0x020ce83c
     .data       start:0x02123d58 end:0x02123dc4
@@ -49,6 +16,10 @@ src/Bases/stubs/Object325.cpp:
 src/Bases/stubs/Object240.cpp:
     .text       start:0x020cf544 end:0x020d0be4
     .data       start:0x02124014 end:0x02124268
+
+src/Bases/Item.cpp:
+    .text       start:0x020d0d80 end:0x020d5120
+    .data       start:0x02124350 end:0x02124590
 
 src/Bases/stubs/Object241.cpp:
     .text       start:0x020d5240 end:0x020d5894
@@ -86,6 +57,13 @@ src/Bases/stubs/Object49.cpp:
     .text       start:0x020d7e00 end:0x020d80cc
     .data       start:0x02125088 end:0x021251a8
 
+src/Bases/Coin.cpp:
+    .text       start:0x020d80cc end:0x020d9ebc
+    .init       start:0x02123698 end:0x021237e8
+    .ctor       start:0x02123bcc end:0x02123bd0
+    .data       start:0x021251a8 end:0x02125334
+    .bss        start:0x021293e4 end:0x02129434
+
 src/Bases/stubs/SpinBlock.cpp:
     .text       start:0x020daa04 end:0x020dab54
     .data       start:0x0212533c end:0x021256b4
@@ -110,6 +88,21 @@ src/Bases/stubs/Object94.cpp:
     .text       start:0x020dddb0 end:0x020e0698
     .data       start:0x021261b4 end:0x021262e4
 
+src/Bases/Goomba.cpp:
+    .text       start:0x020e0ab4 end:0x020e27d4
+
+src/Bases/Object19.cpp:
+    .text       start:0x020e9258 end:0x020e933c
+    .data       start:0x02126b7c end:0x02126be0
+
+src/Bases/Object22.cpp:
+    .text       start:0x020e933c end:0x020e9428
+    .data       start:0x02126be0 end:0x02126d00
+
+src/Bases/Object176.cpp:
+    .text       start:0x020e9428 end:0x020e94cc
+    .data       start:0x02126d18 end:0x02126e24
+
 src/Bases/stubs/Object176.cpp:
     .text       start:0x020e9598 end:0x020e9f24
     .data       start:0x02126e2c end:0x02126f4c
@@ -125,6 +118,13 @@ src/Bases/stubs/Object268.cpp:
 src/Bases/stubs/Object202.cpp:
     .text       start:0x020f7d50 end:0x020f8e78
     .data       start:0x02127478 end:0x02127598
+
+src/Bases/Object18.cpp:
+    .text       start:0x020fb57c end:0x020fc988
+    .data       start:0x02127838 end:0x02127890
+
+src/Bases/Player/PlayerActor.cpp:
+    .text       start:0x02108fe4 end:0x02109180
 
 src/Bases/stubs/Player.cpp:
     .text       start:0x02120e14 end:0x02120e40

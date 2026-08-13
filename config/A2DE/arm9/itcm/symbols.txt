@@ -131,18 +131,18 @@ Nitro::Math_AddVec3_32s kind:function(arm,size=0x34) addr:0x01ffcea8
 Nitro::Math_func_01ffcedc kind:function(arm,size=0x1d4) addr:0x01ffcedc
 _ZN5Nitro10Math__stubEv kind:function(arm,size=0x4) addr:0x01ffd0b0
 
-// vblank.cpp
-
-@550 kind:data(any) addr:0x01ffd1c0 local
-@546 kind:data(any) addr:0x01ffd1a0 local
-@548 kind:data(any) addr:0x01ffd1a8 local
-@537 kind:data(any) addr:0x01ffd198 local
-@535 kind:data(any) addr:0x01ffd1b8 local
-@533 kind:data(any) addr:0x01ffd1b0 local
-
 _ZN6System24titleScreenVBlankHandlerEv kind:function(arm,size=0x54) addr:0x01ffd0b4
 _ZN6System18stageVBlankHandlerEv kind:function(arm,size=0x50) addr:0x01ffd108
 _ZN6System17gameVBlankHandlerEv kind:function(arm,size=0x40) addr:0x01ffd158
+@537 kind:data(any) addr:0x01ffd198 local
+@546 kind:data(any) addr:0x01ffd1a0 local
+@548 kind:data(any) addr:0x01ffd1a8 local
+@533 kind:data(any) addr:0x01ffd1b0 local
+@535 kind:data(any) addr:0x01ffd1b8 local
+
+// vblank.cpp
+
+@550 kind:data(any) addr:0x01ffd1c0 local
 _ZN4Base12procesRenderEv kind:function(arm,size=0x64) addr:0x01ffd1c8
 _ZN4Base13processUpdateEv kind:function(arm,size=0x64) addr:0x01ffd22c
 _ZN4Base11doOrderProcEv kind:function(arm,size=0x22c) addr:0x01ffd290

@@ -5,11 +5,6 @@
     .data       start:0x02189460 end:0x021899a0 kind:data align:32
     .bss        start:0x021899a0 end:0x021899e0 kind:bss align:32
 
-src/Bases/manhole.cpp:
-    .text       start:0x02188920 end:0x02189344
-    .rodata     start:0x02189358 end:0x02189374
-    .data       start:0x02189838 end:0x02189990
-
 src/Bases/stubs/Object250.cpp:
     .text       start:0x02185600 end:0x02186748
     .data       start:0x02189478 end:0x02189518
@@ -21,3 +16,8 @@ src/Bases/stubs/Object258.cpp:
 src/Bases/stubs/Object232.cpp:
     .text       start:0x02187aa0 end:0x02188920
     .data       start:0x02189718 end:0x02189780
+
+src/Bases/manhole.cpp:
+    .text       start:0x02188920 end:0x02189344
+    .rodata     start:0x02189358 end:0x02189374
+    .data       start:0x02189838 end:0x02189990

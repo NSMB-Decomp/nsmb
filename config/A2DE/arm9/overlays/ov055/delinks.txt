@@ -5,4 +5,3 @@
 src/ov55.cpp:
     .text       start:0x021726c0 end:0x021726e8
     .bss        start:0x02172700 end:0x0218b700
-

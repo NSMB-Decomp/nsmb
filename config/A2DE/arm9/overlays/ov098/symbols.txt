@@ -110,7 +110,7 @@ data_ov098_02189858 kind:data(any) addr:0x02189858
 data_ov098_02189860 kind:data(any) addr:0x02189860
 data_ov098_02189868 kind:data(any) addr:0x02189868
 _ZN7Manhole7profileE kind:data(any) addr:0x02189870 ambiguous
-_ZTV7Manhole kind:data(byte[0x114]) addr:0x0218987c
+_ZTV7Manhole kind:data(byte[276]) addr:0x0218987c
 data_ov098_021899a0 kind:bss addr:0x021899a0
 data_ov098_021899a8 kind:bss addr:0x021899a8
 data_ov098_021899b0 kind:bss addr:0x021899b0
