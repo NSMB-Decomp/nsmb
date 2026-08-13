@@ -1,11 +1,6 @@
-#include "app.hpp"
-
-inline u32 getResetParam() {
-	return *rcast<u32*>(0x027FFC20);
-}
+#include "system/app.hpp"
 
 extern "C" void NitroMain() {
-
 	u32 bootTarget;
 	u32 bootScene;
 
@@ -17,11 +12,11 @@ extern "C" void NitroMain() {
 		}
 		bootScene = 0;
 	} else {
-		bootTarget = getResetParam() & 0xf;
-		bootScene = (getResetParam() & 0xf00) >> 0x8;
+		bootTarget = REG_RESET & 0xf;
+		bootScene = (REG_RESET & 0xf00) >> 0x8;
 	};
 
-	u32 bootParam = (getResetParam() & 0xF0000) >> 16;
+	u32 bootParam = (REG_RESET & 0xF0000) >> 16;
 
 	App::setBootTarget(bootTarget);
 	App::setBootScene(bootScene);
@@ -30,5 +25,4 @@ extern "C" void NitroMain() {
 	while (true) {
 		App::branchToMain();
 	}
-
 }

@@ -10,7 +10,7 @@
 src/ProcessManager.cpp:
     .init       start:0x0202614c end:0x02026244
 
-src/system/main.cpp:
+src/main.cpp:
     .text       start:0x02003000 end:0x02003070
 
 src/system/layout.cpp:

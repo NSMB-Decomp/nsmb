@@ -4,6 +4,8 @@
 #pragma section itcm begin
 #pragma section itcm end
 
+#define REG_RESET				*((u32 *)0x027FFC20)
+
 #define REG_DISPCNT				*((vu32 *)0x04000000)
 #define REG_BG0CNT				*((vu16 *)0x04000008)
 #define REG_BG1CNT				*((vu16 *)0x0400000A)
