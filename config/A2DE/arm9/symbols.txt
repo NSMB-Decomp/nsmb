@@ -2065,5 +2065,5 @@ data_02042438 kind:data(any) addr:0x02042438
 data_02042590 kind:data(any) addr:0x02042590
 data_0204289f kind:data(any) addr:0x0204289f
 data_02042928 kind:data(any) addr:0x02042928
-data_0204293c kind:data(any) addr:0x0204293c
+OverlaySignatures kind:data(any) addr:0x0204293c
 data_02043378 kind:data(any) addr:0x02043378

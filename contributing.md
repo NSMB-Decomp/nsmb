@@ -6,7 +6,7 @@
 > To speed up compiling on linux run "wineserver -p" after each reboot, this will start a persistent wineserver so it does not need to start wine up every time you compile.
 
 ## Setting up your development environment.
-1. Download and install [dsd](https://github.com/AetiasHax/ds-decomp)
+1. Download and install [dsd 0.12.0](https://github.com/AetiasHax/ds-decomp)
 2. Download and install [zig 0.16.0](https://ziglang.org/)
 2. Download and install [objdiff](https://github.com/encounter/objdiff)
 4. If you're on Linux or macOS, download and install the latest version of [wine](https://gitlab.winehq.org/wine/wine/-/wikis/Download)
