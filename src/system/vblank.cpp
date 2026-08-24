@@ -14,6 +14,10 @@ namespace System {
 		userVBlankFunction = handler;
 	}
 
+	void subEngineVBlankHandler() {
+		uploadSubBGState(subBGInfo);
+	}
+
 	void uploadSubBGState(VBlankBGInfo& info) {
 		if (info.dirty[0]) {
 			*(volatile u32*)0x04001010 = (info.x[0] & 0x1ff) | ((info.y[0] << 0x10) & 0x1ff0000);
