@@ -14,6 +14,25 @@ namespace System {
 		userVBlankFunction = handler;
 	}
 
+	void uploadSubBGState(VBlankBGInfo& info) {
+		if (info.dirty[0]) {
+			*(volatile u32*)0x04001010 = (info.x[0] & 0x1ff) | ((info.y[0] << 0x10) & 0x1ff0000);
+			info.dirty[0] = 0;
+		}
+		if (info.dirty[1]) {
+			*(volatile u32*)0x04001014 = (info.x[1] & 0x1ff) | ((info.y[1] << 0x10) & 0x1ff0000);
+			info.dirty[1] = 0;
+		}
+		if (info.dirty[2]) {
+			*(volatile u32*)0x04001018 = (info.x[2] & 0x1ff) | ((info.y[2] << 0x10) & 0x1ff0000);
+			info.dirty[2] = 0;
+		}
+		if (info.dirty[3]) {
+			*(volatile u32*)0x0400101c = (info.x[3] & 0x1ff) | ((info.y[3] << 0x10) & 0x1ff0000);
+			info.dirty[3] = 0;
+		}
+	}
+
 	void removeUserVBlankHandler() {
 		userVBlankFunction = NULL;
 	}
