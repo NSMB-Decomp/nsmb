@@ -3,9 +3,6 @@
 class MGScene : public Object
 {
       public:
-	u32 _5c;
-	u32 _60;
-
 	inline ~MGScene() {};
 	MGScene();
 
