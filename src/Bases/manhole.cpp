@@ -204,7 +204,9 @@ bool Manhole::rollForward(u32 arg)
 
 	} else if (updateStep != FN_EXIT) {
 		step = roll;
-		step = Math::min(step - Math::max((step >> 6) - _FixedFlt(0.25), _FixedFlt(-1)), 0);
+		step -= Math::max((step >> 6) - _FixedFlt(0.25), _FixedFlt(-1));
+		if (step > 0)
+			step = 0;
 
 		roll = step;
 		rotation.x = step + C_DEG(270);
@@ -262,7 +264,9 @@ bool Manhole::rollBackward(u32 arg)
 
 	} else {
 		step = roll;
-		step = Math::max(roll - Math::min((roll >> 6) + 0x400, _FixedFlt(0.625)), 0);
+		step -= Math::min((step >> 6) + 0x400, _FixedFlt(0.625));
+		if (step < 0)
+			step = 0;
 
 		roll = step;
 		rotation.x = step + C_DEG(270);
@@ -306,21 +310,28 @@ bool Manhole::rollBackward(u32 arg)
 
 void Manhole::updateRollingSound()
 {
-	// "Reko" (whatever the fuck that is) output:
-	s32 r2_15 = (rotation.x - 0xC000) << 16;
-	s32 r1_14 = (lastRotationX - 0xC000) << 16;
-	s32 r3_16 = r1_14 >> 16;
-	s32 r2_20 = r2_15;
-	if (r1_14 >> 16 > r2_15 >> 16)
-		r2_20 = r2_15 >> 16;
-	if (r1_14 >> 16 <= r2_15 >> 16) {
-		r2_20 = r1_14 >> 16;
-		r3_16 = r2_15 >> 16;
+	s32 last = lastRotationX;
+	s32 cur = rotation.x;
+	cur -= 0xC000;
+	last -= 0xC000;
+	last <<= 0x10;
+	cur <<= 0x10;
+
+	s32 hi = last >> 0x10;
+	cur >>= 0x10;
+
+	s32 lo;
+	if (hi > cur) {
+		lo = cur;
+	} else {
+		lo = hi;
+		hi = cur;
 	}
-	if (r2_20 >= 0x00 || r3_16 < 0x00) {
-		if (r2_20 > 0x00)
+
+	if (lo >= 0x00 || hi < 0x00) {
+		if (lo > 0x00)
 			return;
-		if (r3_16 <= 0x00)
+		if (hi <= 0x00)
 			return;
 	}
 	func_02012398(0xAE, &position);
