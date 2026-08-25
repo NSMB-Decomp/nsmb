@@ -10,6 +10,11 @@ MGScene::MGScene()
 
 bool MGScene::preCreate()
 {
+	if (!this->func_02024e50())
+		return false;
+	func_02024e94();
+	this->_5c = 0x3ff;
+	this->_60 = 0xf;
 	return true;
 }
 
