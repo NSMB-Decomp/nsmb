@@ -310,12 +310,8 @@ bool Manhole::rollBackward(u32 arg)
 
 void Manhole::updateRollingSound()
 {
-	s32 last = lastRotationX;
-	s32 cur = rotation.x;
-	cur -= 0xC000;
-	last -= 0xC000;
-	last <<= 0x10;
-	cur <<= 0x10;
+	s32 last = (lastRotationX - 0xC000) << 0x10;
+	s32 cur = (rotation.x - 0xC000) << 0x10;
 
 	s32 hi = last >> 0x10;
 	cur >>= 0x10;
