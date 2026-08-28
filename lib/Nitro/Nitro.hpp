@@ -201,6 +201,10 @@ u32 DisableIntrAll();
 void RestoreIntrAll(u32 mode);
 void SleepThread(ThreadQueue* p);
 
+namespace _MultiThread {
+	void Sleep(ThreadQueue* queue);
+}
+
 void CpuClear16(u16 val, void* ptr, u32 len);
 
 void func_02060fac();
