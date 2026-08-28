@@ -2,7 +2,6 @@
 
 class MGDebugMenuScene : MGDebugScene
 {
-	u8 _pad[0x8];
 	u32 _64;
 	u32 _68;
 	u32 _6c;
