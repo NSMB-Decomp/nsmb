@@ -1,7 +1,7 @@
 #include "Object18.hpp"
 
 extern u32 data_02085a84;
-extern "C" void func_ov052_021594c4();
+extern void func_ov052_021594c4();
 
 void *Object18::create()
 {
