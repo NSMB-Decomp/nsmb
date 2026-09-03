@@ -61,6 +61,7 @@ pub fn build(b: *std.Build) !void {
     var all_step = b.step("all", "");
     if (try readObjdiff(b.graph.io, b.allocator)) |objdiff| {
         for (objdiff.value.units) |unit| {
+            if (unit.base_path.len == 0) continue;
             const compile = BuildMWCC.create(b, b.path(unit.metadata.source_path orelse continue), release);
             const install = b.addInstallFileWithDir(compile.getOutput(), .prefix, unit.base_path);
             all_step.dependOn(&install.step);
