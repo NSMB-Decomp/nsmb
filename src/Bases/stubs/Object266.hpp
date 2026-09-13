@@ -8,6 +8,8 @@ public:
 	static void *create();
 	inline Object266() {};
 	inline ~Object266() {};
+    bool onUpdate_0();
+    s32 onCreate();
 };
 
 extern ActorProfile Object266_Profile;
