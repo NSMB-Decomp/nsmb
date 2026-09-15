@@ -7,7 +7,10 @@
 class Object103 : public StageEntity {
 public:
 	Model _3f4;
-	u8 _pad0[0x28];
+	u8 _pad0[0x24];
+    u8 _4a8;
+    u8 _4a9;
+	u8 _pad1[0x2];
 	
 	static void *create();
 	inline Object103() {};
