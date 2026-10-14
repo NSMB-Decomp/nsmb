@@ -13,7 +13,7 @@ MGSceneUnknown kind:function(arm,size=0x28) addr:0x020ccf0c
 func_ov001_020ccf34 kind:function(arm,size=0x50) addr:0x020ccf34
 func_ov001_020ccf84 kind:function(arm,size=0x58) addr:0x020ccf84
 func_ov001_020ccfdc kind:function(arm,size=0x20) addr:0x020ccfdc
-func_ov001_020ccffc kind:function(arm,size=0x34) addr:0x020ccffc
+_ZN9Object3266createEv kind:function(arm,size=0x34) addr:0x020ccffc
 func_ov001_020cd030 kind:function(arm,size=0x4) addr:0x020cd030
 func_ov001_020cd034 kind:function(arm,size=0x4) addr:0x020cd034
 func_ov001_020cd038 kind:function(arm,size=0x14) addr:0x020cd038
@@ -38,7 +38,7 @@ data_ov001_020ceac0 kind:data(any) addr:0x020ceac0 ambiguous
 data_ov001_020ceac4 kind:data(any) addr:0x020ceac4 ambiguous
 data_ov001_020ceac8 kind:data(any) addr:0x020ceac8 ambiguous
 data_ov001_020ceae0 kind:data(any) addr:0x020ceae0 ambiguous
-UnknownProfile::ov001_020ceb24 kind:data(any) addr:0x020ceb24
+Object326_Profile kind:data(any) addr:0x020ceb24
 UnknownVtable::ov001_020ceb34 kind:data(any) addr:0x020ceb34
 UnknownVtable::ov001_020ceb64 kind:data(any) addr:0x020ceb64
 data_ov001_020cebc0 kind:bss addr:0x020cebc0

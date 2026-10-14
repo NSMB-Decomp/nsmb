@@ -2,6 +2,8 @@
 
 #include "../../src/base_types.hpp"
 
+struct ThreadQueue;
+
 namespace NDS {
 namespace Threads {
 
@@ -15,6 +17,7 @@ typedef void (*Entry)(void *);
 
 extern "C" {
 
+void sleepQueue(ThreadQueue *queue);
 BOOL hasThreadTerminated(Context *context);
 void createThread(
 	Context *context,

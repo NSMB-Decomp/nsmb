@@ -1,0 +1,37 @@
+_ZN9Object1506createEv kind:function(arm,size=0x38) addr:0x02151ee0
+Object150::func_ov058_021730d8 kind:function(arm,size=0xa8) addr:0x02151f18
+Object150::func_ov058_0217309c kind:function(arm,size=0x30) addr:0x02151fc0
+Object150::func_ov058_02172dd8 kind:function(arm,size=0x29c) addr:0x02151ff0
+Object150::func_ov058_02172c9c kind:function(arm,size=0x124) addr:0x0215228c
+Object150::func_ov058_02172b4c kind:function(arm,size=0x144) addr:0x021523b0
+Object150::prepareResources kind:function(arm,size=0x2c) addr:0x021524f4
+_ZN9Object15013onHeapCreatedEv kind:function(arm,size=0x58) addr:0x02152520
+_ZN9Object1508onCreateEv kind:function(arm,size=0xd4) addr:0x02152578
+func_ov058_0215264c kind:function(arm,size=0xcc) addr:0x0215264c
+_ZN9Object15010onUpdate_0Ev kind:function(arm,size=0x44) addr:0x02152718
+_ZN9Object1508onRenderEv kind:function(arm,size=0xc0) addr:0x0215275c
+_ZN9Object15014pendingDestroyEv kind:function(arm,size=0x4) addr:0x0215281c
+func_ov058_02152820 kind:function(arm,size=0x2c) addr:0x02152820
+func_ov058_0215284c kind:function(arm,size=0x20) addr:0x0215284c
+_ZN9Object150D0Ev kind:function(arm,size=0x28) addr:0x0215286c
+_ZN9Object1576createEv kind:function(arm,size=0x2c) addr:0x02152894
+func_ov058_021528c0 kind:function(arm,size=0x10) addr:0x021528c0
+func_ov058_021528d0 kind:function(arm,size=0xc4) addr:0x021528d0
+func_ov058_02152994 kind:function(arm,size=0x30) addr:0x02152994
+func_ov058_021529c4 kind:function(arm,size=0xa8) addr:0x021529c4
+func_ov058_02152a6c kind:function(arm,size=0x144) addr:0x02152a6c
+func_ov058_02152bb0 kind:function(arm,size=0x38) addr:0x02152bb0
+func_ov058_02152be8 kind:function(arm,size=0x10) addr:0x02152be8
+func_ov058_02152bf8 kind:function(arm,size=0x14) addr:0x02152bf8
+func_ov058_02152c0c kind:function(arm,size=0x1c) addr:0x02152c0c
+data_ov058_02152c28 kind:data(any) addr:0x02152c28
+data_ov058_02152c30 kind:data(any) addr:0x02152c30
+data_ov058_02152c60 kind:data(any) addr:0x02152c60
+data_ov058_02152c68 kind:data(any) addr:0x02152c68
+data_ov058_02152c70 kind:data(any) addr:0x02152c70
+data_ov058_02152c78 kind:data(any) addr:0x02152c78
+data_ov058_02152c80 kind:data(any) addr:0x02152c80 ambiguous
+data_ov058_02152c94 kind:data(any) addr:0x02152c94
+data_ov058_02152da0 kind:data(any) addr:0x02152da0
+data_ov058_02152da8 kind:data(any) addr:0x02152da8 ambiguous
+data_ov058_02152dbc kind:data(any) addr:0x02152dbc

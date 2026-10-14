@@ -22,12 +22,12 @@ func_ov081_0217a4e4 kind:function(arm,size=0x68) addr:0x0217a4e4
 func_ov081_0217a54c kind:function(arm,size=0xe4) addr:0x0217a54c
 func_ov081_0217a630 kind:function(arm,size=0x90) addr:0x0217a630
 func_ov081_0217a6c0 kind:function(arm,size=0x44) addr:0x0217a6c0
-func_ov081_0217a704 kind:function(arm,size=0x60) addr:0x0217a704
-func_ov081_0217a764 kind:function(arm,size=0x60) addr:0x0217a764
-func_ov081_0217a7c4 kind:function(arm,size=0x84) addr:0x0217a7c4
-func_ov081_0217a848 kind:function(arm,size=0x8c) addr:0x0217a848
+_ZN9Object1006createEv kind:function(arm,size=0x60) addr:0x0217a704
+_ZN8Object996createEv kind:function(arm,size=0x60) addr:0x0217a764
+_ZN9Object101D1Ev kind:function(arm,size=0x84) addr:0x0217a7c4
+_ZN9Object101D0Ev kind:function(arm,size=0x8c) addr:0x0217a848
 func_ov081_0217a8d4 kind:function(arm,size=0x4) addr:0x0217a8d4
-func_ov081_0217a8d8 kind:function(arm,size=0x7c) addr:0x0217a8d8
+_ZN9Object1013_01Ev kind:function(arm,size=0x7c) addr:0x0217a8d8
 func_ov081_0217a954 kind:function(arm,size=0x54) addr:0x0217a954
 func_ov081_0217a9a8 kind:function(arm,size=0x80) addr:0x0217a9a8
 func_ov081_0217aa28 kind:function(arm,size=0x1c) addr:0x0217aa28
@@ -35,22 +35,22 @@ func_ov081_0217aa44 kind:function(arm,size=0x90) addr:0x0217aa44
 func_ov081_0217aad4 kind:function(arm,size=0x2c) addr:0x0217aad4
 func_ov081_0217ab00 kind:function(arm,size=0x54) addr:0x0217ab00
 func_ov081_0217ab54 kind:function(arm,size=0xd4) addr:0x0217ab54
-func_ov081_0217ac28 kind:function(arm,size=0x24) addr:0x0217ac28
-func_ov081_0217ac4c kind:function(arm,size=0x4) addr:0x0217ac4c
-func_ov081_0217ac50 kind:function(arm,size=0xe4) addr:0x0217ac50
+_ZN9Object1019onDestroyEv kind:function(arm,size=0x24) addr:0x0217ac28
+_ZN9Object10114pendingDestroyEv kind:function(arm,size=0x4) addr:0x0217ac4c
+_ZN9Object1018onRenderEv kind:function(arm,size=0xe4) addr:0x0217ac50
 func_ov081_0217ad34 kind:function(arm,size=0x50) addr:0x0217ad34
 func_ov081_0217ad84 kind:function(arm,size=0x50) addr:0x0217ad84
-func_ov081_0217add4 kind:function(arm,size=0x54) addr:0x0217add4
-func_ov081_0217ae28 kind:function(arm,size=0x1a4) addr:0x0217ae28
+_ZN9Object10110onUpdate_0Ev kind:function(arm,size=0x54) addr:0x0217add4
+_ZN9Object1018onCreateEv kind:function(arm,size=0x1a4) addr:0x0217ae28
 func_ov081_0217afcc kind:function(arm,size=0x150) addr:0x0217afcc
 func_ov081_0217b11c kind:function(arm,size=0x130) addr:0x0217b11c
 func_ov081_0217b24c kind:function(arm,size=0x190) addr:0x0217b24c
 func_ov081_0217b3dc kind:function(arm,size=0x3c) addr:0x0217b3dc
 func_ov081_0217b418 kind:function(arm,size=0xe4) addr:0x0217b418
-func_ov081_0217b4fc kind:function(arm,size=0x58) addr:0x0217b4fc
+_ZN9Object10113onHeapCreatedEv kind:function(arm,size=0x58) addr:0x0217b4fc
 func_ov081_0217b554 kind:function(arm,size=0x34) addr:0x0217b554
-func_ov081_0217b588 kind:function(arm,size=0x58) addr:0x0217b588
-func_ov081_0217b5e0 kind:function(arm,size=0x58) addr:0x0217b5e0
+_ZN9Object1026createEv kind:function(arm,size=0x58) addr:0x0217b588
+_ZN9Object1016createEv kind:function(arm,size=0x58) addr:0x0217b5e0
 data_ov081_0217b638 kind:data(any) addr:0x0217b638
 data_ov081_0217b644 kind:data(any) addr:0x0217b644
 data_ov081_0217b650 kind:data(any) addr:0x0217b650
@@ -69,8 +69,8 @@ data_ov081_0217b6e8 kind:data(any) addr:0x0217b6e8
 data_ov081_0217b6f0 kind:data(any) addr:0x0217b6f0
 data_ov081_0217b6f8 kind:data(any) addr:0x0217b6f8
 data_ov081_0217b700 kind:data(any) addr:0x0217b700
-UnknownProfile::ov081_0217b708 kind:data(any) addr:0x0217b708 ambiguous
-UnknownProfile::ov081_0217b714 kind:data(any) addr:0x0217b714 ambiguous
+Object100_Profile kind:data(any) addr:0x0217b708 ambiguous
+Object99_Profile kind:data(any) addr:0x0217b714 ambiguous
 data_ov081_0217b728 kind:data(any) addr:0x0217b728
 data_ov081_0217b834 kind:data(any) addr:0x0217b834
 data_ov081_0217b83c kind:data(any) addr:0x0217b83c
@@ -82,7 +82,8 @@ data_ov081_0217b864 kind:data(any) addr:0x0217b864
 data_ov081_0217b86c kind:data(any) addr:0x0217b86c
 data_ov081_0217b874 kind:data(any) addr:0x0217b874
 data_ov081_0217b87c kind:data(any) addr:0x0217b87c
-UnknownProfile::ov081_0217b884 kind:data(any) addr:0x0217b884 ambiguous
-UnknownProfile::ov081_0217b890 kind:data(any) addr:0x0217b890 ambiguous
+Object101_Profile kind:data(any) addr:0x0217b884 ambiguous
+Object102_Profile kind:data(any) addr:0x0217b890 ambiguous
 data_ov081_0217b8a4 kind:data(any) addr:0x0217b8a4
 data_ov081_0217b928 kind:data(any) addr:0x0217b928 ambiguous
+_ZTV9Object101 kind:data(any) addr:0x0217b89c

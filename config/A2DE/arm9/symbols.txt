@@ -351,9 +351,9 @@ _ZN2FS5Cache10CacheEntry8loadDataEm kind:function(arm,size=0x5c) addr:0x0200a138
 _ZN2FS5Cache10CacheEntry17loadFileToOverlayEmb kind:function(arm,size=0xa0) addr:0x0200a194
 _ZN2FS5Cache10CacheEntry8loadFileEmb kind:function(arm,size=0x7c) addr:0x0200a234
 _ZN2FS5Cache10CacheEntryD0Ev kind:function(arm,size=0x58) addr:0x0200a2b0
-_ZN2FS5Cache10CacheEntryD2Ev kind:function(arm,size=0x50) addr:0x0200a308
 _ZN2FS5Cache10CacheEntryD1Ev kind:function(arm,size=0x50) addr:0x0200a308
-_ZN2FS5Cache10CacheEntryC2Ev kind:function(arm,size=0x30) addr:0x0200a358
+_ZN2FS5Cache10CacheEntryD1Ev kind:function(arm,size=0x50) addr:0x0200a308
+_ZN2FS5Cache10CacheEntryC1Ev kind:function(arm,size=0x30) addr:0x0200a358
 _ZN2FS5Cache10CacheEntryC1Ev kind:function(arm,size=0x30) addr:0x0200a358
 __arraydtor$644 kind:function(arm,size=0x24) addr:0x0200a388
 __arraydtor$642 kind:function(arm,size=0x24) addr:0x0200a3ac
@@ -1257,9 +1257,9 @@ func_02022d98 kind:function(arm,size=0x38) addr:0x02022d98
 _ZN8Particle7Handler4initEm kind:function(arm,size=0x2bc) addr:0x02022dd0
 func_0202308c kind:function(arm,size=0x1c) addr:0x0202308c
 func_020230a8 kind:function(arm,size=0x70) addr:0x020230a8
-_ZN8Particle7HandlerD1Ev kind:function(arm,size=0x68) addr:0x02023118
 _ZN8Particle7HandlerD2Ev kind:function(arm,size=0x68) addr:0x02023118
-_ZN8Particle7HandlerC1Ev kind:function(arm,size=0x13c) addr:0x02023180
+_ZN8Particle7HandlerD2Ev kind:function(arm,size=0x68) addr:0x02023118
+_ZN8Particle7HandlerC2Ev kind:function(arm,size=0x13c) addr:0x02023180
 _ZN8Particle7HandlerC2Ev kind:function(arm,size=0x13c) addr:0x02023180
 func_020232bc kind:function(arm,size=0xc) addr:0x020232bc
 func_020232c8 kind:function(arm,size=0x20) addr:0x020232c8
@@ -1350,8 +1350,8 @@ func_0202486c kind:function(thumb,size=0x70) addr:0x0202486c
 func_020248dc kind:function(thumb,size=0x28) addr:0x020248dc
 func_02024904 kind:function(thumb,size=0x98) addr:0x02024904
 func_0202499c kind:function(thumb,size=0x40) addr:0x0202499c
-MGScene::func_020249dc kind:function(arm,size=0x2c) addr:0x020249dc
-MGScene::func_02024a08 kind:function(arm,size=0x34) addr:0x02024a08
+_ZN7MGSceneD1Ev kind:function(arm,size=0x2c) addr:0x020249dc
+_ZN7MGSceneD0Ev kind:function(arm,size=0x34) addr:0x02024a08
 MGScene::func_02024a3c kind:function(thumb,size=0x38) addr:0x02024a3c
 MGScene::func_02024a74 kind:function(thumb,size=0x1c) addr:0x02024a74
 MGScene::func_02024a90 kind:function(thumb,size=0x14) addr:0x02024a90
@@ -1384,7 +1384,7 @@ func_0202509c kind:function(arm,size=0x34c) addr:0x0202509c
 func_020253e8 kind:function(arm,size=0x3f8) addr:0x020253e8
 func_020257e0 kind:function(arm,size=0x28) addr:0x020257e0
 func_02025808 kind:function(arm,size=0x44) addr:0x02025808
-MGVsMenu::func_0202584c kind:function(arm,size=0x2c) addr:0x0202584c
+_ZN9Object3276createEv kind:function(arm,size=0x2c) addr:0x0202584c
 data_02025878 kind:data(any) addr:0x02025878
 data_02025880 kind:data(any) addr:0x02025880
 data_02025888 kind:data(any) addr:0x02025888
@@ -2077,5 +2077,9 @@ data_02042438 kind:data(any) addr:0x02042438
 data_02042590 kind:data(any) addr:0x02042590
 data_0204289f kind:data(any) addr:0x0204289f
 data_02042928 kind:data(any) addr:0x02042928
-data_0204293c kind:data(any) addr:0x0204293c
+OverlaySignatures kind:data(any) addr:0x0204293c
 data_02043378 kind:data(any) addr:0x02043378
+SDK_BackupType kind:data(any) addr:0x02000b6c
+data_0203ab60 kind:data(any) addr:0x0203ab60
+_ZTV16RotatingPlatform kind:data(any) addr:0x0203c64c
+_ZTV9Object327 kind:data(any) addr:0x0203d328

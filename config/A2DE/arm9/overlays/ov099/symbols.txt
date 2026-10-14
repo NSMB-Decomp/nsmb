@@ -1,17 +1,17 @@
-func_ov099_02185600 kind:function(arm,size=0x70) addr:0x02185600
-func_ov099_02185670 kind:function(arm,size=0x78) addr:0x02185670
+_ZN9Object233D1Ev kind:function(arm,size=0x70) addr:0x02185600
+_ZN9Object233D0Ev kind:function(arm,size=0x78) addr:0x02185670
 func_ov099_021856e8 kind:function(arm,size=0x24) addr:0x021856e8
 func_ov099_0218570c kind:function(arm,size=0x34) addr:0x0218570c
 func_ov099_02185740 kind:function(arm,size=0x80) addr:0x02185740
 func_ov099_021857c0 kind:function(arm,size=0x118) addr:0x021857c0
 func_ov099_021858d8 kind:function(arm,size=0x64) addr:0x021858d8
-func_ov099_0218593c kind:function(arm,size=0xb8) addr:0x0218593c
-func_ov099_021859f4 kind:function(arm,size=0x258) addr:0x021859f4
-func_ov099_02185c4c kind:function(arm,size=0x4) addr:0x02185c4c
-func_ov099_02185c50 kind:function(arm,size=0x1c) addr:0x02185c50
-func_ov099_02185c6c kind:function(arm,size=0x30) addr:0x02185c6c
-func_ov099_02185c9c kind:function(arm,size=0x118) addr:0x02185c9c
-func_ov099_02185db4 kind:function(arm,size=0x40) addr:0x02185db4
+_ZN9Object23310onUpdate_0Ev kind:function(arm,size=0xb8) addr:0x0218593c
+_ZN9Object2338onRenderEv kind:function(arm,size=0x258) addr:0x021859f4
+_ZN9Object23314pendingDestroyEv kind:function(arm,size=0x4) addr:0x02185c4c
+_ZN9Object2339onDestroyEv kind:function(arm,size=0x1c) addr:0x02185c50
+_ZN9Object23313onHeapCreatedEv kind:function(arm,size=0x30) addr:0x02185c6c
+_ZN9Object2338onCreateEv kind:function(arm,size=0x118) addr:0x02185c9c
+_ZN9Object2336createEv kind:function(arm,size=0x40) addr:0x02185db4
 _ZN9Object229D1Ev kind:function(arm,size=0x5c) addr:0x02185df4
 _ZN9Object229D0Ev kind:function(arm,size=0x64) addr:0x02185e50
 _ZN9Object22919func_ov099_02185eb4Ev kind:function(arm,size=0x8) addr:0x02185eb4
@@ -35,7 +35,7 @@ __sinit_Object229.cpp kind:function(arm,size=0xe0) addr:0x02186278
 .p__sinit_Object229.cpp kind:data(word) addr:0x02186358
 data_ov099_02186360 kind:data(any) addr:0x02186360
 data_ov099_02186368 kind:data(any) addr:0x02186368
-UnknownProfile::ov099_02186370 kind:data(any) addr:0x02186370 ambiguous
+Object233_Profile kind:data(any) addr:0x02186370 ambiguous
 data_ov099_02186384 kind:data(any) addr:0x02186384
 @0 kind:data(any) addr:0x02186490
 @0 kind:data(any) addr:0x02186498
@@ -51,3 +51,4 @@ data_ov099_02186600 kind:bss addr:0x02186600
 data_ov099_02186604 kind:bss addr:0x02186604
 data_ov099_02186614 kind:bss addr:0x02186614
 data_ov099_02186634 kind:bss addr:0x02186634
+_ZTV9Object233 kind:data(any) addr:0x0218637c

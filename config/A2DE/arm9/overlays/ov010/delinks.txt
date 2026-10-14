@@ -37,3 +37,99 @@ src/overlays/ov010/Bases/Object18.cpp:
 
 src/overlays/ov010/Bases/Player/PlayerActor.cpp:
     .text       start:0x02108fe4 end:0x02109180
+
+src/Bases/stubs/Object325.cpp:
+    .text       start:0x020ce794 end:0x020ce83c
+    .data       start:0x02123d58 end:0x02123dc4
+
+src/Bases/stubs/Object240.cpp:
+    .text       start:0x020cf544 end:0x020d0be4
+    .data       start:0x02124014 end:0x02124268
+
+src/Bases/Item.cpp:
+    .text       start:0x020d0d80 end:0x020d5120
+    .data       start:0x02124350 end:0x02124590
+
+src/Bases/stubs/Object241.cpp:
+    .text       start:0x020d5240 end:0x020d5894
+    .data       start:0x021245a8 end:0x021246c8
+
+src/Bases/stubs/Object270.cpp:
+    .text       start:0x020d5894 end:0x020d5af0
+    .data       start:0x021246c8 end:0x021247f4
+
+src/Bases/stubs/Object272.cpp:
+    .text       start:0x020d5af0 end:0x020d5de4
+    .data       start:0x021247f4 end:0x02124920
+
+src/Bases/stubs/Object274.cpp:
+    .text       start:0x020d5de4 end:0x020d61c4
+    .data       start:0x02124920 end:0x021249d8
+
+src/Bases/stubs/Object282.cpp:
+    .text       start:0x020d61c4 end:0x020d6378
+    .data       start:0x02124a64 end:0x02124b84
+
+src/Bases/stubs/Object276.cpp:
+    .text       start:0x020d6378 end:0x020d6524
+    .data       start:0x02124b84 end:0x02124ca4
+
+src/Bases/stubs/Object277.cpp:
+    .text       start:0x020d6524 end:0x020d67cc
+    .data       start:0x02124ca4 end:0x02124dc4
+
+src/Bases/stubs/Object287.cpp:
+    .text       start:0x020d7954 end:0x020d7e00
+    .data       start:0x02124e34 end:0x02124ee8
+
+src/Bases/stubs/Object49.cpp:
+    .text       start:0x020d7e00 end:0x020d80cc
+    .data       start:0x02125088 end:0x021251a8
+
+src/Bases/stubs/SpinBlock.cpp:
+    .text       start:0x020daa04 end:0x020dab54
+    .data       start:0x0212533c end:0x021256b4
+
+src/Bases/stubs/Object161.cpp:
+    .text       start:0x020db4a8 end:0x020dbcfc
+    .data       start:0x02125904 end:0x02125a24
+
+src/Bases/stubs/Object162.cpp:
+    .text       start:0x020dc560 end:0x020dc660
+    .data       start:0x02125a4c end:0x02125a6c
+
+src/Bases/stubs/Object165.cpp:
+    .text       start:0x020dc7b4 end:0x020dd294
+    .data       start:0x02125dd8 end:0x02125ef8
+
+src/Bases/stubs/Object166.cpp:
+    .text       start:0x020dd294 end:0x020dddb0
+    .data       start:0x02125f28 end:0x02126054
+
+src/Bases/stubs/Object94.cpp:
+    .text       start:0x020dddb0 end:0x020e0698
+    .data       start:0x021261b4 end:0x021262e4
+
+src/Bases/stubs/Object176.cpp:
+    .text       start:0x020e9598 end:0x020e9f24
+    .data       start:0x02126e2c end:0x02126f4c
+
+src/Bases/stubs/Object211.cpp:
+    .text       start:0x020f4a00 end:0x020f5898
+    .data       start:0x0212704c end:0x021271d4
+
+src/Bases/stubs/Object268.cpp:
+    .text       start:0x020f5898 end:0x020f5d4c
+    .data       start:0x021271dc end:0x021272fc
+
+src/Bases/stubs/Object202.cpp:
+    .text       start:0x020f7d50 end:0x020f8e78
+    .data       start:0x02127478 end:0x02127598
+
+src/Bases/stubs/Player.cpp:
+    .text       start:0x02120e14 end:0x02120e40
+    .data       start:0x02128458 end:0x0212846c
+
+src/Bases/stubs/Object267.cpp:
+    .text       start:0x021213e0 end:0x02121408
+    .data       start:0x021291bc end:0x021291c8

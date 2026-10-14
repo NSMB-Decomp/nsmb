@@ -20,3 +20,5 @@ extern i32 data_ov010_021216c4[3];
 extern i32 data_ov010_0212164c[2];
 extern Collider *data_ov010_02125204;
 extern i32 data_ov010_0212ae6c[2];
+
+void func_ov010_020e6524();

@@ -127,7 +127,7 @@ from:0x0217a7c0 kind:load to:0x02039208 add:0x8 module:main
 from:0x0217a7e8 kind:arm_call to:0x020a484c module:overlay(0)
 from:0x0217a7f0 kind:arm_call to:0x02019624 module:main
 from:0x0217a828 kind:arm_call to:0x020a11a8 module:overlay(0)
-from:0x0217a834 kind:load to:0x0217b8a4 module:overlay(81)
+from:0x0217a834 kind:load to:0x0217b89c add:0x8 module:overlay(81)
 from:0x0217a83c kind:load to:0x02039208 add:0x8 module:main
 from:0x0217a840 kind:load to:0x020c4efc add:0x8 module:overlay(0)
 from:0x0217a844 kind:load to:0x020391e0 add:0x8 module:main
@@ -135,7 +135,7 @@ from:0x0217a86c kind:arm_call to:0x020a484c module:overlay(0)
 from:0x0217a874 kind:arm_call to:0x02019624 module:main
 from:0x0217a8ac kind:arm_call to:0x020a11a8 module:overlay(0)
 from:0x0217a8b4 kind:arm_call to:0x0204cc7c module:autoload(2)
-from:0x0217a8c0 kind:load to:0x0217b8a4 module:overlay(81)
+from:0x0217a8c0 kind:load to:0x0217b89c add:0x8 module:overlay(81)
 from:0x0217a8c8 kind:load to:0x02039208 add:0x8 module:main
 from:0x0217a8cc kind:load to:0x020c4efc add:0x8 module:overlay(0)
 from:0x0217a8d0 kind:load to:0x020391e0 add:0x8 module:main
@@ -242,13 +242,13 @@ from:0x0217b590 kind:arm_call to:0x0204cc98 module:autoload(2)
 from:0x0217b59c kind:arm_call to:0x0209dee0 module:overlay(0)
 from:0x0217b5ac kind:arm_call to:0x02019644 module:main
 from:0x0217b5b8 kind:arm_call to:0x020a4868 module:overlay(0)
-from:0x0217b5d4 kind:load to:0x0217b8a4 module:overlay(81)
+from:0x0217b5d4 kind:load to:0x0217b89c add:0x8 module:overlay(81)
 from:0x0217b5dc kind:load to:0x02039208 add:0x8 module:main
 from:0x0217b5e8 kind:arm_call to:0x0204cc98 module:autoload(2)
 from:0x0217b5f4 kind:arm_call to:0x0209dee0 module:overlay(0)
 from:0x0217b604 kind:arm_call to:0x02019644 module:main
 from:0x0217b610 kind:arm_call to:0x020a4868 module:overlay(0)
-from:0x0217b62c kind:load to:0x0217b8a4 module:overlay(81)
+from:0x0217b62c kind:load to:0x0217b89c add:0x8 module:overlay(81)
 from:0x0217b634 kind:load to:0x02039208 add:0x8 module:main
 from:0x0217b668 kind:load to:0x02098c78 module:overlay(0)
 from:0x0217b6b0 kind:load to:0x02098c78 module:overlay(0)

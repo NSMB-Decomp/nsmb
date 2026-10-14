@@ -1,0 +1,29 @@
+_ZN9BootScene6createEv kind:function(arm,size=0x2c) addr:0x020bc4a0
+_ZN9BootScene8onCreateEv kind:function(arm,size=0x31c) addr:0x020bc4cc
+_ZN9BootScene9onDestroyEv kind:function(arm,size=0x8) addr:0x020bc7e8
+_ZN9BootScene14pendingDestroyEv kind:function(arm,size=0x4) addr:0x020bc7f0
+_ZN9BootScene8onRenderEv kind:function(arm,size=0x8) addr:0x020bc7f4
+_ZN9BootScene8onUpdateEv kind:function(arm,size=0x574) addr:0x020bc7fc
+_ZN9BootScene19func_ov001_020cc4b4Ev kind:function(arm,size=0xac) addr:0x020bcd70
+BootScene::func_ov001_020cc328 kind:function(arm,size=0x1c0) addr:0x020bce1c
+func_ov001_020bcfdc kind:function(arm,size=0x14) addr:0x020bcfdc
+_ZN9BootSceneD0Ev kind:function(arm,size=0x1c) addr:0x020bcff0
+_Z19func_ov001_020cceb4v kind:function(arm,size=0x58) addr:0x020bd00c
+data_ov001_020bd080 kind:data(any) addr:0x020bd080
+data_ov001_020bd090 kind:data(any) addr:0x020bd090
+data_ov001_020bd0d8 kind:data(any) addr:0x020bd0d8
+data_ov001_020bd0e4 kind:data(any) addr:0x020bd0e4
+data_ov001_020bd6d4 kind:data(any) addr:0x020bd6d4
+data_ov001_020bd8d4 kind:data(any) addr:0x020bd8d4
+data_ov001_020bdac4 kind:data(any) addr:0x020bdac4
+data_ov001_020be544 kind:data(any) addr:0x020be544 ambiguous
+data_ov001_020be548 kind:data(any) addr:0x020be548 ambiguous
+data_ov001_020be54c kind:data(any) addr:0x020be54c ambiguous
+data_ov001_020be788 kind:data(any) addr:0x020be788 ambiguous
+data_ov001_020be78c kind:data(any) addr:0x020be78c ambiguous
+data_ov001_020be790 kind:data(any) addr:0x020be790 ambiguous
+data_ov001_020be7ec kind:data(any) addr:0x020be7ec
+data_ov001_020be80c kind:data(any) addr:0x020be80c
+data_ov001_020be948 kind:data(any) addr:0x020be948 ambiguous
+data_ov001_020be958 kind:data(any) addr:0x020be958 ambiguous
+data_ov001_020beae0 kind:bss addr:0x020beae0

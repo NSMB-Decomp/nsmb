@@ -1,0 +1,11 @@
+_ZN10DebugScene6createEv kind:function(arm,size=0x2c) addr:0x020bc4a0
+_ZN10DebugScene8onCreateEv kind:function(arm,size=0x8) addr:0x020bc4cc
+_ZN10DebugScene13onHeapCreatedEv kind:function(arm,size=0x8) addr:0x020bc4d4
+_ZN10DebugScene9onDestroyEv kind:function(arm,size=0x24) addr:0x020bc4dc
+_ZN10DebugScene14pendingDestroyEv kind:function(arm,size=0x4) addr:0x020bc500
+_ZN10DebugScene8onRenderEv kind:function(arm,size=0x8) addr:0x020bc504
+_ZN10DebugScene8onUpdateEv kind:function(arm,size=0x8) addr:0x020bc50c
+_ZN10DebugSceneD1Ev kind:function(arm,size=0x14) addr:0x020bc514
+_ZN10DebugSceneD0Ev kind:function(arm,size=0x1c) addr:0x020bc528
+DebugScene_Profile kind:data(any) addr:0x020bc560
+_ZTV10DebugScene kind:data(word[0x14]) addr:0x020bc568

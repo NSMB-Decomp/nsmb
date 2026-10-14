@@ -22,3 +22,5 @@ extern u8 data_ov053_0216e9c4[];
 extern u8 data_ov053_0216e9fc[];
 extern u8 data_ov053_0216ea34[];
 extern u8 data_ov053_0216ea74[];
+
+extern void* data_ov053_0216fc30[8];

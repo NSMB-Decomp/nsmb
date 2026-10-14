@@ -13,7 +13,11 @@ NTR_SIZE_GUARD(FxRect, 0x10);
 struct Vec3_32 : public Vec3_32s {
       public:
 	inline Vec3_32() {};
+#if defined(VER_Y7QJ)
+	inline ~Vec3_32() {};
+#else
 	virtual inline ~Vec3_32() {};
+#endif
 
 	inline operator Vec3_32s *()
 	{
@@ -176,5 +180,9 @@ struct Vec3_16 : public Vec3_16s {
       public:
 	inline Vec3_16() : Vec3_16s() {};
 	inline Vec3_16(Vec3_16 *a) : Vec3_16s() {};
-	virtual inline ~Vec3_16() {};
+	#if defined(VER_Y7QJ)
+		inline ~Vec3_16() {};
+	#else
+		virtual inline ~Vec3_16() {};
+	#endif
 };

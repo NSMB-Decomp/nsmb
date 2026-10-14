@@ -116,9 +116,14 @@ s32 CorruptedFileScene::onCreate() {
 	if (settings_2 == 0) {
 		this->func_ov005_020cc2e0();
 	}
+#if !defined(VER_Y7QJ)
 	func_02012398(0xee,0);
+#endif
 	GlobalFader.func_02007bd8();
 	data_02088f30 = 0;
+#if defined(VER_Y7QJ)
+	func_02012398(0xee,0);
+#endif
 	return true;
 }
 s32 CorruptedFileScene::onDestroy() {

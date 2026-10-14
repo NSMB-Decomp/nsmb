@@ -1,5 +1,5 @@
-func_ov055_021726c0 kind:function(arm,size=0x28) addr:0x021726c0
-data_ov055_02172700 kind:bss addr:0x02172700
+_Z12initOv55Heapv kind:function(arm,size=0x28) addr:0x021726c0
+ov55_heap kind:bss addr:0x02172700
 data_ov055_021734e0 kind:bss addr:0x021734e0 ambiguous
 data_ov055_02173680 kind:bss addr:0x02173680 ambiguous
 data_ov055_021737a8 kind:bss addr:0x021737a8 ambiguous
