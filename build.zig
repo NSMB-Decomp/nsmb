@@ -13,8 +13,16 @@ pub fn build(b: *std.Build) void {
 
     // Generate compile-time NitroFS file IDs from the selected ROM. The generated
     // header uses macros so MWCC ARM 1.2sp3 emits the original integer literals.
-    const file_ids_cmd = b.addSystemCommand(&.{"python3"});
-    file_ids_cmd.addFileArg(b.path("tools/gen_file_ids.py"));
+    const file_ids_exe = b.addExecutable(.{
+        .name = "gen_file_ids",
+        .root_module = b.createModule(.{
+            .root_source_file = b.path("tools/gen_file_ids.zig"),
+            .target = b.graph.host,
+            .optimize = .ReleaseSafe,
+        }),
+    });
+    const file_ids_cmd = b.addRunArtifact(file_ids_exe);
+    file_ids_cmd.setCwd(b.path("."));
     file_ids_cmd.addArg("--rom");
     file_ids_cmd.addFileArg(rom_file);
     file_ids_cmd.addArgs(&.{ "--output", "build/generated/include/nsmb/file_ids.hpp" });
