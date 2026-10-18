@@ -117,7 +117,7 @@ s32 BootScene::onUpdate()
 	u32 step = data_0203996c;
 	keys = Input::consoleKeys[Input::localConsoleID][0];
 
-	func_02043398(&_78);
+	func_02043398(&this->_78);
 
 	if (data_ov001_020cebc0 == 0) {
 		data_ov001_020cebc0 = Game::taskCleanup();
@@ -132,33 +132,33 @@ s32 BootScene::onUpdate()
 		goto returnTrue;
 	}
 
-	if (_7c != 0) {
-		_7c -= step;
-		if (_7c == 0) {
+	if (this->_7c != 0) {
+		this->_7c -= step;
+		if (this->_7c == 0) {
 			func_ov001_020cc4b4();
 		}
 	}
 
-	if (_7d != 0) {
-		_7d -= step;
+	if (this->_7d != 0) {
+		this->_7d -= step;
 		return true;
 	}
 
-	switch (_7a) {
+	switch (this->_7a) {
 	case 0:
 	case 7:
-		if (_78 == 0) {
+		if (this->_78 == 0) {
 			func_ov001_020cc328();
 
-			if (_64[1] != 0) {
+			if (this->_64[1] != 0) {
 				Scene::switchToCorruptedSave(6);
-			} else if (_64[3] != 0) {
+			} else if (this->_64[3] != 0) {
 				Scene::switchToCorruptedSave(8);
-			} else if (_64[2] != 0) {
-				if ((_64[2] & 0x1000) != 0) {
-					Scene::switchToCorruptedSave(_64[2] | 7);
+			} else if (this->_64[2] != 0) {
+				if ((this->_64[2] & 0x1000) != 0) {
+					Scene::switchToCorruptedSave(this->_64[2] | 7);
 				} else {
-					Scene::switchToCorruptedSave(_64[2] | 5);
+					Scene::switchToCorruptedSave(this->_64[2] | 5);
 				}
 			} else {
 				data_02085ad4[0] = save.options.controlOptions;
@@ -199,20 +199,20 @@ s32 BootScene::onUpdate()
 					 (u8)(data_0208b4ca[touchIndex * 4] - 0x28) < 0x50 &&
 					 (u8)(data_0208b4cb[touchIndex * 4] - 0x98) < 0x20) ||
 					(keys & NDS_PAD_BUTTON_LEFT) != 0) {
-					if (_7b == 0) {
-						_7c = 0x10;
+					if (this->_7b == 0) {
+						this->_7c = 0x10;
 					}
-					_7b = 0;
+					this->_7b = 0;
 					func_ov001_020cc4b4();
 					func_02012398(0xe5, nullptr);
 
 					if ((u8)(data_0208b4ca[data_0208b4c4 * 4] - 0x28) < 0x50 &&
 						(u8)(data_0208b4cb[data_0208b4c4 * 4] - 0x98) < 0x20) {
-						_7d = 0x20;
-						if (_7a == 1) {
-							_7a = 2;
+						this->_7d = 0x20;
+						if (this->_7a == 1) {
+							this->_7a = 2;
 						} else {
-							_7a = 4;
+							this->_7a = 4;
 						}
 					}
 				} else {
@@ -226,33 +226,33 @@ s32 BootScene::onUpdate()
 						 (u8)(data_0208b4ca[touchIndex * 4] - 0x88) < 0x50 &&
 						 (u8)(data_0208b4cb[touchIndex * 4] - 0x98) < 0x20) ||
 						(keys & NDS_PAD_BUTTON_RIGHT) != 0) {
-						if (_7b == 1) {
-							_7c = 0x10;
+						if (this->_7b == 1) {
+							this->_7c = 0x10;
 						}
-						_7b = 1;
+						this->_7b = 1;
 						func_ov001_020cc4b4();
 						func_02012398(0xe5, nullptr);
 
 						if ((u8)(data_0208b4ca[data_0208b4c4 * 4] - 0x88) < 0x50 &&
 							(u8)(data_0208b4cb[data_0208b4c4 * 4] - 0x98) < 0x20) {
-							_7d = 0x20;
-							_7a = 6;
+							this->_7d = 0x20;
+							this->_7a = 6;
 						}
 					} else if ((keys & (NDS_PAD_BUTTON_A |
 						NDS_PAD_BUTTON_START)) != 0) {
-						_7c = 0x10;
-						_7d = 0x20;
+						this->_7c = 0x10;
+						this->_7d = 0x20;
 						func_ov001_020cc4b4();
 						func_02012398(0xe5, nullptr);
 
-						if (_7b == 0) {
-							if (_7a == 1) {
-								_7a = 2;
+						if (this->_7b == 0) {
+							if (this->_7a == 1) {
+								this->_7a = 2;
 							} else {
-								_7a = 4;
+								this->_7a = 4;
 							}
 						} else {
-							_7a = 6;
+							this->_7a = 6;
 						}
 					}
 				}
@@ -261,32 +261,32 @@ s32 BootScene::onUpdate()
 		break;
 
 	case 2:
-		_7b = 1;
+		this->_7b = 1;
 		func_ov001_020cc4b4();
-		_7a = 3;
+		this->_7a = 3;
 		break;
 
 	case 4:
 		NDS::Graphics::configureSubTextBackground1(0, 0, 2, 6, 0);
-		_7e = 0x78;
-		_7a = 5;
+		this->_7e = 0x78;
+		this->_7a = 5;
 		break;
 
 	case 5:
-		if (_7e != 0) {
-			_7e -= step;
-			if (_7e == 0x3c) {
+		if (this->_7e != 0) {
+			this->_7e -= step;
+			if (this->_7e == 0x3c) {
 				break;
 			}
 
-			if (_7e == 0) {
+			if (this->_7e == 0) {
 				NDS::Graphics::setSubVisiblePlanes(
 					(NDS::Graphics::getSubVisiblePlanes() &
 						~(NDS_VISIBLE_PLANE_BACKGROUND0 |
 							NDS_VISIBLE_PLANE_BACKGROUND1)) |
 					NDS_VISIBLE_PLANE_BACKGROUND2);
-				_78 = 0x3c;
-				_7a = 7;
+				this->_78 = 0x3c;
+				this->_7a = 7;
 			}
 		}
 		break;
@@ -298,16 +298,16 @@ s32 BootScene::onUpdate()
 					~(NDS_VISIBLE_PLANE_BACKGROUND0 |
 						NDS_VISIBLE_PLANE_BACKGROUND1)) |
 				NDS_VISIBLE_PLANE_BACKGROUND2);
-			_78 = 0x3c;
-			_7a = 0;
+			this->_78 = 0x3c;
+			this->_7a = 0;
 		}
 		break;
 
 	case 8:
-		_78 -= step;
-		if (_78 == 0) {
+		this->_78 -= step;
+		if (this->_78 == 0) {
 			if (func_020130b4() == 0) {
-				_7a = 9;
+				this->_7a = 9;
 			} else {
 				GlobalFader.reserved_5c4 = 0;
 				GlobalFader.targetBrightness = -16;
@@ -329,7 +329,7 @@ void BootScene::func_ov001_020cc4b4() {
 
 	for (s32 blockIndex = 0; blockIndex < 2; blockIndex++) {
 		const u16 paletteOffset =
-			(blockIndex == _7b && _7c == 0) ? 0x2000 : 0x1000;
+			(blockIndex == this->_7b && this->_7c == 0) ? 0x2000 : 0x1000;
 		u16 *block = rcast<u16 *>(NDS::Graphics::subBackground1Map()
 			+ 0x4c0 + ((blockIndex * 0x10) << 1));
 
@@ -351,55 +351,55 @@ void BootScene::func_ov001_020cc328()
 	};
 
 	for (s32 clearIndex = 0; clearIndex < 5; clearIndex++) {
-		_64[clearIndex] = 0;
+		this->_64[clearIndex] = 0;
 	}
 
 	for (s32 slot = 0; slot < 3; slot++) {
 		u32 result = func_02012f64(slot, &save);
 
 		if (result == 0) {
-			_64[0] |= SlotBitBase << slot;
+			this->_64[0] |= SlotBitBase << slot;
 		} else if (result == 3) {
 			if (func_02012ee0(save.options.currentSlot, &save) == 0) {
-				_64[3] |= SlotBitBase << slot;
+				this->_64[3] |= SlotBitBase << slot;
 			} else {
-				_64[0] |= SlotBitBase << slot;
+				this->_64[0] |= SlotBitBase << slot;
 			}
 		} else if (result == 2) {
-			_64[2] |= SlotBitBase << slot;
+			this->_64[2] |= SlotBitBase << slot;
 		} else {
-			_64[1] |= SlotBitBase << slot;
+			this->_64[1] |= SlotBitBase << slot;
 		}
 	}
 
 	u32 result = func_020128c4(&data_02088e24);
 	if (result == 0) {
-		_64[0] |= MinigamesBit;
+		this->_64[0] |= MinigamesBit;
 	} else if (result == 3) {
 		if (func_020128fc() == 0) {
-			_64[3] |= MinigamesBit;
+			this->_64[3] |= MinigamesBit;
 		} else {
-			_64[0] |= MinigamesBit;
+			this->_64[0] |= MinigamesBit;
 		}
 	} else if (result == 2) {
-		_64[2] |= MinigamesBit;
+		this->_64[2] |= MinigamesBit;
 	} else {
-		_64[1] |= MinigamesBit;
+		this->_64[1] |= MinigamesBit;
 	}
 
 	result = func_02013050(&save.options);
 	if (result == 0) {
-		_64[0] |= OptionsBit;
+		this->_64[0] |= OptionsBit;
 	} else if (result == 3) {
 		if (func_02013090() == 0) {
-			_64[3] |= OptionsBit;
+			this->_64[3] |= OptionsBit;
 		} else {
-			_64[0] |= OptionsBit;
+			this->_64[0] |= OptionsBit;
 		}
 	} else if (result == 2) {
-		_64[2] |= OptionsBit;
+		this->_64[2] |= OptionsBit;
 	} else {
-		_64[1] |= OptionsBit;
+		this->_64[1] |= OptionsBit;
 	}
 }
 
