@@ -498,12 +498,12 @@ void VSConnectScene::updateConfirmSM()
 			buttons[selectedButton].click();
 			buttons[selectedButton ^ 1].palette = 2;
 			if (searchType == 0) {
-				Wifi::func_020010a8();
+				Net::startMultiBootTransfer();
 				subMenuTimer = 0x1e;
 				subMenuState = 2;
 				func_02012398(0xe9, 0);
 			} else if (searchType == 1) {
-				Wifi::func_02001000();
+				Net::acceptChildren();
 				scheduleSubMenuChange(&loadGameSM, 0x1e, true);
 			} else {
 				scheduleSubMenuChange(&waitHostConfirmSM, 0x1e, true);
@@ -858,11 +858,11 @@ NicknameInfo *VSConnectScene::getOpponentNickname()
 {
 	if (searchType == 2) {
 		for (s32 aid = 0; aid < 4; aid++) {
-			NicknameInfo *nickname = Wifi::func_02001050(aid);
+			NicknameInfo *nickname = Net::getParentGameInfo(aid);
 			if (!nickname)
 				continue;
 
-			u8 *address = Wifi::func_0200102c(aid);
+			u8 *address = Net::getParentBssid(aid);
 			if (!hasParentBssid || strncmp((char *)address, (char *)parentBssid, 6)) {
 				parentAid = aid;
 				NDS::Memory::copy8(address, parentBssid, 6);

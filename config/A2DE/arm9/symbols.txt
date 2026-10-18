@@ -24,10 +24,10 @@ AutoloadCallback kind:function(arm,size=0x4) addr:0x02000a58
 func_02000a5c kind:function(arm,size=0xe8) addr:0x02000a5c
 func_02000b44 kind:function(arm,size=0x4) addr:0x02000b44
 BuildInfo kind:data(any) addr:0x02000b48
-_ZN4Wifi13func_02001000Ev kind:function(arm,size=0x2c) addr:0x02001000
-_ZN4Wifi13func_0200102cEl kind:function(arm,size=0x24) addr:0x0200102c
-_ZN4Wifi13func_02001050El kind:function(arm,size=0x58) addr:0x02001050
-_ZN4Wifi13func_020010a8Ev kind:function(arm,size=0x40) addr:0x020010a8
+_ZN3Net14acceptChildrenEv kind:function(arm,size=0x2c) addr:0x02001000
+_ZN3Net14getParentBssidEm kind:function(arm,size=0x24) addr:0x0200102c
+_ZN3Net17getParentGameInfoEm kind:function(arm,size=0x58) addr:0x02001050
+_ZN3Net22startMultiBootTransferEv kind:function(arm,size=0x40) addr:0x020010a8
 Wifi::func_020010e8 kind:function(arm,size=0xb0) addr:0x020010e8
 Wifi::func_02001198 kind:function(arm,size=0xd8) addr:0x02001198
 Wifi::func_02001270 kind:function(arm,size=0x158) addr:0x02001270

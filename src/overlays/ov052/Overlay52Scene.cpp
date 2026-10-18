@@ -1,4 +1,5 @@
 #include "VSMenuScene.hpp"
+#include "../../Scenes/StageScene.hpp"
 #include <nsmb/arm9/symbols.hpp>
 #include <nsmb/overlays/ov052/dependencies.hpp>
 #include <nsmb/overlays/ov052/symbols.hpp>

@@ -7,5 +7,6 @@ class StageScene : public Scene
 	Vec3_32 _3f0;
 	u8 _pad0[0x63bc];
 	static void *create();
+	static void func_ov000_020a2eec();
 	StageScene();
 };

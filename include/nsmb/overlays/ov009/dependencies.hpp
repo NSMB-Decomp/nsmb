@@ -1,6 +1,7 @@
 #pragma once
 
 #include "../../../../src/base_types.hpp"
+#include "../../../../src/system/layout.hpp"
 
 class Vec3_32;
 class Fader;
@@ -17,6 +18,3 @@ void func_02011ce4(u32, u32);
 void func_ov000_020bd604();
 void func_ov000_020bd63c();
 
-namespace Layout {
-void initSub(void *, void *, void *);
-}

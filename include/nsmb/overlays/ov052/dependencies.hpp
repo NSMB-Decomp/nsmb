@@ -1,10 +1,12 @@
 #pragma once
 
 #include "../../../../src/base_types.hpp"
+#include "../../../../src/system/layout.hpp"
+#include "../../../../src/system/vblank.hpp"
+#include "../../core/net/state.hpp"
 
 class VSMenuScene;
 class Fader;
-struct NicknameInfo;
 
 void func_0200419c(u32, u32, u32, u32, u32, u32, u32, u32, u32, u32, s32);
 void func_02006ca4();
@@ -25,24 +27,3 @@ void func_ov052_02153760(VSMenuScene *scene);
 void func_ov052_02153780(VSMenuScene *scene);
 void func_ov052_021539c8(VSMenuScene *);
 void func_ov053_0215cc70();
-
-namespace Wifi {
-NicknameInfo *func_02001050(s32 aid);
-u8 *func_0200102c(s32 aid);
-void func_02001000();
-void func_020010a8();
-}
-
-namespace Layout {
-void initSub(void *, void *, void *);
-}
-
-namespace System {
-void setupSubBGVBlank();
-void resetSubBGVBlank();
-void setSubBGPosition(u32, s32, s32);
-}
-
-namespace StageScene {
-void func_ov000_020a2eec();
-}
