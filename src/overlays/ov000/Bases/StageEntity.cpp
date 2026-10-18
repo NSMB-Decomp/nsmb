@@ -204,7 +204,7 @@ u32 StageEntity::updateLiquids(fx32 defaultAccelY)
 	if (result == 0) {
 		return result;
 	}
-	return checkLiquidCollision(
+	return this->checkLiquidCollision(
 		this->position, this->lastPosition, this->liquidWaveHeight, true);
 }
 
@@ -285,12 +285,12 @@ u32 StageEntity::checkLiquidCollision(
 
 void StageEntity::_16()
 {
-	PlayerBase *player;
+	PlayerActor *player;
 
 	if (this->linked_player == ~0) {
 		return;
 	}
-	player = static_cast<PlayerBase *>(Game::getPlayer(this->linked_player));
+	player = Game::getPlayer(this->linked_player);
 	player->func_ov011_0212bde0(this);
 	this->activeCollider.detectGroups &= ~0x100;
 	this->activeCollider.attack = 0x0;
@@ -304,8 +304,7 @@ void StageEntity::_16()
 
 void StageEntity::grabbed()
 {
-	PlayerActor *player =
-		static_cast<PlayerActor *>(Game::getPlayer(this->linked_player));
+	PlayerActor *player = Game::getPlayer(this->linked_player);
 	BOOL frontLayer = BOOL(player->zLayer == 0x8000);
 	if (frontLayer != FALSE) {
 		this->backLayer = FALSE;
@@ -341,8 +340,8 @@ void StageEntity::_35()
 	playerID = 0;
 	if (func_020202a0() > 0) {
 		do {
-			PlayerBase *player =
-				static_cast<PlayerBase *>(Game::getPlayer(playerID));
+			PlayerActor *player =
+				Game::getPlayer(playerID);
 			if (player != 0 && player->linkedActor == this) {
 				player->func_ov011_0212bde0(this);
 			}
@@ -358,8 +357,8 @@ void StageEntity::_35()
 
 void StageEntity::_32()
 {
-	PlayerBase *player =
-		static_cast<PlayerBase *>(Game::getPlayer(this->linked_player));
+	PlayerActor *player =
+		Game::getPlayer(this->linked_player);
 	this->activeCollider.unlink();
 	this->direction = this->collisionDirection;
 	if (player->scoreComboFenceSlam < 10) {
@@ -390,7 +389,8 @@ void StageEntity::_32()
 
 void StageEntity::_31()
 {
-	Game::getPlayer(this->linked_player);
+	// The result is unused, but the call is in the ROM (see _26).
+	(void)Game::getPlayer(this->linked_player);
 	this->activeCollider.unlink();
 	this->direction = this->collisionDirection;
 	if (this->scoreType == 0) {
@@ -405,8 +405,8 @@ void StageEntity::_31()
 
 void StageEntity::onGroundPound()
 {
-	PlayerBase *player =
-		static_cast<PlayerBase *>(Game::getPlayer(this->linked_player));
+	PlayerActor *player =
+		Game::getPlayer(this->linked_player);
 	Vec3_32 soundPosition =
 		func_02045bdc(this->position, this->centerOffset);
 	this->permanentDestroy = true;
@@ -415,8 +415,8 @@ void StageEntity::onGroundPound()
 	s32 playerID = 0;
 	if (func_020202a0() > 0) {
 		do {
-			PlayerBase *linkedPlayer =
-				static_cast<PlayerBase *>(Game::getPlayer(playerID));
+			PlayerActor *linkedPlayer =
+				Game::getPlayer(playerID);
 			if (linkedPlayer != 0 && linkedPlayer->linkedActor == this) {
 				linkedPlayer->func_ov011_0212bde0(this);
 			}
@@ -489,7 +489,8 @@ void StageEntity::shellStarted(PlayerActor &player)
 
 void StageEntity::onSpinDrillHit()
 {
-	Game::getPlayer(this->linked_player);
+	// The result is unused, but the call is in the ROM (see _26).
+	(void)Game::getPlayer(this->linked_player);
 	if (this->scoreType == 0) {
 		this->getScorePointsRegular(1, 0, 0x18000, this->linked_player);
 	} else if (this->scoreType == 1) {
@@ -517,7 +518,8 @@ bool StageEntity::setSpinDrillCollision(const PlayerActor &player)
 
 void StageEntity::_27()
 {
-	Game::getPlayer(this->linked_player);
+	// The result is unused, but the call is in the ROM (see _26).
+	(void)Game::getPlayer(this->linked_player);
 	if (this->scoreType == 0) {
 		this->getScorePointsRegular(1, 0, 0x18000, this->linked_player);
 	} else if (this->scoreType == 1) {
@@ -628,8 +630,8 @@ void StageEntity::defeat(
 	s32 playerID = 0;
 	if (func_020202a0() > 0) {
 		do {
-			PlayerBase *player =
-				static_cast<PlayerBase *>(Game::getPlayer(playerID));
+			PlayerActor *player =
+				Game::getPlayer(playerID);
 			if (player != 0 && player->linkedActor == this) {
 				player->func_ov011_0212bde0(this);
 			}
@@ -669,7 +671,7 @@ void StageEntity::_43(u32 param_1, u32 param_2, u32 param_3)
 i16 data_ov000_020c1f44[2];
 void StageEntity::shellKicked()
 {
-	PlayerBase *player = static_cast<PlayerBase *>(Game::getPlayer(this->linked_player));
+	PlayerActor *player = Game::getPlayer(this->linked_player);
 	this->activeCollider._a4 = player->activeCollider._a4;
 	this->collisionMgr._b7 = player->activeCollider._a4;
 	if ((player->collisionFlag & PlayerBase::CF_Ground) == 0 && player->velocity.y < 0) {
@@ -853,12 +855,12 @@ bool StageEntity::updateCarried()
 	if (linked_player == -1) {
 		return true;
 	}
-	PlayerBase *player =
-		static_cast<PlayerBase *>(Game::getPlayer(linked_player));
-	tryAttachToPlayerHands(0x4000, -0x2000, 0);
+	PlayerActor *player =
+		Game::getPlayer(linked_player);
+	this->tryAttachToPlayerHands(0x4000, -0x2000, 0);
 
 	if (carriedAction & 1) {
-			_16();
+			this->_16();
 			Vec3_32 *playerVelocity = &player->velocity;
 			if (carriedAction & 2) {
 				fx32 throwX;
@@ -886,14 +888,14 @@ bool StageEntity::updateCarried()
 			}
 
 			velocity.set(throwX, releaseForceY, 0);
-			if (updateCarriedCollision()) {
+			if (this->updateCarriedCollision()) {
 				activeCollider.unlink();
 				func_02012398(0x70, &position);
-				getScorePointsRegular(
+				this->getScorePointsRegular(
 					1, 0, 0x18000,
 					player->linked_player);
-				defeat(0, 0x3000, -0x300, 0);
-				_11();
+				this->defeat(0, 0x3000, -0x300, 0);
+				this->_11();
 				return true;
 			}
 			if ((collisionMgr.flags &
@@ -918,14 +920,14 @@ bool StageEntity::updateCarried()
 			velocity.x = releaseVelocity;
 			velocity.y = 0;
 			velocity.z = 0;
-			if (updateCarriedCollision()) {
+			if (this->updateCarriedCollision()) {
 				activeCollider.unlink();
 				func_02012398(0x70, &position);
-				getScorePointsRegular(
+				this->getScorePointsRegular(
 					1, 0, 0x18000,
 					player->linked_player);
-				defeat(0, 0x3000, -0x300, 0);
-				_11();
+				this->defeat(0, 0x3000, -0x300, 0);
+				this->_11();
 				return true;
 			}
 			if ((collisionMgr.flags &
@@ -938,10 +940,10 @@ bool StageEntity::updateCarried()
 			thrownFlag = 0;
 		}
 
-		if (checkSquished()) {
-			getScorePointsRegular(
+		if (this->checkSquished()) {
+			this->getScorePointsRegular(
 				1, 0, 0x18000, player->linked_player);
-			_35();
+			this->_35();
 			return true;
 		}
 
@@ -958,11 +960,11 @@ bool StageEntity::updateCarried()
 			updateStateID = 8;
 		}
 		linked_player = player->linked_player;
-		_12();
+		this->_12();
 	}
 
-	updateLiquids(-0x300);
-	_11();
+	this->updateLiquids(-0x300);
+	this->_11();
 	return true;
 }
 bool StageEntity::onUpdate_6()
@@ -977,39 +979,39 @@ bool StageEntity::onUpdate_7()
 			func_02045bdc(position, centerOffset);
 		if (CollisionMgr::getSolidTileType(
 			    collisionPosition.x, collisionPosition.y)) {
-			_35();
+			this->_35();
 			return true;
 		}
 	}
 
-	updateVerticalVelocity();
-	applyMovement();
-	updateBottomSensors();
+	this->updateVerticalVelocity();
+	this->applyMovement();
+	this->updateBottomSensors();
 	collisionMgr.func_ov000_020aa990(collisionMgr.flags);
-	updateSideSensors();
+	this->updateSideSensors();
 
-	if (checkSquished()) {
-		getScorePointsRegular(1, 0, 0x18000, linked_player);
-		_35();
+	if (this->checkSquished()) {
+		this->getScorePointsRegular(1, 0, 0x18000, linked_player);
+		this->_35();
 		return true;
 	}
 
 	if (collisionMgr.flags & 0x1f40) {
 		if (thrownFlag == 1 && (properties & 0x8000)) {
 			updateStateID = 9;
-			_11();
-			_13();
-			shellKicked();
+			this->_11();
+			this->_13();
+			this->shellKicked();
 			return true;
 		}
 
-		updateBounce(0x300, 0x800, 0x800);
+		this->updateBounce(0x300, 0x800, 0x800);
 		if (velocity.y == 0) {
 			updateStateID = 0;
 			velocity.x = 0;
-			_13();
+			this->_13();
 			linked_player = -1;
-			_11();
+			this->_11();
 			return true;
 		}
 	} else if (collisionMgr.flags & 0xe000) {
@@ -1024,31 +1026,31 @@ bool StageEntity::onUpdate_7()
 		func_02012398(0x16f, &position);
 	}
 
-	updateLiquids(-0x300);
-	_11();
-	destroyInactive(((u32)(properties & 2) << 0xf) >> 0x10);
+	this->updateLiquids(-0x300);
+	this->_11();
+	this->destroyInactive(((u32)(properties & 2) << 0xf) >> 0x10);
 	return true;
 }
 bool StageEntity::updateDroppedHeavy()
 {
-	updateVerticalVelocity();
-	applyMovement();
-	updateBottomSensors();
+	this->updateVerticalVelocity();
+	this->applyMovement();
+	this->updateBottomSensors();
 	collisionMgr.func_ov000_020aa990(collisionMgr.flags);
-	updateSideSensors();
+	this->updateSideSensors();
 
-	if (checkSquished()) {
-		getScorePointsRegular(1, 0, 0x18000, linked_player);
-		_35();
+	if (this->checkSquished()) {
+		this->getScorePointsRegular(1, 0, 0x18000, linked_player);
+		this->_35();
 		return true;
 	}
 
 	if (collisionMgr.flags & 0x1f40) {
-		updateBounce(0x300, 0x800, 0x800);
+		this->updateBounce(0x300, 0x800, 0x800);
 		if (velocity.y == 0) {
 			updateStateID = 0;
 			velocity.x = 0;
-			_13();
+			this->_13();
 			linked_player = -1;
 		}
 	} else if (collisionMgr.flags & 0xe000) {
@@ -1074,14 +1076,14 @@ bool StageEntity::updateDroppedHeavy()
 		}
 	}
 
-	updateLiquids(-0x300);
-	_11();
+	this->updateLiquids(-0x300);
+	this->_11();
 	return true;
 }
 bool StageEntity::updateRolling()
 {
-	PlayerBase *player =
-		static_cast<PlayerBase *>(Game::getPlayer(linked_player));
+	PlayerActor *player =
+		Game::getPlayer(linked_player);
 	platformMgr.unk32 &= ~8;
 
 	if (BOOL(data_02085a84 != 0) != FALSE) {
@@ -1089,19 +1091,19 @@ bool StageEntity::updateRolling()
 			func_02045bdc(position, centerOffset);
 		if (CollisionMgr::getSolidTileType(
 			    collisionPosition.x, collisionPosition.y)) {
-			_35();
+			this->_35();
 			return true;
 		}
 	}
 
-	applyMovement();
-	updateSideSensors();
-	updateBottomSensors();
+	this->applyMovement();
+	this->updateSideSensors();
+	this->updateBottomSensors();
 	collisionMgr.func_ov000_020aa990(collisionMgr.flags);
 
-	if (checkSquished()) {
-		getScorePointsRegular(1, 0, 0x18000, linked_player);
-		_35();
+	if (this->checkSquished()) {
+		this->getScorePointsRegular(1, 0, 0x18000, linked_player);
+		this->_35();
 		return true;
 	}
 
@@ -1133,14 +1135,14 @@ bool StageEntity::updateRolling()
 		func_02012398(0x16f, &position);
 	}
 
-	updateLiquids(-0x300);
+	this->updateLiquids(-0x300);
 	if (collisionMgr.flags & 0x1f40) {
-		updateHorizontalVelocity();
+		this->updateHorizontalVelocity();
 	}
-	updateVerticalVelocity();
+	this->updateVerticalVelocity();
 	rotation.y += data_ov000_020c4ed0[direction];
-	_11();
-	destroyInactive(((u32)(properties & 2) << 0xf) >> 0x10);
+	this->_11();
+	this->destroyInactive(((u32)(properties & 2) << 0xf) >> 0x10);
 	return true;
 }
 void StageEntity::_11()
@@ -1254,8 +1256,7 @@ bool StageEntity::setMegaKickCollision(const PlayerActor &player)
 
 void StageEntity::_26()
 {
-	PlayerActor *player =
-		static_cast<PlayerActor *>(Game::getPlayer(this->linked_player));
+	PlayerActor *player = Game::getPlayer(this->linked_player);
 	if (this->scoreType == 0) {
 		this->getScorePointsRegular(1, 0, 0x18000, this->linked_player);
 	} else if (this->scoreType == 1) {
@@ -1283,8 +1284,8 @@ void StageEntity::_26()
 
 void StageEntity::_25()
 {
-	PlayerBase *player =
-		static_cast<PlayerBase *>(Game::getPlayer(this->linked_player));
+	PlayerActor *player =
+		Game::getPlayer(this->linked_player);
 	if (player->scoreComboSliding < 10) {
 		++player->scoreComboSliding;
 	}
@@ -1314,8 +1315,8 @@ void StageEntity::_25()
 
 void StageEntity::_24()
 {
-	PlayerBase *player =
-		static_cast<PlayerBase *>(Game::getPlayer(this->linked_player));
+	PlayerActor *player =
+		Game::getPlayer(this->linked_player);
 	if (player->scoreComboStarman < 10) {
 		++player->scoreComboStarman;
 	}
@@ -1708,8 +1709,8 @@ bool func_ov000_0209bddc(
 void func_ov000_0209ba94(
 	StageEntityTileSweep *sweep, u32 playerID, bool moving)
 {
-	PlayerBase *player =
-		static_cast<PlayerBase *>(Game::getPlayer(playerID));
+	PlayerActor *player =
+		Game::getPlayer(playerID);
 	u8 viewID = player->_2be;
 	u32 entryCount = data_0208b220[viewID];
 	if (entryCount == 0) {
@@ -2047,8 +2048,8 @@ void func_ov000_0209b320(u8 playerID)
 	u16 *spawnTimer = data_ov000_020ca64c;
 	u8 *spawnFlags = data_ov000_020ca3cc;
 	u16 collisionCount;
-	PlayerBase *player =
-		static_cast<PlayerBase *>(Game::getPlayer(playerID));
+	PlayerActor *player =
+		Game::getPlayer(playerID);
 	u8 playerViewID = player->_2be;
 	u8 viewID;
 
@@ -2242,8 +2243,8 @@ void func_ov000_0209b320(u8 playerID)
 
 void func_ov000_0209b040(u8 playerID)
 {
-	PlayerBase *player =
-		static_cast<PlayerBase *>(Game::getPlayer(playerID));
+	PlayerActor *player =
+		Game::getPlayer(playerID);
 	u8 viewID = player->_2be;
 	u32 entryCount = data_0208b220[viewID];
 	if (entryCount == 0) {
@@ -2462,7 +2463,7 @@ bool StageEntity::destroyInactive(u32 flags)
 
 	if ((((flags & 2) == 0 &&
 	      func_0200aed8(&this->position, &range, this->_2be)) ||
-	     isOutOfView(this->position, range, this->_2be)) &&
+	     this->isOutOfView(this->position, range, this->_2be)) &&
 	    (flags & 1) == 0) {
 		this->destroy(this->permanentDestroy);
 		return true;
@@ -2531,7 +2532,7 @@ void StageEntity::getScorePointsRegular(u32 type, fx32 x, fx32 y, s32 playerID) 
 
 void StageEntity::getCollectablePoints(u32 type, s32 playerID)
 {
-	PlayerBase *player = static_cast<PlayerBase *>(Game::getPlayer(playerID));
+	PlayerActor *player = Game::getPlayer(playerID);
 	Vec3_32 result = player->func_ov011_0212bbdc();
 	const i32 &height = data_ov000_020c1fd8[player->runtimePowerup];
 	result.y = height + player->position.y;
@@ -2603,24 +2604,24 @@ PlayerStompType StageEntity::updatePlayerStomp(
 	if (player->powerup == PlayerPowerup_Mega) {
 		if (player->_778 & 0x800000) {
 			if (jumpVelocity != 0) {
-				onPlayerStomp(*player, jumpVelocity, noPoints);
+				this->onPlayerStomp(*player, jumpVelocity, noPoints);
 				if (this->defeatSFX != -1) {
 					func_02012398(this->defeatSFX, &this->position);
 				}
 			}
 			return PlayerStomp_Stomp;
 		}
-		if (canPlayerStomp(collider, *player, allowClippedJump)) {
+		if (this->canPlayerStomp(collider, *player, allowClippedJump)) {
 			if (jumpVelocity != 0) {
-				doPlayerJump(*player, jumpVelocity);
+				this->doPlayerJump(*player, jumpVelocity);
 				if (this->defeatSFX != -1) {
 					func_02012398(this->defeatSFX, &this->position);
 				}
 			}
 			return PlayerStomp_MiniStomp;
 		}
-	} else if (canPlayerStomp(collider, *player, allowClippedJump)) {
-		onPlayerStomp(*player, jumpVelocity, noPoints);
+	} else if (this->canPlayerStomp(collider, *player, allowClippedJump)) {
+		this->onPlayerStomp(*player, jumpVelocity, noPoints);
 		return PlayerStomp_Stomp;
 	}
 	return PlayerStomp_None;
@@ -2846,7 +2847,7 @@ void StageEntity::attachToPlayerHands(fx32 z, fx32 y, fx32 x)
 		return;
 	}
 
-	PlayerBase *player = static_cast<PlayerBase *>(Game::getPlayer(linked_player));
+	PlayerActor *player = Game::getPlayer(linked_player);
 	Vec3_32 handPosition = player->getHandsPosition();
 	handPosition.x &= data_02085aa4;
 
@@ -2935,14 +2936,14 @@ void StageEntity::shellActiveCallback(
 			static_cast<StageEntity *>(otherActor);
 		if ((other.detectAttacks &
 		     (1 << AC_ATK_EntityAsWeapon)) == 0) {
-			if ((u32)((collider.flags & 0xfffe) << 16) >> 16) {
+			if ((u16)(collider.flags & 0xfffe)) {
 				return;
 			}
 			if ((u8)(collider._a5 & 1) == 0) {
 				return;
 			}
-			if ((u32)((other.options &
-				   AcConfig::BypassDamage) << 16) >> 16) {
+			if ((u16)(other.options &
+				   AcConfig::BypassDamage)) {
 				return;
 			}
 			if (other.attack != AC_ATK_None) {
@@ -2977,7 +2978,7 @@ void StageEntity::shellActiveCallback(
 		if (entity->scoreCombo < otherEntity->scoreCombo) {
 			return;
 		}
-		if ((u32)((collider.flags & 0xfffe) << 16) >> 16) {
+		if ((u16)(collider.flags & 0xfffe)) {
 			entity->collisionDirection = direction;
 			entity->collisionType |= CT_Entity;
 		}
@@ -3034,8 +3035,8 @@ void StageEntity::shellActiveCallback(
 		collider.collisionState |= ActiveCollider::CS_Collided;
 		return;
 	}
-	if ((u32)((other.collidedGroups &
-		   (1 << AC_GRP_PlayerSpecial)) << 16) >> 16) {
+	if ((u16)(other.collidedGroups &
+		   (1 << AC_GRP_PlayerSpecial))) {
 		return;
 	}
 
@@ -3102,8 +3103,8 @@ void StageEntity::damageEntityCallback(ActiveCollider *collider, ActiveCollider 
 		}
 
 		if (entity->linked_player != -1) {
-			PlayerBase *player =
-				static_cast<PlayerBase *>(Game::getPlayer(entity->linked_player));
+			PlayerActor *player =
+				Game::getPlayer(entity->linked_player);
 			player->func_ov011_0212bde0(entity);
 		}
 
@@ -3143,7 +3144,7 @@ void StageEntity::damageEntityCallback(ActiveCollider *collider, ActiveCollider 
 		return;
 	}
 
-	if ((u32)((other->collidedGroups & (1 << AC_GRP_PlayerSpecial)) << 16) >> 16) {
+	if ((u16)(other->collidedGroups & (1 << AC_GRP_PlayerSpecial))) {
 		return;
 	}
 }
@@ -3308,8 +3309,8 @@ bool StageEntity::rotateToTarget(i16 a[2], i16 b[2])
 bool StageEntity::checkPlayersInRange(fx32 x) const
 {
 	if (func_020202a0() == 2) {
-		PlayerActor *first = static_cast<PlayerActor *>(Game::getPlayer(0));
-		PlayerActor *second = static_cast<PlayerActor *>(Game::getPlayer(1));
+		PlayerActor *first = Game::getPlayer(0);
+		PlayerActor *second = Game::getPlayer(1);
 
 		Vec3_32 firstPosition = first->position;
 		Vec3_32 secondPosition = second->position;
@@ -3339,8 +3340,8 @@ bool StageEntity::checkPlayersInRange(fx32 x) const
 bool StageEntity::checkPlayersInRange(fx32 x, fx32 y) const
 {
 	if (func_020202a0() == 2) {
-		PlayerActor *first = static_cast<PlayerActor *>(Game::getPlayer(0));
-		PlayerActor *second = static_cast<PlayerActor *>(Game::getPlayer(1));
+		PlayerActor *first = Game::getPlayer(0);
+		PlayerActor *second = Game::getPlayer(1);
 
 		const Vec3_32 &firstSource = first->position;
 		const Vec3_32 &secondSource = second->position;
@@ -3547,7 +3548,7 @@ void StageEntity::damagePlayerCallback(ActiveCollider &collider, ActiveCollider 
 	entity->collisionActorPos = *otherPosition;
 
 	if (otherActor->actorType == 2) {
-		if ((u32)((collider.flags & 0xfffe) << 16) >> 16) {
+		if ((u16)(collider.flags & 0xfffe)) {
 			collider.collisionState |= ActiveCollider::CS_Collided;
 			return;
 		}
@@ -3572,7 +3573,7 @@ void StageEntity::damagePlayerCallback(ActiveCollider &collider, ActiveCollider 
 		collider.collisionState |= ActiveCollider::CS_Collided;
 		return;
 	}
-	if ((u32)((other.collidedGroups & (1 << AC_GRP_PlayerSpecial)) << 16) >> 16) {
+	if ((u16)(other.collidedGroups & (1 << AC_GRP_PlayerSpecial))) {
 		return;
 	}
 	entity->damagePlayer(collider, *player);
@@ -3582,34 +3583,34 @@ bool StageEntity::playerCollision(ActiveCollider &collider, ActiveCollider &othe
 {
 	PlayerActor *player = static_cast<PlayerActor *>(other.owner);
 
-	isBehindTarget(player);
+	this->isBehindTarget(player);
 	if (player->actorType != 1) {
 		return false;
 	}
 
 	if (BOOL(player->powerup == 3) != FALSE &&
-	    setMegaCollision(*player)) {
+	    this->setMegaCollision(*player)) {
 		return true;
 	}
 
 	if (data_0208b350[player->linked_player] > 1 &&
-	    setStarmanCollision(*player)) {
+	    this->setStarmanCollision(*player)) {
 		return true;
 	}
 
 	if ((player->_778 & 0x800000) &&
-	    setGroundPoundCollision(*player)) {
+	    this->setGroundPoundCollision(*player)) {
 		return true;
 	}
 
 	if (player->getShellState() == 2 &&
-	    setBlueShellCollision(*player)) {
+	    this->setBlueShellCollision(*player)) {
 		return true;
 	}
 
 	if ((player->st1 & 0x10) &&
-	    (u32)((collider.detectAttacks & (1 << AC_ATK_Sliding)) << 16) >> 16 &&
-	    setSlidingCollision(*player)) {
+	    (u16)(collider.detectAttacks & (1 << AC_ATK_Sliding)) &&
+	    this->setSlidingCollision(*player)) {
 		return true;
 	}
 
@@ -3620,17 +3621,17 @@ bool StageEntity::playerCollision(ActiveCollider &collider, ActiveCollider &othe
 	} else {
 		spinDrill = false;
 	}
-	if (spinDrill && setSpinDrillCollision(*player)) {
+	if (spinDrill && this->setSpinDrillCollision(*player)) {
 		return true;
 	}
 
 	if (other.group == AC_GRP_PlayerSpecial) {
 		if (other.attack == AC_ATK_SlamFence) {
-			if (setFenceSlamCollision(*player)) {
+			if (this->setFenceSlamCollision(*player)) {
 				return true;
 			}
 		} else if (other.attack != AC_ATK_Sliding &&
-			   setStarmanCollision(*player)) {
+			   this->setStarmanCollision(*player)) {
 			return true;
 		}
 	}
@@ -3718,9 +3719,9 @@ u32 StageEntity::getSpritePriority(u32 a)
 {
 	u16 index;
 	if (a != 0) {
-		index = (u16)(a << 2);
+		index = a << 2;
 	} else {
-		index = (u16)(data_0208b168.info->value1C << 2);
+		index = data_0208b168.info->value1C << 2;
 	}
 
 	u8 state = 0;

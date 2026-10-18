@@ -95,7 +95,7 @@ void VsStar::func_ov020_02131bbc()
 		if ((this->setting_1 & 1) == 0) {
 			direction = this->direction;
 		}
-		PlayerActor *player = (PlayerActor*)Game::getPlayer(this->_4cc);
+		PlayerActor *player = Game::getPlayer(this->_4cc);
 		Vec3_32* pos1 = &player->position;
 		Vec3_32 position;
 		position.x = pos1->x;

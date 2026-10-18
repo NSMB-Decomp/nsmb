@@ -147,6 +147,8 @@ extern u8 stageID;
 extern u8 stageAreaID;
 } // namespace Stage
 
+class PlayerActor;
+
 namespace Game
 {
 extern u8 character; // old luigiMode
@@ -154,7 +156,7 @@ extern i32 cameraY[2];
 extern i32 cameraZoomY[2];
 u32 getBootScene();
 void drawBNCLSpriteSub(u32 id, void *data, u32 flags, u8 palette, u8 affineSet, Vec2_32 *scale, i16 rotation, i16 *rotation_center, u8 procSettings, u32 x, u32 y);
-void* getPlayer(u32);
+PlayerActor *getPlayer(u32);
 } // namespace Game
 
 #define C_DEG(d) s32((d * 0x10000) / 360)
