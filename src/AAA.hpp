@@ -180,6 +180,7 @@ extern u8 localConsoleID;
 extern u16 consoleKeys[4][2];
 extern u16 consoleKeysRepeated[4];
 void updatePlayerInput();
+void updateHorizontalSelectionIterator(i32 *iterator, i32 count);
 } // namespace Input
 
 void func_ov001_020cceb4();
@@ -555,7 +556,6 @@ extern u32 data_ov001_020ce84c;
 extern u32 data_ov001_020ce86c;
 u32 func_02011d40();
 void func_0200a42c(u32, u32);
-void func_0200a3d0(u32, u32);
 u32 func_02011e7c(u32, u32);
 	void func_0200917c(u32, u32);
 	void func_ov052_021535a0();

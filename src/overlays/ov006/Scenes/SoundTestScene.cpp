@@ -74,7 +74,7 @@ i32 SoundTestScene::onUpdate()
 
 	switch (this->_64) {
 	case 0: {
-		func_0200a3d0((u32)&this->_68, 0x70);
+		Input::updateHorizontalSelectionIterator(&this->_68, 0x70);
 		u16 pressedButtons = Input::consoleKeys[Input::localConsoleID][0];
 		if (pressedButtons & NDS_PAD_BUTTON_B) {
 			func_02011d40();
@@ -84,7 +84,7 @@ i32 SoundTestScene::onUpdate()
 		break;
 	}
 	case 1: {
-		func_0200a3d0((u32)&this->_6c, 0x1c3);
+		Input::updateHorizontalSelectionIterator(&this->_6c, 0x1c3);
 		u16 pressedButtons = Input::consoleKeys[Input::localConsoleID][0];
 		if (pressedButtons & NDS_PAD_BUTTON_B) {
 			func_02011d40();

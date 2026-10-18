@@ -4,8 +4,8 @@ class SoundTestScene : public Scene
 {
       public:
 	u32 _64;
-	u32 _68;
-	u32 _6c;
+	i32 _68;
+	i32 _6c;
 
 	static ObjectProfile Profile;
 	inline SoundTestScene() {};
