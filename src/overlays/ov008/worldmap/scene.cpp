@@ -153,40 +153,33 @@ u32 func_ov008_020cdcf8()
 	u32 signCompleted = 0;
 	u32 signTotal = 0;
 	u8 pathCount;
-	u8 world = 0;
+	u8 world;
 	u8 pathID;
 
-	do {
-		pathID = 0;
+	for (world = 0; world < 8; world++) {
 		pathCount = WM::worlds[world].pathCount;
 		path = WM::worlds[world].paths;
 
-		if (pathCount != 0) {
-			do {
-				u8 pathFlags = path->flag;
-				if ((pathFlags & (WM::PF_Bit6 | WM::PF_Bit7)) ==
-					0) {
-					pathState =
-						save.game.pathStates[world][pathID] &
-						WM::PS_Unlocked;
-					total++;
-					if (pathState != 0) {
-						completed++;
-					}
-					if ((pathFlags & WM::PF_Sign) != 0) {
-						if (pathState != 0) {
-							signCompleted++;
-						}
-						signTotal++;
-					}
+		for (pathID = 0; pathID < pathCount; pathID++, path++) {
+			u8 pathFlags = path->flag;
+			if ((pathFlags & (WM::PF_Bit6 | WM::PF_Bit7)) ==
+				0) {
+				pathState =
+					save.game.pathStates[world][pathID] &
+					WM::PS_Unlocked;
+				total++;
+				if (pathState != 0) {
+					completed++;
 				}
-
-				pathID++;
-				path++;
-			} while (pathID < pathCount);
+				if ((pathFlags & WM::PF_Sign) != 0) {
+					if (pathState != 0) {
+						signCompleted++;
+					}
+					signTotal++;
+				}
+			}
 		}
-		world++;
-	} while (world < 8);
+	}
 
 	if (completed == total) {
 		save.game.completion |= WM_SAVE_COMPLETION_BIT_1;
