@@ -5,9 +5,9 @@
 #include <nsmb/arm9/symbols.hpp>
 
 ObjectProfile BootScene::profile = {
-	BootScene::create,
-	0,
-	7,
+    BootScene::create,
+    0,
+    7,
 };
 
 BootScene::BootScene()
@@ -18,7 +18,8 @@ void *BootScene::create()
 	return new BootScene();
 }
 
-i32 BootScene::onCreate() {
+i32 BootScene::onCreate()
+{
 	u32 param_r0;
 	u32 local_r1;
 	u32 local_r2;
@@ -46,7 +47,7 @@ i32 BootScene::onCreate() {
 		REG_BG0CNT &= ~0x40;
 		REG_BG0OFS = 0x0;
 		NDS::Memory::decompressLz16((u32)&data_ov001_020cd144, NDS::Graphics::mainBackground0Tiles());
-		NDS::Graphics::uploadMainBackgroundPalette((u16*)&data_ov001_020cd734, 0x0, 0x200);
+		NDS::Graphics::uploadMainBackgroundPalette((u16 *)&data_ov001_020cd734, 0x0, 0x200);
 		NDS::Memory::decompressLz16((u32)&data_ov001_020cd934, NDS::Graphics::mainBackground0Map());
 		REG_BG3CNT &= ~0x03;
 		REG_BG3CNT = (REG_BG3CNT & 0x43) | 0x1100;
@@ -86,9 +87,7 @@ i32 BootScene::onCreate() {
 		func_02012398(0xe8, 0x0);
 	}
 
-	data_ov001_020cebc0 = Game::runTask(
-		rcast<Game::TaskEntry>(&App::initBoot), nullptr, 0xf, nullptr, 0x1000
-	);
+	data_ov001_020cebc0 = Game::runTask(rcast<Game::TaskEntry>(&App::initBoot), nullptr, 0xf, nullptr, 0x1000);
 	if (App::getBootScene() == 0x0) {
 		GlobalFader.brightnessFactor[0] = 0x1000;
 		GlobalFader.brightnessFactor[1] = 0x1000;
@@ -177,88 +176,75 @@ s32 BootScene::onUpdate()
 		break;
 
 	case 1:
-	case 3:
-		{
-			u32 touchIndex = data_0208b4c4;
-			bool touchActive = false;
-			u8 touchDown = data_0208b4c8[touchIndex * 4];
+	case 3: {
+		u32 touchIndex = data_0208b4c4;
+		bool touchActive = false;
+		u8 touchDown = data_0208b4c8[touchIndex * 4];
+		if (touchDown != 0 && data_0208b4c9[touchIndex * 4] != 0) {
+			touchActive = true;
+		}
+
+		if (touchActive || (keys & (NDS_PAD_BUTTON_A | NDS_PAD_BUTTON_START | NDS_PAD_BUTTON_RIGHT | NDS_PAD_BUTTON_LEFT)) != 0) {
 			if (touchDown != 0 && data_0208b4c9[touchIndex * 4] != 0) {
 				touchActive = true;
+			} else {
+				touchActive = false;
 			}
 
-			if (touchActive ||
-				(keys & (NDS_PAD_BUTTON_A | NDS_PAD_BUTTON_START |
-					NDS_PAD_BUTTON_RIGHT | NDS_PAD_BUTTON_LEFT)) != 0) {
+			if ((touchActive && (u8)(data_0208b4ca[touchIndex * 4] - 0x28) < 0x50 && (u8)(data_0208b4cb[touchIndex * 4] - 0x98) < 0x20) || (keys & NDS_PAD_BUTTON_LEFT) != 0) {
+				if (this->_7b == 0) {
+					this->_7c = 0x10;
+				}
+				this->_7b = 0;
+				func_ov001_020cc4b4();
+				func_02012398(0xe5, nullptr);
+
+				if ((u8)(data_0208b4ca[data_0208b4c4 * 4] - 0x28) < 0x50 && (u8)(data_0208b4cb[data_0208b4c4 * 4] - 0x98) < 0x20) {
+					this->_7d = 0x20;
+					if (this->_7a == 1) {
+						this->_7a = 2;
+					} else {
+						this->_7a = 4;
+					}
+				}
+			} else {
 				if (touchDown != 0 && data_0208b4c9[touchIndex * 4] != 0) {
 					touchActive = true;
 				} else {
 					touchActive = false;
 				}
 
-				if ((touchActive &&
-					 (u8)(data_0208b4ca[touchIndex * 4] - 0x28) < 0x50 &&
-					 (u8)(data_0208b4cb[touchIndex * 4] - 0x98) < 0x20) ||
-					(keys & NDS_PAD_BUTTON_LEFT) != 0) {
-					if (this->_7b == 0) {
+				if ((touchActive && (u8)(data_0208b4ca[touchIndex * 4] - 0x88) < 0x50 && (u8)(data_0208b4cb[touchIndex * 4] - 0x98) < 0x20) || (keys & NDS_PAD_BUTTON_RIGHT) != 0) {
+					if (this->_7b == 1) {
 						this->_7c = 0x10;
 					}
-					this->_7b = 0;
+					this->_7b = 1;
 					func_ov001_020cc4b4();
 					func_02012398(0xe5, nullptr);
 
-					if ((u8)(data_0208b4ca[data_0208b4c4 * 4] - 0x28) < 0x50 &&
-						(u8)(data_0208b4cb[data_0208b4c4 * 4] - 0x98) < 0x20) {
+					if ((u8)(data_0208b4ca[data_0208b4c4 * 4] - 0x88) < 0x50 && (u8)(data_0208b4cb[data_0208b4c4 * 4] - 0x98) < 0x20) {
 						this->_7d = 0x20;
+						this->_7a = 6;
+					}
+				} else if ((keys & (NDS_PAD_BUTTON_A | NDS_PAD_BUTTON_START)) != 0) {
+					this->_7c = 0x10;
+					this->_7d = 0x20;
+					func_ov001_020cc4b4();
+					func_02012398(0xe5, nullptr);
+
+					if (this->_7b == 0) {
 						if (this->_7a == 1) {
 							this->_7a = 2;
 						} else {
 							this->_7a = 4;
 						}
-					}
-				} else {
-					if (touchDown != 0 && data_0208b4c9[touchIndex * 4] != 0) {
-						touchActive = true;
 					} else {
-						touchActive = false;
-					}
-
-					if ((touchActive &&
-						 (u8)(data_0208b4ca[touchIndex * 4] - 0x88) < 0x50 &&
-						 (u8)(data_0208b4cb[touchIndex * 4] - 0x98) < 0x20) ||
-						(keys & NDS_PAD_BUTTON_RIGHT) != 0) {
-						if (this->_7b == 1) {
-							this->_7c = 0x10;
-						}
-						this->_7b = 1;
-						func_ov001_020cc4b4();
-						func_02012398(0xe5, nullptr);
-
-						if ((u8)(data_0208b4ca[data_0208b4c4 * 4] - 0x88) < 0x50 &&
-							(u8)(data_0208b4cb[data_0208b4c4 * 4] - 0x98) < 0x20) {
-							this->_7d = 0x20;
-							this->_7a = 6;
-						}
-					} else if ((keys & (NDS_PAD_BUTTON_A |
-						NDS_PAD_BUTTON_START)) != 0) {
-						this->_7c = 0x10;
-						this->_7d = 0x20;
-						func_ov001_020cc4b4();
-						func_02012398(0xe5, nullptr);
-
-						if (this->_7b == 0) {
-							if (this->_7a == 1) {
-								this->_7a = 2;
-							} else {
-								this->_7a = 4;
-							}
-						} else {
-							this->_7a = 6;
-						}
+						this->_7a = 6;
 					}
 				}
 			}
 		}
-		break;
+	} break;
 
 	case 2:
 		this->_7b = 1;
@@ -280,28 +266,18 @@ s32 BootScene::onUpdate()
 			}
 
 			if (this->_7e == 0) {
-				NDS::Graphics::setSubVisiblePlanes(
-					(NDS::Graphics::getSubVisiblePlanes() &
-						~(NDS_VISIBLE_PLANE_BACKGROUND0 |
-							NDS_VISIBLE_PLANE_BACKGROUND1)) |
-					NDS_VISIBLE_PLANE_BACKGROUND2);
+				NDS::Graphics::setSubVisiblePlanes((NDS::Graphics::getSubVisiblePlanes() & ~(NDS_VISIBLE_PLANE_BACKGROUND0 | NDS_VISIBLE_PLANE_BACKGROUND1)) | NDS_VISIBLE_PLANE_BACKGROUND2);
 				this->_78 = 0x3c;
 				this->_7a = 7;
 			}
 		}
 		break;
 
-	case 6:
-		{
-			NDS::Graphics::setSubVisiblePlanes(
-				(NDS::Graphics::getSubVisiblePlanes() &
-					~(NDS_VISIBLE_PLANE_BACKGROUND0 |
-						NDS_VISIBLE_PLANE_BACKGROUND1)) |
-				NDS_VISIBLE_PLANE_BACKGROUND2);
-			this->_78 = 0x3c;
-			this->_7a = 0;
-		}
-		break;
+	case 6: {
+		NDS::Graphics::setSubVisiblePlanes((NDS::Graphics::getSubVisiblePlanes() & ~(NDS_VISIBLE_PLANE_BACKGROUND0 | NDS_VISIBLE_PLANE_BACKGROUND1)) | NDS_VISIBLE_PLANE_BACKGROUND2);
+		this->_78 = 0x3c;
+		this->_7a = 0;
+	} break;
 
 	case 8:
 		this->_78 -= step;
@@ -324,14 +300,13 @@ returnTrue:
 	return true;
 }
 
-void BootScene::func_ov001_020cc4b4() {
+void BootScene::func_ov001_020cc4b4()
+{
 	const u16 BackgroundTileIndexMask = 0x3ff;
 
 	for (s32 blockIndex = 0; blockIndex < 2; blockIndex++) {
-		const u16 paletteOffset =
-			(blockIndex == this->_7b && this->_7c == 0) ? 0x2000 : 0x1000;
-		u16 *block = rcast<u16 *>(NDS::Graphics::subBackground1Map()
-			+ 0x4c0 + ((blockIndex * 0x10) << 1));
+		const u16 paletteOffset = (blockIndex == this->_7b && this->_7c == 0) ? 0x2000 : 0x1000;
+		u16 *block = rcast<u16 *>(NDS::Graphics::subBackground1Map() + 0x4c0 + ((blockIndex * 0x10) << 1));
 
 		for (s32 column = 0; column < 0x10; column++) {
 			block[column] = paletteOffset + (block[column] & BackgroundTileIndexMask);
