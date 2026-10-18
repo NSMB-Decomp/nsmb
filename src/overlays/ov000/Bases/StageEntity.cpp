@@ -13,7 +13,7 @@ StageEntity::StageEntity()
 	this->actorCategory = (1 << this->actorType) | 0x80;
 	this->actorCategory = this->actorCategory | 0x20;
 	this->unused2D0 = 0;
-	this->unused3E3 = ~0;
+	this->unused3E7 = ~0;
 	this->collisionType = 0x107;
 	this->accelV = -0x300;
 	this->minVelocity.x = 0;
@@ -43,7 +43,7 @@ StageEntity::StageEntity()
 	this->unused2C4 = 0;
 	this->defeatSFX = 0x6e;
 	this->_2be = func_0201f000(&this->position);
-	this->unused3E9 = 0;
+	this->unused3ED = 0;
 	this->freezeFlag = 0;
 	this->linked_player = ~0;
 	this->kickedFaster = 0;
