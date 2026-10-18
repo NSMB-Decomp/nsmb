@@ -111,7 +111,7 @@ s32 TitleScreenScene::onCreate()
 		if ((s32)data_02085a84 >= 2)
 			data_02085a84 = 1;
 
-		func_020180c0(&label, 1);
+		label.func_020180c0(1);
 		Game::character = 0;
 		func_0204dad8(Game::character);
 		func_02011ce4(0x1b, 0x2e);
@@ -124,7 +124,7 @@ s32 TitleScreenScene::onCreate()
 s32 TitleScreenScene::onDestroy()
 {
 	if (settings == 0)
-		func_020180a4(&label);
+		label.func_020180a4();
 
 	cutscene.onDestroy();
 	return true;
@@ -368,7 +368,7 @@ void TitleScreenScene::initializeFileSelect()
 	this->button2Offset = 0;
 	this->button1Offset = 0;
 	u32 value = 0;
-	func_02017bc4(&this->label, &value, 0, -this->guiTimer);
+	this->label.func_02017bc4(&value, 0, -this->guiTimer);
 	this->backButtonSelected = false;
 	this->backButtonHighlighted = false;
 	this->stateID = FileSelectState_Enter;
@@ -713,7 +713,7 @@ void TitleScreenScene::initializeFileCopy()
 	this->copyingFile = false;
 
 	u32 value = 1;
-	func_02017bc4(&this->label, &value, 0, -this->guiTimer);
+	this->label.func_02017bc4(&value, 0, -this->guiTimer);
 
 	s32 fileID = 0;
 	for (; fileID < 3; fileID++) {
@@ -834,7 +834,7 @@ void TitleScreenScene::hideFileCopySourcePrompt()
 
 	this->stateID = FileCopyState_ShowDestinationPrompt;
 	u32 value = 2;
-	func_02017bc4(&this->label, &value, 0, -this->guiTimer);
+	this->label.func_02017bc4(&value, 0, -this->guiTimer);
 	this->stateTimer = 12;
 }
 
@@ -1102,7 +1102,7 @@ void TitleScreenScene::waitForFileCopyAcknowledgement()
 
 		if (this->fileCopiedTimer == 12) {
 			u32 value = 5;
-			func_02017bc4(&this->label, &value, 0, 0);
+			this->label.func_02017bc4(&value, 0, 0);
 			this->copyingFileAnimStopping = true;
 		}
 
@@ -1332,7 +1332,7 @@ void TitleScreenScene::finalizeFileCopyDestination()
 
 	if ((this->saves[this->fileCopyDestinationFile].flags & Saved) != 0) {
 		u32 value = 3;
-		func_02017bc4(&this->label, &value, 0, -this->guiTimer);
+		this->label.func_02017bc4(&value, 0, -this->guiTimer);
 		this->stateID = FileCopyState_ShowOverwriteConfirmation;
 		this->fileConfirmOperationButton = 1;
 		this->fileConfirmRequest = true;
@@ -1341,7 +1341,7 @@ void TitleScreenScene::finalizeFileCopyDestination()
 	}
 
 	u32 value = 4;
-	func_02017bc4(&this->label, &value, 0, -this->guiTimer);
+	this->label.func_02017bc4(&value, 0, -this->guiTimer);
 	this->stateID = FileCopyState_ShowCopyingPrompt;
 }
 
@@ -1359,7 +1359,7 @@ void TitleScreenScene::acceptFileCopyOverwrite()
 
 	this->fileConfirmRequest = false;
 	u32 value = 4;
-	func_02017bc4(&this->label, &value, 0, -this->guiTimer);
+	this->label.func_02017bc4(&value, 0, -this->guiTimer);
 	this->stateID = FileCopyState_ShowCopyingPrompt;
 }
 
@@ -1378,7 +1378,7 @@ void TitleScreenScene::declineFileCopyOverwrite()
 	this->fileConfirmRequest = false;
 	this->guiTimer = 64;
 	u32 value = 2;
-	func_02017bc4(&this->label, &value, 0, -this->guiTimer);
+	this->label.func_02017bc4(&value, 0, -this->guiTimer);
 	this->stateID = FileCopyState_RestoreDestinationSelection;
 	this->fileSelectionCompleted = false;
 	this->buttonsTimer = this->guiTimer;
@@ -1417,7 +1417,7 @@ void TitleScreenScene::initializeFileErase()
 	this->fileEraseSelected = 0;
 	this->fileConfirmRequest = false;
 	u32 value = 6;
-	func_02017bc4(&this->label, &value, 0, -this->guiTimer);
+	this->label.func_02017bc4(&value, 0, -this->guiTimer);
 
 	s32 fileID = 0;
 	for (; fileID < 3; fileID++) {
@@ -1631,7 +1631,7 @@ void TitleScreenScene::updateFileEraseProgress()
 
 		if (this->fileCopiedTimer == 12) {
 			u32 value = 8;
-			func_02017bc4(&this->label, &value, 0, 0);
+			this->label.func_02017bc4(&value, 0, 0);
 			this->fileConfirmRequest = false;
 		}
 
@@ -1681,7 +1681,7 @@ void TitleScreenScene::waitForFileEraseAcknowledgement()
 
 		if (this->fileCopiedTimer == 12) {
 			u32 value = 9;
-			func_02017bc4(&this->label, &value, 0, 0);
+			this->label.func_02017bc4(&value, 0, 0);
 		}
 
 		s32 guiTimer = this->guiTimer;
@@ -1791,7 +1791,7 @@ void TitleScreenScene::hideFileEraseSelection()
 	this->fileSelectionCompleted = true;
 	this->stateID = FileEraseState_ShowConfirmation;
 	u32 value = 7;
-	func_02017bc4(&this->label, &value, 0, -this->guiTimer);
+	this->label.func_02017bc4(&value, 0, -this->guiTimer);
 	this->stateTimer = 12;
 	this->fileConfirmRequest = true;
 }
@@ -1830,7 +1830,7 @@ void TitleScreenScene::hideFileEraseConfirmation()
 	this->fileConfirmRequest = false;
 	this->buttonHitTimer = this->guiTimer;
 	u32 value = 6;
-	func_02017bc4(&this->label, &value, 0, -this->guiTimer);
+	this->label.func_02017bc4(&value, 0, -this->guiTimer);
 }
 
 void TitleScreenScene::showFileEraseSelection()
@@ -2113,7 +2113,7 @@ void TitleScreenScene::onRender_0()
 void TitleScreenScene::onRender_1()
 {
 	if (stateID != FileSelectState_Initialize) {
-		func_02018060(&label);
+		label.func_02018060();
 		i32 i = 0;
 		do {
 			i32 value = getSaveFilePalette(i);
@@ -2135,7 +2135,7 @@ void TitleScreenScene::onRender_1()
 
 void TitleScreenScene::onRender_2()
 {
-	func_02018060(&label);
+	label.func_02018060();
 	s32 zero = 0;
 	for (s32 fileID = 2; fileID >= 0; fileID--) {
 		if (fileButtonsTargetY[fileID] > fileSelectFileButtons[fileID].posY) {
@@ -2191,7 +2191,7 @@ void TitleScreenScene::onRender_2()
 
 void TitleScreenScene::onRender_3()
 {
-	func_02018060(&label);
+	label.func_02018060();
 	for (s32 fileID = 0; fileID <= 2; fileID++) {
 		s32 value = getSaveFilePalette(fileID);
 		renderSaveFile(fileID, value);

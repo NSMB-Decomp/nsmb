@@ -2,18 +2,22 @@
 
 #include "../../../../src/nsmb_nitro.hpp"
 
-void func_02018114(void *textLabel);
-void func_02018104(void *textLabel);
-void func_02017e2c(void *textLabel, u32, u32);
-void func_02017ff8(void *textLabel, u32 *textID);
-void func_02017b94(void *textLabel);
-
 class TextLabel
 {
 public:
-	inline TextLabel() { func_02018114(this); }
-	inline ~TextLabel() { func_02018104(this); }
+	inline TextLabel() { this->func_02018114(); }
+	inline ~TextLabel() { this->func_02018104(); }
+
+	void func_02017b94();
+	void func_02017bc4(u32 *value, u32, s32 offset);
+	void func_02017e14(const u32 *value);
+	void func_02017e2c(u32, u32);
+	void func_02017ff8(u32 *textID);
 	void func_02018060();
+	void func_020180a4(); // unloadScript
+	void func_020180c0(u32);
+	void func_02018104();
+	void func_02018114();
 
 	struct ButtonPosition
 	{

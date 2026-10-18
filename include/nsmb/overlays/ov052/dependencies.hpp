@@ -7,9 +7,6 @@ class Fader;
 struct NicknameInfo;
 
 void func_0200419c(u32, u32, u32, u32, u32, u32, u32, u32, u32, u32, s32);
-void func_02018060(void *);
-void func_020180c0(void *, u32);
-void func_02017e14(void *, const u32 *);
 void func_02006ca4();
 void func_0201df50();
 void func_02020628();

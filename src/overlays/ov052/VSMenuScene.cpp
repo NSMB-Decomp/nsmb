@@ -233,9 +233,9 @@ display_configured:
 	func_02020628();
 	func_0201df50();
 	func_ov052_02155c9c();
-	func_020180c0(&textLabel, 4);
+	textLabel.func_020180c0(4);
 	u32 value = func_02046c78() ? 0xa : 0xb;
-	func_02017e14(&textLabel, &value);
+	textLabel.func_02017e14(&value);
 
 	if (data_0203bd2c == 6 || data_0203bd2c == 1 || data_0203bd2c == 10) {
 		selection = 0;
@@ -284,7 +284,7 @@ display_configured:
 }
 
 s32 VSMenuScene::onDestroy() {
-	func_020180a4(&this->textLabel);
+	this->textLabel.func_020180a4();
 	System::resetSubBGVBlank();
 	return true;
 }
@@ -393,7 +393,7 @@ void VSMenuScene::func_ov052_02153b38()
 void VSMenuScene::func_ov052_02153b44()
 {
 	i32 offset = -(mainBackgroundPosition.y >> 12);
-	func_02018060(&textLabel);
+	textLabel.func_02018060();
 	func_0200419c(
 		1, data_ov052_0215b7c4[data_ov052_0215c884],
 		0, 0, 0, 0, 0, 0, 0, 0, offset
@@ -467,7 +467,7 @@ void VSMenuScene::func_ov052_02153d5c()
 	i32 mainY = -(mainBackgroundPosition.y >> 12);
 	i32 subX = -(selectionBackgroundPosition.x >> 12);
 	i32 subY = -(selectionBackgroundPosition.y >> 12);
-	func_02018060(&textLabel);
+	textLabel.func_02018060();
 
 	u32 style = selection == 0 ? 0 : 2;
 	func_0200419c(2, (u32)data_ov052_0215b864, 0, style, 0, 0, 0, 0, 0, 0, mainY);
@@ -612,7 +612,7 @@ void VSMenuScene::func_ov052_021546d0()
 	data_ov052_0215c890 = 0;
 	state = 0xf;
 	u32 value = func_02046c78() ? 0xa : 0xb;
-	func_02017e14(&textLabel, &value);
+	textLabel.func_02017e14(&value);
 	return;
 
 no_selection:
@@ -735,7 +735,7 @@ void VSMenuScene::func_ov052_02154a60()
 	state = 0xe;
 	confirmationVisible = 0;
 	u32 value = func_02046c78() ? 0xc : 0xd;
-	func_02017e14(&textLabel, &value);
+	textLabel.func_02017e14(&value);
 	selectionBackgroundPosition.x = mainBackgroundPosition.x;
 	selectionBackgroundPosition.y = mainBackgroundPosition.y;
 }

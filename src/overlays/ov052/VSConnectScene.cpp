@@ -99,8 +99,8 @@ s32 VSConnectScene::onCreate()
 	for (s32 i = 0; i < 3; i++)
 		activeButtons[i] = 0;
 	buttons[2].create(0, 0, 0, 0);
-	func_020180c0(&primaryText, 4);
-	func_020180c0(&secondaryText, 2);
+	primaryText.func_020180c0(4);
+	secondaryText.func_020180c0(2);
 	changeSubMenu(&selectModeSM);
 	subMenuChangeDelay = 0;
 	func_02006674(1);
@@ -130,8 +130,8 @@ s32 VSConnectScene::onUpdate()
 
 s32 VSConnectScene::onRender()
 {
-	func_02018060(&primaryText);
-	func_02018060(&secondaryText);
+	primaryText.func_02018060();
+	secondaryText.func_02018060();
 	if (currentSubMenu.render)
 		(this->*currentSubMenu.render)();
 	for (s32 i = 0; i < 3; i++) {
@@ -143,8 +143,8 @@ s32 VSConnectScene::onRender()
 
 s32 VSConnectScene::onDestroy()
 {
-	func_020180a4(&primaryText);
-	func_020180a4(&secondaryText);
+	primaryText.func_020180a4();
+	secondaryText.func_020180a4();
 	FS::Overlay::untrack(OVERLAY_ID(10));
 	FS::Overlay::untrack(OVERLAY_ID(11));
 	FS::Overlay::untrack(OVERLAY_ID(52));
@@ -285,7 +285,7 @@ void VSConnectScene::createCharSelectSM()
 	REG_DISPCNT = (REG_DISPCNT & ~0x1f00) | (data_02085a88 << 8);
 	REG_DISPCNT_SUB = (REG_DISPCNT_SUB & ~0x1f00) | 0x1800;
 	u32 textID = 2;
-	func_02017ff8(&primaryText, &textID);
+	primaryText.func_02017ff8(&textID);
 	func_0200f65c();
 
 	buttons[0].create(1, -0x100, 0, 1);
@@ -371,7 +371,7 @@ void VSConnectScene::createSearchSM()
 	}
 
 	u32 textID = data_ov052_0215af24[searchType];
-	func_02017ff8(&primaryText, &textID);
+	primaryText.func_02017ff8(&textID);
 	REG_DISPCNT_SUB = (REG_DISPCNT_SUB & ~0x1f00) | 0x1800;
 	buttons[2].palette = 0;
 	activeButtons[2] = &buttons[2];
@@ -417,7 +417,7 @@ void VSConnectScene::updateSearchSM()
 		if (startConsoleSearch()) {
 			func_0200e944(wifiIconOBJIndex, wifiIconOBJPalette, 0);
 			subMenuState = 1;
-			func_02017b94(&primaryText);
+			primaryText.func_02017b94();
 			return;
 		}
 		scheduleSubMenuChange(&connectionInterruptedSM, 1, true);
@@ -444,10 +444,10 @@ void VSConnectScene::createConfirmSM()
 	selectedButton = 0;
 	if (inputScheme == 1) {
 		u32 textID = 6;
-		func_02017ff8(&primaryText, &textID);
+		primaryText.func_02017ff8(&textID);
 	} else {
 		u32 textID = 5;
-		func_02017ff8(&primaryText, &textID);
+		primaryText.func_02017ff8(&textID);
 	}
 	REG_DISPCNT_SUB = (REG_DISPCNT_SUB & ~0x1f00) | 0x1800;
 	buttons[0].create(3, -0x100, 0, 3);
@@ -565,8 +565,8 @@ void VSConnectScene::createWaitHostConfirmSM()
 {
 	subMenuState = 0;
 	u32 textID = 9;
-	func_02017ff8(&primaryText, &textID);
-	func_02017b94(&primaryText);
+	primaryText.func_02017ff8(&textID);
+	primaryText.func_02017b94();
 	REG_DISPCNT_SUB = (REG_DISPCNT_SUB & ~0x1f00) | 0x1800;
 	buttons[2].palette = 0;
 	activeButtons[2] = &buttons[2];
@@ -636,10 +636,10 @@ void VSConnectScene::createPlayerLeftSM()
 {
 	if (inputScheme == 1) {
 		u32 textID = 8;
-		func_02017ff8(&primaryText, &textID);
+		primaryText.func_02017ff8(&textID);
 	} else {
 		u32 textID = 7;
-		func_02017ff8(&primaryText, &textID);
+		primaryText.func_02017ff8(&textID);
 	}
 	subMenuTimer = 0x78;
 	REG_DISPCNT_SUB = (REG_DISPCNT_SUB & ~0x1f00) | 0x1800;
@@ -661,7 +661,7 @@ void VSConnectScene::renderPlayerLeftSM()
 void VSConnectScene::createLoadGameSM()
 {
 	u32 textID = 9;
-	func_02017ff8(&primaryText, &textID);
+	primaryText.func_02017ff8(&textID);
 	REG_DISPCNT_SUB = (REG_DISPCNT_SUB & ~0x1f00) | 0x1800;
 	if (searchType == 0 && inputScheme == 1) {
 		data_0208ae54[0] = 1;
@@ -790,7 +790,7 @@ void VSConnectScene::renderLoadGameSM()
 void VSConnectScene::createConnectionInterruptedSM()
 {
 	u32 textID = 0x12;
-	func_02017ff8(&secondaryText, &textID);
+	secondaryText.func_02017ff8(&textID);
 	subMenuTimer = 0x78;
 	REG_DISPCNT_SUB = (REG_DISPCNT_SUB & ~0x1f00) | 0x1800;
 }
@@ -822,7 +822,7 @@ void VSConnectScene::selectButton(int id)
 
 void VSConnectScene::loadSelectModeText()
 {
-	func_02017e2c(&primaryText, selectMode == 0, 1);
+	primaryText.func_02017e2c(selectMode == 0, 1);
 }
 
 void VSConnectScene::updateTextButtonText()
