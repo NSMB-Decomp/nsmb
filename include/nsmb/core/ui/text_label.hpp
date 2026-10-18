@@ -2,13 +2,11 @@
 
 #include "../../../../src/nsmb_nitro.hpp"
 
-extern "C" {
 void func_02018114(void *textLabel);
 void func_02018104(void *textLabel);
 void func_02017e2c(void *textLabel, u32, u32);
 void func_02017ff8(void *textLabel, u32 *textID);
 void func_02017b94(void *textLabel);
-}
 
 class TextLabel
 {

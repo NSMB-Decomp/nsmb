@@ -15,8 +15,6 @@ NITRO_SIZE_ASSERT(Context, 0xC0);
 
 typedef void (*Entry)(void *);
 
-extern "C" {
-
 void sleepQueue(ThreadQueue *queue);
 BOOL hasThreadTerminated(Context *context);
 void createThread(
@@ -29,8 +27,6 @@ void createThread(
 );
 void setStackWarning(Context *context, u32 offset);
 void wakeThread(Context *context);
-
-}
 
 }
 }

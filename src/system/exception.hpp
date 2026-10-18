@@ -2,7 +2,7 @@
 #include "../nsmb_nitro.hpp"
 
 // No idea how they managed to use this private variable
-extern "C" Thread launcherThread;
+Thread launcherThread;
 
 namespace Exception {
 

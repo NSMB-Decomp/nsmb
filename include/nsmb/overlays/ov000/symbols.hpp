@@ -74,8 +74,8 @@ void func_ov000_020aba48(CollisionMgr *);
 void func_ov000_020af844(StageLayout *, u16, u16);
 bool func_ov000_020af790(StageLayout *, u16, u16);
 void func_ov000_0209e5a8(u32, u32, s32);
-extern "C" u32 func_ov000_020a6d18(fx32, fx32);
-extern "C" bool func_ov000_020a6c9c(CollisionMgr *);
+u32 func_ov000_020a6d18(fx32, fx32);
+bool func_ov000_020a6c9c(CollisionMgr *);
 void func_ov000_020a189c(u32);
 void func_ov000_020a183c(u32, u32);
 void func_ov000_0209aff8(u8 playerID, bool mode);
@@ -97,13 +97,13 @@ StageEntity *func_ov000_0209c178(
 void func_ov000_0209c288();
 void func_ov000_0209c2f8(u8 playerID);
 void func_ov000_0209c350();
-extern "C" PlayerBase *func_ov000_020a3d68(ActiveCollider *);
-extern "C" void func_ov000_020a3c40(u32 lightID, Vec3_32 *vector);
-extern "C" Vec3_32 func_02045bdc(
+PlayerBase *func_ov000_020a3d68(ActiveCollider *);
+void func_ov000_020a3c40(u32 lightID, Vec3_32 *vector);
+Vec3_32 func_02045bdc(
 	const Vec3_32 &left, const Vec3_32s &right);
-extern "C" void func_ov000_020a3b24(u32 mode);
-extern "C" void func_ov000_020bd240();
-extern "C" void func_ov000_020bd594();
+void func_ov000_020a3b24(u32 mode);
+void func_ov000_020bd240();
+void func_ov000_020bd594();
 
 extern u8 data_ov000_020c4ec0[2];
 extern i16 data_ov000_020c4ed4[2];

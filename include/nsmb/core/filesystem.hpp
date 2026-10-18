@@ -211,8 +211,8 @@ void loadFileToOBJVram(u32 extendedFileID, u32 offset);
 u32 getDecompressedFileSize(u32 extendedFileID);
 u32 getFileSize(u32 extendedFileID);
 
-extern "C" void func_0200984c();
-extern "C" void *func_0200981c(u16 fileID);
-extern "C" void func_02009828(void *object, u32 extendedFileID);
-extern "C" void *func_02009864(void *object, u32 extendedFileID);
+void func_0200984c();
+void *func_0200981c(u16 fileID);
+void func_02009828(void *object, u32 extendedFileID);
+void *func_02009864(void *object, u32 extendedFileID);
 }

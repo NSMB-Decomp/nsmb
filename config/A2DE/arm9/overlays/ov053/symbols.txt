@@ -1,5 +1,5 @@
 func_ov053_0215cc60 kind:function(arm,size=0x10) addr:0x0215cc60
-func_ov053_0215cc70 kind:function(arm,size=0x2c) addr:0x0215cc70
+_Z19func_ov053_0215cc70v kind:function(arm,size=0x2c) addr:0x0215cc70
 func_ov053_0215cc9c kind:function(arm,size=0x2c) addr:0x0215cc9c
 data_ov053_0215cce0 kind:bss addr:0x0215cce0
 data_ov053_0215f023 kind:bss addr:0x0215f023

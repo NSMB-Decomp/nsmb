@@ -247,7 +247,6 @@ namespace WM {
 	extern WmController* instance;
 }
 
-extern "C" {
 	extern u8 data_ov008_020ee3a8;
 	extern WmController::TaskFunc data_ov008_020ee65c[];
 	extern WmController::TaskFunc data_ov008_020ee6fc[];
@@ -335,4 +334,3 @@ extern "C" {
 	u32 func_ov008_020d2e00(WmController* controller);
 	u32 func_ov008_020da724();
 	u32 func_ov008_020da9a4(u32 world, WM::NodeLink* link);
-}

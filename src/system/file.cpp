@@ -995,24 +995,24 @@ void loadBGSubPalette(u32 extendedFileID, u32 offset)
 	}
 }
 
-extern "C" void *func_02009864(void *object, u32 extendedFileID)
+void *func_02009864(void *object, u32 extendedFileID)
 {
 	func_02009828(object, extendedFileID);
 	return object;
 }
 
-extern "C" void func_0200984c()
+void func_0200984c()
 {
 	data_0208b690 = func_0200981c;
 }
 
-extern "C" void func_02009828(void *object, u32 extendedFileID)
+void func_02009828(void *object, u32 extendedFileID)
 {
 	u32 fileID = toFileID(extendedFileID);
 	func_02044418(object, static_cast<u16>(fileID));
 }
 
-extern "C" void *func_0200981c(u16 fileID)
+void *func_0200981c(u16 fileID)
 {
 	return loadFile(fileID);
 }

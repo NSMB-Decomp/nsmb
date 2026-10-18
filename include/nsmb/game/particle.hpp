@@ -21,7 +21,7 @@ NTR_SIZE_GUARD(Handler, 0x7F4);
 
 }
 
-extern "C" u32 func_02022890(
+u32 func_02022890(
 	u32 emitter,
 	u32 effectID,
 	const Vec3_32* position,

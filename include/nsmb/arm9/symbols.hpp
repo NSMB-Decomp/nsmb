@@ -95,7 +95,7 @@ NTR_OFFSET_GUARD(WorldmapTransitionState, path, 0x6);
 
 // Unresolved main-ARM9/autoload data. Keep address names until binary evidence
 // supports semantic names; each declaration is authoritative for its address.
-extern "C" u8 func_0201ef94(const Unk0201ef94Input *input);
+u8 func_0201ef94(const Unk0201ef94Input *input);
 extern u16 data_0203bd2c;
 extern u16 data_0203bd34;
 extern u16 data_0203d2b0;
@@ -168,8 +168,8 @@ extern u32 data_0208b3d4[2][4];
 extern u8 data_02089508[2];
 extern void *(*data_0208b690)(u16 fileID);
 
-extern "C" BOOL func_0201301c(void *);
-extern "C" void func_02044418(void *object, u16 fileID);
+BOOL func_0201301c(void *);
+void func_02044418(void *object, u16 fileID);
 u8 func_020204e0(i8 playerID);
 void func_02006fac();
 bool func_02006fb8();

@@ -14,6 +14,10 @@
 
 using namespace WM;
 
+// TODO: Most func_ov008_* functions in this file take a WmController* as their
+// first argument and are probably WmController member functions. Converting
+// one changes its mangled name, so update symbols.txt in the same change.
+
 struct __Work {
 	NodeLink* link;
 	u32 world;
@@ -61,13 +65,13 @@ static inline PlayerModel* getPlayerModel(WmPlayerModel* playerModel) {
 	return &playerModel->model;
 }
 
-extern "C" void func_ov008_020d24b0(void* callbackContext) {
+void func_ov008_020d24b0(void* callbackContext) {
 	WmModelCallbackContextPrefix* context =
 		scast<WmModelCallbackContextPrefix*>(callbackContext);
 	func_ov008_020d23b4(scast<WmController*>(context->drawable->userData), callbackContext);
 }
 
-extern "C" void func_ov008_020d23b4(
+void func_ov008_020d23b4(
 	WmController* controller, void* callbackContext) {
 	WmModelCallbackContextPrefix* context =
 		scast<WmModelCallbackContextPrefix*>(callbackContext);
@@ -106,7 +110,7 @@ extern "C" void func_ov008_020d23b4(
 		controller->sourceModel->model, controller->otherPolyID);
 }
 
-extern "C" void func_ov008_020d2024(
+void func_ov008_020d2024(
 	WmController* controller, u32 index) {
 	Vec3_32 position = controller->unk1EE4[index];
 	if (index == 3) {
@@ -119,7 +123,7 @@ extern "C" void func_ov008_020d2024(
 	}
 }
 
-extern "C" u32 func_ov008_020d20ac() {
+u32 func_ov008_020d20ac() {
 	u32 world = save.game.currentWorld;
 	for (int index = 0; index < 16; index++) {
 		if (func_ov008_020ce214(world, index) != 0) {
@@ -145,7 +149,7 @@ extern "C" u32 func_ov008_020d20ac() {
 	return true;
 }
 
-extern "C" void func_ov008_020d21d0(
+void func_ov008_020d21d0(
 	WmController*, u32 node) {
 	u32 nodeType = WM::wxNodes[node].type;
 	u32 world = save.game.currentWorld;
@@ -167,7 +171,7 @@ extern "C" void func_ov008_020d21d0(
 	data_02085a9c = nodeType;
 }
 
-extern "C" void func_ov008_020d2264(
+void func_ov008_020d2264(
 	WmController* controller, fx32 scaleFactor) {
 	WorldCameraTransformState* camera = data_ov000_020caa38;
 	Vec3_32 offset(0, 0, -0x10000);
@@ -195,7 +199,7 @@ extern "C" void func_ov008_020d2264(
 	controller->windowModel.render(Game_modelMatrix, &scale);
 }
 
-extern "C" u32 func_ov008_020d29a0(WmController* controller) {
+u32 func_ov008_020d29a0(WmController* controller) {
 	u32 console = Input::localConsoleID;
 	if ((Input::consoleKeys[console][0] & NDS::Input::ButtonA) == 0) {
 		return false;
@@ -248,7 +252,7 @@ extern "C" u32 func_ov008_020d29a0(WmController* controller) {
 	return true;
 }
 
-extern "C" u32 func_ov008_020d2e00(WmController* controller) {
+u32 func_ov008_020d2e00(WmController* controller) {
 	u32 world = save.game.currentWorld;
 	u16 worldState = save.game.worldStates[world];
 	bool startInteraction = false;
@@ -357,7 +361,7 @@ extern "C" u32 func_ov008_020d2e00(WmController* controller) {
 	return false;
 }
 
-extern "C" void func_ov008_020d24c8(WmController* controller) {
+void func_ov008_020d24c8(WmController* controller) {
 	int emitter = 0;
 	u32 world = save.game.currentWorld;
 	for (int node = 0; node < WM::wxNodeCount; node++) {
@@ -409,7 +413,7 @@ extern "C" void func_ov008_020d24c8(WmController* controller) {
 	}
 }
 
-extern "C" void func_ov008_020d2694(
+void func_ov008_020d2694(
 	WmController* controller, u32 emitUnlockEffect) {
 	Vec3_32 position;
 	u32 world = save.game.currentWorld;
@@ -483,7 +487,7 @@ extern "C" void func_ov008_020d2694(
 	}
 }
 
-extern "C" void func_ov008_020d2b68(WmController*) {
+void func_ov008_020d2b68(WmController*) {
 	u8 entityType = WM::ET_Invalid;
 	for (int entity = 0; entity < 2; entity++) {
 		if (u8(save.game.currentWorldNode) ==
@@ -495,7 +499,7 @@ extern "C" void func_ov008_020d2b68(WmController*) {
 	data_ov008_020ee3d0 = 1;
 }
 
-extern "C" u32 func_ov008_020d2be4(WmController* controller) {
+u32 func_ov008_020d2be4(WmController* controller) {
 	u32 completion = save.game.completion;
 	if ((completion & WM_SAVE_COMPLETION_BIT_4) != 0
 		&& (completion & 0x80) == 0) {
@@ -507,7 +511,7 @@ extern "C" u32 func_ov008_020d2be4(WmController* controller) {
 	return false;
 }
 
-extern "C" u32 func_ov008_020d2c54(WmController* controller) {
+u32 func_ov008_020d2c54(WmController* controller) {
 	if (controller->levelExit == 0) {
 		return false;
 	}
@@ -516,7 +520,7 @@ extern "C" u32 func_ov008_020d2c54(WmController* controller) {
 	return true;
 }
 
-extern "C" u32 func_ov008_020d2c90(WmController* controller) {
+u32 func_ov008_020d2c90(WmController* controller) {
 	if ((WM::wxFlags & 0x80000000) == 0) {
 		return false;
 	}
@@ -524,7 +528,7 @@ extern "C" u32 func_ov008_020d2c90(WmController* controller) {
 	return true;
 }
 
-extern "C" u32 func_ov008_020d2cc8(WmController* controller) {
+u32 func_ov008_020d2cc8(WmController* controller) {
 	if (controller->unk22E3 != 0) {
 		controller->unk22E3 = 0;
 		func_ov008_020ce5ec();
@@ -532,7 +536,7 @@ extern "C" u32 func_ov008_020d2cc8(WmController* controller) {
 	return 0;
 }
 
-extern "C" u32 func_ov008_020d2cf8(WmController* controller) {
+u32 func_ov008_020d2cf8(WmController* controller) {
 	if (controller->unk22F0 == 0) {
 		return false;
 	}
@@ -541,7 +545,7 @@ extern "C" u32 func_ov008_020d2cf8(WmController* controller) {
 	return true;
 }
 
-extern "C" u32 func_ov008_020d2d40(WmController* controller) {
+u32 func_ov008_020d2d40(WmController* controller) {
 	if (controller->unk22E1 == 0) {
 		return false;
 	}
@@ -550,7 +554,7 @@ extern "C" u32 func_ov008_020d2d40(WmController* controller) {
 	return true;
 }
 
-extern "C" u32 func_ov008_020d2d7c(
+u32 func_ov008_020d2d7c(
 	WmController* controller, u32 value) {
 	if (controller->unk22E0 != 0) {
 		controller->unk22E0 = 0;
@@ -566,7 +570,7 @@ extern "C" u32 func_ov008_020d2d7c(
 	return false;
 }
 
-extern "C" void func_ov008_020d3304(WmController* controller) {
+void func_ov008_020d3304(WmController* controller) {
 	if (data_ov008_020ee3d0 == 0) {
 		return;
 	}
@@ -681,7 +685,7 @@ extern "C" void func_ov008_020d3304(WmController* controller) {
 	}
 }
 
-extern "C" void func_ov008_020d32c4(
+void func_ov008_020d32c4(
 	WmController* controller, u32 taskID) {
 	controller->taskID = taskID;
 	controller->taskFunc = data_ov008_020ee6fc[taskID];
@@ -689,7 +693,7 @@ extern "C" void func_ov008_020d32c4(
 	data_ov008_020ee414 = 0;
 }
 
-extern "C" void func_ov008_020d3240(WmController* controller) {
+void func_ov008_020d3240(WmController* controller) {
 	if (controller->startTask != 0) {
 		(controller->*data_ov008_020ee65c[controller->taskID])();
 		controller->startTask = 0;
@@ -697,7 +701,7 @@ extern "C" void func_ov008_020d3240(WmController* controller) {
 	(controller->*controller->taskFunc)();
 }
 
-extern "C" void func_ov008_020d3b1c(WmController* controller) {
+void func_ov008_020d3b1c(WmController* controller) {
 	controller->unk221C = 0;
 	controller->unk2220 = 60;
 	controller->unk20F4 = 0;
@@ -705,7 +709,7 @@ extern "C" void func_ov008_020d3b1c(WmController* controller) {
 	controller->unk22EF = 0;
 }
 
-extern "C" void func_ov008_020d3b44(WmController* controller) {
+void func_ov008_020d3b44(WmController* controller) {
 	switch (controller->unk221C) {
 	case 0: {
 		controller->unk2208--;
@@ -806,7 +810,7 @@ toggleSelection:
 	}
 }
 
-extern "C" void func_ov008_020d3774(WmController* controller) {
+void func_ov008_020d3774(WmController* controller) {
 	switch (controller->unk221C) {
 	case 0:
 		if (controller->unk2220 != 0) {
@@ -928,7 +932,7 @@ extern "C" void func_ov008_020d3774(WmController* controller) {
 	}
 }
 
-extern "C" void func_ov008_020d36fc(WmController* controller) {
+void func_ov008_020d36fc(WmController* controller) {
 	controller->unk20E8 =
 		WM::wxPoints[save.game.currentWorldNode].x << 12;
 	controller->unk20E4 = 0;
@@ -940,13 +944,13 @@ extern "C" void func_ov008_020d36fc(WmController* controller) {
 	controller->unk221C = 0;
 }
 
-extern "C" void func_ov008_020d3e58(WmController* controller) {
+void func_ov008_020d3e58(WmController* controller) {
 	controller->unk2208 = 0x1e;
 	data_ov008_020ee3e0 = 0;
 	controller->unk221C = 0;
 }
 
-extern "C" void func_ov008_020d3e7c(WmController* controller) {
+void func_ov008_020d3e7c(WmController* controller) {
 	Vec3_32 source;
 	Vec3_32 target;
 	switch (controller->unk221C) {
@@ -1069,7 +1073,7 @@ extern "C" void func_ov008_020d3e7c(WmController* controller) {
 	}
 }
 
-extern "C" void func_ov008_020d4278(WmController* controller) {
+void func_ov008_020d4278(WmController* controller) {
 	controller->unk20F4 = controller->signPos[controller->unk2214].y;
 	controller->velocity.y = 0x2000;
 	controller->minVelocity.y = -0x4000;
@@ -1084,7 +1088,7 @@ extern "C" void func_ov008_020d4278(WmController* controller) {
 	controller->unk22E3 = 8;
 }
 
-extern "C" void func_ov008_020d4330(WmController* controller) {
+void func_ov008_020d4330(WmController* controller) {
 	controller->unk2208--;
 	if (controller->unk2208 != 0) {
 		return;
@@ -1092,11 +1096,11 @@ extern "C" void func_ov008_020d4330(WmController* controller) {
 	func_ov008_020d32c4(controller, 4);
 }
 
-extern "C" void func_ov008_020d4368(WmController* controller) {
+void func_ov008_020d4368(WmController* controller) {
 	controller->unk2208 = 0x40;
 }
 
-extern "C" void func_ov008_020d4378(WmController* controller) {
+void func_ov008_020d4378(WmController* controller) {
 	if ((WM::state & WM::ST_Unk10) != 0) {
 		u32 model = data_ov008_020ee3b0;
 		WM::state &= ~WM::ST_Unk10;
@@ -1139,14 +1143,14 @@ extern "C" void func_ov008_020d4378(WmController* controller) {
 	func_ov008_020d32c4(controller, 0);
 }
 
-extern "C" void func_ov008_020d4514(WmController* controller) {
+void func_ov008_020d4514(WmController* controller) {
 	data_ov008_020ee388 = 0;
 	if (controller->unk22E0 != 0) {
 		WM::state |= WM::ST_Bit3;
 	}
 }
 
-extern "C" void func_ov008_020d4548(WmController* controller) {
+void func_ov008_020d4548(WmController* controller) {
 	data_ov008_020ee414 = 1;
 	if (Math::expLerp(
 			&data_ov008_020ee3e8,
@@ -1160,9 +1164,9 @@ extern "C" void func_ov008_020d4548(WmController* controller) {
 	}
 }
 
-extern "C" void func_ov008_020d45c0(WmController*) {}
+void func_ov008_020d45c0(WmController*) {}
 
-extern "C" void func_ov008_020d45c4(WmController* controller) {
+void func_ov008_020d45c4(WmController* controller) {
 	data_ov008_020ee414 = 1;
 	data_ov008_020ee394 = 0;
 	controller->manualCameraState = 3;
@@ -1219,9 +1223,9 @@ inputDone:
 	controller->unk2060.y = cameraScale;
 }
 
-extern "C" void func_ov008_020d4784(WmController*) {}
+void func_ov008_020d4784(WmController*) {}
 
-extern "C" void func_ov008_020d4788(WmController* controller) {
+void func_ov008_020d4788(WmController* controller) {
 	Vec3_32 position;
 	if (data_ov008_020ee3d0 != 0) {
 		switch (controller->unk221C) {
@@ -1311,12 +1315,12 @@ extern "C" void func_ov008_020d4788(WmController* controller) {
 	}
 }
 
-extern "C" void func_ov008_020d4a5c(WmController* controller) {
+void func_ov008_020d4a5c(WmController* controller) {
 	controller->unk2208 = 10;
 	controller->unk221C = 0;
 }
 
-extern "C" void func_ov008_020d4a74(WmController* controller) {
+void func_ov008_020d4a74(WmController* controller) {
 	if (data_ov008_020ee3d0 == 0) {
 		return;
 	}
@@ -1396,14 +1400,14 @@ extern "C" void func_ov008_020d4a74(WmController* controller) {
 	}
 }
 
-extern "C" void func_ov008_020d4cdc(WmController* controller) {
+void func_ov008_020d4cdc(WmController* controller) {
 	controller->unk22EF = 1;
 	controller->unk2208 = 10;
 	controller->unk220C = 0;
 	controller->unk221C = 0;
 }
 
-extern "C" u32 func_ov008_020d4d00(WmController* controller) {
+u32 func_ov008_020d4d00(WmController* controller) {
 	if (controller->unk2208 != 0) {
 		controller->unk2208--;
 		if (controller->unk2208 == 0) {
@@ -1437,7 +1441,7 @@ extern "C" u32 func_ov008_020d4d00(WmController* controller) {
 	return false;
 }
 
-extern "C" void func_ov008_020d4e34(WmController* controller) {
+void func_ov008_020d4e34(WmController* controller) {
 	if (data_ov008_020ee3d0 == 0) {
 		return;
 	}
@@ -1538,7 +1542,7 @@ extern "C" void func_ov008_020d4e34(WmController* controller) {
 	}
 }
 
-extern "C" void func_ov008_020d5140(WmController* controller, u8 pointIndex) {
+void func_ov008_020d5140(WmController* controller, u8 pointIndex) {
 	u32 world = save.game.currentWorldNode;
 	WM::Node* nodes = WM::wxNodes;
 	WM::Point* points = WM::wxPoints;
@@ -1591,16 +1595,16 @@ extern "C" void func_ov008_020d5140(WmController* controller, u8 pointIndex) {
 	}
 }
 
-extern "C" void func_ov008_020d511c(WmController* controller) {
+void func_ov008_020d511c(WmController* controller) {
 	func_ov008_020d5140(controller, controller->unk22F2);
 	controller->unk221C = 0;
 }
 
-extern "C" void func_ov008_020d5284(WmController* controller) {
+void func_ov008_020d5284(WmController* controller) {
 	func_ov008_020d32c4(controller, 0);
 }
 
-extern "C" void func_ov008_020d5294(WmController* controller) {
+void func_ov008_020d5294(WmController* controller) {
 	for (int entity = 0; entity < 2; entity++) {
 		if (u8(save.game.currentWorldNode) ==
 			save.game.mapEntities[save.game.currentWorld][entity].node) {
@@ -1611,7 +1615,7 @@ extern "C" void func_ov008_020d5294(WmController* controller) {
 	}
 }
 
-extern "C" void func_ov008_020d52f0(WmController* controller) {
+void func_ov008_020d52f0(WmController* controller) {
 	if (data_ov008_020ee3d0 == 0) {
 		return;
 	}
@@ -1777,7 +1781,7 @@ extern "C" void func_ov008_020d52f0(WmController* controller) {
 	WM::state &= ~WM::ST_EntityMove;
 }
 
-extern "C" void func_ov008_020d582c(WmController* controller) {
+void func_ov008_020d582c(WmController* controller) {
 	controller->moveEntities();
 	for (int entity = 0; entity < 2; entity++) {
 		if (controller->entityDirs[entity] >= 0) {
@@ -1802,7 +1806,7 @@ extern "C" void func_ov008_020d582c(WmController* controller) {
 	}
 }
 
-extern "C" void func_ov008_020d58f4(
+void func_ov008_020d58f4(
 	WmController* controller, u32 entity) {
 	controller->entityModels[entity].init(1);
 	if ((WM::wxNodes[
@@ -1818,7 +1822,7 @@ extern "C" void func_ov008_020d58f4(
 		controller->entityUnk2090[entity];
 }
 
-extern "C" void func_ov008_020d59a8(
+void func_ov008_020d59a8(
 	WmController* controller, u32 entity, WM::NodeLink* link) {
 	controller->entityModels[entity].init(0);
 	controller->entityCursor[entity].init(
@@ -1843,7 +1847,7 @@ extern "C" void func_ov008_020d59a8(
 	}
 }
 
-extern "C" void func_ov008_020d5ab8(WmController* controller) {
+void func_ov008_020d5ab8(WmController* controller) {
 	controller->unk2208--;
 	if (controller->unk2208 != 0) {
 		return;
@@ -1851,12 +1855,12 @@ extern "C" void func_ov008_020d5ab8(WmController* controller) {
 	func_ov008_020d32c4(controller, 1);
 }
 
-extern "C" void func_ov008_020d5af0(WmController* controller) {
+void func_ov008_020d5af0(WmController* controller) {
 	controller->playerModels[controller->luigiMode].init(4, false);
 	controller->unk2208 = 20;
 }
 
-extern "C" void func_ov008_020d5b28(WmController* controller) {
+void func_ov008_020d5b28(WmController* controller) {
 	switch (controller->unk221C) {
 	case 0:
 		controller->unk2208--;
@@ -1920,7 +1924,7 @@ extern "C" void func_ov008_020d5b28(WmController* controller) {
 	}
 }
 
-extern "C" void func_ov008_020d5d4c(WmController* controller) {
+void func_ov008_020d5d4c(WmController* controller) {
 	controller->unk20B0 = 0;
 	controller->unk1E18 = WM::wxAnims[controller->exitInteractionType];
 	controller->playerCursor.init(
@@ -1945,7 +1949,7 @@ extern "C" void func_ov008_020d5d4c(WmController* controller) {
 	controller->unk221C = 0;
 }
 
-extern "C" void func_ov008_020d5e64(WmController* controller) {
+void func_ov008_020d5e64(WmController* controller) {
 	switch (controller->unk221C) {
 	case 0:
 		if (data_ov008_020ee3d0 == 0) {
@@ -2052,7 +2056,7 @@ extern "C" void func_ov008_020d5e64(WmController* controller) {
 	}
 }
 
-extern "C" void func_ov008_020d61d8(WmController* controller) {
+void func_ov008_020d61d8(WmController* controller) {
 	controller->unk1E18 = WM::wxAnims[controller->exitInteractionType];
 	func_ov008_020d6284(controller);
 	controller->unk20CC =
@@ -2069,7 +2073,7 @@ extern "C" void func_ov008_020d61d8(WmController* controller) {
 	controller->unk221C = 0;
 }
 
-extern "C" void func_ov008_020d6284(WmController* controller) {
+void func_ov008_020d6284(WmController* controller) {
 	if ((controller->unk1E18->flag & WM::AF_Reverse) != 0) {
 		controller->unk20B0 = 1;
 	} else {
@@ -2096,7 +2100,7 @@ extern "C" void func_ov008_020d6284(WmController* controller) {
 	controller->unk22EF = 0;
 }
 
-extern "C" void func_ov008_020d6384(WmController* controller) {
+void func_ov008_020d6384(WmController* controller) {
 	controller->playerCursorFrame = controller->unk20BC;
 	controller->playerModels[controller->luigiMode].init(0, false);
 	controller->unk20C8 = 0;
@@ -2106,7 +2110,7 @@ extern "C" void func_ov008_020d6384(WmController* controller) {
 	controller->playerPowerupScale.z = scale;
 }
 
-extern "C" bool func_ov008_020d63e4(
+bool func_ov008_020d63e4(
 	WmController* controller, u32 flags) {
 	s32 currentY = controller->cursorPosition.y;
 	s32 previousY = controller->entityUnk20F8[0];
@@ -2186,7 +2190,7 @@ extern "C" bool func_ov008_020d63e4(
 	return reachedTarget;
 }
 
-extern "C" void func_ov008_020d65dc(WmController* controller) {
+void func_ov008_020d65dc(WmController* controller) {
 	if (controller->unk22EF != 0) {
 		if (controller->playerCursorFrame > 30 * 0x1000
 			&& controller->playerCursorFrame
@@ -2258,7 +2262,7 @@ extern "C" void func_ov008_020d65dc(WmController* controller) {
 		WM::wxNodes[save.game.currentWorldNode].areaID);
 }
 
-extern "C" void func_ov008_020d67f8(WmController* controller) {
+void func_ov008_020d67f8(WmController* controller) {
 	WM::state |= WM::ST_PlayerMove;
 
 	u8 path;
@@ -2327,18 +2331,18 @@ extern "C" void func_ov008_020d67f8(WmController* controller) {
 	controller->playerDirection = 0xFF;
 }
 
-extern "C" void func_ov008_020d6a14(WmController* controller) {
+void func_ov008_020d6a14(WmController* controller) {
 	controller->unk2208--;
 	if (controller->unk2208 == 0) {
 		data_ov008_020ee38c = 1;
 	}
 }
 
-extern "C" void func_ov008_020d6a40(WmController* controller) {
+void func_ov008_020d6a40(WmController* controller) {
 	controller->unk2208 = 0x14;
 }
 
-extern "C" void func_ov008_020d6a50(WmController* controller) {
+void func_ov008_020d6a50(WmController* controller) {
 	u32 world = save.game.currentWorld;
 	if (data_ov008_020ee3d0 == 0) {
 		return;
@@ -2503,11 +2507,11 @@ setInputDelay:
 	controller->unk2204 = 0x10;
 }
 
-extern "C" void func_ov008_020d6e1c() {
+void func_ov008_020d6e1c() {
 	data_ov008_020ee388 = 1;
 }
 
-extern "C" u32 func_ov008_020d6e30(WmController* controller) {
+u32 func_ov008_020d6e30(WmController* controller) {
 	u8 paused = data_ov008_020ee384;
 	Vec3_32 particlePosition;
 	data_ov008_020ee414 = 0;
@@ -2747,7 +2751,7 @@ extern "C" u32 func_ov008_020d6e30(WmController* controller) {
 	return true;
 }
 
-extern "C" u32 func_ov008_020d7734(WmController* controller) {
+u32 func_ov008_020d7734(WmController* controller) {
 	u32 world = save.game.currentWorld;
 	Mat4x3 playerMatrix;
 	Mat4x3 worldMatrix;
@@ -2975,13 +2979,13 @@ extern "C" u32 func_ov008_020d7734(WmController* controller) {
 	return true;
 }
 
-extern "C" void func_ov008_020d81cc(WmController*) {}
+void func_ov008_020d81cc(WmController*) {}
 
-extern "C" bool func_ov008_020d81d0(WmController*) {
+bool func_ov008_020d81d0(WmController*) {
 	return true;
 }
 
-extern "C" u32 func_ov008_020d81d8(WmController* controller) {
+u32 func_ov008_020d81d8(WmController* controller) {
 	u32 world = save.game.currentWorld;
 	u32 worldModelFileID = func_ov008_020ce214(world, 0);
 	u32 cursorAnimFileID = func_ov008_020ce214(world, 1);
@@ -3197,7 +3201,7 @@ extern "C" u32 func_ov008_020d81d8(WmController* controller) {
 	return true;
 }
 
-extern "C" u32 func_ov008_020d8a0c(WmController* controller) {
+u32 func_ov008_020d8a0c(WmController* controller) {
     u32 world = save.game.currentWorld;
     Ns3dStringData resourceName;
 	if (!controller->prepareResourcesSafe(0, Memory_gameHeap)) {
@@ -4005,7 +4009,7 @@ void WmController::moveEntities() {
 
 }
 
-extern "C" u32 func_ov008_020daa18(
+u32 func_ov008_020daa18(
 	u32 world, WM::NodeLink* link) {
 	if (func_ov008_020cda4c(
 			world, link->node, WM::NF_Course) == 0) {
@@ -4024,7 +4028,7 @@ extern "C" u32 func_ov008_020daa18(
 	return true;
 }
 
-extern "C" u32 func_ov008_020da9a4(
+u32 func_ov008_020da9a4(
 	u32 world, WM::NodeLink* link) {
 	if ((link->flag & WM::LF_Pipe) != 0) {
 		return false;
@@ -4037,7 +4041,7 @@ extern "C" u32 func_ov008_020da9a4(
 	return func_ov008_020daa18(world, link);
 }
 
-extern "C" u32 func_ov008_020da7f4(
+u32 func_ov008_020da7f4(
 	u32 currentWorld, u32 destinationWorld, u32 node) {
 	if (func_ov008_020cda4c(
 			destinationWorld, node, WM::NF_StarCoins) == 0
@@ -4098,7 +4102,7 @@ extern "C" u32 func_ov008_020da7f4(
 	return true;
 }
 
-extern "C" u32 func_ov008_020da730() {
+u32 func_ov008_020da730() {
 	u32 currentWorld = u8(save.game.currentWorld);
 	u32 destinationWorld = u8(save.game.actorRespawnWorld);
 	u32 validNodes;
@@ -4130,7 +4134,7 @@ extern "C" u32 func_ov008_020da730() {
 	return 0xFF;
 }
 
-extern "C" u32 func_ov008_020da724() {
+u32 func_ov008_020da724() {
 	return func_ov008_020da730();
 }
 

@@ -5,8 +5,6 @@
 #include <nds/graphics.hpp>
 #include <nds/memory.hpp>
 
-extern "C" {
-
 void func_ov052_02153760(VSMenuScene *)
 {
 	NDS::Memory::copyFast(BG_PALETTE_SUB + 0x30, BG_PALETTE_SUB + 0x20, 0x20);
@@ -100,6 +98,4 @@ u8 func_ov052_02153a80()
 u8 func_ov052_02153a9c()
 {
 	return data_ov052_0215aee4[data_ov052_0215c88c];
-}
-
 }

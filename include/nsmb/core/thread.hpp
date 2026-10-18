@@ -6,6 +6,6 @@ class Heap;
 
 namespace Memory {
 
-extern "C" void associateThreadHeap(NDS::Threads::Context *context, Heap *heap);
+void associateThreadHeap(NDS::Threads::Context *context, Heap *heap);
 
 }

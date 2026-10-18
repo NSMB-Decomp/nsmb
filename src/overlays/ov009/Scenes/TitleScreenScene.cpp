@@ -52,7 +52,7 @@ s32 TitleScreenScene::onCreate()
 	cutscene.onCreate(this);
 
 	if (settings == 1) {
-		func_02007bd8(&GlobalFader);
+		GlobalFader.func_02007bd8();
 		func_02011c84(data_ov009_020d9630, data_ov009_020d9628);
 		func_02011e7c(0x6d, 0);
 	} else {

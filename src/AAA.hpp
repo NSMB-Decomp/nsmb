@@ -221,9 +221,9 @@ class Fader
 NTR_SIZE_GUARD(Fader, 0x5c8);
 NTR_OFFSET_GUARD(Fader, fadingType, 0x5c2);
 NTR_OFFSET_GUARD(Fader, fadingStopped, 0x5c5);
-extern "C" void func_02007cf8(Fader *, u32, u32);
-extern "C" void func_02007df0(Fader *, u32);
-extern "C" void func_02007e34(Fader *, u32, u32);
+void func_02007cf8(Fader *, u32, u32);
+void func_02007df0(Fader *, u32);
+void func_02007e34(Fader *, u32, u32);
 extern Fader GlobalFader;
 
 extern ObjectProfile **CurrentProfileTable;
@@ -554,8 +554,8 @@ u32 func_02011d40();
 void func_0200a42c(u32, u32);
 void func_0200a3d0(u32, u32);
 u32 func_02011e7c(u32, u32);
-	extern "C" void func_0200917c(u32, u32);
-	extern "C" void func_ov052_021535a0();
+	void func_0200917c(u32, u32);
+	void func_ov052_021535a0();
 	extern u32 func_0201f5fc(u32);
 extern u32 func_0201f590(u32, u32);
 extern u32 func_0201f53c(u32, u32, u32);

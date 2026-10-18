@@ -76,20 +76,20 @@ WmCharacterResource WmCharacter::resources[2] = {
 	{ NSMB_FID(map_cursor_peach_nsbmd), NSMB_FID(map_cursor_peach_nsbca) },
 };
 
-extern "C" WmCharacter* func_ov008_020db204(WmCharacter* character)
+WmCharacter* func_ov008_020db204(WmCharacter* character)
 {
 	character->WmCharacter::~WmCharacter();
 	return character;
 }
 
-extern "C" WmCharacter* func_ov008_020db244(WmCharacter* character)
+WmCharacter* func_ov008_020db244(WmCharacter* character)
 {
 	character->WmCharacter::~WmCharacter();
 	Base::operator delete(character);
 	return character;
 }
 
-extern "C" bool func_ov008_020db28c()
+bool func_ov008_020db28c()
 {
 	FS::Cache::loadFile(NSMB_FID(map_cursor_koopa_jr_nsbmd), false);
 	FS::Cache::loadFile(NSMB_FID(map_cursor_koopa_jr_nsbca), false);
@@ -98,7 +98,7 @@ extern "C" bool func_ov008_020db28c()
 	return true;
 }
 
-extern "C" void func_ov008_020db2e0(WmCharacter* character)
+void func_ov008_020db2e0(WmCharacter* character)
 {
 	if (character->startTask != 0) {
 		(character->*data_ov008_020ee79c[character->taskID])();
@@ -108,14 +108,14 @@ extern "C" void func_ov008_020db2e0(WmCharacter* character)
 	(character->*character->taskFunc)();
 }
 
-extern "C" void func_ov008_020db354(WmCharacter* character, u32 taskID)
+void func_ov008_020db354(WmCharacter* character, u32 taskID)
 {
 	character->taskID = taskID;
 	character->taskFunc = data_ov008_020ee7bc[taskID];
 	character->startTask = 1;
 }
 
-extern "C" void WmCharacter_mainTask3(WmCharacter* character)
+void WmCharacter_mainTask3(WmCharacter* character)
 {
 	if (character->unk2A8 != 0) {
 		return;
@@ -130,7 +130,7 @@ extern "C" void WmCharacter_mainTask3(WmCharacter* character)
 	character->destroy();
 }
 
-extern "C" void WmCharacter_setupTask3(WmCharacter* character)
+void WmCharacter_setupTask3(WmCharacter* character)
 {
 	if (character->unk2A0 == 0) {
 		data_ov008_020ee388 = 1;
@@ -140,7 +140,7 @@ extern "C" void WmCharacter_setupTask3(WmCharacter* character)
 	character->timer = 10;
 }
 
-extern "C" void WmCharacter_mainTask2(WmCharacter* character)
+void WmCharacter_mainTask2(WmCharacter* character)
 {
 	character->model.update();
 	character->timer--;
@@ -159,12 +159,12 @@ extern "C" void WmCharacter_mainTask2(WmCharacter* character)
 	func_ov008_020db354(character, 3);
 }
 
-extern "C" void WmCharacter_setupTask2(WmCharacter* character)
+void WmCharacter_setupTask2(WmCharacter* character)
 {
 	character->timer = 60;
 }
 
-extern "C" void WmCharacter_mainTask1(WmCharacter* character)
+void WmCharacter_mainTask1(WmCharacter* character)
 {
 	u8 flags = character->anim->flag;
 	if ((flags & WM::AF_PeachSfxJump) != 0) {
@@ -270,7 +270,7 @@ extern "C" void WmCharacter_mainTask1(WmCharacter* character)
 	}
 }
 
-extern "C" void WmCharacter_setupTask1(WmCharacter* character)
+void WmCharacter_setupTask1(WmCharacter* character)
 {
 	character->unk2A4 = 0;
 	character->savedY = character->targetPosition.y;
@@ -281,14 +281,14 @@ extern "C" void WmCharacter_setupTask1(WmCharacter* character)
 	}
 }
 
-extern "C" void WmCharacter_mainTask0(WmCharacter* character)
+void WmCharacter_mainTask0(WmCharacter* character)
 {
 	if (data_ov008_020ee3d0 != 0) {
 		func_ov008_020db354(character, 1);
 	}
 }
 
-extern "C" void WmCharacter_setupTask0(WmCharacter*)
+void WmCharacter_setupTask0(WmCharacter*)
 {
 }
 
@@ -444,7 +444,7 @@ s32 WmCharacter::onCreate()
 	return 1;
 }
 
-extern "C" void* func_ov008_020dbc40()
+void* func_ov008_020dbc40()
 {
 	return new WmCharacter;
 }

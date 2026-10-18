@@ -73,7 +73,7 @@ extern WmCameraMemberTaskEntry data_ov008_020e8bdc;
 extern WmCameraTaskEntry data_ov008_020e8be4;
 extern WmCameraTaskEntry data_ov008_020e8bf4;
 
-extern "C" void func_ov008_020d1808(WorldMapCamera* camera);
-extern "C" void func_ov008_020d1850(WorldMapCamera* camera);
-extern "C" void func_ov008_020d1880(WorldMapCamera* camera);
-extern "C" void* func_ov008_020d1f98();
+void func_ov008_020d1808(WorldMapCamera* camera);
+void func_ov008_020d1850(WorldMapCamera* camera);
+void func_ov008_020d1880(WorldMapCamera* camera);
+void* func_ov008_020d1f98();

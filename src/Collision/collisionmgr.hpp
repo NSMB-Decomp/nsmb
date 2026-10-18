@@ -49,7 +49,7 @@ class CollisionMgr
 	s16 getGroundAngle(u8 direction) const;
 	virtual void _TEMP(); // To make sure size is correct
 };
-extern "C" bool func_01ffe778(CollisionMgr *, i32 *, u32);
+bool func_01ffe778(CollisionMgr *, i32 *, u32);
 NTR_SIZE_GUARD(CollisionMgr, 0xb8);
 NTR_OFFSET_GUARD(CollisionMgr, sensorOwner, 0x18);
 NTR_OFFSET_GUARD(CollisionMgr, __1, 0x24);

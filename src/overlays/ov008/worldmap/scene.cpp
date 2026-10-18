@@ -29,7 +29,7 @@
 
 WorldmapScene::~WorldmapScene() {}
 
-extern "C" void func_ov008_020cdccc(u32 lastWorld)
+void func_ov008_020cdccc(u32 lastWorld)
 {
 	u32 world = 0;
 	do {
@@ -38,7 +38,7 @@ extern "C" void func_ov008_020cdccc(u32 lastWorld)
 	} while (world <= lastWorld);
 }
 
-extern "C" void func_ov008_020cdb70(int mode, int arrowValue)
+void func_ov008_020cdb70(int mode, int arrowValue)
 {
 	switch (mode) {
 	case 1:
@@ -52,7 +52,7 @@ extern "C" void func_ov008_020cdb70(int mode, int arrowValue)
 	data_ov008_020ee58c.renderText(0, 0);
 }
 
-extern "C" void func_ov008_020cdbd0()
+void func_ov008_020cdbd0()
 {
 	u8 dialogBox = data_ov008_020ee374;
 	int boxID =
@@ -68,7 +68,7 @@ extern "C" void func_ov008_020cdbd0()
 	}
 }
 
-extern "C" TextBoxMessagePrefix* func_ov008_020cdc30(
+TextBoxMessagePrefix* func_ov008_020cdc30(
 	int boxID, int dialogBox, int textID)
 {
 	int activeBoxID = WM::dialogMsgID;
@@ -88,27 +88,27 @@ extern "C" TextBoxMessagePrefix* func_ov008_020cdc30(
 	return data_ov008_020ee58c.loadText_2(textID, &arguments);
 }
 
-extern "C" u8 func_ov008_020cda24(u32 world, u32 path, u8 mask)
+u8 func_ov008_020cda24(u32 world, u32 path, u8 mask)
 {
 	return mask & WM::worlds[world].paths[path].flag;
 }
 
-extern "C" u16 func_ov008_020cda4c(u32 world, u32 node, u16 mask)
+u16 func_ov008_020cda4c(u32 world, u32 node, u16 mask)
 {
 	return mask & WM::worlds[world].nodes[node].flag;
 }
 
-extern "C" u16 func_ov008_020cda7c(u32 world)
+u16 func_ov008_020cda7c(u32 world)
 {
 	return WM::worlds[world].nodeCount;
 }
 
-extern "C" WM::NodeLink* func_ov008_020cda94(u32 world, u32 node)
+WM::NodeLink* func_ov008_020cda94(u32 world, u32 node)
 {
 	return WM::worlds[world].nodes[node].links;
 }
 
-extern "C" bool func_ov008_020cdab8(u32 world)
+bool func_ov008_020cdab8(u32 world)
 {
 	WM::Node* node = WM::worlds[world].nodes;
 	u8 nodeCount = WM::worlds[world].nodeCount;
@@ -132,19 +132,19 @@ extern "C" bool func_ov008_020cdab8(u32 world)
 	return false;
 }
 
-extern "C" void func_ov008_020cdb44(u32 sceneID, u32 settings)
+void func_ov008_020cdb44(u32 sceneID, u32 settings)
 {
 	func_02011e3c(0x1e);
 	func_020131fc(sceneID, settings);
 }
 
-extern "C" u8 func_ov008_020cdcac(u32 index)
+u8 func_ov008_020cdcac(u32 index)
 {
 	u8* values = &data_ov008_020e5cc8[index * 2];
 	return values[data_ov008_020ee380];
 }
 
-extern "C" u32 func_ov008_020cdcf8()
+u32 func_ov008_020cdcf8()
 {
 	u32 completed = 0;
 	u8 pathState;
@@ -197,7 +197,7 @@ extern "C" u32 func_ov008_020cdcf8()
 	return completed;
 }
 
-extern "C" u32 func_ov008_020cddd8()
+u32 func_ov008_020cddd8()
 {
 	u32 completed = 0;
 	WM::Node* node;
@@ -255,7 +255,7 @@ extern "C" u32 func_ov008_020cddd8()
 	return completed;
 }
 
-extern "C" u32 func_ov008_020cdec0()
+u32 func_ov008_020cdec0()
 {
 	u32 spent = 0;
 	WM::Path* path;
@@ -307,7 +307,7 @@ extern "C" u32 func_ov008_020cdec0()
 	return spent;
 }
 
-extern "C" u32 func_ov008_020cdf9c()
+u32 func_ov008_020cdf9c()
 {
 	u32 collected = 0;
 	WM::Node* node;
@@ -361,7 +361,7 @@ extern "C" u32 func_ov008_020cdf9c()
 	return collected;
 }
 
-extern "C" void func_ov008_020ce0a0()
+void func_ov008_020ce0a0()
 {
 	save.game.starCoinsCollected = func_ov008_020cdf9c();
 	save.game.starCoinsSpent = func_ov008_020cdec0();
@@ -369,12 +369,12 @@ extern "C" void func_ov008_020ce0a0()
 	func_ov008_020cdcf8();
 }
 
-extern "C" u32 func_ov008_020ce0d4(u32 index)
+u32 func_ov008_020ce0d4(u32 index)
 {
 	return data_ov008_020e2d3c[index];
 }
 
-extern "C" Vec3_32 func_ov008_020ce0e4(u32 index)
+Vec3_32 func_ov008_020ce0e4(u32 index)
 {
 	Vec3_32 result;
 	result.x = data_ov008_020e2d58[index][0];
@@ -383,27 +383,27 @@ extern "C" Vec3_32 func_ov008_020ce0e4(u32 index)
 	return result;
 }
 
-extern "C" u32 func_ov008_020ce12c(u32 index)
+u32 func_ov008_020ce12c(u32 index)
 {
 	return data_ov008_020e650c[index];
 }
 
-extern "C" u32 func_ov008_020ce13c(u32 index)
+u32 func_ov008_020ce13c(u32 index)
 {
 	return data_ov008_020e6bf8[index][0];
 }
 
-extern "C" u32 func_ov008_020ce154(u32 index)
+u32 func_ov008_020ce154(u32 index)
 {
 	return data_ov008_020e6bf4[index][0];
 }
 
-extern "C" u32 func_ov008_020ce16c(u32 index)
+u32 func_ov008_020ce16c(u32 index)
 {
 	return data_ov008_020e6bf0[index][0];
 }
 
-extern "C" fx32 func_ov008_020ce184(u32 index)
+fx32 func_ov008_020ce184(u32 index)
 {
 	u32 result = data_ov008_020e6718[index][0];
 	if (index != 7) {
@@ -417,39 +417,39 @@ extern "C" fx32 func_ov008_020ce184(u32 index)
 	return result;
 }
 
-extern "C" fx32 func_ov008_020ce1b4(u32 index)
+fx32 func_ov008_020ce1b4(u32 index)
 {
 	return data_ov008_020e6714[index][0];
 }
 
-extern "C" u32 func_ov008_020ce1c4(u32 row, u32 column)
+u32 func_ov008_020ce1c4(u32 row, u32 column)
 {
 	return data_ov008_020e77b0[row][column][0];
 }
 
-extern "C" u32 func_ov008_020ce1d8(u32 row, u32 column)
+u32 func_ov008_020ce1d8(u32 row, u32 column)
 {
 	return data_ov008_020e77ac[row][column][0];
 }
 
-extern "C" u32 func_ov008_020ce1ec(u32 row, u32 column)
+u32 func_ov008_020ce1ec(u32 row, u32 column)
 {
 	return data_ov008_020e77a8[row][column][0];
 }
 
-extern "C" u32 func_ov008_020ce200(u32 row, u32 column)
+u32 func_ov008_020ce200(u32 row, u32 column)
 {
 	return data_ov008_020e77a4[row][column][0];
 }
 
-extern "C" u32 func_ov008_020ce214(u32 row, u32 column)
+u32 func_ov008_020ce214(u32 row, u32 column)
 {
 	return data_ov008_020e8794[row][column];
 }
 
-extern "C" void func_ov008_020ce228() {}
+void func_ov008_020ce228() {}
 
-extern "C" void func_ov008_020ce22c()
+void func_ov008_020ce22c()
 {
 	u32 world = save.game.currentWorld;
 	data_ov008_020ee3f0 = 4;
@@ -462,7 +462,7 @@ extern "C" void func_ov008_020ce22c()
 	func_ov008_020cdb44(9, world | 0x3000);
 }
 
-extern "C" u32 func_ov008_020ce298(u32 nodeType)
+u32 func_ov008_020ce298(u32 nodeType)
 {
 	u8 powerup = Game::getPlayerPowerup(0);
 	u32 result;
@@ -505,7 +505,7 @@ extern "C" u32 func_ov008_020ce298(u32 nodeType)
 	return result;
 }
 
-extern "C" void func_ov008_020ce330(WorldmapScene* scene)
+void func_ov008_020ce330(WorldmapScene* scene)
 {
 	if (data_ov008_020ee37c != 0) {
 		data_ov008_020ee37c = 0;
@@ -598,7 +598,7 @@ extern "C" void func_ov008_020ce330(WorldmapScene* scene)
 	}
 }
 
-extern "C" void func_ov008_020ce5ec()
+void func_ov008_020ce5ec()
 {
 	u32 value = data_ov008_020ee3f4;
 	data_ov008_020ee3f0 = 3;
@@ -611,7 +611,7 @@ extern "C" void func_ov008_020ce5ec()
 	func_02012398(0xe6, 0);
 }
 
-extern "C" void func_ov008_020ce674(WorldmapScene* scene)
+void func_ov008_020ce674(WorldmapScene* scene)
 {
 	if (data_ov008_020ee37c != 0) {
 		data_ov008_020ee37c = 0;
@@ -835,7 +835,7 @@ extern "C" void func_ov008_020ce674(WorldmapScene* scene)
 	}
 }
 
-extern "C" void func_ov008_020ced20()
+void func_ov008_020ced20()
 {
 	data_ov008_020ee3f0 = 2;
 	data_ov008_020ee398 = 1;
@@ -848,7 +848,7 @@ extern "C" void func_ov008_020ced20()
 	func_ov008_020cdbd0();
 }
 
-extern "C" void func_ov008_020ced90(WorldmapScene* scene)
+void func_ov008_020ced90(WorldmapScene* scene)
 {
 	func_02021808();
 	u32 currentWorld = save.game.currentWorld;
@@ -923,7 +923,7 @@ extern "C" void func_ov008_020ced90(WorldmapScene* scene)
 	scene->func_ov008_020d08dc();
 }
 
-extern "C" void func_ov008_020cefd4(WorldmapScene* scene)
+void func_ov008_020cefd4(WorldmapScene* scene)
 {
 	if (!GlobalFader.fadedIn()) {
 		return;
@@ -938,7 +938,7 @@ extern "C" void func_ov008_020cefd4(WorldmapScene* scene)
 	scene->unk87E = 1;
 }
 
-extern "C" u32 func_ov008_020cf034(WorldmapScene* scene)
+u32 func_ov008_020cf034(WorldmapScene* scene)
 {
 	Input::updatePlayerInput();
 	scene->particleHandler.updateParticles();
@@ -976,13 +976,13 @@ extern "C" u32 func_ov008_020cf034(WorldmapScene* scene)
 	return 1;
 }
 
-extern "C" void func_ov008_020cf12c(WorldmapScene* scene, u32 state)
+void func_ov008_020cf12c(WorldmapScene* scene, u32 state)
 {
 	func_ov008_020d12ac(&data_ov008_020ee49c);
 	scene->Scene::postUpdate(state);
 }
 
-extern "C" u32 func_ov008_020cf15c(WorldmapScene* scene)
+u32 func_ov008_020cf15c(WorldmapScene* scene)
 {
 	u8 currentNode = save.game.currentWorldNode;
 	u32 currentWorld = save.game.currentWorld;
@@ -1176,9 +1176,9 @@ extern "C" u32 func_ov008_020cf15c(WorldmapScene* scene)
 	return 1;
 }
 
-extern "C" void func_ov008_020cf790() {}
+void func_ov008_020cf790() {}
 
-extern "C" bool func_ov008_020cf794()
+bool func_ov008_020cf794()
 {
 	FS::Cache::clear();
 	if (data_0203bd30 != SC_Worldmap) {
@@ -1188,7 +1188,7 @@ extern "C" bool func_ov008_020cf794()
 	return true;
 }
 
-extern "C" u32 func_ov008_020cf7c8(WorldmapScene* scene)
+u32 func_ov008_020cf7c8(WorldmapScene* scene)
 {
 	enum SceneSetting {
 		SS_ClearSpecialNodeStates = 1 << 9,
@@ -1562,7 +1562,7 @@ extern "C" u32 func_ov008_020cf7c8(WorldmapScene* scene)
 	return 1;
 }
 
-extern "C" u32 func_ov008_020d04fc(WorldmapScene*)
+u32 func_ov008_020d04fc(WorldmapScene*)
 {
 	if (!(save.game.completion & WM_SAVE_COMPLETION_BIT_5)) {
 		return 0;
@@ -1571,12 +1571,12 @@ extern "C" u32 func_ov008_020d04fc(WorldmapScene*)
 	return func_ov008_020d0548(&data_ov008_020ee3d4);
 }
 
-extern "C" void func_ov008_020d0614(u32* value)
+void func_ov008_020d0614(u32* value)
 {
 	*value = 0;
 }
 
-extern "C" u32 func_ov008_020d0548(u32* value)
+u32 func_ov008_020d0548(u32* value)
 {
 	if (*value < 8) {
 		u32 result = data_ov008_020e2dfc[*value].check();
@@ -1604,27 +1604,27 @@ extern "C" u32 func_ov008_020d0548(u32* value)
 	return 0;
 }
 
-extern "C" void func_ov008_020d0534()
+void func_ov008_020d0534()
 {
 	func_ov008_020d0614(&data_ov008_020ee3d4);
 }
 
-extern "C" u32 func_ov008_020d0620()
+u32 func_ov008_020d0620()
 {
 	return Input::consoleKeys[Input::localConsoleID][0] & NDS_PAD_BUTTON_L;
 }
 
-extern "C" u32 func_ov008_020d0644()
+u32 func_ov008_020d0644()
 {
 	return Input::consoleKeys[Input::localConsoleID][0] & NDS_PAD_BUTTON_R;
 }
 
-extern "C" u32 func_ov008_020d0668()
+u32 func_ov008_020d0668()
 {
 	return Input::consoleKeys[Input::localConsoleID][0] & NDS_PAD_BUTTON_X;
 }
 
-extern "C" u32 func_ov008_020d068c()
+u32 func_ov008_020d068c()
 {
 	return Input::consoleKeys[Input::localConsoleID][0] & NDS_PAD_BUTTON_Y;
 }
@@ -1925,7 +1925,7 @@ void WorldmapScene::func_ov008_020d113c()
 	(this->*tasks[OptionsMenu::taskID])();
 }
 
-extern "C" void func_ov008_020d12ac(Unk020d1478Config* config)
+void func_ov008_020d12ac(Unk020d1478Config* config)
 {
 	s8 selection = data_ov008_020e5a2c;
 	if (selection == -1) {
@@ -1976,7 +1976,7 @@ extern "C" void func_ov008_020d12ac(Unk020d1478Config* config)
 	}
 }
 
-extern "C" void func_ov008_020d1478(Unk020d1478Config* config, u32 mode)
+void func_ov008_020d1478(Unk020d1478Config* config, u32 mode)
 {
 	config->value04 = 0x333;
 	config->value00 = 0x1000;
@@ -2004,6 +2004,6 @@ WorldmapScene* WorldmapScene::create()
 	return new WorldmapScene();
 }
 
-extern "C" void func_ov008_020d153c() {}
+void func_ov008_020d153c() {}
 
-extern "C" void func_ov008_020d1540() {}
+void func_ov008_020d1540() {}

@@ -113,7 +113,7 @@ void WorldMapCamera::updateState() {
 	(camera->*camera->taskFunc)();
 }
 
-extern "C" void func_ov008_020d1808(WorldMapCamera* camera) {
+void func_ov008_020d1808(WorldMapCamera* camera) {
 	camera->fovSetting ^= 1;
 
 	if (camera->fovSetting) {
@@ -125,16 +125,16 @@ extern "C" void func_ov008_020d1808(WorldMapCamera* camera) {
 	camera->unk164 = 0;
 }
 
-extern "C" void func_ov008_020d1850(WorldMapCamera* camera) {
+void func_ov008_020d1850(WorldMapCamera* camera) {
 	if (camera->fovSetting)
 		return;
 
 	camera->unk138 = data_ov008_020ee48c;
 }
 
-extern "C" void func_ov008_020d1880(WorldMapCamera*) {}
+void func_ov008_020d1880(WorldMapCamera*) {}
 
-extern "C" void* func_ov008_020d1f98() {
+void* func_ov008_020d1f98() {
 	return new WorldMapCamera();
 }
 

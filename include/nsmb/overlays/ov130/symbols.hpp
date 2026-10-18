@@ -26,9 +26,9 @@ struct Ov130U8Stride10
 NTR_SIZE_GUARD(Ov130U8Stride10, 0xa);
 NTR_OFFSET_GUARD(Ov130U8Stride10, value, 0x0);
 
-extern "C" void func_ov130_02135230(void *, u32);
-extern "C" void func_ov130_02137518(u32);
-extern "C" void func_ov130_02122f60();
+void func_ov130_02135230(void *, u32);
+void func_ov130_02137518(u32);
+void func_ov130_02122f60();
 
 extern u32 data_ov130_02137bf0;
 extern u16 data_ov130_02137de0;

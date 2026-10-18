@@ -8,4 +8,4 @@ BOOL isMultiBootChild();
 
 }
 
-extern "C" BOOL func_02046bb4();
+BOOL func_02046bb4();

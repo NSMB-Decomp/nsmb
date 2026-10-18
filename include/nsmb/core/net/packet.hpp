@@ -2,11 +2,9 @@
 
 #include "../../../../src/nsmb_nitro.hpp"
 
-extern "C" {
 void func_02010cc8(void *packetBuffer);
 void func_02010c74(void *packetBuffer);
 void func_02010bb0(void *packetBuffer, u32 bufferCount, void *callback, void *owner);
-}
 
 namespace Net {
 

@@ -12,8 +12,6 @@ class Overlay52Scene : public Scene {
 	virtual ~Overlay52Scene();
 };
 
-extern "C" {
-
 s32 func_ov052_02152840(Overlay52Scene *scene)
 {
 	if (scene->_64 < 0x70)
@@ -103,15 +101,9 @@ s32 func_ov052_021529b4(Overlay52Scene *scene)
 	return 1;
 }
 
-}
-
-extern "C" {
-
 void *func_ov052_02152bc8()
 {
 	return new Overlay52Scene();
-}
-
 }
 
 Overlay52Scene::Overlay52Scene()
@@ -121,8 +113,6 @@ Overlay52Scene::Overlay52Scene()
 Overlay52Scene::~Overlay52Scene()
 {
 }
-
-extern "C" {
 
 void func_ov052_02152bf0()
 {
@@ -148,6 +138,4 @@ void func_ov052_02152c7c()
 	func_0200dee0(data_0208b168.value34, 0);
 	FS::Cache::Internal::clear(FS::Cache::fileCache1, 128);
 	func_02011d60(0x100);
-}
-
 }

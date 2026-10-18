@@ -48,7 +48,6 @@ NTR_OFFSET_GUARD(WmWorldUnlockRule, completionFlag, 0x8);
 
 typedef void (WorldmapScene::*WorldmapSceneTask)();
 
-extern "C" {
 extern u32 data_ov008_020e2d3c[];
 extern const u32 data_ov008_020e2d34[2];
 extern const u32 data_ov008_020e2d44[];
@@ -199,4 +198,3 @@ void func_ov008_020d153c();
 void func_ov008_020d1540();
 TextBoxMessagePrefix* func_ov008_020cdc30(
 	int boxID, int dialogBox, int textID);
-}
