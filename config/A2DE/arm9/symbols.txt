@@ -1,13 +1,3 @@
-OVERLAY_0_ID kind:label(arm) addr:0x00000000
-OVERLAY_1_ID kind:label(arm) addr:0x00000001
-OVERLAY_10_ID kind:label(arm) addr:0x0000000a
-OVERLAY_11_ID kind:label(arm) addr:0x0000000b
-OVERLAY_20_ID kind:label(arm) addr:0x00000014
-OVERLAY_22_ID kind:label(arm) addr:0x00000016
-OVERLAY_32_ID kind:label(arm) addr:0x00000020
-OVERLAY_42_ID kind:label(arm) addr:0x0000002a
-OVERLAY_52_ID kind:label(arm) addr:0x00000034
-OVERLAY_53_ID kind:label(arm) addr:0x00000035
 HuffUnCompReadByCallback kind:function(thumb,size=0x4) addr:0x02000074
 LZ77UnCompReadNormalWrite8bit kind:function(thumb,size=0x4) addr:0x020000e2
 IsDebugger kind:function(thumb,size=0x4) addr:0x02000154
