@@ -3080,19 +3080,19 @@ void StageEntity::shellActiveCallback(
 	player->virt_25(entity, 0, 0x4000, 0);
 }
 
-void StageEntity::damageEntityCallback(ActiveCollider *collider, ActiveCollider *other)
+void StageEntity::damageEntityCallback(ActiveCollider &collider, ActiveCollider &other)
 {
-	StageEntity *entity = static_cast<StageEntity *>(collider->owner);
+	StageEntity *entity = static_cast<StageEntity *>(collider.owner);
 	u32 direction;
-	Actor *otherActor = other->owner;
+	Actor *otherActor = other.owner;
 	direction = entity->isBehindTarget(otherActor);
 
-	if ((other->detectAttacks & (1 << AC_ATK_EntityAsWeapon)) == 0) {
+	if ((other.detectAttacks & (1 << AC_ATK_EntityAsWeapon)) == 0) {
 		return;
 	}
 
-	Vec2_32 *selfPosition = &collider->position;
-	Vec2_32 *otherPosition = &other->position;
+	Vec2_32 *selfPosition = &collider.position;
+	Vec2_32 *otherPosition = &other.position;
 	entity->collisionSelfPos = *selfPosition;
 	entity->collisionActorPos = *otherPosition;
 
@@ -3120,7 +3120,7 @@ void StageEntity::damageEntityCallback(ActiveCollider *collider, ActiveCollider 
 		otherEntity->collisionDirection = direction ^ 1;
 		otherEntity->linkPlayer(entity->linked_player);
 		otherEntity->collisionType |= CT_Entity;
-		collider->collisionState |= ActiveCollider::CS_Collided;
+		collider.collisionState |= ActiveCollider::CS_Collided;
 		return;
 	}
 
@@ -3130,7 +3130,7 @@ void StageEntity::damageEntityCallback(ActiveCollider *collider, ActiveCollider 
 
 	PlayerBase *player = static_cast<PlayerBase *>(otherActor);
 	if (isBelowCamera(
-		    entity->position.y, *collider, player->linked_player)) {
+		    entity->position.y, collider, player->linked_player)) {
 		return;
 	}
 	if (entity->playerCollisionCooldown[player->linked_player] != 0) {
@@ -3138,13 +3138,13 @@ void StageEntity::damageEntityCallback(ActiveCollider *collider, ActiveCollider 
 	}
 	entity->playerCollisionCooldown[player->linked_player] = 5;
 
-	if (entity->playerCollision(*collider, *other)) {
-		entity->collisionData = collider->collisionData;
-		collider->collisionState |= ActiveCollider::CS_Collided;
+	if (entity->playerCollision(collider, other)) {
+		entity->collisionData = collider.collisionData;
+		collider.collisionState |= ActiveCollider::CS_Collided;
 		return;
 	}
 
-	if ((u16)(other->collidedGroups & (1 << AC_GRP_PlayerSpecial))) {
+	if ((u16)(other.collidedGroups & (1 << AC_GRP_PlayerSpecial))) {
 		return;
 	}
 }

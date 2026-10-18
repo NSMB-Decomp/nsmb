@@ -269,7 +269,7 @@ public:
 	void destroy(bool);
 	void updateBounce(i32, i32, i32);
 	static void damagePlayerCallback(ActiveCollider &, ActiveCollider &);
-	static void damageEntityCallback(ActiveCollider *, ActiveCollider *);
+	static void damageEntityCallback(ActiveCollider &, ActiveCollider &);
 	static void shellActiveCallback(ActiveCollider &, ActiveCollider &);
 	static void simpleCallback(ActiveCollider *, ActiveCollider *);
 	static bool spawnBrokenPipe(i32, i32, u32, u32, u8, u8, i8);
