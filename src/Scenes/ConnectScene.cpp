@@ -63,10 +63,10 @@ void ConnectScene::func_02003580()
 	NDS::Graphics::setMainBackgroundPriority(2, 2);
 	NDS::Graphics::setMainBackgroundPriority(3, 3);
 
-	NDS::Graphics::setMainBackgroundHorizontalOffset(0, 0);
-	NDS::Graphics::setMainBackgroundHorizontalOffset(1, 0);
-	NDS::Graphics::setMainBackgroundHorizontalOffset(2, 0);
-	NDS::Graphics::setMainBackgroundHorizontalOffset(3, 0);
+	NDS::Graphics::setMainBackgroundOffsets(0, 0);
+	NDS::Graphics::setMainBackgroundOffsets(1, 0);
+	NDS::Graphics::setMainBackgroundOffsets(2, 0);
+	NDS::Graphics::setMainBackgroundOffsets(3, 0);
 	NDS::Graphics::setMainVisiblePlanes(0);
 	data_02085a88 = 0x10;
 	REG_POWER_CNT = (REG_POWER_CNT & 0xfffffdf1) | 0x20e;

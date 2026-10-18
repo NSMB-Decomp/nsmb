@@ -1,6 +1,6 @@
 #pragma once
 
-#include "../../src/base_types.hpp"
+#include "../../lib/Nitro/Nitro.hpp"
 
 union Mat2x2;
 union Mat4x3;
@@ -109,14 +109,15 @@ void enableDisplays();
 void setFogTable(const u32 *table);
 void configureFog(BOOL enabled, u32 alpha, u32 depthShift, u32 offset);
 
-inline void setClearImageOffset(u32 packedOffset)
+// colorAlpha = RGB555 color | (alpha << 16)
+inline void setFogColor(u32 colorAlpha)
 {
-	*reinterpret_cast<volatile u32 *>(0x04000358) = packedOffset;
+	REG_FOG_COLOR = colorAlpha;
 }
 
 inline void swapBuffers(u32 sortMode, u32 bufferMode)
 {
-	*reinterpret_cast<volatile u32 *>(0x04000540) = (sortMode << 1) | bufferMode;
+	GFX_FIFO_SWAP_BUFFERS = (sortMode << 1) | bufferMode;
 }
 
 }

@@ -1422,7 +1422,7 @@ bool StageEntity::setStarmanCollision(const PlayerActor &player)
 
 void func_ov000_0209c350()
 {
-	NDS::Graphics::setClearImageOffset(0x001f001f);
+	NDS::Graphics::setFogColor(0x001f001f);
 	NDS::Graphics::setFogTable(data_ov000_020c1ff0);
 	NDS::Graphics::configureFog(TRUE, 0, 6, 0);
 

@@ -1406,9 +1406,9 @@ extern "C" u32 func_ov008_020cf7c8(WorldmapScene* scene)
 	NDS::Graphics::setMainBackgroundMosaicEnabled(1, false);
 	NDS::Graphics::setMainBackgroundMosaicEnabled(2, false);
 	NDS::Graphics::setMainBackgroundMosaicEnabled(3, false);
-	NDS::Graphics::setMainBackgroundHorizontalOffset(1, 0);
-	NDS::Graphics::setMainBackgroundHorizontalOffset(2, 0);
-	NDS::Graphics::setMainBackgroundHorizontalOffset(3, 0);
+	NDS::Graphics::setMainBackgroundOffsets(1, 0);
+	NDS::Graphics::setMainBackgroundOffsets(2, 0);
+	NDS::Graphics::setMainBackgroundOffsets(3, 0);
 	NDS::Memory::clearFast(
 		0, NDS::Graphics::mainBackground1Map(), 0x800);
 
@@ -1463,10 +1463,10 @@ extern "C" u32 func_ov008_020cf7c8(WorldmapScene* scene)
 	NDS::Graphics::setSubBackgroundPriority(1, 1);
 	NDS::Graphics::setSubBackgroundPriority(2, 2);
 	NDS::Graphics::setSubBackgroundPriority(3, 3);
-	NDS::Graphics::setSubBackgroundHorizontalOffset(0, 0x40000);
-	NDS::Graphics::setSubBackgroundHorizontalOffset(1, 0x40000);
-	NDS::Graphics::setSubBackgroundHorizontalOffset(2, 0x40000);
-	NDS::Graphics::setSubBackgroundHorizontalOffset(3, 0);
+	NDS::Graphics::setSubBackgroundOffsets(0, 0x40000);
+	NDS::Graphics::setSubBackgroundOffsets(1, 0x40000);
+	NDS::Graphics::setSubBackgroundOffsets(2, 0x40000);
+	NDS::Graphics::setSubBackgroundOffsets(3, 0);
 	System::setupSubBGVBlank();
 	NDS::Graphics::setSubBackgroundMosaicEnabled(0, false);
 	NDS::Graphics::setSubBackgroundMosaicEnabled(1, false);
@@ -1484,7 +1484,7 @@ extern "C" u32 func_ov008_020cf7c8(WorldmapScene* scene)
 	scene->uiCells = Layout::bncl[1]->cells;
 
 	if ((WM::wxFlags & 2) != 0) {
-		NDS::Graphics::setClearImageOffset(0x1f7fff);
+		NDS::Graphics::setFogColor(0x1f7fff);
 		NDS::Graphics::setFogTable(data_ov008_020e2d8c);
 		NDS::Graphics::configureFog(true, 0, 3, 0x1800);
 	}

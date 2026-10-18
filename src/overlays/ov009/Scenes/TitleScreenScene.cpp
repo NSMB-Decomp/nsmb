@@ -68,8 +68,8 @@ s32 TitleScreenScene::onCreate()
 
 		NDS::Graphics::setSubBackgroundPriority(1, 1);
 		NDS::Graphics::setSubBackgroundPriority(2, 2);
-		NDS::Graphics::setSubBackgroundHorizontalOffset(1, 0);
-		NDS::Graphics::setSubBackgroundHorizontalOffset(2, 0);
+		NDS::Graphics::setSubBackgroundOffsets(1, 0);
+		NDS::Graphics::setSubBackgroundOffsets(2, 0);
 		NDS::Graphics::setSubBackgroundMosaicEnabled(1, false);
 		NDS::Graphics::setSubBackgroundMosaicEnabled(2, false);
 		NDS::Graphics::setSubVisiblePlanes(

@@ -4,7 +4,10 @@
 #pragma section itcm begin
 #pragma section itcm end
 
-#define REG_RESET				*((u32 *)0x027FFC20)
+// Main RAM system area, written by the firmware and the ARM7
+#define SYS_BOOT_PARAMS			*((vu32 *)0x027FFC20)
+#define SYS_BOOT_TYPE			*((vu16 *)0x027FFC40)
+#define SYS_KEYXY_STATE			*((vu16 *)0x027FFFA8)
 
 #define REG_DISPCNT				*((vu32 *)0x04000000)
 #define REG_BG0CNT				*((vu16 *)0x04000008)
@@ -74,9 +77,28 @@
 
 #define REG_CAPCNT				*((vu32 *)0x04000064)
 
+#define REG_DMA0CNT				*((vu32 *)0x040000B8)
+
 #define REG_KEYINPUT			*((vu16 *)0x04000130)
 #define REG_IME					*((vu16 *)0x04000208)
 #define REG_POWER_CNT			*((vu16 *)0x04000304)
+
+#define REG_FOG_COLOR			*((vu32 *)0x04000358)
+
+#define GFX_FIFO_MATERIAL_DIFFUSE_AMBIENT	*((vu32 *)0x040004C0)
+#define GFX_FIFO_MATERIAL_SPECULAR_EMISSION	*((vu32 *)0x040004C4)
+#define GFX_FIFO_LIGHT_DIRECTION			*((vu32 *)0x040004C8)
+#define GFX_FIFO_LIGHT_COLOR				*((vu32 *)0x040004CC)
+#define GFX_FIFO_SWAP_BUFFERS				*((vu32 *)0x04000540)
+
+// Palette RAM, VRAM and OAM
+#define BG_PALETTE				((u16 *)0x05000000)
+#define SPRITE_PALETTE			((u16 *)0x05000200)
+#define BG_PALETTE_SUB			((u16 *)0x05000400)
+#define SPRITE_PALETTE_SUB		((u16 *)0x05000600)
+#define SPRITE_GFX				((u8 *)0x06400000)
+#define SPRITE_GFX_SUB			((u8 *)0x06600000)
+#define OAM_SUB					((u16 *)0x07000400)
 
 #define KEY_A 0 << 1
 #define KEY_B 1 << 1

@@ -1,6 +1,6 @@
 #pragma once
 
-#include "../../src/base_types.hpp"
+#include "../../lib/Nitro/Nitro.hpp"
 
 namespace NDS {
 namespace Input {
@@ -22,7 +22,7 @@ enum Button {
 
 inline BOOL isLidClosed()
 {
-	return (*reinterpret_cast<volatile u16 *>(0x027fffa8) & 0x8000) >> 15;
+	return (SYS_KEYXY_STATE & 0x8000) >> 15;
 }
 
 }

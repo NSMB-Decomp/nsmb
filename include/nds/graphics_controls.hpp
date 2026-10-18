@@ -1,6 +1,6 @@
 #pragma once
 
-#include "../../src/base_types.hpp"
+#include "../../lib/Nitro/Nitro.hpp"
 
 #define NDS_VISIBLE_PLANE_BACKGROUND0 (1 << 0)
 #define NDS_VISIBLE_PLANE_BACKGROUND1 (1 << 1)
@@ -13,26 +13,26 @@ namespace Graphics {
 
 inline void setMainObjectTileMapping1D128K()
 {
-	volatile u32 &displayControl = *reinterpret_cast<volatile u32 *>(0x04000000);
+	vu32 &displayControl = REG_DISPCNT;
 	displayControl =
 		(displayControl & ~((3 << 20) | (1 << 4))) | (2 << 20) | (1 << 4);
 }
 
 inline void setMainObjectCharacterBase(u32 base)
 {
-	volatile u32 &displayControl = *reinterpret_cast<volatile u32 *>(0x04000000);
+	vu32 &displayControl = REG_DISPCNT;
 	displayControl = (displayControl & ~(7 << 24)) | (base << 24);
 }
 
 inline void setMainObjectScreenBase(u32 base)
 {
-	volatile u32 &displayControl = *reinterpret_cast<volatile u32 *>(0x04000000);
+	vu32 &displayControl = REG_DISPCNT;
 	displayControl = (displayControl & ~(7 << 27)) | (base << 27);
 }
 
 inline void setMainVisiblePlanes(u32 planes)
 {
-	volatile u32 &displayControl = *reinterpret_cast<volatile u32 *>(0x04000000);
+	vu32 &displayControl = REG_DISPCNT;
 	displayControl = (displayControl & ~0x1f00) | (planes << 8);
 }
 
@@ -45,8 +45,7 @@ inline void configureMainTextBackground(
 	u32 extendedPaletteSlot
 )
 {
-	volatile u16 &backgroundControl =
-		*reinterpret_cast<volatile u16 *>(0x04000008 + background * 2);
+	vu16 &backgroundControl = *(vu16 *)((u32)&REG_BG0CNT + background * 2);
 	backgroundControl = (backgroundControl & 0x43) |
 		(screenSize << 14) | (colorMode << 7) | (screenBase << 8) |
 		(characterBase << 2) | (extendedPaletteSlot << 13);
@@ -54,72 +53,70 @@ inline void configureMainTextBackground(
 
 inline void setMainBackgroundPriority(u32 background, u32 priority)
 {
-	volatile u16 &backgroundControl =
-		*reinterpret_cast<volatile u16 *>(0x04000008 + background * 2);
+	vu16 &backgroundControl = *(vu16 *)((u32)&REG_BG0CNT + background * 2);
 	backgroundControl = (backgroundControl & ~3) | priority;
 }
 
 inline void setMainBackgroundMosaicEnabled(u32 background, BOOL enabled)
 {
-	volatile u16 &backgroundControl =
-		*reinterpret_cast<volatile u16 *>(0x04000008 + background * 2);
+	vu16 &backgroundControl = *(vu16 *)((u32)&REG_BG0CNT + background * 2);
 	backgroundControl =
 		(backgroundControl & ~(1 << 6)) | (enabled << 6);
 }
 
-inline void setMainBackgroundHorizontalOffset(u32 background, u32 offset)
+// Writes BGnHOFS and BGnVOFS together: offsets = x | (y << 16).
+inline void setMainBackgroundOffsets(u32 background, u32 offsets)
 {
-	*reinterpret_cast<volatile u32 *>(0x04000010 + background * 4) = offset;
+	*(vu32 *)((u32)&REG_BG0OFS + background * 4) = offsets;
 }
 
 inline u32 getSubVisiblePlanes()
 {
-	return (*reinterpret_cast<volatile u32 *>(0x04001000) & 0x1f00) >> 8;
+	return (REG_DISPCNT_SUB & 0x1f00) >> 8;
 }
 
 inline void setSubVisiblePlanes(u32 planes)
 {
-	volatile u32 &displayControl = *reinterpret_cast<volatile u32 *>(0x04001000);
+	vu32 &displayControl = REG_DISPCNT_SUB;
 	displayControl = (displayControl & ~0x1f00) | (planes << 8);
 }
 
 inline void setSubBackgroundPriority(u32 background, u32 priority)
 {
-	volatile u16 &backgroundControl =
-		*reinterpret_cast<volatile u16 *>(0x04001008 + background * 2);
+	vu16 &backgroundControl = *(vu16 *)((u32)&REG_BG0CNT_SUB + background * 2);
 	backgroundControl = (backgroundControl & ~3) | priority;
 }
 
 inline void setSubBackgroundMosaicEnabled(u32 background, BOOL enabled)
 {
-	volatile u16 &backgroundControl =
-		*reinterpret_cast<volatile u16 *>(0x04001008 + background * 2);
+	vu16 &backgroundControl = *(vu16 *)((u32)&REG_BG0CNT_SUB + background * 2);
 	backgroundControl =
 		(backgroundControl & ~(1 << 6)) | (enabled << 6);
 }
 
-inline void setSubBackgroundHorizontalOffset(u32 background, u32 offset)
+// Writes BGnHOFS and BGnVOFS together: offsets = x | (y << 16).
+inline void setSubBackgroundOffsets(u32 background, u32 offsets)
 {
-	*reinterpret_cast<volatile u32 *>(0x04001010 + background * 4) = offset;
+	*(vu32 *)((u32)&REG_BG0OFS_SUB + background * 4) = offsets;
 }
 
 inline void setSubObjectTileMapping1D32K()
 {
-	volatile u32 &displayControl = *reinterpret_cast<volatile u32 *>(0x04001000);
+	vu32 &displayControl = REG_DISPCNT_SUB;
 	displayControl =
 		(displayControl & ~((3 << 20) | (1 << 4))) | (1 << 4);
 }
 
 inline void setSubObjectTileMapping2D()
 {
-	volatile u32 &displayControl = *reinterpret_cast<volatile u32 *>(0x04001000);
+	vu32 &displayControl = REG_DISPCNT_SUB;
 	displayControl &= ~((3 << 20) | (1 << 4));
 }
 
 inline void configureSubTextBackground1(u32 screenSize, u32 colorMode,
 	u32 screenBase, u32 characterBase, u32 extendedPaletteSlot)
 {
-	volatile u16 &backgroundControl = *reinterpret_cast<volatile u16 *>(0x0400100a);
+	vu16 &backgroundControl = REG_BG1CNT_SUB;
 	backgroundControl = (backgroundControl & 0x43) |
 		(screenSize << 14) | (colorMode << 7) | (screenBase << 8) |
 		(characterBase << 2) | (extendedPaletteSlot << 13);
@@ -134,8 +131,7 @@ inline void configureSubTextBackground(
 	u32 extendedPaletteSlot
 )
 {
-	volatile u16 &backgroundControl =
-		*reinterpret_cast<volatile u16 *>(0x04001008 + background * 2);
+	vu16 &backgroundControl = *(vu16 *)((u32)&REG_BG0CNT_SUB + background * 2);
 	backgroundControl = (backgroundControl & 0x43) |
 		(screenSize << 14) | (colorMode << 7) | (screenBase << 8) |
 		(characterBase << 2) | (extendedPaletteSlot << 13);

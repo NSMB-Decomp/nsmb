@@ -21,8 +21,8 @@ extern "C" {
 }
 
 inline u32 enableIrq() {
-	u32 prev = *rcast<vu16*>(0x04000208);
-	*rcast<vu16*>(0x04000208) = 1;
+	u32 prev = REG_IME;
+	REG_IME = 1;
 	return prev;
 }
 
@@ -149,7 +149,7 @@ namespace App {
 	void stopDisplayDMA() {
 
 		u32 i;
-		vu32* reg = rcast<vu32*>(0x040000B8);
+		vu32* reg = &REG_DMA0CNT;
 
 		for (i = 0; i < 3; i++, reg += 3) {
 
@@ -445,14 +445,10 @@ namespace App {
 
 		NDS::Graphics::assignTextureBank(3);
 
-		u32 *GFX_FIFO_LIGHT_DIRECTION = (u32 *)0x040004c8;
-		*GFX_FIFO_LIGHT_DIRECTION = 0x296a5800;
-		u32 *GFX_FIFO_LIGHT_COLOR = (u32 *)0x040004cc;
-		*GFX_FIFO_LIGHT_COLOR = 0x7fff;
-		u32 *GFX_FIFO_MATERIAL_DIFFUSE_AMBIENT = (u32 *)0x040004c0;
-		*GFX_FIFO_MATERIAL_DIFFUSE_AMBIENT = 0x7fff;
-		u32 *GFX_FIFO_MATERIAL_SPECULAR_EMISSION = (u32 *)0x040004c4;
-		*GFX_FIFO_MATERIAL_SPECULAR_EMISSION = 0;
+		GFX_FIFO_LIGHT_DIRECTION = 0x296a5800;
+		GFX_FIFO_LIGHT_COLOR = 0x7fff;
+		GFX_FIFO_MATERIAL_DIFFUSE_AMBIENT = 0x7fff;
+		GFX_FIFO_MATERIAL_SPECULAR_EMISSION = 0;
 
 		// set load overlay functions
 		func_0200e040();
@@ -468,8 +464,6 @@ namespace App {
 	}
 
 	void gameLoop() { // StartGameLoop
-
-		u32 *GFX_FIFO_SWAP_BUFFERS = (u32 *)0x04000540;
 
 		System::sleepSystemThread();
 		NDS::Graphics::enableDisplays();
@@ -660,11 +654,11 @@ namespace App {
 	void resetGpu() {
 
 		if (getBootScene() == Boot || getBootTarget() == Minigames) {
-			NDS::Memory::clear16(0xFFFF, rcast<void*>(0x05000000), 0x2);
-			NDS::Memory::clear16(0xFFFF, rcast<void*>(0x05000400), 0x2);
+			NDS::Memory::clear16(0xFFFF, BG_PALETTE, 0x2);
+			NDS::Memory::clear16(0xFFFF, BG_PALETTE_SUB, 0x2);
 		} else {
-			NDS::Memory::clear16(0x0000, rcast<void*>(0x05000000), 0x2);
-			NDS::Memory::clear16(0x0000, rcast<void*>(0x05000400), 0x2);
+			NDS::Memory::clear16(0x0000, BG_PALETTE, 0x2);
+			NDS::Memory::clear16(0x0000, BG_PALETTE_SUB, 0x2);
 		}
 
 		REG_POWER_CNT = REG_POWER_CNT | 0x8000;
@@ -717,8 +711,8 @@ namespace App {
 		REG_BG2OFS = 0;
 		REG_BG3OFS = 0;
 
-		NDS::Graphics::applyAffine2D(rcast<void*>(0x04000020), &identityMtx, 0, 0, 0, 0);
-		NDS::Graphics::applyAffine2D(rcast<void*>(0x04000030), &identityMtx, 0, 0, 0, 0);
+		NDS::Graphics::applyAffine2D((void *)&REG_BG2PA, &identityMtx, 0, 0, 0, 0);
+		NDS::Graphics::applyAffine2D((void *)&REG_BG3PA, &identityMtx, 0, 0, 0, 0);
 
 		REG_WININ = REG_WININ & ~0x3F;
 		REG_WININ = REG_WININ & ~0x3F00;
@@ -733,7 +727,7 @@ namespace App {
 		REG_MOSAIC_BG = 0;
 		REG_MOSAIC_OBJ = 0;
 
-		NDS::Graphics::setMasterBrightness(rcast<void*>(0x0400006C), 0);
+		NDS::Graphics::setMasterBrightness((void *)&REG_MASTER_BRIGHT, 0);
 
 		NDS::Graphics::setSubDisplayMode(0);
 
@@ -770,8 +764,8 @@ namespace App {
 		REG_BG2OFS_SUB = 0;
 		REG_BG3OFS_SUB = 0;
 
-		NDS::Graphics::applyAffine2D(rcast<void*>(0x04001020), &identityMtx, 0, 0, 0, 0);
-		NDS::Graphics::applyAffine2D(rcast<void*>(0x04001030), &identityMtx, 0, 0, 0, 0);
+		NDS::Graphics::applyAffine2D((void *)&REG_BG2PA_SUB, &identityMtx, 0, 0, 0, 0);
+		NDS::Graphics::applyAffine2D((void *)&REG_BG3PA_SUB, &identityMtx, 0, 0, 0, 0);
 
 		REG_WININ_SUB = REG_WININ_SUB & ~0x3F;
 		REG_WININ_SUB = REG_WININ_SUB & ~0x3F00;
@@ -786,7 +780,7 @@ namespace App {
 		REG_MOSAIC_BG_SUB = 0;
 		REG_MOSAIC_OBJ_SUB = 0;
 
-		NDS::Graphics::setMasterBrightness(rcast<void*>(0x0400106C), 0);
+		NDS::Graphics::setMasterBrightness((void *)&REG_MASTER_BRIGHT_SUB, 0);
 
 	}
 
