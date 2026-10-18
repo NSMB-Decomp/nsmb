@@ -346,6 +346,10 @@ s32 WorldMapCamera::onRender()
 	return View::onRender();
 }
 
+// sin() of 0..449 degrees in fx32 (round(4096 * sin(deg))); the extra 90
+// entries let cos(deg) be read as [deg + 90].
+// TODO: find out whether this is a standalone table or part of a larger
+// struct, and give it a name.
 fx32 data_ov008_020e8c8c[450] = {
 	0, 71, 143, 214, 286, 357, 428, 499,
 	570, 641, 711, 782, 852, 921, 991, 1060,

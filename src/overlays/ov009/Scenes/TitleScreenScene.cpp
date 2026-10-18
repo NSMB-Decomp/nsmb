@@ -873,6 +873,10 @@ void TitleScreenScene::selectFileCopyDestination()
 			switch (action) {
 			case 1:
 			case 2: {
+				// Equivalent to data_ov009_020d9620[fileCopySourceFile][action - 1],
+				// but array indexing lets the compiler fold the - 1 into the table
+				// address, which the original did not do.
+				// TODO: find a typed form that matches.
 				u32 destinationFiles =
 					(u32)data_ov009_020d9620 + this->fileCopySourceFile * 2;
 				s32 destinationIndex = action - 1;

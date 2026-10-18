@@ -176,6 +176,8 @@ void func_ov008_020d2264(
 	WorldCameraTransformState* camera = data_ov000_020caa38;
 	Vec3_32 offset(0, 0, -0x10000);
 	Vec3_32 scale;
+	// TODO: these are rounded fx32 multiplies; replace the open-coded
+	// i64 arithmetic with a shared fixed-point multiply helper.
 	scale.x =
 		((i64)controller->unk2050.x * scaleFactor + 0x800) >> 12;
 	scale.y =
