@@ -356,8 +356,8 @@ Actor *Actor::calcDistanceToPlayerNoWrap(i32 x, i32 y, i32 *distanceX, i32 *dist
 		do {
 			Actor *player = (Actor *)Game::getPlayer(playerIndex);
 			if (player != NULL) {
-				i32 playerX = ((player->position.x + player->centerOffset.x) >> 12) - x;
-				i32 playerY = ((player->position.y + player->centerOffset.y) >> 12) - y;
+				i32 playerX = _FixedInt(player->position.x + player->centerOffset.x) - x;
+				i32 playerY = _FixedInt(player->position.y + player->centerOffset.y) - y;
 				i32 distance = playerX * playerX + playerY * playerY;
 				if (closestDistance > distance) {
 					if (distanceX != NULL) {
@@ -385,16 +385,16 @@ Actor *Actor::calcDistanceToPlayerWrap(i32 x, i32 y, i32 *distanceX, i32 *distan
 	closestPlayer = NULL;
 	playerIndex = 0;
 	closestDistance = 0x7fffffff;
-	x &= Game::wrapX >> 12;
+	x &= _FixedInt(Game::wrapX);
 
 	if (func_020202a0() > 0) {
 		do {
 			Actor *player = (Actor *)Game::getPlayer(playerIndex);
 			if (player != NULL) {
-				i32 playerY = (player->position.y + player->centerOffset.y) >> 12;
-				i32 wrapDistance = ((Game::wrapX + 1) / 2) >> 12;
+				i32 playerY = _FixedInt(player->position.y + player->centerOffset.y);
+				i32 wrapDistance = _FixedInt((Game::wrapX + 1) / 2);
 				i32 playerPositionX = player->position.x + player->centerOffset.x;
-				i32 playerX = (playerPositionX & Game::wrapX) >> 12;
+				i32 playerX = _FixedInt(playerPositionX & Game::wrapX);
 				playerX -= x;
 				if (playerX < 0) {
 					if (playerX < -wrapDistance) {
@@ -426,8 +426,8 @@ Actor *Actor::calcDistanceToPlayerWrap(i32 x, i32 y, i32 *distanceX, i32 *distan
 
 Actor *Actor::getDistanceToPlayer(i32 *distanceX, i32 *distanceY)
 {
-	return (*data_ov000_020ca858)((this->position.x + this->centerOffset.x) >> 0xc,
-				     (this->position.y + this->centerOffset.y) >> 0xc, distanceX,
+	return (*data_ov000_020ca858)(_FixedInt(this->position.x + this->centerOffset.x),
+				     _FixedInt(this->position.y + this->centerOffset.y), distanceX,
 				     distanceY);
 }
 

@@ -18,6 +18,11 @@ extern i16 _FixedSinCosTbl[];
 
 #define _FixedFlt(flt) ((i32)(flt * 4096.0))
 
+// Whole part of a 20.12 fixed-point value (rounds toward negative infinity).
+inline i32 _FixedInt(fx32 x) {
+	return x >> 12;
+}
+
 inline i32 _FixedMul(i32 x, i32 y) {
 	i64 result = (i64)x * (i64)y;
 	result += 0x800;
