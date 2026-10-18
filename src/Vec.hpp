@@ -51,6 +51,9 @@ struct Vec3_32 : public Vec3_32s {
 	}
 	inline Vec3_32(i32 x, i32 y, i32 z)
 	{
+		// Store order affects LDR/STR scheduling at every inlined call site.
+		// x, y, z is required by StageEntity::doPlayerJump, _26, _27 and
+		// getCollectablePoints; z, y, x breaks them.
 		this->x = x;
 		this->y = y;
 		this->z = z;
