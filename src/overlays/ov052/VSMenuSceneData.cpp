@@ -5,7 +5,7 @@
 #include <nds/graphics.hpp>
 #include <nds/memory.hpp>
 
-void func_ov052_02153760(VSMenuScene *)
+void VSMenuScene::func_ov052_02153760()
 {
 	NDS::Memory::copyFast(BG_PALETTE_SUB + 0x30, BG_PALETTE_SUB + 0x20, 0x20);
 }
@@ -18,7 +18,7 @@ static inline u16 *winMarkerTiles(u32 column)
 	return (u16 *)(NDS::Graphics::subBackground2Map() + (32 * 32 + 32 + column) * sizeof(u16));
 }
 
-void func_ov052_02153780(VSMenuScene *)
+void VSMenuScene::func_ov052_02153780()
 {
 	u8 topWins;
 	u8 bottomWins;
@@ -81,19 +81,19 @@ static inline s32 negateOffset(u32 offset)
 	return -offset;
 }
 
-void func_ov052_021539c8(VSMenuScene *scene)
+void VSMenuScene::func_ov052_021539c8()
 {
 	u32 selection = VSMenuScene::course;
-	scene->selectionBackgroundPosition.x = scene->mainBackgroundPosition.x +
+	this->selectionBackgroundPosition.x = this->mainBackgroundPosition.x +
 		negateOffset((u32)VSMenuScene::courseCursorX[selection] << 12);
-	scene->selectionBackgroundPosition.y = scene->mainBackgroundPosition.y +
+	this->selectionBackgroundPosition.y = this->mainBackgroundPosition.y +
 		negateOffset((u32)VSMenuScene::courseCursorY[selection] << 12);
 }
 
-void func_ov052_02153a1c(VSMenuScene *scene)
+void VSMenuScene::func_ov052_02153a1c()
 {
 	VSMenuScene::playedCourses |= 1 << VSMenuScene::course;
-	scene->state = 8;
+	this->state = 8;
 	GlobalFader.prepareFadeIn();
 }
 

@@ -7,6 +7,10 @@
 class VSMenuScene : public Scene
 {
       public:
+	void func_ov052_02153760();
+	void func_ov052_02153780();
+	void func_ov052_021539c8();
+	void func_ov052_02153a1c();
 	u8 state;
 	u8 selection;
 	s8 selectionTimer;

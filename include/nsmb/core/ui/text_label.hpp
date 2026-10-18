@@ -5,8 +5,8 @@
 class TextLabel
 {
 public:
-	inline TextLabel() { this->func_02018114(); }
-	inline ~TextLabel() { this->func_02018104(); }
+	TextLabel();
+	~TextLabel();
 
 	void func_02017b94();
 	void func_02017bc4(u32 *value, u32, s32 offset);
@@ -16,8 +16,6 @@ public:
 	void func_02018060();
 	void func_020180a4(); // unloadScript
 	void func_020180c0(u32);
-	void func_02018104();
-	void func_02018114();
 
 	struct ButtonPosition
 	{

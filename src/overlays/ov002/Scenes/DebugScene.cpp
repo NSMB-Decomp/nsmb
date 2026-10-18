@@ -496,9 +496,9 @@ void DebugScene::func_ov002_020cc514()
 		}
 	}
 
-	u32 r6;
-	u32 r5;
-	u32 r4;
+	u8 r6;
+	u8 r5;
+	u8 r4;
 	if (data_ov002_020cd304) {
 		i32 iVar7 = data_ov002_020cd304 - 1;
 		r6 = data_ov002_020cd220[iVar7];

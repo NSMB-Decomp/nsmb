@@ -21,3 +21,7 @@ class SoundTestScene : public Scene
 };
 
 ObjectProfile SoundTestScene::Profile = {SoundTestScene::create, 0x10, 0x17};
+
+NTR_SIZE_GUARD(SoundTestScene, 0x70);
+NTR_OFFSET_GUARD(SoundTestScene, _68, 0x68);
+NTR_OFFSET_GUARD(SoundTestScene, _6c, 0x6c);

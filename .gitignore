@@ -1,6 +1,6 @@
 objdiff.json
-objdiff_report.json
 objdiff.yml
+objdiff_report.json
 *.nds
 *.ids
 *.sav

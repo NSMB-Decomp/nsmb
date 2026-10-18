@@ -38,7 +38,7 @@ s32 VSConnectScene::onCreate()
 	FS::Overlay::load(OVERLAY_ID(10));
 	FS::Overlay::load(OVERLAY_ID(11));
 	FS::Overlay::load(OVERLAY_ID(52));
-	func_0200917c(5, 0);
+	FS::Archive::mountFront(5, 0);
 	REG_DISPCNT &= ~0x07000000;
 	REG_DISPCNT = (REG_DISPCNT & ~0x38000000) | 0x08000000;
 	REG_POWER_CNT |= 0x8000;
@@ -107,7 +107,7 @@ s32 VSConnectScene::onCreate()
 	func_02011d24(0x24);
 	func_02011c64();
 	func_02011e7c(0x1f, 0);
-	func_02008980();
+	FS::setReadModeSafe();
 	return 1;
 }
 
@@ -150,7 +150,7 @@ s32 VSConnectScene::onDestroy()
 	FS::Overlay::untrack(OVERLAY_ID(52));
 	if (data_0203bd30 == 5) {
 		FS::Archive::unmount(5);
-		func_0200917c(9, 0);
+		FS::Archive::mountFront(9, 0);
 	} else {
 		FS::Archive::unmount(5);
 		FS::setReadModeFast();
@@ -399,7 +399,7 @@ void VSConnectScene::updateSearchSM()
 		searchType = 3;
 		hasParentBssid = 0;
 		_164 = 0;
-		func_0200f3d8();
+		Net::stopConnection();
 		func_02017a80(&primaryText);
 		return;
 	}
@@ -545,12 +545,12 @@ void VSConnectScene::updateConfirmSM()
 		return;
 
 	case 3:
-		func_0200f3d8();
+		Net::stopConnection();
 		scheduleSubMenuChange(&searchSM, 0x1e, false);
 		return;
 
 	case 4:
-		func_0200f3d8();
+		Net::stopConnection();
 		scheduleSubMenuChange(&playerLeftSM, 0x1e, false);
 		return;
 	}
@@ -598,7 +598,7 @@ cancel:
 		specialMode = 1;
 		buttons[2].click();
 		scheduleSubMenuChange(&searchSM, 0x1e, true);
-		func_0200f3d8();
+		Net::stopConnection();
 		data_02088f30 = 1;
 		func_02017a80(&primaryText);
 		return;
@@ -621,7 +621,7 @@ normal:
 			return;
 	}
 
-	func_0200f3d8();
+	Net::stopConnection();
 	scheduleSubMenuChange(&playerLeftSM, 1, true);
 	data_02088f30 = 1;
 	func_02017a80(&primaryText);

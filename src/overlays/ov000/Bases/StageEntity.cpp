@@ -3211,7 +3211,7 @@ Vec3_32 StageEntity::tryNormalizeVec3(Vec3_32 *input)
 	return *input;
 }
 
-u32 StageEntity::getSpritePriority(u32 a)
+u32 StageEntity::getSpritePriority(u16 a)
 {
 	u16 index;
 	if (a != 0) {

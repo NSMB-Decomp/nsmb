@@ -61,6 +61,9 @@ pub fn build(b: *std.Build) void {
 
     var objdiff_step = b.step("objdiff", "");
     objdiff_step.dependOn(&objdiff_cmd.step);
+    const mapping_seed = b.step("objdiff-mappings", "Generate canonical objdiff mappings");
+    mapping_seed.makeFn = &writeObjdiffMappings;
+    objdiff_cmd.step.dependOn(mapping_seed);
 
     // Step - single
     var single_step = b.step("single", "");
@@ -272,3 +275,81 @@ const OBJDiff = struct {
         },
     },
 };
+
+// Canonical mappings; objdiff.yml is generated and ignored.
+const objdiff_mappings =
+    \\{
+    \\  "units": [
+    \\    {
+    \\      "name": "src/overlays/ov052/VSMenuScene",
+    \\      "symbol_mappings": {
+    \\        "_ZGVptmfs$762": "_ZGVptmfs$1069",
+    \\        "@764": "@1071",
+    \\        "ptmfs$762": "ptmfs$1069",
+    \\        "@766": "@1073",
+    \\        "@768": "@1075",
+    \\        "@770": "@1077",
+    \\        "@772": "@1079",
+    \\        "@780": "@1087",
+    \\        "@782": "@1089",
+    \\        "@778": "@1085",
+    \\        "@774": "@1081",
+    \\        "@776": "@1083",
+    \\        "@784": "@1091",
+    \\        "@786": "@1093",
+    \\        "@788": "@1095",
+    \\        "@790": "@1097",
+    \\        "@792": "@1099",
+    \\        "@794": "@1101",
+    \\        "@796": "@1103",
+    \\        "@798": "@1105",
+    \\        "@800": "@1107",
+    \\        "@802": "@1109",
+    \\        "_ZGVptmfs$707": "_ZGVptmfs$1014",
+    \\        "@709": "@1016",
+    \\        "ptmfs$707": "ptmfs$1014",
+    \\        "@711": "@1018",
+    \\        "@713": "@1020",
+    \\        "@715": "@1022",
+    \\        "@717": "@1024",
+    \\        "@725": "@1032",
+    \\        "@727": "@1034",
+    \\        "@723": "@1030",
+    \\        "@719": "@1026",
+    \\        "@721": "@1028",
+    \\        "@729": "@1036",
+    \\        "@731": "@1038",
+    \\        "@733": "@1040",
+    \\        "@735": "@1042",
+    \\        "@737": "@1044",
+    \\        "@739": "@1046",
+    \\        "@741": "@1048",
+    \\        "@743": "@1050",
+    \\        "@745": "@1052",
+    \\        "@747": "@1054"
+    \\      }
+    \\    },
+    \\    {
+    \\      "name": "src/overlays/ov008/worldmap/controller",
+    \\      "symbol_mappings": {
+    \\        "func_02064cb4": "_ZN3NDS4Text6formatEPcPKcz",
+    \\        "strcpy": "_ZN3NDS4Text10copyStringEPcPKc"
+    \\      }
+    \\    },
+    \\    {
+    \\      "name": "src/overlays/ov008/worldmap/scene"
+    \\    }
+    \\  ]
+    \\}
+;
+
+fn writeObjdiffMappings(step: *std.Build.Step, _: std.Build.Step.MakeOptions) !void {
+    // Regenerate from the checked-in mappings rather than retaining stale GUI overrides.
+    std.Io.Dir.cwd().deleteFile(step.owner.graph.io, "objdiff.json") catch |err| {
+        if (err != error.FileNotFound) return err;
+    };
+    try std.Io.Dir.cwd().writeFile(step.owner.graph.io, .{
+        .sub_path = "objdiff.yml",
+        .data = objdiff_mappings ++ "\n",
+    });
+}

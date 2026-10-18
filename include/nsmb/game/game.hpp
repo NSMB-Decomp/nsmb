@@ -2,7 +2,11 @@
 
 #include "../../../src/base_types.hpp"
 
+class PlayerActor;
+
 namespace Game {
+
+PlayerActor *getPlayer(u32 playerID);
 
 void saveBackupParams();
 void loadBackupParams();

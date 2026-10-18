@@ -39,7 +39,7 @@ Scene::~Scene()
 			if (c != 0 && !Wifi::isMultiBootChild()) {
 				data_02085ad4[0] = save.options.controlOptions; // TODO: Do not offset using pointers
 			}
-			func_0200f3d8();
+			Net::stopConnection();
 		}
 		FS::Cache::clear();
 		if ((BOOL(data_02085a84 != 0) && (data_0208ae58 != 0)) == TRUE) {

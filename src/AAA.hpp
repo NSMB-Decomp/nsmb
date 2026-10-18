@@ -5,6 +5,7 @@
 //#include "ProcessManager.hpp"
 //#include "Vec.hpp"
 #include "base_types.hpp"
+#include <nsmb/game/game.hpp>
 #include <nsmb/core/filesystem.hpp>
 #include <nsmb/core/wifi.hpp>
 
@@ -162,7 +163,6 @@ extern i32 cameraZoomY[2];
 extern fx32 wrapX;
 u32 getBootScene();
 void drawBNCLSpriteSub(u32 id, void *data, u32 flags, u8 palette, u8 affineSet, Vec2_32 *scale, i16 rotation, i16 *rotation_center, u8 procSettings, u32 x, u32 y);
-PlayerActor *getPlayer(u32);
 } // namespace Game
 
 #define C_DEG(d) s32((d * 0x10000) / 360)
@@ -562,7 +562,6 @@ extern u32 data_ov001_020ce86c;
 u32 func_02011d40();
 void func_0200a42c(u32, u32);
 u32 func_02011e7c(u32, u32);
-	void func_0200917c(u32, u32);
 	void func_ov052_021535a0();
 	extern u32 func_0201f5fc(u32);
 extern u32 func_0201f590(u32, u32);

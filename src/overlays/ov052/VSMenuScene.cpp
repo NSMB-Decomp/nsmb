@@ -270,7 +270,7 @@ display_configured:
 				i++;
 			} while ((s32)i < 5);
 			VSMenuScene::course = i;
-			func_ov052_02153a1c(this);
+			this->func_ov052_02153a1c();
 			return 1;
 		}
 		state = 5;
@@ -586,7 +586,7 @@ void VSMenuScene::func_ov052_021549f8()
 {
 	REG_DISPCNT_SUB = (REG_DISPCNT_SUB & ~0x1f00) | 0x1e00;
 	state = 6;
-	func_ov052_021539c8(this);
+	this->func_ov052_021539c8();
 }
 
 void VSMenuScene::func_ov052_02154698()
@@ -616,7 +616,7 @@ void VSMenuScene::func_ov052_021546d0()
 	return;
 
 no_selection:
-	func_ov052_02153a1c(this);
+	this->func_ov052_02153a1c();
 	return;
 
 decrement_timer:
@@ -640,7 +640,7 @@ void VSMenuScene::func_ov052_0215476c()
 		case 4:
 			VSMenuScene::course = selection;
 			state = 7;
-			func_ov052_02153760(this);
+			this->func_ov052_02153760();
 			break;
 		case 5:
 			if (VSMenuScene::battlesPlayed == 0) {
@@ -658,7 +658,7 @@ void VSMenuScene::func_ov052_0215476c()
 			}
 		} else if ((input & 1) != 0) {
 			state = 7;
-			func_ov052_02153760(this);
+			this->func_ov052_02153760();
 		} else {
 			switch (previousSelection) {
 			case 0:
@@ -697,7 +697,7 @@ void VSMenuScene::func_ov052_0215476c()
 		}
 	}
 
-	func_ov052_021539c8(this);
+	this->func_ov052_021539c8();
 	if (previousState != state) {
 		selectionTimer = 0x1e;
 		if (confirmationVisible != 0) {
@@ -719,7 +719,7 @@ void VSMenuScene::func_ov052_02154a24()
 		selectionBackgroundPosition.y = mainBackgroundPosition.y;
 		return;
 	}
-	func_ov052_021539c8(this);
+	this->func_ov052_021539c8();
 	state = 0x13;
 }
 
@@ -731,7 +731,7 @@ void VSMenuScene::func_ov052_02154a60()
 	void *address = (void *)NDS::Graphics::subBackground1Map();
 	NDS::Memory::fill8(address, 0, size);
 	mainBackgroundPosition.x = 0x100000;
-	func_ov052_02153780(this);
+	this->func_ov052_02153780();
 	state = 0xe;
 	confirmationVisible = 0;
 	u32 value = func_02046c78() ? 0xc : 0xd;
@@ -813,7 +813,7 @@ void VSMenuScene::func_ov052_02154bb4()
 	if (timer == 0) {
 		if (VSMenuScene::chooseCourse == 0) {
 			VSMenuScene::course = (Wifi::random() & 0x7fff) * 5 >> 15;
-			func_ov052_02153a1c(this);
+			this->func_ov052_02153a1c();
 		} else {
 			state = 0xc;
 		}

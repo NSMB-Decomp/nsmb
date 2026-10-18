@@ -237,6 +237,7 @@ s32 WorldMapCamera::onUpdate()
 		0x1555, 0x1000, 0x800000, 0x1000, FALSE,
 		&NDS::Graphics3D::runtimeState.projectionMatrix);
 
+	// TODO: Recover the remaining geometry-state fields from their access sites.
 	NDS::Graphics3D::runtimeState.flags &=
 		~NDS::Graphics3D::GeometryStateFlagBits4_6;
 	return 1;
