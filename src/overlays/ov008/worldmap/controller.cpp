@@ -3811,41 +3811,18 @@ void WmController::moveEntitiesLoop(u8* entityMoves, u32 entityIdx, u8* moveTbl,
 
 void WmController::moveEntities() {
 
-	// int linkA;
-	// u32 uVar2;
-	// //u8 *pNodeTbl;
-	// //u32 entityNode;
-	// int extraout_r1;
-	// u8 *puVar3;
-	// //u8 *pMoveTbl;
-	// int i;
-	// u32 moveCount;
-	// u8(*pauVar4)[2];
-	// int linkB;
-	// NodeLink *nextLink;
-
-
-	//__Work w;
-	//NodeLink* w_link;
-	//u32 w_world;
-	//u32 w_a;
-	//u32 w_n;
 	u32 entityNodes[2];
 	u32 buf4[2];
 	u32 buf3[2];
 	u8 moveTbl[2*12*2];
 	u8 nodeTbl[2][12];
-	//int g;
 
 	NodeLink* nextLink; // 1
 	int moveCount3 = 0;
 	int mi2; // 2
 	int mi; // 2
-	//int moveCount; // # doesn't matter
 	int e; // 3-4 (must be before 5)
 	int g; // 5
-
-	//s32* pb = buf3;
 
 	NodeLink* w_link;
 	u32 w_world = save.game.currentWorld;
@@ -3864,23 +3841,7 @@ void WmController::moveEntities() {
 				pm++;
 			}
 
-			// int c = 0;
-			// while (++c < 2) {
-			// 	*pm = 0xff;
-			// 	pm++;
-			// };
-
-			// for (u32 c = 0; c < 2;) {
-			// 	c++;
-			// 	*pm = 0xff;
-			// 	pm++;
-			// 	//moveTbl[(a*2*12) + (b*12) + c] = 0xff;
-			// }
-
-			//nodeTbl[e][f] = 0xff;
 			pn[moveCount3] = 0xff;
-			//p1 += 2;
-			//nodeTbl[(a*12) + b] = 0xff;
 
 		}
 
@@ -3889,36 +3850,18 @@ void WmController::moveEntities() {
 		}
 
 		buf3[e] = 0;
-		//pn += 12;
 
 	}
 
-	//w_n = 1; // Does not need to exist!
-	//pn = nodeTbl;
-	//pm = moveTbl;
-
 	for (pn = nodeTbl[0], e = 0; e < 2; pn += 12, e++) {
-		/* u32 node = save.game.mapEntities[w_world][e].node;
-		//entityNodes[e] = save.game.mapEntities[w_world][e].node;
-		node = entityNodes[e] = node;
-		//w_a = entityNodes[e];
-		w_a = node;
-		buf4[e] = node; */
-		//w_a = buf4[e] = entityNodes[e] = save.game.mapEntities[w_world][e].node;
 		u32 w_a = entityNodes[e] = save.game.mapEntities[w_world][e].node;
 		buf4[e] = w_a;
-		//w_a = tmp;
-		//entityNodes[e] = w_a;
-		//w_a = entityNodes[e];
-		// u32 tmp = node;
-		// w_a = entityNodes[e];
 		/* entity exists (linked to a node) */
 
 		if (w_a == 0xff) continue;
 
 		moveCount3 = 0;
 		w_link = WM::wxNodes[w_a].links;
-		//int linkA = 0;
 		/* iterate through all 4 possible links of the current node */
 		for (int f = 0; f < 4; w_link++, f++) {
 			if (w_link->node == 0xff)
@@ -3971,21 +3914,9 @@ void WmController::moveEntities() {
 	}
 
 	if ((buf3[0] == 1) && (buf3[1] == 1)) {
-		// linkA = 0;
-		// //pMoveTbl = nodeTbl;
-		// pauVar4 = this->entityStates;
-		// do {
-		// 	func_ov008_020db030(*pauVar4, linkA, 0, moveTbl, &moveTbl[linkA*12], buf4, (u32)(linkA != 0));
-		// 	linkA += 1;
-		// 	//pMoveTbl = pMoveTbl + 0xc;
-		// 	pauVar4 = pauVar4 + 1;
-		// } while (linkA < 2);
-		//u8* pn = nodeTbl;
-		//pm = entityStates[0];
 		u8* pn = nodeTbl[0];
 		for (e = 0; e < 2; e++) {
-			moveEntitiesOnce(entityStates[e], e, 0, moveTbl, pn/* [e] */, buf4, (u32)(e != 0));
-			//pm += 2;
+			moveEntitiesOnce(entityStates[e], e, 0, moveTbl, pn, buf4, (u32)(e != 0));
 			pn += 12;
 		}
 	} else {
@@ -4004,7 +3935,7 @@ void WmController::moveEntities() {
 		}
 		u8* pn = nodeTbl[0];
 		for (e = 0; e < 2; e++) {
-			moveEntitiesLoop(entityStates[e], e, moveTbl, pn/* [e] */, buf4, (u32)(e != 0));
+			moveEntitiesLoop(entityStates[e], e, moveTbl, pn, buf4, (u32)(e != 0));
 			pn += 12;
 		}
 	}
@@ -4185,7 +4116,6 @@ bool WmController::canEntityStopAtNode(WM::NodeLink* link) {
 	return true;
 
 }
-
 
 void* WmController::create() {
 	return new WmController();
