@@ -239,22 +239,22 @@ display_configured:
 
 	if (data_0203bd2c == 6 || data_0203bd2c == 1 || data_0203bd2c == 10) {
 		selection = 0;
-		data_ov052_0215c890 = 0;
+		VSMenuScene::course = 0;
 		if (data_0203bd2c != 10) {
-			data_ov052_0215c894 = 1;
-			data_ov052_0215c88c = 1;
-			data_ov052_0215c89c = 2;
-			data_ov052_0215c888 = 1;
+			VSMenuScene::battlesOption = 1;
+			VSMenuScene::starsOption = 1;
+			VSMenuScene::livesOption = 2;
+			VSMenuScene::chooseCourse = 1;
 		}
-		data_ov052_0215c884 = 0;
-		data_ov052_0215c8a0[0] = 0;
-		data_ov052_0215c8a0[1] = 0;
-		data_ov052_0215c898 = 0;
+		VSMenuScene::battlesPlayed = 0;
+		VSMenuScene::battleWins[0] = 0;
+		VSMenuScene::battleWins[1] = 0;
+		VSMenuScene::playedCourses = 0;
 		state = 0;
 	} else if (data_0203bd2c == 3) {
-		if (data_ov052_0215c888 == 0) {
-			u8 start = data_ov052_0215c884;
-			u8 count = data_ov052_0215aee8[data_ov052_0215c894];
+		if (VSMenuScene::chooseCourse == 0) {
+			u8 start = VSMenuScene::battlesPlayed;
+			u8 count = VSMenuScene::battlesToWin[VSMenuScene::battlesOption];
 			u32 range = ((count * 2 - 1) - start) & 0xff;
 			u32 random = Wifi::random();
 			u8 target = range * (random & 0x7fff) >> 15;
@@ -262,14 +262,14 @@ display_configured:
 			u32 available = 0;
 			i = available;
 			do {
-				if ((data_ov052_0215c898 & (1 << i)) == 0) {
+				if ((VSMenuScene::playedCourses & (1 << i)) == 0) {
 					if (available == target)
 						break;
 					available++;
 				}
 				i++;
 			} while ((s32)i < 5);
-			data_ov052_0215c890 = i;
+			VSMenuScene::course = i;
 			func_ov052_02153a1c(this);
 			return 1;
 		}
@@ -369,7 +369,7 @@ void VSMenuScene::func_ov052_02153ac4()
 
 void VSMenuScene::func_ov052_02153ad0()
 {
-	if (data_ov052_0215c888 == 0) {
+	if (VSMenuScene::chooseCourse == 0) {
 		func_ov052_02153d5c();
 	} else {
 		func_ov052_02153b44();
@@ -378,7 +378,7 @@ void VSMenuScene::func_ov052_02153ad0()
 
 void VSMenuScene::func_ov052_02153b04()
 {
-	if (data_ov052_0215c888 == 0) {
+	if (VSMenuScene::chooseCourse == 0) {
 		func_ov052_02153d5c();
 	} else {
 		func_ov052_02153b44();
@@ -395,14 +395,14 @@ void VSMenuScene::func_ov052_02153b44()
 	i32 offset = -(mainBackgroundPosition.y >> 12);
 	textLabel.func_02018060();
 	func_0200419c(
-		1, data_ov052_0215b7c4[data_ov052_0215c884],
+		1, data_ov052_0215b7c4[VSMenuScene::battlesPlayed],
 		0, 0, 0, 0, 0, 0, 0, 0, offset
 	);
 	func_0200419c(0, (u32)data_ov052_0215ba84, 0, 0, 0, 0, 0, 0, 0, 0, offset);
 
 	for (s32 i = 0; i < 5; i++) {
 		u32 selected;
-		if (i == data_ov052_0215c890 && state >= 7 && state <= 10 && confirmationVisible == 0) {
+		if (i == VSMenuScene::course && state >= 7 && state <= 10 && confirmationVisible == 0) {
 			selected = 1;
 		} else {
 			selected = 0;
@@ -413,7 +413,7 @@ void VSMenuScene::func_ov052_02153b44()
 		);
 	}
 
-	if (func_02046c78() == 1 && data_ov052_0215c884 == 0) {
+	if (func_02046c78() == 1 && VSMenuScene::battlesPlayed == 0) {
 		u32 selected = confirmationVisible == 1 ? 1 : 0;
 		func_0200419c(0xb, (u32)data_ov052_0215b87c, 0, selected, 0, 0, 0, 0, 0, 0, -offset);
 	}
@@ -472,15 +472,15 @@ void VSMenuScene::func_ov052_02153d5c()
 	u32 style = selection == 0 ? 0 : 2;
 	func_0200419c(2, (u32)data_ov052_0215b864, 0, style, 0, 0, 0, 0, 0, 0, mainY);
 	func_0200419c(
-		3, data_ov052_0215b7a0[data_ov052_0215c894],
+		3, data_ov052_0215b7a0[VSMenuScene::battlesOption],
 		0, style, 0, 0, 0, 0, 0, 0, mainY
 	);
 
 	style = selection == 1 ? 0 : 2;
 	func_0200419c(6, (u32)data_ov052_0215b904, 0, style, 0, 0, 0, 0, 0, 0, mainY);
 	func_0200419c(
-		data_ov052_0215b7ac[data_ov052_0215c88c],
-		data_ov052_0215b7b8[data_ov052_0215c88c],
+		data_ov052_0215b7ac[VSMenuScene::starsOption],
+		data_ov052_0215b7b8[VSMenuScene::starsOption],
 		0, style, 0, 0, 0, 0, 0, 0, mainY
 	);
 
@@ -491,16 +491,16 @@ void VSMenuScene::func_ov052_02153d5c()
 		0, style, 0, 0, 0, 0, 0, 0, mainY
 	);
 	func_0200419c(
-		data_ov052_0215b788[data_ov052_0215c89c],
-		data_ov052_0215b794[data_ov052_0215c89c],
+		data_ov052_0215b788[VSMenuScene::livesOption],
+		data_ov052_0215b794[VSMenuScene::livesOption],
 		0, style, 0, 0, 0, 0, 0, 0, mainY
 	);
 
 	style = selection == 3 ? 0 : 2;
 	func_0200419c(0xf, (u32)data_ov052_0215b914, 0, style, 0, 0, 0, 0, 0, 0, mainY);
 	func_0200419c(
-		data_ov052_0215b6a0[data_ov052_0215c888],
-		data_ov052_0215b6b0[data_ov052_0215c888],
+		data_ov052_0215b6a0[VSMenuScene::chooseCourse],
+		data_ov052_0215b6b0[VSMenuScene::chooseCourse],
 		0, style, 0, 0, 0, 0, 0, 0, mainY
 	);
 
@@ -609,7 +609,7 @@ void VSMenuScene::func_ov052_021546d0()
 		goto no_selection;
 	REG_DISPCNT_SUB = (REG_DISPCNT_SUB & ~0x1f00) | 0x1c00;
 	selection = 0;
-	data_ov052_0215c890 = 0;
+	VSMenuScene::course = 0;
 	state = 0xf;
 	u32 value = func_02046c78() ? 0xa : 0xb;
 	textLabel.func_02017e14(&value);
@@ -626,7 +626,7 @@ decrement_timer:
 void VSMenuScene::func_ov052_0215476c()
 {
 	u8 previousState;
-	u32 previousSelection = data_ov052_0215c890;
+	u32 previousSelection = VSMenuScene::course;
 	previousState = state;
 	BOOL connected = data_0208b4f0 != 0 && data_0208b4ec != 0;
 
@@ -638,12 +638,12 @@ void VSMenuScene::func_ov052_0215476c()
 		case 2:
 		case 3:
 		case 4:
-			data_ov052_0215c890 = selection;
+			VSMenuScene::course = selection;
 			state = 7;
 			func_ov052_02153760(this);
 			break;
 		case 5:
-			if (data_ov052_0215c884 == 0) {
+			if (VSMenuScene::battlesPlayed == 0) {
 				confirmationVisible = 1;
 				state = 7;
 			}
@@ -652,7 +652,7 @@ void VSMenuScene::func_ov052_0215476c()
 	} else {
 		u16 input = data_02087650[0][1];
 		if ((input & 2) != 0) {
-			if (data_ov052_0215c884 == 0) {
+			if (VSMenuScene::battlesPlayed == 0) {
 				confirmationVisible = 1;
 				state = 7;
 			}
@@ -663,35 +663,35 @@ void VSMenuScene::func_ov052_0215476c()
 			switch (previousSelection) {
 			case 0:
 				if ((input & 0x10) != 0)
-					data_ov052_0215c890 = 1;
+					VSMenuScene::course = 1;
 				else if ((input & 0x80) != 0)
-					data_ov052_0215c890 = 3;
+					VSMenuScene::course = 3;
 				break;
 			case 1:
 				if ((input & 0x20) != 0)
-					data_ov052_0215c890 = 0;
+					VSMenuScene::course = 0;
 				else if ((input & 0x10) != 0)
-					data_ov052_0215c890 = 2;
+					VSMenuScene::course = 2;
 				else if ((input & 0x80) != 0)
-					data_ov052_0215c890 = 4;
+					VSMenuScene::course = 4;
 				break;
 			case 2:
 				if ((input & 0x20) != 0)
-					data_ov052_0215c890 = 1;
+					VSMenuScene::course = 1;
 				else if ((input & 0x80) != 0)
-					data_ov052_0215c890 = 4;
+					VSMenuScene::course = 4;
 				break;
 			case 3:
 				if ((input & 0x10) != 0)
-					data_ov052_0215c890 = 4;
+					VSMenuScene::course = 4;
 				else if ((input & 0x40) != 0)
-					data_ov052_0215c890 = 0;
+					VSMenuScene::course = 0;
 				break;
 			case 4:
 				if ((input & 0x20) != 0)
-					data_ov052_0215c890 = 3;
+					VSMenuScene::course = 3;
 				else if ((input & 0x40) != 0)
-					data_ov052_0215c890 = 1;
+					VSMenuScene::course = 1;
 				break;
 			}
 		}
@@ -707,7 +707,7 @@ void VSMenuScene::func_ov052_0215476c()
 		func_02012398(0xe9, nullptr);
 		return;
 	}
-	if (previousSelection != data_ov052_0215c890)
+	if (previousSelection != VSMenuScene::course)
 		func_02012398(0xe5, nullptr);
 }
 
@@ -758,8 +758,8 @@ void VSMenuScene::func_ov052_0215454c()
 
 void VSMenuScene::func_ov052_0215459c()
 {
-	func_02020580(0, data_ov052_0215af0c[data_ov052_0215c89c]);
-	func_02020580(1, data_ov052_0215af0c[data_ov052_0215c89c]);
+	func_02020580(0, VSMenuScene::lives[VSMenuScene::livesOption]);
+	func_02020580(1, VSMenuScene::lives[VSMenuScene::livesOption]);
 	u32 mode = data_02085a84;
 	u8 value = func_ov052_02153a80();
 	Game::loadLevel(
@@ -811,8 +811,8 @@ void VSMenuScene::func_ov052_02154bb4()
 {
 	s8 timer = selectionTimer;
 	if (timer == 0) {
-		if (data_ov052_0215c888 == 0) {
-			data_ov052_0215c890 = (Wifi::random() & 0x7fff) * 5 >> 15;
+		if (VSMenuScene::chooseCourse == 0) {
+			VSMenuScene::course = (Wifi::random() & 0x7fff) * 5 >> 15;
 			func_ov052_02153a1c(this);
 		} else {
 			state = 0xc;
@@ -899,10 +899,10 @@ void VSMenuScene::func_ov052_02154c9c()
 	u8 oldOption1;
 	u8 oldState;
 	u8 oldOption2;
-	oldOption0 = data_ov052_0215c894;
-	oldOption1 = data_ov052_0215c88c;
-	oldOption2 = data_ov052_0215c89c;
-	oldToggle = data_ov052_0215c888;
+	oldOption0 = VSMenuScene::battlesOption;
+	oldOption1 = VSMenuScene::starsOption;
+	oldOption2 = VSMenuScene::livesOption;
+	oldToggle = VSMenuScene::chooseCourse;
 	oldState = state;
 	oldSelection = selection;
 	BOOL connected = data_0208b4f0 != 0 && data_0208b4ec != 0;
@@ -914,50 +914,50 @@ void VSMenuScene::func_ov052_02154c9c()
 			break;
 		case 2:
 			selection = 0;
-			if (data_ov052_0215c894 == 0)
-				data_ov052_0215c894 = 2;
+			if (VSMenuScene::battlesOption == 0)
+				VSMenuScene::battlesOption = 2;
 			else
-				data_ov052_0215c894--;
+				VSMenuScene::battlesOption--;
 			break;
 		case 3:
 			selection = 0;
-			if (data_ov052_0215c894 == 2)
-				data_ov052_0215c894 = 0;
+			if (VSMenuScene::battlesOption == 2)
+				VSMenuScene::battlesOption = 0;
 			else
-				data_ov052_0215c894++;
+				VSMenuScene::battlesOption++;
 			break;
 		case 4:
 			selection = 1;
-			if (data_ov052_0215c88c == 0)
-				data_ov052_0215c88c = 2;
+			if (VSMenuScene::starsOption == 0)
+				VSMenuScene::starsOption = 2;
 			else
-				data_ov052_0215c88c--;
+				VSMenuScene::starsOption--;
 			break;
 		case 5:
 			selection = 1;
-			if (data_ov052_0215c88c == 2)
-				data_ov052_0215c88c = 0;
+			if (VSMenuScene::starsOption == 2)
+				VSMenuScene::starsOption = 0;
 			else
-				data_ov052_0215c88c++;
+				VSMenuScene::starsOption++;
 			break;
 		case 6:
 			selection = 2;
-			if (data_ov052_0215c89c == 0)
-				data_ov052_0215c89c = 2;
+			if (VSMenuScene::livesOption == 0)
+				VSMenuScene::livesOption = 2;
 			else
-				data_ov052_0215c89c--;
+				VSMenuScene::livesOption--;
 			break;
 		case 7:
 			selection = 2;
-			if (data_ov052_0215c89c == 2)
-				data_ov052_0215c89c = 0;
+			if (VSMenuScene::livesOption == 2)
+				VSMenuScene::livesOption = 0;
 			else
-				data_ov052_0215c89c++;
+				VSMenuScene::livesOption++;
 			break;
 		case 8:
 		case 9:
 			selection = 3;
-			data_ov052_0215c888 ^= 1;
+			VSMenuScene::chooseCourse ^= 1;
 			break;
 		case 1:
 			state = 0x11;
@@ -981,48 +981,48 @@ void VSMenuScene::func_ov052_02154c9c()
 			switch (oldSelection) {
 			case 0:
 				if (oldOption0 == 0)
-					data_ov052_0215c894 = 2;
+					VSMenuScene::battlesOption = 2;
 				else
-					data_ov052_0215c894--;
+					VSMenuScene::battlesOption--;
 				break;
 			case 1:
 				if (oldOption1 == 0)
-					data_ov052_0215c88c = 2;
+					VSMenuScene::starsOption = 2;
 				else
-					data_ov052_0215c88c--;
+					VSMenuScene::starsOption--;
 				break;
 			case 2:
 				if (oldOption2 == 0)
-					data_ov052_0215c89c = 2;
+					VSMenuScene::livesOption = 2;
 				else
-					data_ov052_0215c89c--;
+					VSMenuScene::livesOption--;
 				break;
 			case 3:
-				data_ov052_0215c888 ^= 1;
+				VSMenuScene::chooseCourse ^= 1;
 				break;
 			}
 		} else if ((input & 0x10) != 0) {
 			switch (oldSelection) {
 			case 0:
 				if (oldOption0 == 2)
-					data_ov052_0215c894 = 0;
+					VSMenuScene::battlesOption = 0;
 				else
-					data_ov052_0215c894++;
+					VSMenuScene::battlesOption++;
 				break;
 			case 1:
 				if (oldOption1 == 2)
-					data_ov052_0215c88c = 0;
+					VSMenuScene::starsOption = 0;
 				else
-					data_ov052_0215c88c++;
+					VSMenuScene::starsOption++;
 				break;
 			case 2:
 				if (oldOption2 == 2)
-					data_ov052_0215c89c = 0;
+					VSMenuScene::livesOption = 0;
 				else
-					data_ov052_0215c89c++;
+					VSMenuScene::livesOption++;
 				break;
 			case 3:
-				data_ov052_0215c888 ^= 1;
+				VSMenuScene::chooseCourse ^= 1;
 				break;
 			}
 		}
@@ -1033,10 +1033,10 @@ void VSMenuScene::func_ov052_02154c9c()
 		NDS::Memory::copy8(BG_PALETTE_SUB + 0x3a, BG_PALETTE_SUB + 0x5a, 6);
 		func_02012398(0xe9, nullptr);
 	} else {
-		if (oldOption0 != data_ov052_0215c894 ||
-			oldOption1 != data_ov052_0215c88c ||
-			oldOption2 != data_ov052_0215c89c ||
-			oldToggle != data_ov052_0215c888 ||
+		if (oldOption0 != VSMenuScene::battlesOption ||
+			oldOption1 != VSMenuScene::starsOption ||
+			oldOption2 != VSMenuScene::livesOption ||
+			oldToggle != VSMenuScene::chooseCourse ||
 			oldSelection != selection) {
 			func_02012398(0xe5, nullptr);
 		}

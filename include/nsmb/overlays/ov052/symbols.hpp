@@ -4,12 +4,6 @@
 
 // Unresolved overlay-052 data. Declarations are centralized here so all
 // translation units agree on linkage and type.
-extern u8 data_ov052_0215aee4[];
-extern u8 data_ov052_0215aee8[];
-extern u8 data_ov052_0215aeec[];
-extern u16 data_ov052_0215aef4[];
-extern u16 data_ov052_0215af00[];
-extern u32 data_ov052_0215af0c[];
 extern u32 data_ov052_0215af24[];
 
 extern u8 data_ov052_0215b85c[];
@@ -48,11 +42,3 @@ extern u8 data_ov052_0215c3e0[];
 extern u8 data_ov052_0215c3f8[];
 extern u8 data_ov052_0215c418[];
 extern u16 data_ov052_0215c880[];
-extern u8 data_ov052_0215c884;
-extern u8 data_ov052_0215c888;
-extern u8 data_ov052_0215c88c;
-extern u8 data_ov052_0215c890;
-extern u8 data_ov052_0215c894;
-extern u8 data_ov052_0215c898;
-extern u8 data_ov052_0215c89c;
-extern u8 data_ov052_0215c8a0[];

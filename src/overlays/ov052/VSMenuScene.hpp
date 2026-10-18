@@ -72,6 +72,24 @@ class VSMenuScene : public Scene
 	void func_ov052_02153d38();
 	static void *create();
 
+	// Match settings and progress. These persist while the players move
+	// between the menu and the battles.
+	static u8 battlesPlayed;
+	static u8 chooseCourse; // 0: the next course is picked at random
+	static u8 starsOption; // index into starsToWin
+	static u8 course; // 0-4
+	static u8 battlesOption; // index into battlesToWin
+	static u8 playedCourses; // one bit per course
+	static u8 livesOption; // index into lives
+	static u8 battleWins[2];
+
+	static const u8 starsToWin[]; // 3, 5, 10
+	static const u8 battlesToWin[]; // 1, 2, 3
+	static const u8 courseIDs[];
+	static const u16 courseCursorX[];
+	static const u16 courseCursorY[];
+	static const u32 lives[]; // 3, 5, 99
+
 	s32 onCreate();
 	s32 onDestroy();
 	s32 onUpdate();
