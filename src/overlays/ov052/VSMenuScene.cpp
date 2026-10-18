@@ -86,10 +86,10 @@ void VSMenuScene::func_ov052_02155cf8()
 void VSMenuScene::func_ov052_02155c9c()
 {
 	// TODO, these are paletes, how best to define them?
-	FS::loadFileLZ77(NSMB_ARC_FID(menu_title_d_2d_UI_O_2P_game_setting_b_ud_ncl_bin), (void *)0x05000000);
-	FS::loadFileLZ77(NSMB_ARC_FID(menu_title_d_2d_UI_O_2P_game_setting_o_d_ncl_bin), (void *)0x05000200);
-	NDS::Memory::copyFast((void *)0x05000000, (void *)0x05000400, 0xe0);
-	NDS::Memory::copyFast((void *)0x05000200, (void *)0x05000600, 0x1a0);
+	FS::loadFileLZ77(NSMB_ARC_FID(menu_title_d_2d_UI_O_2P_game_setting_b_ud_ncl_bin), BG_PALETTE);
+	FS::loadFileLZ77(NSMB_ARC_FID(menu_title_d_2d_UI_O_2P_game_setting_o_d_ncl_bin), SPRITE_PALETTE);
+	NDS::Memory::copyFast(BG_PALETTE, BG_PALETTE_SUB, 0xe0);
+	NDS::Memory::copyFast(SPRITE_PALETTE, SPRITE_PALETTE_SUB, 0x1a0);
 }
 
 void VSMenuScene::func_ov052_02155ba8()
@@ -186,12 +186,12 @@ display_configured:
 	REG_DISPCNT &= ~0x07000000;
 	REG_DISPCNT = (REG_DISPCNT & ~0x38000000) | 0x08000000;
 
-	vu16 *bg0Main = (vu16 *)0x0400000c;
-	vu16 *bg1Main = (vu16 *)0x0400000e;
-	vu16 *bg0Sub = (vu16 *)0x04001008;
-	vu16 *bg1Sub = (vu16 *)0x0400100a;
-	vu16 *bg2Sub = (vu16 *)0x0400100c;
-	vu16 *bg3Sub = (vu16 *)0x0400100e;
+	vu16 *bg0Main = &REG_BG2CNT;
+	vu16 *bg1Main = &REG_BG3CNT;
+	vu16 *bg0Sub = &REG_BG0CNT_SUB;
+	vu16 *bg1Sub = &REG_BG1CNT_SUB;
+	vu16 *bg2Sub = &REG_BG2CNT_SUB;
+	vu16 *bg3Sub = &REG_BG3CNT_SUB;
 	*bg0Main = *bg0Main & ~3;
 	*bg1Main = (*bg1Main & ~3) | 1;
 	*bg0Sub = *bg0Sub & ~3;
@@ -827,7 +827,7 @@ void VSMenuScene::func_ov052_02154bb4()
 void VSMenuScene::func_ov052_02154af4()
 {
 	if (Math::expLerp(&mainBackgroundPosition.y, 0x100000, 0x300, 0x28000, 0x3000) == 0) {
-		NDS::Memory::copy8((void *)0x050004ba, (void *)0x050004b4, 6);
+		NDS::Memory::copy8(BG_PALETTE_SUB + 0x5d, BG_PALETTE_SUB + 0x5a, 6);
 		state = 5;
 		func_ov052_02155b00();
 	}
@@ -1030,7 +1030,7 @@ void VSMenuScene::func_ov052_02154c9c()
 
 	if (oldState != state) {
 		transitionTimer = 3;
-		NDS::Memory::copy8((void *)0x05000474, (void *)0x050004b4, 6);
+		NDS::Memory::copy8(BG_PALETTE_SUB + 0x3a, BG_PALETTE_SUB + 0x5a, 6);
 		func_02012398(0xe9, nullptr);
 	} else {
 		if (oldOption0 != data_ov052_0215c894 ||
@@ -1049,9 +1049,9 @@ void VSMenuScene::func_ov052_02154c9c()
 
 	if (oldSelection != selection) {
 		if (selection == 4)
-			NDS::Memory::copy8((void *)0x05000454, (void *)0x050004b4, 6);
+			NDS::Memory::copy8(BG_PALETTE_SUB + 0x2a, BG_PALETTE_SUB + 0x5a, 6);
 		else if (oldSelection == 4)
-			NDS::Memory::copy8((void *)0x050004ba, (void *)0x050004b4, 6);
+			NDS::Memory::copy8(BG_PALETTE_SUB + 0x5d, BG_PALETTE_SUB + 0x5a, 6);
 	}
 
 	selectionBackgroundPosition.x = mainBackgroundPosition.x;

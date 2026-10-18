@@ -902,7 +902,7 @@ void loadFileToOBJVram(u32 extendedFileID, u32 offset)
 
 	Cache::CacheEntry *entry = Cache::Internal::findFile(extendedFileID);
 	NDS::Memory::copy8(
-		file, reinterpret_cast<void *>(0x06400000 + offset), entry->size);
+		file, SPRITE_GFX + offset, entry->size);
 }
 
 void loadOBJPalette(u32 extendedFileID, u32 offset, bool compressed)

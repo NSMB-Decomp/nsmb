@@ -9,7 +9,7 @@ extern "C" {
 
 void func_ov052_02153760(VSMenuScene *)
 {
-	NDS::Memory::copyFast((void *)0x05000460, (void *)0x05000440, 0x20);
+	NDS::Memory::copyFast(BG_PALETTE_SUB + 0x30, BG_PALETTE_SUB + 0x20, 0x20);
 }
 
 void func_ov052_02153780(VSMenuScene *)

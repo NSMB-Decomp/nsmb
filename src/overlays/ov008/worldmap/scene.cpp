@@ -1451,7 +1451,7 @@ extern "C" u32 func_ov008_020cf7c8(WorldmapScene* scene)
 		0, 0x800);
 	FS::loadFileLZ77(
 		NSMB_FID_uiStudio_d_2d_UI_O_1P_course_select_b_d_ncl_bin,
-		reinterpret_cast<void *>(0x05000400));
+		BG_PALETTE_SUB);
 
 	NDS::Graphics::setSubVisiblePlanes(
 		NDS_VISIBLE_PLANE_BACKGROUND0 |
@@ -1509,7 +1509,7 @@ extern "C" u32 func_ov008_020cf7c8(WorldmapScene* scene)
 	u8 paletteBytes[8];
 	paletteBytes[0] = 0xff;
 	u8* paletteDestination =
-		reinterpret_cast<u8 *>(0x06400000);
+		SPRITE_GFX;
 	for (s32 index = 0; index < 0x80; index++) {
 		NDS::Memory::copy8(
 			paletteBytes, paletteDestination, 1);

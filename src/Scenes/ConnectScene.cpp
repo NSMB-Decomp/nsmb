@@ -52,7 +52,7 @@ void ConnectScene::func_02003580()
 	NDS::Graphics::setMainObjectTileMapping1D128K();
 	NDS::Graphics::setMainObjectCharacterBase(0);
 	NDS::Graphics::setMainObjectScreenBase(1);
-	*(vu16 *)0x04000304 |= 0x8000;
+	REG_POWER_CNT |= 0x8000;
 
 	NDS::Graphics::configureMainTextBackground(0, 0, 0, 4, 6, 0);
 	NDS::Graphics::configureMainTextBackground(1, 1, 0, 2, 2, 0);

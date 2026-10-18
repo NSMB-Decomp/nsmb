@@ -137,7 +137,7 @@ void TitleScreenScene::pendingDestroy()
 
 void TitleScreenScene::loadMainMenuGraphics()
 {
-	NDS::Memory::clearFast(0xc0, 0x07000400, 0x400);
+	NDS::Memory::clearFast(0xc0, (u32)OAM_SUB, 0x400);
 	void *buttonHitboxes = FS::Cache::loadFile(
 		NSMB_FID(uiStudio_UI_O_menu_title_d_bnbl), false);
 	void *buttonCells = FS::Cache::loadFile(
@@ -147,10 +147,10 @@ void TitleScreenScene::loadMainMenuGraphics()
 	NDS::Graphics::setSubObjectTileMapping2D();
 	FS::loadFileLZ77(
 		NSMB_FID(uiStudio_UI_O_menu_title_o_d_ncg_bin),
-		(void *)0x06600000);
+		SPRITE_GFX_SUB);
 	FS::loadFileLZ77(
 		NSMB_FID(uiStudio_d_2d_UI_O_menu_title_o_d_ncl_bin),
-		(void *)0x05000600);
+		SPRITE_PALETTE_SUB);
 }
 
 s32 TitleScreenScene::onUpdate()
@@ -337,7 +337,7 @@ void TitleScreenScene::updateFileSelect()
 
 void TitleScreenScene::loadFileSelectGraphics()
 {
-	NDS::Memory::clearFast(0xc0, 0x07000400, 0x400);
+	NDS::Memory::clearFast(0xc0, (u32)OAM_SUB, 0x400);
 	void *buttonHitboxes = FS::Cache::loadFile(
 		NSMB_FID(uiStudio_UI_O_menu_select_d_bnbl), false);
 	void *buttonCells = FS::Cache::loadFile(
@@ -347,10 +347,10 @@ void TitleScreenScene::loadFileSelectGraphics()
 	NDS::Graphics::setSubObjectTileMapping1D32K();
 	FS::loadFileLZ77(
 		NSMB_FID(uiStudio_UI_O_menu_select_o_d_ncg_bin),
-		(void *)0x06600000);
+		SPRITE_GFX_SUB);
 	FS::loadFileLZ77(
 		NSMB_FID(uiStudio_d_2d_UI_O_menu_select_o_d_ncl_bin),
-		(void *)0x05000600);
+		SPRITE_PALETTE_SUB);
 	func_ov000_020bd604();
 }
 
@@ -1876,10 +1876,10 @@ void TitleScreenScene::initializeOptions()
 	NDS::Graphics::setSubObjectTileMapping1D32K();
 	FS::loadFileLZ77(
 		NSMB_FID(uiStudio_UI_O_menu_option_o_d_ncg_bin),
-		(void *)0x06600000);
+		SPRITE_GFX_SUB);
 	FS::loadFileLZ77(
 		NSMB_FID(uiStudio_d_2d_UI_O_menu_option_o_d_ncl_bin),
-		(void *)0x05000600);
+		SPRITE_PALETTE_SUB);
 
 	this->stateID = OptionsState_Enter;
 	this->optionsCurrentButton = 0;

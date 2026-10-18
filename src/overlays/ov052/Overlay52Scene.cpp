@@ -52,14 +52,14 @@ s32 func_ov052_02152978()
 s32 func_ov052_021529b4(Overlay52Scene *scene)
 {
 	NDS::Graphics::setMainDisplayMode(1, 5, 1);
-	*(vu16 *)0x04000304 |= 0x8000;
+	REG_POWER_CNT |= 0x8000;
 	REG_DISPCNT = (REG_DISPCNT & ~0x1f00) | 0x1000;
 	data_02085a88 = 0x10;
 
-	vu16 *bg0 = (vu16 *)0x04000008;
-	vu16 *bg1 = (vu16 *)0x0400000a;
-	vu16 *bg2 = (vu16 *)0x0400000c;
-	vu16 *bg3 = (vu16 *)0x0400000e;
+	vu16 *bg0 = &REG_BG0CNT;
+	vu16 *bg1 = &REG_BG1CNT;
+	vu16 *bg2 = &REG_BG2CNT;
+	vu16 *bg3 = &REG_BG3CNT;
 	*bg0 &= ~3;
 	*bg1 = (*bg1 & ~3) | 3;
 	*bg2 = (*bg2 & ~3) | 1;
@@ -80,7 +80,7 @@ s32 func_ov052_021529b4(Overlay52Scene *scene)
 			uiStudio_UI_O_2P_course_in_demo_o_u_ncg_bin,
 			Dat_2D_UI_O_2P_course_in_demo_o_u_ncg_bin
 		),
-		(void *)0x06400000
+		SPRITE_GFX
 	);
 	FS::loadOBJPalette(
 		NSMB_VS_FID(
