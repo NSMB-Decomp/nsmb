@@ -111,7 +111,6 @@ extern u8 data_02085a38;
 extern u16 data_02085a6c;
 extern u32 data_02085a7c;
 extern u32 data_02085aa0;
-extern i32 data_02085aa4;
 extern u32 data_02085abc;
 extern u32 data_02085ac4;
 extern u8 data_02085ac8;

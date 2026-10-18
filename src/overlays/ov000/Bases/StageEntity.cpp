@@ -565,7 +565,7 @@ void StageEntity::func_ov000_0209da0c()
 
 void func_ov000_0209e5a8(u32 x, u32 y, s32 playerId)
 {
-	x &= data_02085aa4;
+	x &= Game::wrapX;
 	if (playerId == -1) {
 		playerId = 3;
 	}
@@ -1375,7 +1375,7 @@ bool StageEntity::setMegaCollision(const PlayerActor &player)
 void StageEntity::spawnCoin()
 {
 	Vec3_32 coinPosition = func_02045bdc(position, centerOffset);
-	coinPosition.x &= data_02085aa4;
+	coinPosition.x &= Game::wrapX;
 	Actor *coin = Actor::spawnActor(0x42, 5, &coinPosition, 0, 0, 0);
 	if (coin != 0) {
 		coin->position.x -= 0x8000;
@@ -1672,7 +1672,7 @@ bool func_ov000_0209bddc(
 		wrappedDistance = wrappedDistance < 0
 					  ? -wrappedDistance
 					  : wrappedDistance;
-		i32 wrapWidth = (data_02085aa4 + 1) >> 12;
+		i32 wrapWidth = (Game::wrapX + 1) >> 12;
 		i32 wrapHalfWidth = wrapWidth >> 1;
 		if (wrappedDistance >= wrapHalfWidth) {
 			if (cameraCenterX > wrapHalfWidth) {
@@ -1781,9 +1781,9 @@ void func_ov000_0209ba94(
 				data_0208b168.info->value02 &
 				0x20;
 			if (wrapEnabled != 0 &&
-			    data_02085aa4 != 0xfffff) {
+			    Game::wrapX != 0xfffff) {
 				i32 wrapMask =
-					data_02085aa4 >> 16;
+					Game::wrapX >> 16;
 				objectLeft &= wrapMask;
 				objectRight &= wrapMask;
 			}
@@ -1887,8 +1887,8 @@ void func_ov000_0209b7e8(u32 playerID)
 	u8 wrapEnabled =
 		data_0208b168.info->value02 & 0x20;
 	if (wrapEnabled != 0 &&
-	    data_02085aa4 != 0xfffff) {
-		i32 wrapMask = data_02085aa4 >> 16;
+	    Game::wrapX != 0xfffff) {
+		i32 wrapMask = Game::wrapX >> 16;
 		right &= wrapMask;
 		left &= wrapMask;
 	}
@@ -2068,7 +2068,7 @@ void func_ov000_0209b320(u8 playerID)
 	i32 left = cameraX - 0x20;
 	i32 cameraHalfWidth =
 		(cameraExtent + 0x30 + cameraX - left) >> 1;
-	i32 wrapWidth = (data_02085aa4 + 1) >> 12;
+	i32 wrapWidth = (Game::wrapX + 1) >> 12;
 	i32 cameraCenterX = left + cameraHalfWidth;
 	i32 wrapHalfWidth = wrapWidth >> 1;
 
@@ -2118,7 +2118,7 @@ void func_ov000_0209b320(u8 playerID)
 							 .info
 							 ->value02 &
 						 0x20) != 0 &&
-					    data_02085aa4 != 0xfffff) {
+					    Game::wrapX != 0xfffff) {
 						++collisionCount;
 					}
 
@@ -2306,7 +2306,7 @@ void func_ov000_0209b040(u8 playerID)
 			if (entry->id == 0x12a &&
 			    (u8)(data_0208b168.info->value02 &
 				 0x20) != 0 &&
-			    data_02085aa4 != 0xfffff) {
+			    Game::wrapX != 0xfffff) {
 				++collisionCount;
 			}
 
@@ -2849,7 +2849,7 @@ void StageEntity::attachToPlayerHands(fx32 z, fx32 y, fx32 x)
 
 	PlayerActor *player = Game::getPlayer(linked_player);
 	Vec3_32 handPosition = player->getHandsPosition();
-	handPosition.x &= data_02085aa4;
+	handPosition.x &= Game::wrapX;
 
 	Game_modelMatrix = player->unk68C;
 	MTX::translate(Game_modelMatrix, x, y, z);
@@ -3681,7 +3681,7 @@ bool StageEntity::isPlayerInZone(PlayerActor *player, u32 id)
 	fx32 maxX = rect.x + rect.halfWidth;
 	fx32 minY = rect.y - rect.halfHeight;
 	Vec3_32 &position = player->position;
-	position.x &= data_02085aa4;
+	position.x &= Game::wrapX;
 	fx32 posX = position.x;
 	if (rect.x <= posX && posX <= maxX &&
 	    rect.y >= position.y && position.y >= minY) {

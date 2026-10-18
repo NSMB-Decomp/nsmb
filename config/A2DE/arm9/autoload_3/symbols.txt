@@ -89,7 +89,7 @@ data_02085a94 kind:bss addr:0x02085a94
 data_02085a98 kind:bss addr:0x02085a98
 data_02085a9c kind:bss addr:0x02085a9c
 data_02085aa0 kind:bss addr:0x02085aa0
-data_02085aa4 kind:bss addr:0x02085aa4
+_ZN4Game5wrapXE kind:bss addr:0x02085aa4
 data_02085aa8 kind:bss addr:0x02085aa8
 data_02085aac kind:bss addr:0x02085aac
 data_02085ab0 kind:bss addr:0x02085ab0

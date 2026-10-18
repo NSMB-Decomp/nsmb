@@ -154,6 +154,7 @@ namespace Game
 extern u8 character; // old luigiMode
 extern i32 cameraY[2];
 extern i32 cameraZoomY[2];
+extern fx32 wrapX;
 u32 getBootScene();
 void drawBNCLSpriteSub(u32 id, void *data, u32 flags, u8 palette, u8 affineSet, Vec2_32 *scale, i16 rotation, i16 *rotation_center, u8 procSettings, u32 x, u32 y);
 PlayerActor *getPlayer(u32);

@@ -385,16 +385,16 @@ Actor *Actor::calcDistanceToPlayerWrap(i32 x, i32 y, i32 *distanceX, i32 *distan
 	closestPlayer = NULL;
 	playerIndex = 0;
 	closestDistance = 0x7fffffff;
-	x &= data_02085aa4 >> 12;
+	x &= Game::wrapX >> 12;
 
 	if (func_020202a0() > 0) {
 		do {
 			Actor *player = (Actor *)Game::getPlayer(playerIndex);
 			if (player != NULL) {
 				i32 playerY = (player->position.y + player->centerOffset.y) >> 12;
-				i32 wrapDistance = ((data_02085aa4 + 1) / 2) >> 12;
+				i32 wrapDistance = ((Game::wrapX + 1) / 2) >> 12;
 				i32 playerPositionX = player->position.x + player->centerOffset.x;
-				i32 playerX = (playerPositionX & data_02085aa4) >> 12;
+				i32 playerX = (playerPositionX & Game::wrapX) >> 12;
 				playerX -= x;
 				if (playerX < 0) {
 					if (playerX < -wrapDistance) {
@@ -474,8 +474,8 @@ bool Actor::isBehindTargetWrap(i32 this_, i32 other)
 {
 	i32 iVar2;
 	i32 iVar1;
-	iVar2 = (this_ & data_02085aa4) - (other & data_02085aa4);
-	iVar1 = (data_02085aa4 + 1) / 2;
+	iVar2 = (this_ & Game::wrapX) - (other & Game::wrapX);
+	iVar1 = (Game::wrapX + 1) / 2;
 	if (iVar2 < 0) {
 		return iVar2 >= -iVar1;
 	} else {
