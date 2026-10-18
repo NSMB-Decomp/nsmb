@@ -96,36 +96,6 @@ s32 StageEntity::onUpdate()
 	return this->onUpdate_0();
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 void StageEntity::_12()
 {
 	this->playerCollisionCooldown[this->linked_player] = 0xc;
@@ -179,8 +149,7 @@ void StageEntity::applyMovement()
 {
 	Vec3_32 movement;
 	i32 speed = this->velocity.x < 0 ? -this->velocity.x : this->velocity.x;
-	u16 angle = (u16)this->collisionMgr.getGroundAngle(
-		((u32)this->velocity.x & 0x80000000) >> 31);
+	u16 angle = (u16)this->collisionMgr.getGroundAngle(((u32)this->velocity.x & 0x80000000) >> 31);
 	if (this->quicksandFlag) {
 		movement.x = 0;
 		movement.y = 0;
@@ -204,8 +173,7 @@ u32 StageEntity::updateLiquids(fx32 defaultAccelY)
 	if (result == 0) {
 		return result;
 	}
-	return this->checkLiquidCollision(
-		this->position, this->lastPosition, this->liquidWaveHeight, true);
+	return this->checkLiquidCollision(this->position, this->lastPosition, this->liquidWaveHeight, true);
 }
 
 void StageEntity::updateLiquidCollision(const Vec3_32 &position, fx32 defaultAccelY)
@@ -225,8 +193,7 @@ void StageEntity::updateLiquidCollision(const Vec3_32 &position, fx32 defaultAcc
 
 bool StageEntity::updateLiquidPhysics(const Vec3_32 &position, fx32 defaultAccelY)
 {
-	if (CollisionMgr::getLiquidCollision(position.x, position.y, 0, -1) !=
-	    CollisionMgr::LIQUID_NONE) {
+	if (CollisionMgr::getLiquidCollision(position.x, position.y, 0, -1) != CollisionMgr::LIQUID_NONE) {
 		this->accelV = -0x100;
 		if (this->minVelocity.y < -0x1000) {
 			this->minVelocity.y = -0x1000;
@@ -251,13 +218,11 @@ bool StageEntity::updateLiquidPhysics(const Vec3_32 &position, fx32 defaultAccel
 	return false;
 }
 
-u32 StageEntity::checkLiquidCollision(
-	const Vec3_32 &position, const Vec3_32 &lastPosition, fx32 waveHeight, bool playSFX)
+u32 StageEntity::checkLiquidCollision(const Vec3_32 &position, const Vec3_32 &lastPosition, fx32 waveHeight, bool playSFX)
 {
 	fx32 lastSurface = data_ov000_020cadac[data_02085a7c];
 	fx32 surface = data_ov000_020cae0c[data_02085a7c];
-	if ((lastPosition.y <= lastSurface && surface < position.y) ||
-	    (position.y < surface && lastSurface <= lastPosition.y)) {
+	if ((lastPosition.y <= lastSurface && surface < position.y) || (position.y < surface && lastSurface <= lastPosition.y)) {
 		func_ov054_021646e0(position.x, waveHeight);
 		Vec3_32 effectPosition;
 		effectPosition.set(position.x, surface, position.z);
@@ -340,8 +305,7 @@ void StageEntity::_35()
 	playerID = 0;
 	if (func_020202a0() > 0) {
 		do {
-			PlayerActor *player =
-				Game::getPlayer(playerID);
+			PlayerActor *player = Game::getPlayer(playerID);
 			if (player != 0 && player->linkedActor == this) {
 				player->func_ov011_0212bde0(this);
 			}
@@ -357,8 +321,7 @@ void StageEntity::_35()
 
 void StageEntity::_32()
 {
-	PlayerActor *player =
-		Game::getPlayer(this->linked_player);
+	PlayerActor *player = Game::getPlayer(this->linked_player);
 	this->activeCollider.unlink();
 	this->direction = this->collisionDirection;
 	if (player->scoreComboFenceSlam < 10) {
@@ -370,11 +333,9 @@ void StageEntity::_32()
 
 	u32 scoreCombo = player->scoreComboFenceSlam;
 	if (this->scoreType == 0) {
-		this->getScorePointsRegular(
-			scoreCombo, 0, 0x18000, this->linked_player);
+		this->getScorePointsRegular(scoreCombo, 0, 0x18000, this->linked_player);
 	} else if (this->scoreType == 1) {
-		this->getScorePointsEnhanced(
-			scoreCombo, 0, 0x18000, this->linked_player);
+		this->getScorePointsEnhanced(scoreCombo, 0, 0x18000, this->linked_player);
 	}
 	if (scoreCombo < 8) {
 		func_02012398(scoreCombo + 0x70, &this->position);
@@ -382,9 +343,7 @@ void StageEntity::_32()
 		func_02012398(0x77, &this->position);
 	}
 	this->minVelocity.y = -0x4000;
-	this->defeat(
-		data_ov000_020c4ed4[this->direction] >> 1,
-		0x6000, -0x600, 0);
+	this->defeat(data_ov000_020c4ed4[this->direction] >> 1, 0x6000, -0x600, 0);
 }
 
 void StageEntity::_31()
@@ -405,18 +364,15 @@ void StageEntity::_31()
 
 void StageEntity::onGroundPound()
 {
-	PlayerActor *player =
-		Game::getPlayer(this->linked_player);
-	Vec3_32 soundPosition =
-		func_02045bdc(this->position, this->centerOffset);
+	PlayerActor *player = Game::getPlayer(this->linked_player);
+	Vec3_32 soundPosition = func_02045bdc(this->position, this->centerOffset);
 	this->permanentDestroy = true;
 	this->activeCollider.unlink();
 
 	s32 playerID = 0;
 	if (func_020202a0() > 0) {
 		do {
-			PlayerActor *linkedPlayer =
-				Game::getPlayer(playerID);
+			PlayerActor *linkedPlayer = Game::getPlayer(playerID);
 			if (linkedPlayer != 0 && linkedPlayer->linkedActor == this) {
 				linkedPlayer->func_ov011_0212bde0(this);
 			}
@@ -433,21 +389,14 @@ void StageEntity::onGroundPound()
 		player->scoreComboStandard = 8;
 	}
 	if (this->scoreType == 0) {
-		this->getScorePointsRegular(
-			player->scoreComboStandard, 0, 0x18000,
-			this->linked_player);
+		this->getScorePointsRegular(player->scoreComboStandard, 0, 0x18000, this->linked_player);
 	} else if (this->scoreType == 1) {
-		this->getScorePointsEnhanced(
-			player->scoreComboStandard, 0, 0x18000,
-			this->linked_player);
+		this->getScorePointsEnhanced(player->scoreComboStandard, 0, 0x18000, this->linked_player);
 	}
 
 	{
 		Vec3_32 effectPosition;
-		effectPosition.set(
-			(this->collisionSelfPos.x + this->collisionActorPos.x) >> 1,
-			(this->collisionSelfPos.y + this->collisionActorPos.y) >> 1,
-			0x200000);
+		effectPosition.set((this->collisionSelfPos.x + this->collisionActorPos.x) >> 1, (this->collisionSelfPos.y + this->collisionActorPos.y) >> 1, 0x200000);
 		func_02022b64(0xba, &effectPosition);
 		func_02022b64(0xbb, &effectPosition);
 		func_02022b64(0xbc, &effectPosition);
@@ -459,16 +408,11 @@ void StageEntity::onGroundPound()
 void StageEntity::shellStarted(PlayerActor &player)
 {
 	this->linked_player = player.linked_player;
-	this->getScorePointsRegular(
-		player.cycleStandardScoreCombo(), 0, 0x18000,
-		this->linked_player);
+	this->getScorePointsRegular(player.cycleStandardScoreCombo(), 0, 0x18000, this->linked_player);
 
 	{
 		Vec3_32 effectPosition;
-		effectPosition.set(
-			(this->collisionSelfPos.x + this->collisionActorPos.x) >> 1,
-			(this->collisionSelfPos.y + this->collisionActorPos.y) >> 1,
-			0x200000);
+		effectPosition.set((this->collisionSelfPos.x + this->collisionActorPos.x) >> 1, (this->collisionSelfPos.y + this->collisionActorPos.y) >> 1, 0x200000);
 		func_02022b64(0xd2, &effectPosition);
 		func_02022b64(0xd3, &effectPosition);
 	}
@@ -476,8 +420,7 @@ void StageEntity::shellStarted(PlayerActor &player)
 	this->direction = this->isBehindTarget(&player);
 	fx32 playerVelocity = player.velocity.x;
 	fx32 shellVelocity = data_ov000_020c1f40[this->direction];
-	u8 playerVelocityDirection =
-		((u32)playerVelocity & 0x80000000) >> 31;
+	u8 playerVelocityDirection = ((u32)playerVelocity & 0x80000000) >> 31;
 	if (this->direction == playerVelocityDirection) {
 		shellVelocity += playerVelocity >> 1;
 	}
@@ -508,8 +451,7 @@ bool StageEntity::setSpinDrillCollision(const PlayerActor &player)
 	if ((this->properties & ObjectInfo::EP_SpinDrill) == 0) {
 		return false;
 	}
-	i32 delta = (this->position.x + this->centerOffset.x) -
-		    (player.position.x + player.centerOffset.x);
+	i32 delta = (this->position.x + this->centerOffset.x) - (player.position.x + player.centerOffset.x);
 	this->linked_player = player.linked_player;
 	this->collisionDirection = ((u32)delta & 0x80000000) >> 31;
 	this->collisionType |= CT_SpinDrill;
@@ -529,8 +471,7 @@ void StageEntity::_27()
 	this->direction = this->collisionDirection;
 
 	{
-		Vec3_32 effectPosition(
-			this->collisionSelfPos.x, this->collisionSelfPos.y, 0x200000);
+		Vec3_32 effectPosition(this->collisionSelfPos.x, this->collisionSelfPos.y, 0x200000);
 		func_02022b64(0x86, &effectPosition);
 	}
 	this->_43(data_ov000_020c1f68[this->direction], 0x4000, 0);
@@ -541,8 +482,7 @@ bool StageEntity::setBlueShellCollision(const PlayerActor &player)
 	if (this->properties & ObjectInfo::EP_NoBlueShell) {
 		return false;
 	}
-	i32 delta = (this->position.x + this->centerOffset.x) -
-		    (player.position.x + player.centerOffset.x);
+	i32 delta = (this->position.x + this->centerOffset.x) - (player.position.x + player.centerOffset.x);
 	this->linked_player = player.linked_player;
 	this->collisionDirection = ((u32)delta & 0x80000000) >> 31;
 	this->collisionType |= CT_BlueShell;
@@ -572,12 +512,7 @@ void func_ov000_0209e5a8(u32 x, u32 y, s32 playerId)
 	u32 alignedX = x & ~0xfff;
 	i32 alignedY = y & ~0xfff;
 
-	Stage::stageLayout->changeTile(
-		(u16)(alignedX >> 12),
-		(u16)-(alignedY >> 12),
-		0,
-		0
-	);
+	Stage::stageLayout->changeTile((u16)(alignedX >> 12), (u16) - (alignedY >> 12), 0, 0);
 
 	Vec3_32 position;
 	position.x = alignedX;
@@ -624,14 +559,12 @@ void StageEntity::func_ov000_020a020c()
 	return;
 }
 
-void StageEntity::defeat(
-	i32 velocityX, i32 velocityY, i32 accelerationY, u8 defeatArgument)
+void StageEntity::defeat(i32 velocityX, i32 velocityY, i32 accelerationY, u8 defeatArgument)
 {
 	s32 playerID = 0;
 	if (func_020202a0() > 0) {
 		do {
-			PlayerActor *player =
-				Game::getPlayer(playerID);
+			PlayerActor *player = Game::getPlayer(playerID);
 			if (player != 0 && player->linkedActor == this) {
 				player->func_ov011_0212bde0(this);
 			}
@@ -643,8 +576,7 @@ void StageEntity::defeat(
 		this->rotation.y = 0;
 		this->position.z = -0x180000;
 	} else {
-		this->rotation.y =
-			StageEntity::directionalRotationY[this->direction] << 1;
+		this->rotation.y = StageEntity::directionalRotationY[this->direction] << 1;
 		this->position.z = 0x180000;
 	}
 	this->defeatedArg = defeatArgument;
@@ -805,7 +737,8 @@ bool StageEntity::onUpdate_4()
 	return true;
 }
 
-bool StageEntity::updateCarriedCollision() {
+bool StageEntity::updateCarriedCollision()
+{
 
 	fx32 dummy = StageEntity::unitDirection[direction];
 	func_01ffe778(&collisionMgr, &dummy, 0);
@@ -819,24 +752,22 @@ bool StageEntity::updateCarriedCollision() {
 		// pos.add(centerOffset);
 
 		// Not allowed to be inlined!!
-		//Vec3_32 pos = position.add(centerOffset);
+		// Vec3_32 pos = position.add(centerOffset);
 
 		Vec3_32 pos;
 		pos = position;
 		pos.add2(centerOffset);
-		//Vec3_32s* r = &pos;
-		//r->x = position.x;
-		//r->y = position.y;
-		//r->z = position.z;
-		//NDS::Math::addVector32(&pos, &centerOffset, r);
+		// Vec3_32s* r = &pos;
+		// r->x = position.x;
+		// r->y = position.y;
+		// r->z = position.z;
+		// NDS::Math::addVector32(&pos, &centerOffset, r);
 
 		if (collisionMgr.getSolidTileType(pos.x, pos.y))
 			return true;
-
 	}
 
 	return false;
-
 }
 
 bool StageEntity::tryGrab(PlayerActor &player)
@@ -855,31 +786,27 @@ bool StageEntity::updateCarried()
 	if (linked_player == -1) {
 		return true;
 	}
-	PlayerActor *player =
-		Game::getPlayer(linked_player);
+	PlayerActor *player = Game::getPlayer(linked_player);
 	this->tryAttachToPlayerHands(0x4000, -0x2000, 0);
 
 	if (carriedAction & 1) {
-			this->_16();
-			Vec3_32 *playerVelocity = &player->velocity;
-			if (carriedAction & 2) {
-				fx32 throwX;
-				direction = playerDirection;
-				rotation.y = directionalRotationY[direction];
-				fx32 halfPlayerVelocity =
-					playerVelocity->x >> 1;
-				if (object_id == 0x23 || object_id == 0xed) {
-					throwX = data_ov000_020c1f44[direction];
-				} else {
+		this->_16();
+		Vec3_32 *playerVelocity = &player->velocity;
+		if (carriedAction & 2) {
+			fx32 throwX;
+			direction = playerDirection;
+			rotation.y = directionalRotationY[direction];
+			fx32 halfPlayerVelocity = playerVelocity->x >> 1;
+			if (object_id == 0x23 || object_id == 0xed) {
+				throwX = data_ov000_020c1f44[direction];
+			} else {
 				throwX = data_ov000_020c1f40[direction];
 			}
 
-			u8 playerVelocityDirection =
-					((u32)player->velocity.x &
-					 0x80000000) >> 31;
-				if (direction == playerVelocityDirection) {
-					throwX += halfPlayerVelocity;
-				}
+			u8 playerVelocityDirection = ((u32)player->velocity.x & 0x80000000) >> 31;
+			if (direction == playerVelocityDirection) {
+				throwX += halfPlayerVelocity;
+			}
 
 			if (throwX < minVelocity.x) {
 				throwX = Math::min(throwX, minVelocity.x);
@@ -891,17 +818,13 @@ bool StageEntity::updateCarried()
 			if (this->updateCarriedCollision()) {
 				activeCollider.unlink();
 				func_02012398(0x70, &position);
-				this->getScorePointsRegular(
-					1, 0, 0x18000,
-					player->linked_player);
+				this->getScorePointsRegular(1, 0, 0x18000, player->linked_player);
 				this->defeat(0, 0x3000, -0x300, 0);
 				this->_11();
 				return true;
 			}
-			if ((collisionMgr.flags &
-			     (0x15 << direction)) == 0) {
-				position.x +=
-					unitDirection[direction] * 0x6000;
+			if ((collisionMgr.flags & (0x15 << direction)) == 0) {
+				position.x += unitDirection[direction] * 0x6000;
 			}
 			accelV = -0x300;
 			thrownFlag = 1;
@@ -910,12 +833,9 @@ bool StageEntity::updateCarried()
 			rotation.y = directionalRotationY[direction];
 			fx32 releaseVelocity;
 			if (object_id == 0x23) {
-				releaseVelocity =
-					unitDirection[direction] * 0x600;
+				releaseVelocity = unitDirection[direction] * 0x600;
 			} else {
-				releaseVelocity =
-					unitDirection[direction] *
-					data_ov000_020c1f9c[releaseMode];
+				releaseVelocity = unitDirection[direction] * data_ov000_020c1f9c[releaseMode];
 			}
 			velocity.x = releaseVelocity;
 			velocity.y = 0;
@@ -923,17 +843,13 @@ bool StageEntity::updateCarried()
 			if (this->updateCarriedCollision()) {
 				activeCollider.unlink();
 				func_02012398(0x70, &position);
-				this->getScorePointsRegular(
-					1, 0, 0x18000,
-					player->linked_player);
+				this->getScorePointsRegular(1, 0, 0x18000, player->linked_player);
 				this->defeat(0, 0x3000, -0x300, 0);
 				this->_11();
 				return true;
 			}
-			if ((collisionMgr.flags &
-			     (0x15 << direction)) == 0) {
-				position.x +=
-					unitDirection[direction] * 0x6000;
+			if ((collisionMgr.flags & (0x15 << direction)) == 0) {
+				position.x += unitDirection[direction] * 0x6000;
 			}
 			position.y += 0x2000;
 			accelV = -0x300;
@@ -941,8 +857,7 @@ bool StageEntity::updateCarried()
 		}
 
 		if (this->checkSquished()) {
-			this->getScorePointsRegular(
-				1, 0, 0x18000, player->linked_player);
+			this->getScorePointsRegular(1, 0, 0x18000, player->linked_player);
 			this->_35();
 			return true;
 		}
@@ -975,10 +890,8 @@ bool StageEntity::onUpdate_6()
 bool StageEntity::onUpdate_7()
 {
 	if (BOOL(data_02085a84 != 0) != FALSE) {
-		Vec3_32 collisionPosition =
-			func_02045bdc(position, centerOffset);
-		if (CollisionMgr::getSolidTileType(
-			    collisionPosition.x, collisionPosition.y)) {
+		Vec3_32 collisionPosition = func_02045bdc(position, centerOffset);
+		if (CollisionMgr::getSolidTileType(collisionPosition.x, collisionPosition.y)) {
 			this->_35();
 			return true;
 		}
@@ -1082,15 +995,12 @@ bool StageEntity::updateDroppedHeavy()
 }
 bool StageEntity::updateRolling()
 {
-	PlayerActor *player =
-		Game::getPlayer(linked_player);
+	PlayerActor *player = Game::getPlayer(linked_player);
 	platformMgr.unk32 &= ~8;
 
 	if (BOOL(data_02085a84 != 0) != FALSE) {
-		Vec3_32 collisionPosition =
-			func_02045bdc(position, centerOffset);
-		if (CollisionMgr::getSolidTileType(
-			    collisionPosition.x, collisionPosition.y)) {
+		Vec3_32 collisionPosition = func_02045bdc(position, centerOffset);
+		if (CollisionMgr::getSolidTileType(collisionPosition.x, collisionPosition.y)) {
 			this->_35();
 			return true;
 		}
@@ -1149,94 +1059,15 @@ void StageEntity::_11()
 {
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 u16 data_ov000_020c22b8[2];
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 void StageEntity::onStomped()
 {
 }
 
-
-
 void StageEntity::setStompCollision(const PlayerActor &player)
 {
-	i32 delta = (this->position.x + this->centerOffset.x) -
-		    (player.position.x + player.centerOffset.x);
+	i32 delta = (this->position.x + this->centerOffset.x) - (player.position.x + player.centerOffset.x);
 	this->linked_player = player.linked_player;
 	this->collisionDirection = ((u32)delta & 0x80000000) >> 31;
 	this->collisionType |= CT_Stomp;
@@ -1247,8 +1078,7 @@ bool StageEntity::setMegaKickCollision(const PlayerActor &player)
 	if (this->properties & ObjectInfo::EP_NoMegaKick) {
 		return false;
 	}
-	i32 delta = (this->position.x + this->centerOffset.x) -
-		    (player.position.x + player.centerOffset.x);
+	i32 delta = (this->position.x + this->centerOffset.x) - (player.position.x + player.centerOffset.x);
 	this->linked_player = player.linked_player;
 	this->collisionDirection = ((u32)delta & 0x80000000) >> 31;
 	return true;
@@ -1266,8 +1096,7 @@ void StageEntity::_26()
 	this->activeCollider.unlink();
 	this->direction = this->collisionDirection;
 
-	fx32 knockback = player->velocity.x - this->velocity.x +
-			  ((fx32)StageEntity::unitDirection[this->direction] << 12);
+	fx32 knockback = player->velocity.x - this->velocity.x + ((fx32)StageEntity::unitDirection[this->direction] << 12);
 	if (knockback > 0x6000) {
 		knockback = 0x6000;
 	} else if (knockback < -0x6000) {
@@ -1275,8 +1104,7 @@ void StageEntity::_26()
 	}
 
 	{
-		Vec3_32 effectPosition(
-			this->collisionSelfPos.x, this->collisionSelfPos.y, 0x200000);
+		Vec3_32 effectPosition(this->collisionSelfPos.x, this->collisionSelfPos.y, 0x200000);
 		func_02022b64(0x86, &effectPosition);
 	}
 	this->_43(knockback, 0x3000, -0x300);
@@ -1284,8 +1112,7 @@ void StageEntity::_26()
 
 void StageEntity::_25()
 {
-	PlayerActor *player =
-		Game::getPlayer(this->linked_player);
+	PlayerActor *player = Game::getPlayer(this->linked_player);
 	if (player->scoreComboSliding < 10) {
 		++player->scoreComboSliding;
 	}
@@ -1295,11 +1122,9 @@ void StageEntity::_25()
 
 	s8 scoreCombo = player->scoreComboSliding;
 	if (this->scoreType == 0) {
-		this->getScorePointsRegular(
-			scoreCombo, 0, 0x18000, this->linked_player);
+		this->getScorePointsRegular(scoreCombo, 0, 0x18000, this->linked_player);
 	} else if (this->scoreType == 1) {
-		this->getScorePointsEnhanced(
-			scoreCombo, 0, 0x18000, this->linked_player);
+		this->getScorePointsEnhanced(scoreCombo, 0, 0x18000, this->linked_player);
 	}
 
 	this->direction = this->collisionDirection;
@@ -1315,8 +1140,7 @@ void StageEntity::_25()
 
 void StageEntity::_24()
 {
-	PlayerActor *player =
-		Game::getPlayer(this->linked_player);
+	PlayerActor *player = Game::getPlayer(this->linked_player);
 	if (player->scoreComboStarman < 10) {
 		++player->scoreComboStarman;
 	}
@@ -1326,11 +1150,9 @@ void StageEntity::_24()
 
 	s8 scoreCombo = player->scoreComboStarman;
 	if (this->scoreType == 0) {
-		this->getScorePointsRegular(
-			scoreCombo, 0, 0x18000, this->linked_player);
+		this->getScorePointsRegular(scoreCombo, 0, 0x18000, this->linked_player);
 	} else if (this->scoreType == 1) {
-		this->getScorePointsEnhanced(
-			scoreCombo, 0, 0x18000, this->linked_player);
+		this->getScorePointsEnhanced(scoreCombo, 0, 0x18000, this->linked_player);
 	}
 
 	this->direction = this->collisionDirection;
@@ -1364,8 +1186,7 @@ bool StageEntity::setMegaCollision(const PlayerActor &player)
 	if (this->properties & ObjectInfo::EP_NoMega) {
 		return false;
 	}
-	i32 delta = (this->position.x + this->centerOffset.x) -
-		    (player.position.x + player.centerOffset.x);
+	i32 delta = (this->position.x + this->centerOffset.x) - (player.position.x + player.centerOffset.x);
 	this->linked_player = player.linked_player;
 	this->collisionDirection = ((u32)delta & 0x80000000) >> 31;
 	this->collisionType |= CT_Mega;
@@ -1387,8 +1208,7 @@ bool StageEntity::setFenceSlamCollision(const PlayerActor &player)
 	if ((this->properties & ObjectInfo::EP_FenceSlam) == 0) {
 		return false;
 	}
-	i32 delta = (this->position.x + this->centerOffset.x) -
-		    (player.position.x + player.centerOffset.x);
+	i32 delta = (this->position.x + this->centerOffset.x) - (player.position.x + player.centerOffset.x);
 	this->linked_player = player.linked_player;
 	this->collisionDirection = ((u32)delta & 0x80000000) >> 31;
 	this->collisionType |= CT_FenceSlam;
@@ -1400,8 +1220,7 @@ bool StageEntity::setSlidingCollision(const PlayerActor &player)
 	if (this->properties & ObjectInfo::EP_NoSliding) {
 		return false;
 	}
-	i32 delta = (this->position.x + this->centerOffset.x) -
-		    (player.position.x + player.centerOffset.x);
+	i32 delta = (this->position.x + this->centerOffset.x) - (player.position.x + player.centerOffset.x);
 	this->linked_player = player.linked_player;
 	this->collisionDirection = ((u32)delta & 0x80000000) >> 31;
 	this->collisionType |= CT_Sliding;
@@ -1413,8 +1232,7 @@ bool StageEntity::setStarmanCollision(const PlayerActor &player)
 	if (this->properties & ObjectInfo::EP_NoStarman) {
 		return false;
 	}
-	i32 delta = (this->position.x + this->centerOffset.x) -
-		    (player.position.x + player.centerOffset.x);
+	i32 delta = (this->position.x + this->centerOffset.x) - (player.position.x + player.centerOffset.x);
 	this->linked_player = player.linked_player;
 	this->collisionDirection = ((u32)delta & 0x80000000) >> 31;
 	this->collisionType |= CT_Starman;
@@ -1520,8 +1338,7 @@ void func_ov000_0209c288()
 	} while (entry->id != 0xffff);
 }
 
-StageEntity *func_ov000_0209c178(
-	u32 spriteID, u32 settings, Vec3_32 *position)
+StageEntity *func_ov000_0209c178(u32 spriteID, u32 settings, Vec3_32 *position)
 {
 	u16 actorID = data_ov000_020c22b8[spriteID];
 	if (actorID == 0x145) {
@@ -1529,8 +1346,7 @@ StageEntity *func_ov000_0209c178(
 	}
 
 	ObjectInfo &objectInfo = data_ov000_020c529c[spriteID];
-	StageEntity *entity = static_cast<StageEntity *>(
-		Actor::spawnActor(actorID, settings, position, 0, 0, 0));
+	StageEntity *entity = static_cast<StageEntity *>(Actor::spawnActor(actorID, settings, position, 0, 0, 0));
 	if (entity == 0) {
 		return entity;
 	}
@@ -1542,93 +1358,62 @@ StageEntity *func_ov000_0209c178(
 	entity->spawnSettings = objectInfo.spawnSettings;
 	entity->unused3E0 = false;
 
-	if (entity->activeSize.x == 0 &&
-	    entity->activeSize.y == 0) {
+	if (entity->activeSize.x == 0 && entity->activeSize.y == 0) {
 		entity->activeSize.x = (u16)objectInfo.size.x << 4;
 		entity->activeSize.y = (u16)objectInfo.size.y << 4;
 	}
-	if (entity->viewOffset.x == 0 &&
-	    entity->viewOffset.y == 0) {
+	if (entity->viewOffset.x == 0 && entity->viewOffset.y == 0) {
 		entity->viewOffset.x = objectInfo.viewOffset.x;
 		entity->viewOffset.y = -objectInfo.viewOffset.y;
 	}
-	if (entity->renderSize.x == 0 &&
-	    entity->renderSize.y == 0) {
+	if (entity->renderSize.x == 0 && entity->renderSize.y == 0) {
 		entity->renderSize.x = entity->activeSize.x;
 		entity->renderSize.y = entity->activeSize.y;
 	}
 	return entity;
 }
 
-StageEntity *func_ov000_0209bf10(
-	StageRuntimeEntry *entry, const ObjectInfo *objectInfo,
-	u8 *spawnFlags, u16 *spawnTimer, u8 viewID, u32 playerID)
+StageEntity *func_ov000_0209bf10(StageRuntimeEntry *entry, const ObjectInfo *objectInfo, u8 *spawnFlags, u16 *spawnTimer, u8 viewID, u32 playerID)
 {
 	if (data_ov000_020c22b8[entry->id] == 0x145) {
 		return 0;
 	}
 
-	Vec3_32 position(
-		((entry->x << 4) + objectInfo->position.x) << 12,
-		-(((entry->y << 4) + objectInfo->position.y) << 12),
-		0x80000);
+	Vec3_32 position(((entry->x << 4) + objectInfo->position.x) << 12, -(((entry->y << 4) + objectInfo->position.y) << 12), 0x80000);
 
 	data_ov000_020ca2ac = spawnFlags;
 	data_ov000_020ca2a4.value = entry->eventIDs;
 	data_ov000_020ca2cc = 0;
 	if (data_ov000_020ca2a4.ids[0] != 0) {
-		data_ov000_020ca2cc |=
-			1ULL <<
-			(data_ov000_020ca2a4.ids[0] - 1);
+		data_ov000_020ca2cc |= 1ULL << (data_ov000_020ca2a4.ids[0] - 1);
 	}
 	if (data_ov000_020ca2a4.ids[1] != 0) {
-		data_ov000_020ca2cc |=
-			1ULL <<
-			(data_ov000_020ca2a4.ids[1] - 1);
+		data_ov000_020ca2cc |= 1ULL << (data_ov000_020ca2a4.ids[1] - 1);
 	}
 
-	StageEntity *entity = static_cast<StageEntity *>(
-		Actor::spawnActor(
-			data_ov000_020c22b8[entry->id],
-			entry->settings, &position,
-			0, 0, 0));
+	StageEntity *entity = static_cast<StageEntity *>(Actor::spawnActor(data_ov000_020c22b8[entry->id], entry->settings, &position, 0, 0, 0));
 	if (entity != 0) {
 		if (entry->id >= 10) {
 			entity->_2be = viewID;
 			entity->objectSpawnFlags = spawnFlags;
 			entity->objectRespawnTimer = spawnTimer;
-			entity->eventIDs =
-				data_ov000_020ca2a4.value;
-			entity->eventMask =
-				data_ov000_020ca2cc;
-			entity->properties =
-				objectInfo->properties;
-			entity->spawnSettings =
-				objectInfo->spawnSettings;
+			entity->eventIDs = data_ov000_020ca2a4.value;
+			entity->eventMask = data_ov000_020ca2cc;
+			entity->properties = objectInfo->properties;
+			entity->spawnSettings = objectInfo->spawnSettings;
 			entity->unused3E0 = false;
 
-			if (entity->activeSize.x == 0 &&
-			    entity->activeSize.y == 0) {
-				entity->activeSize.x =
-					(u16)objectInfo->size.x
-					<< 4;
-				entity->activeSize.y =
-					(u16)objectInfo->size.y
-					<< 4;
+			if (entity->activeSize.x == 0 && entity->activeSize.y == 0) {
+				entity->activeSize.x = (u16)objectInfo->size.x << 4;
+				entity->activeSize.y = (u16)objectInfo->size.y << 4;
 			}
-			if (entity->viewOffset.x == 0 &&
-			    entity->viewOffset.y == 0) {
-				entity->viewOffset.x =
-					objectInfo->viewOffset.x;
-				entity->viewOffset.y =
-					-objectInfo->viewOffset.y;
+			if (entity->viewOffset.x == 0 && entity->viewOffset.y == 0) {
+				entity->viewOffset.x = objectInfo->viewOffset.x;
+				entity->viewOffset.y = -objectInfo->viewOffset.y;
 			}
-			if (entity->renderSize.x == 0 &&
-			    entity->renderSize.y == 0) {
-				entity->renderSize.x =
-					entity->activeSize.x;
-				entity->renderSize.y =
-					entity->activeSize.y;
+			if (entity->renderSize.x == 0 && entity->renderSize.y == 0) {
+				entity->renderSize.x = entity->activeSize.x;
+				entity->renderSize.y = entity->activeSize.y;
 			}
 			entity->updateStateID = 0;
 			entity->spawnPlayerID = playerID;
@@ -1638,40 +1423,26 @@ StageEntity *func_ov000_0209bf10(
 	return entity;
 }
 
-bool func_ov000_0209bddc(
-	const StageRuntimeEntry *entry, const ObjectInfo *objectInfo,
-	u32 playerID)
+bool func_ov000_0209bddc(const StageRuntimeEntry *entry, const ObjectInfo *objectInfo, u32 playerID)
 {
-	u8 wrapEnabled =
-		data_0208b168.info->value02 & 0x20;
-	i32 cameraHalfWidth =
-		data_ov000_020cada4[playerID] >> 13;
-	i32 cameraCenterX =
-		cameraHalfWidth +
-		(data_ov000_020cae1c[playerID] >> 12);
-	i32 cameraHalfHeight =
-		Game::cameraZoomY[playerID] >> 13;
-	i32 cameraCenterY =
-		cameraHalfHeight +
-		(Game::cameraY[playerID] >> 12);
+	u8 wrapEnabled = data_0208b168.info->value02 & 0x20;
+	i32 cameraHalfWidth = data_ov000_020cada4[playerID] >> 13;
+	i32 cameraCenterX = cameraHalfWidth + (data_ov000_020cae1c[playerID] >> 12);
+	i32 cameraHalfHeight = Game::cameraZoomY[playerID] >> 13;
+	i32 cameraCenterY = cameraHalfHeight + (Game::cameraY[playerID] >> 12);
 
 	i32 objectWidth = (u16)objectInfo->size.x << 4;
 	i32 objectHeight = (u16)objectInfo->size.y << 4;
-	i32 objectX =
-		(entry->x + objectInfo->spawnOffset.x) << 4;
-	i32 objectY =
-		(entry->y + objectInfo->spawnOffset.y) << 4;
+	i32 objectX = (entry->x + objectInfo->spawnOffset.x) << 4;
+	i32 objectY = (entry->y + objectInfo->spawnOffset.y) << 4;
 	i32 objectHalfWidth = objectWidth >> 1;
 	i32 objectCenterX = objectX + objectHalfWidth;
 	i32 objectHalfHeight = objectHeight >> 1;
 	i32 objectCenterY = objectY + objectHalfHeight;
 
-	if (wrapEnabled != 0 &&
-	    data_02085a98 != 1) {
+	if (wrapEnabled != 0 && data_02085a98 != 1) {
 		i32 wrappedDistance = cameraCenterX - objectCenterX;
-		wrappedDistance = wrappedDistance < 0
-					  ? -wrappedDistance
-					  : wrappedDistance;
+		wrappedDistance = wrappedDistance < 0 ? -wrappedDistance : wrappedDistance;
 		i32 wrapWidth = (Game::wrapX + 1) >> 12;
 		i32 wrapHalfWidth = wrapWidth >> 1;
 		if (wrappedDistance >= wrapHalfWidth) {
@@ -1688,17 +1459,12 @@ bool func_ov000_0209bddc(
 	i32 distanceX = cameraCenterX - objectCenterX;
 	distanceX = distanceX < 0 ? -distanceX : distanceX;
 	i32 maxDistanceX = cameraHalfWidth + objectHalfWidth;
-	maxDistanceX =
-		maxDistanceX < 0 ? -maxDistanceX : maxDistanceX;
+	maxDistanceX = maxDistanceX < 0 ? -maxDistanceX : maxDistanceX;
 	if (distanceX <= maxDistanceX) {
 		i32 distanceY = cameraCenterY - objectCenterY;
-		distanceY =
-			distanceY < 0 ? -distanceY : distanceY;
-		i32 maxDistanceY =
-			cameraHalfHeight + objectHalfHeight;
-		maxDistanceY = maxDistanceY < 0
-				       ? -maxDistanceY
-				       : maxDistanceY;
+		distanceY = distanceY < 0 ? -distanceY : distanceY;
+		i32 maxDistanceY = cameraHalfHeight + objectHalfHeight;
+		maxDistanceY = maxDistanceY < 0 ? -maxDistanceY : maxDistanceY;
 		if (distanceY <= maxDistanceY) {
 			return true;
 		}
@@ -1706,11 +1472,9 @@ bool func_ov000_0209bddc(
 	return false;
 }
 
-void func_ov000_0209ba94(
-	StageEntityTileSweep *sweep, u32 playerID, bool moving)
+void func_ov000_0209ba94(StageEntityTileSweep *sweep, u32 playerID, bool moving)
 {
-	PlayerActor *player =
-		Game::getPlayer(playerID);
+	PlayerActor *player = Game::getPlayer(playerID);
 	u8 viewID = player->_2be;
 	u32 entryCount = data_0208b220[viewID];
 	if (entryCount == 0) {
@@ -1761,55 +1525,32 @@ void func_ov000_0209ba94(
 	otherPlayerID = playerID ^ 1;
 	do {
 		if ((*spawnFlags & 1) == 0) {
-			objectInfo =
-				&data_ov000_020c529c[entry->id];
-			objectLeft =
-				entry->x +
-				objectInfo->spawnOffset.x;
-			objectTop =
-				entry->y +
-				objectInfo->spawnOffset.y;
-			objectRight =
-				objectLeft +
-				(u16)objectInfo->size.x;
+			objectInfo = &data_ov000_020c529c[entry->id];
+			objectLeft = entry->x + objectInfo->spawnOffset.x;
+			objectTop = entry->y + objectInfo->spawnOffset.y;
+			objectRight = objectLeft + (u16)objectInfo->size.x;
 			collisionCount = 0;
-			objectBottom =
-				objectTop +
-				(u16)objectInfo->size.y;
+			objectBottom = objectTop + (u16)objectInfo->size.y;
 
-			u8 wrapEnabled =
-				data_0208b168.info->value02 &
-				0x20;
-			if (wrapEnabled != 0 &&
-			    Game::wrapX != 0xfffff) {
-				i32 wrapMask =
-					Game::wrapX >> 16;
+			u8 wrapEnabled = data_0208b168.info->value02 & 0x20;
+			if (wrapEnabled != 0 && Game::wrapX != 0xfffff) {
+				i32 wrapMask = Game::wrapX >> 16;
 				objectLeft &= wrapMask;
 				objectRight &= wrapMask;
 			}
 
-			objectCheckX =
-				horizontalDirection != 0
-					? objectLeft
-					: objectRight;
-			objectCheckY =
-				verticalDirection != 0
-					? objectTop
-					: objectBottom;
+			objectCheckX = horizontalDirection != 0 ? objectLeft : objectRight;
+			objectCheckY = verticalDirection != 0 ? objectTop : objectBottom;
 
 			if (moving == true) {
 				if (objectCheckX == checkX) {
 					if (horizontalDirection != 1) {
 						if (horizontalDirection < 0) {
-							if (right == objectLeft &&
-							    bottom >= objectTop &&
-							    top <= objectBottom) {
+							if (right == objectLeft && bottom >= objectTop && top <= objectBottom) {
 								++collisionCount;
 							}
 						} else {
-							if (left == objectRight &&
-							    bottom >= objectTop &&
-							    top <= objectBottom) {
+							if (left == objectRight && bottom >= objectTop && top <= objectBottom) {
 								++collisionCount;
 							}
 						}
@@ -1817,45 +1558,30 @@ void func_ov000_0209ba94(
 				} else if (objectCheckY == checkY) {
 					if (verticalDirection != 1) {
 						if (verticalDirection < 0) {
-							if (bottom == objectTop &&
-							    right >= objectLeft &&
-							    left <= objectRight) {
+							if (bottom == objectTop && right >= objectLeft && left <= objectRight) {
 								++collisionCount;
 							}
 						} else {
-							if (top == objectBottom &&
-							    right >= objectLeft &&
-							    left <= objectRight) {
+							if (top == objectBottom && right >= objectLeft && left <= objectRight) {
 								++collisionCount;
 							}
 						}
 					}
 				}
 			} else {
-				if (objectCheckX == checkX &&
-				    bottom >= objectTop &&
-				    top <= objectBottom) {
+				if (objectCheckX == checkX && bottom >= objectTop && top <= objectBottom) {
 					++collisionCount;
 				}
-				if (objectCheckY == checkY &&
-				    right >= objectLeft &&
-				    left <= objectRight) {
+				if (objectCheckY == checkY && right >= objectLeft && left <= objectRight) {
 					++collisionCount;
 				}
 			}
 
-			if (collisionCount != 0 &&
-			    func_020202a0() == 2 &&
-			    func_ov000_0209bddc(
-				    entry, objectInfo,
-				    otherPlayerID)) {
+			if (collisionCount != 0 && func_020202a0() == 2 && func_ov000_0209bddc(entry, objectInfo, otherPlayerID)) {
 				collisionCount = 0;
 			}
 			if (collisionCount != 0) {
-				func_ov000_0209bf10(
-					entry, objectInfo,
-					spawnFlags, spawnTimer,
-					viewID, playerID);
+				func_ov000_0209bf10(entry, objectInfo, spawnFlags, spawnTimer, viewID, playerID);
 			}
 		}
 
@@ -1884,18 +1610,15 @@ void func_ov000_0209b7e8(u32 playerID)
 
 	i32 horizontalDirection = 0;
 	i32 verticalDirection = 0;
-	u8 wrapEnabled =
-		data_0208b168.info->value02 & 0x20;
-	if (wrapEnabled != 0 &&
-	    Game::wrapX != 0xfffff) {
+	u8 wrapEnabled = data_0208b168.info->value02 & 0x20;
+	if (wrapEnabled != 0 && Game::wrapX != 0xfffff) {
 		i32 wrapMask = Game::wrapX >> 16;
 		right &= wrapMask;
 		left &= wrapMask;
 	}
 
 	StageEntityTileSweep sweep;
-	if (data_ov000_020cadb4[playerID] !=
-	    data_ov010_0212ae6c[playerID]) {
+	if (data_ov000_020cadb4[playerID] != data_ov010_0212ae6c[playerID]) {
 		sweep.checkX = left;
 		sweep.checkY = bottom;
 		sweep.left = left;
@@ -1928,10 +1651,8 @@ void func_ov000_0209b7e8(u32 playerID)
 		sweep.verticalDirection = 0;
 		func_ov000_0209ba94(&sweep, playerID, false);
 	} else {
-		i32 deltaX =
-			currentX - data_ov000_020ca2ec[playerID];
-		i32 deltaY =
-			currentY - data_ov000_020ca2e4[playerID];
+		i32 deltaX = currentX - data_ov000_020ca2ec[playerID];
+		i32 deltaY = currentY - data_ov000_020ca2e4[playerID];
 		if (deltaX != 0) {
 			if (deltaX > 0) {
 				checkX = right;
@@ -1954,10 +1675,7 @@ void func_ov000_0209b7e8(u32 playerID)
 			verticalDirection = 1;
 		}
 
-		if (checkX ==
-			    (i32)data_ov000_020ca2f4[playerID] &&
-		    checkY ==
-			    (i32)data_ov000_020ca2dc[playerID]) {
+		if (checkX == (i32)data_ov000_020ca2f4[playerID] && checkY == (i32)data_ov000_020ca2dc[playerID]) {
 			data_ov000_020ca2ec[playerID] = currentX;
 			data_ov000_020ca2e4[playerID] = currentY;
 			data_ov000_020ca2f4[playerID] = checkX;
@@ -2016,23 +1734,14 @@ void func_ov000_0209b688(u8 playerID)
 
 	do {
 		if ((*spawnFlags & 1) == 0) {
-			objectInfo =
-				&data_ov000_020c529c[entry->id];
+			objectInfo = &data_ov000_020c529c[entry->id];
 			Unk0201ef94Input input;
-			input.x =
-				(entry->x +
-				 objectInfo->spawnOffset.x) << 4;
-			input.y =
-				(entry->y +
-				 objectInfo->spawnOffset.y) << 4;
-			input.width =
-				(u16)objectInfo->size.x << 4;
-			input.height =
-				(u16)objectInfo->size.y << 4;
+			input.x = (entry->x + objectInfo->spawnOffset.x) << 4;
+			input.y = (entry->y + objectInfo->spawnOffset.y) << 4;
+			input.width = (u16)objectInfo->size.x << 4;
+			input.height = (u16)objectInfo->size.y << 4;
 			u8 viewID = func_0201ef94(&input);
-			func_ov000_0209bf10(
-				entry, objectInfo, spawnFlags,
-				spawnTimer, viewID, playerID);
+			func_ov000_0209bf10(entry, objectInfo, spawnFlags, spawnTimer, viewID, playerID);
 		}
 
 		++entry;
@@ -2048,26 +1757,19 @@ void func_ov000_0209b320(u8 playerID)
 	u16 *spawnTimer = data_ov000_020ca64c;
 	u8 *spawnFlags = data_ov000_020ca3cc;
 	u16 collisionCount;
-	PlayerActor *player =
-		Game::getPlayer(playerID);
+	PlayerActor *player = Game::getPlayer(playerID);
 	u8 playerViewID = player->_2be;
 	u8 viewID;
 
-	i32 cameraZoomY =
-		Game::cameraZoomY[playerID] >> 12;
-	i32 cameraExtent =
-		data_ov000_020cada4[playerID] >> 12;
-	i32 cameraX =
-		data_ov000_020cae1c[playerID] >> 12;
-	i32 cameraY =
-		Game::cameraY[playerID] >> 12;
+	i32 cameraZoomY = Game::cameraZoomY[playerID] >> 12;
+	i32 cameraExtent = data_ov000_020cada4[playerID] >> 12;
+	i32 cameraX = data_ov000_020cae1c[playerID] >> 12;
+	i32 cameraY = Game::cameraY[playerID] >> 12;
 	i32 top = cameraY - 0x10;
-	i32 cameraHalfHeight =
-		(cameraZoomY + 0x20 + cameraY - top) >> 1;
+	i32 cameraHalfHeight = (cameraZoomY + 0x20 + cameraY - top) >> 1;
 	i32 cameraCenterY = top + cameraHalfHeight;
 	i32 left = cameraX - 0x20;
-	i32 cameraHalfWidth =
-		(cameraExtent + 0x30 + cameraX - left) >> 1;
+	i32 cameraHalfWidth = (cameraExtent + 0x30 + cameraX - left) >> 1;
 	i32 wrapWidth = (Game::wrapX + 1) >> 12;
 	i32 cameraCenterX = left + cameraHalfWidth;
 	i32 wrapHalfWidth = wrapWidth >> 1;
@@ -2078,148 +1780,65 @@ void func_ov000_0209b320(u8 playerID)
 
 	do {
 		if ((*spawnFlags & 1) == 0) {
-			objectInfo =
-				&data_ov000_020c529c[entry->id];
+			objectInfo = &data_ov000_020c529c[entry->id];
 			collisionCount = 0;
 			u16 listIndex = 0;
-			while (data_ov000_020c4ee0[listIndex] !=
-			       0xffff) {
-				if (entry->id ==
-				    data_ov000_020c4ee0[listIndex]) {
+			while (data_ov000_020c4ee0[listIndex] != 0xffff) {
+				if (entry->id == data_ov000_020c4ee0[listIndex]) {
 					break;
 				}
 				++listIndex;
 			}
 
-			if (data_ov000_020c4ee0[listIndex] !=
-			    0xffff) {
+			if (data_ov000_020c4ee0[listIndex] != 0xffff) {
 				++collisionCount;
 			} else {
 				Unk0201ef94Input input;
-				input.x =
-					(entry->x +
-					 objectInfo->spawnOffset.x)
-					<< 4;
-				input.y =
-					(entry->y +
-					 objectInfo->spawnOffset.y)
-					<< 4;
-				input.width =
-					(u16)objectInfo->size.x
-					<< 4;
-				input.height =
-					(u16)objectInfo->size.y
-					<< 4;
+				input.x = (entry->x + objectInfo->spawnOffset.x) << 4;
+				input.y = (entry->y + objectInfo->spawnOffset.y) << 4;
+				input.width = (u16)objectInfo->size.x << 4;
+				input.height = (u16)objectInfo->size.y << 4;
 				viewID = func_0201ef94(&input);
 
 				if (viewID == playerViewID) {
-					if (entry->id == 0x12a &&
-					    (u8)(data_0208b168
-							 .info
-							 ->value02 &
-						 0x20) != 0 &&
-					    Game::wrapX != 0xfffff) {
+					if (entry->id == 0x12a && (u8)(data_0208b168.info->value02 & 0x20) != 0 && Game::wrapX != 0xfffff) {
 						++collisionCount;
 					}
 
-					if (objectInfo->spawnSettings &
-					    ObjectInfo::SS_AlwaysLoad) {
+					if (objectInfo->spawnSettings & ObjectInfo::SS_AlwaysLoad) {
 						++collisionCount;
 					} else {
-						i32 objectWidth =
-							(u16)objectInfo
-								->size.x
-							<< 4;
-						i32 objectHeight =
-							(u16)objectInfo
-								->size.y
-							<< 4;
-						i32 objectX =
-							(entry->x +
-							 objectInfo
-								 ->spawnOffset
-								 .x)
-							<< 4;
-						i32 objectY =
-							(entry->y +
-							 objectInfo
-								 ->spawnOffset
-								 .y)
-							<< 4;
-						i32 objectCenterX =
-							objectX +
-							(objectWidth >>
-							 1);
-						i32 objectCenterY =
-							objectY +
-							(objectHeight >>
-							 1);
+						i32 objectWidth = (u16)objectInfo->size.x << 4;
+						i32 objectHeight = (u16)objectInfo->size.y << 4;
+						i32 objectX = (entry->x + objectInfo->spawnOffset.x) << 4;
+						i32 objectY = (entry->y + objectInfo->spawnOffset.y) << 4;
+						i32 objectCenterX = objectX + (objectWidth >> 1);
+						i32 objectCenterY = objectY + (objectHeight >> 1);
 
-						if ((u8)(data_0208b168
-								 .info
-								 ->value02 &
-							 0x20) != 0 &&
-						    data_02085a98 != 1) {
-							i32 wrappedDistance =
-								cameraCenterX -
-								objectCenterX;
-							wrappedDistance =
-								wrappedDistance <
-										0
-									? -wrappedDistance
-									: wrappedDistance;
-							if (wrappedDistance >=
-							    wrapHalfWidth) {
-								if (cameraCenterX >
-								    wrapHalfWidth) {
-									if (objectCenterX <
-									    wrapHalfWidth) {
-										objectCenterX +=
-											wrapWidth;
+						if ((u8)(data_0208b168.info->value02 & 0x20) != 0 && data_02085a98 != 1) {
+							i32 wrappedDistance = cameraCenterX - objectCenterX;
+							wrappedDistance = wrappedDistance < 0 ? -wrappedDistance : wrappedDistance;
+							if (wrappedDistance >= wrapHalfWidth) {
+								if (cameraCenterX > wrapHalfWidth) {
+									if (objectCenterX < wrapHalfWidth) {
+										objectCenterX += wrapWidth;
 									}
-								} else if (
-									objectCenterX >
-									wrapHalfWidth) {
-									objectCenterX -=
-										wrapWidth;
+								} else if (objectCenterX > wrapHalfWidth) {
+									objectCenterX -= wrapWidth;
 								}
 							}
 						}
 
-						i32 distanceX =
-							cameraCenterX -
-							objectCenterX;
-						distanceX =
-							distanceX < 0
-								? -distanceX
-								: distanceX;
-						i32 maxDistanceX =
-							cameraHalfWidth +
-							(objectWidth >>
-							 1);
-						maxDistanceX =
-							maxDistanceX < 0
-								? -maxDistanceX
-								: maxDistanceX;
-						if (distanceX <=
-						    maxDistanceX) {
-							i32 distanceY =
-								cameraCenterY -
-								objectCenterY;
-							distanceY =
-								distanceY < 0
-									? -distanceY
-									: distanceY;
-							i32 maxDistanceY =
-								cameraHalfHeight +
-								(objectHeight >>
-								 1);
-							maxDistanceY =
-								maxDistanceY < 0
-									? -maxDistanceY
-									: maxDistanceY;
-							if (distanceY <=
-							    maxDistanceY) {
+						i32 distanceX = cameraCenterX - objectCenterX;
+						distanceX = distanceX < 0 ? -distanceX : distanceX;
+						i32 maxDistanceX = cameraHalfWidth + (objectWidth >> 1);
+						maxDistanceX = maxDistanceX < 0 ? -maxDistanceX : maxDistanceX;
+						if (distanceX <= maxDistanceX) {
+							i32 distanceY = cameraCenterY - objectCenterY;
+							distanceY = distanceY < 0 ? -distanceY : distanceY;
+							i32 maxDistanceY = cameraHalfHeight + (objectHeight >> 1);
+							maxDistanceY = maxDistanceY < 0 ? -maxDistanceY : maxDistanceY;
+							if (distanceY <= maxDistanceY) {
 								++collisionCount;
 							}
 						}
@@ -2228,10 +1847,7 @@ void func_ov000_0209b320(u8 playerID)
 			}
 
 			if (collisionCount != 0) {
-				func_ov000_0209bf10(
-					entry, objectInfo,
-					spawnFlags, spawnTimer,
-					viewID, playerID);
+				func_ov000_0209bf10(entry, objectInfo, spawnFlags, spawnTimer, viewID, playerID);
 			}
 		}
 
@@ -2243,8 +1859,7 @@ void func_ov000_0209b320(u8 playerID)
 
 void func_ov000_0209b040(u8 playerID)
 {
-	PlayerActor *player =
-		Game::getPlayer(playerID);
+	PlayerActor *player = Game::getPlayer(playerID);
 	u8 viewID = player->_2be;
 	u32 entryCount = data_0208b220[viewID];
 	if (entryCount == 0) {
@@ -2269,23 +1884,15 @@ void func_ov000_0209b040(u8 playerID)
 	i32 cameraHalfHeight;
 	i32 cameraCenterY;
 
-	cameraExtent =
-		data_ov000_020cada4[playerID] >> 12;
-	cameraZoomY =
-		Game::cameraZoomY[playerID] >> 12;
+	cameraExtent = data_ov000_020cada4[playerID] >> 12;
+	cameraZoomY = Game::cameraZoomY[playerID] >> 12;
 	cameraX = data_ov000_020cae1c[playerID];
 	cameraY = Game::cameraY[playerID];
 	top = (cameraY >> 12) - 0x10;
 	left = (cameraX >> 12) - 0x20;
-	cameraHalfWidth =
-		(cameraExtent + 0x30 + (cameraX >> 12) -
-		 left) >>
-		1;
+	cameraHalfWidth = (cameraExtent + 0x30 + (cameraX >> 12) - left) >> 1;
 	cameraCenterX = left + cameraHalfWidth;
-	cameraHalfHeight =
-		(cameraZoomY + 0x20 + (cameraY >> 12) -
-		 top) >>
-		1;
+	cameraHalfHeight = (cameraZoomY + 0x20 + (cameraY >> 12) - top) >> 1;
 
 	entry = entryTable[viewID];
 	u32 entryOffset = entryOffsetTable[viewID];
@@ -2300,94 +1907,45 @@ void func_ov000_0209b040(u8 playerID)
 	u32 otherPlayerID = playerID ^ 1;
 	do {
 		if ((*spawnFlags & 1) == 0) {
-			objectInfo =
-				&data_ov000_020c529c[entry->id];
+			objectInfo = &data_ov000_020c529c[entry->id];
 			u16 collisionCount = 0;
-			if (entry->id == 0x12a &&
-			    (u8)(data_0208b168.info->value02 &
-				 0x20) != 0 &&
-			    Game::wrapX != 0xfffff) {
+			if (entry->id == 0x12a && (u8)(data_0208b168.info->value02 & 0x20) != 0 && Game::wrapX != 0xfffff) {
 				++collisionCount;
 			}
 
-			if (objectInfo->spawnSettings &
-			    ObjectInfo::SS_AlwaysLoad) {
+			if (objectInfo->spawnSettings & ObjectInfo::SS_AlwaysLoad) {
 				++collisionCount;
 			} else {
-				i32 objectWidth =
-					(u16)objectInfo->size.x
-					<< 4;
-				i32 objectHeight =
-					(u16)objectInfo->size.y
-					<< 4;
-				i32 objectX =
-					(entry->x +
-					 objectInfo->spawnOffset.x)
-					<< 4;
-				i32 objectY =
-					(entry->y +
-					 objectInfo->spawnOffset.y)
-					<< 4;
-				i32 objectHalfWidth =
-					objectWidth >> 1;
-				i32 objectCenterX =
-					objectX + objectHalfWidth;
-				i32 objectHalfHeight =
-					objectHeight >> 1;
-				i32 objectCenterY =
-					objectY + objectHalfHeight;
+				i32 objectWidth = (u16)objectInfo->size.x << 4;
+				i32 objectHeight = (u16)objectInfo->size.y << 4;
+				i32 objectX = (entry->x + objectInfo->spawnOffset.x) << 4;
+				i32 objectY = (entry->y + objectInfo->spawnOffset.y) << 4;
+				i32 objectHalfWidth = objectWidth >> 1;
+				i32 objectCenterX = objectX + objectHalfWidth;
+				i32 objectHalfHeight = objectHeight >> 1;
+				i32 objectCenterY = objectY + objectHalfHeight;
 
-				i32 distanceX =
-					cameraCenterX -
-					objectCenterX;
-				distanceX = distanceX < 0
-						    ? -distanceX
-						    : distanceX;
-				i32 maxDistanceX =
-					cameraHalfWidth +
-					objectHalfWidth;
-				maxDistanceX =
-					maxDistanceX < 0
-						? -maxDistanceX
-						: maxDistanceX;
+				i32 distanceX = cameraCenterX - objectCenterX;
+				distanceX = distanceX < 0 ? -distanceX : distanceX;
+				i32 maxDistanceX = cameraHalfWidth + objectHalfWidth;
+				maxDistanceX = maxDistanceX < 0 ? -maxDistanceX : maxDistanceX;
 				if (distanceX <= maxDistanceX) {
-					i32 distanceY =
-						cameraCenterY -
-						objectCenterY;
-					distanceY =
-						distanceY < 0
-							? -distanceY
-							: distanceY;
-					i32 maxDistanceY =
-						cameraHalfHeight +
-						objectHalfHeight;
-					maxDistanceY =
-						maxDistanceY < 0
-							? -maxDistanceY
-							: maxDistanceY;
-					if (distanceY <=
-					    maxDistanceY) {
+					i32 distanceY = cameraCenterY - objectCenterY;
+					distanceY = distanceY < 0 ? -distanceY : distanceY;
+					i32 maxDistanceY = cameraHalfHeight + objectHalfHeight;
+					maxDistanceY = maxDistanceY < 0 ? -maxDistanceY : maxDistanceY;
+					if (distanceY <= maxDistanceY) {
 						++collisionCount;
 					}
 				}
 
-				if (collisionCount != 0 &&
-				    func_020202a0() == 2 &&
-				    (u8)(GlobalFader.fadingState
-						 [otherPlayerID] &
-					 0x49) == 0 &&
-				    func_ov000_0209bddc(
-					    entry, objectInfo,
-					    otherPlayerID)) {
+				if (collisionCount != 0 && func_020202a0() == 2 && (u8)(GlobalFader.fadingState[otherPlayerID] & 0x49) == 0 && func_ov000_0209bddc(entry, objectInfo, otherPlayerID)) {
 					collisionCount = 0;
 				}
 			}
 
 			if (collisionCount != 0) {
-				func_ov000_0209bf10(
-					entry, objectInfo,
-					spawnFlags, spawnTimer,
-					viewID, playerID);
+				func_ov000_0209bf10(entry, objectInfo, spawnFlags, spawnTimer, viewID, playerID);
 			}
 		}
 
@@ -2411,8 +1969,7 @@ void func_ov000_0209aff8(u8 playerID, bool mode)
 	func_ov000_0209b040(playerID);
 }
 
-bool StageEntity::isOutOfView(
-	const Vec3_32 &position, const FxRect &boundingBox, u8 viewID)
+bool StageEntity::isOutOfView(const Vec3_32 &position, const FxRect &boundingBox, u8 viewID)
 {
 	FxRect view;
 	Vec2_32 relativeStart;
@@ -2433,14 +1990,10 @@ bool StageEntity::isOutOfView(
 	expandedSize.x *= 2;
 	expandedSize.y *= 2;
 
-	if ((data_ov000_020ca8d0 & 0x1000) == 0 &&
-	    (u8)(data_0208b168.info->value02 & 0x20) == 0 &&
-	    (u32)(relativeStart.x + expandedSize.x) >
-		    (u32)(view.halfWidth + expandedSize.x)) {
+	if ((data_ov000_020ca8d0 & 0x1000) == 0 && (u8)(data_0208b168.info->value02 & 0x20) == 0 && (u32)(relativeStart.x + expandedSize.x) > (u32)(view.halfWidth + expandedSize.x)) {
 		return true;
 	}
-	if ((u32)(relativeStart.y + expandedSize.y) >
-	    (u32)(view.halfHeight + expandedSize.y)) {
+	if ((u32)(relativeStart.y + expandedSize.y) > (u32)(view.halfHeight + expandedSize.y)) {
 		return true;
 	}
 	return false;
@@ -2461,10 +2014,7 @@ bool StageEntity::destroyInactive(u32 flags)
 	range.halfWidth = this->activeSize.x << 11;
 	range.halfHeight = this->activeSize.y << 11;
 
-	if ((((flags & 2) == 0 &&
-	      func_0200aed8(&this->position, &range, this->_2be)) ||
-	     this->isOutOfView(this->position, range, this->_2be)) &&
-	    (flags & 1) == 0) {
+	if ((((flags & 2) == 0 && func_0200aed8(&this->position, &range, this->_2be)) || this->isOutOfView(this->position, range, this->_2be)) && (flags & 1) == 0) {
 		this->destroy(this->permanentDestroy);
 		return true;
 	}
@@ -2559,8 +2109,7 @@ void StageEntity::getScorePointsEnhanced(const Vec3_32 &position, u32 type, s32 
 	}
 }
 
-void StageEntity::getScorePointsEnhanced(
-	u32 type, fx32 x, fx32 y, s32 playerID) const
+void StageEntity::getScorePointsEnhanced(u32 type, fx32 x, fx32 y, s32 playerID) const
 {
 	Vec3_32 position(0);
 	position.x = x + this->position.x;
@@ -2593,8 +2142,7 @@ void StageEntity::getScorePointsStageBeaten(u32 type, fx32 x, fx32 y, s32 player
 	getScorePointsStageBeaten(position, type, playerID);
 }
 
-PlayerStompType StageEntity::updatePlayerStomp(
-	ActiveCollider &collider, fx32 jumpVelocity, bool allowClippedJump, bool noPoints)
+PlayerStompType StageEntity::updatePlayerStomp(ActiveCollider &collider, fx32 jumpVelocity, bool allowClippedJump, bool noPoints)
 {
 	if ((u16)(collider.collidedGroups & 1) == 0) {
 		return PlayerStomp_None;
@@ -2667,11 +2215,9 @@ void StageEntity::onPlayerStomp(PlayerBase &player, fx32 jumpVelocity, bool noPo
 		}
 
 		if (this->scoreType == 0) {
-			this->getScorePointsRegular(
-				player.scoreComboStandard, 0, 0x18000, this->activeCollider.collidedPlayerID);
+			this->getScorePointsRegular(player.scoreComboStandard, 0, 0x18000, this->activeCollider.collidedPlayerID);
 		} else if (this->scoreType == 1) {
-			this->getScorePointsEnhanced(
-				player.scoreComboStandard, 0, 0x18000, this->activeCollider.collidedPlayerID);
+			this->getScorePointsEnhanced(player.scoreComboStandard, 0, 0x18000, this->activeCollider.collidedPlayerID);
 		}
 	}
 
@@ -2680,16 +2226,14 @@ void StageEntity::onPlayerStomp(PlayerBase &player, fx32 jumpVelocity, bool noPo
 	}
 }
 
-bool StageEntity::canPlayerStomp(
-	ActiveCollider &collider, PlayerBase &player, bool allowClippedJump)
+bool StageEntity::canPlayerStomp(ActiveCollider &collider, PlayerBase &player, bool allowClippedJump)
 {
 	fx32 velocityY = player.velocity.y;
 	fx32 collisionY = collider.intersectionDistY[AC_GRP_Player];
 	s32 downward = velocityY <= 0;
 
 	if (this->kickedInWall) {
-		if ((player.collisionFlag & PlayerBase::CF_Ground) == 0 &&
-		    this->position.y < player.position.y + 0xa000) {
+		if ((player.collisionFlag & PlayerBase::CF_Ground) == 0 && this->position.y < player.position.y + 0xa000) {
 			return true;
 		}
 		return false;
@@ -2701,8 +2245,7 @@ bool StageEntity::canPlayerStomp(
 	if (data_ov000_020ca290 != 0) {
 		downward = 1;
 	}
-	if (collisionY < 0 &&
-	    (-collisionY << 1) < data_ov000_020c20a0[downward][this->stompTriggerHeight]) {
+	if (collisionY < 0 && (-collisionY << 1) < data_ov000_020c20a0[downward][this->stompTriggerHeight]) {
 		return true;
 	}
 	return false;
@@ -2710,8 +2253,7 @@ bool StageEntity::canPlayerStomp(
 
 u32 StageEntity::updateSolidActiveCollider(bool push, u32 flags, u8 playerID)
 {
-	PlayerActor *player =
-		simplePlayerCollision[playerID].player;
+	PlayerActor *player = simplePlayerCollision[playerID].player;
 	u32 result;
 	u8 vertical;
 	u8 horizontal;
@@ -2733,8 +2275,7 @@ u32 StageEntity::updateSolidActiveCollider(bool push, u32 flags, u8 playerID)
 	fx32 playerPositionYCenter = playerPosition.y;
 	fx32 playerRectY = player->activeCollider.rect.y;
 	fx32 playerCenterY = playerPositionYCenter + playerRectY;
-	fx32 playerHalfHeight =
-		player->activeCollider.rect.halfHeight;
+	fx32 playerHalfHeight = player->activeCollider.rect.halfHeight;
 
 	fx32 playerRectX = player->activeCollider.rect.x;
 	fx32 dx = simplePlayerCollision[playerID].dx;
@@ -2745,12 +2286,10 @@ u32 StageEntity::updateSolidActiveCollider(bool push, u32 flags, u8 playerID)
 	fx32 playerCenterX = playerPositionX + playerRectX;
 	fx32 entityCenterX = position.x + activeCollider.rect.x;
 
-	if (playerCenterY > entityLowerY &&
-	    playerCenterY < entityCenterY + entityHalfHeight) {
+	if (playerCenterY > entityLowerY && playerCenterY < entityCenterY + entityHalfHeight) {
 		++horizontal;
 	}
-	if (playerCenterX > entityCenterX - entityHalfWidth &&
-	    playerCenterX < entityCenterX + entityHalfWidth) {
+	if (playerCenterX > entityCenterX - entityHalfWidth && playerCenterX < entityCenterX + entityHalfWidth) {
 		++vertical;
 	}
 
@@ -2764,9 +2303,7 @@ u32 StageEntity::updateSolidActiveCollider(bool push, u32 flags, u8 playerID)
 		}
 
 		fx32 playerBottom = playerCenterY - playerHalfHeight;
-		if (playerBottom > entityLowerY &&
-		    playerBottom < entityCenterY + entityHalfHeight &&
-		    playerVelocity.y > 0) {
+		if (playerBottom > entityLowerY && playerBottom < entityCenterY + entityHalfHeight && playerVelocity.y > 0) {
 			++horizontal;
 			vertical = 0;
 		}
@@ -2902,25 +2439,19 @@ void StageEntity::simpleCallback(ActiveCollider *collider, ActiveCollider *other
 	u8 playerID = player->linked_player;
 	if (group == AC_GRP_Player) {
 		entity->simplePlayerCollision[playerID].player = player;
-		entity->simplePlayerCollision[playerID].dx =
-			collider->intersectionDistX[AC_GRP_Player];
-		entity->simplePlayerCollision[playerID].dy =
-			collider->intersectionDistY[AC_GRP_Player];
+		entity->simplePlayerCollision[playerID].dx = collider->intersectionDistX[AC_GRP_Player];
+		entity->simplePlayerCollision[playerID].dy = collider->intersectionDistY[AC_GRP_Player];
 		entity->simplePlayerCollisionResult |= data_ov000_020c1f48[playerID];
 	} else {
 		entity->simplePlayerSpecialCollision[playerID].player = player;
-		entity->simplePlayerSpecialCollision[playerID].dx =
-			collider->intersectionDistX[AC_GRP_PlayerSpecial];
-		entity->simplePlayerSpecialCollision[playerID].dy =
-			collider->intersectionDistY[AC_GRP_PlayerSpecial];
-		entity->simplePlayerSpecialCollision[playerID].flags =
-			collider->flags & 0xfffe;
+		entity->simplePlayerSpecialCollision[playerID].dx = collider->intersectionDistX[AC_GRP_PlayerSpecial];
+		entity->simplePlayerSpecialCollision[playerID].dy = collider->intersectionDistY[AC_GRP_PlayerSpecial];
+		entity->simplePlayerSpecialCollision[playerID].flags = collider->flags & 0xfffe;
 		entity->simplePlayerCollisionResult |= data_ov000_020c1f4c[playerID];
 	}
 }
 
-void StageEntity::shellActiveCallback(
-	ActiveCollider &collider, ActiveCollider &other)
+void StageEntity::shellActiveCallback(ActiveCollider &collider, ActiveCollider &other)
 {
 	StageEntity *entity = static_cast<StageEntity *>(collider.owner);
 	StageActor *otherActor = static_cast<StageActor *>(other.owner);
@@ -2932,18 +2463,15 @@ void StageEntity::shellActiveCallback(
 	entity->collisionActorPos = *otherPosition;
 
 	if (otherActor->actorType == 2) {
-		StageEntity *otherEntity =
-			static_cast<StageEntity *>(otherActor);
-		if ((other.detectAttacks &
-		     (1 << AC_ATK_EntityAsWeapon)) == 0) {
+		StageEntity *otherEntity = static_cast<StageEntity *>(otherActor);
+		if ((other.detectAttacks & (1 << AC_ATK_EntityAsWeapon)) == 0) {
 			if ((u16)(collider.flags & 0xfffe)) {
 				return;
 			}
 			if ((u8)(collider._a5 & 1) == 0) {
 				return;
 			}
-			if ((u16)(other.options &
-				   AcConfig::BypassDamage)) {
+			if ((u16)(other.options & AcConfig::BypassDamage)) {
 				return;
 			}
 			if (other.attack != AC_ATK_None) {
@@ -2964,12 +2492,9 @@ void StageEntity::shellActiveCallback(
 			}
 
 			entity->direction = direction;
-			if (direction ^
-			    (((u32)entity->velocity.x &
-			      0x80000000) >> 31)) {
+			if (direction ^ (((u32)entity->velocity.x & 0x80000000) >> 31)) {
 				entity->velocity.x = -entity->velocity.x;
-				entity->minVelocity.x =
-					-entity->minVelocity.x;
+				entity->minVelocity.x = -entity->minVelocity.x;
 				func_02012398(0x16f, &entity->position);
 			}
 			return;
@@ -2996,13 +2521,9 @@ void StageEntity::shellActiveCallback(
 		}
 		entity->scoreCombo = combo;
 		if (otherEntity->scoreType == 0) {
-			entity->getScorePointsRegular(
-				combo, 0, 0x18000,
-				entity->linked_player);
+			entity->getScorePointsRegular(combo, 0, 0x18000, entity->linked_player);
 		} else if (otherEntity->scoreType == 1) {
-			entity->getScorePointsEnhanced(
-				combo, 0, 0x18000,
-				entity->linked_player);
+			entity->getScorePointsEnhanced(combo, 0, 0x18000, entity->linked_player);
 		}
 		if (combo < 8) {
 			func_02012398(combo + 0x70, &entity->position);
@@ -3017,8 +2538,7 @@ void StageEntity::shellActiveCallback(
 	}
 	PlayerActor *player = static_cast<PlayerActor *>(otherActor);
 	s32 playerID = player->linked_player;
-	if (isBelowCamera(
-		    entity->position.y, collider, playerID)) {
+	if (isBelowCamera(entity->position.y, collider, playerID)) {
 		return;
 	}
 	if (entity->playerCollisionCooldown[player->linked_player] != 0) {
@@ -3035,8 +2555,7 @@ void StageEntity::shellActiveCallback(
 		collider.collisionState |= ActiveCollider::CS_Collided;
 		return;
 	}
-	if ((u16)(other.collidedGroups &
-		   (1 << AC_GRP_PlayerSpecial))) {
+	if ((u16)(other.collidedGroups & (1 << AC_GRP_PlayerSpecial))) {
 		return;
 	}
 
@@ -3047,8 +2566,7 @@ void StageEntity::shellActiveCallback(
 		return;
 	}
 
-	PlayerStompType stomp = entity->updatePlayerStomp(
-		collider, 0x480, true, entity->kickedInWall != 0);
+	PlayerStompType stomp = entity->updatePlayerStomp(collider, 0x480, true, entity->kickedInWall != 0);
 	if (stomp != PlayerStomp_None) {
 		if (stomp == PlayerStomp_Stomp) {
 			entity->_19();
@@ -3058,21 +2576,16 @@ void StageEntity::shellActiveCallback(
 
 	if (!entity->kickedFaster && direction == entity->direction) {
 		Vec3_32 *entityVelocity = &entity->velocity;
-		fx32 playerSpeed = player->velocity.x < 0
-			? -player->velocity.x : player->velocity.x;
-		fx32 entitySpeed = entityVelocity->x < 0
-			? -entityVelocity->x : entityVelocity->x;
+		fx32 playerSpeed = player->velocity.x < 0 ? -player->velocity.x : player->velocity.x;
+		fx32 entitySpeed = entityVelocity->x < 0 ? -entityVelocity->x : entityVelocity->x;
 		if (playerSpeed > entitySpeed) {
 			entity->kickedFaster = true;
 			Vec3_32 *minimumVelocity = &entity->minVelocity;
-			i16 shellSpeed =
-				data_ov000_020c1f44[direction];
+			i16 shellSpeed = data_ov000_020c1f44[direction];
 			fx32 playerVelocity = player->velocity.x;
-			minimumVelocity->x =
-				shellSpeed + (playerVelocity >> 1);
+			minimumVelocity->x = shellSpeed + (playerVelocity >> 1);
 			entity->velocity.x = minimumVelocity->x;
-			entity->getScorePointsRegular(
-				0, 0, 0x18000, entity->linked_player);
+			entity->getScorePointsRegular(0, 0, 0x18000, entity->linked_player);
 			func_02012398(0x70, &entity->position);
 			return;
 		}
@@ -3103,8 +2616,7 @@ void StageEntity::damageEntityCallback(ActiveCollider &collider, ActiveCollider 
 		}
 
 		if (entity->linked_player != -1) {
-			PlayerActor *player =
-				Game::getPlayer(entity->linked_player);
+			PlayerActor *player = Game::getPlayer(entity->linked_player);
 			player->func_ov011_0212bde0(entity);
 		}
 
@@ -3129,8 +2641,7 @@ void StageEntity::damageEntityCallback(ActiveCollider &collider, ActiveCollider 
 	}
 
 	PlayerBase *player = static_cast<PlayerBase *>(otherActor);
-	if (isBelowCamera(
-		    entity->position.y, collider, player->linked_player)) {
+	if (isBelowCamera(entity->position.y, collider, player->linked_player)) {
 		return;
 	}
 	if (entity->playerCollisionCooldown[player->linked_player] != 0) {
@@ -3417,8 +2928,7 @@ bool StageEntity::checkLavaCollision(Vec3_32 *pos)
 	bool hit = false;
 	if (func_ov000_020a6d18(pos->x, pos->y) == 0x10000004) {
 		hit = true;
-	} else if (data_ov000_020cace0[data_02085a7c] == 2 &&
-		   data_ov000_020cae0c[data_02085a7c] >= pos->y) {
+	} else if (data_ov000_020cace0[data_02085a7c] == 2 && data_ov000_020cae0c[data_02085a7c] >= pos->y) {
 		hit = true;
 	}
 	if (hit) {
@@ -3427,7 +2937,8 @@ bool StageEntity::checkLavaCollision(Vec3_32 *pos)
 	return hit;
 }
 
-void StageEntity::_38() {
+void StageEntity::_38()
+{
 	this->velocity.x = 0;
 	this->velocity.y = 0;
 	this->accelV = 0;
@@ -3505,8 +3016,7 @@ void StageEntity::onStageBeaten(PlayerActor &player)
 		if (player.scoreComboStandard > 8) {
 			player.scoreComboStandard = 8;
 		}
-		this->getScorePointsStageBeaten(
-			player.scoreComboStandard, 0, 0x18000, player.linked_player);
+		this->getScorePointsStageBeaten(player.scoreComboStandard, 0, 0x18000, player.linked_player);
 		position.add2(center);
 		position.y += 0x4000;
 		func_02022220(&position);
@@ -3517,8 +3027,7 @@ void StageEntity::onStageBeaten(PlayerActor &player)
 
 bool StageEntity::setGroundPoundCollision(const PlayerActor &player)
 {
-	i32 delta = (this->position.x + this->centerOffset.x) -
-		    (player.position.x + player.centerOffset.x);
+	i32 delta = (this->position.x + this->centerOffset.x) - (player.position.x + player.centerOffset.x);
 	if (this->properties & ObjectInfo::EP_NoGroundPound) {
 		return false;
 	}
@@ -3531,11 +3040,9 @@ bool StageEntity::setGroundPoundCollision(const PlayerActor &player)
 	return true;
 }
 
-bool StageEntity::isBelowCamera(
-	fx32 posY, ActiveCollider &collider, s8 playerID)
+bool StageEntity::isBelowCamera(fx32 posY, ActiveCollider &collider, s8 playerID)
 {
-	return -((posY + collider.rect.y) - collider.rect.halfHeight) <
-	       (int)Game::cameraY[playerID];
+	return -((posY + collider.rect.y) - collider.rect.halfHeight) < (int)Game::cameraY[playerID];
 }
 
 void StageEntity::damagePlayerCallback(ActiveCollider &collider, ActiveCollider &other)
@@ -3560,8 +3067,7 @@ void StageEntity::damagePlayerCallback(ActiveCollider &collider, ActiveCollider 
 	}
 
 	PlayerBase *player = static_cast<PlayerBase *>(otherActor);
-	if (isBelowCamera(
-		    entity->position.y, collider, player->linked_player)) {
+	if (isBelowCamera(entity->position.y, collider, player->linked_player)) {
 		return;
 	}
 	if (entity->playerCollisionCooldown[player->linked_player] != 0) {
@@ -3588,35 +3094,28 @@ bool StageEntity::playerCollision(ActiveCollider &collider, ActiveCollider &othe
 		return false;
 	}
 
-	if (BOOL(player->powerup == 3) != FALSE &&
-	    this->setMegaCollision(*player)) {
+	if (BOOL(player->powerup == 3) != FALSE && this->setMegaCollision(*player)) {
 		return true;
 	}
 
-	if (data_0208b350[player->linked_player] > 1 &&
-	    this->setStarmanCollision(*player)) {
+	if (data_0208b350[player->linked_player] > 1 && this->setStarmanCollision(*player)) {
 		return true;
 	}
 
-	if ((player->_778 & 0x800000) &&
-	    this->setGroundPoundCollision(*player)) {
+	if ((player->_778 & 0x800000) && this->setGroundPoundCollision(*player)) {
 		return true;
 	}
 
-	if (player->getShellState() == 2 &&
-	    this->setBlueShellCollision(*player)) {
+	if (player->getShellState() == 2 && this->setBlueShellCollision(*player)) {
 		return true;
 	}
 
-	if ((player->st1 & 0x10) &&
-	    (u16)(collider.detectAttacks & (1 << AC_ATK_Sliding)) &&
-	    this->setSlidingCollision(*player)) {
+	if ((player->st1 & 0x10) && (u16)(collider.detectAttacks & (1 << AC_ATK_Sliding)) && this->setSlidingCollision(*player)) {
 		return true;
 	}
 
 	bool spinDrill;
-	if ((player->_778 & 0x80000000) &&
-	    (player->st1 & 0x2000)) {
+	if ((player->_778 & 0x80000000) && (player->st1 & 0x2000)) {
 		spinDrill = true;
 	} else {
 		spinDrill = false;
@@ -3630,8 +3129,7 @@ bool StageEntity::playerCollision(ActiveCollider &collider, ActiveCollider &othe
 			if (this->setFenceSlamCollision(*player)) {
 				return true;
 			}
-		} else if (other.attack != AC_ATK_Sliding &&
-			   this->setStarmanCollision(*player)) {
+		} else if (other.attack != AC_ATK_Sliding && this->setStarmanCollision(*player)) {
 			return true;
 		}
 	}
@@ -3663,8 +3161,7 @@ void StageEntity::damagePlayer(ActiveCollider &collider, PlayerBase &player)
 u32 StageEntity::stopPlayerInShell(ActiveCollider *collider, PlayerActor *player)
 {
 	if (player->getShellState() == 1) {
-		if ((collider->intersectionDistX[AC_GRP_Player] > 0 && player->velH > 0) ||
-		    (collider->intersectionDistX[AC_GRP_Player] < 0 && player->velH < 0)) {
+		if ((collider->intersectionDistX[AC_GRP_Player] > 0 && player->velH > 0) || (collider->intersectionDistX[AC_GRP_Player] < 0 && player->velH < 0)) {
 			player->velH = 0;
 			return 2;
 		}
@@ -3683,8 +3180,7 @@ bool StageEntity::isPlayerInZone(PlayerActor *player, u32 id)
 	Vec3_32 &position = player->position;
 	position.x &= Game::wrapX;
 	fx32 posX = position.x;
-	if (rect.x <= posX && posX <= maxX &&
-	    rect.y >= position.y && position.y >= minY) {
+	if (rect.x <= posX && posX <= maxX && rect.y >= position.y && position.y >= minY) {
 		return true;
 	}
 	return false;
@@ -3693,7 +3189,7 @@ bool StageEntity::isPlayerInZone(PlayerActor *player, u32 id)
 void StageEntity::assignView(Vec3_32 *position)
 {
 
-  	this->_2be = func_0201f000(position);
+	this->_2be = func_0201f000(position);
 }
 
 void StageEntity::func_ov000_020988d0(u32 bit)
