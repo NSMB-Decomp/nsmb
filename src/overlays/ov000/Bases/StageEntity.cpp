@@ -2770,7 +2770,7 @@ void StageEntity::onUpdate_xx()
 		return;
 	}
 
-	if ((u32)((this->activeCollider.collidedGroups & 0x80) << 0x10) >> 0x10) {
+	if ((u16)(this->activeCollider.collidedGroups & 0x80)) {
 		this->wiggleTimer = 0x18;
 		this->wiggleFactor = 0x1000;
 	}
