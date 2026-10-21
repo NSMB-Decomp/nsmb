@@ -62,23 +62,23 @@ u32 ExceptionHandlerKeys;
 void func_02005b34()
 {
 	u8 newState = ExceptionHandlerState;
-	u16 keys = PAD_Read() & 0x3FF;
+	u32 keys = PAD_Read() & 0x3FF;
 	u32 keysPressed = ExceptionHandlerKeys ^ keys;
 	ExceptionHandlerKeys = keys;
 	u8 unknown = keys & keysPressed;
-	switch (ExceptionHandlerState) {
+	switch (newState) {
 	case 0: // Wait for L + R + LEFT + A
 		if (unknown & 0x2000) { // If device is folded?
 			newState = 5;
 		}
 
 		if (keys == (PAD_BUTTON_L | PAD_BUTTON_R | PAD_KEY_LEFT | PAD_BUTTON_A)) {
-			newState = ExceptionHandlerState + 1;
+			newState += 1;
 		}
 		break;
 	case 1: // Wait for release
 		if (keys == 0x0) {
-			newState = ExceptionHandlerState + 1;
+			newState += 1;
 		}
 		break;
 	case 2: // Wait for Down + B
@@ -86,20 +86,20 @@ void func_02005b34()
 			newState = 0;
 		} else {
 			if (keys == (PAD_KEY_DOWN | PAD_BUTTON_B)) {
-				newState = ExceptionHandlerState + 1;
+				newState += 1;
 			}
 		}
 		break;
 	case 3: // Wait for release
 		if (keys == 0x0) {
-			newState = ExceptionHandlerState + 1;
+			newState += 1;
 		}
 		break;
 	case 4: // Wait for Start + Select
 		if ((keys & ~(PAD_BUTTON_START | PAD_BUTTON_SELECT)) != 0) {
 			newState = 0;
 		} else if (keys == (PAD_BUTTON_START | PAD_BUTTON_SELECT)) {
-			newState = ExceptionHandlerState + 1;
+			newState += 1;
 		}
 		break;
 	case 5: // Setup the debug screen
@@ -110,12 +110,12 @@ void func_02005b34()
 		showExceptionHandler();
 		showExceptionHandlerSub();
 		u32 iVar2;
-		if (keys & 4 != 0) {
-			if ((unknown & 1 != 0 ) && keys != 0) {
+		if (keys & PAD_BUTTON_SELECT ) {
+			if ((unknown & PAD_BUTTON_A ) && keys) {
 				if (Nitro_GetCpsrM() == 0x1F) {
 					Heap* a = (Heap*)_data_0208b730;
-					Heap* b = Memory_gameHeap;
 					Heap* c = (Heap*)_data_0208b72c;
+					Heap* b = Memory_gameHeap;
 					if (keys & PAD_KEY_LEFT) {
                         Heap_dump(a);
 					} else if (keys & PAD_KEY_RIGHT) {
