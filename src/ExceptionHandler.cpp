@@ -127,9 +127,7 @@ void func_02005b34()
 
 void ExceptionHandlerLoop()
 {
-    (void)REG_IME;
-
-    REG_IME = 0;
+	OS_DisableIrq();
 	while (true) {
 		func_02005b34();
 	}

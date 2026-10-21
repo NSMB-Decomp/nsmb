@@ -178,7 +178,7 @@ _ZN6System15setupGameVBlankEv kind:function(arm,size=0x60) addr:0x02005ab0
 // exceptionscreen.cpp
 
 _Z20ExceptionHandlerLoopv kind:function(arm,size=0x24) addr:0x02005b10
-_Z13func_02005b34t kind:function(arm,size=0x1a8) addr:0x02005b34
+_Z13func_02005b34v kind:function(arm,size=0x1a8) addr:0x02005b34
 DebugScreenWaitForVblank kind:function(arm,size=0x28) addr:0x02005cdc
 _Z28setupGraphicsForDebugScreen2v kind:function(arm,size=0x164) addr:0x02005d04
 func_02005e68 kind:function(arm,size=0x40) addr:0x02005e68
