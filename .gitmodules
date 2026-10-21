@@ -1,4 +1,4 @@
 [submodule "lib/nitro"]
 	path = lib/nitro
-	url = git@github.com:NSMB-Decomp/nsmb.git
+	url = git@github.com:NSMB-Decomp/nitro.git
 	branch = main
