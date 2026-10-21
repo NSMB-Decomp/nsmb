@@ -62,4 +62,4 @@ Object185_Profile kind:data(any) addr:0x0218e0d0 ambiguous
 _ZTV9Object185 kind:data(any) addr:0x0218e0dc
 data_ov121_0218e180 kind:data(any) addr:0x0218e180 ambiguous
 Object104_Profile kind:data(any) addr:0x0218e1f0 ambiguous
-_ZTV9Object104 kind:data(any) addr:0x0218e1fc
+_ZTV9Object104 kind:data(word[0x45]) addr:0x0218e1fc
