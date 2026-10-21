@@ -35,9 +35,9 @@ typedef u32 EmitterT;
 
 // To fix code that has weird bool logic
 // TODO: See if we can get rid of the below and use nitro's bool's instead
-#define BOOL int
-#define TRUE 1
-#define FALSE 0
+//#define BOOL int
+//#define TRUE 1
+//#define FALSE 0
 
 // Overlays - https://nsmbhd.net/thread/1581-nsmb-overlay-list/
 FS_EXTERN_OVERLAY_ID(0);
