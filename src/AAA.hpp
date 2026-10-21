@@ -191,15 +191,22 @@ class Fader
 
 	bool isComplete();
 	u32 setupSceneFading(u32, bool, bool);
-	void func_02007e34(u32, u32);
-	void func_02007cf8(u32, u32);
-	bool func_02007c68();
-	void func_02007df0(u32);
 	bool func_02007cb0();
 	void func_02007bd8();
 	void func_02007bfc();
 };
 extern Fader GlobalFader;
+
+// These four are NOT members in the ROM: the target calls them as C-linkage free
+// functions with the Fader as the first argument (func_02007e34, func_02007cf8,
+// func_02007c68, func_02007df0). setupSceneFading and func_02007bfc are the
+// opposite case and really are members.
+extern "C" {
+	void func_02007e34(Fader *, u32, u32);
+	void func_02007cf8(Fader *, u32, u32);
+	bool func_02007c68(Fader *);
+	void func_02007df0(Fader *, u32);
+}
 
 extern ObjectProfile **CurrentProfileTable;
 extern ObjectProfile *MainProfileTable;

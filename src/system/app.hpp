@@ -140,7 +140,9 @@ namespace App {
 
 	void initFileCount(BOOL multiboot);
 
-	void initBoot(u32);
+	// The ROM symbol is _ZN3App8initBootEv: no parameters. Callers still pass a
+	// dummy word in r0, which initBoot ignores.
+	void initBoot();
 
 	void resetVram();
 

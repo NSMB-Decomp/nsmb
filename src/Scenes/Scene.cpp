@@ -1,25 +1,32 @@
 #include "Scene.hpp"
+#include "../system/app.hpp"
 
-void func_02008558();
-bool func_02046c5c();
-bool Wifi_isMultiBootCart();
-void func_0200f3d8();
-void func_02009b64();
-void func_ov052_02152bf0();
-void func_0200e874(u32, u32, bool);
-void func_0200514c(u32);
-void sceneBaseInit();
-void func_02018ac0();
-void func_0200e944(u32, u32, u32);
-u32 data_02088f18();
-u32 func_02013050(u32);
+extern "C" {
+	void func_02008558();
+	bool func_02046c5c();
+	void func_0200f3d8();
+	void func_ov052_02152bf0();
+	void func_0200e874(u32, u32, bool);
+	void func_02018ac0();
+	void func_0200e944(u32, u32, u32);
+	u32 func_02013050(OptionSave *);
+	void func_02006444(u32);
+	void func_02007c44(Fader *);
+	extern u8 data_02088f2c;
+	extern u8 data_02087630;
+	extern u16 data_0208883c;
+}
+// C++ linkage: the ROM symbols are _Z13func_02011e3cm and _Z13func_020131fcmm,
+// not the C-linkage names AAA.hpp gives them.
+void func_02011e3c(u32);
+void func_020131fc(u32, u32);
 u32 data_02085a84;
 u32 data_0208ae58;
 u32 data_02089504;
-u8 data_02085974;
-u8 data_0203bd28;
-u16 data_0203bd2c;
-u16 data_0203bd34;
+u8 data_0203bd28 = 1;
+u16 data_0203bd2c = 0x181;
+u16 data_0203bd30 = 0x181;
+u16 data_0203bd34 = 0x181;
 u32 data_02088f38;
 Fader *data_02085b14;
 
@@ -45,12 +52,12 @@ Scene::~Scene()
 		}
 		if (a) {
 			bool c = func_02046c5c();
-			if (c != 0 && !Wifi_isMultiBootCart()) {
+			if (c != 0 && !Nitro::Wifi_isMultiBootCart()) {
 				data_02085ad4[0] = save.options.controlOptions; // TODO: Do not offset using pointers
 			}
 			func_0200f3d8();
 		}
-		func_02009b64();
+		FS::Cache::clear();
 		if ((BOOL(data_02085a84 != 0) && (data_0208ae58 != 0)) == TRUE) {
 			func_ov052_02152bf0();
 			data_0208ae58 = 0;
@@ -109,51 +116,51 @@ bool Scene::preUpdate()
 	if (!Base::preUpdate()) {
 		return 0;
 	}
-	if (data_0203bd30 == 0x181) {
-		if ((this->skipFlags & 1) != 0) {
-			if (!this->hasChildPendingCreation()) {
-				this->skipFlags = this->skipFlags & 0xfe;
-				this->skipFlags = this->skipFlags & 0xfb;
+	if (data_0203bd30 != 0x181) {
+		if (func_02007c68(&GlobalFader) == 0) {
+			func_02007df0(&GlobalFader, 0x20);
+		} else {
+			if (func_02007c68(&GlobalFader) != 0) {
+				this->destroy();
+			}
+		}
+		return false;
+	}
+	if ((this->skipFlags & 1) != 0) {
+		if (!this->hasChildPendingCreation()) {
+			this->skipFlags &= ~1;
+			this->skipFlags &= ~4;
+		}
+		return false;
+	}
+	s32 i = 0;
+	do {
+		if ((GlobalFader.fadingState[i] & 4) != 0) {
+			func_02007e34(&GlobalFader, 0x20, i);
+		}
+		if ((GlobalFader.fadingState[i] & 0x20) != 0) {
+			func_02007cf8(&GlobalFader, 0x20, i);
+		}
+		i += 1;
+	} while (i < 2);
+	if (data_02087630 != 0) {
+		if ((data_02088f2c != 0) && (data_02088f30 != 0)) {
+			if (Nitro::Wifi_isMultiBootCart()) {
+				data_0208883c |= 0x8000;
+			} else {
+				data_02088f2c = 0;
+				func_02011e3c(0x1e);
+				func_02007c44(&GlobalFader);
+				GlobalFader.func_02007bfc();
+				func_020131fc(4, 0);
+				data_02088f34 = 1;
 			}
 			return false;
 		}
-		u32 i = 0;
-		do {
-			if ((GlobalFader.fadingState[0] & 4) != 0) {
-				GlobalFader.func_02007e34(0x20, i);
-			}
-			if ((GlobalFader.fadingState[0] & 0x20) != 0) {
-				GlobalFader.func_02007cf8(0x20, i);
-			}
-			i += 1;
-			// pFVar3 = (Fader *)(pFVar3->_pad0 + 1);
-		} while (i < 2);
-		// if (data_02087630 == '\0') {
-		//	data_02088f2c = '\x01';
-		// } else if ((data_02088f2c != '\0') && (data_02088f30 != '\0')) {
-		//	bVar1 = Wifi_isMultiBootCart();
-		//	if (bVar1) {
-		//		data_0208883c |= 0x8000;
-		//	} else {
-		//		data_02088f2c = '\0';
-		//		func_02011e3c(0x1e);
-		//		func_02007c44(&GlobalFader);
-		//		func_02007bfc(&GlobalFader);
-		//		func_020131fc(4, 0);
-		//		data_02088f34 = 1;
-		//	}
-		//	return 0;
-		// }
-		// return 1;
-	}
-	if (GlobalFader.func_02007c68() == 0) {
-		GlobalFader.func_02007df0(0x20);
 	} else {
-		if (GlobalFader.func_02007c68() != 0) {
-			this->destroy();
-		}
+		data_02088f2c = 1;
 	}
-	return false;
+	return true;
 }
 
 void Scene::postUpdate(u32 a)
@@ -179,36 +186,36 @@ void Scene::prepareFirstScene()
 {
 	if (i32(&GlobalFader) != 0) {
 		func_02008558();
-		// GlobalFader = Fader();
-		//*(i32*)(&GlobalFader) = 1;
 	}
-	if (Wifi_isMultiBootCart()) {
+	if (Nitro::Wifi_isMultiBootCart()) {
 		data_0203bd30 = 1;
 	} else {
-		u32 boot_scene = Game::getBootScene();
+		u32 boot_scene = App::getBootScene();
 		if (boot_scene == 0) {
 			data_0203bd30 = 0;
 		} else {
-			sceneBaseInit();
+			App::initBoot();
 			func_02018ac0();
 			GlobalFader.brightnessFactor[0] = 0x1000;
 			GlobalFader.brightnessFactor[1] = 0x1000;
-			// iVar2 = func_02013050(&data_02088f18);
-			//  if (iVar2 == 0) {
-			//	data_0203bd30 = 4;
-			//	data_02085ad4 = uRam02088f24;
-			//	func_02006444(uRam02088f20);
-			//  } else {
-			//	if (iVar2 - 2U < 2) {
-			//		data_02088f38 = 7;
-			//	} else {
-			//		data_02088f38 = 6;
-			//	}
-			//	data_0203bd30 = 0xb;
-			//	data_02088f30 = 0;
-			//  }
+			u32 iVar2 = func_02013050(&save.options);
+			if (iVar2 == 0) {
+				data_0203bd30 = 4;
+				data_02085ad4[0] = save.options.controlOptions;
+				func_02006444(save.options.soundMode);
+			} else {
+				if (iVar2 - 2U <= 1) {
+					data_02088f38 = 7;
+				} else {
+					data_02088f38 = 6;
+				}
+				data_0203bd30 = 0xb;
+				data_02088f30 = 0;
+			}
 		}
 	}
+	data_02088f2c = 0;
+	data_0203bd28 = 0;
 }
 
 Scene *Scene::tryChangeScene()
@@ -218,14 +225,14 @@ Scene *Scene::tryChangeScene()
 	}
 	data_0203bd2c = data_0203bd34;
 	data_0203bd34 = data_0203bd30;
-	data_02085974 &= ~0x40;
+	App::sleepControl &= ~0x40;
 	if (data_0203bd30 == 4) {
 		data_02085a84 = 0;
 		data_02088f30 = 1;
 	}
 #if !defined(VER_Y7QJ)
 	if (data_0203bd30 == 0x146) {
-		func_0200514c(0x10101);
+		App::reset(0x10101);
 	}
 #endif
 	Scene *result = (Scene *)Object::spawnScene(data_0203bd30, data_02088f38, 1);
