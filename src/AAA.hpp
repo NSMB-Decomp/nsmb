@@ -562,3 +562,4 @@ extern u32 uRam02088c04;
 extern u8 uRam02088e05;
 extern u32 currentHeap;
 extern u32 currentHeapLength;
+u32 func_ov000_020a6d18(u32, u32);
