@@ -1,4 +1,5 @@
 #pragma once
+#include "nitro.h"
 typedef unsigned char u8;
 typedef unsigned short u16;
 typedef unsigned long u32;
@@ -16,11 +17,11 @@ typedef volatile i16 vi16;
 typedef volatile i32 vi32;
 typedef volatile i64 vi64;
 typedef void *unknown_pointer;
-#if defined(__MWERKS__)
-typedef unsigned long size_t;
-#else
-typedef unsigned int size_t;
-#endif
+//#if defined(__MWERKS__)
+//typedef unsigned long size_t;
+//#else
+//typedef unsigned int size_t;
+//#endif
 
 typedef signed char s8;
 typedef signed short s16;
@@ -63,19 +64,16 @@ typedef u32 EmitterT;
 #define FALSE 0
 
 // Overlays - https://nsmbhd.net/thread/1581-nsmb-overlay-list/
-#define EXTERN_OVERLAY_ID(name_or_index) extern u32 OVERLAY_##name_or_index##_ID;
-#define OVERLAY_ID(name_or_index) ((u32) & OVERLAY_##name_or_index##_ID)
+FS_EXTERN_OVERLAY_ID(0);
+FS_EXTERN_OVERLAY_ID(1);
+FS_EXTERN_OVERLAY_ID(10);
+FS_EXTERN_OVERLAY_ID(11);
+FS_EXTERN_OVERLAY_ID(52);
 
-EXTERN_OVERLAY_ID(0);
-EXTERN_OVERLAY_ID(1);
-EXTERN_OVERLAY_ID(10);
-EXTERN_OVERLAY_ID(11);
-EXTERN_OVERLAY_ID(52);
-
-#define OVERLAY_MISC OVERLAY_ID(0)
-#define OVERLAY_BOOT OVERLAY_ID(1)
-#define OVERLAY_LEVEL OVERLAY_ID(10)
-#define OVERLAY_11 OVERLAY_ID(11)
-#define OVERLAY_VS_MENU OVERLAY_ID(11)
-#define OVERLAY_52 OVERLAY_ID(52)
+#define OVERLAY_MISC FS_OVERLAY_ID(0)
+#define OVERLAY_BOOT FS_OVERLAY_ID(1)
+#define OVERLAY_LEVEL FS_OVERLAY_ID(10)
+#define OVERLAY_11 FS_OVERLAY_ID(11)
+#define OVERLAY_VS_MENU FS_OVERLAY_ID(11)
+#define OVERLAY_52 FS_OVERLAY_ID(52)
 
