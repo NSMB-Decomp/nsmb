@@ -437,7 +437,7 @@ bool Base::onHeapCreated()
 {
 	return true;
 }
-void *Base::operator new(size_t count)
+void *Base::operator new(u32 count)
 {
 	Base *ptr = (Base *)Memory_gameHeap->allocate(count, -4);
 	if (ptr != (Base *)0x0) {

@@ -398,8 +398,8 @@ void WmNodeMark::updateAnim(WmNodeMarkBlinker& blinker) {
 }
 
 void WmNodeMark::render() {
-
-	if (OptionsMenu::isOpen())
+	s16 task_id = OptionsMenu::taskID;
+	if (task_id >= 2 && task_id < 10) 
 		return;
 
 	if (!visible)

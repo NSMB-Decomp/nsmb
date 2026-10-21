@@ -1,17 +1,10 @@
 #pragma once
 #include "nitro.h"
-typedef unsigned char u8;
-typedef unsigned short u16;
-typedef unsigned long u32;
-typedef unsigned long long u64;
-typedef signed char i8;
-typedef signed short i16;
-typedef signed long i32;
-typedef signed long long i64;
-typedef volatile u8 vu8;
-typedef volatile u16 vu16;
-typedef volatile u32 vu32;
-typedef volatile u64 vu64;
+// TODO: Get rid of the below, s32, s8, s16 etc. should be used instead
+typedef s8 i8;
+typedef s16 i16;
+typedef s32 i32;
+typedef s64 i64;
 typedef volatile i8 vi8;
 typedef volatile i16 vi16;
 typedef volatile i32 vi32;
@@ -22,24 +15,6 @@ typedef void *unknown_pointer;
 //#else
 //typedef unsigned int size_t;
 //#endif
-
-typedef signed char s8;
-typedef signed short s16;
-typedef signed long s32;
-typedef signed long long s64;
-
-typedef volatile u8  vu8;
-typedef volatile u16 vu16;
-typedef volatile u32 vu32;
-typedef volatile u64 vu64;
-typedef volatile s8  su8;
-typedef volatile s16 su16;
-typedef volatile s32 su32;
-typedef volatile s64 su64;
-
-typedef s16 fx16;
-typedef s32 fx32;
-typedef s64 fx64;
 
 typedef u32 EmitterT;
 
@@ -59,6 +34,7 @@ typedef u32 EmitterT;
 #pragma define_section itcm ".itcm" ".itcm"
 
 // To fix code that has weird bool logic
+// TODO: See if we can get rid of the below and use nitro's bool's instead
 #define BOOL int
 #define TRUE 1
 #define FALSE 0

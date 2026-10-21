@@ -28,7 +28,7 @@ class Base
 	static void setSpawnParams(u16, ProcessLink *, u32, u8);
 	bool hasChildPendingCreation();
 	void create();
-	void* operator new(size_t);
+	void* operator new(u32);
 	void operator delete(void *);
 	Base *getParent();
 	void destroy();
