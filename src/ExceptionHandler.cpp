@@ -1,12 +1,11 @@
 #include "ExceptionHandler.hpp"
-#include "system/app.hpp"
 #include "base_types.hpp"
+#include "system/app.hpp"
 
 void *_data_0208b72c;
 void *_data_0208b730;
 
 u32 Nitro_GetCpsrM();
-void func_02005cdc();
 void Heap_dump(void *);
 
 void showExceptionHandler()
@@ -49,68 +48,72 @@ void setupGraphicsForDebugScreen2()
 	//  Nitro::EnableDisplay();
 	//  REG_DISPCNT_SUB = REG_DISPCNT_SUB | 0x10000;
 }
-void func_02005cdc()
+void DebugScreenWaitForVblank()
 {
+	// The below is useless junk o that func_02005b34 does not do a relative branch.
+	while (true) {
+		u32 a = PAD_Read();
+		REG_DISPCNT = a;
+	}
 }
 
-#define UNKWN *((u16 *)0x27ffa8)
-
-u32 ExceptionHandlerState;
+u8 ExceptionHandlerState;
 u32 ExceptionHandlerKeys;
 void func_02005b34()
 {
-	u32 newState = ExceptionHandlerState;
-	u32 keys = (REG_KEYINPUT | UNKWN) ^ KEYS_ALL;
-	u32 keysHeld = keys & (KEY_A | KEY_B | KEY_SELECT | KEY_START | KEY_RIGHT | KEY_LEFT | KEY_UP | KEY_DOWN | KEY_R | KEY_L);
-	u32 keysPressed = keysHeld ^ ExceptionHandlerKeys;
-	ExceptionHandlerKeys = keysHeld;
+	u8 newState = ExceptionHandlerState;
+	u32 keys = PAD_Read();
+	u32 keysPressed = keys ^ ExceptionHandlerKeys;
+	ExceptionHandlerKeys = keys;
+	u8 unknown = keys & keysPressed;
 	switch (ExceptionHandlerState) {
-	case 0:
-		if (keysHeld == 0x321) {
+	case 0: // Wait for L + R + LEFT + A
+		if (unknown & 0x2000) { // If device is folded?
+			newState = 5;
+		}
+
+		if (keys == (PAD_BUTTON_L | PAD_BUTTON_R | PAD_KEY_LEFT | PAD_BUTTON_A)) {
 			newState = ExceptionHandlerState + 1;
 		}
 		break;
-	case 1:
-		if (keysHeld == 0x0) {
+	case 1: // Wait for release
+		if (keys == 0x0) {
 			newState = ExceptionHandlerState + 1;
 		}
 		break;
-	case 2:
-		if ((keys & 0x37d) == 0) {
-			if (keysHeld == 0x82) {
+	case 2: // Wait for Down + B
+		if ((keys & ~(PAD_KEY_DOWN | PAD_BUTTON_B)) != 0) {
+			newState = 0;
+		} else {
+			if (keys == (PAD_KEY_DOWN | PAD_BUTTON_B)) {
 				newState = ExceptionHandlerState + 1;
 			}
-		} else {
-			newState = '\0';
 		}
 		break;
-	case 3:
-		if (keysHeld == 0x0) {
+	case 3: // Wait for release
+		if (keys == 0x0) {
 			newState = ExceptionHandlerState + 1;
 		}
 		break;
-	case 4:
-		if ((keys & 0x3f3) == 0) {
-			if (keysHeld == 0xc) {
-				newState = ExceptionHandlerState + 1;
-			}
-		} else {
-			newState = '\0';
+	case 4: // Wait for Start + Select
+		if ((keys & ~(PAD_BUTTON_START | PAD_BUTTON_SELECT)) != 0) {
+			newState = 0;
+		} else if (keys == (PAD_BUTTON_START | PAD_BUTTON_SELECT)) {
+			newState = ExceptionHandlerState + 1;
 		}
 		break;
-	case 5:
+	case 5: // Setup the debug screen
 		setupGraphicsForDebugScreen2();
 		showExceptionHandler();
 		newState += 1;
-	case 6:
+	case 6: // Loop the debug screen
 		showExceptionHandler();
 		showExceptionHandlerSub();
-		newState += 1;
 		u32 iVar2;
-		if (((((keys & 4) != 0) && ((keysHeld & keysPressed & 1) != 0)) && ((keys & 4) != 0)) && (iVar2 = Nitro_GetCpsrM(), iVar2 == 0x1f)) {
-			if ((keys & 0x20) == 0) {
-				if ((keys & 0x10) == 0) {
-					if ((keys & 0x40) != 0) {
+		if (((((keys & PAD_BUTTON_SELECT) != 0) && ((keys & keysPressed & PAD_BUTTON_A) != 0)) && ((keys & PAD_BUTTON_SELECT) != 0)) && (iVar2 = Nitro_GetCpsrM(), iVar2 == 0x1f)) {
+			if ((keys & PAD_KEY_LEFT) == 0) {
+				if ((keys & PAD_KEY_RIGHT) == 0) {
+					if ((keys & PAD_KEY_UP) != 0) {
 						Heap_dump(_data_0208b72c);
 					}
 				} else {
@@ -121,7 +124,7 @@ void func_02005b34()
 			}
 		}
 	}
-	func_02005cdc();
+	DebugScreenWaitForVblank();
 	ExceptionHandlerState = newState;
 }
 
