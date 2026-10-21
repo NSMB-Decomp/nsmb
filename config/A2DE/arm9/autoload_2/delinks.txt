@@ -9,7 +9,10 @@ src/Bases/Base.cpp:
     .data       start:0x02085224 end:0x020852a8
     .autobss_3  start:0x0208fae0 end:0x0208fb0c
 
-lib/Nitro/Nitro.cpp:
+lib/nitro/src/fs/fs_command.c:
     categories: NitroSDK
-//  .itcm       start:0x01ff8000 end:0x01ffd198
     .text       start:0x0204ef5c end:0x0207ce20
+
+lib/nitro/src/os/os_thread.c:
+    categories: NitroSDK
+    .text       start:0x0206557c end:0x020655f4
