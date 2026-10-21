@@ -62,8 +62,8 @@ u32 ExceptionHandlerKeys;
 void func_02005b34()
 {
 	u8 newState = ExceptionHandlerState;
-	u32 keys = PAD_Read();
-	u32 keysPressed = keys ^ ExceptionHandlerKeys;
+	u16 keys = PAD_Read() & 0x3FF;
+	u32 keysPressed = ExceptionHandlerKeys ^ keys;
 	ExceptionHandlerKeys = keys;
 	u8 unknown = keys & keysPressed;
 	switch (ExceptionHandlerState) {
@@ -110,17 +110,20 @@ void func_02005b34()
 		showExceptionHandler();
 		showExceptionHandlerSub();
 		u32 iVar2;
-		if (((((keys & PAD_BUTTON_SELECT) != 0) && ((keys & keysPressed & PAD_BUTTON_A) != 0)) && ((keys & PAD_BUTTON_SELECT) != 0)) && (iVar2 = Nitro_GetCpsrM(), iVar2 == 0x1f)) {
-			if ((keys & PAD_KEY_LEFT) == 0) {
-				if ((keys & PAD_KEY_RIGHT) == 0) {
-					if ((keys & PAD_KEY_UP) != 0) {
-						Heap_dump(_data_0208b72c);
+		if (keys & 4 != 0) {
+			if ((unknown & 1 != 0 ) && keys != 0) {
+				if (Nitro_GetCpsrM() == 0x1F) {
+					Heap* a = (Heap*)_data_0208b730;
+					Heap* b = Memory_gameHeap;
+					Heap* c = (Heap*)_data_0208b72c;
+					if (keys & PAD_KEY_LEFT) {
+                        Heap_dump(a);
+					} else if (keys & PAD_KEY_RIGHT) {
+						Heap_dump(b);
+					} else if (keys & PAD_KEY_UP) {
+						Heap_dump(c);
 					}
-				} else {
-					Heap_dump(Memory_gameHeap);
 				}
-			} else {
-				Heap_dump(_data_0208b730);
 			}
 		}
 	}
