@@ -438,8 +438,7 @@ void DebugScene::func_ov002_020cc514()
 		r4 = 1;
 	}
 
-	bool bVar4 = this->_1e8 == ~1;
-	if (bVar4) {
+	if (this->_1e8 == ~1) {
 		this->_1e8 = -1;
 		func_02006740();
 		data_02085a1c = 1;
