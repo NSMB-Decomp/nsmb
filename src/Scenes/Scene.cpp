@@ -177,10 +177,10 @@ void Scene::postRender(u32 a)
 
 void Scene::prepareFirstScene()
 {
-	if (i32(&GlobalFader) != 0) {
+	if (s32(&GlobalFader) != 0) {
 		func_02008558();
 		// GlobalFader = Fader();
-		//*(i32*)(&GlobalFader) = 1;
+		//*(s32*)(&GlobalFader) = 1;
 	}
 	if (Wifi_isMultiBootCart()) {
 		data_0203bd30 = 1;

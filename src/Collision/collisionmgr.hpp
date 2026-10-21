@@ -14,7 +14,7 @@ class CollisionMgr
 	u8 _pad2[0x46];
 	u32 _rawr;
 	u8 _pad3[0xe];
-	i8 _25e;
+	s8 _25e;
 	u8 _pad4[40];
 	u8 _b7;
 
@@ -26,7 +26,7 @@ class CollisionMgr
 	void func_ov000_020ab010(Base *, void *, void *, void *, u32);
 	bool func_ov000_020aa990(u32);
 	static u32 getSolidTileType(fx32 x, fx32 y);
-	bool func_01ffe778(i32*, u32);
+	bool func_01ffe778(s32*, u32);
 	virtual void _TEMP(); // To make sure size is correct
 };
 NTR_SIZE_GUARD(CollisionMgr, 0xb8);

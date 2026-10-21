@@ -8,8 +8,8 @@ struct SomethingElse {
 };
 
 #if !defined(VER_Y7QJ)
-i32 data_ov002_020cd300;
-i32 data_ov002_020cd304;
+s32 data_ov002_020cd300;
+s32 data_ov002_020cd304;
 char S_ENDIN[] = "ENDIN";
 char S_MGVS[]  = "MGVS";
 char S_SAVE[]  = "SAVE";
@@ -112,8 +112,8 @@ void DebugScene::func_ov002_020cc514()
 		this->_1f4 = 0xf;
 	}
 
-	i32 iVar2 = this->_1f8;
-	i32 uVar1 = this->_1f4;
+	s32 iVar2 = this->_1f8;
+	s32 uVar1 = this->_1f4;
 	if (uVar1 >= iVar2 + 10) {
 		this->_1f8 = uVar1 - 9;
 
@@ -131,7 +131,7 @@ void DebugScene::func_ov002_020cc514()
 			}
 			iVar2 = func_0201f5fc(this->_1dc);
 			if (iVar2 == 0) {
-				i32 *puVar3 = &this->_1dc;
+				s32 *puVar3 = &this->_1dc;
 				do {
 					*puVar3 = *puVar3 + 1;
 					iVar2 = func_0201f5fc(this->_1dc);
@@ -144,7 +144,7 @@ void DebugScene::func_ov002_020cc514()
 			}
 			iVar2 = func_0201f5fc(this->_1dc);
 			if (iVar2 == 0) {
-				i32 *puVar3 = &this->_1dc;
+				s32 *puVar3 = &this->_1dc;
 				do {
 					*puVar3 = *puVar3 - 1;
 					if (this->_1dc < 0) {
@@ -428,7 +428,7 @@ void DebugScene::func_ov002_020cc514()
 	u32 r5;
 	u32 r4;
 	if (data_ov002_020cd304) {
-		i32 iVar7 = data_ov002_020cd304 - 1;
+		s32 iVar7 = data_ov002_020cd304 - 1;
 		r6 = data_ov002_020cd220[iVar7];
 		r5 = data_ov002_020cd240[iVar7][0];
 		r4 = data_ov002_020cd240[iVar7][1];
@@ -493,13 +493,13 @@ void DebugScene::func_ov002_020cc328()
 		return;
 	}
 
-	i32 b = this->_1fc % 5;
-	i32 c = this->_1fc / 5;
-	i32 d = 5;
+	s32 b = this->_1fc % 5;
+	s32 c = this->_1fc / 5;
+	s32 d = 5;
 	if (c == 2) {
 		d = 4;
 	}
-	i32 e = 3;
+	s32 e = 3;
 	if (4 <= b) {
 		e -= 1;
 	}

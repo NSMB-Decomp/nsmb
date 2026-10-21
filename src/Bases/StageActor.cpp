@@ -43,10 +43,10 @@ void StageActor::postUpdate(u32 a)
 	Actor::postUpdate(a);
 }
 
-PlayerActor *GAME_getPlayer(i32);
+PlayerActor *GAME_getPlayer(s32);
 bool StageActor::isInActiveView()
 {
-	for (i32 i = 0; i < 2; ++i) {
+	for (s32 i = 0; i < 2; ++i) {
 		PlayerActor *player = GAME_getPlayer(i);
 		if (player != NULL) {
 			if (player->_2be == this->_2be)

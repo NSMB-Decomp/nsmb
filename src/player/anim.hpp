@@ -8,7 +8,7 @@ struct PlayerCapAnimation {
 	u32 luigiAnimID;
 	u32 luigiSmallAnimID;
 	u32 type;
-	i32 speed;
+	s32 speed;
 	u16 startFrame;
 
 };
@@ -17,7 +17,7 @@ struct PlayerHeadAnimation {
 
 	u32 animID;
 	u32 type;
-	i32 speed;
+	s32 speed;
 	u16 startFrame;
 
 };

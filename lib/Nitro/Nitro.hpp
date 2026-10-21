@@ -103,54 +103,54 @@
 
 union Mat2x2 {
 	struct _ {
-		i32 m00, m01;
-		i32 m10, m11;
+		s32 m00, m01;
+		s32 m10, m11;
 	} s;
-	i32 v[2][2];
-	i32 a[2*2];
+	s32 v[2][2];
+	s32 a[2*2];
 };
 
 union Mat3x3 {
 	struct _ {
-		i32 m00, m01, m02;
-		i32 m10, m11, m12;
-		i32 m20, m21, m22;
+		s32 m00, m01, m02;
+		s32 m10, m11, m12;
+		s32 m20, m21, m22;
 	} s;
-	i32 v[3][3];
-	i32 a[3*3];
+	s32 v[3][3];
+	s32 a[3*3];
 };
 
 union Mat4x3 {
 	struct _ {
-		i32 m00, m01, m02;
-		i32 m10, m11, m12;
-		i32 m20, m21, m22;
-		i32 m30, m31, m32;
+		s32 m00, m01, m02;
+		s32 m10, m11, m12;
+		s32 m20, m21, m22;
+		s32 m30, m31, m32;
 	} s;
-	i32 v[4][3];
-	i32 a[4*3];
+	s32 v[4][3];
+	s32 a[4*3];
 };
 
 union Mat4x4 {
 	struct _ {
-		i32 m00, m01, m02, m03;
-		i32 m10, m11, m12, m13;
-		i32 m20, m21, m22, m23;
-		i32 m30, m31, m32, m33;
+		s32 m00, m01, m02, m03;
+		s32 m10, m11, m12, m13;
+		s32 m20, m21, m22, m23;
+		s32 m30, m31, m32, m33;
 	} s;
-	i32 m[4][4];
-	i32 a[4*4];
+	s32 m[4][4];
+	s32 a[4*4];
 };
 
 struct Vec3_32s {
-	i32 x;
-	i32 y;
-	i32 z;
+	s32 x;
+	s32 y;
+	s32 z;
 };
 struct Vec3_16s {
-	i16 x;
-	i16 y;
-	i16 z;
+	s16 x;
+	s16 y;
+	s16 z;
 };
 
 typedef void (*IrqFunction)();
@@ -505,7 +505,7 @@ extern "C" {
 
 	};
 
-	i32 FixedDiv(i32, i32);
+	s32 FixedDiv(s32, s32);
 
 	void CopyMat3x3(const void*, void*);
 
@@ -559,7 +559,7 @@ extern "C" {
 	};
 	NITRO_SIZE_ASSERT(Ns3dDictionary, 0x8);
 
-	i32 Ns_3dGetDictionaryIndex(Ns3dDictionary* d, const Ns3dStringData* name);
+	s32 Ns_3dGetDictionaryIndex(Ns3dDictionary* d, const Ns3dStringData* name);
 
 	inline void* Ns_3dGetDictionaryData(Ns3dDictionary* d, u32 index) {
 		Ns3dDictionaryData* h = reinterpret_cast<Ns3dDictionaryData*>(reinterpret_cast<u8*>(d) + d->dataOffset);
@@ -589,8 +589,8 @@ extern "C" {
 		u16 flags;
 		u16 width;
 		u16 height;
-		i32 _24;
-		i32 _28;
+		s32 _24;
+		s32 _28;
 	};
 	NITRO_SIZE_ASSERT(Ns3dMaterialData, 0x2C);
 
@@ -616,7 +616,7 @@ extern "C" {
 
 	struct Ns3dNodeData {
 		u16 flags;
-		i16 p[0]; // 1 or more
+		s16 p[0]; // 1 or more
 	};
 	NITRO_SIZE_ASSERT(Ns3dNodeData, 0x2);
 
@@ -815,8 +815,8 @@ extern "C" {
 	/* Animation class */
 
 	struct Ns3dAnimation {
-		i32 frame;
-		i32 scale;
+		s32 frame;
+		s32 scale;
 		void* data;
 		void* func;
 		Ns3dAnimation* next;
@@ -831,15 +831,15 @@ extern "C" {
 
 	u32 Ns_3dAnimationGetSize(Ns3dAnimationData* anim, Ns3dModelData* model);
 
-	inline void Ns_3dAnimationSetFrame(Ns3dAnimation* a, i32 frame) {
+	inline void Ns_3dAnimationSetFrame(Ns3dAnimation* a, s32 frame) {
 		a->frame = frame;
 	}
 
-	inline i32 Ns_3dAnimationGetRatio(Ns3dAnimation* a) {
+	inline s32 Ns_3dAnimationGetRatio(Ns3dAnimation* a) {
 		return a->scale;
 	}
 
-	inline void Ns_3dAnimationSetRatio(Ns3dAnimation* a, i32 ratio) {
+	inline void Ns_3dAnimationSetRatio(Ns3dAnimation* a, s32 ratio) {
 		a->scale = ratio;
 	}
 

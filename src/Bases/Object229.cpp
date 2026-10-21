@@ -37,7 +37,7 @@ s32 Object229::onCreate()
 	if (4 < this->setting_1) {
 		this->setting_1 = 4;
 	}
-	i32 uVar1 = (u8)settings.setting_2;
+	s32 uVar1 = (u8)settings.setting_2;
 	if (uVar1 < 1) {
 		uVar1 = 1;
 	}
@@ -106,7 +106,7 @@ void Object229::func_ov099_0218602c()
 	}
 	this->e = 2;
 	this->_404 = this->_404 + 1;
-	if (3 <= (i32)this->_404) {
+	if (3 <= (s32)this->_404) {
 		this->func_ov099_02185f30(2);
 		return;
 	}

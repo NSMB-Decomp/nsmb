@@ -15,7 +15,7 @@ bool AnimationCtrl::createCtrl(Ns3dDrawable* drw, void* file, u32 animID, Ns3dTe
 
 }
 
-void AnimationCtrl::init(u32 animID, u32 type, i32 speed, u16 startFrame) {
+void AnimationCtrl::init(u32 animID, u32 type, s32 speed, u16 startFrame) {
 
 	if (animID == this->animID) {
 		frameController.setAnimationType(type);

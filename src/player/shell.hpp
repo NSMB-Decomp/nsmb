@@ -9,7 +9,7 @@ public:
 	virtual ~PlayerShell();
 
 	bool create();
-	bool render(BOOL skip, i8 texPalette, u16 diffuse, u16 ambient, BOOL toon);
+	bool render(BOOL skip, s8 texPalette, u16 diffuse, u16 ambient, BOOL toon);
 
 	static bool loadResources();
 

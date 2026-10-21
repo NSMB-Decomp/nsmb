@@ -11,7 +11,7 @@ public:
 	virtual ~PlayerCap();
 
 	bool create(u8 playerID);
-	bool render(BOOL skip, i32 frame, i8 texPalette, u16 diffuse, u16 ambient, BOOL toon);
+	bool render(BOOL skip, s32 frame, s8 texPalette, u16 diffuse, u16 ambient, BOOL toon);
 	void setAnimation(u8 animType, BOOL smallPlayer);
 
 	static bool loadResources();
@@ -28,7 +28,7 @@ public:
 	Animation animation;
 	FrameCtrl frameController;
 	u8 playerID;
-	i8 animType;
+	s8 animType;
 
 };
 NTR_SIZE_GUARD(PlayerCap, 0xC4);

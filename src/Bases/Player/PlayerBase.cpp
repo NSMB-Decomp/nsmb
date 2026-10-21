@@ -1,9 +1,9 @@
 #include "PlayerBase.hpp"
 #include "../StageEntity.hpp"
 
-const i16 data_ov011_0212e220[2] = {0x4000, -0x4000};
-const i16 data_ov011_0212e21c[2] = {0x3000, -0x3000};
-const i16 data_ov011_0212e218[2] = {0x3800,  -0x3800};
+const s16 data_ov011_0212e220[2] = {0x4000, -0x4000};
+const s16 data_ov011_0212e21c[2] = {0x3000, -0x3000};
+const s16 data_ov011_0212e218[2] = {0x3800,  -0x3800};
 
 struct UNKNOWN {
 	u16 _0;
@@ -247,7 +247,7 @@ extern u32 data_0208b3d4[2][4];
 bool PlayerBase::func_ov011_0212c4ec()
 {
 	// TODO: Can this syntax be improved?
-	i32 i = 0;
+	s32 i = 0;
 	u32 *v = (u32 *)&data_0208b3d4[this->linked_player];
 	do {
 		if (*v != 0) {
@@ -265,7 +265,7 @@ PlayerBase::PlayerBase()
 	this->actorCategory = (1 << this->actorType) | 0x80;
 	this->_7aa = (this->settings & 0xf0) >> 4;
 	this->_7b0 = 0;
-	i8 a = this->settings & 0xf;
+	s8 a = this->settings & 0xf;
 	this->linkPlayer(a);
 	this->_7b4 = a;
 	this->collisionMgr._25e = a;
@@ -295,12 +295,12 @@ u32 PlayerBase::func_ov011_0212c27c(u32 param_1)
 	}
 }
 
-void func_020201c8(i32, i32);
+void func_020201c8(s32, s32);
 extern u8 data_02085a20;
 void PlayerBase::func_ov011_0212c200()
 {
-	i8 powerup = this->powerup;
-	i8 linked_player = this->linked_player;
+	s8 powerup = this->powerup;
+	s8 linked_player = this->linked_player;
 	switch (powerup) {
 	case 0:
 	case 1:
@@ -322,7 +322,7 @@ void PlayerBase::func_ov011_0212c200()
 
 void PlayerBase::func_ov011_0212c1b8()
 {
-	i32 i = 0;
+	s32 i = 0;
 	do {
 		PlayerBase *v = data_0208b35c[i];
 		if ((v != NULL) && (this->linked_player != v->linked_player)) {
@@ -335,7 +335,7 @@ void PlayerBase::func_ov011_0212c1b8()
 
 void PlayerBase::func_ov011_0212c170()
 {
-	i32 i = 0;
+	s32 i = 0;
 	do {
 		PlayerBase *v = data_0208b35c[i];
 		if ((v != NULL) && (this->linked_player != v->linked_player)) {
@@ -359,7 +359,7 @@ void PlayerBase::func_ov011_0212c110()
 	data_ov000_020ca8d0 |= 4;
 	this->func_ov011_0212c170();
 }
-bool PlayerBase::virt_20(i32, i32, i32, u8, i8)
+bool PlayerBase::virt_20(s32, s32, s32, u8, s8)
 {
 	return false;
 }
@@ -486,7 +486,7 @@ bool PlayerBase::virt_51()
 Vec3_32 PlayerBase::func_ov011_0212bff0()
 {
 	Vec3_32 result;
-	i32 *v = this->model.nodeTransforms.s.rightWrist.v[3];
+	s32 *v = this->model.nodeTransforms.s.rightWrist.v[3];
 	result.x = v[0];
 	result.y = v[1];
 	result.z = v[2];
@@ -604,7 +604,7 @@ void PlayerBase::func_ov011_0212bf00()
 	func_02022b64(0xab, &this->position);
 }
 
-bool PlayerBase::func_ov011_0212beb8(i32 a, i32 b, i32 c, u8 d, i8 e)
+bool PlayerBase::func_ov011_0212beb8(s32 a, s32 b, s32 c, u8 d, s8 e)
 {
 	if (this->virt_20(a, b, c, d, e) != false) {
 		this->_780 |= 0x2000;
@@ -613,7 +613,7 @@ bool PlayerBase::func_ov011_0212beb8(i32 a, i32 b, i32 c, u8 d, i8 e)
 	return false;
 }
 
-bool PlayerBase::func_ov011_0212be70(i32 a, i32 b, i32 c, u8 d, i8 e)
+bool PlayerBase::func_ov011_0212be70(s32 a, s32 b, s32 c, u8 d, s8 e)
 {
 	if (this->virt_20(a, b, c, d, e) != false) {
 		this->_780 |= 0x40000;
@@ -622,7 +622,7 @@ bool PlayerBase::func_ov011_0212be70(i32 a, i32 b, i32 c, u8 d, i8 e)
 	return false;
 }
 
-bool PlayerBase::func_ov011_0212be28(i32 a, i32 b, i32 c, u8 d, i8 e)
+bool PlayerBase::func_ov011_0212be28(s32 a, s32 b, s32 c, u8 d, s8 e)
 {
 	if (this->virt_20(a, b, c, d, e) != false) {
 		this->_778 |= 0x80000;
@@ -641,12 +641,12 @@ bool PlayerBase::func_ov011_0212bde0(Actor *a)
 	return true;
 }
 
-u32 PlayerBase::func_ov011_0212bdb8(i32 x)
+u32 PlayerBase::func_ov011_0212bdb8(s32 x)
 {
 	return this->func_ov011_0212bca4(x < -0x4000 ? -0x4000 : (x > 0x4000 ? 0x4000 : x));
 }
 
-bool PlayerBase::func_ov011_0212bd68(i32 x, i32 y, i32 z)
+bool PlayerBase::func_ov011_0212bd68(s32 x, s32 y, s32 z)
 {
 	if (x < 0) {
 		z = this->_778 | 0x40000;
@@ -665,7 +665,7 @@ bool PlayerBase::func_ov011_0212bd68(i32 x, i32 y, i32 z)
 	return this->func_ov011_0212bca4(x);
 }
 
-bool PlayerBase::func_ov011_0212bca4(i32 x)
+bool PlayerBase::func_ov011_0212bca4(s32 x)
 {
 	if ((BOOL)(this->_7a9 == 2) == FALSE) {
 		if (x < 0) {
@@ -683,7 +683,7 @@ bool PlayerBase::func_ov011_0212bca4(i32 x)
 	return false;
 }
 
-bool PlayerBase::func_ov011_0212bc50(i32 a)
+bool PlayerBase::func_ov011_0212bc50(s32 a)
 {
 	if ((a < 0)) {
 		if ((this->_788 & 1) == 0) {
@@ -704,7 +704,7 @@ Vec3_32 PlayerBase::func_ov011_0212bbdc()
 	Vec3_32 result;
 
 	// TODO: Is there a conversion operator/constructor for this?
-	i32 *v = this->model.nodeTransforms.s.face.v[3];
+	s32 *v = this->model.nodeTransforms.s.face.v[3];
 	result.x = v[0];
 	result.y = v[1];
 	result.z = v[2];
@@ -763,7 +763,7 @@ bool PlayerBase::checkAndApplyPowerup(u8 new_powerup)
 {
 	bool bVar2;
 
-	i8 current_powerup = this->powerup;
+	s8 current_powerup = this->powerup;
 	if (current_powerup == POWERUP_MEGA) {
 		return false;
 	}
@@ -947,7 +947,7 @@ NTR_SIZE_GUARD(Test940, 0x10 + 0xC + 0x10 + 0xC);
 extern Vec3_32 data_ov000_020caeb8[2];
 extern Vec3_32 data_ov000_020caed8[2];
 extern u8 data_ov000_020cacd0[2];
-void PlayerBase::func_ov011_0212b384(i16 player_id)
+void PlayerBase::func_ov011_0212b384(s16 player_id)
 {
 	Vec3_32 s0; // target
 	Vec2_32 s1; // pos_2d
@@ -998,7 +998,7 @@ void PlayerBase::func_ov011_0212b384(i16 player_id)
 		s1.y = s2.y;
 		s0.x = s2.x;
 		s0.z = s2.z;
-		i32 iVar3 = Math::expLerp(&s0.y, s1.y, 0x200, 0x8000, 0x1000);
+		s32 iVar3 = Math::expLerp(&s0.y, s1.y, 0x200, 0x8000, 0x1000);
 		if (iVar3 == 0) {
 			this->_7b2 = 0;
 		}
@@ -1013,8 +1013,8 @@ void PlayerBase::func_ov011_0212b384(i16 player_id)
 		s1.x = s2.x;
 		s1.y = s2.y;
 
-		i32 iVar3 = Math::expLerp(&s0.x, s1.x, 0x800, 0x8000, 0x2000);
-		i32 iVar4 = Math::expLerp(&s0.y, s1.y, 0x800, 0x8000, 0x2000);
+		s32 iVar3 = Math::expLerp(&s0.x, s1.x, 0x800, 0x8000, 0x2000);
+		s32 iVar4 = Math::expLerp(&s0.y, s1.y, 0x800, 0x8000, 0x2000);
 		if ((iVar3 == 0) && (iVar4 == 0)) {
 			this->_7b2 = 0;
 		}
@@ -1029,8 +1029,8 @@ void PlayerBase::func_ov011_0212b384(i16 player_id)
 		s1.x = s2.x;
 		s1.y = s2.y;
 
-		i32 iVar3 = Math::expLerp(&s0.x, s1.x, 0x200, 0x8000, 0x1000);
-		i32 iVar4 = Math::expLerp(&s0.y, s1.y, 0x200, 0x8000, 0x1000);
+		s32 iVar3 = Math::expLerp(&s0.x, s1.x, 0x200, 0x8000, 0x1000);
+		s32 iVar4 = Math::expLerp(&s0.y, s1.y, 0x200, 0x8000, 0x1000);
 		if ((iVar3 == 0) && (iVar4 == 0)) {
 			this->_7b2 = 0;
 		}
@@ -1047,8 +1047,8 @@ void PlayerBase::func_ov011_0212b384(i16 player_id)
 	data_ov000_020cacd0[player_id] = Stage::actorFreezeFlag & 4;
 }
 
-extern u8 func_020204e0(i8);
-void func_0202048c(i8);
+extern u8 func_020204e0(s8);
+void func_0202048c(s8);
 extern u8 data_02089508[2];
 void func_ov000_020a189c(u32);
 void func_ov000_020a183c(u32, u32);
@@ -1057,7 +1057,7 @@ void func_02012d6c(u32, Save *);
 bool PlayerBase::func_ov011_0212b2bc()
 {
 	if (this->_7b3 == 0) {
-		i8 linked_player = this->linked_player;
+		s8 linked_player = this->linked_player;
 		u8 b = func_020204e0(linked_player);
 		this->_7b3 = 1;
 		func_0202048c(linked_player);
@@ -1099,7 +1099,7 @@ void PlayerBase::setPosition(Vec3_32 *newPos)
 	this->position.y = newPos->y;
 }
 
-i32 PlayerBase::func_ov011_0212b210(i32 gravity)
+s32 PlayerBase::func_ov011_0212b210(s32 gravity)
 {
 
 	switch (this->powerup) {
@@ -1117,7 +1117,7 @@ u8 PlayerBase::func_ov011_0212b1d4()
 {
 	int scale = this->scale.y;
 	if (scale < 0xacc) {
-		i32 a = 0;
+		s32 a = 0;
 		return a;
 	}
 

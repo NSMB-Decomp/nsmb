@@ -33,12 +33,12 @@ class Base
 	Base *getParent();
 	void destroy();
 	Base();
-	i32 processDestroy();
-	i32 processCreate();
-	i32 doOrderProc();
-	i32 processUpdate();
-	i32 procesRender();
-	i32 process(s32 (Base::*)(), bool (Base::*)(), void (Base::*)(u32));
+	s32 processDestroy();
+	s32 processCreate();
+	s32 doOrderProc();
+	s32 processUpdate();
+	s32 procesRender();
+	s32 process(s32 (Base::*)(), bool (Base::*)(), void (Base::*)(u32));
 	void func_01ffd290();
 
 	virtual s32 onCreate();
