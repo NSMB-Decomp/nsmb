@@ -135,7 +135,7 @@ from:0x021534b8 kind:load to:0x02085a5c module:autoload(3)
 from:0x021534bc kind:load to:0x02085a94 module:autoload(3)
 from:0x021534c0 kind:load to:0x02085a3c module:autoload(3)
 from:0x021534c4 kind:load to:0x0208b168 module:autoload(3)
-from:0x021534c8 kind:load to:0x02039208 add:0x8 module:main
+from:0x021534c8 kind:load to:0x02039200 add:0x8 module:main
 from:0x021534cc kind:load to:0x02085a7c module:autoload(3)
 from:0x021534d0 kind:load to:0x02085a80 module:autoload(3)
 from:0x021534d4 kind:load to:0x020cadfc module:overlay(0)

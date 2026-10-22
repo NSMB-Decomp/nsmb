@@ -13,10 +13,10 @@ bool (Coin::*data_ov010_021293ec)() = Coin::func_ov010_020d8fb0;
 bool (Coin::*data_ov010_021293e4)() = Coin::func_ov010_020d9004;
 bool (Coin::*data_ov010_021293dc)() = Coin::func_ov010_020d8eec;
 
-const i32 data_ov010_0212166c[3] = {0x0, 0x30000, 0x18000};
-const i32 data_ov010_02121678[3] = {0x0, 0x0, 0x10000};
-i32 data_ov010_021216b4[4];
-const i32 data_ov010_02121644[2] = {0x1000, 0xFFFFF000};
+const s32 data_ov010_0212166c[3] = {0x0, 0x30000, 0x18000};
+const s32 data_ov010_02121678[3] = {0x0, 0x0, 0x10000};
+s32 data_ov010_021216b4[4];
+const s32 data_ov010_02121644[2] = {0x1000, 0xFFFFF000};
 extern u32 data_ov010_02121684;
 extern u32 data_ov010_02121690;
 extern u32 data_ov010_0212169c;
@@ -61,7 +61,7 @@ void Coin::func_ov010_020d9cf0(StageEntity *param_1)
 	if (this->_4ec != 0) {
 		return;
 	}
-	i8 linked_player = param_1->linked_player;
+	s8 linked_player = param_1->linked_player;
 	if (2 <= linked_player) {
 		linked_player = func_020205ec()->linked_player;
 	}
@@ -72,7 +72,7 @@ void Coin::func_ov010_020d9cf0(StageEntity *param_1)
 }
 
 extern u32 data_ov000_020cad40;
-void func_ov000_020af844(i32, u16, u16);
+void func_ov000_020af844(s32, u16, u16);
 bool Coin::func_ov010_020d9c78()
 {
 	if ((this->_4a8 & 0x400000) != 0) {
@@ -90,7 +90,7 @@ void func_02020300(u32, u32);
 void Coin::_21()
 {
 
-	i8 linked_player = this->linked_player;
+	s8 linked_player = this->linked_player;
 	if (2 <= linked_player) {
 		StageEntity *stage_entity = func_020205ec();
 		linked_player = stage_entity->linked_player;
@@ -99,7 +99,7 @@ void Coin::_21()
 	if (func_020202a0() == true) {
 		func_02020300(linked_player, 100);
 	} else {
-		i32 iVar2 = func_0202040c(linked_player);
+		s32 iVar2 = func_0202040c(linked_player);
 		iVar2 -= 1;
 		if (iVar2 < 0) {
 			iVar2 = 7;
@@ -211,7 +211,7 @@ void Coin::func_ov010_020d99a8()
 
 void func_02022220(Vec3_32 *);
 u8 data_ov000_020cace0[2];
-i32 data_ov000_020cae0c[2];
+s32 data_ov000_020cae0c[2];
 u32 data_02085a7c;
 bool Coin::func_ov010_020d9890()
 {
@@ -302,16 +302,16 @@ bool Coin::func_ov010_020d91f4()
 
 bool Coin::func_ov010_020d9004()
 {
-	i32 uVar2;
-	i32 uVar1;
-	i32 uVar3;
+	s32 uVar2;
+	s32 uVar1;
+	s32 uVar3;
 	Vec3_32 local_18;
 
 	if (this->_4e4 == 0) {
 		this->_4e4 = 1;
-		// uVar1 = (i32)data_02080304[((int)data_ov010_02121634[this->_4eb] >> 4) * 2 + 1];
+		// uVar1 = (s32)data_02080304[((int)data_ov010_02121634[this->_4eb] >> 4) * 2 + 1];
 		//(this->velocity).x = uVar1 * 0x800 + 0x800U >> 0xc | (((uVar1 >> 0x1f) << 0xb | (uint)uVar1 >> 0x15) + (uint)(0xfffff7ff < (uint)(uVar1 * 0x800))) * 0x100000;
-		// uVar3 = (i32)data_02080304[((int)data_ov010_02121634[this->_4eb] >> 4) * 2];
+		// uVar3 = (s32)data_02080304[((int)data_ov010_02121634[this->_4eb] >> 4) * 2];
 		//(this->velocity).y = -(uVar3 * 0x800 + 0x800U >> 0xc | (((uVar3 >> 0x1f) << 0xb | (uint)uVar3 >> 0x15) + (uint)(0xfffff7ff < (uint)(uVar3 * 0x800))) * 0x100000);
 		if (this->direction != '\0') {
 			(this->velocity).x = -(this->velocity).x;
@@ -410,7 +410,7 @@ bool Coin::func_ov010_020d8d9c()
 			if (func_020202a0() == 1) {
 				this->func_ov000_0209ab90(0, 0, 0, this->_4e3);
 			} else {
-				i32 iVar1 = func_0202040c(this->_4e3);
+				s32 iVar1 = func_0202040c(this->_4e3);
 				iVar1 = iVar1 + -1;
 				if (iVar1 < 0) {
 					iVar1 = 7;
@@ -507,8 +507,8 @@ extern u32 data_ov010_021216a8[3];
 extern u32 data_ov010_02121660[3];
 extern u32 data_ov010_02121654[3];
 extern u32 data_ov010_021216ec[3];
-extern i32 data_ov010_021216c4[3];
-extern i32 data_ov010_0212164c[2];
+extern s32 data_ov010_021216c4[3];
+extern s32 data_ov010_0212164c[2];
 extern u8 *data_ov000_020ca2ac;
 extern Collider *data_ov010_02125204;
 bool func_ov000_020af790(u32, u16, u16);
@@ -756,7 +756,7 @@ void Coin::func_ov010_020d823c(u32 param_1)
 	this->_3f4 = param_1;
 }
 
-const i32 data_ov010_0212163c[2] = {0x555, 0xFFFFFAAB};
+const s32 data_ov010_0212163c[2] = {0x555, 0xFFFFFAAB};
 void Coin::func_ov010_020d81dc(u32 param_1)
 {
 	if ((BOOL)(this->_430 == &data_ov010_021293f4) == FALSE) {

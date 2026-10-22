@@ -2,7 +2,7 @@
 
 namespace Math
 {
-//u32 expLerp(i32 *start, i32 end, i32 amt, i32 max, i32 min)
+//u32 expLerp(s32 *start, s32 end, s32 amt, s32 max, s32 min)
 //{
 //}
 } // namespace Math

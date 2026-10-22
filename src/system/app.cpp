@@ -47,7 +47,7 @@ namespace App {
 	bool backlightOff;
 	u8 sleepControl;
 	bool sleeping;
-	i16 sleepPhaseTimer;
+	s16 sleepPhaseTimer;
 	u16 sleepWakeUpTimer;
 	u32 backlightTop;
 	u32 backlightBottom;
@@ -85,7 +85,7 @@ namespace App {
 		bootParam = param;
 	}
 
-	i32 defaultCallback() {
+	s32 defaultCallback() {
 		return 0;
 	}
 
@@ -155,7 +155,7 @@ namespace App {
 	void updateSleep() {
 
 		u8 phase = sleepPhase;
-		i32 timer = sleepPhaseTimer;
+		s32 timer = sleepPhaseTimer;
 
 		BOOL wifiOn = Net::isConnected() || Wifi::isWmInitialized();
 

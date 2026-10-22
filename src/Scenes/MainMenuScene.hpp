@@ -1,10 +1,10 @@
 #include "Scene.hpp"
 
 struct TitleScreenButton {
-	i32 posX;
-	i32 posY;
-	i32 velX;
-	i32 velY;
+	s32 posX;
+	s32 posY;
+	s32 velX;
+	s32 velY;
 };
 typedef enum SaveStateFlag { Empty = 1, Saved = 2, StoryCompleted = 4, StandardLevelsCompleted = 8, GameCompleted = 16 } SaveStateFlag;
 struct SaveState {
@@ -40,7 +40,7 @@ class MainMenuScene : public Scene
 	u8 menuID;
 	u8 stateID;
 	u8 _pad0;	    /* unused? */
-	i8 buttonAnimTimer; /* used to animate the button pressed animation */
+	s8 buttonAnimTimer; /* used to animate the button pressed animation */
 	u8 fileSelectCurrentButton;
 	u8 fileCopySourceFile;	       /* 0-2=file id */
 	u8 fileCopyDestinationFile;    /* 0-2=file id */
@@ -66,7 +66,7 @@ class MainMenuScene : public Scene
 	u8 _pad2;
 	u8 _pad3;
 	int buttonHitTimer;
-	i32 button1Offset;	   /* copy/sound mode */
+	s32 button1Offset;	   /* copy/sound mode */
 	int button2Offset;	   /* erase/control mode */
 	int optionsOKButtonOffset; /* pos Y = pos X + offset */
 	int optionsOKButtonPosX;   /* relative to the BNCL cell (ofc) */
@@ -90,11 +90,11 @@ class MainMenuScene : public Scene
 	s32 onRender();
 
 	u8 func_ov009_020ce8d8();
-	i32 func_ov009_020ce944(i32);
-	void func_ov009_020ceaec(i32, i32);
+	s32 func_ov009_020ce944(s32);
+	void func_ov009_020ceaec(s32, s32);
 	u8 func_ov009_020ce86c();
 	void func_ov009_020cea8c();
-	void func_ov009_020cea44(i32);
+	void func_ov009_020cea44(s32);
 
 	void onRender_0();
 	void onRender_1();
@@ -113,12 +113,12 @@ class MainMenuScene : public Scene
 // 	u32 _04;
 // 	u32 _08;
 // 	u32 _0c;
-// 	i32 _10;
-// 	i32 _14;
-// 	i32 _18;
-// 	i16 _1c;
-// 	i16 _1e;
-// 	i16 _20;
+// 	s32 _10;
+// 	s32 _14;
+// 	s32 _18;
+// 	s16 _1c;
+// 	s16 _1e;
+// 	s16 _20;
 
 // 	void func_ov009_020cc914();
 // 	void func_ov009_020cc8ac();
@@ -237,7 +237,7 @@ class MainMenuScene : public Scene
 // 	func_02007bfc(&data_02088f48);
 // }
 
-// void func_ov009_020cc6d4(i32 *a, i32 b, i32 c)
+// void func_ov009_020cc6d4(s32 *a, s32 b, s32 c)
 // {
 // 	if (b > *a) {
 // 		a[0] = b;

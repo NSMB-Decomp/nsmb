@@ -5,10 +5,10 @@ typedef unsigned char u8;
 typedef unsigned short u16;
 typedef unsigned long u32;
 typedef unsigned long long u64;
-typedef signed char i8;
-typedef signed short i16;
-typedef signed long i32;
-typedef signed long long i64;
+typedef signed char s8;
+typedef signed short s16;
+typedef signed long s32;
+typedef signed long long s64;
 
 // Placeholders
 typedef u8 unknown1;
@@ -21,26 +21,26 @@ struct unknown_vtable {
 // Math
 struct Vec3_16 {
 	unknown_vtable *vtable;
-	i16 x;
-	i16 y;
-	i16 z;
+	s16 x;
+	s16 y;
+	s16 z;
 	u8 _pad0[2];
 };
 struct Vec3_32 {
 	unknown_vtable *vtable;
-	i32 x;
-	i32 y;
-	i32 z;
+	s32 x;
+	s32 y;
+	s32 z;
 };
 struct Vec3_32s {
-	i32 x;
-	i32 y;
-	i32 z;
+	s32 x;
+	s32 y;
+	s32 z;
 };
 struct Vec2_32 {
 	unknown_vtable *vtable;
-	i32 x;
-	i32 y;
+	s32 x;
+	s32 y;
 };
 
 struct Heap {
@@ -133,10 +133,10 @@ struct Collider {
 };
 
 struct Rect {
-	i32 x;
-	i32 y;
-	i32 halfWidth;
-	i32 halfHeight;
+	s32 x;
+	s32 y;
+	s32 halfWidth;
+	s32 halfHeight;
 };
 
 // Class ActiveCollider
@@ -154,7 +154,7 @@ struct ActiveCollider {
 	u8 _pad_28[4];
 	void *_2c;
 	u8 _pad_30[10];
-	i32 _3c;
+	s32 _3c;
 	u8 _pad_40[96];
 	u16 _1c0; // 0x1C0
 	u8 _pad_a2[4];
@@ -174,7 +174,7 @@ struct CollisionManager {
 	u8 _pad1[0x8];
 	CollisionManager *__2;
 	u8 _pad2[0x5a];
-	i8 _25e;
+	s8 _25e;
 	u8 _pad3[40];
 	u8 _b7;
 };
@@ -191,16 +191,16 @@ struct PlatformManager {
 
 // Class: Base
 struct Base_vtable {
-	i32 (*onCreate)(void);
+	s32 (*onCreate)(void);
 	bool (*preCreate)(void);
 	void (*postCreate)(u16, u16);
-	i32 (*onDestroy)();
+	s32 (*onDestroy)();
 	bool (*preDestroy)();
 	void (*postDestroy)(u16, u16);
-	i32 (*onUpdate)();
+	s32 (*onUpdate)();
 	bool (*preUpdate)();
 	void (*postUpdate)();
-	i32 (*onRender)();
+	s32 (*onRender)();
 	bool (*preRender)();
 	void (*postRender)();
 	void (*pendingDestroy)();
@@ -251,11 +251,11 @@ struct Actor_data {
 	Vec3_32 centerOffset;
 	Vec3_16 rotation;
 	Vec3_16 lastRotation;
-	i32 velH;
-	i32 minVelH;
-	i32 accelV;
-	i32 minVelV;
-	i32 accelH;
+	s32 velH;
+	s32 minVelH;
+	s32 accelV;
+	s32 minVelV;
+	s32 accelH;
 	u32 _c8;
 	Vec3_32 velocity;
 	Vec3_32 minVelocity;
@@ -264,7 +264,7 @@ struct Actor_data {
 	Vec3_32 velocitylimit;
 	u8 actorType;
 	bool visible;
-	i8 linked_player;
+	s8 linked_player;
 	u8 actorCategory;
 };
 struct Actor {
@@ -354,10 +354,10 @@ struct StageEntity_data {
 	Vec3_32 _30c; /* 0x30C */
 	Vec3_32 _31c; /* 0x31C */
 	u8 _pad2[0x14];
-	i32 _340; /* 0x340 */
+	s32 _340; /* 0x340 */
 	u8 _pad14[0x8];
 	u32 _34c; /* 0x34C */
-	i32 _350; /* 0x350 */
+	s32 _350; /* 0x350 */
 	u8 _pad6[0x4];
 	u32 _358;     /* 0x358 */
 	Vec3_32 _35c; /* 0x35C */
@@ -388,7 +388,7 @@ struct StageEntity_data {
 	u8 _pad16[0x4];
 	u8 _3e4; /* 0x3E4 */
 	u8 _pad8[2];
-	i8 _3e7; /* 0x3E7 */
+	s8 _3e7; /* 0x3E7 */
 	u8 _3e8; /* 0x3E8 */
 	u8 _3e9; /* 0x3E9 */
 	u8 _3ea; /* 0x3EA */
@@ -492,20 +492,20 @@ struct PlayerBase_data {
 	u8 _pad7[0x4];
 	u32 _788;
 	u8 _pad2[0x0b];
-	i32 _798;
-	i16 _79c;
+	s32 _798;
+	s16 _79c;
 	u8 _pad3[0xa];
-	i8 _7a8;
+	s8 _7a8;
 	u8 _7a9;
 	u8 _7aa;
-	i8 runtimePowerup;
-	i8 powerup;
+	s8 runtimePowerup;
+	s8 powerup;
 	u8 _pad5[0x3];
 	u8 _7b0;
-	i8 _7b1;
-	i8 _7b2;
+	s8 _7b1;
+	s8 _7b2;
 	u8 _7b3;
-	i8 _7b4;
+	s8 _7b4;
 	u8 _pad6[0xa];
 	u8 _7bf;
 	u8 _7c0;
@@ -635,10 +635,10 @@ struct SoundTestScene {
 
 // Class: MainMenuScene
 struct TitleScreenButton {
-	i32 posX;
-	i32 posY;
-	i32 velX;
-	i32 velY;
+	s32 posX;
+	s32 posY;
+	s32 velX;
+	s32 velY;
 };
 typedef enum SaveStateFlag { Empty = 1, Saved = 2, StoryCompleted = 4, StandardLevelsCompleted = 8, GameCompleted = 16 } SaveStateFlag;
 struct SaveState {
@@ -662,7 +662,7 @@ struct MainMenuScene_data {
 	u8 menuID;
 	u8 stateID;
 	u8 _pad0;	    /* unused? */
-	i8 buttonAnimTimer; /* used to animate the button pressed animation */
+	s8 buttonAnimTimer; /* used to animate the button pressed animation */
 	u8 fileSelectCurrentButton;
 	u8 fileCopySourceFile;	       /* 0-2=file id */
 	u8 fileCopyDestinationFile;    /* 0-2=file id */
@@ -713,10 +713,10 @@ struct MainMenuScene {
 
 struct Fader {
 	u8 _pad0[0x5a4];
-	i32 targetBrightness;
+	s32 targetBrightness;
 	u32 fadingMode;
-	i32 brightnessFactor[2];
-	i32 brightnessIncrement[2];
+	s32 brightnessFactor[2];
+	s32 brightnessIncrement[2];
 	u8 fadingTarget[2];
 	u8 fadingState[2];
 	u8 fadeMaskShape[2];

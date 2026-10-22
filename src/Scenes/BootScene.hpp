@@ -18,6 +18,6 @@ class BootScene : public Scene
 	s32 onDestroy();
 	s32 onUpdate();
 	s32 onRender();
-	i32 func_ov001_020cc4b4();
+	s32 func_ov001_020cc4b4();
 	void pendingDestroy();
 };

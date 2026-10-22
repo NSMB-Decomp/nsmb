@@ -9,7 +9,7 @@ void *BootScene::create()
 	return new BootScene();
 }
 
-i32 BootScene::onCreate() {
+s32 BootScene::onCreate() {
 	u32 param_r0;
 	u32 local_r1;
 	u32 local_r2;
@@ -104,7 +104,7 @@ s32 BootScene::onUpdate()
 {
 }
 
-i32 BootScene::func_ov001_020cc4b4() {
+s32 BootScene::func_ov001_020cc4b4() {
 	u32 local_r0;
 	u32 local_r1;
 	u32 local_r2;

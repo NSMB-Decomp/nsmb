@@ -111,7 +111,7 @@ public:
 	u8 _pad_28[4];
 	void *_2c;
 	u8 _pad_30[10];
-	i32 _3c;
+	s32 _3c;
 	u8 _pad_40[96];
 	u16 _1c0; // 0x1C0
 	u8 _pad_a2[4];

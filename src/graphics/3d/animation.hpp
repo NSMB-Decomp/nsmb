@@ -28,7 +28,7 @@ public:
 	//02018da8
 	void detach();
 
-	inline void setFrame(i32 frame) {
+	inline void setFrame(s32 frame) {
 		Ns_3dAnimationSetFrame(animation, frame);
 	}
 

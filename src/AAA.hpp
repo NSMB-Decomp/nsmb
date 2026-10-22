@@ -5,6 +5,7 @@
 //#include "ProcessManager.hpp"
 //#include "Vec.hpp"
 #include "base_types.hpp"
+typedef u32 EmitterT;
 
 class Vec2_32;
 class Vec3_32;
@@ -12,21 +13,21 @@ class Vec3_16;
 struct Vec3_32s;
 struct Vec3_16s;
 
-extern i16 _FixedSinCosTbl[];
+extern s16 _FixedSinCosTbl[];
 
-#define _FixedFlt(flt) ((i32)(flt * 4096.0))
+#define _FixedFlt(flt) ((s32)(flt * 4096.0))
 
-inline i32 _FixedMul(i32 x, i32 y) {
-	i64 result = (i64)x * (i64)y;
+inline s32 _FixedMul(s32 x, s32 y) {
+	s64 result = (s64)x * (s64)y;
 	result += 0x800;
-    return (i32)(result >> 12);
+    return (s32)(result >> 12);
 }
 
-inline i16 _FixedSin(int a) {
+inline s16 _FixedSin(int a) {
 	return _FixedSinCosTbl[(a >> 4) * 2];
 }
 
-inline i16 _FixedCos(int a) {
+inline s16 _FixedCos(int a) {
 	return _FixedSinCosTbl[(a >> 4) * 2 + 1];
 }
 
@@ -145,16 +146,16 @@ extern u8 stageAreaID;
 namespace Game
 {
 extern u8 character; // old luigiMode
-extern i32 cameraY[2];
-extern i32 cameraZoomY[2];
+extern s32 cameraY[2];
+extern s32 cameraZoomY[2];
 u32 getBootScene();
-void drawBNCLSpriteSub(u32 id, void *data, u32 flags, u8 palette, u8 affineSet, Vec2_32 *scale, i16 rotation, i16 *rotation_center, u8 procSettings, u32 x, u32 y);
+void drawBNCLSpriteSub(u32 id, void *data, u32 flags, u8 palette, u8 affineSet, Vec2_32 *scale, s16 rotation, s16 *rotation_center, u8 procSettings, u32 x, u32 y);
 void* getPlayer(u32);
 } // namespace Game
 
 #define C_DEG(d) s32((d * 0x10000) / 360)
 namespace Math {
-	i32 expLerp(i32*, i32, i32, i32, i32);
+	s32 expLerp(s32*, s32, s32, s32, s32);
 
 	inline s32 max(s32 a, s32 b) {
 		//return a >= b ? a : b;
@@ -178,10 +179,10 @@ class Fader
 {
       public:
 	u8 _pad0[0x5a4];
-	i32 targetBrightness;
+	s32 targetBrightness;
 	u32 fadingMode;
-	i32 brightnessFactor[2];
-	i32 brightnessIncrement[2];
+	s32 brightnessFactor[2];
+	s32 brightnessIncrement[2];
 	u8 fadingTarget[2];
 	u8 fadingState[2];
 	u8 fadeMaskShape[2];
@@ -304,16 +305,16 @@ extern "C" {
 
 	void Heap_deallocate(Heap *, void *);
 	extern Heap *data_0208b720;
-	void func_02020354(i8);
-	u32 func_02012398(i32, Vec3_32 *); // SND::playSFX(u32,Vec3*)
+	void func_02020354(s8);
+	u32 func_02012398(s32, Vec3_32 *); // SND::playSFX(u32,Vec3*)
 	u32 func_020202a0();
-	i32 func_0202040c(i32);
+	s32 func_0202040c(s32);
 	extern u16 data_0203bd30;
 
 	//
 	bool func_0204d82c();
 	void func_020067dc();
-	extern i32 data_02085aa4;
+	extern s32 data_02085aa4;
 
 	class SceneGraph;
 	class ProcessLink;
@@ -392,7 +393,7 @@ extern "C" {
 	void func_0201486c(u32, u32, u32);
 
 	extern u32 data_ov000_020ca2b8;
-	extern void (*data_02039968)(i32, i32);
+	extern void (*data_02039968)(s32, s32);
 	extern u32 data_02085a88;
 	extern u32 data_02085e0c;
 

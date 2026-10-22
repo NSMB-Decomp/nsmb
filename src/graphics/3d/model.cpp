@@ -77,7 +77,7 @@ Ns3dMaterialList* Model::getMaterialCollection() {
 	return Ns_3dGetMaterials(model);
 }
 
-i32 Model::getMaterialIndex(const Ns3dStringData* name) {
+s32 Model::getMaterialIndex(const Ns3dStringData* name) {
 	Ns3dMaterialList* mats = getMaterialCollection();
 	return Ns_3dGetDictionaryIndex(&mats->dict, name);
 }
@@ -86,7 +86,7 @@ Ns3dNodeList* Model::getNodeInfo() {
 	return Ns_3dGetNodes(model);
 }
 
-i32 Model::getNodeIndex(const Ns3dStringData* name) {
+s32 Model::getNodeIndex(const Ns3dStringData* name) {
 	Ns3dNodeList* nodes = getNodeInfo();
 	return Ns_3dGetDictionaryIndex(&nodes->dict, name);
 }
@@ -118,9 +118,9 @@ bool Model::getNodePosition(u32 nodeIndex, Vec3_32& position) {
 	if (getNodeMatrixInternal(Ns_3dGetNodes(model), nodeIndex, &mtx)) {
 
 		// Works
-		/* i32 z = mtx.m32;
-		i32 y = mtx.m31;
-		i32 x = mtx.m30;
+		/* s32 z = mtx.m32;
+		s32 y = mtx.m31;
+		s32 x = mtx.m30;
 		position.x = x;
 		position.y = y;
 		position.z = z; */

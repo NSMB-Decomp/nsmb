@@ -17,10 +17,10 @@ public:
 	BlendAnimation blendAnims[2];
 	u32 currentAnimID; //Current animation ID
 	u32 lastAnimID; //Last animation ID
-	i32 blendRatio; //Blend ratio
-	i32 blendStep; //Blend increment
-	i8 selector1; //Selector 1 (start interpolation)
-	i8 selector2; //Selector 2 (end interpolation) [c1->c0]
+	s32 blendRatio; //Blend ratio
+	s32 blendStep; //Blend increment
+	s8 selector1; //Selector 1 (start interpolation)
+	s8 selector2; //Selector 2 (end interpolation) [c1->c0]
 
 	//020193e0
 	BlendModelAnm();
@@ -42,7 +42,7 @@ public:
 	bool create(void* bmd, void* bca, u32 modelID, u32 animID, u32 polygonID); //Loads the model with the given params from the bmd. Allocates memory for both BlendAnimations, initializes the frame controller and registers the first animation. returns true if successful, false otherwise.
 
 	//02018fb8
-	void pushAnimation(u32 animID, u32 steps, u32 type, i32 speed, u16 startFrame);
+	void pushAnimation(u32 animID, u32 steps, u32 type, s32 speed, u16 startFrame);
 	/*
 		Pushes a new animation to blend to.
 		If animID equals the current animation's ID, frame controller settings are applied only.

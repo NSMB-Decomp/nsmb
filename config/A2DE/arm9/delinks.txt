@@ -10,6 +10,7 @@
 lib/Nitro/crt0.cpp:
     .text       start:0x02000800 end:0x02000b48
 
+
 src/main.cpp:
     .text       start:0x02003000 end:0x02003070
 
@@ -33,7 +34,7 @@ src/system/app.cpp:
 src/system/vblank.cpp:
     .text       start:0x020056d4 end:0x02005b10
 
-src/system/exceptionscreen.cpp:
+src/ExceptionHandler.cpp:
     .text       start:0x02005b10 end:0x02006444
     .rodata     start:0x02026258 end:0x02026290
     .data       start:0x02039838 end:0x02039968

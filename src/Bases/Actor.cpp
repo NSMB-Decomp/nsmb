@@ -2,10 +2,10 @@
 #include "../Math.hpp"
 
 // TODO: Actually is A2DE this defined in init but in Y7 this defined statically?
- i8 *ActorSpawnPlayer;
+ s8 *ActorSpawnPlayer;
  Vec3_16 *ActorSpawnRotation;
  Vec3_32 *ActorSpawnPosition;
- i32 *ActorSpawnScale;
+ s32 *ActorSpawnScale;
 
 // TODO: Some of this may be a part of inline Object::Object(). To comapre Actor::Actor() to Scene::Scene() and confirm if any comparisons
 Actor::Actor()
@@ -25,7 +25,7 @@ Actor::Actor()
 	}
 	// Set Scale
 	if (ActorSpawnScale != NULL) {
-		i32 a = *ActorSpawnScale;
+		s32 a = *ActorSpawnScale;
 		this->scale.x = a;
 		this->scale.y = a;
 		this->scale.z = a;
@@ -124,7 +124,7 @@ u32 Actor::getActorCount(u8 a)
 	return i;
 }
 
-void Actor::setSpawnParams(Vec3_32 *a, Vec3_16 *b, i32 *c, i8 *d)
+void Actor::setSpawnParams(Vec3_32 *a, Vec3_16 *b, s32 *c, s8 *d)
 {
 	ActorSpawnPosition = a;
 	ActorSpawnRotation = b;
@@ -133,7 +133,7 @@ void Actor::setSpawnParams(Vec3_32 *a, Vec3_16 *b, i32 *c, i8 *d)
 }
 
 u16 data_0203bd34;
-Actor *Actor::spawnActor(u16 a, u32 b, Vec3_32 *c, Vec3_16 *d, i32 *e, i8 *f)
+Actor *Actor::spawnActor(u16 a, u32 b, Vec3_32 *c, Vec3_16 *d, s32 *e, s8 *f)
 {
 	Base *pBVar1;
 
@@ -142,7 +142,7 @@ Actor *Actor::spawnActor(u16 a, u32 b, Vec3_32 *c, Vec3_16 *d, i32 *e, i8 *f)
 	return (Actor *)Object::spawnObject(a, pBVar1, b, 2);
 }
 
-void Actor::linkPlayer(i32 player_id)
+void Actor::linkPlayer(s32 player_id)
 {
 	this->linked_player = player_id;
 }
@@ -151,8 +151,8 @@ Vec3_32 Actor::applyAcceleration(Vec3_32 *acceleration)
 {
 	Vec3_32 result;
 	result.x = acceleration->x + this->acceleration.x;
-	i32 iVar1;
-	i32 iVar2 = result.x;
+	s32 iVar1;
+	s32 iVar2 = result.x;
 	if (iVar2 < 0) {
 		iVar1 = -this->velocitylimit.x;
 		if (iVar2 < iVar1) {
@@ -209,8 +209,8 @@ void Actor::setDirectionalVelocity3D()
 
 void Actor::updateHorizontalVelocity()
 {
-	i32 velX = this->velocity.x;
-	i32 minVelX = this->minVelocity.x;
+	s32 velX = this->velocity.x;
+	s32 minVelX = this->minVelocity.x;
 	if (velX < minVelX) {
 		velX += this->accelH;
 		if (velX > minVelX) {
@@ -224,8 +224,8 @@ void Actor::updateHorizontalVelocity()
 
 void Actor::updateVerticalVelocity()
 {
-	i32 iVar2 = this->velocity.y + this->accelV;
-	i32 iVar1 = this->minVelocity.y;
+	s32 iVar2 = this->velocity.y + this->accelV;
+	s32 iVar1 = this->minVelocity.y;
 	if (iVar2 < iVar1) {
 		iVar2 = iVar1;
 	}
@@ -236,8 +236,8 @@ void Actor::updateVerticalVelocity()
 void Actor::StepVelocityYClamped()
 {
 
-	i32 minVelV = this->minVelV;
-	i32 velY = this->velocity.y;
+	s32 minVelV = this->minVelV;
+	s32 velY = this->velocity.y;
 	if (velY < minVelV) {
 		velY -= this->accelV;
 		if (velY <= minVelV) {
@@ -258,8 +258,8 @@ void Actor::StepVelocityYClamped()
 
 void Actor::StepVelocityXClamped()
 {
-	i32 minVelH = this->minVelH;
-	i32 velH = this->velH;
+	s32 minVelH = this->minVelH;
+	s32 velH = this->velH;
 	if (velH < minVelH) {
 		velH += this->accelH;
 		if (velH <= minVelH) {
@@ -303,9 +303,9 @@ Vec3_32 Actor::getCenteredPosition()
 {
 	Vec3_32 result;
 
-	i32 x = this->position.x + this->centerOffset.x;
-	i32 z = this->position.z + this->centerOffset.z;
-	i32 y = this->position.y + this->centerOffset.y;
+	s32 x = this->position.x + this->centerOffset.x;
+	s32 z = this->position.z + this->centerOffset.z;
+	s32 y = this->position.y + this->centerOffset.y;
 
 	result.x = x;
 	result.y = y;
@@ -320,22 +320,22 @@ bool Actor::isOutOfViewVertical(FxRect *rect, int player_id)
 	return y + 0x18000 + rect->halfHeight < -(Game::cameraY[player_id] + Game::cameraZoomY[player_id]);
 }
 
-i32 (*data_ov000_020ca858)(i32, i32, i32, i32);
-i32 (*data_ov000_020c6c14[3])(i32, i32, i32, i32) = {
+s32 (*data_ov000_020ca858)(s32, s32, s32, s32);
+s32 (*data_ov000_020c6c14[3])(s32, s32, s32, s32) = {
     Actor::calcDistanceToPlayerNoWrap,
     Actor::calcDistanceToPlayerWrap,
     Actor::calcDistanceToPlayerWrap,
 };
 
-i32 Actor::calcDistanceToPlayerNoWrap(i32, i32, i32, i32)
+s32 Actor::calcDistanceToPlayerNoWrap(s32, s32, s32, s32)
 {
 }
 
-i32 Actor::calcDistanceToPlayerWrap(i32, i32, i32, i32)
+s32 Actor::calcDistanceToPlayerWrap(s32, s32, s32, s32)
 {
 }
 
-i32 Actor::getDistanceToPlayer(i32 x, i32 y)
+s32 Actor::getDistanceToPlayer(s32 x, s32 y)
 {
 	(*data_ov000_020ca858)((this->position.x + this->centerOffset.x) >> 0xc, (this->position.y + this->centerOffset.y) >> 0xc, x, y);
 }
@@ -350,8 +350,8 @@ void Actor::wrapPosition(u32 param_1, u32 param_2, u32 param_3)
 	(*data_02039968)(param_1, param_3);
 }
 
-bool (*data_ov000_020ca854)(i32, i32);
-bool (*data_ov000_020c6c20[3])(i32, i32) = {
+bool (*data_ov000_020ca854)(s32, s32);
+bool (*data_ov000_020c6c20[3])(s32, s32) = {
     Actor::isBehindTargetNoWrap,
     Actor::isBehindTargetWrap,
     Actor::isBehindTargetWrap,
@@ -374,15 +374,15 @@ bool Actor::isInFrontOfTarget(Actor *other)
 
 // bool Actor::
 
-bool Actor::isBehindTargetNoWrap(i32 param_1, i32 param_2)
+bool Actor::isBehindTargetNoWrap(s32 param_1, s32 param_2)
 {
 	return param_1 < param_2;
 }
 
-bool Actor::isBehindTargetWrap(i32 this_, i32 other)
+bool Actor::isBehindTargetWrap(s32 this_, s32 other)
 {
-	i32 iVar2;
-	i32 iVar1;
+	s32 iVar2;
+	s32 iVar1;
 	iVar2 = (this_ & data_02085aa4) - (other & data_02085aa4);
 	iVar1 = (data_02085aa4 + 1) / 2;
 	if (iVar2 < 0) {

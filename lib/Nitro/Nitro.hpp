@@ -4,8 +4,25 @@
 #pragma section itcm begin
 #pragma section itcm end
 
-#define REG_RESET				*((u32 *)0x027FFC20)
+#define REG_RESET				*((u32 *)0x027FFC20) // For some reason this one is not volitile
 
+#define REG_CAPCNT				*((vu32 *)0x04000064)
+#define REG_WIN0H				*((vu16 *)0x04000040)
+#define REG_MOSAIC_BG_SUB		*((vu8 *) 0x0400104C)
+#define REG_MOSAIC_OBJ_SUB		*((vu8 *) 0x0400104D)
+#define REG_WIN0H_SUB			*((vu16 *)0x04001040)
+#define REG_WIN1H_SUB			*((vu16 *)0x04001042)
+#define REG_WIN0V_SUB			*((vu16 *)0x04001044)
+#define REG_WIN1V_SUB			*((vu16 *)0x04001046)
+#define REG_MOSAIC_BG			*((vu8 *) 0x0400004C)
+#define REG_MOSAIC_OBJ			*((vu8 *) 0x0400004D)
+#define REG_WIN1H				*((vu16 *)0x04000042)
+#define REG_WIN0V				*((vu16 *)0x04000044)
+#define REG_WIN1V				*((vu16 *)0x04000046)
+
+
+
+/*
 #define REG_DISPCNT				*((vu32 *)0x04000000)
 #define REG_BG0CNT				*((vu16 *)0x04000008)
 #define REG_BG1CNT				*((vu16 *)0x0400000A)
@@ -27,15 +44,9 @@
 #define REG_BG3PD				*((vu16 *)0x04000036)
 #define REG_BG3X				*((vu32 *)0x04000038)
 #define REG_BG3Y				*((vu32 *)0x0400003C)
-#define REG_WIN0H				*((vu16 *)0x04000040)
-#define REG_WIN1H				*((vu16 *)0x04000042)
-#define REG_WIN0V				*((vu16 *)0x04000044)
-#define REG_WIN1V				*((vu16 *)0x04000046)
 #define REG_WININ				*((vu16 *)0x04000048)
 #define REG_WINOUT				*((vu16 *)0x0400004A)
 #define REG_MOSAIC				*((vu16 *)0x0400004C)
-#define REG_MOSAIC_BG			*((vu8 *) 0x0400004C)
-#define REG_MOSAIC_OBJ			*((vu8 *) 0x0400004D)
 #define REG_BLDCNT				*((vu16 *)0x04000050)
 #define REG_MASTER_BRIGHT		*((vu16 *)0x0400006C)
 
@@ -60,24 +71,18 @@
 #define REG_BG3PD_SUB			*((vu16 *)0x04001036)
 #define REG_BG3X_SUB			*((vu32 *)0x04001038)
 #define REG_BG3Y_SUB			*((vu32 *)0x0400103C)
-#define REG_WIN0H_SUB			*((vu16 *)0x04001040)
-#define REG_WIN1H_SUB			*((vu16 *)0x04001042)
-#define REG_WIN0V_SUB			*((vu16 *)0x04001044)
-#define REG_WIN1V_SUB			*((vu16 *)0x04001046)
 #define REG_WININ_SUB			*((vu16 *)0x04001048)
 #define REG_WINOUT_SUB			*((vu16 *)0x0400104A)
 #define REG_MOSAIC_SUB			*((vu16 *)0x0400104C)
-#define REG_MOSAIC_BG_SUB		*((vu8 *) 0x0400104C)
-#define REG_MOSAIC_OBJ_SUB		*((vu8 *) 0x0400104D)
 #define REG_BLDCNT_SUB			*((vu16 *)0x04001050)
 #define REG_MASTER_BRIGHT_SUB	*((vu16 *)0x0400106C)
 
-#define REG_CAPCNT				*((vu32 *)0x04000064)
+
 
 #define REG_KEYINPUT			*((vu16 *)0x04000130)
 #define REG_IME					*((vu16 *)0x04000208)
 #define REG_POWER_CNT			*((vu16 *)0x04000304)
-
+*/
 #define KEY_A 0 << 1
 #define KEY_B 1 << 1
 #define KEY_SELECT 2 << 1
@@ -98,54 +103,54 @@
 
 union Mat2x2 {
 	struct _ {
-		i32 m00, m01;
-		i32 m10, m11;
+		s32 m00, m01;
+		s32 m10, m11;
 	} s;
-	i32 v[2][2];
-	i32 a[2*2];
+	s32 v[2][2];
+	s32 a[2*2];
 };
 
 union Mat3x3 {
 	struct _ {
-		i32 m00, m01, m02;
-		i32 m10, m11, m12;
-		i32 m20, m21, m22;
+		s32 m00, m01, m02;
+		s32 m10, m11, m12;
+		s32 m20, m21, m22;
 	} s;
-	i32 v[3][3];
-	i32 a[3*3];
+	s32 v[3][3];
+	s32 a[3*3];
 };
 
 union Mat4x3 {
 	struct _ {
-		i32 m00, m01, m02;
-		i32 m10, m11, m12;
-		i32 m20, m21, m22;
-		i32 m30, m31, m32;
+		s32 m00, m01, m02;
+		s32 m10, m11, m12;
+		s32 m20, m21, m22;
+		s32 m30, m31, m32;
 	} s;
-	i32 v[4][3];
-	i32 a[4*3];
+	s32 v[4][3];
+	s32 a[4*3];
 };
 
 union Mat4x4 {
 	struct _ {
-		i32 m00, m01, m02, m03;
-		i32 m10, m11, m12, m13;
-		i32 m20, m21, m22, m23;
-		i32 m30, m31, m32, m33;
+		s32 m00, m01, m02, m03;
+		s32 m10, m11, m12, m13;
+		s32 m20, m21, m22, m23;
+		s32 m30, m31, m32, m33;
 	} s;
-	i32 m[4][4];
-	i32 a[4*4];
+	s32 m[4][4];
+	s32 a[4*4];
 };
 
 struct Vec3_32s {
-	i32 x;
-	i32 y;
-	i32 z;
+	s32 x;
+	s32 y;
+	s32 z;
 };
 struct Vec3_16s {
-	i16 x;
-	i16 y;
-	i16 z;
+	s16 x;
+	s16 y;
+	s16 z;
 };
 
 typedef void (*IrqFunction)();
@@ -178,7 +183,7 @@ typedef void(*SwitchThreadCallback)(Thread*, Thread*);
 extern "C" {
 
 	void* G2S_GetBG0ScrPtr();
-	void MI_CpuCopy8(void *, void *, u32); // std::copy
+	//void MI_CpuCopy8(void *, void *, u32); // std::copy
 
 }
 
@@ -500,7 +505,7 @@ extern "C" {
 
 	};
 
-	i32 FixedDiv(i32, i32);
+	s32 FixedDiv(s32, s32);
 
 	void CopyMat3x3(const void*, void*);
 
@@ -554,7 +559,7 @@ extern "C" {
 	};
 	NITRO_SIZE_ASSERT(Ns3dDictionary, 0x8);
 
-	i32 Ns_3dGetDictionaryIndex(Ns3dDictionary* d, const Ns3dStringData* name);
+	s32 Ns_3dGetDictionaryIndex(Ns3dDictionary* d, const Ns3dStringData* name);
 
 	inline void* Ns_3dGetDictionaryData(Ns3dDictionary* d, u32 index) {
 		Ns3dDictionaryData* h = reinterpret_cast<Ns3dDictionaryData*>(reinterpret_cast<u8*>(d) + d->dataOffset);
@@ -584,8 +589,8 @@ extern "C" {
 		u16 flags;
 		u16 width;
 		u16 height;
-		i32 _24;
-		i32 _28;
+		s32 _24;
+		s32 _28;
 	};
 	NITRO_SIZE_ASSERT(Ns3dMaterialData, 0x2C);
 
@@ -611,7 +616,7 @@ extern "C" {
 
 	struct Ns3dNodeData {
 		u16 flags;
-		i16 p[0]; // 1 or more
+		s16 p[0]; // 1 or more
 	};
 	NITRO_SIZE_ASSERT(Ns3dNodeData, 0x2);
 
@@ -810,8 +815,8 @@ extern "C" {
 	/* Animation class */
 
 	struct Ns3dAnimation {
-		i32 frame;
-		i32 scale;
+		s32 frame;
+		s32 scale;
 		void* data;
 		void* func;
 		Ns3dAnimation* next;
@@ -826,15 +831,15 @@ extern "C" {
 
 	u32 Ns_3dAnimationGetSize(Ns3dAnimationData* anim, Ns3dModelData* model);
 
-	inline void Ns_3dAnimationSetFrame(Ns3dAnimation* a, i32 frame) {
+	inline void Ns_3dAnimationSetFrame(Ns3dAnimation* a, s32 frame) {
 		a->frame = frame;
 	}
 
-	inline i32 Ns_3dAnimationGetRatio(Ns3dAnimation* a) {
+	inline s32 Ns_3dAnimationGetRatio(Ns3dAnimation* a) {
 		return a->scale;
 	}
 
-	inline void Ns_3dAnimationSetRatio(Ns3dAnimation* a, i32 ratio) {
+	inline void Ns_3dAnimationSetRatio(Ns3dAnimation* a, s32 ratio) {
 		a->scale = ratio;
 	}
 

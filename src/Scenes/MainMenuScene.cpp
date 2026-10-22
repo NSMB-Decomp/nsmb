@@ -43,9 +43,9 @@ void MainMenuScene::onRender_1()
 {
 	if (this->stateID != 0x0) {
 		this->label.func_02018060();
-		i32 i = 0;
+		s32 i = 0;
 		do {
-			i32 v = this->func_ov009_020ce944(i);
+			s32 v = this->func_ov009_020ce944(i);
 			this->func_ov009_020ceaec(i, v);
 			i += 1;
 		} while (i <= 2);

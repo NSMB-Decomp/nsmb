@@ -77,7 +77,7 @@ s32 SoundTestScene::onRender()
 	return true;
 }
 
-i32 SoundTestScene::onUpdate()
+s32 SoundTestScene::onUpdate()
 {
 	u32 local_r0;
 	u32 local_r1;

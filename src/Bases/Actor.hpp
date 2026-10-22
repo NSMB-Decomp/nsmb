@@ -11,11 +11,11 @@ class Actor : public Object
 	Vec3_32 centerOffset;
 	Vec3_16 rotation;
 	Vec3_16 lastRotation;
-	i32 velH; // TODO: These names are awful, fix them D:<.
-	i32 minVelH;
-	i32 accelV;
-	i32 minVelV;
-	i32 accelH;	  // 0xC4
+	s32 velH; // TODO: These names are awful, fix them D:<.
+	s32 minVelH;
+	s32 accelV;
+	s32 minVelV;
+	s32 accelH;	  // 0xC4
 	u32 _c8;	  // 0xC8
 	Vec3_32 velocity; // 0xCA
 	Vec3_32 minVelocity;
@@ -24,10 +24,10 @@ class Actor : public Object
 	Vec3_32 velocitylimit;
 	u8 actorType; // 0x11C
 	bool visible;
-	i8 linked_player; // 0x11E
+	s8 linked_player; // 0x11E
 	u8 actorCategory; // 0x11F
 
-	void linkPlayer(i32);
+	void linkPlayer(s32);
 	u32 getActorCount(u8);
 	void applyVelocity();
 	void updateVerticalVelocity();
@@ -35,9 +35,9 @@ class Actor : public Object
 	void setDirectionalVelocity3D();
 	void applyDirectionalVelocity3D();
 	void attenuateAcceleration();
-	static Actor *spawnActor(u16, u32, Vec3_32 *, Vec3_16 *, i32 *, i8 *);
+	static Actor *spawnActor(u16, u32, Vec3_32 *, Vec3_16 *, s32 *, s8 *);
 	void applyDirectionalVelocity();
-	static void setSpawnParams(Vec3_32 *, Vec3_16 *, i32 *, i8 *);
+	static void setSpawnParams(Vec3_32 *, Vec3_16 *, s32 *, s8 *);
 	void applyVelocityToPosition(Vec3_32 &);
 	Vec3_32 applyAcceleration(Vec3_32 *);
 	void StepVelocityYClamped();
@@ -47,13 +47,13 @@ class Actor : public Object
 	bool isOutOfViewVertical(FxRect *, int);
 	bool isInFrontOfTarget(Actor *);
 	bool isBehindTarget(Actor *);
-	i32 getDistanceToPlayer(i32, i32);
-	static i32 calcDistanceToPlayerNoWrap(i32, i32, i32, i32);
-	static i32 calcDistanceToPlayerWrap(i32, i32, i32, i32);
-	static bool isBehindTargetWrap(i32, i32);
+	s32 getDistanceToPlayer(s32, s32);
+	static s32 calcDistanceToPlayerNoWrap(s32, s32, s32, s32);
+	static s32 calcDistanceToPlayerWrap(s32, s32, s32, s32);
+	static bool isBehindTargetWrap(s32, s32);
 	static void setCalcPositionToPlayerFunction(u32);
 	static void wrapPosition(u32, u32, u32);
-	static bool isBehindTargetNoWrap(i32, i32);
+	static bool isBehindTargetNoWrap(s32, s32);
 	static void initWrapFunctions(u32);
 	static void setIsBehindTargetFunction(u32);
 	static void setWrapPositionFunction();

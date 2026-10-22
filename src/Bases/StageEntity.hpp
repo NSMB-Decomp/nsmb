@@ -128,10 +128,10 @@ public:
 	u8 _pad2[8];
 	u64 _334; /* 0x334 */
 	u8 _pad99[4];
-	i32 _340; /* 0x340 */
+	s32 _340; /* 0x340 */
 	u8 _pad14[0x8];
 	u32 _34c;     /* 0x34C */
-	i32 _350;     /* 0x350 */
+	s32 _350;     /* 0x350 */
 	u32 _354;     /* 0x354 */
 	u32 _358;     /* 0x358 */
 	Vec3_32 _35c; /* 0x35C */
@@ -164,7 +164,7 @@ public:
 	u8 _3e4; /* 0x3E4 */
 	u8 _pad8[1];
     u8 _3e6; /* 0x3E6 */
-	i8 _3e7; /* 0x3E7 */
+	s8 _3e7; /* 0x3E7 */
 	u8 _3e8; /* 0x3E8 */
 	u8 _3e9; /* 0x3E9 */
 	u8 _3ea; /* 0x3EA */
@@ -192,30 +192,30 @@ public:
 	void assignView(Vec3_32 *);
 	bool isPlayerInZone(PlayerActor *, u32);
 	u32 stopPlayerInShell(ActiveCollider *, PlayerActor *);
-	static bool isBelowPlayer(i32, ActiveCollider *, u8);
+	static bool isBelowPlayer(s32, ActiveCollider *, u8);
 	bool setGroundPoundCollision(PlayerActor *);
 	bool checkSquished();
 	u32 updateSideSensors();
 	u32 updateBottomSensors();
 	bool checkLavaCollision(Vec3_32 *);
 	u32 updateCollisionSensors();
-	bool checkPlayersInOffset(i32, i32);
-	bool checkPlayersInOffset(i32);
-	bool rotateToTarget(i16[2], i16[2]);
+	bool checkPlayersInOffset(s32, s32);
+	bool checkPlayersInOffset(s32);
+	bool rotateToTarget(s16[2], s16[2]);
 	void applyFireballWiggle();
 	u16 getActorID(u8);
-	void setTimedEvent(u32, i32, bool, bool, bool);
+	void setTimedEvent(u32, s32, bool, bool, bool);
 	void destroy(bool);
-	void updateBounce(i32, i32, i32);
+	void updateBounce(s32, s32, s32);
 	static void damagePlayerCallback(ActiveCollider *, ActiveCollider *); // These callbacks should not be static, set as static temporarily to match code.
 	static void damageEntityCallback(ActiveCollider *);
 	static void shellCallback(ActiveCollider *);
 	static void simpleCallback(ActiveCollider *);
-	static bool spawnBrokenPipe(i32, i32, u32, u32, u8, u8, i8);
+	static bool spawnBrokenPipe(s32, s32, u32, u32, u8, u8, s8);
 	static u8 func_ov000_0209aad0(Vec3_32 *, u32, u32);
 	u32 random();
-	i32 tryAttachToPlayerHands(i32, i32, i32);
-	i32 attachToPlayerHands(i32, i32, i32);
+	s32 tryAttachToPlayerHands(s32, s32, s32);
+	s32 attachToPlayerHands(s32, s32, s32);
 	void func_ov000_0209c85c();
 	bool destroyInactive(u32 flags);
 	void func_ov000_0209e264(u32, u32, u32);
@@ -225,11 +225,11 @@ public:
 	void func_ov000_0209e5a8(u32, u32);
 	void func_ov000_020a020c();
 	void func_ov000_020a01b4();
-	i32 func_ov000_0209acd4(Vec3_32 *);
-	i32 func_ov000_0209a23c();
-	i32 func_ov000_0209a4f0();
-	void func_ov000_0209aa04(u32 type,i32 x,i32 y,i32 player_id);
-	void func_ov000_0209aa5c(Vec3_32*, i32, i32);
+	s32 func_ov000_0209acd4(Vec3_32 *);
+	s32 func_ov000_0209a23c();
+	s32 func_ov000_0209a4f0();
+	void func_ov000_0209aa04(u32 type,s32 x,s32 y,s32 player_id);
+	void func_ov000_0209aa5c(Vec3_32*, s32, s32);
 	bool func_ov000_0209ff98();
 
 	virtual bool onUpdate_0();

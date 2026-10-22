@@ -23,7 +23,7 @@ public:
 	void update(); //Updates currentFrame by speed. If it's looping, currentFrame is wrapped around. If not, currentFrame is incremented until it reaches frames - 1. When timer becomes negative due to negative speeds, it's kept at 0.
 
 	//0201fe9c
-	void init(u16 frames, u32 type, i32 speed, u16 startFrame); //Initializes the controller with the given parameters
+	void init(u16 frames, u32 type, s32 speed, u16 startFrame); //Initializes the controller with the given parameters
 
 	inline u16 getFrame() const {
 		return currentFrame >> 12;
@@ -52,12 +52,12 @@ public:
 	bool finished() const; //If speed is positive, it returns true if current frame exceeds frames - 1. If speed is negative, it returns true if currentFrame equals 0 or less.
 
 	//0201fd1c
-	bool passing(i16 targetFrame) const; //returns true if the next update passes targetFrame, false otherwise
+	bool passing(s16 targetFrame) const; //returns true if the next update passes targetFrame, false otherwise
 
 
 	u32 settings;
-	i32 currentFrame;
-	i32 speed;
+	s32 currentFrame;
+	s32 speed;
 
 };
 NTR_SIZE_GUARD(FrameCtrl, 0xC);

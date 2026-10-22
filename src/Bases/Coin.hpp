@@ -44,8 +44,8 @@ class Coin : public StageEntity
 	u8 _4f0;
 	u8 _4f1;
 	u8 _pad3[0x1];
-	i8 _4e3;
-	i8 _4e4;
+	s8 _4e3;
+	s8 _4e4;
 
 	inline Coin() {};
 	inline ~Coin() {};

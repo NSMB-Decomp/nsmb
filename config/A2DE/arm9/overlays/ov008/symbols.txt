@@ -241,9 +241,7 @@ _ZN13WmEntityModel6renderERK6Mat4x3RK7Vec3_32S5_ kind:function(arm,size=0x1e8) a
 _ZN13WmEntityModel6createEm kind:function(arm,size=0x15c) addr:0x020dbfe0
 _ZN13WmEntityModelD0Ev kind:function(arm,size=0x44) addr:0x020dc13c
 _ZN13WmEntityModelD2Ev kind:function(arm,size=0x3c) addr:0x020dc180
-_ZN13WmEntityModelD1Ev kind:function(arm,size=0x3c) addr:0x020dc180
 _ZN13WmEntityModelC2Ev kind:function(arm,size=0x3c) addr:0x020dc1bc
-_ZN13WmEntityModelC1Ev kind:function(arm,size=0x3c) addr:0x020dc1bc
 
 _ZN9WmPathMap14getMaskNscFileEm kind:function(arm,size=0x20) addr:0x020dc1f8
 _ZN9WmPathMap10getNscFileEm kind:function(arm,size=0x20) addr:0x020dc218

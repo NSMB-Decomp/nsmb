@@ -2,7 +2,6 @@
 #include "../nsmb_nitro.hpp"
 
 namespace OptionsMenu {
-
 	extern u8 slideTimer;
 	extern u8 selection;
 	extern s8 taskDelay;
@@ -37,7 +36,6 @@ namespace OptionsMenu {
 		T_MAX
 	};
 
-
 	void menuOpen();
 	void menuInit();
 	void menuSlideIn();
@@ -51,11 +49,4 @@ namespace OptionsMenu {
 	void menuUnloadStage();
 	void menuUnloadWorldmap();
 	void menuDraw();
-
-
-	inline bool isOpen() {
-		int task = taskID;
-		return task >= 2 && task < 10;
-	}
-
 }

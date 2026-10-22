@@ -24,7 +24,7 @@ class CorruptedFileScene : public Scene
 	void* bmg;
     u8 _pad1[0x4];
 	u32 _e4;
-	i32 _e8;
+	s32 _e8;
 	u32 _ec;
 	u32 _f0;
 	u32 _f4;
