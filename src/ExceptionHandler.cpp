@@ -65,7 +65,7 @@ void func_02005b34()
 	u32 keys = PAD_Read() & 0x3FF;
 	u32 keysPressed = ExceptionHandlerKeys ^ keys;
 	ExceptionHandlerKeys = keys;
-	u8 unknown = keys & keysPressed;
+	u32 unknown = keys & keysPressed;
 	switch (newState) {
 	case 0: // Wait for L + R + LEFT + A
 		if (unknown & 0x2000) { // If device is folded?
@@ -109,9 +109,8 @@ void func_02005b34()
 	case 6: // Loop the debug screen
 		showExceptionHandler();
 		showExceptionHandlerSub();
-		u32 iVar2;
 		if (keys & PAD_BUTTON_SELECT ) {
-			if ((unknown & PAD_BUTTON_A ) && keys) {
+			if ((unknown & PAD_BUTTON_A ) && (keys & PAD_BUTTON_SELECT)) {
 				if (Nitro_GetCpsrM() == 0x1F) {
 					Heap* a = (Heap*)_data_0208b730;
 					Heap* c = (Heap*)_data_0208b72c;
