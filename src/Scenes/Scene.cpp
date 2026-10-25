@@ -2,7 +2,6 @@
 
 void func_02008558();
 bool func_02046c5c();
-bool Wifi_isMultiBootCart();
 void func_0200f3d8();
 void func_02009b64();
 void func_ov052_02152bf0();
@@ -45,7 +44,7 @@ Scene::~Scene()
 		}
 		if (a) {
 			bool c = func_02046c5c();
-			if (c != 0 && !Wifi_isMultiBootCart()) {
+			if (c != 0 && !MB_IsMultiBootChild()) {
 				data_02085ad4[0] = save.options.controlOptions; // TODO: Do not offset using pointers
 			}
 			func_0200f3d8();
@@ -131,7 +130,7 @@ bool Scene::preUpdate()
 		// if (data_02087630 == '\0') {
 		//	data_02088f2c = '\x01';
 		// } else if ((data_02088f2c != '\0') && (data_02088f30 != '\0')) {
-		//	bVar1 = Wifi_isMultiBootCart();
+		//	bVar1 = MB_IsMultiBootChild();
 		//	if (bVar1) {
 		//		data_0208883c |= 0x8000;
 		//	} else {
@@ -182,7 +181,7 @@ void Scene::prepareFirstScene()
 		// GlobalFader = Fader();
 		//*(s32*)(&GlobalFader) = 1;
 	}
-	if (Wifi_isMultiBootCart()) {
+	if (MB_IsMultiBootChild()) {
 		data_0203bd30 = 1;
 	} else {
 		u32 boot_scene = Game::getBootScene();

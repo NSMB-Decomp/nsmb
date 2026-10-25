@@ -16,12 +16,12 @@ BitUnPack kind:function(thumb,size=0x4) addr:0x0200064c
 LZ77UnCompReadByCallbackWrite16bit kind:function(thumb,size=0x4) addr:0x020006ce
 WaitByLoop kind:function(thumb,size=0x4) addr:0x02000738
 IntrWait kind:function(thumb,size=0x4) addr:0x020007a2
-Entry kind:function(arm,size=0x120) addr:0x02000800
-func_02000920 kind:function(arm,size=0x14) addr:0x02000920
-func_02000934 kind:function(arm,size=0xac) addr:0x02000934
-func_020009e0 kind:function(arm,size=0x78) addr:0x020009e0
+_Z6_startv kind:function(arm,size=0x120) addr:0x02000800
+_Z16INITi_CpuClear32mlm kind:function(arm,size=0x14) addr:0x02000920
+MIi_UncompressBackward kind:function(arm,size=0xac) addr:0x02000934
+_Z11do_autoloadv kind:function(arm,size=0x78) addr:0x020009e0
 AutoloadCallback kind:function(arm,size=0x4) addr:0x02000a58
-func_02000a5c kind:function(arm,size=0xe8) addr:0x02000a5c
+_Z9init_cp15v kind:function(arm,size=0xe8) addr:0x02000a5c
 func_02000b44 kind:function(arm,size=0x4) addr:0x02000b44
 BuildInfo kind:data(any) addr:0x02000b48
 SDK_BackupType kind:data(any) addr:0x02000b6c
@@ -179,7 +179,7 @@ _ZN6System15setupGameVBlankEv kind:function(arm,size=0x60) addr:0x02005ab0
 
 _Z20ExceptionHandlerLoopv kind:function(arm,size=0x24) addr:0x02005b10
 _Z13func_02005b34v kind:function(arm,size=0x1a8) addr:0x02005b34
-DebugScreenWaitForVblank kind:function(arm,size=0x28) addr:0x02005cdc
+_Z24DebugScreenWaitForVblankv kind:function(arm,size=0x28) addr:0x02005cdc
 _Z28setupGraphicsForDebugScreen2v kind:function(arm,size=0x164) addr:0x02005d04
 func_02005e68 kind:function(arm,size=0x40) addr:0x02005e68
 func_02005ea8 kind:function(thumb,size=0x8) addr:0x02005ea8

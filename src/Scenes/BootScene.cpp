@@ -29,12 +29,12 @@ s32 BootScene::onCreate() {
 		Nitro::func_02060d78(0x1, 0x0, 0x0);
 		Nitro::func_02060d5c(0x0);
 		REG_DISPCNT = ((REG_DISPCNT & ~0x38000000) | 0x8000000);
-		REG_POWER_CNT = ((REG_POWER_CNT & 0xfffffdf1) | 0x20e);
+		REG_POWER_CNT = ((REG_POWER_CNT & ~0x20e) | 0x20e);
 		Nitro::EnableDisplay();
-		REG_DISPCNT_SUB |= 0x10000;
-		REG_BG0CNT = (REG_BG0CNT & (~0x3)) | 0x1;
+		GXS_DispOn(); // REG_DISPCNT_SUB |= 0x10000
+		G2_SetBG0Priority(1); //REG_BG0CNT = (REG_BG0CNT & (~0x3)) | 0x1;
 		REG_BG0CNT = (REG_BG0CNT & 0x43) | 0x1700;
-		REG_BG0CNT &= ~0x40;
+		REG_BG0CNT = REG_BG0CNT & ~0x40;
 		REG_BG0OFS = 0x0;
 		Nitro::func_02067258((u32)&data_ov001_020cd144, Nitro::func_02061ff8());
 		Nitro_::func_02063af0((u16*)&data_ov001_020cd734, 0x0, 0x200);

@@ -24,14 +24,14 @@ void setupGraphicsForDebugScreen2()
 {
 	App::resetGpu();
 	REG_POWER_CNT |= 1;
-	REG_BLDCNT = 0;
-	REG_BLDCNT_SUB = 0;
+	G2_BlendNone(); //REG_BLDCNT = 0;
+	G2S_BlendNone(); //REG_BLDCNT_SUB = 0;
 	Nitro::func_02061ac4(0x40);
 	Nitro::func_020613c8(0x80);
-	REG_DISPCNT = REG_DISPCNT & ~0x1f00 | 0x200;
-	REG_DISPCNT_SUB = REG_DISPCNT_SUB & ~0x1f00 | 0x200;
-	REG_BG1CNT = REG_BG1CNT & 0x43 | 0x400;
-	REG_BG1CNT_SUB = REG_BG1CNT_SUB & 0x43 | 0x400;
+	GX_SetVisiblePlane(0x2); // REG_DISPCNT = REG_DISPCNT & ~0x1f00 | 0x200;
+	GXS_SetVisiblePlane(0x2); //REG_DISPCNT_SUB = REG_DISPCNT_SUB & ~0x1f00 | 0x200;
+	G2_SetBG1Control(0,8,0,0,0); //REG_BG1CNT = REG_BG1CNT & 0x43 | 0x400;
+	G2S_SetBG1Control(0,8,0,0,0); //REG_BG1CNT_SUB = REG_BG1CNT_SUB & 0x43 | 0x400;
 	//  iVar1 = Nitro::func_02061fa4();
 	//  Nitro::func_02067258(&data_02039218,iVar1 + 0x400);
 	//  iVar1 = Nitro::func_02061f84();
@@ -50,11 +50,8 @@ void setupGraphicsForDebugScreen2()
 }
 void DebugScreenWaitForVblank()
 {
-	// The below is useless junk o that func_02005b34 does not do a relative branch.
-	while (true) {
-		u32 a = PAD_Read();
-		REG_DISPCNT = a;
-	}
+	while(0xc0 < REG_VCOUNT) {}
+	while(REG_VCOUNT < 0xc0){}
 }
 
 u8 ExceptionHandlerState;

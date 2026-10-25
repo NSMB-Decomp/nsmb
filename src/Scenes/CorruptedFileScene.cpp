@@ -28,7 +28,7 @@ CorruptedFileScene::~CorruptedFileScene()
 
 
 s32 CorruptedFileScene::onCreate() {
-	REG_POWER_CNT = REG_POWER_CNT & 0xfffffdf1 | 0x20e;
+	GX_SetPower(0x20e); //REG_POWER_CNT = REG_POWER_CNT & ~0x20e | 0x20e;
 	Nitro::func_02061274();
 	Nitro::func_02061260();
 	Nitro::func_0206123c();
@@ -46,22 +46,22 @@ s32 CorruptedFileScene::onCreate() {
 	Nitro::func_02061958(1);
 	Nitro::func_02061844(0x40);
 	Nitro::func_0206178c(0x20);
-	REG_BG0CNT &= ~0x40;
-	REG_BG1CNT &= ~0x40;
-	REG_BG2CNT &= ~0x40;
-	REG_BG3CNT &= ~0x40;
+	G2_BG0Mosaic(FALSE); //REG_BG0CNT &= ~0x40;
+	G2_BG1Mosaic(FALSE); //REG_BG1CNT &= ~0x40;
+	G2_BG2Mosaic(FALSE); //REG_BG2CNT &= ~0x40;
+	G2_BG3Mosaic(FALSE); //REG_BG3CNT &= ~0x40;
 	REG_DISPCNT = REG_DISPCNT & 0xffcfffef | 0x200010;
 	REG_DISPCNT = REG_DISPCNT & 0xffbfff9f | 0x20;
 	Nitro::func_02056f40(2,1);
 	Nitro::func_020571c4(0x10000,1);
 	Nitro::func_02060d78(1,5,1);
 	REG_POWER_CNT |= 0x8000;
-	REG_DISPCNT = REG_DISPCNT & ~0x1f00 | 0x1000;
+	GX_SetVisiblePlane(0x10); //REG_DISPCNT = REG_DISPCNT & ~0x1f00 | 0x1000;
 	data_02085a88 = 0x10;
-	REG_BG0CNT &= ~3;
-	REG_BG1CNT = REG_BG1CNT & ~3 | 3;
-	REG_BG2CNT = REG_BG2CNT & ~3 | 1;
-	REG_BG3CNT = REG_BG3CNT & ~3 | 2;
+	G2_SetBG0Priority(0); //REG_BG0CNT &= ~3;
+	G2_SetBG1Priority(3); //REG_BG1CNT = REG_BG1CNT & ~3 | 3;
+	G2_SetBG2Priority(1); //REG_BG2CNT = REG_BG2CNT & ~3 | 1;
+	G2_SetBG3Priority(2); //REG_BG3CNT = REG_BG3CNT & ~3 | 2;
 	data_02085e0c = 0;
 	func_0200b87c();
 	data_02087700 = 0;

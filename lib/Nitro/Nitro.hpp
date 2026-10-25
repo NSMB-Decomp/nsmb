@@ -363,8 +363,7 @@ void Graphics_ResetOAM();
 bool Graphics_Step();
 inline void Graphics_SwapBuffer(u32 a, u32 b)
 {
-	u32 *GFX_FIFO_SWAP_BUFFERS = (u32 *)0x04000540;
-	*GFX_FIFO_SWAP_BUFFERS = (a << 1) | b;
+	REG_GFX_FIFO_SWAP_BUFFERS = (a << 1) | b;
 }
 void Math__stub();
 void func_02061588(u32);
@@ -383,7 +382,6 @@ void func_01ff9010();
 void func_02060d30(void*, s32);
 void func_0206232c(void*, const Mat2x2*, s32, s32, s32, s32);
 void FS_init();
-BOOL Wifi_isMultiBootCart();
 void FS_Overlays_loadOverlay(u32);
 void FS_Overlays_unload(u32);
 void FS_Archive_loadMainGameArchives();
@@ -428,9 +426,6 @@ void LCD_GetBacklightLevel(u32*, u32*);
 u32 LCD_SetBacklightLevel(u32, u32);
 
 void Terminate();
-
-#define Nitro_Abort(...) \
-	::Nitro::Terminate()
 
 } // namespace Nitro
 
