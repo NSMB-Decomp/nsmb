@@ -42,26 +42,26 @@ class PlayerModel
 	void setBodyModelCallback(void *callback);
 	void setBodyModelOwner(void *owner);
 
-	void render(Mat4x3 &bodyModelMatrix, Vec3_32 &scale, i8 texPalette, BOOL skip, u32 diffuse, u32 ambient, BOOL toon);
+	void render(Mat4x3 &bodyModelMatrix, Vec3_32 &scale, s8 texPalette, BOOL skip, u32 diffuse, u32 ambient, BOOL toon);
 	void enableBodyToon(Model &model);
 	void enableHeadToon(Model &model);
 	void disableBodyToon(Model &model);
 	void disableHeadToon(Model &model);
 	void setDeathTexImageParams(); // TODO: what does this actually do?
 
-	void setBodyAnimation(void *anmResource, u32 blendSteps, u32 type, i32 speed, u16 startFrame);
+	void setBodyAnimation(void *anmResource, u32 blendSteps, u32 type, s32 speed, u16 startFrame);
 	void switchBodyAnimations(u32 sourceModel, u32 targetModel);
-	void setHeadAnimation(void *anmResource, u32 type, i32 speed, u16 startFrame);
+	void setHeadAnimation(void *anmResource, u32 type, s32 speed, u16 startFrame);
 	void update();
 	bool animationFinished();
 	void setCurrentAnimationFrame(u16 frame);
 	u16 getCurrentAnimationFrame() const;
-	i32 getFullAnimationFrame() const;
+	s32 getFullAnimationFrame() const;
 	u16 getAnimationFrameCount() const;
-	void setAnimationSpeed(i32 speed);
-	i32 getAnimationSpeed() const;
+	void setAnimationSpeed(s32 speed);
+	s32 getAnimationSpeed() const;
 	bool animationPassing(u16 targetFrame) const;
-	void initPartialAnimation(void *anmResource, u32 type, i32 speed, u16 startFrame);
+	void initPartialAnimation(void *anmResource, u32 type, s32 speed, u16 startFrame);
 	void startPartialAnimation(u32 nodeDisableIndex);
 	void endPartialAnimation();
 	void updatePartialAnimation();
@@ -98,8 +98,8 @@ class PlayerModel
 	PlayerCap cap;			      // Player cap (not attached to body/head)
 	PlayerShell shell;		      // Player shell
 	NodeTransforms nodeTransforms;	      // Node transforms of certain bones
-	i32 bodyAnmBlendRatio;		      // Body animation blend ratio (between 0.0 and 1.0)
-	i32 bodyAnmBlendStep;		      // Body animation step (increments the ratio per step)
+	s32 bodyAnmBlendRatio;		      // Body animation blend ratio (between 0.0 and 1.0)
+	s32 bodyAnmBlendStep;		      // Body animation step (increments the ratio per step)
 	u32 activeAnimationIndex;	      // Active body animation index (into bodyAnimations)
 	u32 animationNodeDisableIndex;	      // Node index determining partial animation boundaries: 0->(ANDI-1)=disables partial nodes; ANDI->(node count-1)=disables body nodes
 	u32 partialBodyActive;		      // 1 if partial animation is active, else 0

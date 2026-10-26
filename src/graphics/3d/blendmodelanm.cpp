@@ -97,7 +97,7 @@ bool BlendModelAnm::create(void* bmd, void* bca, u32 modelID, u32 animID, u32 po
 
 }
 
-void BlendModelAnm::pushAnimation(u32 animID, u32 steps, u32 type, i32 speed, u16 startFrame) {
+void BlendModelAnm::pushAnimation(u32 animID, u32 steps, u32 type, s32 speed, u16 startFrame) {
 
 	if (currentAnimID == animID) {
 		frameController.setAnimationType(type);

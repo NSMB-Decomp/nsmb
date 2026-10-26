@@ -16,12 +16,12 @@ BitUnPack kind:function(thumb,size=0x4) addr:0x0200064c
 LZ77UnCompReadByCallbackWrite16bit kind:function(thumb,size=0x4) addr:0x020006ce
 WaitByLoop kind:function(thumb,size=0x4) addr:0x02000738
 IntrWait kind:function(thumb,size=0x4) addr:0x020007a2
-Entry kind:function(arm,size=0x120) addr:0x02000800
-func_02000920 kind:function(arm,size=0x14) addr:0x02000920
-func_02000934 kind:function(arm,size=0xac) addr:0x02000934
-func_020009e0 kind:function(arm,size=0x78) addr:0x020009e0
+_Z6_startv kind:function(arm,size=0x120) addr:0x02000800
+_Z16INITi_CpuClear32mlm kind:function(arm,size=0x14) addr:0x02000920
+MIi_UncompressBackward kind:function(arm,size=0xac) addr:0x02000934
+_Z11do_autoloadv kind:function(arm,size=0x78) addr:0x020009e0
 AutoloadCallback kind:function(arm,size=0x4) addr:0x02000a58
-func_02000a5c kind:function(arm,size=0xe8) addr:0x02000a5c
+_Z9init_cp15v kind:function(arm,size=0xe8) addr:0x02000a5c
 func_02000b44 kind:function(arm,size=0x4) addr:0x02000b44
 BuildInfo kind:data(any) addr:0x02000b48
 SDK_BackupType kind:data(any) addr:0x02000b6c
@@ -124,8 +124,8 @@ NitroStartUp kind:function(arm,size=0xc) addr:0x02004c24
 func_02004c30 kind:function(arm,size=0x88) addr:0x02004c30
 func_02004cb8 kind:function(arm,size=0xd8) addr:0x02004cb8
 
-_ZN3App8initBootEv kind:function(arm,size=0x6c) addr:0x02004d90
-_ZN3App13initFileCountEi kind:function(arm,size=0x24) addr:0x02004dfc
+_ZN3App8initBootEm kind:function(arm,size=0x6c) addr:0x02004d90
+_ZN3App13initFileCountEl kind:function(arm,size=0x24) addr:0x02004dfc
 _ZN3App13commonStartupEv kind:function(arm,size=0x3c) addr:0x02004e20
 _ZN3App8gameMainEv kind:function(arm,size=0x1c) addr:0x02004e5c
 _ZN3App10initializeEv kind:function(arm,size=0x30) addr:0x02004e78
@@ -178,8 +178,8 @@ _ZN6System15setupGameVBlankEv kind:function(arm,size=0x60) addr:0x02005ab0
 // exceptionscreen.cpp
 
 _Z20ExceptionHandlerLoopv kind:function(arm,size=0x24) addr:0x02005b10
-_Z13func_02005b34t kind:function(arm,size=0x1a8) addr:0x02005b34
-DebugScreenWaitForVblank kind:function(arm,size=0x28) addr:0x02005cdc
+_Z13func_02005b34v kind:function(arm,size=0x1a8) addr:0x02005b34
+_Z24DebugScreenWaitForVblankv kind:function(arm,size=0x28) addr:0x02005cdc
 _Z28setupGraphicsForDebugScreen2v kind:function(arm,size=0x164) addr:0x02005d04
 func_02005e68 kind:function(arm,size=0x40) addr:0x02005e68
 func_02005ea8 kind:function(thumb,size=0x8) addr:0x02005ea8
@@ -297,7 +297,7 @@ FS::GetFileId kind:function(arm,size=0x28) addr:0x0200936c
 FS::calcFileID kind:function(arm,size=0x64) addr:0x02009394
 FS::SetFileIDOffset kind:function(arm,size=0x18) addr:0x020093f8
 FS::setFileCount kind:function(arm,size=0x14) addr:0x02009410
-_ZN5Nitro7FS_initEv kind:function(arm,size=0x54) addr:0x02009424
+FS::Unknown kind:function(arm,size=0x54) addr:0x02009424
 FS::getDecompressedSize kind:function(arm,size=0xc) addr:0x02009478
 FS::Overlays::init kind:function(arm,size=0x34) addr:0x02009484
 _ZN5Nitro18FS_Overlays_unloadEm kind:function(arm,size=0x58) addr:0x020094b8
@@ -1485,8 +1485,8 @@ data_02037450 kind:data(any) addr:0x02037450
 .p__sinit_0202614c kind:data(word) addr:0x020391c8
 .p__sinit_02026244 kind:data(word) addr:0x020391cc
 _ZTV7Vec2_32 kind:data(any) addr:0x020391e0
-_ZTV7Vec3_16 kind:data(any) addr:0x020391f8
-_ZTV7Vec3_32 kind:data(any) addr:0x02039208
+_ZTV7Vec3_16 kind:data(any) addr:0x020391f0
+_ZTV7Vec3_32 kind:data(any) addr:0x02039200
 data_02039210 kind:data(any) addr:0x02039210
 data_02039218 kind:data(any) addr:0x02039218
 data_02039678 kind:data(any) addr:0x02039678

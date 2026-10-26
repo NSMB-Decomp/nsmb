@@ -16,11 +16,11 @@ u32 data_0208fb08;
 #pragma section autobss_3 end
 
 #pragma section itcm begin
-i32 Base::process(s32 (Base::*on)(), bool (Base::*pre)(), void (Base::*post)(u32))
+s32 Base::process(s32 (Base::*on)(), bool (Base::*pre)(), void (Base::*post)(u32))
 {
 	u32 state;
 	u32 result;
-	i32 callResult;
+	s32 callResult;
 	callResult = (this->*pre)();
 	if (callResult) {
 		callResult = (this->*on)();
@@ -73,7 +73,7 @@ void Base::postRender(u32)
 {
 }
 
-i32 Base::doOrderProc()
+s32 Base::doOrderProc()
 {
 	if (this->pending_destroy) {
 		this->pending_destroy = false;
@@ -138,12 +138,12 @@ i32 Base::doOrderProc()
 	return true;
 }
 
-i32 Base::processUpdate()
+s32 Base::processUpdate()
 {
 	return this->process(Base::onUpdate, Base::preUpdate, Base::postUpdate);
 }
 
-i32 Base::procesRender()
+s32 Base::procesRender()
 {
 	return this->process(Base::onRender, Base::preRender, Base::postRender);
 }
@@ -437,7 +437,7 @@ bool Base::onHeapCreated()
 {
 	return true;
 }
-void *Base::operator new(size_t count)
+void *Base::operator new(u32 count)
 {
 	Base *ptr = (Base *)Memory_gameHeap->allocate(count, -4);
 	if (ptr != (Base *)0x0) {
@@ -469,7 +469,7 @@ void Base::create()
 	LinkedList_append(&ProcessManager::CreateTask.linked_list, &this->process_link.update);
 	return;
 }
-i32 Base::processCreate()
+s32 Base::processCreate()
 {
 	void (Base::*post)(u32) = Base::postCreate;
 	s32 (Base::*on)() = Base::onCreate;
@@ -477,7 +477,7 @@ i32 Base::processCreate()
 	return this->process(on, pre, post);
 }
 
-i32 Base::processDestroy()
+s32 Base::processDestroy()
 {
 	u16 object_id = this->object_id;
 	s32 (Base::*on)() = Base::onDestroy;

@@ -66,7 +66,7 @@ void ModelAnm::render() {
 
 }
 
-void ModelAnm::init(u32 animID, u32 type, i32 speed, u16 startFrame) {
+void ModelAnm::init(u32 animID, u32 type, s32 speed, u16 startFrame) {
 
 	if (this->animID == animID) {
 		frameController.setAnimationType(type);

@@ -2,7 +2,7 @@
 
 void FrameCtrl::update() {
 
-	i32 last = settings & LastFrameMask;
+	s32 last = settings & LastFrameMask;
 
 	if ((settings & TypeMask) == 0) {
 		currentFrame = (currentFrame + speed + last) % last;
@@ -20,7 +20,7 @@ void FrameCtrl::update() {
 
 }
 
-void FrameCtrl::init(u16 frames, u32 type, i32 speed, u16 startFrame) {
+void FrameCtrl::init(u16 frames, u32 type, s32 speed, u16 startFrame) {
 
 	this->settings = type | (4096 * frames);
 	this->currentFrame = (4096 * startFrame);
@@ -41,18 +41,18 @@ bool FrameCtrl::finished() const {
 	if (speed < 0)
 		return currentFrame <= 0;
 
-	i32 last = settings & LastFrameMask;
+	s32 last = settings & LastFrameMask;
 
 	return currentFrame >= last - 1;
 
 }
 
-bool FrameCtrl::passing(i16 targetFrame) const {
+bool FrameCtrl::passing(s16 targetFrame) const {
 
 	u32 frame = currentFrame;
-	i32 target = (4096 * targetFrame);
-	i32 next = frame + speed;
-	i32 last = settings & LastFrameMask;
+	s32 target = (4096 * targetFrame);
+	s32 next = frame + speed;
+	s32 last = settings & LastFrameMask;
 
 	if ((settings & TypeMask) == 0) {
 

@@ -50,11 +50,11 @@ struct LinkedList {
 };
 struct ProcessList {
 	LinkedList linked_list;
-	i32 (Base::*executer)();
+	s32 (Base::*executer)();
 };
 struct SceneGraph {
 	SceneNode *root;
-	i32 (Base::*executer)();
+	s32 (Base::*executer)();
 };
 
 enum ProcessType { Null, Connect, Create, Execute, Delete, Draw };

@@ -60,13 +60,13 @@ public:
 	Ns3dMaterialList* getMaterialCollection(); //returns a pointer to the model's material collection
 
 	//020197e0
-	i32 getMaterialIndex(const Ns3dStringData* name); //returns an index to the material given by name or -1 if no matching entry could be found
+	s32 getMaterialIndex(const Ns3dStringData* name); //returns an index to the material given by name or -1 if no matching entry could be found
 
 	//020197d4
 	Ns3dNodeList* getNodeInfo(); //returns a pointer to the node info
 
 	//020197bc
-	i32 getNodeIndex(const Ns3dStringData* name); //returns an index to the node given by name or -1 if no matching entry could be found
+	s32 getNodeIndex(const Ns3dStringData* name); //returns an index to the node given by name or -1 if no matching entry could be found
 
 	//02019740
 	static bool getNodeMatrixInternal(Ns3dNodeList* nodeInfo, u32 nodeIndex, Mat4x3* mtx); //If the model's matrix is on the stack, it back-calculates the node's model matrix and stores it in mtx. returns true after operation, false if the matrix wasn't on stack.

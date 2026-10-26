@@ -32,7 +32,7 @@ pub fn build(b: *std.Build) !void {
     const objdiff_cmd = b.addSystemCommand(&.{"dsd"});
     objdiff_cmd.addArgs(&.{ "objdiff", "-c" });
     objdiff_cmd.addFileArg(config_file);
-    objdiff_cmd.addArgs(&.{ "-m", "zig" });
+    objdiff_cmd.addArgs(&.{ "-m", b.graph.zig_exe });
     objdiff_cmd.addArgs(&.{ "-M", "build", "-M", "single", "-M", release.commandName(), "-M", "--" });
     objdiff_cmd.addArgs(&.{ "-s", "-C", "mwcc_20_84", "-p", "201" });
     objdiff_cmd.addArgs(&.{ "-f", "-O4,p -interworking -proc=arm946e -w=off -gccinc -nolink -c -Cpp_exceptions off -lang=c++ -RTTI off -sym on" });

@@ -3,7 +3,7 @@
 
 namespace App {
 
-	typedef i32 (*CallbackFunction)();
+	typedef s32 (*CallbackFunction)();
 	typedef void (*BootTargetFunction)();
 
 	enum SleepPhase {
@@ -92,7 +92,7 @@ namespace App {
 
 	void setBootParam(u32 param);
 
-	i32 defaultCallback();
+	s32 defaultCallback();
 
 	void onInitialize();
 
@@ -116,13 +116,13 @@ namespace App {
 
 	BOOL isSleeping();
 
-	i32 playSFX(u32 sfxID, i32 successValue);
+	s32 playSFX(u32 sfxID, s32 successValue);
 
-	i32 onLidClosedDefault();
+	s32 onLidClosedDefault();
 
-	i32 onLidOpenedDefault();
+	s32 onLidOpenedDefault();
 
-	i32 updateTaskDefault();
+	s32 updateTaskDefault();
 
 	void onStartup();
 
@@ -163,7 +163,7 @@ namespace App {
 	extern bool backlightOff;    // sleepBacklightOff
 	extern u8 sleepControl;      // sleepControl
 	extern bool sleeping;        // sleepFlag
-	extern i16 sleepPhaseTimer;  // sleepPhaseTimer
+	extern s16 sleepPhaseTimer;  // sleepPhaseTimer
 	extern u16 sleepWakeUpTimer; // sleepWakeUpTimer
 	extern u32 backlightTop;     // are these even ordered by name
 	extern u32 backlightBottom;  //

@@ -101,7 +101,7 @@ data_ov040_021469a8 kind:data(any) addr:0x021469a8
 Object93_Profile kind:data(any) addr:0x021469b0
 _ZTV8Object93 kind:data(any) addr:0x021469bc
 Object266_Profile kind:data(any) addr:0x02146ad8
-_ZTV9Object266 kind:data(any) addr:0x02146ae4
+_ZTV9Object266 kind:data(word[69]) addr:0x02146ae4
 data_ov040_02146c00 kind:bss addr:0x02146c00
 data_ov040_02146c08 kind:bss addr:0x02146c08
 data_ov040_02146c10 kind:bss addr:0x02146c10

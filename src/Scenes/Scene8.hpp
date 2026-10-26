@@ -1,4 +1,5 @@
 #include "Scene.hpp"
+#include "../Bases/Actor.hpp"
 
 class Scene8 : public Scene
 {

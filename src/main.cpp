@@ -4,7 +4,7 @@ extern "C" void NitroMain() {
 	u32 bootTarget;
 	u32 bootScene;
 
-	if (Nitro::Wifi_isMultiBootCart()) {
+	if (MB_IsMultiBootChild() != 0) {
 		if ((func_020109c8() != 0)) {
 			bootTarget = 0;
 		} else {

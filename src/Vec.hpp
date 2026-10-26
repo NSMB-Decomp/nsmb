@@ -41,12 +41,12 @@ struct Vec3_32 : public Vec3_32s {
 		y = v.y;
 		x = v.x;
 	}
-	inline Vec3_32(i32 v) {
+	inline Vec3_32(s32 v) {
 		x = v;
 		y = v;
 		z = v;
 	}
-	inline Vec3_32(i32 x, i32 y, i32 z)
+	inline Vec3_32(s32 x, s32 y, s32 z)
 	{
 		/*
 			Can either be in order z, y, x or x, z, y
@@ -57,12 +57,12 @@ struct Vec3_32 : public Vec3_32s {
 		this->y = y;
 		this->x = x;
 	}
-	inline void set(i32 v) {
+	inline void set(s32 v) {
 		x = v;
 		y = v;
 		z = v;
 	}
-	inline void set(i32 x, i32 y, i32 z)
+	inline void set(s32 x, s32 y, s32 z)
 	{
 		this->x = x;
 		this->y = y;
@@ -137,9 +137,9 @@ struct Vec3_32 : public Vec3_32s {
 	{
 
 		// Only matches in Model::getNodePosition() so far
-		i32 transZ = matrix.s.m32;
-		i32 transY = matrix.s.m31;
-		i32 transX = matrix.s.m30;
+		s32 transZ = matrix.s.m32;
+		s32 transY = matrix.s.m31;
+		s32 transX = matrix.s.m30;
 		x = transX;
 		y = transY;
 		z = transZ;
@@ -154,24 +154,24 @@ struct Vec3_32 : public Vec3_32s {
 class Vec2_32
 {
       public:
-	i32 x;
-	i32 y;
+	s32 x;
+	s32 y;
 
 	// Vec2_32();
 	inline Vec2_32() {}
-	inline Vec2_32(i32 v) {
+	inline Vec2_32(s32 v) {
 		x = v;
 		y = v;
 	}
-	inline Vec2_32(i32 x0, i32 y0) {
+	inline Vec2_32(s32 x0, s32 y0) {
 		x = x0;
 		y = y0;
 	}
-	inline void set(i32 v) {
+	inline void set(s32 v) {
 		x = v;
 		y = v;
 	}
-	inline void set(i32 x0, i32 y0) {
+	inline void set(s32 x0, s32 y0) {
 		x = x0;
 		y = y0;
 	}

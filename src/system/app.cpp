@@ -7,12 +7,6 @@
 
 extern "C" void InitMiniGame();
 
-inline u32 enableIrq() {
-	u32 prev = *rcast<vu16*>(0x04000208);
-	*rcast<vu16*>(0x04000208) = 1;
-	return prev;
-}
-
 namespace App {
 
 	const Mat2x2 identityMtx = {
@@ -47,7 +41,7 @@ namespace App {
 	bool backlightOff;
 	u8 sleepControl;
 	bool sleeping;
-	i16 sleepPhaseTimer;
+	s16 sleepPhaseTimer;
 	u16 sleepWakeUpTimer;
 	u32 backlightTop;
 	u32 backlightBottom;
@@ -85,7 +79,7 @@ namespace App {
 		bootParam = param;
 	}
 
-	i32 defaultCallback() {
+	s32 defaultCallback() {
 		return 0;
 	}
 
@@ -125,7 +119,7 @@ namespace App {
 			}
 
 			if (++attempts >= 10) {
-				Nitro_Abort("[App] Failed to power on backlight\n");
+				OS_Terminate();
 				return;
 			}
 
@@ -155,7 +149,7 @@ namespace App {
 	void updateSleep() {
 
 		u8 phase = sleepPhase;
-		i32 timer = sleepPhaseTimer;
+		s32 timer = sleepPhaseTimer;
 
 		BOOL wifiOn = Net::isConnected() || Wifi::isWmInitialized();
 
@@ -323,7 +317,7 @@ namespace App {
 
 		}
 
-		Nitro::OS_ResetSystem(param);
+		OS_ResetSystem(param);
 
 	}
 
@@ -375,12 +369,12 @@ namespace App {
 
 		System::setupGameVBlank();
 
-		Nitro::OS_EnableIrqMask(1);
-		enableIrq();
+		OS_EnableIrqMask(1);
+		OS_EnableIrq();
 		Nitro::func_01ffa5ec();
 		Nitro::func_02060e38(1);
 
-		BOOL multiboot = Nitro::Wifi_isMultiBootCart();
+		BOOL multiboot = MB_IsMultiBootChild();
 
 		Nitro::Math__stub();
 		resetGpu();
@@ -389,7 +383,7 @@ namespace App {
 		Save_setupBackup(CONFIG_BACKUP_TYPE, backupSignature);
 		Save_clearLoadedSaves();
 
-		Nitro::FS_init();
+		Nitro::FS_NotInit();
 		Nitro::FS_Archive_loadMainGameArchives();
 
 		if (multiboot != 0) {
@@ -459,7 +453,7 @@ namespace App {
 		u32 *GFX_FIFO_SWAP_BUFFERS = (u32 *)0x04000540;
 
 		System::sleepSystemThread();
-		Nitro::EnableDisplay();
+		GX_DispOn();
 
 		while (true) {
 
@@ -477,7 +471,7 @@ namespace App {
 
 			FrameCounter += 1;
 			Nitro::func_01ff9010();
-			Nitro::Graphics_SwapBuffer(data_02085a78, data_02085a74);
+			G3_SwapBuffers(data_02085a78, data_02085a74);
 
 			Wifi_updatePackets();
 
@@ -497,8 +491,8 @@ namespace App {
 
 	void initialize() {
 
-		Nitro::OS_InitTick();
-		Nitro::OS_InitAlarm();
+		OS_InitTick();
+		OS_InitAlarm();
 		Nitro::MultiThread_Init();
 
 		Exception::setupHandler();
@@ -539,7 +533,7 @@ namespace App {
 
 	void initBoot(u32) {
 
-		BOOL multiboot = Nitro::Wifi_isMultiBootCart();
+		BOOL multiboot = MB_IsMultiBootChild();
 		if (multiboot) {
 			func_020125e8();
 		}
@@ -582,11 +576,11 @@ namespace App {
 	void resetGpu() {
 
 		if (getBootScene() == Boot || getBootTarget() == Minigames) {
-			Nitro::CpuClear16(0xFFFF, rcast<void*>(0x05000000), 0x2);
-			Nitro::CpuClear16(0xFFFF, rcast<void*>(0x05000400), 0x2);
+			MIi_CpuClear16(0xFFFF, (void*)(0x05000000), 0x2);
+			MIi_CpuClear16(0xFFFF, (void*)(0x05000400), 0x2);
 		} else {
-			Nitro::CpuClear16(0x0000, rcast<void*>(0x05000000), 0x2);
-			Nitro::CpuClear16(0x0000, rcast<void*>(0x05000400), 0x2);
+			MIi_CpuClear16(0x0000, (void*)(0x05000000), 0x2);
+			MIi_CpuClear16(0x0000, (void*)(0x05000400), 0x2);
 		}
 
 		REG_POWER_CNT = REG_POWER_CNT | 0x8000;
@@ -594,21 +588,21 @@ namespace App {
 
 		resetVram();
 
-		Nitro::GX_HBlankIntr(FALSE);
-		Nitro::GX_VBlankIntr(TRUE);
+		GX_HBlankIntr(FALSE);
+		GX_VBlankIntr(TRUE);
 
-		Nitro::GX_SetGraphicsMode(1, 0, 0);
+		GX_SetGraphicsMode(1, 0, 0);
 
 		// Hide all planes and windows
-		REG_DISPCNT = REG_DISPCNT & ~0x1F00;
-		REG_DISPCNT = REG_DISPCNT & ~0xE000;
+		GX_SetVisiblePlane(0); //REG_DISPCNT = REG_DISPCNT & ~0x1F00;
+		GX_SetVisibleWindows(0); //REG_DISPCNT = REG_DISPCNT & ~0xE000;
 
 		// Reset BG screen and char offsets
-		REG_DISPCNT = REG_DISPCNT & ~0x38000000;
-		REG_DISPCNT = REG_DISPCNT & ~0x7000000;
+		GX_SetBGScrOffset(0); //REG_DISPCNT = REG_DISPCNT & ~0x38000000;
+		GX_SetBGCharOffset(0); //REG_DISPCNT = REG_DISPCNT & ~0x7000000;
 
 		// Reset OBJ mapping modes
-		REG_DISPCNT = REG_DISPCNT & ~0x300010;
+		GX_SetOBJVRamModeChar(0); //REG_DISPCNT = REG_DISPCNT & ~0x300010; // GX_SetOBJVRamModeChar(0); ??
 		REG_DISPCNT = REG_DISPCNT & ~0x400060;
 		REG_DISPCNT = REG_DISPCNT & ~0x800000;
 
@@ -616,28 +610,28 @@ namespace App {
 		REG_CAPCNT = 0x80000000;
 
 		// Reset BG control registers
-		REG_BG0CNT = REG_BG0CNT & 0x43;
-		REG_BG1CNT = REG_BG1CNT & 0x43;
-		REG_BG2CNT = REG_BG2CNT & 0x43;
-		REG_BG3CNT = REG_BG3CNT & 0x43;
+		G2_SetBG0Control(0,0,0,0,0); //REG_BG0CNT = REG_BG0CNT & 0x43;
+		G2_SetBG1Control(0,0,0,0,0); //REG_BG1CNT = REG_BG1CNT & 0x43;
+		G2_SetBG2Control(0,0,0,0,0); //REG_BG2CNT = REG_BG2CNT & 0x43;
+		G2_SetBG3Control(0,0,0,0,0); //REG_BG3CNT = REG_BG3CNT & 0x43;
 
 		// Reset mosaic for all BGs
-		REG_BG0CNT = REG_BG0CNT & ~0x40;
-		REG_BG1CNT = REG_BG1CNT & ~0x40;
-		REG_BG2CNT = REG_BG2CNT & ~0x40;
-		REG_BG3CNT = REG_BG3CNT & ~0x40;
+		G2_BG0Mosaic(false); //REG_BG0CNT = REG_BG0CNT & ~0x40;
+		G2_BG1Mosaic(false); //REG_BG1CNT = REG_BG1CNT & ~0x40;
+		G2_BG2Mosaic(false); //REG_BG2CNT = REG_BG2CNT & ~0x40;
+		G2_BG3Mosaic(false); //REG_BG3CNT = REG_BG3CNT & ~0x40;
 
 		// Reset priority for all BGs
-		REG_BG0CNT = REG_BG0CNT & ~0x3;
-		REG_BG1CNT = REG_BG1CNT & ~0x3;
-		REG_BG2CNT = REG_BG2CNT & ~0x3;
-		REG_BG3CNT = REG_BG3CNT & ~0x3;
+		G2_SetBG0Priority(0); //REG_BG0CNT = REG_BG0CNT & ~0x3;
+		G2_SetBG1Priority(0); //REG_BG1CNT = REG_BG1CNT & ~0x3;
+		G2_SetBG2Priority(0); //REG_BG2CNT = REG_BG2CNT & ~0x3;
+		G2_SetBG3Priority(0); //REG_BG3CNT = REG_BG3CNT & ~0x3;
 
 		// Reset BG offsets
-		REG_BG0OFS = 0;
-		REG_BG1OFS = 0;
-		REG_BG2OFS = 0;
-		REG_BG3OFS = 0;
+		G2_SetBG0Offset(0, 0); //REG_BG0OFS = 0;
+		G2_SetBG1Offset(0, 0); //REG_BG1OFS = 0;
+		G2_SetBG2Offset(0, 0); //REG_BG2OFS = 0;
+		G2_SetBG3Offset(0, 0); //REG_BG3OFS = 0;
 
 		Nitro::func_0206232c(rcast<void*>(0x04000020), &identityMtx, 0, 0, 0, 0);
 		Nitro::func_0206232c(rcast<void*>(0x04000030), &identityMtx, 0, 0, 0, 0);
@@ -660,37 +654,37 @@ namespace App {
 		Nitro::GXS_SetGraphicsMode(0);
 
 		// Hide all planes and windows
-		REG_DISPCNT_SUB = REG_DISPCNT_SUB & ~0x1F00;
-		REG_DISPCNT_SUB = REG_DISPCNT_SUB & ~0xE000;
+		GXS_SetVisiblePlane(0); //REG_DISPCNT_SUB = REG_DISPCNT_SUB & ~0x1F00;
+		GXS_SetVisibleWindows(0); //REG_DISPCNT_SUB = REG_DISPCNT_SUB & ~0xE000;
 
 		// Reset OBJ mapping modes
 		REG_DISPCNT_SUB = REG_DISPCNT_SUB & ~0x300010;
-		REG_DISPCNT_SUB = REG_DISPCNT_SUB & ~0x60;
+		REG_DISPCNT_SUB = REG_DISPCNT_SUB & ~0x60; //GXS_SetOBJVRamModeBmp(0); ??
 		REG_DISPCNT_SUB = REG_DISPCNT_SUB & ~0x800000;
 
 		// Reset BG control registers
-		REG_BG0CNT_SUB = REG_BG0CNT_SUB & 0x43;
-		REG_BG1CNT_SUB = REG_BG1CNT_SUB & 0x43;
-		REG_BG2CNT_SUB = REG_BG2CNT_SUB & 0x43;
-		REG_BG3CNT_SUB = REG_BG3CNT_SUB & 0x43;
+		G2S_SetBG0Control(0, 0, 0, 0, 0); //REG_BG0CNT_SUB = REG_BG0CNT_SUB & 0x43;
+		G2S_SetBG1Control(0, 0, 0, 0, 0); //REG_BG1CNT_SUB = REG_BG1CNT_SUB & 0x43;
+		G2S_SetBG2Control(0, 0, 0, 0, 0); //REG_BG2CNT_SUB = REG_BG2CNT_SUB & 0x43;
+		G2S_SetBG3Control(0, 0, 0, 0, 0); //REG_BG3CNT_SUB = REG_BG3CNT_SUB & 0x43;
 
 		// Reset mosaic for all BGs
-		REG_BG0CNT_SUB = REG_BG0CNT_SUB & ~0x40;
-		REG_BG1CNT_SUB = REG_BG1CNT_SUB & ~0x40;
-		REG_BG2CNT_SUB = REG_BG2CNT_SUB & ~0x40;
-		REG_BG3CNT_SUB = REG_BG3CNT_SUB & ~0x40;
+		G2S_BG0Mosaic(false); //REG_BG0CNT_SUB = REG_BG0CNT_SUB & ~0x40;
+		G2S_BG1Mosaic(false); //REG_BG1CNT_SUB = REG_BG1CNT_SUB & ~0x40;
+		G2S_BG2Mosaic(false); //REG_BG2CNT_SUB = REG_BG2CNT_SUB & ~0x40;
+		G2S_BG3Mosaic(false); //REG_BG3CNT_SUB = REG_BG3CNT_SUB & ~0x40;
 
 		// Reset priority for all BGs
-		REG_BG0CNT_SUB = REG_BG0CNT_SUB & ~0x3;
-		REG_BG1CNT_SUB = REG_BG1CNT_SUB & ~0x3;
-		REG_BG2CNT_SUB = REG_BG2CNT_SUB & ~0x3;
-		REG_BG3CNT_SUB = REG_BG3CNT_SUB & ~0x3;
+		G2S_SetBG0Priority(0); //REG_BG0CNT_SUB = REG_BG0CNT_SUB & ~0x3;
+		G2S_SetBG1Priority(0); //REG_BG1CNT_SUB = REG_BG1CNT_SUB & ~0x3;
+		G2S_SetBG2Priority(0); //REG_BG2CNT_SUB = REG_BG2CNT_SUB & ~0x3;
+		G2S_SetBG3Priority(0); //REG_BG3CNT_SUB = REG_BG3CNT_SUB & ~0x3;
 
 		// Reset BG offsets
-		REG_BG0OFS_SUB = 0;
-		REG_BG1OFS_SUB = 0;
-		REG_BG2OFS_SUB = 0;
-		REG_BG3OFS_SUB = 0;
+		G2S_SetBG0Offset(0, 0); //REG_BG0OFS_SUB = 0;
+		G2S_SetBG1Offset(0, 0); //REG_BG1OFS_SUB = 0;
+		G2S_SetBG2Offset(0, 0); //REG_BG2OFS_SUB = 0;
+		G2S_SetBG3Offset(0, 0); //REG_BG3OFS_SUB = 0;
 
 		Nitro::func_0206232c(rcast<void*>(0x04001020), &identityMtx, 0, 0, 0, 0);
 		Nitro::func_0206232c(rcast<void*>(0x04001030), &identityMtx, 0, 0, 0, 0);

@@ -56,7 +56,7 @@ bool StageEntity::onUpdate_0()
 s32 StageEntity::onUpdate()
 {
 	this->onUpdate_xx();
-	i32 state = this->_340;
+	s32 state = this->_340;
 	if (state == 0) {
 		return this->onUpdate_0();
 	}
@@ -97,10 +97,10 @@ bool StageEntity::_01()
 		return false;
 	}
 	if (this->_340 != 5) {
-		i32 a = this->viewOffset.x << 0xc;
-		i32 b = this->viewOffset.y << 0xc;
-		i32 c = this->renderSize.x;
-		i32 d = this->renderSize.y;
+		s32 a = this->viewOffset.x << 0xc;
+		s32 b = this->viewOffset.y << 0xc;
+		s32 c = this->renderSize.x;
+		s32 d = this->renderSize.y;
 		return func_0200ae9c(&this->position);
 	}
 	return false;
@@ -198,10 +198,10 @@ bool StageEntity::func_ov000_0209ccd0(PlayerBase *player)
 
 {
 	if ((this->_2c6 & 0x400) == 0) {
-		i32 tp = this->position.x;
-		i32 tpc = this->centerOffset.x;
-		i32 pp = player->position.x;
-		i32 pps = player->centerOffset.x;
+		s32 tp = this->position.x;
+		s32 tpc = this->centerOffset.x;
+		s32 pp = player->position.x;
+		s32 pps = player->centerOffset.x;
 		this->linked_player = player->linked_player;
 		this->_3ee = ((u32)((tp + tpc) - (pp + pps))) >> 0x1f;
 		this->collisionType |= 0x8000;
@@ -225,7 +225,7 @@ void StageEntity::func_ov000_0209e5a8(u32 param_1, u32 param_2)
 	if (param_2 == ~0) {
 		param_2 = 3;
 	}
-	func_ov000_020af30c(uRam020cad40, (uVar1 << 4) >> 0x10, (u32)(((i32)param_1 >> 0xc) * -0x10000) >> 0x10, 0, 0);
+	func_ov000_020af30c(uRam020cad40, (uVar1 << 4) >> 0x10, (u32)(((s32)param_1 >> 0xc) * -0x10000) >> 0x10, 0, 0);
 
 	Vec3_32 vec;
 
@@ -236,8 +236,8 @@ void StageEntity::func_ov000_0209e5a8(u32 param_1, u32 param_2)
 	return;
 }
 
-void func_ov010_020e657c(i8, Vec3_32 *, u32);
-i8 data_ov000_020c1f50[2];
+void func_ov010_020e657c(s8, Vec3_32 *, u32);
+s8 data_ov000_020c1f50[2];
 void StageEntity::func_ov000_0209e264(u32 x, u32 y, u32 param_3)
 {
 	Vec3_32 vec;
@@ -252,7 +252,7 @@ void StageEntity::func_ov000_0209e264(u32 x, u32 y, u32 param_3)
 }
 
 u8 data_ov000_020c1f38[2];
-i32 data_ov000_020c1f58[2];
+s32 data_ov000_020c1f58[2];
 void StageEntity::func_ov000_020a01b4()
 
 {
@@ -288,9 +288,9 @@ bool func_ov000_020a76d4();
 void StageEntity::_18()
 {
 	PlayerBase *player;
-	i32 iVar1;
+	s32 iVar1;
 	u32 uVar1;
-	i32 iVar2;
+	s32 iVar2;
 
 	player = GAME_getPlayer((int)this->linked_player);
 	(this->activeCollider)._pad_a2[2] = (player->activeCollider)._pad_a2[2];
@@ -337,7 +337,7 @@ void StageEntity::_44()
 	this->activeCollider._2c = (void *)0x0;
 }
 
-i16 data_ov000_020c4ed4[2];
+s16 data_ov000_020c4ed4[2];
 void StageEntity::_21()
 {
 	this->activeCollider.unlink();
@@ -436,7 +436,7 @@ void StageEntity::_11()
 // StageEntity::func_ov000_0209ac8c
 // StageEntity::func_ov000_0209ac0c
 // StageEntity::func_ov000_0209ab90
-void StageEntity::func_ov000_0209aa04(u32 type,i32 x,i32 y,i32 player_id)
+void StageEntity::func_ov000_0209aa04(u32 type,s32 x,s32 y,s32 player_id)
 
 {
   Vec3_32 local_18;
@@ -458,19 +458,19 @@ void StageEntity::func_ov000_0209aa04(u32 type,i32 x,i32 y,i32 player_id)
 // StageEntity::_46()
 // StageEntity::func_ov000_0209a5bc
 
-i32 StageEntity::func_ov000_0209a4f0() {
+s32 StageEntity::func_ov000_0209a4f0() {
 
 }
 
-i32 StageEntity::func_ov000_0209a23c() {
+s32 StageEntity::func_ov000_0209a23c() {
 
 }
 
-i32 StageEntity::attachToPlayerHands(i32 z, i32 y, i32 x)
+s32 StageEntity::attachToPlayerHands(s32 z, s32 y, s32 x)
 {
 }
 
-i32 StageEntity::tryAttachToPlayerHands(i32 z, i32 y, i32 x)
+s32 StageEntity::tryAttachToPlayerHands(s32 z, s32 y, s32 x)
 {
 	if (this->_340 == 5 && this->linked_player != -1 && (this->_354 & 1) == 0) {
 		this->attachToPlayerHands(z, y, x);
@@ -485,7 +485,7 @@ u32 StageEntity::random()
 	return Wifi::random();
 }
 
-bool StageEntity::spawnBrokenPipe(i32 a, i32 b, u32 c, u32 d, u8 e, u8 f, i8 g)
+bool StageEntity::spawnBrokenPipe(s32 a, s32 b, u32 c, u32 d, u8 e, u8 f, s8 g)
 {
 	Vec3_32 vec;
 	vec.z = 0;
@@ -512,7 +512,7 @@ void StageEntity::damageEntityCallback(ActiveCollider *collider)
 {
 }
 
-void StageEntity::updateBounce(i32 a, i32 b, i32 c)
+void StageEntity::updateBounce(s32 a, s32 b, s32 c)
 {
 }
 
@@ -536,7 +536,7 @@ void StageEntity::destroy(bool permanent)
 	}
 }
 
-void StageEntity::setTimedEvent(u32 event_id, i32 time, bool enable, bool switch_event, bool play_sfx)
+void StageEntity::setTimedEvent(u32 event_id, s32 time, bool enable, bool switch_event, bool play_sfx)
 {
 }
 
@@ -583,21 +583,21 @@ void StageEntity::applyFireballWiggle()
 		this->_35c.y = this->scale.y;
 		this->_35c.z = this->scale.z;
 	} else {
-		this->_35c.x = ((i64)(i32)this->_3a8 * (i64)this->scale.x + 0x800) >> 12;
-		this->_35c.y = ((i64)(i32)this->_3a8 * (i64)this->scale.y + 0x800) >> 12;
-		this->_35c.z = ((i64)(i32)this->_3a8 * (i64)this->scale.z + 0x800) >> 12;
+		this->_35c.x = ((s64)(s32)this->_3a8 * (s64)this->scale.x + 0x800) >> 12;
+		this->_35c.y = ((s64)(s32)this->_3a8 * (s64)this->scale.y + 0x800) >> 12;
+		this->_35c.z = ((s64)(s32)this->_3a8 * (s64)this->scale.z + 0x800) >> 12;
 	}
 }
 
-bool StageEntity::rotateToTarget(i16 a[2], i16 b[2])
+bool StageEntity::rotateToTarget(s16 a[2], s16 b[2])
 {
 }
 
-bool StageEntity::checkPlayersInOffset(i32 x)
+bool StageEntity::checkPlayersInOffset(s32 x)
 {
 }
 
-bool StageEntity::checkPlayersInOffset(i32 x, i32 y)
+bool StageEntity::checkPlayersInOffset(s32 x, s32 y)
 {
 }
 
@@ -646,7 +646,7 @@ bool StageEntity::setGroundPoundCollision(PlayerActor *player)
 {
 }
 
-bool StageEntity::isBelowPlayer(i32 posY, ActiveCollider *collider, u8 player_id)
+bool StageEntity::isBelowPlayer(s32 posY, ActiveCollider *collider, u8 player_id)
 {
 	return -((posY + collider->rect.y) - collider->rect.halfHeight) < (int)Game::cameraY[player_id];
 }
@@ -699,7 +699,7 @@ bool StageEntity::isPlayerInZone(PlayerActor *player, u32 id)
 
 	func_0201eef8(id, &rect);
 	player->position.x &= data_02085aa4;
-	i32 pos_x = player->position.x;
+	s32 pos_x = player->position.x;
 	if ((((rect.x <= pos_x) && (pos_x <= rect.x + rect.halfWidth)) && (player->position.y >= rect.y)) && (rect.y - rect.halfHeight >= pos_x)) {
 		return true;
 	}
