@@ -10,9 +10,18 @@ public:
 	inline Object317() {};
 	inline ~Object317() {};
 
+	s32 onCreate();
+
+	void func_ov008_020cd520();
+
 	Model models[8];
-	u8 _pad[0x1c];
+	u8 _pad0[0x14];
+	u32 _5b4;
+	u16 _5b8;
+	u8 _pad1[0x1];
+	u8 _5bb;
 };
+
 
 extern ActorProfile Object317_Profile;
 
