@@ -96,8 +96,8 @@ s32 Scene8::onCreate() {
 		MI_CpuCopy8(&array, (void*) address, 1);
 		address++;
 	}
-	DAT_020caa38 = Object::spawnObject(0x13e,(Base*)this,0,0);
-	Actor::spawnActor(0x13d,settings,0,0,0,0);
+	DAT_020caa38 = Object::spawnObject(OBJECT_WORLD_CAMERA,(Base*)this,0,0);
+	Actor::spawnActor(OBJECT_WORLD_RING_MODEL,settings,0,0,0,0);
 	func_02011c34(0xffffffff);
 	return true;
 };
