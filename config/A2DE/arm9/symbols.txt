@@ -124,8 +124,8 @@ NitroStartUp kind:function(arm,size=0xc) addr:0x02004c24
 func_02004c30 kind:function(arm,size=0x88) addr:0x02004c30
 func_02004cb8 kind:function(arm,size=0xd8) addr:0x02004cb8
 
-_ZN3App8initBootEv kind:function(arm,size=0x6c) addr:0x02004d90
-_ZN3App13initFileCountEi kind:function(arm,size=0x24) addr:0x02004dfc
+_ZN3App8initBootEm kind:function(arm,size=0x6c) addr:0x02004d90
+_ZN3App13initFileCountEl kind:function(arm,size=0x24) addr:0x02004dfc
 _ZN3App13commonStartupEv kind:function(arm,size=0x3c) addr:0x02004e20
 _ZN3App8gameMainEv kind:function(arm,size=0x1c) addr:0x02004e5c
 _ZN3App10initializeEv kind:function(arm,size=0x30) addr:0x02004e78
