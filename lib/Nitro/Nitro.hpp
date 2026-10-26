@@ -396,7 +396,7 @@ void func_02067258(u32, u32);
 u32 func_02060d5c(u32);
 u32 func_02062244(u32);
 void func_0206134c(u32);
-void func_0206134c(u32);
+void func_020612c0(u32);
 void func_02061494(u32);
 void func_02061958(u32);
 void func_02061844(u32);

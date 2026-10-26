@@ -174,6 +174,20 @@ extern u16 consoleKeys[4][2];
 extern u16 consoleKeysRepeated[4];
 } // namespace Input
 
+extern u32 DAT_02088c04;
+extern u32 data_02085ac4;
+extern void func_0200f3d8();
+extern u32 data_02085abc;
+extern u32 data_02085a7c;
+extern void func_02006c7c();
+extern void* PTR_02085b18;
+extern void func_ov008_020cd478();
+extern u32 data_02085c24;
+extern u32 data_02085c34;
+extern u32 data_02085c30;
+extern u32 data_02085c2c;
+extern void* DAT_020caa38;
+
 void func_ov001_020cceb4();
 class Fader
 {
