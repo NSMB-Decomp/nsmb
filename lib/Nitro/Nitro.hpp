@@ -227,7 +227,7 @@ void func_02060f5c();
 void func_02060f34();
 
 // FS - FileSystem
-void FS_Init();
+void FS_NotInit(); // Not sure what this function is, but it is not init, I do not even think its a nitro function.
 void FS_InitFile();
 void FS_OpenFile();
 void FS_SeekFile();

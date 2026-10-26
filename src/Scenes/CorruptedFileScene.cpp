@@ -50,7 +50,7 @@ s32 CorruptedFileScene::onCreate() {
 	G2_BG1Mosaic(FALSE); //REG_BG1CNT &= ~0x40;
 	G2_BG2Mosaic(FALSE); //REG_BG2CNT &= ~0x40;
 	G2_BG3Mosaic(FALSE); //REG_BG3CNT &= ~0x40;
-	REG_DISPCNT = REG_DISPCNT & 0xffcfffef | 0x200010;
+	GX_SetOBJVRamModeChar(0x200010); // REG_DISPCNT = REG_DISPCNT & 0xffcfffef | 0x200010;
 	REG_DISPCNT = REG_DISPCNT & 0xffbfff9f | 0x20;
 	Nitro::func_02056f40(2,1);
 	Nitro::func_020571c4(0x10000,1);

@@ -383,7 +383,7 @@ namespace App {
 		Save_setupBackup(CONFIG_BACKUP_TYPE, backupSignature);
 		Save_clearLoadedSaves();
 
-		Nitro::FS_init();
+		Nitro::FS_NotInit();
 		Nitro::FS_Archive_loadMainGameArchives();
 
 		if (multiboot != 0) {
@@ -576,11 +576,11 @@ namespace App {
 	void resetGpu() {
 
 		if (getBootScene() == Boot || getBootTarget() == Minigames) {
-			Nitro::CpuClear16(0xFFFF, rcast<void*>(0x05000000), 0x2);
-			Nitro::CpuClear16(0xFFFF, rcast<void*>(0x05000400), 0x2);
+			MIi_CpuClear16(0xFFFF, (void*)(0x05000000), 0x2);
+			MIi_CpuClear16(0xFFFF, (void*)(0x05000400), 0x2);
 		} else {
-			Nitro::CpuClear16(0x0000, rcast<void*>(0x05000000), 0x2);
-			Nitro::CpuClear16(0x0000, rcast<void*>(0x05000400), 0x2);
+			MIi_CpuClear16(0x0000, (void*)(0x05000000), 0x2);
+			MIi_CpuClear16(0x0000, (void*)(0x05000400), 0x2);
 		}
 
 		REG_POWER_CNT = REG_POWER_CNT | 0x8000;
@@ -602,7 +602,7 @@ namespace App {
 		GX_SetBGCharOffset(0); //REG_DISPCNT = REG_DISPCNT & ~0x7000000;
 
 		// Reset OBJ mapping modes
-		REG_DISPCNT = REG_DISPCNT & ~0x300010; // GX_SetOBJVRamModeChar(0); ??
+		GX_SetOBJVRamModeChar(0); //REG_DISPCNT = REG_DISPCNT & ~0x300010; // GX_SetOBJVRamModeChar(0); ??
 		REG_DISPCNT = REG_DISPCNT & ~0x400060;
 		REG_DISPCNT = REG_DISPCNT & ~0x800000;
 
