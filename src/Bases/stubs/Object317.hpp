@@ -26,8 +26,7 @@ public:
 	void func_ov008_020cd54c();
 
 	Model models[8];
-	u32 _5a0;
-	u32 _5a4;
+	void (Object317::*_5a0)();
 	u32 _5a8;
 	u32 _5ac;
 	u32 _5b0;

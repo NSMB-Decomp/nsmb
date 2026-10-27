@@ -119,14 +119,24 @@ void Object317::func_ov008_020cd54c()
 	}
 }
 
-u32 data_ov008_020ee364[2][2];
-
+u32 data_ov008_020ee364[2][2]; // Maybe PTMF
 void Object317::func_ov008_020cd520(u32 param_1)
 {
 	this->_5a8 = param_1;
-	this->_5a0 = data_ov008_020ee364[param_1][0];
-	this->_5a4 = data_ov008_020ee364[param_1][1];
+	//this->_5a0 = data_ov008_020ee364[param_1][0];
+	//this->_5a4 = data_ov008_020ee364[param_1][1];
 	this->_5ac = 1;
+}
+
+//(void (Object317::**)()) data_ov008_020ee354[2]; 
+void (Object317::*data_ov008_020ee354[2])();// PTMF
+void Object317::func_ov008_020cd4ac()
+{
+	if (this->_5ac != 0) {
+		(this->*(data_ov008_020ee354[this->_5a8]))();
+		this->_5ac = 0;
+	}
+	(this->*_5a0)();
 }
 
 bool Object317::func_ov008_020cd478()
