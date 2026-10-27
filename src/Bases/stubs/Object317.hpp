@@ -11,8 +11,10 @@ public:
 	inline ~Object317() {};
 
 	s32 onCreate();
+	bool onHeapCreated();
 
 	void func_ov008_020cd520();
+	bool func_ov008_020cd478();
 
 	Model models[8];
 	u8 _pad0[0x14];

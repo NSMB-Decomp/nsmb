@@ -1,5 +1,7 @@
 #include "Object317.hpp"
 
+u32 data_ov008_020e59b4[8] = {0x682, 0x683, 0x684, 0x685, 0x686, 0x687, 0x688, 0x689};
+
 void *Object317::create()
 {
 	return new Object317();
@@ -25,6 +27,26 @@ s32 Object317::onCreate()
 	} else {
 		return 0;
 	}
+}
+
+bool Object317::onHeapCreated()
+{
+	for (s32 i = 0; i < 8; i++) {
+		void* bmd = FS::Cache::getFile(data_ov008_020e59b4[i]);
+		BOOL a = this->models[i].create(bmd, 0, 0);
+		if (a == FALSE) {
+			return false;
+		}
+	}
+	return true;
+}
+
+bool Object317::func_ov008_020cd478()
+{
+	for (s32 i = 0; i < 8; i++) {
+		FS::Cache::loadFile(data_ov008_020e59b4[i], 0);
+	}
+	return true;
 }
 
 // 0x020e59a8
