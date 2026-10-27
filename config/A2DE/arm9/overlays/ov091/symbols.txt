@@ -12,6 +12,6 @@ _ZN9Object20710onUpdate_0Ev kind:function(arm,size=0x28) addr:0x0217e058
 _ZN9Object2078onCreateEv kind:function(arm,size=0x34) addr:0x0217e080
 func_ov091_0217e0b4 kind:function(arm,size=0xdc) addr:0x0217e0b4
 _ZN9Object2076createEv kind:function(arm,size=0x70) addr:0x0217e190
-_ZTV9Object207 kind:data(any) addr:0x0217e220
+UnknownVtable::ov091_0217e220 kind:data(any) addr:0x0217e220
 Object207_Profile kind:data(any) addr:0x0217e334 ambiguous
 _ZTV9Object207 kind:data(any) addr:0x0217e340

@@ -50,7 +50,7 @@ NitroMain kind:function(arm,size=0x70) addr:0x02003000
 // ??????
 
 _ZN7Vec3_16D1Ev kind:function(arm,size=0x10) addr:0x02003070
-_ZN7Vec3_32D1Ev kind:function(arm,size=0x10) addr:0x02003080
+_ZN7Vec3_32D1Ev kind:function(arm,size=0x10) addr:0x02003080 weak
 Fader::~Fader kind:function(arm,size=0x14) addr:0x02003090
 SegmentPlatform::~SegmentPlatform kind:function(arm,size=0x34) addr:0x020030a4
 _ZN7Vec2_32D1Ev kind:function(arm,size=0x10) addr:0x020030d8
@@ -62,7 +62,7 @@ func_0200314c kind:function(arm,size=0x14) addr:0x0200314c
 _ZN7Vec2_32C1Ev kind:function(arm,size=0x10) addr:0x02003160
 _ZN7Vec3_16C1Ev kind:function(arm,size=0x10) addr:0x02003170
 _ZN7Vec3_32C1Ev kind:function(arm,size=0x10) addr:0x02003180
-_ZN7Vec3_32D0Ev kind:function(arm,size=0x20) addr:0x02003190
+_ZN7Vec3_32D0Ev kind:function(arm,size=0x20) addr:0x02003190 weak
 _ZN7Vec3_16D0Ev kind:function(arm,size=0x20) addr:0x020031b0
 _ZN7Vec2_32D0Ev kind:function(arm,size=0x20) addr:0x020031d0
 
@@ -230,7 +230,7 @@ GFX::func_02007238 kind:function(arm,size=0x40) addr:0x02007238
 GFX::Reset3D kind:function(arm,size=0x3c) addr:0x02007278
 GFX::func_020072b4 kind:function(arm,size=0xd8) addr:0x020072b4
 GFX::func_0200738c kind:function(arm,size=0x290) addr:0x0200738c
-GFX::__stub kind:function(arm,size=0x4) addr:0x0200761c
+GFX::__stub_0200761c kind:function(arm,size=0x4) addr:0x0200761c
 func_02007620 kind:function(arm,size=0x3c) addr:0x02007620
 func_0200765c kind:function(arm,size=0x28) addr:0x0200765c
 func_02007684 kind:function(arm,size=0x28) addr:0x02007684
@@ -1096,7 +1096,7 @@ _ZNK9FrameCtrl13getFrameCountEv kind:function(arm,size=0x14) addr:0x0201fe88
 _ZN9FrameCtrl4initEtmlt kind:function(arm,size=0x1c) addr:0x0201fe9c
 _ZN9FrameCtrl6updateEv kind:function(arm,size=0x68) addr:0x0201feb8
 StageController::~StageController kind:function(arm,size=0x20) addr:0x0201ff20
-StageController::~StageController kind:function(arm,size=0x28) addr:0x0201ff40
+StageController::~StageController_0201ff40 kind:function(arm,size=0x28) addr:0x0201ff40
 _ZN5Actor7setPosXEm kind:function(arm,size=0x8) addr:0x0201ff68
 _ZN5Actor7incPosXEm kind:function(arm,size=0x10) addr:0x0201ff70
 _ZN15StageController9preUpdateEv kind:function(arm,size=0x44) addr:0x0201ff80
@@ -1382,7 +1382,7 @@ data_020258bc kind:data(any) addr:0x020258bc
 data_020258e4 kind:data(any) addr:0x020258e4
 data_020258f8 kind:data(any) addr:0x020258f8
 data_02025910 kind:data(any) addr:0x02025910
-data_02025924 kind:data(any) addr:0x02025924
+__exception_table_start__ kind:data(any) addr:0x02025924
 __sinit_math_cpp kind:function(arm,size=0x38) addr:0x02025a44
 __sinit_02025a7c kind:function(arm,size=0x4) addr:0x02025a7c
 __sinit_file_cpp kind:function(arm,size=0x88) addr:0x02025a80
@@ -1486,7 +1486,7 @@ data_02037450 kind:data(any) addr:0x02037450
 .p__sinit_02026244 kind:data(word) addr:0x020391cc
 _ZTV7Vec2_32 kind:data(any) addr:0x020391e0
 _ZTV7Vec3_16 kind:data(any) addr:0x020391f0
-_ZTV7Vec3_32 kind:data(any) addr:0x02039200
+_ZTV7Vec3_32 kind:data(any) addr:0x02039200 weak
 data_02039210 kind:data(any) addr:0x02039210
 data_02039218 kind:data(any) addr:0x02039218
 data_02039678 kind:data(any) addr:0x02039678
@@ -1679,7 +1679,7 @@ UnknownVtable::0203ae98 kind:data(any) addr:0x0203ae98
 UnknownVtable::0203aea8 kind:data(any) addr:0x0203aea8
 data_0203aeb0 kind:data(any) addr:0x0203aeb0
 data_0203aeb4 kind:data(any) addr:0x0203aeb4
-@ kind:data(any) addr:0x0203bcc8
+@ kind:data(any) addr:0x0203bcc8 local
 data_0203bcd4 kind:data(any) addr:0x0203bcd4
 _ZTV6Object kind:data(any) addr:0x0203bcd8
 data_0203bd28 kind:data(byte) addr:0x0203bd28

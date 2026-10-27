@@ -713,7 +713,7 @@ data_ov054_0216d734 kind:data(any) addr:0x0216d734
 data_ov054_0216d73c kind:data(any) addr:0x0216d73c
 Object257_Profile kind:data(any) addr:0x0216d744 ambiguous
 data_ov054_0216d750 kind:data(any) addr:0x0216d750
-_ZTV9Object257 kind:data(any) addr:0x0216d76c
+UnknownVtable::ov054_0216d76c kind:data(any) addr:0x0216d76c
 _ZTV9Object257 kind:data(any) addr:0x0216d880
 data_ov054_0216d994 kind:data(any) addr:0x0216d994
 data_ov054_0216d99c kind:data(any) addr:0x0216d99c

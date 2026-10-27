@@ -1921,7 +1921,7 @@ data_ov010_02124004 kind:data(any) addr:0x02124004
 data_ov010_0212400c kind:data(any) addr:0x0212400c
 Object240_Profile kind:data(any) addr:0x02124014
 data_ov010_02124020 kind:data(any) addr:0x02124020
-_ZTV9Object240 kind:data(any) addr:0x02124040
+UnknownVtable::ov010_02124040 kind:data(any) addr:0x02124040
 _ZTV9Object240 kind:data(any) addr:0x02124154
 data_ov010_02124268 kind:data(any) addr:0x02124268
 data_ov010_02124270 kind:data(any) addr:0x02124270
@@ -2017,16 +2017,16 @@ data_ov010_02124f58 kind:data(any) addr:0x02124f58
 data_ov010_02124f7c kind:data(any) addr:0x02124f7c
 Object49_Profile kind:data(any) addr:0x02125088
 _ZTV8Object49 kind:data(any) addr:0x02125094
-@1 kind:data(any) addr:0x021251a8
-@2 kind:data(any) addr:0x021251b0
-@3 kind:data(any) addr:0x021251b8
-@4 kind:data(any) addr:0x021251c0
-@5 kind:data(any) addr:0x021251c8
-@6 kind:data(any) addr:0x021251d0
-@7 kind:data(any) addr:0x021251d8
-@8 kind:data(any) addr:0x021251e0
-@9 kind:data(any) addr:0x021251e8
-@10 kind:data(any) addr:0x021251f0
+@1 kind:data(any) addr:0x021251a8 local
+@2 kind:data(any) addr:0x021251b0 local
+@3 kind:data(any) addr:0x021251b8 local
+@4 kind:data(any) addr:0x021251c0 local
+@5 kind:data(any) addr:0x021251c8 local
+@6 kind:data(any) addr:0x021251d0 local
+@7 kind:data(any) addr:0x021251d8 local
+@8 kind:data(any) addr:0x021251e0 local
+@9 kind:data(any) addr:0x021251e8 local
+@10 kind:data(any) addr:0x021251f0 local
 Coin::profile kind:data(any) addr:0x021251f8
 data_ov010_02125204 kind:data(any) addr:0x02125204
 _ZTV4Coin kind:data(any) addr:0x02125220
@@ -2326,7 +2326,7 @@ data_ov010_021272fc kind:data(any) addr:0x021272fc
 data_ov010_02127304 kind:data(any) addr:0x02127304
 data_ov010_0212730c kind:data(any) addr:0x0212730c
 data_ov010_02127314 kind:data(any) addr:0x02127314
-_ZTV9Object202 kind:data(any) addr:0x0212731c
+UnknownVtable::ov010_0212731c kind:data(any) addr:0x0212731c
 data_ov010_02127430 kind:data(any) addr:0x02127430
 data_ov010_02127438 kind:data(any) addr:0x02127438
 data_ov010_02127440 kind:data(any) addr:0x02127440

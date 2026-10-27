@@ -37,14 +37,14 @@ data_ov099_02186360 kind:data(any) addr:0x02186360
 data_ov099_02186368 kind:data(any) addr:0x02186368
 Object233_Profile kind:data(any) addr:0x02186370 ambiguous
 _ZTV9Object233 kind:data(any) addr:0x0218637c
-@0 kind:data(any) addr:0x02186490
-@0 kind:data(any) addr:0x02186498
-@0 kind:data(any) addr:0x021864a0
-@0 kind:data(any) addr:0x021864a8
-@0 kind:data(any) addr:0x021864b0
-@0 kind:data(any) addr:0x021864b8
-@0 kind:data(any) addr:0x021864c0
-@0 kind:data(any) addr:0x021864c8
+@0 kind:data(any) addr:0x02186490 local
+@0 kind:data(any) addr:0x02186498 local
+@0 kind:data(any) addr:0x021864a0 local
+@0 kind:data(any) addr:0x021864a8 local
+@0 kind:data(any) addr:0x021864b0 local
+@0 kind:data(any) addr:0x021864b8 local
+@0 kind:data(any) addr:0x021864c0 local
+@0 kind:data(any) addr:0x021864c8 local
 Object229_Profile kind:data(any) addr:0x021864d0 ambiguous
 _ZTV9Object229 kind:data(word[69]) addr:0x021864dc
 data_ov099_02186600 kind:bss addr:0x02186600

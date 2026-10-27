@@ -99,7 +99,7 @@ src/Bases/Object22.cpp:
     .text       start:0x020e933c end:0x020e9428
     .data       start:0x02126be0 end:0x02126d00
 
-src/Bases/Object176.cpp:
+src/Bases/ov010_020e9428.cpp:
     .text       start:0x020e9428 end:0x020e94cc
     .data       start:0x02126d18 end:0x02126e24
 
