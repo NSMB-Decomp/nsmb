@@ -119,8 +119,14 @@ void Object317::func_ov008_020cd54c()
 	}
 }
 
-void (Object317::*data_ov008_020ee364[2])();// PTMF
-void (Object317::*data_ov008_020ee354[2])();// PTMF
+void (Object317::*data_ov008_020ee364[2])() = { // TODO: These PTMF values need changing to correct functions
+	Object317::func_ov008_020cd4ac,
+	Object317::func_ov008_020cd4ac,
+};
+void (Object317::*data_ov008_020ee354[2])() = { // TODO: These PTMF values need changing to correct functions
+	Object317::func_ov008_020cd4ac,
+	Object317::func_ov008_020cd4ac,
+};
 void Object317::func_ov008_020cd520(u32 param_1)
 {
 	this->_5a8 = param_1;
