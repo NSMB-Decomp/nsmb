@@ -73,12 +73,13 @@ BOOL Object317::onRender()
 BOOL Object317::onUpdate()
 {
 	this->func_ov008_020cd4ac();
-	u16 pressed = data_02087650[Input::localConsoleID][0];
+	u8 id = Input::localConsoleID;
+	u16 pressed = data_02087650[id][0];
 	if ((pressed & PAD_BUTTON_R) != 0 || (pressed & PAD_BUTTON_L) != 0) {
 
-		u16 pressed_2 = data_02087650[Input::localConsoleID][0];
-		if ((data_02087650[Input::localConsoleID][0] & PAD_BUTTON_L) != 0) {
-			pressed_2 = Input::consoleKeys[Input::localConsoleID][0];
+		u16 pressed_2 = data_02087650[id][0];
+		if ((pressed & PAD_BUTTON_L) != 0) {
+			pressed_2 = Input::consoleKeys[id][0];
 		}
 
 		if ((pressed_2 & PAD_KEY_RIGHT) != 0) {
