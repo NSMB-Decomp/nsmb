@@ -100,6 +100,24 @@ void Object317::func_ov008_020cd5dc()
 
 void Object317::func_ov008_020cd54c()
 {
+	if (this->_5ba != 0) {
+		this->_5b8 -= 0x100;
+	} else {
+		this->_5b8 += 0x100;
+	}
+
+	this->_5b0 -= 1;
+	if (this->_5b0 == 0) {
+		func_02012398(0x16,0);
+    	this->func_ov008_020cd520(0);
+		if (this->_5ba != 0) {
+			this->_5bb -= 1;
+		}
+		else {
+			this->_5bb += 1;
+		}
+		this->_5bb &= 7;
+	}
 }
 
 bool Object317::func_ov008_020cd478()
