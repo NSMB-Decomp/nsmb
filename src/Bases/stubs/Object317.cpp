@@ -93,6 +93,15 @@ void Object317::func_ov008_020cd5e8()
 	}
 }
 
+void Object317::func_ov008_020cd5dc()
+{
+	this->_5b0 = 0x20;
+}
+
+void Object317::func_ov008_020cd54c()
+{
+}
+
 bool Object317::func_ov008_020cd478()
 {
 	for (s32 i = 0; i < 8; i++) {

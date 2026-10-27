@@ -22,9 +22,12 @@ public:
 	void func_ov008_020cd4ac();
 	void func_ov008_020cd664();
 	void func_ov008_020cd5e8();
+	void func_ov008_020cd5dc();
+	void func_ov008_020cd54c();
 
 	Model models[8];
-	u8 _pad0[0x14];
+	u8 _pad0[0x10];
+	u32 _5b0;
 	u32 _5b4;
 	u16 _5b8;
 	u8 _5ba;
