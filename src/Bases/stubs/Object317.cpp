@@ -1,5 +1,7 @@
 #include "Object317.hpp"
 
+extern s16 *data_ov000_020caa38;
+
 u32 data_ov008_020e59b4[8] = {0x682, 0x683, 0x684, 0x685, 0x686, 0x687, 0x688, 0x689};
 
 void *Object317::create()
@@ -51,23 +53,30 @@ void Object317::pendingDestroy()
 
 BOOL Object317::onRender()
 {
-	Vec3_32 local_38;
+	Vec3_32 translation;
+	Vec3_32 scale;
+	s16 angle = data_ov000_020caa38[0x80];
+	translation.y = 0;
 	for (s32 i = 0; i < 8; i++) {
-		if ((this->_5b8 >> 0xd == i) && this->_5a8 == 0) {
-			local_38.x = 0x1800;
-			local_38.y = 0x1800;
-			local_38.z = 0x1800;
+		if (i == (u32)(u16)this->_5b8 >> 0xd && this->_5a8 == 0) {// TODO: Is this a macro or inline function from nitro?
+			scale.x = 0x1800;
+			scale.y = 0x1800;
+			scale.z = 0x1800;
 		} else {
-			local_38.x = 0x1000;
-			local_38.y = 0x1000;
-			local_38.z = 0x1000;
+			scale.x = 0x1000;
+			scale.y = 0x1000;
+			scale.z = 0x1000;
 		}
 
-		Vec3_32s a = {0, 0, 0};
-		//COS
-		//MTX::setTranslation(Game_modelMatrix, a);
+		u16 a = i * 0x2000 - this->_5b8; // TODO: Is this a macro or inline function from nitro?
+		translation.x = _FixedMul(this->_5b4, _FixedSin(a));
+		translation.z = _FixedMul(this->_5b4, _FixedCos(a));
+		MTX::setTranslation(Game_modelMatrix, translation);
+		MTX::rotateX(Game_modelMatrix, angle);
+		this->models[i].matrix = Game_modelMatrix;
+		this->models[i].render(&scale);
 	}
-	return true;
+	return TRUE;
 }
 
 BOOL Object317::onUpdate()
@@ -136,11 +145,11 @@ void Object317::func_ov008_020cd54c() // Finish Animation?
 	}
 }
 
-void (Object317::*data_ov008_020ee364[2])() = {
+void (Object317::*data_ov008_020ee354[2])() = {
     Object317::func_ov008_020cd664,
     Object317::func_ov008_020cd5dc,
 };
-void (Object317::*data_ov008_020ee354[2])() = {
+void (Object317::*data_ov008_020ee364[2])() = {
     Object317::func_ov008_020cd5e8,
     Object317::func_ov008_020cd54c,
 };
