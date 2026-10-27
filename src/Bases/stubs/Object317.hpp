@@ -18,7 +18,7 @@ public:
 	BOOL onUpdate();
 
 	void func_ov008_020cd520(u32);
-	bool func_ov008_020cd478();
+	static bool loadResources();
 	void func_ov008_020cd4ac();
 	void func_ov008_020cd664();
 	void func_ov008_020cd5e8();
@@ -32,8 +32,8 @@ public:
 	u32 _5b0;
 	u32 _5b4;
 	s16 _5b8;
-	u8 _5ba;
-	u8 _5bb;
+	u8 direction; // 1 = left, 0 = right
+	u8 selected_world;
 };
 
 

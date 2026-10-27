@@ -21,7 +21,7 @@ src/Bases/stubs/Object317.cpp:
     .text       start:0x020cd3f8 end:0x020cd9ac
     .init       start:0x020e4d64 end:0x020e4de4
     .ctor       start:0x020e57e8 end:0x020e57ec
-    .data       start:0x020e59a8 end:0x020e5a2c
+    .data       start:0x020e5988 end:0x020e5a2c
     .bss        start:0x020ee354 end:0x020ee374
 
 src/worldmap/scene.cpp:

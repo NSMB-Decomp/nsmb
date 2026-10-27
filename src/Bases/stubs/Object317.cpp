@@ -21,11 +21,11 @@ s32 Object317::onCreate()
 		this->scale.z = 0x1000;
 		this->_5b4 = 0x30000;
 		this->_5b8 = 0;
-		this->_5bb = 0;
+		this->selected_world = 0;
 		this->func_ov008_020cd520(0);
-		return 1;
+		return TRUE;
 	} else {
-		return 0;
+		return FALSE;
 	}
 }
 
@@ -51,6 +51,23 @@ void Object317::pendingDestroy()
 
 BOOL Object317::onRender()
 {
+	Vec3_32 local_38;
+	for (s32 i = 0; i < 8; i++) {
+		if ((this->_5b8 >> 0xd == i) && this->_5a8 == 0) {
+			local_38.x = 0x1800;
+			local_38.y = 0x1800;
+			local_38.z = 0x1800;
+		} else {
+			local_38.x = 0x1000;
+			local_38.y = 0x1000;
+			local_38.z = 0x1000;
+		}
+
+		Vec3_32s a = {0, 0, 0};
+		//COS
+		//MTX::setTranslation(Game_modelMatrix, a);
+	}
+	return true;
 }
 
 BOOL Object317::onUpdate()
@@ -78,29 +95,28 @@ void Object317::func_ov008_020cd664()
 }
 
 void Object317::func_ov008_020cd5e8()
-
 {
 	u32 input = Input::consoleKeys[Input::localConsoleID][0];
 	if ((input & PAD_BUTTON_A) != 0) {
 		func_02012398(0x2c, 0);
-		func_020131fc(9, this->_5bb);
+		func_020131fc(9, this->selected_world);
 	} else if ((input & PAD_KEY_RIGHT) != 0) {
-		this->_5ba = 0;
+		this->direction = 0;
 		this->func_ov008_020cd520(1);
 	} else if ((input & PAD_KEY_LEFT) != 0) {
-		this->_5ba = 1;
+		this->direction = 1;
 		this->func_ov008_020cd520(1);
 	}
 }
 
-void Object317::func_ov008_020cd5dc()
+void Object317::func_ov008_020cd5dc() // Start animation?
 {
 	this->_5b0 = 0x20;
 }
 
-void Object317::func_ov008_020cd54c()
+void Object317::func_ov008_020cd54c() // Finish Animation?
 {
-	if (this->_5ba != 0) {
+	if (this->direction != 0) {
 		this->_5b8 -= 0x100;
 	} else {
 		this->_5b8 += 0x100;
@@ -110,22 +126,22 @@ void Object317::func_ov008_020cd54c()
 	if (this->_5b0 == 0) {
 		func_02012398(0x16, 0);
 		this->func_ov008_020cd520(0);
-		if (this->_5ba != 0) {
-			this->_5bb -= 1;
+		if (this->direction != 0) {
+			this->selected_world -= 1;
 		} else {
-			this->_5bb += 1;
+			this->selected_world += 1;
 		}
-		this->_5bb &= 7;
+		this->selected_world &= 7;
 	}
 }
 
-void (Object317::*data_ov008_020ee364[2])() = { // TODO: These PTMF values need changing to correct functions
-	Object317::func_ov008_020cd4ac,
-	Object317::func_ov008_020cd4ac,
+void (Object317::*data_ov008_020ee364[2])() = {
+    Object317::func_ov008_020cd664,
+    Object317::func_ov008_020cd5dc,
 };
-void (Object317::*data_ov008_020ee354[2])() = { // TODO: These PTMF values need changing to correct functions
-	Object317::func_ov008_020cd4ac,
-	Object317::func_ov008_020cd4ac,
+void (Object317::*data_ov008_020ee354[2])() = {
+    Object317::func_ov008_020cd5e8,
+    Object317::func_ov008_020cd54c,
 };
 void Object317::func_ov008_020cd520(u32 param_1)
 {
@@ -143,7 +159,7 @@ void Object317::func_ov008_020cd4ac()
 	(this->*_5a0)();
 }
 
-bool Object317::func_ov008_020cd478()
+bool Object317::loadResources()
 {
 	for (s32 i = 0; i < 8; i++) {
 		FS::Cache::loadFile(data_ov008_020e59b4[i], 0);
@@ -152,4 +168,4 @@ bool Object317::func_ov008_020cd478()
 }
 
 // 0x020e59a8
-ActorProfile Object317_Profile = {Object317::create, 317, 292, NULL /* TODO: 0x020cd478 */};
+ActorProfile Object317_Profile = {Object317::create, 317, 292, Object317::loadResources};
