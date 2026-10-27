@@ -2,16 +2,16 @@
 #include "Player/PlayerActor.hpp"
 #include "../ProcessManager.hpp"
 // bool (Coin::*data_ov010_0212942c)() = Coin::func_ov010_020d923c; (TODO: This is part of a different sinit)
-bool (Coin::*data_ov010_02129424)() = Coin::func_ov010_020d8b9c;
-bool (Coin::*data_ov010_0212941c)() = Coin::func_ov010_020d9890;
-bool (Coin::*data_ov010_02129414)() = Coin::func_ov010_020d9634;
-bool (Coin::*data_ov010_0212940c)() = Coin::func_ov010_020d93b4;
-bool (Coin::*data_ov010_02129404)() = Coin::func_ov010_020d8d9c;
-bool (Coin::*data_ov010_021293fc)() = Coin::func_ov010_020d91f4;
-bool (Coin::*data_ov010_021293f4)() = Coin::func_ov010_020d923c;
-bool (Coin::*data_ov010_021293ec)() = Coin::func_ov010_020d8fb0;
-bool (Coin::*data_ov010_021293e4)() = Coin::func_ov010_020d9004;
-bool (Coin::*data_ov010_021293dc)() = Coin::func_ov010_020d8eec;
+bool (Coin::*data_ov010_02129424)() = &Coin::func_ov010_020d8b9c;
+bool (Coin::*data_ov010_0212941c)() = &Coin::func_ov010_020d9890;
+bool (Coin::*data_ov010_02129414)() = &Coin::func_ov010_020d9634;
+bool (Coin::*data_ov010_0212940c)() = &Coin::func_ov010_020d93b4;
+bool (Coin::*data_ov010_02129404)() = &Coin::func_ov010_020d8d9c;
+bool (Coin::*data_ov010_021293fc)() = &Coin::func_ov010_020d91f4;
+bool (Coin::*data_ov010_021293f4)() = &Coin::func_ov010_020d923c;
+bool (Coin::*data_ov010_021293ec)() = &Coin::func_ov010_020d8fb0;
+bool (Coin::*data_ov010_021293e4)() = &Coin::func_ov010_020d9004;
+bool (Coin::*data_ov010_021293dc)() = &Coin::func_ov010_020d8eec;
 
 const s32 data_ov010_0212166c[3] = {0x0, 0x30000, 0x18000};
 const s32 data_ov010_02121678[3] = {0x0, 0x0, 0x10000};

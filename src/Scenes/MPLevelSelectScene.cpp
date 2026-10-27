@@ -109,26 +109,26 @@ void MPLevelSelectScene::pendingDestroy() {
 
 s32 MPLevelSelectScene::onUpdate() {
 	static void (MPLevelSelectScene::*ptmfs[20])() = {
-		MPLevelSelectScene::func_ov052_02155210,
-		MPLevelSelectScene::func_ov052_021551e4,
-		MPLevelSelectScene::func_ov052_0215515c,
-		MPLevelSelectScene::func_ov052_02154c9c,
-		MPLevelSelectScene::func_ov052_02154bb4,
-		MPLevelSelectScene::func_ov052_02154a60,
-		MPLevelSelectScene::func_ov052_0215476c,
-		MPLevelSelectScene::func_ov052_021546d0,
-		MPLevelSelectScene::func_ov052_02154698,
-		MPLevelSelectScene::func_ov052_0215459c,
-		MPLevelSelectScene::func_ov052_02154698,
-		MPLevelSelectScene::func_ov052_02155178,
-		MPLevelSelectScene::func_ov052_02154b64,
-		MPLevelSelectScene::func_ov052_02154af4,
-		MPLevelSelectScene::func_ov052_02154a24,
-		MPLevelSelectScene::func_ov052_0215454c,
-		MPLevelSelectScene::func_ov052_021544a0,
-		MPLevelSelectScene::func_ov052_02154c68,
-		MPLevelSelectScene::func_ov052_02154c34,
-		MPLevelSelectScene::func_ov052_021549f8
+		&MPLevelSelectScene::func_ov052_02155210,
+		&MPLevelSelectScene::func_ov052_021551e4,
+		&MPLevelSelectScene::func_ov052_0215515c,
+		&MPLevelSelectScene::func_ov052_02154c9c,
+		&MPLevelSelectScene::func_ov052_02154bb4,
+		&MPLevelSelectScene::func_ov052_02154a60,
+		&MPLevelSelectScene::func_ov052_0215476c,
+		&MPLevelSelectScene::func_ov052_021546d0,
+		&MPLevelSelectScene::func_ov052_02154698,
+		&MPLevelSelectScene::func_ov052_0215459c,
+		&MPLevelSelectScene::func_ov052_02154698,
+		&MPLevelSelectScene::func_ov052_02155178,
+		&MPLevelSelectScene::func_ov052_02154b64,
+		&MPLevelSelectScene::func_ov052_02154af4,
+		&MPLevelSelectScene::func_ov052_02154a24,
+		&MPLevelSelectScene::func_ov052_0215454c,
+		&MPLevelSelectScene::func_ov052_021544a0,
+		&MPLevelSelectScene::func_ov052_02154c68,
+		&MPLevelSelectScene::func_ov052_02154c34,
+		&MPLevelSelectScene::func_ov052_021549f8
 	};
 	func_02021808();
 	if (this->_144 > 0) {
@@ -140,26 +140,26 @@ s32 MPLevelSelectScene::onUpdate() {
 
 s32 MPLevelSelectScene::onRender() {
 	static void (MPLevelSelectScene::*ptmfs[20])() = {
-		MPLevelSelectScene::func_ov052_02154244,
-		MPLevelSelectScene::func_ov052_02154238,
-		MPLevelSelectScene::func_ov052_02154220,
-		MPLevelSelectScene::func_ov052_02153d5c,
-		MPLevelSelectScene::func_ov052_02153d14,
-		MPLevelSelectScene::func_ov052_02153d08,
-		MPLevelSelectScene::func_ov052_02153b44,
-		MPLevelSelectScene::func_ov052_02153b38,
-		MPLevelSelectScene::func_ov052_02153b04,
-		MPLevelSelectScene::func_ov052_02153ad0,
-		MPLevelSelectScene::func_ov052_02153b04,
-		MPLevelSelectScene::func_ov052_0215422c,
-		MPLevelSelectScene::func_ov052_02153d2c,
-		MPLevelSelectScene::func_ov052_02153d20,
-		MPLevelSelectScene::func_ov052_02153cfc,
-		MPLevelSelectScene::func_ov052_02153ac4,
-		MPLevelSelectScene::func_ov052_02153ab8,
-		MPLevelSelectScene::func_ov052_02153d50,
-		MPLevelSelectScene::func_ov052_02153d44,
-		MPLevelSelectScene::func_ov052_02153d38
+		&MPLevelSelectScene::func_ov052_02154244,
+		&MPLevelSelectScene::func_ov052_02154238,
+		&MPLevelSelectScene::func_ov052_02154220,
+		&MPLevelSelectScene::func_ov052_02153d5c,
+		&MPLevelSelectScene::func_ov052_02153d14,
+		&MPLevelSelectScene::func_ov052_02153d08,
+		&MPLevelSelectScene::func_ov052_02153b44,
+		&MPLevelSelectScene::func_ov052_02153b38,
+		&MPLevelSelectScene::func_ov052_02153b04,
+		&MPLevelSelectScene::func_ov052_02153ad0,
+		&MPLevelSelectScene::func_ov052_02153b04,
+		&MPLevelSelectScene::func_ov052_0215422c,
+		&MPLevelSelectScene::func_ov052_02153d2c,
+		&MPLevelSelectScene::func_ov052_02153d20,
+		&MPLevelSelectScene::func_ov052_02153cfc,
+		&MPLevelSelectScene::func_ov052_02153ac4,
+		&MPLevelSelectScene::func_ov052_02153ab8,
+		&MPLevelSelectScene::func_ov052_02153d50,
+		&MPLevelSelectScene::func_ov052_02153d44,
+		&MPLevelSelectScene::func_ov052_02153d38
 	};
 	(this->*ptmfs[this->_64])();
 	return true;

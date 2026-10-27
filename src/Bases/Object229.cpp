@@ -6,16 +6,16 @@ void *Object229::create()
 }
 
 void (Object229::*data_ov099_02186614[4])() = {
-    Object229::func_ov099_021860f0,
-    Object229::func_ov099_02186080,
-    Object229::func_ov099_02186028,
-    Object229::func_ov099_02185fb4,
+    &Object229::func_ov099_021860f0,
+    &Object229::func_ov099_02186080,
+    &Object229::func_ov099_02186028,
+    &Object229::func_ov099_02185fb4,
 };
 void (Object229::*data_ov099_02186634[4])() = {
-    Object229::func_ov099_021860a4,
-    Object229::func_ov099_0218602c,
-    Object229::func_ov099_02185fdc,
-    Object229::func_ov099_02185f5c,
+    &Object229::func_ov099_021860a4,
+    &Object229::func_ov099_0218602c,
+    &Object229::func_ov099_02185fdc,
+    &Object229::func_ov099_02185f5c,
 };
 struct UNKWN_STRUCT {
 	u32 a;

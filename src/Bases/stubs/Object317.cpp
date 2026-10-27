@@ -146,12 +146,12 @@ void Object317::func_ov008_020cd54c() // Finish Animation?
 }
 
 void (Object317::*data_ov008_020ee354[2])() = {
-    Object317::func_ov008_020cd664,
-    Object317::func_ov008_020cd5dc,
+    &Object317::func_ov008_020cd664,
+    &Object317::func_ov008_020cd5dc,
 };
 void (Object317::*data_ov008_020ee364[2])() = {
-    Object317::func_ov008_020cd5e8,
-    Object317::func_ov008_020cd54c,
+    &Object317::func_ov008_020cd5e8,
+    &Object317::func_ov008_020cd54c,
 };
 void Object317::func_ov008_020cd520(u32 param_1)
 {

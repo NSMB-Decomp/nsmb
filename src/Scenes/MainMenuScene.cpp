@@ -25,11 +25,11 @@ u32 data_ov009_020dbb94;
 s32 MainMenuScene::onRender()
 {
 	if ((data_ov009_020dbb94 & 1) == 0) {
-		data_ov009_020dbbb4[0] = MainMenuScene::onRender_0;
-		data_ov009_020dbbb4[1] = MainMenuScene::onRender_1;
-		data_ov009_020dbbb4[2] = MainMenuScene::onRender_2;
-		data_ov009_020dbbb4[3] = MainMenuScene::onRender_3;
-		data_ov009_020dbbb4[4] = MainMenuScene::onRender_4;
+		data_ov009_020dbbb4[0] = &MainMenuScene::onRender_0;
+		data_ov009_020dbbb4[1] = &MainMenuScene::onRender_1;
+		data_ov009_020dbbb4[2] = &MainMenuScene::onRender_2;
+		data_ov009_020dbbb4[3] = &MainMenuScene::onRender_3;
+		data_ov009_020dbbb4[4] = &MainMenuScene::onRender_4;
 		data_ov009_020dbb94 |= 1;
 	}
 	(this->*(data_ov009_020dbbb4[this->menuID]))();

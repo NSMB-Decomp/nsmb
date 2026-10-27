@@ -49,7 +49,7 @@ const SomethingElse data_ov002_020cd11c[] = {
 	{S_MGVS, 0x146, 0x146, 0x0},
 };
 
-void (DebugScene::*data_ov002_020cd308[])() = {DebugScene::func_ov002_020cc328, DebugScene::func_ov002_020cc514};
+void (DebugScene::*data_ov002_020cd308[])() = {&DebugScene::func_ov002_020cc328, &DebugScene::func_ov002_020cc514};
 #endif
 ObjectProfile DebugScene_Profile = {DebugScene::create, 2, 9};
 

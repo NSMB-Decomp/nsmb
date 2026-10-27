@@ -140,12 +140,12 @@ s32 Base::doOrderProc()
 
 s32 Base::processUpdate()
 {
-	return this->process(Base::onUpdate, Base::preUpdate, Base::postUpdate);
+	return this->process(&Base::onUpdate, &Base::preUpdate, &Base::postUpdate);
 }
 
 s32 Base::procesRender()
 {
-	return this->process(Base::onRender, Base::preRender, Base::postRender);
+	return this->process(&Base::onRender, &Base::preRender, &Base::postRender);
 }
 #pragma section itcm end
 
@@ -471,18 +471,18 @@ void Base::create()
 }
 s32 Base::processCreate()
 {
-	void (Base::*post)(u32) = Base::postCreate;
-	s32 (Base::*on)() = Base::onCreate;
-	bool (Base::*pre)() = Base::preCreate;
+	void (Base::*post)(u32) = &Base::postCreate;
+	s32 (Base::*on)() = &Base::onCreate;
+	bool (Base::*pre)() = &Base::preCreate;
 	return this->process(on, pre, post);
 }
 
 s32 Base::processDestroy()
 {
 	u16 object_id = this->object_id;
-	s32 (Base::*on)() = Base::onDestroy;
-	bool (Base::*pre)() = Base::preDestroy;
-	void (Base::*post)(u32) = Base::postDestroy;
+	s32 (Base::*on)() = &Base::onDestroy;
+	bool (Base::*pre)() = &Base::preDestroy;
+	void (Base::*post)(u32) = &Base::postDestroy;
 
 	u32 ret = this->process(on, pre, post);
 	if (ret == 1) {
