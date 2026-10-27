@@ -108,16 +108,25 @@ void Object317::func_ov008_020cd54c()
 
 	this->_5b0 -= 1;
 	if (this->_5b0 == 0) {
-		func_02012398(0x16,0);
-    	this->func_ov008_020cd520(0);
+		func_02012398(0x16, 0);
+		this->func_ov008_020cd520(0);
 		if (this->_5ba != 0) {
 			this->_5bb -= 1;
-		}
-		else {
+		} else {
 			this->_5bb += 1;
 		}
 		this->_5bb &= 7;
 	}
+}
+
+u32 data_ov008_020ee364[2][2];
+
+void Object317::func_ov008_020cd520(u32 param_1)
+{
+	this->_5a8 = param_1;
+	this->_5a0 = data_ov008_020ee364[param_1][0];
+	this->_5a4 = data_ov008_020ee364[param_1][1];
+	this->_5ac = 1;
 }
 
 bool Object317::func_ov008_020cd478()

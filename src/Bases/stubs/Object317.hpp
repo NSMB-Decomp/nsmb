@@ -26,7 +26,10 @@ public:
 	void func_ov008_020cd54c();
 
 	Model models[8];
-	u8 _pad0[0x10];
+	u32 _5a0;
+	u32 _5a4;
+	u32 _5a8;
+	u32 _5ac;
 	u32 _5b0;
 	u32 _5b4;
 	s16 _5b8;
