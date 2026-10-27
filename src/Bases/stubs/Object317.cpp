@@ -4,6 +4,9 @@ extern s16 *data_ov000_020caa38;
 
 u32 data_ov008_020e59b4[8] = {0x682, 0x683, 0x684, 0x685, 0x686, 0x687, 0x688, 0x689};
 
+// 0x020e59a8
+ActorProfile Object317_Profile = {Object317::create, 317, 292, Object317::loadResources};
+
 void *Object317::create()
 {
 	return new Object317();
@@ -176,6 +179,3 @@ bool Object317::loadResources()
 	}
 	return true;
 }
-
-// 0x020e59a8
-ActorProfile Object317_Profile = {Object317::create, 317, 292, Object317::loadResources};
