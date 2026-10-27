@@ -17,15 +17,17 @@ public:
 	BOOL onRender();
 	BOOL onUpdate();
 
-	void func_ov008_020cd520();
+	void func_ov008_020cd520(u32);
 	bool func_ov008_020cd478();
 	void func_ov008_020cd4ac();
+	void func_ov008_020cd664();
+	void func_ov008_020cd5e8();
 
 	Model models[8];
 	u8 _pad0[0x14];
 	u32 _5b4;
 	u16 _5b8;
-	u8 _pad1[0x1];
+	u8 _5ba;
 	u8 _5bb;
 };
 

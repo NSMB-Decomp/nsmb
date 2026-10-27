@@ -22,7 +22,7 @@ s32 Object317::onCreate()
 		this->_5b4 = 0x30000;
 		this->_5b8 = 0;
 		this->_5bb = 0;
-		this->func_ov008_020cd520();
+		this->func_ov008_020cd520(0);
 		return 1;
 	} else {
 		return 0;
@@ -57,8 +57,8 @@ BOOL Object317::onUpdate()
 {
 	this->func_ov008_020cd4ac();
 	u16 pressed = data_02087650[Input::localConsoleID][0];
-	if ((pressed & PAD_BUTTON_R) != 0 || (pressed & PAD_BUTTON_L) != 0 ) {
-		
+	if ((pressed & PAD_BUTTON_R) != 0 || (pressed & PAD_BUTTON_L) != 0) {
+
 		u16 pressed_2 = data_02087650[Input::localConsoleID][0];
 		if ((data_02087650[Input::localConsoleID][0] & PAD_BUTTON_L) != 0) {
 			pressed_2 = Input::consoleKeys[Input::localConsoleID][0];
@@ -71,6 +71,26 @@ BOOL Object317::onUpdate()
 		}
 	}
 	return TRUE;
+}
+
+void Object317::func_ov008_020cd664()
+{
+}
+
+void Object317::func_ov008_020cd5e8()
+
+{
+	u32 input = Input::consoleKeys[Input::localConsoleID][0];
+	if ((input & PAD_BUTTON_A) != 0) {
+		func_02012398(0x2c, 0);
+		func_020131fc(9, this->_5bb);
+	} else if ((input & PAD_KEY_RIGHT) != 0) {
+		this->_5ba = 0;
+		this->func_ov008_020cd520(1);
+	} else if ((input & PAD_KEY_LEFT) != 0) {
+		this->_5ba = 1;
+		this->func_ov008_020cd520(1);
+	}
 }
 
 bool Object317::func_ov008_020cd478()
