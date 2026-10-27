@@ -32,13 +32,45 @@ s32 Object317::onCreate()
 bool Object317::onHeapCreated()
 {
 	for (s32 i = 0; i < 8; i++) {
-		void* bmd = FS::Cache::getFile(data_ov008_020e59b4[i]);
+		void *bmd = FS::Cache::getFile(data_ov008_020e59b4[i]);
 		BOOL a = this->models[i].create(bmd, 0, 0);
 		if (a == FALSE) {
 			return false;
 		}
 	}
 	return true;
+}
+
+BOOL Object317::onDestroy()
+{
+	return TRUE;
+}
+void Object317::pendingDestroy()
+{
+}
+
+BOOL Object317::onRender()
+{
+}
+
+BOOL Object317::onUpdate()
+{
+	this->func_ov008_020cd4ac();
+	u16 pressed = data_02087650[Input::localConsoleID][0];
+	if ((pressed & PAD_BUTTON_R) != 0 || (pressed & PAD_BUTTON_L) != 0 ) {
+		
+		u16 pressed_2 = data_02087650[Input::localConsoleID][0];
+		if ((data_02087650[Input::localConsoleID][0] & PAD_BUTTON_L) != 0) {
+			pressed_2 = Input::consoleKeys[Input::localConsoleID][0];
+		}
+
+		if ((pressed_2 & PAD_KEY_RIGHT) != 0) {
+			this->_5b4 += 0x800;
+		} else if ((pressed_2 & PAD_KEY_LEFT) != 0) {
+			this->_5b4 -= 0x800;
+		}
+	}
+	return TRUE;
 }
 
 bool Object317::func_ov008_020cd478()

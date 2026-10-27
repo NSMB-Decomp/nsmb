@@ -10,11 +10,16 @@ public:
 	inline Object317() {};
 	inline ~Object317() {};
 
-	s32 onCreate();
+	BOOL onCreate();
 	bool onHeapCreated();
+	BOOL onDestroy();
+	void pendingDestroy();
+	BOOL onRender();
+	BOOL onUpdate();
 
 	void func_ov008_020cd520();
 	bool func_ov008_020cd478();
+	void func_ov008_020cd4ac();
 
 	Model models[8];
 	u8 _pad0[0x14];
