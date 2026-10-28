@@ -19,8 +19,7 @@ pub fn build(b: *std.Build) !void {
 
     // Step - all
     const all_step = b.step("all", "");
-    b.dependOnFileContents(b.path("objdiff.json"));
-    if (try readObjdiff(b.graph.io, b.allocator)) |objdiff| {
+    if (try readObjdiff(b)) |objdiff| {
         for (objdiff.value.units) |unit| {
             const source = b.path(unit.metadata.source_path orelse continue);
 
@@ -125,14 +124,19 @@ fn findConfigFiles(b: *std.Build, release: Release) ![]const std.Build.LazyPath 
     return files.items;
 }
 
-// Returns null when objdiff.json has not been generated yet.
-fn readObjdiff(io: std.Io, allocator: std.mem.Allocator) !?std.json.Parsed(OBJDiff) {
-    const contents = std.Io.Dir.readFileAlloc(std.Io.Dir.cwd(), io, "objdiff.json", allocator, .unlimited) catch |err| switch (err) {
-        error.FileNotFound => return null,
+// Returns null when objdiff.json has not been generated yet. Configure reruns when it changes or appears.
+fn readObjdiff(b: *std.Build) !?std.json.Parsed(OBJDiff) {
+    const contents = std.Io.Dir.readFileAlloc(std.Io.Dir.cwd(), b.graph.io, "objdiff.json", b.allocator, .unlimited) catch |err| switch (err) {
+        error.FileNotFound => {
+            // Depending on a missing file fails configure, so watch the directory that will hold it
+            b.dependOnDirectoryMetadata(b.path("."));
+            return null;
+        },
         else => return err,
     };
+    b.dependOnFileContents(b.path("objdiff.json"));
 
-    return try std.json.parseFromSlice(OBJDiff, allocator, contents, .{
+    return try std.json.parseFromSlice(OBJDiff, b.allocator, contents, .{
         .ignore_unknown_fields = true,
     });
 }
