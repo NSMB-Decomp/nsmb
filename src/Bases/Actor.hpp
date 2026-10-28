@@ -73,3 +73,5 @@ class Actor : public Object
 	virtual void setPosX(u32);
 	virtual void incPosX(u32);
 };
+
+extern s32 (*data_ov000_020ca858)(s32, s32, s32, s32);

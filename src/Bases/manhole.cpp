@@ -337,7 +337,7 @@ Manhole::CollisionKind Manhole::getPlatformCollision()
 {
 	CollisionKind coll = CK_None;
 
-	for (PlatformMgr *mgr = platform.manager; mgr; mgr = mgr->next) {
+	for (PlatformManager *mgr = platform.manager; mgr; mgr = mgr->next) {
 
 		if (mgr->owner->actorType != 1) // TODO: Enum!!!
 			continue;

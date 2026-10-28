@@ -14,8 +14,6 @@ StageActor::~StageActor()
 	this->activeCollider.unlink();
 }
 
-void func_ov000_020aba48(CollisionMgr *);
-void func_0201d794(PlatformMgr *);
 bool StageActor::preUpdate()
 {
 	this->empty = false;
@@ -43,11 +41,10 @@ void StageActor::postUpdate(u32 a)
 	Actor::postUpdate(a);
 }
 
-PlayerActor *GAME_getPlayer(s32);
 bool StageActor::isInActiveView()
 {
 	for (s32 i = 0; i < 2; ++i) {
-		PlayerActor *player = GAME_getPlayer(i);
+		PlayerActor *player = (PlayerActor *)Game::getPlayer(i);
 		if (player != NULL) {
 			if (player->_2be == this->_2be)
 				return true;

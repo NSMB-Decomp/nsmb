@@ -112,11 +112,18 @@ public:
 	void *_2c;
 	u8 _pad_30[10];
 	s32 _3c;
-	u8 _pad_40[96];
+	s32 _40;
+	u8 _pad_44[0x20];
+	s32 _64;
+	s32 _68;
+	u8 _pad_6c[0x34];
 	u16 _1c0; // 0x1C0
-	u8 _pad_a2[4];
+	u16 _a2;
+	u8 _a4;
+	u8 _a5;
 	u8 _1c6;
-	u8 _pad_a7[9];
+	s8 _a7;
+	u8 _pad_a8[8];
 
 	ActiveCollider();
 	virtual ~ActiveCollider();

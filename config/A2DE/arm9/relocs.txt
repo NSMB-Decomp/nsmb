@@ -3524,11 +3524,11 @@ from:0x0201d938 kind:load to:0x0208ae94 module:autoload(3)
 from:0x0201d93c kind:load to:0x0208ae9c module:autoload(3)
 from:0x0201d994 kind:load to:0x020ca8b8 module:overlay(0)
 from:0x0201d9d0 kind:arm_call to:0x0204c0b8 module:autoload(2)
-from:0x0201d9dc kind:load to:0x0203c628 module:main
+from:0x0201d9dc kind:load to:0x0203c620 add:0x8 module:main
 from:0x0201d9e0 kind:load to:0x020391e0 add:0x8 module:main
-from:0x0201d9f8 kind:load to:0x0203c628 module:main
+from:0x0201d9f8 kind:load to:0x0203c620 add:0x8 module:main
 from:0x0201d9fc kind:load to:0x020391e0 add:0x8 module:main
-from:0x0201da20 kind:load to:0x0203c628 module:main
+from:0x0201da20 kind:load to:0x0203c620 add:0x8 module:main
 from:0x0201da24 kind:load to:0x020391e0 add:0x8 module:main
 from:0x0201da54 kind:arm_call to:0x020437f4 module:autoload(2)
 from:0x0201dc7c kind:arm_call to:0x02011d94 module:main

@@ -127,7 +127,7 @@ Nitro::Math_func_01ffcd44 kind:function(arm,size=0x9c) addr:0x01ffcd44
 Nitro::Math_func_01ffcde0 kind:function(arm,size=0x50) addr:0x01ffcde0
 Nitro::Math_func_01ffce30 kind:function(arm,size=0x44) addr:0x01ffce30
 Nitro::Math_func_01ffce74 kind:function(arm,size=0x34) addr:0x01ffce74
-Nitro::Math_AddVec3_32s kind:function(arm,size=0x34) addr:0x01ffcea8
+_ZN5Nitro16Math_AddVec3_32sEPK8Vec3_32sS2_PS0_ kind:function(arm,size=0x34) addr:0x01ffcea8
 Nitro::Math_func_01ffcedc kind:function(arm,size=0x1d4) addr:0x01ffcedc
 _ZN5Nitro10Math__stubEv kind:function(arm,size=0x4) addr:0x01ffd0b0
 
@@ -171,7 +171,7 @@ func_01ffe0a8 kind:function(arm,size=0x3c) addr:0x01ffe0a8
 func_01ffe0e4 kind:function(arm,size=0x57c) addr:0x01ffe0e4
 func_01ffe660 kind:function(arm,size=0xd0) addr:0x01ffe660
 func_01ffe730 kind:function(arm,size=0x48) addr:0x01ffe730
-func_01ffe778 kind:function(arm,size=0x168) addr:0x01ffe778
+_ZN16CollisionManager13func_01ffe778EPlm kind:function(arm,size=0x168) addr:0x01ffe778
 func_01ffe8e0 kind:function(arm,size=0x670) addr:0x01ffe8e0
 func_01ffef50 kind:function(arm,size=0xa4) addr:0x01ffef50
 func_01ffeff4 kind:function(arm,size=0x29c) addr:0x01ffeff4

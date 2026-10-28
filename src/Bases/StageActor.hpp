@@ -8,8 +8,8 @@ class StageActor : public Actor
 {
       public:
 	ActiveCollider activeCollider;
-	CollisionMgr collisionMgr;
-	PlatformMgr platformMgr;
+	CollisionManager collisionMgr;
+	PlatformManager platformMgr;
 	u8 _2bc;      /* 0x2BC */
 	u8 direction; /* 0x2BD */
 	u8 _2be;      /* 0x2BE */

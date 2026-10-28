@@ -5,26 +5,26 @@
 class StageActor;
 class Platform;
 
-class PlatformMgr
+class PlatformManager
 {
 public:
 	StageActor* owner;
 	Vec3_32* linkedPosition;
 
-	PlatformMgr* next;
+	PlatformManager* next;
 	Platform* head;
 	Platform* platform;
 
-	CollisionMgr* linkedCollisionMgr;
+	CollisionManager* linkedCollisionMgr;
 	u8 _pad1[0x18];
 
-	PlatformMgr();
-	virtual ~PlatformMgr();
+	PlatformManager();
+	virtual ~PlatformManager();
 
 	void func_0201d730();
 	void init(void *, void *);
 };
-NTR_SIZE_GUARD(PlatformMgr, 0x34);
+NTR_SIZE_GUARD(PlatformManager, 0x34);
 
 class Platform {
 public:
@@ -55,7 +55,7 @@ public:
 
 	Platform* prev;
 	Platform* next;
-	PlatformMgr* manager;
+	PlatformManager* manager;
 
 	Vec2_32 pointEnd;
 	Vec2_32 pointStart;

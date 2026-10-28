@@ -4,13 +4,22 @@
 #include "BlendColor.hpp"
 #include "SpinClass.hpp"
 
+class StageEntity;
+
+struct UnkPlayer6bc {
+	u8 _0[0x20];
+	s32 _20;
+};
+
 #define ST1_CARRYING 0x1
 class PlayerBase : public StageActor
 {
       public:
 	PlayerModel model;
 	Actor *linkedActor;
-	u8 _pad10[0x40];
+	Mat4x3 _68c;
+	struct UnkPlayer6bc *_6bc;
+	u8 _pad10[0xc];
 	s32 _6cc;
 	SpinClass spin;
 	u8 _pad11[0x10];
@@ -51,9 +60,14 @@ class PlayerBase : public StageActor
 	u8 _7b3;
 	s8 _7b4;
 	u8 _7b5;
-	u8 _pad6[0x3];
-	u8 _7b9;
-	u8 _pad8[0x5];
+	u8 _7b6;
+	s8 _7b7;
+	s8 _7b8;
+	s8 _7b9;
+	s8 _7ba;
+	s8 _7bb;
+	s8 _7bc;
+	u8 _pad8[0x2];
 	u8 _7bf;
 	u8 _7c0;
 	u8 _7c1;
@@ -126,7 +140,7 @@ class PlayerBase : public StageActor
 	virtual bool virt_28();
 	virtual bool virt_29();
 	virtual bool virt_30();
-	virtual bool virt_31();
+	virtual bool virt_31(StageEntity *);
 	virtual bool virt_32();
 	virtual bool virt_33();
 	virtual bool virt_34();

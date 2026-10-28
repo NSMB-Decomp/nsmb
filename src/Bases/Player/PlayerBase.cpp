@@ -403,7 +403,7 @@ bool PlayerBase::virt_30()
 {
 	return false;
 }
-bool PlayerBase::virt_31()
+bool PlayerBase::virt_31(StageEntity *)
 {
 	return false;
 }
@@ -597,7 +597,6 @@ void PlayerBase::func_ov011_0212bf24()
 {
 }
 
-void func_02022b64(u32, Vec3_32 *);
 void PlayerBase::func_ov011_0212bf00()
 {
 	func_02022b64(0xaa, &this->position);

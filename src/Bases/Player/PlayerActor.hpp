@@ -38,7 +38,9 @@ class PlayerActor : public PlayerBase
 	Vec2_32 _95c;
 	Vec2_32 _968;
 	Vec2_32 _974;
-	u8 _pad3[588];
+	u8 _pad3[0x30];
+	u32 _9b0;
+	u8 _pad4[588 - 0x34];
 
 	PlayerActor();
 	~PlayerActor();

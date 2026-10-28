@@ -48,14 +48,9 @@ struct Vec3_32 : public Vec3_32s {
 	}
 	inline Vec3_32(s32 x, s32 y, s32 z)
 	{
-		/*
-			Can either be in order z, y, x or x, z, y
-			But NOT in order x, y, z
-			(messes up LDR/STR order in Model functions)
-		*/
-		this->z = z;
-		this->y = y;
 		this->x = x;
+		this->y = y;
+		this->z = z;
 	}
 	inline void set(s32 v) {
 		x = v;
@@ -105,6 +100,10 @@ struct Vec3_32 : public Vec3_32s {
 		const Vec3_32s* b = (const Vec3_32s*)(((const u8*)&rhs)+4);
 		Vec3_32s* v = this;
 		Nitro::Math_AddVec3_32s(v, b, v);
+	}
+
+	inline void add3(const Vec3_32& rhs) {
+		Nitro::Math_AddVec3_32s(this, (const Vec3_32s*)&rhs.x, this);
 	}
 
 	inline void add2(const Vec3_32& rhs) {
