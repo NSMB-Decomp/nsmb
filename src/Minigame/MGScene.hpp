@@ -3,6 +3,9 @@
 class MGScene : public Object
 {
       public:
+	u32 _5c;
+	u32 _60;
+
 	inline ~MGScene() {};
 	MGScene();
 
@@ -11,6 +14,8 @@ class MGScene : public Object
 	static void func_02024ad0(void *);
 
 	bool preCreate();
+	bool func_02024e50();
+	static void func_02024e94();
 	void postCreate(u32);
 	bool preDestroy();
 	void postDestroy(u32);

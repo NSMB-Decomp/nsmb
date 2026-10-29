@@ -7,6 +7,8 @@ class MGDebugScene : public MGScene
 	inline MGDebugScene() {};
 
 	bool func_ov130_02126ab0();
+	void func_ov130_02126fc8();
+	void func_ov130_021271d0();
 
 	bool preCreate();
 	bool preUpdate();
