@@ -1,11 +1,19 @@
 #include "FireSnake.hpp"
 
+extern "C" void func_ov023_0213e58c();
+
 FireSnake::FireSnake()
 {
 }
 
 s32 FireSnake::onCreate()
 {
+}
+
+s32 FireSnake::onDestroy()
+{
+	func_ov023_0213e58c();
+	return true;
 }
 
 void *FireSnake::create()
