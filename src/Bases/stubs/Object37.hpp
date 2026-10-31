@@ -8,6 +8,13 @@ public:
 	static void *create();
 	inline Object37() {};
 	inline ~Object37() {};
+
+	void func_ov024_0213dd74();
+	void func_ov024_0213ddec();
+	void func_ov024_0213de60();
+	void func_ov024_0213dfa8();
+	void func_ov024_0213e04c();
+	void func_ov024_0213e0cc();
 };
 
 extern ActorProfile Object37_Profile;

@@ -74,13 +74,13 @@ _ZN8Object478onRenderEv kind:function(arm,size=0x1a0) addr:0x02187c6c
 _ZN8Object478onUpdateEv kind:function(arm,size=0x64) addr:0x02187e0c
 _ZN8Object478onCreateEv kind:function(arm,size=0x114) addr:0x02187e70
 _ZN8Object4713onHeapCreatedEv kind:function(arm,size=0xcc) addr:0x02187f84
-func_ov100_02188050 kind:function(arm,size=0x234) addr:0x02188050
+_ZN8Object4719func_ov100_02188050Ev kind:function(arm,size=0x234) addr:0x02188050
 func_ov100_02188284 kind:function(arm,size=0x4c) addr:0x02188284
 func_ov100_021882d0 kind:function(arm,size=0x1f0) addr:0x021882d0
 func_ov100_021884c0 kind:function(arm,size=0x64) addr:0x021884c0
 func_ov100_02188524 kind:function(arm,size=0x40) addr:0x02188524
 func_ov100_02188564 kind:function(arm,size=0x1b8) addr:0x02188564
-func_ov100_0218871c kind:function(arm,size=0x54) addr:0x0218871c
+_ZN8Object4719func_ov100_0218871cEv kind:function(arm,size=0x54) addr:0x0218871c
 func_ov100_02188770 kind:function(arm,size=0x58) addr:0x02188770
 func_ov100_021887c8 kind:function(arm,size=0x168) addr:0x021887c8
 func_ov100_02188930 kind:function(arm,size=0x64) addr:0x02188930
@@ -109,8 +109,8 @@ data_ov100_02188f3c kind:data(any) addr:0x02188f3c
 data_ov100_02188f40 kind:data(any) addr:0x02188f40
 data_ov100_02188f48 kind:data(any) addr:0x02188f48
 data_ov100_02188f64 kind:data(any) addr:0x02188f64
-__sinit_ov100_02188f80 kind:function(arm,size=0x50) addr:0x02188f80
-.p__sinit_ov100_02188f80 kind:data(word) addr:0x02188fd0
+__sinit_Object47.cpp kind:function(arm,size=0x50) addr:0x02188f80
+.p__sinit_Object47.cpp kind:data(word) addr:0x02188fd0
 data_ov100_02188fe8 kind:data(any) addr:0x02188fe8
 data_ov100_021890f4 kind:data(any) addr:0x021890f4
 data_ov100_021890fc kind:data(any) addr:0x021890fc
@@ -153,12 +153,12 @@ data_ov100_02189648 kind:data(any) addr:0x02189648
 Object164_Profile kind:data(any) addr:0x02189650 ambiguous
 _ZTV9Object164 kind:data(any) addr:0x0218965c
 data_ov100_02189718 kind:data(any) addr:0x02189718 ambiguous
-data_ov100_02189770 kind:data(any) addr:0x02189770
-data_ov100_02189778 kind:data(any) addr:0x02189778
+@0 kind:data(any) addr:0x02189770 local
+@1 kind:data(any) addr:0x02189778 local
 Object48_Profile kind:data(any) addr:0x02189780 ambiguous
 Object47_Profile kind:data(any) addr:0x0218978c ambiguous
 _ZTV8Object47 kind:data(any) addr:0x02189798
 data_ov100_02189870 kind:data(any) addr:0x02189870 ambiguous
 data_ov100_021898b4 kind:data(any) addr:0x021898b4
-data_ov100_021899c0 kind:bss addr:0x021899c0
-data_ov100_021899c8 kind:bss addr:0x021899c8
+data_ov100_021899c0 kind:bss(size=0x8) addr:0x021899c0
+data_ov100_021899c8 kind:bss(size=0x8) addr:0x021899c8

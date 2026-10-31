@@ -15,4 +15,7 @@ src/Bases/stubs/Object171.cpp:
 
 src/Bases/stubs/Object269.cpp:
     .text       start:0x0217e894 end:0x0217f938
-    .data       start:0x0217fcf0 end:0x0217fe40
+    .init       start:0x0217f958 end:0x0217fa28
+    .ctor       start:0x0217fa28 end:0x0217fa2c
+    .data       start:0x0217fcc0 end:0x0217fe40
+    .bss        start:0x0217fe40 end:0x0217fe80

@@ -23,4 +23,7 @@ src/Bases/stubs/Object164.cpp:
 
 src/Bases/stubs/Object47.cpp:
     .text       start:0x02187b30 end:0x02188d04
-    .data       start:0x02189780 end:0x02189870
+    .init       start:0x02188f80 end:0x02188fd0
+    .ctor       start:0x02188fd0 end:0x02188fd4
+    .data       start:0x02189770 end:0x02189870
+    .bss        start:0x021899c0 end:0x021899e0

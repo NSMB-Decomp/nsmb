@@ -30,6 +30,17 @@ void *Object247::create()
 	return new Object247();
 }
 
+void (Object242::*data_ov054_0217266c)() = &Object242::func_ov054_0216b058;
+void (Object242::*data_ov054_0217267c)() = &Object242::func_ov054_0216ad58;
+void (Object242::*data_ov054_02172664)() = &Object242::func_ov054_0216ace0;
+void (Object242::*data_ov054_02172684)() = &Object242::func_ov054_0216aad8;
+void (Object242::*data_ov054_02172674)() = &Object242::func_ov054_0216a980;
+void (Object242::*data_ov054_021726ac)() = &Object242::func_ov054_0216ac50;
+void (Object242::*data_ov054_021726a4)() = &Object242::func_ov054_0216a944;
+void (Object242::*data_ov054_0217269c)() = &Object242::func_ov054_0216a6c0;
+void (Object242::*data_ov054_02172694)() = &Object242::func_ov054_0216a5d4;
+void (Object242::*data_ov054_0217268c)() = &Object242::func_ov054_0216a510;
+
 // 0x02171020
 ActorProfile Object242_Profile = { Object242::create, 242, 96, NULL };
 

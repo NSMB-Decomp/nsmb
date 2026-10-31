@@ -1777,7 +1777,7 @@ data_02084870 kind:data(any) addr:0x02084870
 data_020848b0 kind:data(any) addr:0x020848b0
 data_020848bc kind:data(any) addr:0x020848bc
 data_020848d4 kind:data(any) addr:0x020848d4
-data_020848dc kind:data(any) addr:0x020848dc
+__ptmf_null kind:data(any) addr:0x020848dc
 data_020848e4 kind:data(any) addr:0x020848e4
 data_020850e8 kind:data(any) addr:0x020850e8
 data_020850f4 kind:data(any) addr:0x020850f4

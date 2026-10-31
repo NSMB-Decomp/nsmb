@@ -4,12 +4,12 @@ _ZN9Object12010onUpdate_0Ev kind:function(arm,size=0x4c) addr:0x02189a28
 _ZN9Object1208onCreateEv kind:function(arm,size=0x2cc) addr:0x02189a74
 _ZN9Object12013onHeapCreatedEv kind:function(arm,size=0x58) addr:0x02189d40
 _ZN9Object12017onUpdate_defeatedEv kind:function(arm,size=0x48) addr:0x02189d98
-func_ov108_02189de0 kind:function(arm,size=0xe0) addr:0x02189de0
-func_ov108_02189ec0 kind:function(arm,size=0x290) addr:0x02189ec0
-func_ov108_0218a150 kind:function(arm,size=0x128) addr:0x0218a150
-func_ov108_0218a278 kind:function(arm,size=0x2ac) addr:0x0218a278
-func_ov108_0218a524 kind:function(arm,size=0xc8) addr:0x0218a524
-func_ov108_0218a5ec kind:function(arm,size=0x1f4) addr:0x0218a5ec
+_ZN9Object12019func_ov108_02189de0Ev kind:function(arm,size=0xe0) addr:0x02189de0
+_ZN9Object12019func_ov108_02189ec0Ev kind:function(arm,size=0x290) addr:0x02189ec0
+_ZN9Object12019func_ov108_0218a150Ev kind:function(arm,size=0x128) addr:0x0218a150
+_ZN9Object12019func_ov108_0218a278Ev kind:function(arm,size=0x2ac) addr:0x0218a278
+_ZN9Object12019func_ov108_0218a524Ev kind:function(arm,size=0xc8) addr:0x0218a524
+_ZN9Object12019func_ov108_0218a5ecEv kind:function(arm,size=0x1f4) addr:0x0218a5ec
 func_ov108_0218a7e0 kind:function(arm,size=0x4c) addr:0x0218a7e0
 func_ov108_0218a82c kind:function(arm,size=0x2c) addr:0x0218a82c
 func_ov108_0218a858 kind:function(arm,size=0x68) addr:0x0218a858
@@ -33,19 +33,19 @@ _ZN9Object1206createEv kind:function(arm,size=0x30) addr:0x0218ad74
 data_ov108_0218ada4 kind:data(any) addr:0x0218ada4
 data_ov108_0218adac kind:data(any) addr:0x0218adac
 data_ov108_0218adb4 kind:data(any) addr:0x0218adb4
-__sinit_ov108_0218add0 kind:function(arm,size=0xd0) addr:0x0218add0
-.p__sinit_ov108_0218add0 kind:data(word) addr:0x0218aea0
-data_ov108_0218aec0 kind:data(any) addr:0x0218aec0
-data_ov108_0218aec8 kind:data(any) addr:0x0218aec8
-data_ov108_0218aed0 kind:data(any) addr:0x0218aed0
-data_ov108_0218aed8 kind:data(any) addr:0x0218aed8
-data_ov108_0218aee0 kind:data(any) addr:0x0218aee0
-data_ov108_0218aee8 kind:data(any) addr:0x0218aee8
+__sinit_Object120.cpp kind:function(arm,size=0xd0) addr:0x0218add0
+.p__sinit_Object120.cpp kind:data(word) addr:0x0218aea0
+@0 kind:data(any) addr:0x0218aec0 local
+@1 kind:data(any) addr:0x0218aec8 local
+@2 kind:data(any) addr:0x0218aed0 local
+@3 kind:data(any) addr:0x0218aed8 local
+@4 kind:data(any) addr:0x0218aee0 local
+@5 kind:data(any) addr:0x0218aee8 local
 Object120_Profile kind:data(any) addr:0x0218aef0 ambiguous
 _ZTV9Object120 kind:data(any) addr:0x0218aefc
-data_ov108_0218b020 kind:bss addr:0x0218b020
-data_ov108_0218b028 kind:bss addr:0x0218b028
-data_ov108_0218b030 kind:bss addr:0x0218b030
-data_ov108_0218b038 kind:bss addr:0x0218b038
-data_ov108_0218b040 kind:bss addr:0x0218b040
-data_ov108_0218b048 kind:bss addr:0x0218b048
+data_ov108_0218b020 kind:bss(size=0x8) addr:0x0218b020
+data_ov108_0218b028 kind:bss(size=0x8) addr:0x0218b028
+data_ov108_0218b030 kind:bss(size=0x8) addr:0x0218b030
+data_ov108_0218b038 kind:bss(size=0x8) addr:0x0218b038
+data_ov108_0218b040 kind:bss(size=0x8) addr:0x0218b040
+data_ov108_0218b048 kind:bss(size=0x8) addr:0x0218b048

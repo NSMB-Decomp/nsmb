@@ -118,10 +118,10 @@ func_ov008_020d1544 kind:function(arm,size=0x70) addr:0x020d1544
 func_ov008_020d15b4 kind:function(arm,size=0x78) addr:0x020d15b4
 func_ov008_020d162c kind:function(arm,size=0x74) addr:0x020d162c
 func_ov008_020d16a0 kind:function(arm,size=0x2c) addr:0x020d16a0
-func_ov008_020d16cc kind:function(arm,size=0x13c) addr:0x020d16cc
-func_ov008_020d1808 kind:function(arm,size=0x48) addr:0x020d1808
-func_ov008_020d1850 kind:function(arm,size=0x30) addr:0x020d1850
-func_ov008_020d1880 kind:function(arm,size=0x4) addr:0x020d1880
+_ZN8WmCamera19func_ov008_020d16ccEv kind:function(arm,size=0x13c) addr:0x020d16cc
+_ZN8WmCamera19func_ov008_020d1808Ev kind:function(arm,size=0x48) addr:0x020d1808
+_ZN8WmCamera19func_ov008_020d1850Ev kind:function(arm,size=0x30) addr:0x020d1850
+_ZN8WmCamera19func_ov008_020d1880Ev kind:function(arm,size=0x4) addr:0x020d1880
 func_ov008_020d1884 kind:function(arm,size=0x374) addr:0x020d1884
 func_ov008_020d1bf8 kind:function(arm,size=0xd4) addr:0x020d1bf8
 func_ov008_020d1ccc kind:function(arm,size=0x2cc) addr:0x020d1ccc
@@ -327,8 +327,8 @@ func_ov008_020de1dc kind:function(arm,size=0xac) addr:0x020de1dc
 func_ov008_020de288 kind:function(arm,size=0x20) addr:0x020de288
 func_ov008_020de2a8 kind:function(arm,size=0x74) addr:0x020de2a8
 func_ov008_020de31c kind:function(arm,size=0x2c) addr:0x020de31c
-func_ov008_020de348 kind:function(arm,size=0xbc) addr:0x020de348
-func_ov008_020de404 kind:function(arm,size=0x4) addr:0x020de404
+_ZN9Object32419func_ov008_020de348Ev kind:function(arm,size=0xbc) addr:0x020de348
+_ZN9Object32419func_ov008_020de404Ev kind:function(arm,size=0x4) addr:0x020de404
 _ZN9Object3248onUpdateEv kind:function(arm,size=0x1c) addr:0x020de408
 _ZN9Object3248onRenderEv kind:function(arm,size=0xd4) addr:0x020de424
 _ZN9Object3248onCreateEv kind:function(arm,size=0x1b0) addr:0x020de4f8
@@ -670,11 +670,11 @@ data_ov008_020e4198 kind:data(any) addr:0x020e4198
 __sinit_ov008_020e4d14 kind:function(arm,size=0x50) addr:0x020e4d14
 __sinit_Object317.cpp kind:function(arm,size=0x80) addr:0x020e4d64
 __sinit_ov008_020e4de4 kind:function(arm,size=0x128) addr:0x020e4de4
-__sinit_ov008_020e4f0c kind:function(arm,size=0x80) addr:0x020e4f0c
+__sinit_camera.cpp kind:function(arm,size=0x80) addr:0x020e4f0c
 __sinit_ov008_020e4f8c kind:function(arm,size=0x460) addr:0x020e4f8c
 __sinit_ov008_020e53ec kind:function(arm,size=0xe0) addr:0x020e53ec
 __sinit_ov008_020e54cc kind:function(arm,size=0x1d0) addr:0x020e54cc
-__sinit_ov008_020e569c kind:function(arm,size=0x50) addr:0x020e569c
+__sinit_Object324.cpp kind:function(arm,size=0x50) addr:0x020e569c
 __sinit_ov008_020e56ec kind:function(arm,size=0x50) addr:0x020e56ec
 __sinit_ov008_020e573c kind:function(arm,size=0x70) addr:0x020e573c
 __sinit_ov008_020e57ac kind:function(arm,size=0x34) addr:0x020e57ac
@@ -682,11 +682,11 @@ __sinit_ov008_020e57e0 kind:function(arm,size=0x4) addr:0x020e57e0
 .p__sinit_ov008_020e4d14 kind:data(word) addr:0x020e57e4
 .p__sinit_Object317.cpp kind:data(word) addr:0x020e57e8
 .p__sinit_ov008_020e4de4 kind:data(word) addr:0x020e57ec
-.p__sinit_ov008_020e4f0c kind:data(word) addr:0x020e57f0
+.p__sinit_camera.cpp kind:data(word) addr:0x020e57f0
 .p__sinit_ov008_020e4f8c kind:data(word) addr:0x020e57f4
 .p__sinit_ov008_020e53ec kind:data(word) addr:0x020e57f8
 .p__sinit_ov008_020e54cc kind:data(word) addr:0x020e57fc
-.p__sinit_ov008_020e569c kind:data(word) addr:0x020e5800
+.p__sinit_Object324.cpp kind:data(word) addr:0x020e5800
 .p__sinit_ov008_020e56ec kind:data(word) addr:0x020e5804
 .p__sinit_ov008_020e573c kind:data(word) addr:0x020e5808
 .p__sinit_ov008_020e57ac kind:data(word) addr:0x020e580c
@@ -1024,11 +1024,11 @@ data_ov008_020e83bc kind:data(any) addr:0x020e83bc
 data_ov008_020e859c kind:data(any) addr:0x020e859c
 data_ov008_020e8794 kind:data(any) addr:0x020e8794
 data_ov008_020e8994 kind:data(any) addr:0x020e8994
-data_ov008_020e8bd4 kind:data(any) addr:0x020e8bd4
-data_ov008_020e8bdc kind:data(any) addr:0x020e8bdc
-data_ov008_020e8be4 kind:data(any) addr:0x020e8be4
+@2504 kind:data(any) addr:0x020e8bd4 local
+@2505 kind:data(any) addr:0x020e8bdc local
+@2506 kind:data(any) addr:0x020e8be4 local
 UnknownProfile::ov008_020e8bec kind:data(any) addr:0x020e8bec
-data_ov008_020e8bf4 kind:data(any) addr:0x020e8bf4
+@2507 kind:data(any) addr:0x020e8bf4 local
 data_ov008_020e8bfc kind:data(any) addr:0x020e8bfc
 data_ov008_020e8c00 kind:data(any) addr:0x020e8c00
 _ZTV8WmCamera kind:data(any) addr:0x020e8c3c
@@ -1146,8 +1146,8 @@ data_ov008_020e9b78 kind:data(any) addr:0x020e9b78
 data_ov008_020e9b80 kind:data(any) addr:0x020e9b80
 Object12_Profile kind:data(any) addr:0x020e9b88
 _ZTV11EndingScene kind:data(any) addr:0x020e9b90
-data_ov008_020e9be0 kind:data(any) addr:0x020e9be0
-data_ov008_020e9be8 kind:data(any) addr:0x020e9be8
+@2502 kind:data(any) addr:0x020e9be0 local
+@2503 kind:data(any) addr:0x020e9be8 local
 Object324_Profile kind:data(any) addr:0x020e9bf0 ambiguous
 _ZTV9Object324 kind:data(any) addr:0x020e9bf8
 data_ov008_020e9c48 kind:data(any) addr:0x020e9c48
@@ -1367,8 +1367,8 @@ data_ov008_020ee4b4 kind:bss addr:0x020ee4b4
 data_ov008_020ee4dc kind:bss addr:0x020ee4dc
 data_ov008_020ee534 kind:bss addr:0x020ee534
 data_ov008_020ee58c kind:bss addr:0x020ee58c
-data_ov008_020ee604 kind:bss addr:0x020ee604
-data_ov008_020ee614 kind:bss addr:0x020ee614
+data_ov008_020ee604 kind:bss(size=0x10) addr:0x020ee604
+data_ov008_020ee614 kind:bss(size=0x10) addr:0x020ee614
 data_ov008_020ee624 kind:bss addr:0x020ee624
 data_ov008_020ee630 kind:bss addr:0x020ee630
 data_ov008_020ee63c kind:bss addr:0x020ee63c
@@ -1383,8 +1383,8 @@ _ZN13WmEntityModel11mainAnimTblE kind:bss(size=0x10) addr:0x020ee7e8
 _ZN12WmEntityMark7taskTblE kind:bss addr:0x020ee7f8
 _ZN12WmPlayerMark7taskTblE kind:bss addr:0x020ee818
 _ZN10WmNodeMark7taskTblE kind:bss addr:0x020ee848
-data_ov008_020ee888 kind:bss addr:0x020ee888
-data_ov008_020ee890 kind:bss addr:0x020ee890
+data_ov008_020ee888 kind:bss(size=0x8) addr:0x020ee888
+data_ov008_020ee890 kind:bss(size=0x8) addr:0x020ee890
 data_ov008_020ee898 kind:bss addr:0x020ee898
 data_ov008_020ee89c kind:bss addr:0x020ee89c
 data_ov008_020ee8a0 kind:bss addr:0x020ee8a0

@@ -8,6 +8,13 @@ public:
 	static void *create();
 	inline Object55() {};
 	inline ~Object55() {};
+
+	void func_ov024_0213c710();
+	void func_ov024_0213cadc();
+	void func_ov024_0213cb80();
+	void func_ov024_0213cea4();
+	void func_ov024_0213cfbc();
+	void func_ov024_0213d070();
 };
 
 extern ActorProfile Object55_Profile;

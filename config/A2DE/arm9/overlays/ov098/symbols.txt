@@ -5,9 +5,9 @@ _ZN9Object2508onRenderEv kind:function(arm,size=0x184) addr:0x0218581c
 _ZN9Object25010onUpdate_0Ev kind:function(arm,size=0xd0) addr:0x021859a0
 _ZN9Object2508onCreateEv kind:function(arm,size=0x35c) addr:0x02185a70
 _ZN9Object25013onHeapCreatedEv kind:function(arm,size=0x6c) addr:0x02185dcc
-func_ov098_02185e38 kind:function(arm,size=0x48) addr:0x02185e38
-func_ov098_02185e80 kind:function(arm,size=0x80) addr:0x02185e80
-func_ov098_02185f00 kind:function(arm,size=0x3c) addr:0x02185f00
+_ZN9Object25019func_ov098_02185e38Ev kind:function(arm,size=0x48) addr:0x02185e38
+_ZN9Object25019func_ov098_02185e80Ev kind:function(arm,size=0x80) addr:0x02185e80
+_ZN9Object25019func_ov098_02185f00Ev kind:function(arm,size=0x3c) addr:0x02185f00
 func_ov098_02185f3c kind:function(arm,size=0x1a8) addr:0x02185f3c
 func_ov098_021860e4 kind:function(arm,size=0x40) addr:0x021860e4
 func_ov098_02186124 kind:function(arm,size=0x7c) addr:0x02186124
@@ -29,9 +29,9 @@ _ZN9Object2588onCreateEv kind:function(arm,size=0x334) addr:0x02186ba0
 _ZN9Object25813onHeapCreatedEv kind:function(arm,size=0x6c) addr:0x02186ed4
 func_ov098_02186f40 kind:function(arm,size=0x90) addr:0x02186f40
 func_ov098_02186fd0 kind:function(arm,size=0x150) addr:0x02186fd0
-func_ov098_02187120 kind:function(arm,size=0x24) addr:0x02187120
-func_ov098_02187144 kind:function(arm,size=0xb0) addr:0x02187144
-func_ov098_021871f4 kind:function(arm,size=0x3c) addr:0x021871f4
+_ZN9Object25819func_ov098_02187120Ev kind:function(arm,size=0x24) addr:0x02187120
+_ZN9Object25819func_ov098_02187144Ev kind:function(arm,size=0xb0) addr:0x02187144
+_ZN9Object25819func_ov098_021871f4Ev kind:function(arm,size=0x3c) addr:0x021871f4
 func_ov098_02187230 kind:function(arm,size=0x21c) addr:0x02187230
 func_ov098_0218744c kind:function(arm,size=0x40) addr:0x0218744c
 func_ov098_0218748c kind:function(arm,size=0x7c) addr:0x0218748c
@@ -79,21 +79,21 @@ data_ov098_0218934c kind:data(any) addr:0x0218934c
 data_ov098_02189350 kind:data(any) addr:0x02189350
 _ZN7Manhole8acConfigE kind:data(any) addr:0x02189358
 
-__sinit_ov098_02189374 kind:function(arm,size=0x68) addr:0x02189374
-__sinit_ov098_021893dc kind:function(arm,size=0x68) addr:0x021893dc
-.p__sinit_ov098_02189374 kind:data(word) addr:0x02189444
-.p__sinit_ov098_021893dc kind:data(word) addr:0x02189448
+__sinit_Object250.cpp kind:function(arm,size=0x68) addr:0x02189374
+__sinit_Object258.cpp kind:function(arm,size=0x68) addr:0x021893dc
+.p__sinit_Object250.cpp kind:data(word) addr:0x02189444
+.p__sinit_Object258.cpp kind:data(word) addr:0x02189448
 
-data_ov098_02189460 kind:data(any) addr:0x02189460
-data_ov098_02189468 kind:data(any) addr:0x02189468
-data_ov098_02189470 kind:data(any) addr:0x02189470
+@0 kind:data(any) addr:0x02189460 local
+@1 kind:data(any) addr:0x02189468 local
+@2 kind:data(any) addr:0x02189470 local
 Object250_Profile kind:data(any) addr:0x02189478 ambiguous
 data_ov098_02189484 kind:data(any) addr:0x02189484
 _ZTV9Object250 kind:data(any) addr:0x021894a0
 data_ov098_02189518 kind:data(any) addr:0x02189518 ambiguous
-data_ov098_021895bc kind:data(any) addr:0x021895bc
-data_ov098_021895c4 kind:data(any) addr:0x021895c4
-data_ov098_021895cc kind:data(any) addr:0x021895cc
+@3 kind:data(any) addr:0x021895bc local
+@4 kind:data(any) addr:0x021895c4 local
+@5 kind:data(any) addr:0x021895cc local
 Object258_Profile kind:data(any) addr:0x021895d4 ambiguous
 data_ov098_021895e0 kind:data(any) addr:0x021895e0
 _ZTV9Object258 kind:data(any) addr:0x021895fc
@@ -111,9 +111,9 @@ data_ov098_02189860 kind:data(any) addr:0x02189860
 data_ov098_02189868 kind:data(any) addr:0x02189868
 _ZN7Manhole7profileE kind:data(any) addr:0x02189870 ambiguous
 _ZTV7Manhole kind:data(byte[276]) addr:0x0218987c
-data_ov098_021899a0 kind:bss addr:0x021899a0
-data_ov098_021899a8 kind:bss addr:0x021899a8
-data_ov098_021899b0 kind:bss addr:0x021899b0
-data_ov098_021899b8 kind:bss addr:0x021899b8
-data_ov098_021899c0 kind:bss addr:0x021899c0
-data_ov098_021899c8 kind:bss addr:0x021899c8
+data_ov098_021899a0 kind:bss(size=0x8) addr:0x021899a0
+data_ov098_021899a8 kind:bss(size=0x8) addr:0x021899a8
+data_ov098_021899b0 kind:bss(size=0x8) addr:0x021899b0
+data_ov098_021899b8 kind:bss(size=0x8) addr:0x021899b8
+data_ov098_021899c0 kind:bss(size=0x8) addr:0x021899c0
+data_ov098_021899c8 kind:bss(size=0x8) addr:0x021899c8

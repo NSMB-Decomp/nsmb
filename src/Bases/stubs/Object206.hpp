@@ -10,6 +10,8 @@ public:
 	static void *create();
 	inline Object206() {};
 	inline ~Object206() {};
+
+	void func_ov054_02156890();
 };
 
 extern ActorProfile Object206_Profile;

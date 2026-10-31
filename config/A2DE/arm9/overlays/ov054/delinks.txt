@@ -15,43 +15,73 @@ src/Bases/stubs/Object151.cpp:
 
 src/Bases/stubs/Object80.cpp:
     .text       start:0x021539f4 end:0x02154458
-    .data       start:0x0216cec8 end:0x0216d00c
+    .init       start:0x0216c4b4 end:0x0216c51c
+    .ctor       start:0x0216cc4c end:0x0216cc50
+    .data       start:0x0216ceb0 end:0x0216d00c
+    .bss        start:0x02171728 end:0x02171740
 
 src/Bases/stubs/Object67.cpp:
     .text       start:0x02154458 end:0x02154f00
-    .data       start:0x0216d01c end:0x0216d144
+    .init       start:0x0216c51c end:0x0216c56c
+    .ctor       start:0x0216cc50 end:0x0216cc54
+    .data       start:0x0216d00c end:0x0216d144
+    .bss        start:0x02171740 end:0x02171750
 
 src/Bases/stubs/Object237.cpp:
     .text       start:0x02154f00 end:0x02155f04
-    .data       start:0x0216d154 end:0x0216d27c
+    .init       start:0x0216c56c end:0x0216c5bc
+    .ctor       start:0x0216cc54 end:0x0216cc58
+    .data       start:0x0216d144 end:0x0216d27c
+    .bss        start:0x02171750 end:0x02171760
 
 src/Bases/stubs/Object87.cpp:
     .text       start:0x02155f04 end:0x02156668
-    .data       start:0x0216d284 end:0x0216d3a4
+    .init       start:0x0216c5bc end:0x0216c5e0
+    .ctor       start:0x0216cc58 end:0x0216cc5c
+    .data       start:0x0216d27c end:0x0216d3a4
+    .bss        start:0x02171760 end:0x02171768
 
 src/Bases/stubs/Object206.cpp:
     .text       start:0x02156668 end:0x02156d94
-    .data       start:0x0216d3b4 end:0x0216d4d4
+    .init       start:0x0216c5e0 end:0x0216c604
+    .ctor       start:0x0216cc5c end:0x0216cc60
+    .data       start:0x0216d3ac end:0x0216d4d4
+    .bss        start:0x02171768 end:0x02171770
 
 src/Bases/stubs/Object92.cpp:
     .text       start:0x02156d94 end:0x021571e0
-    .data       start:0x0216d4dc end:0x0216d5fc
+    .init       start:0x0216c604 end:0x0216c628
+    .ctor       start:0x0216cc60 end:0x0216cc64
+    .data       start:0x0216d4d4 end:0x0216d5fc
+    .bss        start:0x02171770 end:0x02171778
 
 src/Bases/stubs/Object62.cpp:
     .text       start:0x021571e0 end:0x02157a40
-    .data       start:0x0216d60c end:0x0216d72c
+    .init       start:0x0216c628 end:0x0216c678
+    .ctor       start:0x0216cc64 end:0x0216cc68
+    .data       start:0x0216d5fc end:0x0216d72c
+    .bss        start:0x02171778 end:0x02171788
 
 src/Bases/stubs/Object257.cpp:
     .text       start:0x02157a40 end:0x021586ac
-    .data       start:0x0216d744 end:0x0216d994
+    .init       start:0x0216c678 end:0x0216c6e0
+    .ctor       start:0x0216cc68 end:0x0216cc6c
+    .data       start:0x0216d72c end:0x0216d994
+    .bss        start:0x02171788 end:0x021717a0
 
 src/Bases/stubs/Object251.cpp:
     .text       start:0x021586ac end:0x02159404
-    .data       start:0x0216d9ac end:0x0216db08
+    .init       start:0x0216c6e0 end:0x0216c748
+    .ctor       start:0x0216cc6c end:0x0216cc70
+    .data       start:0x0216d994 end:0x0216db08
+    .bss        start:0x021717a0 end:0x021717b8
 
 src/Bases/stubs/Object86.cpp:
     .text       start:0x02159664 end:0x02159ed0
-    .data       start:0x0216dd40 end:0x0216de7c
+    .init       start:0x0216c748 end:0x0216c7b0
+    .ctor       start:0x0216cc70 end:0x0216cc74
+    .data       start:0x0216dd28 end:0x0216de7c
+    .bss        start:0x021717b8 end:0x021717d0
 
 src/Bases/stubs/Object260.cpp:
     .text       start:0x02159ed0 end:0x0215b778
@@ -63,11 +93,17 @@ src/Bases/stubs/Object261.cpp:
 
 src/Bases/stubs/Object69.cpp:
     .text       start:0x0215d25c end:0x0215e3a4
-    .data       start:0x0216e16c end:0x0216e294
+    .init       start:0x0216c7b0 end:0x0216c7d4
+    .ctor       start:0x0216cc74 end:0x0216cc78
+    .data       start:0x0216e164 end:0x0216e294
+    .bss        start:0x0217189c end:0x021718a4
 
 src/Bases/stubs/Object160.cpp:
     .text       start:0x0215f208 end:0x0215fed0
-    .data       start:0x0216e2b0 end:0x0216e358
+    .init       start:0x0216c7d4 end:0x0216c90c
+    .ctor       start:0x0216cc78 end:0x0216cc7c
+    .data       start:0x0216e294 end:0x0216e358
+    .bss        start:0x021718a8 end:0x02171908
 
 src/Bases/stubs/Object158.cpp:
     .text       start:0x02161fa4 end:0x02162714
@@ -95,16 +131,28 @@ src/Bases/stubs/Object285.cpp:
 
 src/Bases/stubs/Object71.cpp:
     .text       start:0x0216705c end:0x0216763c
-    .data       start:0x02170538 end:0x02170674
+    .init       start:0x0216c9c4 end:0x0216c9e8
+    .ctor       start:0x0216cc80 end:0x0216cc84
+    .data       start:0x02170530 end:0x02170674
+    .bss        start:0x0217261c end:0x02172624
 
 src/Bases/stubs/Object72.cpp:
     .text       start:0x0216763c end:0x02167afc
-    .data       start:0x0217067c end:0x021707b8
+    .init       start:0x0216c9e8 end:0x0216ca0c
+    .ctor       start:0x0216cc84 end:0x0216cc88
+    .data       start:0x02170674 end:0x021707b8
+    .bss        start:0x02172624 end:0x0217262c
 
 src/Bases/stubs/Object20.cpp:
     .text       start:0x02167afc end:0x02169518
-    .data       start:0x021707f0 end:0x02170fd0
+    .init       start:0x0216ca0c end:0x0216cafc
+    .ctor       start:0x0216cc88 end:0x0216cc8c
+    .data       start:0x021707b8 end:0x02170fd0
+    .bss        start:0x0217262c end:0x02172664
 
 src/Bases/stubs/Object242.cpp:
     .text       start:0x02169a28 end:0x0216bbf0
-    .data       start:0x02171020 end:0x0217118c
+    .init       start:0x0216cafc end:0x0216cc4c
+    .ctor       start:0x0216cc8c end:0x0216cc90
+    .data       start:0x02170fd0 end:0x0217118c
+    .bss        start:0x02172664 end:0x021726c0

@@ -149,3 +149,7 @@ s32 VsStar::onDestroy()
 VsStar::~VsStar()
 {
 }
+
+bool (VsStar::*data_ov020_02133550)() = &VsStar::func_ov020_0213203c;
+bool (VsStar::*data_ov020_02133548)() = &VsStar::func_ov020_02131f7c;
+bool (VsStar::*data_ov020_02133540)() = &VsStar::func_ov020_02131c54;

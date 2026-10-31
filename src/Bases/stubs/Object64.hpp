@@ -10,6 +10,8 @@ public:
 	static void *create();
 	inline Object64() {};
 	inline ~Object64() {};
+
+	void func_ov022_0213c034();
 };
 
 extern ActorProfile Object64_Profile;

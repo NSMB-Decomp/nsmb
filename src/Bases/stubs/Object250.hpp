@@ -8,6 +8,10 @@ public:
 	static void *create();
 	inline Object250() {};
 	inline ~Object250() {};
+
+	void func_ov098_02185e38();
+	void func_ov098_02185e80();
+	void func_ov098_02185f00();
 };
 
 extern ActorProfile Object250_Profile;

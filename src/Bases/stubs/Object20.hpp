@@ -15,6 +15,14 @@ public:
 	virtual s32 onDestroy();
 	virtual void pendingDestroy();
 	virtual bool onUpdate_0();
+
+	void func_ov054_0216821c();
+	void func_ov054_02168418();
+	void func_ov054_02168c80();
+	void func_ov054_02168e80();
+	void func_ov054_02169014();
+	void func_ov054_0216914c();
+	void func_ov054_02169290();
 };
 
 class Object137 : public Object20 {

@@ -11,6 +11,11 @@ public:
 	static void *create();
 	inline Object307() {};
 	inline ~Object307() {};
+
+	void func_ov009_020d5a40();
+	void func_ov009_020d5a94();
+	void func_ov009_020d5ae0();
+	void func_ov009_020d5b48();
 };
 
 extern ActorProfile Object307_Profile;

@@ -7,4 +7,7 @@
 
 src/Bases/stubs/Object112.cpp:
     .text       start:0x02146c60 end:0x021483f4
-    .data       start:0x02148548 end:0x02148680
+    .init       start:0x02148454 end:0x02148504
+    .ctor       start:0x02148504 end:0x02148508
+    .data       start:0x02148520 end:0x02148680
+    .bss        start:0x02148680 end:0x021486c0

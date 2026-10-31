@@ -5,9 +5,9 @@ _ZN8Object4110onUpdate_0Ev kind:function(arm,size=0xac) addr:0x02175c18
 func_ov071_02175cc4 kind:function(arm,size=0x74) addr:0x02175cc4
 _ZN8Object418onCreateEv kind:function(arm,size=0x3b4) addr:0x02175d38
 _ZN8Object4113onHeapCreatedEv kind:function(arm,size=0x98) addr:0x021760ec
-func_ov071_02176184 kind:function(arm,size=0x114) addr:0x02176184
-func_ov071_02176298 kind:function(arm,size=0x114) addr:0x02176298
-func_ov071_021763ac kind:function(arm,size=0x17c) addr:0x021763ac
+_ZN8Object4119func_ov071_02176184Ev kind:function(arm,size=0x114) addr:0x02176184
+_ZN8Object4119func_ov071_02176298Ev kind:function(arm,size=0x114) addr:0x02176298
+_ZN8Object4119func_ov071_021763acEv kind:function(arm,size=0x17c) addr:0x021763ac
 func_ov071_02176528 kind:function(arm,size=0xd4) addr:0x02176528
 func_ov071_021765fc kind:function(arm,size=0x15c) addr:0x021765fc
 func_ov071_02176758 kind:function(arm,size=0x2c8) addr:0x02176758
@@ -105,11 +105,11 @@ data_ov071_021792bc kind:data(any) addr:0x021792bc
 data_ov071_021792c0 kind:data(any) addr:0x021792c0 ambiguous
 data_ov071_021792c8 kind:data(any) addr:0x021792c8
 data_ov071_021792d4 kind:data(any) addr:0x021792d4
-__sinit_ov071_021792f0 kind:function(arm,size=0x68) addr:0x021792f0
-.p__sinit_ov071_021792f0 kind:data(word) addr:0x02179358
-data_ov071_02179360 kind:data(any) addr:0x02179360
-data_ov071_02179368 kind:data(any) addr:0x02179368
-data_ov071_02179370 kind:data(any) addr:0x02179370
+__sinit_Object41.cpp kind:function(arm,size=0x68) addr:0x021792f0
+.p__sinit_Object41.cpp kind:data(word) addr:0x02179358
+@0 kind:data(any) addr:0x02179360 local
+@1 kind:data(any) addr:0x02179368 local
+@2 kind:data(any) addr:0x02179370 local
 Object41_Profile kind:data(any) addr:0x02179378 ambiguous
 Object42_Profile kind:data(any) addr:0x02179384 ambiguous
 _ZTV8Object41 kind:data(any) addr:0x02179390
@@ -136,7 +136,7 @@ data_ov071_02179870 kind:data(any) addr:0x02179870
 data_ov071_02179878 kind:data(any) addr:0x02179878
 Object127_Profile kind:data(any) addr:0x02179880 ambiguous
 _ZTV9Object127 kind:data(any) addr:0x0217988c
-data_ov071_021799a0 kind:bss addr:0x021799a0
-data_ov071_021799a8 kind:bss addr:0x021799a8
-data_ov071_021799b0 kind:bss addr:0x021799b0
+data_ov071_021799a0 kind:bss(size=0x8) addr:0x021799a0
+data_ov071_021799a8 kind:bss(size=0x8) addr:0x021799a8
+data_ov071_021799b0 kind:bss(size=0x8) addr:0x021799b0
 data_ov071_021799b8 kind:bss addr:0x021799b8

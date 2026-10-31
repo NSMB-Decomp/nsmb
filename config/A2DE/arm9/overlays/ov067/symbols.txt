@@ -6,8 +6,8 @@ func_ov067_02175a00 kind:function(arm,size=0x44) addr:0x02175a00
 _ZN8Object2910onUpdate_0Ev kind:function(arm,size=0x30) addr:0x02175a44
 _ZN8Object298onCreateEv kind:function(arm,size=0x230) addr:0x02175a74
 _ZN8Object2913onHeapCreatedEv kind:function(arm,size=0x58) addr:0x02175ca4
-func_ov067_02175cfc kind:function(arm,size=0x454) addr:0x02175cfc
-func_ov067_02176150 kind:function(arm,size=0x1a4) addr:0x02176150
+_ZN8Object2919func_ov067_02175cfcEv kind:function(arm,size=0x454) addr:0x02175cfc
+_ZN8Object2919func_ov067_02176150Ev kind:function(arm,size=0x1a4) addr:0x02176150
 _ZN8Object293_23Ev kind:function(arm,size=0x8c) addr:0x021762f4
 _ZN8Object293_22Ev kind:function(arm,size=0x58) addr:0x02176380
 _ZN8Object293_24Ev kind:function(arm,size=0x2c) addr:0x021763d8
@@ -28,12 +28,12 @@ data_ov067_021766c0 kind:data(any) addr:0x021766c0
 data_ov067_021766c8 kind:data(any) addr:0x021766c8
 data_ov067_021766d0 kind:data(any) addr:0x021766d0
 data_ov067_021766d8 kind:data(any) addr:0x021766d8
-__sinit_ov067_021766f4 kind:function(arm,size=0x50) addr:0x021766f4
-.p__sinit_ov067_021766f4 kind:data(word) addr:0x02176744
-data_ov067_02176760 kind:data(any) addr:0x02176760
-data_ov067_02176768 kind:data(any) addr:0x02176768
+__sinit_Object29.cpp kind:function(arm,size=0x50) addr:0x021766f4
+.p__sinit_Object29.cpp kind:data(word) addr:0x02176744
+@0 kind:data(any) addr:0x02176760 local
+@1 kind:data(any) addr:0x02176768 local
 Object29_Profile kind:data(any) addr:0x02176770 ambiguous
 _ZTV8Object29 kind:data(any) addr:0x0217677c
 data_ov067_021768a0 kind:bss addr:0x021768a0
-data_ov067_021768a4 kind:bss addr:0x021768a4
-data_ov067_021768ac kind:bss addr:0x021768ac
+data_ov067_021768a4 kind:bss(size=0x8) addr:0x021768a4
+data_ov067_021768ac kind:bss(size=0x8) addr:0x021768ac

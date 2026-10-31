@@ -7,7 +7,10 @@
 
 src/Bases/stubs/Object58.cpp:
     .text       start:0x02146c60 end:0x02147514
-    .data       start:0x02151c38 end:0x02151d58
+    .init       start:0x02151b18 end:0x02151b80
+    .ctor       start:0x02151bf4 end:0x02151bf8
+    .data       start:0x02151c20 end:0x02151d58
+    .bss        start:0x02152800 end:0x02152818
 
 src/Bases/stubs/Object249.cpp:
     .text       start:0x021491f8 end:0x02149228
@@ -19,7 +22,10 @@ src/Bases/stubs/Object248.cpp:
 
 src/Bases/stubs/Object27.cpp:
     .text       start:0x0214929c end:0x0214a9b4
-    .data       start:0x02151fb0 end:0x021520e4
+    .init       start:0x02151bd0 end:0x02151bf4
+    .ctor       start:0x02151bfc end:0x02151c00
+    .data       start:0x02151fa8 end:0x021520e4
+    .bss        start:0x02152828 end:0x02152840
 
 src/Bases/stubs/Object262.cpp:
     .text       start:0x0214ab14 end:0x0214bcec

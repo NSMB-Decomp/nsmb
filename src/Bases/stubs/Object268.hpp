@@ -10,6 +10,8 @@ public:
 	static void *create();
 	inline Object268() {};
 	inline ~Object268() {};
+
+	void func_ov010_020f5a10();
 };
 
 extern ActorProfile Object268_Profile;

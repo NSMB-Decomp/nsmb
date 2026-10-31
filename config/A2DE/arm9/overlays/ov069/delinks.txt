@@ -7,4 +7,7 @@
 
 src/Bases/stubs/Object259.cpp:
     .text       start:0x021759a0 end:0x021781d4
-    .data       start:0x02178438 end:0x02178580
+    .init       start:0x0217824c end:0x021783bc
+    .ctor       start:0x021783bc end:0x021783c0
+    .data       start:0x021783e0 end:0x02178580
+    .bss        start:0x02178580 end:0x021785e0

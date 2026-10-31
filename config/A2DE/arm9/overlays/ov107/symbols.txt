@@ -4,9 +4,9 @@ func_ov107_02189c08 kind:function(arm,size=0x20) addr:0x02189c08
 func_ov107_02189c28 kind:function(arm,size=0xa0) addr:0x02189c28
 func_ov107_02189cc8 kind:function(arm,size=0x8c) addr:0x02189cc8
 func_ov107_02189d54 kind:function(arm,size=0x30) addr:0x02189d54
-func_ov107_02189d84 kind:function(arm,size=0x11c) addr:0x02189d84
+_ZN9Object19619func_ov107_02189d84Ev kind:function(arm,size=0x11c) addr:0x02189d84
 func_ov107_02189ea0 kind:function(arm,size=0x144) addr:0x02189ea0
-func_ov107_02189fe4 kind:function(arm,size=0x88) addr:0x02189fe4
+_ZN9Object19619func_ov107_02189fe4Ev kind:function(arm,size=0x88) addr:0x02189fe4
 _ZN9Object19610onUpdate_0Ev kind:function(arm,size=0x26c) addr:0x0218a06c
 _ZN9Object1968onRenderEv kind:function(arm,size=0x98) addr:0x0218a2d8
 _ZN9Object19614pendingDestroyEv kind:function(arm,size=0x4) addr:0x0218a370
@@ -18,10 +18,10 @@ func_ov107_0218a6d0 kind:function(arm,size=0xc) addr:0x0218a6d0
 func_ov107_0218a6dc kind:function(arm,size=0x1c) addr:0x0218a6dc
 func_ov107_0218a6f8 kind:function(arm,size=0x18) addr:0x0218a6f8
 _ZN9Object1966createEv kind:function(arm,size=0x100) addr:0x0218a710
-__sinit_ov107_0218a810 kind:function(arm,size=0x3c) addr:0x0218a810
-.p__sinit_ov107_0218a810 kind:data(word) addr:0x0218a84c
-data_ov107_0218a860 kind:data(any) addr:0x0218a860
-data_ov107_0218a868 kind:data(any) addr:0x0218a868
+__sinit_Object196.cpp kind:function(arm,size=0x3c) addr:0x0218a810
+.p__sinit_Object196.cpp kind:data(word) addr:0x0218a84c
+@0 kind:data(any) addr:0x0218a860 local
+@1 kind:data(any) addr:0x0218a868 local
 Object196_Profile kind:data(any) addr:0x0218a870 ambiguous
 _ZTV9Object196 kind:data(any) addr:0x0218a87c
-data_ov107_0218a9a0 kind:bss addr:0x0218a9a0
+data_ov107_0218a9a0 kind:bss(size=0x10) addr:0x0218a9a0

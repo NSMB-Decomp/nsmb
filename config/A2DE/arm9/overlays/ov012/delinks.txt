@@ -7,11 +7,17 @@
 
 src/Bases/stubs/Object36.cpp:
     .text       start:0x0212f900 end:0x0213093c
-    .data       start:0x021320a0 end:0x021321e4
+    .init       start:0x02131fa8 end:0x02132038
+    .ctor       start:0x0213205c end:0x02132060
+    .data       start:0x02132080 end:0x021321e4
+    .bss        start:0x02132500 end:0x02132520
 
 src/Bases/stubs/Object77.cpp:
     .text       start:0x0213093c end:0x02130f24
-    .data       start:0x021321ec end:0x02132314
+    .init       start:0x02132038 end:0x0213205c
+    .ctor       start:0x02132060 end:0x02132064
+    .data       start:0x021321e4 end:0x02132314
+    .bss        start:0x02132520 end:0x02132528
 
 src/Bases/stubs/Object182.cpp:
     .text       start:0x02130f24 end:0x02131944

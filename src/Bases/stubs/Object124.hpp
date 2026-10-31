@@ -8,6 +8,11 @@ public:
 	static void *create();
 	inline Object124() {};
 	inline ~Object124() {};
+
+	void func_ov110_02189de0();
+	void func_ov110_02189e78();
+	void func_ov110_02189efc();
+	void func_ov110_02189f90();
 };
 
 extern ActorProfile Object124_Profile;

@@ -27,6 +27,17 @@ public:
 	virtual s32 onDestroy();
 	virtual s32 onUpdate();
 	virtual s32 onRender();
+
+	void func_ov054_0215f400();
+	void func_ov054_0215f6d8();
+	void func_ov054_0215f710();
+	void func_ov054_0215f748();
+	void func_ov054_0215f794();
+	void func_ov054_0215f7e4();
+	void func_ov054_0215f92c();
+	void func_ov054_0215f964();
+	void func_ov054_0215f974();
+	void func_ov054_0215f9dc();
 };
 
 extern ObjectProfile Object160_Profile;

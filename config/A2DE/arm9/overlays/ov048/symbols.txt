@@ -35,7 +35,7 @@ _ZN8Object57D0Ev kind:function(arm,size=0x80) addr:0x02147ce0
 _ZN8Object578onRenderEv kind:function(arm,size=0x168) addr:0x02147d60
 _ZN8Object5710onUpdate_0Ev kind:function(arm,size=0x48) addr:0x02147ec8
 _ZN8Object578onCreateEv kind:function(arm,size=0xc0) addr:0x02147f10
-func_ov048_02147fd0 kind:function(arm,size=0x268) addr:0x02147fd0
+_ZN8Object5719func_ov048_02147fd0Ev kind:function(arm,size=0x268) addr:0x02147fd0
 func_ov048_02148238 kind:function(arm,size=0xb4) addr:0x02148238
 func_ov048_021482ec kind:function(arm,size=0x80) addr:0x021482ec
 _ZN8Object5710onUpdate_3Ev kind:function(arm,size=0x40) addr:0x0214836c
@@ -53,8 +53,8 @@ data_ov048_02148700 kind:data(any) addr:0x02148700
 data_ov048_02148704 kind:data(any) addr:0x02148704
 data_ov048_02148720 kind:data(any) addr:0x02148720
 data_ov048_02148740 kind:data(any) addr:0x02148740
-__sinit_ov048_021487a4 kind:function(arm,size=0x24) addr:0x021487a4
-.p__sinit_ov048_021487a4 kind:data(word) addr:0x021487c8
+__sinit_Object57.cpp kind:function(arm,size=0x24) addr:0x021487a4
+.p__sinit_Object57.cpp kind:data(word) addr:0x021487c8
 data_ov048_021487e0 kind:data(any) addr:0x021487e0
 Object169_Profile kind:data(any) addr:0x021487e8
 _ZTV9Object169 kind:data(any) addr:0x021487f4
@@ -63,8 +63,8 @@ data_ov048_02148910 kind:data(any) addr:0x02148910
 data_ov048_02148918 kind:data(any) addr:0x02148918
 Object170_Profile kind:data(any) addr:0x02148920
 _ZTV9Object170 kind:data(any) addr:0x0214892c
-data_ov048_02148a40 kind:data(any) addr:0x02148a40
+@0 kind:data(any) addr:0x02148a40 local
 Object57_Profile kind:data(any) addr:0x02148a48 ambiguous
 _ZTV8Object57 kind:data(any) addr:0x02148a54
 data_ov048_02148b08 kind:data(any) addr:0x02148b08 ambiguous
-data_ov048_02148b80 kind:bss addr:0x02148b80
+data_ov048_02148b80 kind:bss(size=0x8) addr:0x02148b80

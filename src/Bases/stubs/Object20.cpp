@@ -51,6 +51,14 @@ void *Object142::create()
 	return new Object142();
 }
 
+void (Object20::*data_ov054_02172644)() = &Object20::func_ov054_02169290;
+void (Object20::*data_ov054_02172634)() = &Object20::func_ov054_0216914c;
+void (Object20::*data_ov054_0217263c)() = &Object20::func_ov054_02169014;
+void (Object20::*data_ov054_0217262c)() = &Object20::func_ov054_02168e80;
+void (Object20::*data_ov054_0217265c)() = &Object20::func_ov054_02168c80;
+void (Object20::*data_ov054_02172654)() = &Object20::func_ov054_02168418;
+void (Object20::*data_ov054_0217264c)() = &Object20::func_ov054_0216821c;
+
 // 0x02170820
 ActorProfile Object20_Profile = { Object20::create, 20, 27, NULL };
 

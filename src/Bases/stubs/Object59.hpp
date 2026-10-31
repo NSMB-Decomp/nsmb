@@ -10,6 +10,8 @@ public:
 	static void *create();
 	inline Object59() {};
 	inline ~Object59() {};
+
+	void func_ov066_02175b64();
 };
 
 extern ActorProfile Object59_Profile;

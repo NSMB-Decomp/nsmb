@@ -15,6 +15,10 @@ void *Object253::create()
 	return new Object253();
 }
 
+void (Object251::*data_ov054_021717a8)() = &Object251::func_ov054_02158d3c;
+void (Object251::*data_ov054_021717a0)() = &Object251::func_ov054_02158be8;
+void (Object251::*data_ov054_021717b0)() = &Object251::func_ov054_02158a94;
+
 // 0x0216d9ac
 ActorProfile Object251_Profile = { Object251::create, 251, 105, NULL };
 

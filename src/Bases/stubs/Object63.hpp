@@ -8,6 +8,8 @@ public:
 	static void *create();
 	inline Object63() {};
 	inline ~Object63() {};
+
+	void func_ov080_0217bad0();
 };
 
 extern ActorProfile Object63_Profile;

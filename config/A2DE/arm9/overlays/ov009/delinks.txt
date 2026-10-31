@@ -19,19 +19,31 @@ src/Bases/stubs/Object305.cpp:
 
 src/Bases/stubs/Object306.cpp:
     .text       start:0x020d52d0 end:0x020d598c
-    .data       start:0x020dac58 end:0x020dacbc
+    .init       start:0x020d9e28 end:0x020d9f00
+    .ctor       start:0x020da5e8 end:0x020da5ec
+    .data       start:0x020dac18 end:0x020dacbc
+    .bss        start:0x020dbf5c end:0x020dbf9c
 
 src/Bases/stubs/Object307.cpp:
     .text       start:0x020d598c end:0x020d5d8c
-    .data       start:0x020dacdc end:0x020dad40
+    .init       start:0x020d9f00 end:0x020d9f70
+    .ctor       start:0x020da5ec end:0x020da5f0
+    .data       start:0x020dacbc end:0x020dad40
+    .bss        start:0x020dbf9c end:0x020dbfbc
 
 src/Bases/stubs/Object308.cpp:
     .text       start:0x020d5d8c end:0x020d76e0
-    .data       start:0x020daea0 end:0x020daf04
+    .init       start:0x020d9f70 end:0x020da3b8
+    .ctor       start:0x020da5f0 end:0x020da5f4
+    .data       start:0x020dad40 end:0x020daf04
+    .bss        start:0x020dbfbc end:0x020dc11c
 
 src/Bases/stubs/Object309.cpp:
     .text       start:0x020d76e0 end:0x020d7d24
-    .data       start:0x020daf4c end:0x020dafb0
+    .init       start:0x020da3b8 end:0x020da4a8
+    .ctor       start:0x020da5f4 end:0x020da5f8
+    .data       start:0x020daf04 end:0x020dafb0
+    .bss        start:0x020dc11c end:0x020dc164
 
 src/Bases/stubs/Object310.cpp:
     .text       start:0x020d8564 end:0x020d8870
@@ -39,7 +51,10 @@ src/Bases/stubs/Object310.cpp:
 
 src/Bases/stubs/Object311.cpp:
     .text       start:0x020d8918 end:0x020d8c50
-    .data       start:0x020db04c end:0x020db0b0
+    .init       start:0x020da518 end:0x020da570
+    .ctor       start:0x020da5fc end:0x020da600
+    .data       start:0x020db034 end:0x020db0b0
+    .bss        start:0x020dc188 end:0x020dc1a0
 
 src/Bases/stubs/Object312.cpp:
     .text       start:0x020d8c50 end:0x020d8fe8

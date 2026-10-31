@@ -4,10 +4,10 @@ _ZN9Object1248onRenderEv kind:function(arm,size=0x110) addr:0x02189b28
 _ZN9Object12410onUpdate_0Ev kind:function(arm,size=0x20) addr:0x02189c38
 _ZN9Object1248onCreateEv kind:function(arm,size=0x150) addr:0x02189c58
 _ZN9Object12413onHeapCreatedEv kind:function(arm,size=0x38) addr:0x02189da8
-func_ov110_02189de0 kind:function(arm,size=0x98) addr:0x02189de0
-func_ov110_02189e78 kind:function(arm,size=0x84) addr:0x02189e78
-func_ov110_02189efc kind:function(arm,size=0x94) addr:0x02189efc
-func_ov110_02189f90 kind:function(arm,size=0x1b8) addr:0x02189f90
+_ZN9Object12419func_ov110_02189de0Ev kind:function(arm,size=0x98) addr:0x02189de0
+_ZN9Object12419func_ov110_02189e78Ev kind:function(arm,size=0x84) addr:0x02189e78
+_ZN9Object12419func_ov110_02189efcEv kind:function(arm,size=0x94) addr:0x02189efc
+_ZN9Object12419func_ov110_02189f90Ev kind:function(arm,size=0x1b8) addr:0x02189f90
 func_ov110_0218a148 kind:function(arm,size=0x164) addr:0x0218a148
 func_ov110_0218a2ac kind:function(arm,size=0x40) addr:0x0218a2ac
 func_ov110_0218a2ec kind:function(arm,size=0xb0) addr:0x0218a2ec
@@ -22,17 +22,17 @@ func_ov110_0218a5ec kind:function(arm,size=0x8c) addr:0x0218a5ec
 func_ov110_0218a678 kind:function(arm,size=0x24) addr:0x0218a678
 _ZN9Object1246createEv kind:function(arm,size=0x88) addr:0x0218a69c
 data_ov110_0218a724 kind:data(any) addr:0x0218a724
-__sinit_ov110_0218a740 kind:function(arm,size=0x90) addr:0x0218a740
-.p__sinit_ov110_0218a740 kind:data(word) addr:0x0218a7d0
-data_ov110_0218a7e0 kind:data(any) addr:0x0218a7e0
-data_ov110_0218a7e8 kind:data(any) addr:0x0218a7e8
-data_ov110_0218a7f0 kind:data(any) addr:0x0218a7f0
-data_ov110_0218a7f8 kind:data(any) addr:0x0218a7f8
+__sinit_Object124.cpp kind:function(arm,size=0x90) addr:0x0218a740
+.p__sinit_Object124.cpp kind:data(word) addr:0x0218a7d0
+@0 kind:data(any) addr:0x0218a7e0 local
+@1 kind:data(any) addr:0x0218a7e8 local
+@2 kind:data(any) addr:0x0218a7f0 local
+@3 kind:data(any) addr:0x0218a7f8 local
 Object124_Profile kind:data(any) addr:0x0218a800 ambiguous
 _ZTV9Object124 kind:data(any) addr:0x0218a80c
 data_ov110_0218a870 kind:data(any) addr:0x0218a870 ambiguous
 data_ov110_0218a884 kind:data(any) addr:0x0218a884 ambiguous
-data_ov110_0218a940 kind:bss addr:0x0218a940
-data_ov110_0218a948 kind:bss addr:0x0218a948
-data_ov110_0218a950 kind:bss addr:0x0218a950
-data_ov110_0218a958 kind:bss addr:0x0218a958
+data_ov110_0218a940 kind:bss(size=0x8) addr:0x0218a940
+data_ov110_0218a948 kind:bss(size=0x8) addr:0x0218a948
+data_ov110_0218a950 kind:bss(size=0x8) addr:0x0218a950
+data_ov110_0218a958 kind:bss(size=0x8) addr:0x0218a958

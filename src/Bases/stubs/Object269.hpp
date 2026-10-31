@@ -8,6 +8,13 @@ public:
 	static void *create();
 	inline Object269() {};
 	inline ~Object269() {};
+
+	void func_ov089_0217f0fc();
+	void func_ov089_0217f14c();
+	void func_ov089_0217f304();
+	void func_ov089_0217f3c4();
+	void func_ov089_0217f4f8();
+	void func_ov089_0217f5a4();
 };
 
 extern ActorProfile Object269_Profile;

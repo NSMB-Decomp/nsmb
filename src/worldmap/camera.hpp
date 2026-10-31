@@ -22,5 +22,10 @@ public:
 	u32 unk160;
 	u32 unk164;
 
+
+	void func_ov008_020d16cc();
+	void func_ov008_020d1808();
+	void func_ov008_020d1850();
+	void func_ov008_020d1880();
 };
 NTR_SIZE_GUARD(WmCamera, 0x168);

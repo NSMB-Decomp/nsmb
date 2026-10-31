@@ -10,6 +10,9 @@ void *Object47::create2()
 	return new Object47();
 }
 
+void (Object47::*data_ov100_021899c8)() = &Object47::func_ov100_0218871c;
+void (Object47::*data_ov100_021899c0)() = &Object47::func_ov100_02188050;
+
 // 0x02189780
 ActorProfile Object48_Profile = { Object47::create2, 48, 62, NULL /* TODO: 0x02188a68 */ };
 

@@ -6,10 +6,10 @@ _ZN8Object368onRenderEv kind:function(arm,size=0x2a0) addr:0x0212fa0c
 _ZN8Object368onUpdateEv kind:function(arm,size=0x118) addr:0x0212fcac
 _ZN8Object368onCreateEv kind:function(arm,size=0x1e4) addr:0x0212fdc4
 _ZN8Object3613onHeapCreatedEv kind:function(arm,size=0x114) addr:0x0212ffa8
-func_ov012_021300bc kind:function(arm,size=0x48) addr:0x021300bc
-func_ov012_02130104 kind:function(arm,size=0xdc) addr:0x02130104
-func_ov012_021301e0 kind:function(arm,size=0xbc) addr:0x021301e0
-func_ov012_0213029c kind:function(arm,size=0x48) addr:0x0213029c
+_ZN8Object3619func_ov012_021300bcEv kind:function(arm,size=0x48) addr:0x021300bc
+_ZN8Object3619func_ov012_02130104Ev kind:function(arm,size=0xdc) addr:0x02130104
+_ZN8Object3619func_ov012_021301e0Ev kind:function(arm,size=0xbc) addr:0x021301e0
+_ZN8Object3619func_ov012_0213029cEv kind:function(arm,size=0x48) addr:0x0213029c
 func_ov012_021302e4 kind:function(arm,size=0x148) addr:0x021302e4
 func_ov012_0213042c kind:function(arm,size=0x2c0) addr:0x0213042c
 func_ov012_021306ec kind:function(arm,size=0x48) addr:0x021306ec
@@ -28,7 +28,7 @@ _ZN8Object778onRenderEv kind:function(arm,size=0x128) addr:0x02130a50
 _ZN8Object7710onUpdate_0Ev kind:function(arm,size=0x20) addr:0x02130b78
 _ZN8Object778onCreateEv kind:function(arm,size=0x174) addr:0x02130b98
 _ZN8Object7713onHeapCreatedEv kind:function(arm,size=0x78) addr:0x02130d0c
-func_ov012_02130d84 kind:function(arm,size=0x3c) addr:0x02130d84
+_ZN8Object7719func_ov012_02130d84Ev kind:function(arm,size=0x3c) addr:0x02130d84
 func_ov012_02130dc0 kind:function(arm,size=0x8) addr:0x02130dc0
 func_ov012_02130dc8 kind:function(arm,size=0x48) addr:0x02130dc8
 func_ov012_02130e10 kind:function(arm,size=0x8c) addr:0x02130e10
@@ -73,18 +73,18 @@ data_ov012_02131f48 kind:data(any) addr:0x02131f48
 data_ov012_02131f58 kind:data(any) addr:0x02131f58
 data_ov012_02131f74 kind:data(any) addr:0x02131f74
 data_ov012_02131f98 kind:data(any) addr:0x02131f98
-__sinit_ov012_02131fa8 kind:function(arm,size=0x90) addr:0x02131fa8
-__sinit_ov012_02132038 kind:function(arm,size=0x24) addr:0x02132038
-.p__sinit_ov012_02131fa8 kind:data(word) addr:0x0213205c
-.p__sinit_ov012_02132038 kind:data(word) addr:0x02132060
-data_ov012_02132080 kind:data(any) addr:0x02132080
-data_ov012_02132088 kind:data(any) addr:0x02132088
-data_ov012_02132090 kind:data(any) addr:0x02132090
-data_ov012_02132098 kind:data(any) addr:0x02132098
+__sinit_Object36.cpp kind:function(arm,size=0x90) addr:0x02131fa8
+__sinit_Object77.cpp kind:function(arm,size=0x24) addr:0x02132038
+.p__sinit_Object36.cpp kind:data(word) addr:0x0213205c
+.p__sinit_Object77.cpp kind:data(word) addr:0x02132060
+@0 kind:data(any) addr:0x02132080 local
+@1 kind:data(any) addr:0x02132088 local
+@2 kind:data(any) addr:0x02132090 local
+@3 kind:data(any) addr:0x02132098 local
 Object36_Profile kind:data(any) addr:0x021320a0
 data_ov012_021320ac kind:data(any) addr:0x021320ac
 _ZTV8Object36 kind:data(any) addr:0x021320c8
-data_ov012_021321e4 kind:data(any) addr:0x021321e4
+@4 kind:data(any) addr:0x021321e4 local
 Object77_Profile kind:data(any) addr:0x021321ec
 _ZTV8Object77 kind:data(any) addr:0x021321f8
 data_ov012_02132314 kind:data(any) addr:0x02132314
@@ -104,11 +104,11 @@ data_ov012_0213248c kind:data(any) addr:0x0213248c
 Object236_Profile kind:data(any) addr:0x02132494 ambiguous
 _ZTV9Object236 kind:data(any) addr:0x021324a0
 data_ov012_021324f8 kind:data(any) addr:0x021324f8 ambiguous
-data_ov012_02132500 kind:bss addr:0x02132500
-data_ov012_02132508 kind:bss addr:0x02132508
-data_ov012_02132510 kind:bss addr:0x02132510
-data_ov012_02132518 kind:bss addr:0x02132518
-data_ov012_02132520 kind:bss addr:0x02132520
+data_ov012_02132500 kind:bss(size=0x8) addr:0x02132500
+data_ov012_02132508 kind:bss(size=0x8) addr:0x02132508
+data_ov012_02132510 kind:bss(size=0x8) addr:0x02132510
+data_ov012_02132518 kind:bss(size=0x8) addr:0x02132518
+data_ov012_02132520 kind:bss(size=0x8) addr:0x02132520
 data_ov012_02132528 kind:bss addr:0x02132528
 data_ov012_0213252c kind:bss addr:0x0213252c
 data_ov012_02132538 kind:bss addr:0x02132538

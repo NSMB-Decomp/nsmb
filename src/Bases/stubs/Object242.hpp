@@ -8,6 +8,17 @@ public:
 	static void *create();
 	inline Object242() {};
 	inline ~Object242() {};
+
+	void func_ov054_0216a510();
+	void func_ov054_0216a5d4();
+	void func_ov054_0216a6c0();
+	void func_ov054_0216a944();
+	void func_ov054_0216a980();
+	void func_ov054_0216aad8();
+	void func_ov054_0216ac50();
+	void func_ov054_0216ace0();
+	void func_ov054_0216ad58();
+	void func_ov054_0216b058();
 };
 
 extern ActorProfile Object242_Profile;
