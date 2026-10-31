@@ -203,13 +203,12 @@ extern void func_0200f3d8();
 extern u32 data_02085abc;
 extern u32 data_02085a7c;
 extern void func_02006c7c();
-extern void* PTR_02085b18;
-extern void func_ov008_020cd478();
+extern void* data_02085b18;
 extern u32 data_02085c24;
 extern u32 data_02085c34;
 extern u32 data_02085c30;
 extern u32 data_02085c2c;
-extern void* DAT_020caa38;
+extern s16 *data_ov000_020caa38;
 
 void func_ov001_020cceb4();
 

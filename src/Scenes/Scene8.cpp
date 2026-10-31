@@ -1,4 +1,5 @@
 #include "Scene8.hpp"
+#include "../Bases/stubs/Object317.hpp"
 
 Scene8::Scene8() {};
 void *Scene8::create()
@@ -34,7 +35,7 @@ s32 Scene8::onCreate() {
   	GX_SetBankForSubBG(4);
   	Nitro::func_0206134c(0x100);
   	Nitro::func_020612c0(0x80);
-	PTR_02085b18 = NULL;
+	data_02085b18 = NULL;
 	GX_SetGraphicsMode(1,5,1);
 	GX_SetDispSelect(0); // TODO: This may be incorrect - REG_POWER_CNT &= 0x7fff;
 	GX_SetOBJVRamModeChar(0x200010); // REG_DISPCNT = REG_DISPCNT & 0xffcfffef | 0x200010;
@@ -58,7 +59,7 @@ s32 Scene8::onCreate() {
     *(s32 *)0x04000014 = 0; // TODO: REG_BG1HOFS = 0
     *(s32 *)0x04000018 = 0; // TODO: REG_BG2HOFS = 0
     *(s32 *)0x0400001C = 0; // TODO: REG_BG3HOFS = 0
-	MIi_CpuClearFast(0, G2_GetBG1ScrPtr(), 0x800);
+	Nitro::func_02066edc(0, G2_GetBG1ScrPtr(), 0x800);
 	Nitro::func_02060d5c(0);
     GXS_SetVisiblePlane(1); // REG_DISPCNT_SUB = (REG_DISPCNT_SUB & ~0x1F00) | 0x100;
     G2S_SetBG0Priority(0); //REG_BG0CNT_SUB &= ~3;
@@ -74,9 +75,9 @@ s32 Scene8::onCreate() {
     GXS_SetOBJVRamModeChar(0); //REG_DISPCNT_SUB &= 0xFFCFFFEF;
     *(s32 *)0x04001010 = 0; // TODO: REG_BG0HOFS_SUB = 0
     *(s32 *)0x0400101C = 0; // TODO: REG_BG3HOFS_SUB = 0
-	MIi_CpuClearFast(0,G2S_GetBG0ScrPtr(),0x800);
+	Nitro::func_02066edc(0, G2S_GetBG0ScrPtr(),0x800);
 	data_02085e0c = 0;
-	func_ov008_020cd478();
+	Object317::loadResources();
 	func_02009a30(0xc0080787,0,0);
 	u32 address = 0x6400000;
 	u8 array = 0xff;
@@ -90,13 +91,13 @@ s32 Scene8::onCreate() {
 	data_02085c30 = 0x10;
 	data_02085c2c = 0x10;
 
-	address = (u32)G2S_GetBG0ScrPtr();
+	address = (u32)G2S_GetBG1ScrPtr();
 	array = 0;
 	for (s32 i = 0; i < 0x20; i++) {
 		MI_CpuCopy8(&array, (void*) address, 1);
 		address++;
 	}
-	DAT_020caa38 = Object::spawnObject(OBJECT_WORLD_CAMERA,(Base*)this,0,0);
+	data_ov000_020caa38 = (s16 *)Object::spawnObject(OBJECT_WORLD_CAMERA,(Base*)this,0,0);
 	Actor::spawnActor(OBJECT_WORLD_RING_MODEL,settings,0,0,0,0);
 	func_02011c34(0xffffffff);
 	return true;
@@ -118,9 +119,6 @@ s32 Scene8::onRender()
 	return true;
 };
 
-void func_02011e3c(u32);
-void func_020131fc(u32, u32);
-u16 data_02087650[2][2];
 s32 Scene8::onUpdate()
 {
 	if ((u16)(data_02087650[Input::localConsoleID][0] & 0xc) == 0xc) {
@@ -131,6 +129,5 @@ s32 Scene8::onUpdate()
 	return true;
 };
 
-Scene8::~Scene8() {
-
-};
+// 0x020e5878
+ObjectProfile Object8_Profile = { Scene8::create, 8, 16 };

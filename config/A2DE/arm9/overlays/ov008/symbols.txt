@@ -696,7 +696,7 @@ __sinit_ov008_020e57e0 kind:function(arm,size=0x4) addr:0x020e57e0
 
 Object7_Profile kind:data(any) addr:0x020e5820
 _ZTV9SaveScene kind:data(any) addr:0x020e5828
-UnknownProfile::ov008_020e5878 kind:data(any) addr:0x020e5878
+Object8_Profile kind:data(any) addr:0x020e5878
 _ZTV6Scene8 kind:data(any) addr:0x020e5880
 Object318_Profile kind:data(any) addr:0x020e58d0
 data_ov008_020e58d8 kind:data(any) addr:0x020e58d8

@@ -7,7 +7,7 @@ class Scene8 : public Scene
 	u8 _pad[0x4];
 
 	inline Scene8();
-	~Scene8();
+	inline ~Scene8() {};
 	static void *create();
 
 	s32 onCreate();
@@ -16,3 +16,5 @@ class Scene8 : public Scene
 	s32 onRender();
 	void pendingDestroy();
 };
+
+extern ObjectProfile Object8_Profile;
