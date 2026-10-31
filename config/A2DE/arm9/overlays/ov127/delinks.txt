@@ -6,9 +6,30 @@
     .data       start:0x020a9140 end:0x020b6f20 kind:data align:32
     .bss        start:0x020b6f20 end:0x020b8920 kind:bss align:32
 
+src/Minigame/ov127_020a8774.cpp:
+    .init       start:0x020a8774 end:0x020a8788
+    .ctor       start:0x020a9120 end:0x020a9124
+    .bss        start:0x020b6f58 end:0x020b6f60
+
 src/Minigame/ov127_020a8788.cpp:
     .text       start:0x02099680 end:0x0209ce28
     .init       start:0x020a8788 end:0x020a8f40
     .ctor       start:0x020a9124 end:0x020a9128
     .data       start:0x020b1760 end:0x020b19cc
     .bss        start:0x020b6f60 end:0x020b8610
+
+src/Minigame/ov127_020a8f40.cpp:
+    .init       start:0x020a8f40 end:0x020a8fa4
+    .ctor       start:0x020a9128 end:0x020a912c
+    .bss        start:0x020b8668 end:0x020b8690
+
+src/Minigame/ov127_020a8fa4.cpp:
+    .init       start:0x020a8fa4 end:0x020a90d0
+    .ctor       start:0x020a912c end:0x020a9130
+    .bss        start:0x020b878c end:0x020b8818
+
+src/Minigame/ov127_020a90d0.cpp:
+    .text       start:0x020a4bf4 end:0x020a4f6c
+    .init       start:0x020a90d0 end:0x020a9120
+    .ctor       start:0x020a9130 end:0x020a9134
+    .bss        start:0x020b8818 end:0x020b88a4
