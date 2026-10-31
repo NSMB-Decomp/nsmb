@@ -81,8 +81,8 @@ s32 KeyScene::onUpdate()
 		func_020131fc(2, 0);
 	}
 
-	func_0200a42c((u32) & this->_64, 6);
-	func_0200a3d0((u32) & this->_68[this->_64], 6);
+	func_0200a42c(&this->_64, 6);
+	func_0200a3d0(&this->_68[this->_64], 6);
 
 	s32 j;
 	u16 keys = Input::consoleKeys[Input::localConsoleID][0];

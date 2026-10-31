@@ -20,12 +20,12 @@ s32 SoundTestScene::onCreate()
 	Nitro::func_020611b4();
 	Nitro::func_0206118c();
 	Nitro::func_02061164();
-	Nitro::func_02061588(3);
-	Nitro::func_02061494(0x10);
+	GX_SetBankForTex(3);
+	GX_SetBankForTexPltt(0x10);
 	Nitro::func_02061ac4(4);
-	Nitro::func_02061958(0x60);
+	GX_SetBankForOBJ(0x60);
 	Nitro::func_02061474(8);
-	Nitro::func_02060d78(1, 0, 1);
+	GX_SetGraphicsMode(1, 0, 1);
 	data_02085a88 = 0x12;
 	// TODO: Turn these into macros?
 	REG_DISPCNT &= ~0x7000000;
@@ -34,8 +34,7 @@ s32 SoundTestScene::onCreate()
 	REG_BG1CNT = (REG_BG1CNT & 0x43) | 0x2810;
 	REG_BG1CNT &= ~0x40;
 	REG_BG1OFS = 0;
-	void *uVar1 = Nitro::func_02062264();
-	Nitro::func_02066edc(0, uVar1, 0x800);
+	Nitro::func_02066edc(0, G2_GetBG1ScrPtr(), 0x800);
 	this->_64 = 0;
 	this->_68 = 0;
 	this->_6c = 0;
@@ -59,51 +58,42 @@ s32 SoundTestScene::onRender()
 
 s32 SoundTestScene::onUpdate()
 {
-	u32 local_r0;
-	u32 local_r1;
-	if ((GlobalFader.func_02007cb0() == 0x0)) {
-		return 0x1;
+	if (!GlobalFader.isComplete()) {
+		return 1;
 	}
-	local_r0 = ((((*rcast<u16 *>(((u32)&data_02087650 + ((*rcast<u8 *>(&Input::localConsoleID)) << 0x2)))) & 0xc) << 0x10) >> 0x10);
-	if ((local_r0 == 0xc)) {
-		func_02011e3c(0x1e);
-		func_020131fc(0x2, 0x0);
-	}
-	func_0200a42c(this->_64, 0x2);
 
-	if ((this->_64 != 0x0)) {
-		func_0200a3d0(this->_68, 0x70);
-		local_r0 = ((*rcast<u8 *>(&Input::localConsoleID)) << 0x2);
-		local_r1 = (*rcast<u16 *>(((u32)&Input::consoleKeys + local_r0)));
-		local_r0 = (local_r1 & 0x2);
-		if (((local_r1 & 0x2) != 0x0)) {
-			local_r0 = func_02011d40();
-		} else {
-			local_r0 = (local_r1 & 0x1);
-			if (((local_r1 & 0x1) != 0x0)) {
-				local_r0 = func_02011e7c(this->_68, 0x0);
-			}
-		}
-	} else {
-		if ((local_r0 != 0x1)) {
-			func_0200a3d0(this->_6c, 0x1c3);
-			local_r0 = ((*rcast<u8 *>(&Input::localConsoleID)) << 0x2);
-			local_r1 = (*rcast<u16 *>(((u32)&Input::consoleKeys + local_r0)));
-			local_r0 = (local_r1 & 0x2);
-			if (((local_r1 & 0x2) != 0x0)) {
-				func_02011d40();
-			} else {
-				local_r0 = (local_r1 & 0x1);
-				if (((local_r1 & 0x1) != 0x0)) {
-					func_02012398(this->_6c, 0x0);
-				} else {
-					local_r0 = (local_r1 & 0x400);
-					if (((local_r1 & 0x400) != 0x0)) {
-						func_02012290(this->_6c, 0x0);
-					}
-				}
-			}
-		}
+	if ((u16)(data_02087650[Input::localConsoleID][0] & 0xc) == 0xc) {
+		func_02011e3c(0x1e);
+		func_020131fc(2, 0);
 	}
-	return 0x1;
+
+	func_0200a42c(&this->_64, 2);
+
+	switch (this->_64) {
+	case 0: {
+		func_0200a3d0(&this->_68, 0x70);
+		u16 keys = Input::consoleKeys[Input::localConsoleID][0];
+		if (keys & 0x2) {
+			func_02011d40();
+		} else if (keys & 0x1) {
+			func_02011e7c(this->_68, 0);
+		}
+		break;
+	}
+	case 1: {
+		func_0200a3d0(&this->_6c, 0x1c3);
+		u16 keys = Input::consoleKeys[Input::localConsoleID][0];
+		if (keys & 0x2) {
+			func_02011d40();
+		} else if (keys & 0x1) {
+			func_02012398(this->_6c, NULL);
+		} else if (keys & 0x400) {
+			func_02012290(this->_6c, 0);
+		}
+		break;
+	}
+	}
+	return 1;
 }
+
+ObjectProfile SoundTestScene::Profile = {SoundTestScene::create, 0x10, 0x17};
