@@ -115,3 +115,18 @@ public:
 
 };
 NTR_SIZE_GUARD(RotatingPlatform, 0x70);
+
+class SegmentPlatform : public Platform {
+public:
+
+	SegmentPlatform();
+	inline virtual ~SegmentPlatform() {}
+
+	virtual void update() override;
+	virtual void resolveCollision() override;
+	virtual void func5() override;
+
+	Vec2_32 _58;
+	Vec2_32 _64;
+
+};

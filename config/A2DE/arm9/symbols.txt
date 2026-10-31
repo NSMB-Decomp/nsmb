@@ -46,19 +46,16 @@ func_020018ec kind:function(arm,size=0xd4) addr:0x020018ec
 // main.cpp
 
 NitroMain kind:function(arm,size=0x70) addr:0x02003000
-
-// ??????
-
 _ZN7Vec3_16D1Ev kind:function(arm,size=0x10) addr:0x02003070
 _ZN7Vec3_32D1Ev kind:function(arm,size=0x10) addr:0x02003080 weak
-Fader::~Fader kind:function(arm,size=0x14) addr:0x02003090
-SegmentPlatform::~SegmentPlatform kind:function(arm,size=0x34) addr:0x020030a4
+_ZN5FaderD1Ev kind:function(arm,size=0x14) addr:0x02003090
+_ZN15SegmentPlatformD1Ev kind:function(arm,size=0x34) addr:0x020030a4
 _ZN7Vec2_32D1Ev kind:function(arm,size=0x10) addr:0x020030d8
-RotatingPlatform::~RotatingPlatform kind:function(arm,size=0x2c) addr:0x020030e8
-func_02003114 kind:function(arm,size=0x14) addr:0x02003114
-func_02003128 kind:function(arm,size=0x14) addr:0x02003128
-func_0200313c kind:function(arm,size=0x10) addr:0x0200313c
-func_0200314c kind:function(arm,size=0x14) addr:0x0200314c
+_ZN16RotatingPlatformD1Ev kind:function(arm,size=0x2c) addr:0x020030e8
+_ZN12UnkVec2EntryD1Ev kind:function(arm,size=0x14) addr:0x02003114
+_ZN12UnkListEntryC1Ev kind:function(arm,size=0x14) addr:0x02003128
+_ZN7UnkListC1Ev kind:function(arm,size=0x10) addr:0x0200313c
+_ZN12UnkVec2EntryC1Ev kind:function(arm,size=0x14) addr:0x0200314c
 _ZN7Vec2_32C1Ev kind:function(arm,size=0x10) addr:0x02003160
 _ZN7Vec3_16C1Ev kind:function(arm,size=0x10) addr:0x02003170
 _ZN7Vec3_32C1Ev kind:function(arm,size=0x10) addr:0x02003180
@@ -624,7 +621,7 @@ func_02013bdc kind:function(arm,size=0x24) addr:0x02013bdc
 func_02013c00 kind:function(arm,size=0x4a0) addr:0x02013c00
 func_020140a0 kind:function(arm,size=0x60) addr:0x020140a0
 func_02014100 kind:function(arm,size=0x3c) addr:0x02014100
-func_0201413c kind:function(arm,size=0x34) addr:0x0201413c
+_ZN8FadeMaskD1Ev kind:function(arm,size=0x34) addr:0x0201413c
 func_02014170 kind:function(arm,size=0x48) addr:0x02014170
 func_020141b8 kind:function(arm,size=0x8) addr:0x020141b8
 func_020141c0 kind:function(arm,size=0x48) addr:0x020141c0
@@ -996,7 +993,7 @@ func_0201c018 kind:function(arm,size=0x4) addr:0x0201c018
 func_0201c01c kind:function(arm,size=0x64) addr:0x0201c01c
 func_0201c080 kind:function(arm,size=0x58) addr:0x0201c080
 func_0201c0d8 kind:function(arm,size=0x1c) addr:0x0201c0d8
-func_0201c0f4 kind:function(arm,size=0x38) addr:0x0201c0f4
+_ZN8PlatformD2Ev kind:function(arm,size=0x38) addr:0x0201c0f4
 func_0201c12c kind:function(arm,size=0x40) addr:0x0201c12c
 func_0201c16c kind:function(arm,size=0x38) addr:0x0201c16c
 func_0201c1a4 kind:function(arm,size=0x40) addr:0x0201c1a4
@@ -1769,7 +1766,7 @@ _ZTV15PlatformManager kind:data(any) addr:0x0203c620
 RoundPlatform::vtable kind:data(any) addr:0x0203c638
 _ZTV16RotatingPlatform kind:data(any) addr:0x0203c64c
 DeformingPlatform::vtable kind:data(any) addr:0x0203c670
-SegmentPlatform::vtable kind:data(any) addr:0x0203c68c
+_ZTV15SegmentPlatform kind:data(any) addr:0x0203c684
 PlatformBase::vtable kind:data(any) addr:0x0203c6a8
 data_0203c6bc kind:data(any) addr:0x0203c6bc
 data_0203c6c0 kind:data(any) addr:0x0203c6c0

@@ -48,6 +48,15 @@ struct LinkedList {
 	void *first;
 	void *last;
 };
+struct UnkList {
+	void *first;
+	void *last;
+
+	UnkList() : first(NULL), last(NULL) {}
+};
+struct UnkListEntry {
+	UnkList list;
+};
 struct ProcessList {
 	LinkedList linked_list;
 	s32 (Base::*executer)();

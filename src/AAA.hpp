@@ -189,10 +189,20 @@ extern u32 data_02085c2c;
 extern void* DAT_020caa38;
 
 void func_ov001_020cceb4();
+
+class FadeMask
+{
+      public:
+	virtual ~FadeMask();
+
+	u8 _models[0x5a0]; // Model[10]
+};
+NTR_SIZE_GUARD(FadeMask, 0x5a4);
+
 class Fader
 {
       public:
-	u8 _pad0[0x5a4];
+	FadeMask mask;
 	s32 targetBrightness;
 	u32 fadingMode;
 	s32 brightnessFactor[2];
@@ -389,7 +399,6 @@ extern "C" {
 	void onRender_3();
 	bool(func_0201f000)(Vec3_32 *);
 	bool isMultiBootCart();
-	bool func_020109c8();
 	void InitGame();
 	void SetMasterGameMode(u32);
 	void SetBootScene(u32);
@@ -429,6 +438,8 @@ extern "C" {
 	extern Mat4x3 Game_modelMatrix;
 
 }
+
+bool Wifi_isMinigames();
 
 #define FN_INIT 0
 #define FN_STEP(n) (n+1)

@@ -150,6 +150,17 @@ struct Vec3_32 : public Vec3_32s {
 	}
 };
 
+struct Vec3_16 : public Vec3_16s {
+      public:
+	inline Vec3_16() : Vec3_16s() {};
+	inline Vec3_16(Vec3_16 *a) : Vec3_16s() {};
+	#if defined(VER_Y7QJ)
+		inline ~Vec3_16() {};
+	#else
+		virtual inline ~Vec3_16() {};
+	#endif
+};
+
 class Vec2_32
 {
       public:
@@ -177,13 +188,7 @@ class Vec2_32
 	virtual inline ~Vec2_32() {};
 };
 
-struct Vec3_16 : public Vec3_16s {
-      public:
-	inline Vec3_16() : Vec3_16s() {};
-	inline Vec3_16(Vec3_16 *a) : Vec3_16s() {};
-	#if defined(VER_Y7QJ)
-		inline ~Vec3_16() {};
-	#else
-		virtual inline ~Vec3_16() {};
-	#endif
+struct UnkVec2Entry {
+	Vec2_32 pos;
+	u32 unk;
 };
