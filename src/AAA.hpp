@@ -599,6 +599,7 @@ extern void func_02011e3c(u32);
 extern void func_020066f8();
 extern void func_02006740();
 extern u16 data_02087650[2][2];
+extern u16 data_020876b0[];
 extern u8 data_02085a0c;
 extern u32 data_02085a90;
 extern u8 data_0208b4f0;
