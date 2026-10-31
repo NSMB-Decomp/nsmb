@@ -591,7 +591,8 @@ struct UnkEntry_0208b168 {
 	u16 id;
 	u16 _2;
 	u16 _4;
-	u8 _6[6];
+	u16 _6;
+	u32 settings;
 };
 struct UnkRect16 {
 	s16 x;
@@ -600,7 +601,9 @@ struct UnkRect16 {
 	s16 h;
 };
 struct UnkStage_0208b168 {
-	u8 _0[0x1c];
+	u8 _0[2];
+	u16 _2;
+	u8 _4[0x18];
 	u16 _1c;
 	u16 _1e;
 };
@@ -621,7 +624,6 @@ extern s8 data_ov000_020c1f50[2];
 extern u8 data_ov000_020c1f38[2];
 extern s32 data_ov000_020c1f58[2];
 extern u16 data_ov000_020c1f44[2];
-bool func_ov000_020a76d4();
 extern s16 data_ov000_020c4ed4[2];
 void func_02020300(u32, u32);
 void func_02020544(u32);
@@ -654,7 +656,8 @@ extern u8 data_ov000_020c4ec0[2];
 u8 func_ov010_020e653c(u32, Vec3_32 *, u32, u32, s8, u32);
 extern u16 data_ov000_020c22b8[2];
 struct UnkSpawnCfg_020c529c {
-	u8 _0[4];
+	s16 _0;
+	s16 _2;
 	u16 _4;
 	u16 _6;
 	s16 _8;
@@ -665,10 +668,67 @@ struct UnkSpawnCfg_020c529c {
 	u16 _12;
 };
 extern UnkSpawnCfg_020c529c data_ov000_020c529c[];
-u32 func_0201ef94(UnkRect16 *);
+extern s32 data_ov000_020cada4[2];
+extern s32 data_ov000_020cae1c[2];
+u8 func_0201ef94(UnkRect16 *);
+struct UnkRect32 {
+	s32 x;
+	s32 y;
+	s32 w;
+	s32 h;
+};
+bool func_0201f184(u8, UnkRect32 *);
+extern u32 data_ov000_020ca8d0;
+struct UnkEntry_020ca32c {
+	u32 id;
+	u32 a;
+	u32 b;
+	u16 count;
+};
+extern UnkEntry_020ca32c data_ov000_020ca32c[10];
+extern const u16 data_ov000_020c1ff0[];
+extern u16 data_ov000_020ca2fc[0x18];
+extern u8 data_ov000_020ca2d4[8];
+extern u8 data_ov000_020ca294;
+extern u32 data_ov000_020ca2b4;
+extern u16 data_ov000_020ca2a8;
+extern u8 data_ov000_020ca2a0;
+extern s8 data_ov000_020ca298;
+extern u8 data_ov000_020ca280;
+extern u32 data_ov000_020ca2b0;
+extern u8 data_ov000_020ca29c;
+union UnkBytePair {
+	u16 value;
+	u8 bytes[2];
+};
+extern UnkBytePair data_ov000_020ca2a4;
+extern u64 data_ov000_020ca2cc;
+extern u32 data_ov000_020cadb4[2];
+extern u32 data_ov010_0212ae6c[2];
+extern u32 data_0208b220[];
+extern u32 data_0208b2a0[];
+extern UnkEntry_0208b168 *data_0208b1a0[];
+extern const u16 data_ov000_020c4ee0[];
+extern u64 data_0208af3c;
+extern u32 data_0208af84[64];
+extern u8 data_0208af44[64];
+struct UnkTileScan {
+	s32 x;
+	s32 y;
+	s32 left;
+	s32 right;
+	s32 top;
+	s32 bottom;
+	s32 dirX;
+	s32 dirY;
+};
 extern const u32 data_ov000_020c2130[];
 extern const s16 data_ov000_020c1f40[];
 extern const s16 data_ov000_020c4ec8[];
+extern const u16 data_ov000_020c2010[];
+extern const u16 data_ov000_020c2170[];
+extern const u16 data_ov000_020c2030[];
+extern const u16 data_ov000_020c1fc8[];
 extern const u32 data_ov000_020c1f68[];
 extern u8 data_ov000_020ca290;
 extern const s32 data_ov000_020c20a0[2][5];

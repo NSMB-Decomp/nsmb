@@ -18,8 +18,8 @@ void func_02061494(u32);
 void func_02061958(u32);
 void func_02061474(u32);
 void func_02060d78(u32, u32, u32);
-void func_02066edc(u32, u32, u32);
-u32 func_02062264();
+void func_02066edc(u32, void *, u32);
+void *func_02062264();
 } // namespace Nitro
 
 void *SoundTestScene::create()
@@ -54,7 +54,7 @@ s32 SoundTestScene::onCreate()
 	REG_BG1CNT = (REG_BG1CNT & 0x43) | 0x2810;
 	REG_BG1CNT &= ~0x40;
 	REG_BG1OFS = 0;
-	u32 uVar1 = Nitro::func_02062264();
+	void *uVar1 = Nitro::func_02062264();
 	Nitro::func_02066edc(0, uVar1, 0x800);
 	this->_64 = 0;
 	this->_68 = 0;

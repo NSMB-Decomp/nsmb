@@ -513,10 +513,10 @@ from:0x0209ed28 kind:arm_call to:0x0204d6a8 module:autoload(2)
 from:0x0209ed5c kind:arm_call to:0x0204d08c module:autoload(2)
 from:0x0209ede8 kind:arm_call to:0x020a0b64 module:overlay(0)
 from:0x0209ee50 kind:load to:0x020ca32c module:overlay(0)
-from:0x0209ee54 kind:load to:0x020ca338 module:overlay(0)
+from:0x0209ee54 kind:load to:0x020ca32c add:0xc module:overlay(0)
 from:0x0209ee58 kind:load to:0x02039200 add:0x8 module:main
-from:0x0209ee5c kind:load to:0x020ca330 module:overlay(0)
-from:0x0209ee60 kind:load to:0x020ca334 module:overlay(0)
+from:0x0209ee5c kind:load to:0x020ca32c add:0x4 module:overlay(0)
+from:0x0209ee60 kind:load to:0x020ca32c add:0x8 module:overlay(0)
 from:0x0209eeb0 kind:arm_call to:0x02020300 module:main
 from:0x0209eed4 kind:arm_call to:0x020e653c module:overlay(10)
 from:0x0209eee0 kind:arm_call to:0x02012398 module:main

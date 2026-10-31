@@ -1,6 +1,13 @@
 #include "StageEntity.hpp"
 #include "Player/PlayerActor.hpp"
 
+namespace Nitro
+{
+void func_02062620(const u16 *);
+void func_020626c4(u32, u32, u32, u32);
+void func_02066edc(u32, void *, u32);
+} // namespace Nitro
+
 StageEntity::StageEntity()
 {
 	// this->_40 = 0x2;
@@ -307,42 +314,41 @@ void StageEntity::_43(u32 param_1, u32 param_2, u32 param_3)
 
 void StageEntity::_18()
 {
-	PlayerBase *player;
-	s32 iVar1;
-	u32 uVar1;
-	s32 iVar2;
-
-	player = (PlayerActor *)Game::getPlayer((int)this->linked_player);
-	(this->activeCollider)._a4 = (player->activeCollider)._a4;
-	(this->collisionMgr)._b7 = (player->activeCollider)._a4;
-	if (((
-		 //((*(uint *)player->_pad2 & 1) == 0) &&
-		 ((player->velocity).y < 0)) &&
-	     (iVar1 = func_ov000_020a76d4(), iVar1 != 0)) &&
-	    ((uVar1 = (this->position).x + (this->centerOffset).x & 0xffff, 0x400 < uVar1 && (uVar1 < 0x8001)))) {
-		iVar2 = (this->velocity).x;
-		if (iVar2 < 0) {
-			iVar2 = -iVar2;
-		}
-		if (iVar2 < 0x2c00) {
-			this->_3f1 = 0x1;
+	PlayerBase *player = (PlayerBase *)Game::getPlayer(this->linked_player);
+	this->activeCollider._a4 = player->activeCollider._a4;
+	this->collisionMgr._b7 = player->activeCollider._a4;
+	if ((player->_788 & 1) == 0 && player->velocity.y < 0) {
+		Vec2_32 pos;
+		u8 side = (u32)(this->velocity.x & 0x80000000) >> 31;
+		pos.set(this->position.x + this->centerOffset.x + data_ov000_020c4ec4[side] * 0x10000, this->position.y + this->centerOffset.y);
+		if (CollisionManager::getSolidTileType(pos.x, pos.y)) {
+			u32 subX = (this->position.x + this->centerOffset.x) & 0xffff;
+			if (subX > 0x400 && subX <= 0x8000) {
+				s32 speed = this->velocity.x;
+				if (speed < 0) {
+					speed = -speed;
+				}
+				if (speed < 0x2c00) {
+					this->_3f1 = 1;
+				}
+			}
 		}
 	}
-	if (this->_3f1 == 0x0) {
-		this->_3c6[this->linked_player] = 0x10;
-	} else {
+	if (this->_3f1 != 0) {
 		this->_3b8 = 0;
-		(this->velocity).x = (int)(short)data_ov000_020c1f44[this->direction];
+		this->velocity.x = (s16)data_ov000_020c1f44[this->direction];
 		this->_3c6[this->linked_player] = 5;
+	} else {
+		this->_3c6[this->linked_player] = 0x10;
 	}
-	(this->activeCollider)._26 = (this->activeCollider)._26 | 0x140;
-	(this->activeCollider)._25 = 0xa;
-	(this->activeCollider)._2c = shellCallback;
+	this->activeCollider._26 |= 0x140;
+	this->activeCollider._25 = 0xa;
+	this->activeCollider._2c = shellCallback;
 	this->accelH = 0x100;
 	this->accelV = -0x300;
-	(this->minVelocity).x = (this->velocity).x;
-	(this->minVelocity).y = -0x4000;
-	(this->minVelocity).z = 0;
+	this->minVelocity.x = this->velocity.x;
+	this->minVelocity.y = -0x4000;
+	this->minVelocity.z = 0;
 }
 
 void StageEntity::_45()
@@ -520,7 +526,8 @@ void StageEntity::func_ov000_0209ab04(s32 type, s32 player_id)
 {
 	PlayerBase *player = (PlayerBase *)Game::getPlayer(player_id);
 	Vec3_32 pos = player->func_ov011_0212bbdc();
-	pos.y = data_ov000_020c1fd8[player->runtimePowerup] + player->position.y;
+	s32 offset = data_ov000_020c1fd8[player->runtimePowerup];
+	pos.y = offset + player->position.y;
 	Vec3_32 vec;
 	vec.x = pos.x;
 	vec.y = pos.y;
@@ -604,8 +611,100 @@ bool StageEntity::func_ov000_0209a4f0(ActiveCollider *collider, PlayerBase *play
 	return false;
 }
 
-s32 StageEntity::func_ov000_0209a23c() {
-
+s32 StageEntity::func_ov000_0209a23c(u32 mode, u32 flags, u32 idx)
+{
+	s32 result = 0;
+	u8 hitY = 0;
+	u8 hitX = 0;
+	PlayerBase *player = (PlayerBase *)this->_2d4[idx].actor;
+	if (player == NULL) {
+		return 0;
+	}
+	s32 dx = this->_2d4[idx]._4;
+	s32 dy = this->_2d4[idx]._8;
+	s32 myY = this->position.y + this->activeCollider.rect.y;
+	s32 myHalfH = this->activeCollider.rect.halfHeight;
+	s32 myBottom = myY - myHalfH;
+	Vec3_32 &pos = player->position;
+	Vec3_32 &vel = player->velocity;
+	s32 playerY = pos.y + player->activeCollider.rect.y;
+	s32 playerHalfH = player->activeCollider.rect.halfHeight;
+	s32 playerX = pos.x + player->activeCollider.rect.x;
+	s32 myHalfW = this->activeCollider.rect.halfWidth;
+	s32 myX = this->position.x + this->activeCollider.rect.x;
+	if (playerY > myBottom && playerY < myY + myHalfH) {
+		hitX++;
+	}
+	if (playerX > myX - myHalfW && playerX < myX + myHalfW) {
+		hitY++;
+	}
+	if ((hitX | hitY) == 0) {
+		s32 absX = dx < 0 ? -dx : dx;
+		s32 absY = dy < 0 ? -dy : dy;
+		if (absX < absY) {
+			hitX++;
+		} else {
+			hitY++;
+		}
+	}
+	s32 playerBottom = playerY - playerHalfH;
+	if (playerBottom > myBottom && playerBottom < myY + myHalfH && vel.y > 0) {
+		hitX++;
+		hitY = 0;
+	}
+	if (hitY != 0 && dy != 0) {
+		if (dy > 0) {
+			if (vel.y > 0) {
+				if ((flags & 4) == 0) {
+					pos.y -= dy << 1;
+				}
+				hitX = 0;
+				vel.y = -0x2000;
+			}
+			result |= 4;
+		} else {
+			if (vel.y < 0) {
+				if ((flags & 8) == 0) {
+					s32 push = dy << 1;
+					if (push < 0) {
+						push = -push;
+					}
+					pos.y += push;
+				}
+				hitX = 0;
+				vel.y = 0;
+			}
+			result |= 8;
+		}
+	}
+	if (hitX != 0) {
+		if ((flags & 1) == 0) {
+			if (mode == 0) {
+				player->func_ov011_0212bdb8(-dx << 1);
+			} else {
+				player->func_ov011_0212bd68(-dx << 1);
+			}
+			bool stop = false;
+			if (dx < 0 && vel.x < 0) {
+				stop = true;
+			}
+			if (dx > 0 && vel.x > 0) {
+				stop = true;
+			}
+			if (stop) {
+				player->velH = 0;
+				vel.x = 0;
+			}
+		}
+		if (dx > 0) {
+			result |= 1;
+		} else {
+			result |= 2;
+		}
+	}
+	player->velocity = (Vec3_32s &)vel;
+	player->position = (Vec3_32s &)pos;
+	return result;
 }
 
 void StageEntity::attachToPlayerHands(s32 z, s32 y, s32 x)
@@ -833,6 +932,41 @@ void StageEntity::_15()
 	this->activeCollider._2c = damageEntityCallback;
 }
 
+bool StageEntity::func_ov000_0209e660(s32 x, s32 y, u32 tile, u32 mode, u8 param_5, s8 player_id, u8 param_7)
+{
+	x &= data_02085aa4;
+	u16 tileId = 0;
+	u16 extra = 0;
+	bool solid = false;
+	if (player_id == -1) {
+		player_id = 3;
+	}
+	if (mode == 1) {
+		tileId = data_ov000_020c2010[tile & 0x3f];
+	} else if (mode == 0) {
+		tileId = data_ov000_020c2170[tile & 0x3f];
+		extra = 3;
+	} else if (mode == 2) {
+		u32 idx = tile & 0x3f;
+		tileId = data_ov000_020c2030[idx];
+		extra = data_ov000_020c1fc8[idx];
+		if (idx == 4) {
+			solid = true;
+		}
+	}
+	if (!solid) {
+		func_ov000_020af30c(data_ov000_020cad40, ((u32)x << 4) >> 0x10, (u16)-(y >> 0xc), 0, tileId);
+	} else {
+		func_ov000_020af30c(data_ov000_020cad40, ((u32)x << 4) >> 0x10, (u16)-(y >> 0xc), 0xf, tileId);
+	}
+	if (param_5 != 2) {
+		func_ov000_0209ee64(x, y, param_5, 1, param_7, player_id, extra);
+	} else {
+		func_ov000_0209eefc(x, y, param_5, 1, param_7, player_id, extra);
+	}
+	return true;
+}
+
 void StageEntity::func_ov000_0209ee64(s32 x, s32 y, u32 param_3, u32 param_4, u8 param_5, s8 player_id, u16 param_7)
 {
 	Vec3_32 pos;
@@ -864,6 +998,41 @@ void StageEntity::func_ov000_0209eefc(s32 x, s32 y, u32 param_3, u32 param_4, u8
 		func_02020300(player_id, 10);
 	}
 	func_02012398(0x177, &pos);
+}
+
+u32 StageEntity::func_ov000_0209ece4(u32 a, u32 b)
+{
+	for (u8 i = 0; i < 10; i++) {
+		if (data_ov000_020ca32c[i].id != 0 && a == data_ov000_020ca32c[i].a && b == data_ov000_020ca32c[i].b) {
+			StageActor *obj = (StageActor *)ProcessManager::getObjectByID(data_ov000_020ca32c[i].id);
+			u32 result = 0;
+			if (obj != NULL) {
+				if (obj->activeCollider._8 == 0) {
+					result = (u8)data_ov000_020ca32c[i].count | 0x8000;
+					obj->destroy();
+				}
+			} else {
+				result = 0x8000;
+			}
+			if (result == 0x8000) {
+				data_ov000_020ca32c[i].id = 0;
+			}
+			data_ov000_020ca32c[i].count++;
+			return result;
+		}
+	}
+	Vec3_32 pos(0);
+	for (u8 i = 0; i < 10; i++) {
+		if (data_ov000_020ca32c[i].id == 0) {
+			Actor *actor = Actor::spawnActor(0x13, 0, &pos, NULL, NULL, NULL);
+			data_ov000_020ca32c[i].id = actor->guid;
+			data_ov000_020ca32c[i].a = a;
+			data_ov000_020ca32c[i].b = b;
+			data_ov000_020ca32c[i].count = 1;
+			return 0;
+		}
+	}
+	return 0;
 }
 
 bool StageEntity::func_ov000_0209ec28(PlayerBase *player, s32 a, s32 b, u32 mode, u8 param_5, u8 param_6)
@@ -923,6 +1092,42 @@ u16 StageEntity::func_ov000_0209c6d4(Vec3_32 *pos, u32 accel)
 	return 0;
 }
 
+void StageEntity::_30()
+{
+	PlayerBase *player = (PlayerBase *)Game::getPlayer(this->linked_player);
+	Vec3_32 pos = func_02045bdc(&this->position, &this->centerOffset);
+	this->_3e4 = 1;
+	this->activeCollider.unlink();
+	for (s32 i = 0; i < func_020202a0(); i++) {
+		PlayerBase *other = (PlayerBase *)Game::getPlayer(i);
+		if (other != NULL && other->linkedActor == this) {
+			other->func_ov011_0212bde0(this);
+		}
+	}
+	if (player->_7b7 < 10) {
+		player->_7b7++;
+	}
+	player->_7b8++;
+	player->_7b8 %= 4;
+	if (player->_7b7 > 8) {
+		player->_7b7 = 8;
+	}
+	if (this->_3de == 0) {
+		this->func_ov000_0209ab90(player->_7b7, 0, 0x18000, this->linked_player);
+	} else if (this->_3de == 1) {
+		this->func_ov000_0209aa04(player->_7b7, 0, 0x18000, this->linked_player);
+	}
+	{
+		Vec3_32 mid;
+		mid.set((this->_390.x + this->_39c.x) >> 1, (this->_390.y + this->_39c.y) >> 1, 0x200000);
+		func_02022b64(0xba, &mid);
+		func_02022b64(0xbb, &mid);
+		func_02022b64(0xbc, &mid);
+	}
+	func_02012398(0x70, &pos);
+	this->destroy(true);
+}
+
 void StageEntity::_35()
 {
 	Vec3_32 &offset = this->centerOffset;
@@ -969,6 +1174,34 @@ void StageEntity::_31()
 	func_02012398(0x70, &this->position);
 	this->minVelocity.y = -0x4000;
 	this->_42(data_ov000_020c4ed4[this->direction], 0x3000, -0x300, 0);
+}
+
+bool StageEntity::func_ov000_0209ae88(Vec3_32 *pos, FxRect *rect, u8 player)
+{
+	UnkRect32 view;
+	Vec2_32 rel;
+	Vec2_32 center;
+	Vec2_32 size;
+	if (!func_0201f184(player, &view)) {
+		return true;
+	}
+	size.x = rect->halfWidth + 0x80000;
+	size.y = rect->halfHeight + 0x80000;
+	center.x = pos->x + rect->x - size.x;
+	center.y = -(pos->y + rect->y) - size.y;
+	rel.x = center.x - view.x;
+	rel.y = center.y + view.y;
+	size.x <<= 1;
+	size.y <<= 1;
+	if ((data_ov000_020ca8d0 & 0x1000) == 0 && (u8)(data_0208b168._0->_2 & 0x20) == 0) {
+		if ((u32)(rel.x + size.x) > (u32)(view.w + size.x)) {
+			return true;
+		}
+	}
+	if ((u32)(rel.y + size.y) > (u32)(view.h + size.y)) {
+		return true;
+	}
+	return false;
 }
 
 bool StageEntity::destroyInactive(u32 flags)
@@ -1156,6 +1389,452 @@ void StageEntity::func_ov000_0209a5bc(PlayerBase *player, s32 param_2, u32 param
 	}
 }
 
+void StageEntity::func_ov000_0209ba94(UnkTileScan *scan, u32 player, u32 mode)
+{
+	u8 area = ((StageEntity *)Game::getPlayer(player))->_2be;
+	u32 count = data_0208b220[area];
+	if (count == 0) {
+		return;
+	}
+	UnkEntry_0208b168 *entry = data_0208b1a0[area];
+	u32 start = data_0208b2a0[area];
+	u8 *flag = data_ov000_020ca3cc + start;
+	u16 *timer = data_ov000_020ca64c + start;
+	u32 i = 0;
+	s32 x = scan->x;
+	s32 y = scan->y;
+	s32 left = scan->left;
+	s32 right = scan->right;
+	s32 top = scan->top;
+	s32 bottom = scan->bottom;
+	s32 dirX = scan->dirX;
+	s32 dirY = scan->dirY;
+	UnkSpawnCfg_020c529c *cfg;
+	u16 hits;
+	for (; i != count; i++, entry++, flag++, timer++) {
+		if ((*flag & 1) != 0) {
+			continue;
+		}
+		cfg = &data_ov000_020c529c[entry->id];
+		s32 x0 = entry->_2 + cfg->_8;
+		s32 y0 = entry->_4 + cfg->_a;
+		s32 x1 = x0 + cfg->_4;
+		s32 y1 = y0 + cfg->_6;
+		hits = 0;
+		if ((u8)(data_0208b168._0->_2 & 0x20) && data_02085aa4 != 0xfffff) {
+			x0 &= data_02085aa4 >> 16;
+			x1 &= data_02085aa4 >> 16;
+		}
+		s32 edgeX = dirX != 0 ? x0 : x1;
+		s32 edgeY = dirY != 0 ? y0 : y1;
+		if (mode == 1) {
+			if (edgeX == x) {
+				if (dirX != 1) {
+					if (dirX < 0) {
+						if (right == x0 && bottom >= y0 && top <= y1) {
+							hits++;
+						}
+					} else {
+						if (left == x1 && bottom >= y0 && top <= y1) {
+							hits++;
+						}
+					}
+				}
+			} else if (edgeY == y) {
+				if (dirY != 1) {
+					if (dirY < 0) {
+						if (bottom == y0 && right >= x0 && left <= x1) {
+							hits++;
+						}
+					} else {
+						if (top == y1 && right >= x0 && left <= x1) {
+							hits++;
+						}
+					}
+				}
+			}
+		} else {
+			if (edgeX == x && bottom >= y0 && top <= y1) {
+				hits++;
+			}
+			if (edgeY == y && right >= x0 && left <= x1) {
+				hits++;
+			}
+		}
+		if (hits != 0 && func_020202a0() == 2 && func_ov000_0209bddc(entry, cfg, player ^ 1)) {
+			hits = 0;
+		}
+		if (hits != 0) {
+			func_ov000_0209bf10(entry, cfg, flag, timer, area, player);
+		}
+	}
+}
+
+void StageEntity::func_ov000_0209b7e8(u32 player)
+{
+	s32 x;
+	s32 y;
+	Vec3_32 unused;
+	u8 wrap = data_0208b168._0->_2 & 0x20;
+	s32 camX = data_ov000_020cae1c[player] >> 12;
+	s32 camY = Game::cameraY[player] >> 12;
+	s32 left = (camX - 0x20) >> 4;
+	s32 right = ((data_ov000_020cada4[player] >> 12) + 0x30 + camX) >> 4;
+	s32 top = (camY - 0x10) >> 4;
+	s32 bottom = ((Game::cameraZoomY[player] >> 12) + 0x20 + camY) >> 4;
+	s32 dirX = 0;
+	s32 dirY = 0;
+	UnkTileScan scan;
+	if (wrap && data_02085aa4 != 0xfffff) {
+		right &= data_02085aa4 >> 16;
+		left &= data_02085aa4 >> 16;
+	}
+	if (data_ov000_020cadb4[player] != data_ov010_0212ae6c[player]) {
+		scan.x = left;
+		scan.y = bottom;
+		scan.left = left;
+		scan.right = right;
+		scan.top = top;
+		scan.bottom = bottom;
+		scan.dirX = 0;
+		scan.dirY = -1;
+		func_ov000_0209ba94(&scan, player, 0);
+		scan.x = right;
+		scan.y = bottom;
+		scan.left = left;
+		scan.right = right;
+		scan.top = top;
+		scan.bottom = bottom;
+		scan.dirX = -1;
+		scan.dirY = -1;
+		func_ov000_0209ba94(&scan, player, 0);
+		data_ov000_020ca2ec[player] = camX;
+		data_ov000_020ca2e4[player] = camY;
+		x = right;
+		y = top;
+		scan.x = x;
+		scan.y = y;
+		scan.dirX = -1;
+		scan.dirY = 0;
+		func_ov000_0209ba94(&scan, player, 0);
+	} else {
+		s32 dx = camX - data_ov000_020ca2ec[player];
+		s32 dy = camY - data_ov000_020ca2e4[player];
+		if (dx != 0) {
+			if (dx > 0) {
+				x = right;
+				dirX = -1;
+			} else {
+				x = left;
+			}
+		} else {
+			dirX = 1;
+		}
+		if (dy != 0) {
+			if (dy > 0) {
+				y = bottom;
+				dirY = -1;
+			} else {
+				y = top;
+			}
+		} else {
+			dirY = 1;
+		}
+		if (x == data_ov000_020ca2f4[player] && y == data_ov000_020ca2dc[player]) {
+			data_ov000_020ca2ec[player] = camX;
+			data_ov000_020ca2e4[player] = camY;
+			data_ov000_020ca2f4[player] = x;
+			data_ov000_020ca2dc[player] = y;
+			return;
+		}
+		scan.x = x;
+		scan.y = y;
+		scan.left = left;
+		scan.right = right;
+		scan.top = top;
+		scan.bottom = bottom;
+		scan.dirX = dirX;
+		scan.dirY = dirY;
+		func_ov000_0209ba94(&scan, player, 1);
+	}
+	data_ov000_020ca2ec[player] = camX;
+	data_ov000_020ca2e4[player] = camY;
+	data_ov000_020ca2f4[player] = x;
+	data_ov000_020ca2dc[player] = y;
+}
+
+StageEntity *StageEntity::func_ov000_0209bf10(UnkEntry_0208b168 *entry, UnkSpawnCfg_020c529c *cfg, u8 *flag, u16 *timer, u8 area, u32 id)
+{
+	if (data_ov000_020c22b8[entry->id] == 0x145) {
+		return NULL;
+	}
+	Vec3_32 pos(((entry->_2 << 4) + cfg->_0) << 12, -(((entry->_4 << 4) + cfg->_2) << 12), 0x80000);
+	data_ov000_020ca2ac = flag;
+	data_ov000_020ca2a4.value = entry->_6;
+	data_ov000_020ca2cc = 0;
+	if (data_ov000_020ca2a4.bytes[0] != 0) {
+		data_ov000_020ca2cc |= 1ULL << (data_ov000_020ca2a4.bytes[0] - 1);
+	}
+	if (data_ov000_020ca2a4.bytes[1] != 0) {
+		data_ov000_020ca2cc |= 1ULL << (data_ov000_020ca2a4.bytes[1] - 1);
+	}
+	StageEntity *actor = (StageEntity *)Actor::spawnActor(data_ov000_020c22b8[entry->id], entry->settings, &pos, NULL, NULL, NULL);
+	if (actor != NULL) {
+		if (entry->id >= 10) {
+			actor->_2be = area;
+			actor->_3d8 = flag;
+			actor->_3cc = timer;
+			actor->_33c = data_ov000_020ca2a4.value;
+			actor->_334 = data_ov000_020ca2cc;
+			actor->_2c6 = cfg->_10;
+			actor->_2c8 = cfg->_12;
+			actor->_3e0 = 0;
+			if (actor->activeSize.x == 0 && actor->activeSize.y == 0) {
+				actor->activeSize.x = cfg->_4 << 4;
+				actor->activeSize.y = cfg->_6 << 4;
+			}
+			if (actor->viewOffset.x == 0 && actor->viewOffset.y == 0) {
+				actor->viewOffset.x = cfg->_c;
+				actor->viewOffset.y = -cfg->_e;
+			}
+			if (actor->renderSize.x == 0 && actor->renderSize.y == 0) {
+				actor->renderSize.x = actor->activeSize.x;
+				actor->renderSize.y = actor->activeSize.y;
+			}
+			actor->_340 = 0;
+			actor->_348 = id;
+		}
+		*flag |= 1;
+	}
+	return actor;
+}
+
+bool StageEntity::func_ov000_0209bddc(UnkEntry_0208b168 *entry, UnkSpawnCfg_020c529c *cfg, u32 player)
+{
+	u8 wrap = data_0208b168._0->_2 & 0x20;
+	s32 w = cfg->_4 << 4;
+	s32 h = cfg->_6 << 4;
+	s32 x = (entry->_2 + cfg->_8) << 4;
+	s32 y = (entry->_4 + cfg->_a) << 4;
+	s32 camX = (data_ov000_020cada4[player] >> 13) + (data_ov000_020cae1c[player] >> 12);
+	s32 camY = (Game::cameraZoomY[player] >> 13) + (Game::cameraY[player] >> 12);
+	s32 objX = x + (w >> 1);
+	s32 objY = y + (h >> 1);
+	if (wrap && data_02085a98 != 1) {
+		s32 dist = camX - objX;
+		if (dist < 0) {
+			dist = -dist;
+		}
+		s32 width = (data_02085aa4 + 1) >> 12;
+		s32 half = width >> 1;
+		if (dist >= half) {
+			if (camX > half) {
+				if (objX < half) {
+					objX += width;
+				}
+			} else if (objX > half) {
+				objX -= width;
+			}
+		}
+	}
+	s32 dx = camX - objX;
+	if (dx < 0) {
+		dx = -dx;
+	}
+	s32 rangeX = (data_ov000_020cada4[player] >> 13) + (w >> 1);
+	if (rangeX < 0) {
+		rangeX = -rangeX;
+	}
+	if (dx <= rangeX) {
+		s32 dy = camY - objY;
+		if (dy < 0) {
+			dy = -dy;
+		}
+		s32 rangeY = (Game::cameraZoomY[player] >> 13) + (h >> 1);
+		if (rangeY < 0) {
+			rangeY = -rangeY;
+		}
+		if (dy <= rangeY) {
+			return true;
+		}
+	}
+	return false;
+}
+
+bool StageEntity::func_ov000_0209b040(u32 player, u32 param_2)
+{
+	u8 area = ((StageEntity *)Game::getPlayer(player))->_2be;
+	u32 count = data_0208b220[area];
+	if (count == 0) {
+		return;
+	}
+	u32 i = 0;
+	UnkEntry_0208b168 *entry = data_0208b1a0[area];
+	u32 start = data_0208b2a0[area];
+	u8 *flag = data_ov000_020ca3cc + start;
+	u16 *timer = data_ov000_020ca64c + start;
+	s32 camX = data_ov000_020cae1c[player] >> 12;
+	s32 camY = Game::cameraY[player] >> 12;
+	s32 left = camX - 0x20;
+	s32 right = (data_ov000_020cada4[player] >> 12) + 0x30 + camX;
+	s32 top = camY - 0x10;
+	s32 bottom = (Game::cameraZoomY[player] >> 12) + 0x20 + camY;
+	s32 width = right - left;
+	s32 centerX = left + (width >> 1);
+	s32 height = bottom - top;
+	s32 halfCamH = height >> 1;
+	s32 centerY = top + (height >> 1);
+	s32 halfCamW = width >> 1;
+	for (; i != count; i++, entry++, flag++, timer++) {
+		if ((*flag & 1) != 0) {
+			continue;
+		}
+		UnkSpawnCfg_020c529c *cfg = &data_ov000_020c529c[entry->id];
+		u16 hits = 0;
+		if (entry->id == 0x12a && (u8)(data_0208b168._0->_2 & 0x20) && data_02085aa4 != 0xfffff) {
+			hits++;
+		}
+		if ((cfg->_12 & 4) != 0) {
+			hits++;
+		} else {
+			s32 w = cfg->_4 << 4;
+			s32 h = cfg->_6 << 4;
+			s32 halfW = w >> 1;
+			s32 ox = (entry->_2 + cfg->_8) << 4;
+			s32 objX = ox + (w >> 1);
+			s32 dx = centerX - objX;
+			if (dx < 0) {
+				dx = -dx;
+			}
+			s32 rangeX = halfCamW + halfW;
+			if (rangeX < 0) {
+				rangeX = -rangeX;
+			}
+			s32 halfH = h >> 1;
+			s32 objY = ((entry->_4 + cfg->_a) << 4) + (h >> 1);
+			if (dx <= rangeX) {
+				s32 dy = centerY - objY;
+				if (dy < 0) {
+					dy = -dy;
+				}
+				s32 rangeY = halfCamH + halfH;
+				if (rangeY < 0) {
+					rangeY = -rangeY;
+				}
+				if (dy <= rangeY) {
+					hits++;
+				}
+			}
+		}
+		if (hits != 0 && func_020202a0() == 2 && (u8)(GlobalFader.fadingState[player ^ 1] & 0x49) == 0 && func_ov000_0209bddc(entry, cfg, player ^ 1)) {
+			hits = 0;
+		}
+		if (hits != 0) {
+			func_ov000_0209bf10(entry, cfg, flag, timer, area, player);
+		}
+	}
+}
+
+bool StageEntity::func_ov000_0209b320(u32 player, u32 param_2)
+{
+	UnkEntry_0208b168 *entry = data_0208b168.entries;
+	u16 *timer = data_ov000_020ca64c;
+	u8 *flag = data_ov000_020ca3cc;
+	u8 area = ((StageEntity *)Game::getPlayer(player))->_2be;
+	s32 camX = data_ov000_020cae1c[player] >> 12;
+	s32 camY = Game::cameraY[player] >> 12;
+	s32 left = camX - 0x20;
+	s32 right = (data_ov000_020cada4[player] >> 12) + 0x30 + camX;
+	s32 top = camY - 0x10;
+	s32 bottom = (Game::cameraZoomY[player] >> 12) + 0x20 + camY;
+	s32 height = bottom - top;
+	s32 centerY = top + (height >> 1);
+	s32 halfCamH = height >> 1;
+	s32 worldW = (data_02085aa4 + 1) >> 12;
+	s32 width = right - left;
+	s32 halfCamW = width >> 1;
+	s32 centerX = left + (width >> 1);
+	s32 halfWorld = worldW >> 1;
+	u8 entryArea;
+	for (; entry->id != 0xffff; entry++, flag++, timer++) {
+		if ((*flag & 1) != 0) {
+			continue;
+		}
+		UnkSpawnCfg_020c529c *cfg = &data_ov000_020c529c[entry->id];
+		u16 count = 0;
+		u16 i;
+		for (i = 0; data_ov000_020c4ee0[i] != 0xffff; i++) {
+			if (entry->id == data_ov000_020c4ee0[i]) {
+				break;
+			}
+		}
+		if (data_ov000_020c4ee0[i] != 0xffff) {
+			count++;
+		} else {
+			UnkRect16 rect;
+			rect.x = (entry->_2 + cfg->_8) << 4;
+			rect.y = (entry->_4 + cfg->_a) << 4;
+			rect.w = cfg->_4 << 4;
+			rect.h = cfg->_6 << 4;
+			entryArea = func_0201ef94(&rect);
+			if (entryArea == area) {
+				if (entry->id == 0x12a && (u8)(data_0208b168._0->_2 & 0x20) && data_02085aa4 != 0xfffff) {
+					count++;
+				}
+				if ((cfg->_12 & 4) != 0) {
+					count++;
+				} else {
+					s32 w = cfg->_4 << 4;
+					s32 objX = ((entry->_2 + cfg->_8) << 4) + (w >> 1);
+					s32 halfW = w >> 1;
+					s32 h = cfg->_6 << 4;
+					s32 halfH = h >> 1;
+					s32 objY = ((entry->_4 + cfg->_a) << 4) + (h >> 1);
+					if ((u8)(data_0208b168._0->_2 & 0x20) && data_02085a98 != 1) {
+						s32 dist = centerX - objX;
+						if (dist < 0) {
+							dist = -dist;
+						}
+						if (dist >= halfWorld) {
+							if (centerX > halfWorld) {
+								if (objX < halfWorld) {
+									objX += worldW;
+								}
+							} else if (objX > halfWorld) {
+								objX -= worldW;
+							}
+						}
+					}
+					s32 dx = centerX - objX;
+					if (dx < 0) {
+						dx = -dx;
+					}
+					s32 rangeX = halfCamW + halfW;
+					if (rangeX < 0) {
+						rangeX = -rangeX;
+					}
+					if (dx <= rangeX) {
+						s32 dy = centerY - objY;
+						if (dy < 0) {
+							dy = -dy;
+						}
+						s32 rangeY = halfCamH + halfH;
+						if (rangeY < 0) {
+							rangeY = -rangeY;
+						}
+						if (dy <= rangeY) {
+							count++;
+						}
+					}
+				}
+			}
+		}
+		if (count != 0) {
+			func_ov000_0209bf10(entry, cfg, flag, timer, entryArea, player);
+		}
+	}
+}
+
 bool StageEntity::func_ov000_0209b688(u32 id, u32 param_2)
 {
 	UnkSpawnCfg_020c529c *cfg;
@@ -1169,7 +1848,7 @@ bool StageEntity::func_ov000_0209b688(u32 id, u32 param_2)
 			rect.y = (entry->_4 + cfg->_a) << 4;
 			rect.w = cfg->_4 << 4;
 			rect.h = cfg->_6 << 4;
-			u32 area = func_0201ef94(&rect);
+			u8 area = func_0201ef94(&rect);
 			func_ov000_0209bf10(entry, cfg, flag, timer, area, id);
 		}
 	}
@@ -1280,8 +1959,8 @@ void StageEntity::func_ov000_0209e13c(PlayerBase *player, u32 param_2, u32 param
 	if (!vsMode) {
 		return;
 	}
-	u8 player_id = player->linked_player;
 	u32 count = 1;
+	u8 player_id = player->linked_player;
 	s32 stock = func_0202046c(player_id);
 	if (stock == 0) {
 		return;
@@ -1307,7 +1986,11 @@ void StageEntity::func_ov000_0209e13c(PlayerBase *player, u32 param_2, u32 param
 	if (player->powerup == 4 || player->powerup == 0) {
 		pos.y -= 0x10000;
 	}
-	Actor::spawnActor(0x22, (player->direction << 31) | 2 | (param_2 != 0 ? 0x10 : 0) | (player_id << 8) | (count << 12), &pos, 0, 0, 0);
+	u32 flag = 0;
+	if (param_2 != 0) {
+		flag = 0x10;
+	}
+	Actor::spawnActor(0x22, (count << 12) | (player_id << 8) | flag | 2 | (player->direction << 31), &pos, 0, 0, 0);
 }
 
 u32 StageEntity::func_ov000_0209a80c(ActiveCollider *collider, s32 param_2, u32 param_3, u8 param_4)
@@ -1357,8 +2040,8 @@ void StageEntity::func_ov000_0209e2c8(s32 x, s32 y, u32 mode)
 			pos.x = tileX - 0x10000;
 			pos.y = y;
 		}
-		func_ov000_020af30c(data_ov000_020cad40, ((u32)pos.x << 4) >> 0x10, (u16)-(pos.y >> 0xc), 0, 0);
-		func_ov000_020af30c(data_ov000_020cad40, ((u32)(pos.x + 0x10000) << 4) >> 0x10, (u16)-(pos.y >> 0xc), 0, 0);
+		func_ov000_020af30c(data_ov000_020cad40, (u16)(pos.x >> 0xc), (u16)-(pos.y >> 0xc), 0, 0);
+		func_ov000_020af30c(data_ov000_020cad40, (u16)((pos.x + 0x10000) >> 0xc), (u16)-(pos.y >> 0xc), 0, 0);
 		Actor::spawnActor(0x48, 0, &pos, 0, 0, 0);
 	}
 }
@@ -1381,16 +2064,62 @@ void StageEntity::_46(PlayerBase *player, s32 value)
 	data_ov000_020ca290 = 4;
 }
 
+void StageEntity::func_ov000_0209c350()
+{
+	*(vu32 *)0x4000358 = 0x1f001f;
+	Nitro::func_02062620(data_ov000_020c1ff0);
+	Nitro::func_020626c4(1, 0, 6, 0);
+	Nitro::func_02066edc(0, data_ov000_020ca3cc, 0x100);
+	Nitro::func_02066edc(0, data_ov000_020ca64c, 0x100);
+	for (u8 i = 0; i < 10; i++) {
+		data_ov000_020ca32c[i].id = 0;
+	}
+	for (u8 i = 0; i < 0x18; i++) {
+		data_ov000_020ca2fc[i] = 0;
+	}
+	for (u8 i = 0; i < 8; i++) {
+		data_ov000_020ca2d4[i] = 0;
+	}
+	data_ov000_020ca294 = 0;
+	data_ov000_020ca2b4 = 0;
+	data_ov000_020ca2ec[0] = 0;
+	data_ov000_020ca2e4[0] = 0;
+	data_ov000_020ca2f4[0] = 0;
+	data_ov000_020ca2dc[0] = 0;
+	data_ov000_020ca2ec[1] = 0;
+	data_ov000_020ca2e4[1] = 0;
+	data_ov000_020ca2f4[1] = 0;
+	data_ov000_020ca2dc[1] = 0;
+	data_ov000_020ca2a8 = 0;
+	data_ov000_020ca2a0 = 0;
+	data_ov000_020ca2b8 = 0;
+	data_ov000_020ca280 = 0;
+	data_ov000_020ca290 = 0;
+	data_ov000_020ca2b0 = 0;
+	data_ov000_020ca288 = 0;
+	data_ov000_020ca29c = 0;
+	data_ov000_020ca298 = -1;
+	if ((data_02085abc & 1) != 0) {
+		return;
+	}
+	bool vsMode = data_02085a84 != 0;
+	if (vsMode) {
+		Vec3_32 pos(0);
+		Actor::spawnActor(0x21, 0, &pos, NULL, NULL, NULL);
+		func_ov000_0209aff8(0, 0);
+		func_ov000_0209aff8(1, 0);
+	} else {
+		func_ov000_0209aff8(data_020887f0, 0);
+	}
+}
+
 u32 StageEntity::func_ov000_0209c590(Vec3_32 *pos, Vec3_32 *prev, s32 param_3, u32 playSound)
 {
 	s32 top = data_ov000_020cadac[data_02085a7c];
 	s32 surface = data_ov000_020cae0c[data_02085a7c];
 	if ((prev->y <= top && surface < pos->y) || (pos->y < surface && top <= prev->y)) {
 		func_ov054_021646e0(pos->x, param_3);
-		Vec3_32 splash;
-		splash.x = pos->x;
-		splash.y = surface;
-		splash.z = pos->z;
+		Vec3_32 splash(pos->x, surface, pos->z);
 		u8 type = data_ov000_020cace0[data_02085a7c];
 		if (type == 4) {
 			splash.y = surface + 0x8000;
@@ -1562,6 +2291,55 @@ void StageEntity::destroy(bool permanent)
 
 void StageEntity::setTimedEvent(u32 event_id, s32 time, bool enable, bool switch_event, bool play_sfx)
 {
+	if (!enable) {
+		if (time != 0) {
+			if (!switch_event) {
+				data_0208af3c &= ~(1ULL << event_id);
+				data_0208af84[event_id] = time * 10;
+				data_0208af44[event_id] |= 1;
+				if (play_sfx) {
+					data_0208af44[event_id] |= 2;
+				} else {
+					data_0208af44[event_id] &= ~2;
+				}
+			} else {
+				data_0208af3c |= 1ULL << event_id;
+				data_0208af84[event_id] = time * 10;
+				data_0208af44[event_id] &= ~1;
+				if (play_sfx) {
+					data_0208af44[event_id] |= 2;
+				} else {
+					data_0208af44[event_id] &= ~2;
+				}
+			}
+		} else {
+			data_0208af3c &= ~(1ULL << event_id);
+		}
+	} else {
+		if (time != 0) {
+			if (!switch_event) {
+				data_0208af3c |= 1ULL << event_id;
+				data_0208af84[event_id] = time * 10;
+				data_0208af44[event_id] &= ~1;
+				if (play_sfx) {
+					data_0208af44[event_id] |= 2;
+				} else {
+					data_0208af44[event_id] &= ~2;
+				}
+			} else {
+				data_0208af3c &= ~(1ULL << event_id);
+				data_0208af84[event_id] = time * 10;
+				data_0208af44[event_id] |= 1;
+				if (play_sfx) {
+					data_0208af44[event_id] |= 2;
+				} else {
+					data_0208af44[event_id] &= ~2;
+				}
+			}
+		} else {
+			data_0208af3c |= 1ULL << event_id;
+		}
+	}
 }
 
 u16 getActorID(u8 sprite_id)
@@ -1673,14 +2451,16 @@ bool StageEntity::checkPlayersInOffset(s32 x, s32 y)
 			dx1 = -dx1;
 		}
 		s32 dy1 = pos1.y - this->position.y;
-		if (dy1 < 0) {
-			dy1 = -dy1;
-		}
 		if (dx0 < x && dy0 < y) {
 			return true;
 		}
-		if (dx1 < x && dy1 < y) {
-			return true;
+		if (dx1 < x) {
+			if (dy1 < 0) {
+				dy1 = -dy1;
+			}
+			if (dy1 < y) {
+				return true;
+			}
 		}
 		return false;
 	}
@@ -1692,11 +2472,13 @@ bool StageEntity::checkPlayersInOffset(s32 x, s32 y)
 		dx = -dx;
 	}
 	s32 dy = pos.y - this->position.y;
-	if (dy < 0) {
-		dy = -dy;
-	}
-	if (dx < x && dy < y) {
-		return true;
+	if (dx < x) {
+		if (dy < 0) {
+			dy = -dy;
+		}
+		if (dy < y) {
+			return true;
+		}
 	}
 	return false;
 }

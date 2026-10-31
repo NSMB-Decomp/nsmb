@@ -645,18 +645,15 @@ u32 PlayerBase::func_ov011_0212bdb8(s32 x)
 	return this->func_ov011_0212bca4(x < -0x4000 ? -0x4000 : (x > 0x4000 ? 0x4000 : x));
 }
 
-bool PlayerBase::func_ov011_0212bd68(s32 x, s32 y, s32 z)
+bool PlayerBase::func_ov011_0212bd68(s32 x)
 {
 	if (x < 0) {
-		z = this->_778 | 0x40000;
-		y = 0xffff1000;
-		this->_778 = z;
+		this->_778 |= 0x40000;
 		if (x < -0xf000) {
-			x = y;
+			x = -0xf000;
 		}
 	} else if (0 < x) {
-		y = this->_778 | 0x20000;
-		this->_778 = y;
+		this->_778 |= 0x20000;
 		if (0xf000 < x) {
 			x = 0xf000;
 		}

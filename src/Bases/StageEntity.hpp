@@ -141,9 +141,11 @@ public:
 	Vec3_32 _31c; /* 0x31C */
 	u8 _pad2[8];
 	u64 _334; /* 0x334 */
-	u8 _pad99[4];
+	u16 _33c; /* 0x33C */
+	u8 _pad99[2];
 	s32 _340; /* 0x340 */
-	u8 _pad14[0x8];
+	u8 _pad14[0x4];
+	u32 _348; /* 0x348 */
 	u32 _34c;     /* 0x34C */
 	s32 _350;     /* 0x350 */
 	u32 _354;     /* 0x354 */
@@ -252,7 +254,12 @@ public:
 	static void func_ov000_0209e13c(PlayerBase *, u32, u32);
 	u32 func_ov000_0209a80c(ActiveCollider *, s32, u32, u8);
 	static void func_ov000_0209e2c8(s32, s32, u32);
-	static void func_ov000_0209bf10(UnkEntry_0208b168 *, UnkSpawnCfg_020c529c *, u8 *, u16 *, u32, u32);
+	static StageEntity *func_ov000_0209bf10(UnkEntry_0208b168 *, UnkSpawnCfg_020c529c *, u8 *, u16 *, u8, u32);
+	static bool func_ov000_0209bddc(UnkEntry_0208b168 *, UnkSpawnCfg_020c529c *, u32);
+	static u32 func_ov000_0209ece4(u32, u32);
+	static void func_ov000_0209c350();
+	static void func_ov000_0209ba94(UnkTileScan *, u32, u32);
+	static bool func_ov000_0209e660(s32, s32, u32, u32, u8, s8, u8);
 	void func_ov000_0209a5bc(PlayerBase *, s32, u32);
 	static StageEntity *func_ov000_0209c178(u32, u32, Vec3_32 *);
 	static void func_ov000_0209e038();
@@ -282,7 +289,7 @@ public:
 	static bool func_ov000_0209b688(u32, u32);
 	void func_ov000_0209c7a0(Vec3_32 *, u32);
 	static u32 func_ov000_0209c590(Vec3_32 *, Vec3_32 *, s32, u32);
-	s32 func_ov000_0209a23c();
+	s32 func_ov000_0209a23c(u32, u32, u32);
 	bool func_ov000_0209a4f0(ActiveCollider *, PlayerBase *, u32);
 	void func_ov000_0209aa04(u32 type,s32 x,s32 y,s32 player_id);
 	static void func_ov000_0209aa5c(Vec3_32 *, s32, s32);
