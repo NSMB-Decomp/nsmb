@@ -45,6 +45,29 @@ struct ActorProfile {
 	bool (*loadResources)();
 };
 
+namespace Nitro
+{
+void func_02061274();
+void func_02061260();
+void func_0206123c();
+void func_02061218();
+void func_02061204();
+void func_020611f0();
+void func_020611dc();
+void func_020611c8();
+void func_020611b4();
+void func_0206118c();
+void func_02061164();
+void func_02061494(u32);
+void func_02061958(u32);
+void func_02061474(u32);
+void func_02060d78(u32, u32, u32);
+void func_02066edc(u32, void *, u32);
+void *func_02062264();
+void func_020622ec(void*, u32, u32);
+} // namespace Nitro
+
+
 namespace FS {
 	namespace Cache {
 

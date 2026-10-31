@@ -1,13 +1,13 @@
 
 // .text
 
-func_ov008_020cc2e0 kind:function(arm,size=0x20) addr:0x020cc2e0
-func_ov008_020cc300 kind:function(arm,size=0x28) addr:0x020cc300
-func_ov008_020cc328 kind:function(arm,size=0x144) addr:0x020cc328
-func_ov008_020cc46c kind:function(arm,size=0x8) addr:0x020cc46c
-func_ov008_020cc474 kind:function(arm,size=0x4) addr:0x020cc474
-func_ov008_020cc478 kind:function(arm,size=0x8) addr:0x020cc478
-func_ov008_020cc480 kind:function(arm,size=0x184) addr:0x020cc480
+_ZN9SaveSceneD1Ev kind:function(arm,size=0x20) addr:0x020cc2e0
+_ZN9SaveSceneD0Ev kind:function(arm,size=0x28) addr:0x020cc300
+_ZN9SaveScene8onUpdateEv kind:function(arm,size=0x144) addr:0x020cc328
+_ZN9SaveScene8onRenderEv kind:function(arm,size=0x8) addr:0x020cc46c
+_ZN9SaveScene14pendingDestroyEv kind:function(arm,size=0x4) addr:0x020cc474
+_ZN9SaveScene9onDestroyEv kind:function(arm,size=0x8) addr:0x020cc478
+_ZN9SaveScene8onCreateEv kind:function(arm,size=0x184) addr:0x020cc480
 _ZN9SaveScene6createEv kind:function(arm,size=0x2c) addr:0x020cc604
 _ZN6Scene8D1Ev kind:function(arm,size=0x20) addr:0x020cc630
 _ZN6Scene8D0Ev kind:function(arm,size=0x28) addr:0x020cc650
