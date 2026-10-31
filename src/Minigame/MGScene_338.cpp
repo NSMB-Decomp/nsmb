@@ -20,9 +20,7 @@ struct TEMP_2 {
 	u8 e;
 };
 
-TEMP_2 data_ov130_02137df8[] = {
-    {0x169, 0xC, 0x28, 0xC, 0x0},
-};
+extern TEMP_2 data_ov130_02137df8[];
 
 void *MGScene_338::create()
 {
@@ -40,18 +38,17 @@ char *MGScene_338::virt_19(u32 param_1)
 	return a.strings[param_1];
 }
 
-u16 data_0203d318;
+extern u16 data_0203d318;
 void func_ov130_02135230(void *, u32);
-u8 data_ov130_0213ace4;
-u16 data_ov130_02137de0;
-u16 data_ov130_02137dec;
-u32 data_ov130_02137df0;
-u16 data_ov130_02137de8;
-u32 data_ov130_02137dfc;
-u32 data_ov130_02137dfe;
-u8 data_ov130_021395e4;
-u32 data_ov130_02137bf0;
-void *data_ov130_0213ad08;
+extern u8 data_ov130_0213ace4;
+extern u8 data_ov130_0213ace0;
+extern u16 data_ov130_02137de0;
+extern u16 data_ov130_02137dec;
+extern u32 data_ov130_02137df0;
+extern u16 data_ov130_02137de8;
+extern u8 data_ov130_021395e4;
+extern const u32 data_ov130_02137bf0;
+extern void *data_ov130_0213ad08;
 void MGScene_338::virt_20(u32 param_1)
 {
 	bool a = false;
@@ -98,17 +95,33 @@ void MGScene_338::virt_20(u32 param_1)
 	this->_64 = 0;
 }
 
+extern u8 data_0208b594;
+
 s32 MGScene_338::onCreate()
 {
+	data_0208b594 |= 0x10;
+	data_ov130_0213ace0 = 0;
+	if (data_ov130_0213ace4 != 0) {
+		MGScene::func_02024ad0(&data_ov130_0213ad08);
+	}
+	data_ov130_0213ace4 = 0;
+	func_02006674(1);
+	return 1;
 }
+
+extern u16 data_0203d2b0;
+bool func_02023328(u16);
+void func_ov130_02122f60();
+void func_020097ec();
 
 s32 MGScene_338::onDestroy()
 {
+	if (!func_02023328(data_0203d2b0) && data_0203d2b0 != 0x151) {
+		func_ov130_02122f60();
+		func_020097ec();
+	}
+	return 1;
 }
 
-MGScene_338::MGScene_338()
-{
-}
-MGScene_338::~MGScene_338()
-{
-}
+// 0x02139098
+ObjectProfile MGScene_338::profile = { MGScene_338::create, 0x152, 0x152 };

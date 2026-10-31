@@ -1,16 +1,12 @@
 #include "MGDebugMenuScene.hpp"
 
-struct STRS {
-	char *strings[27];
-};
-const STRS MG_DEBUG_STRINGS = {
-    {
+// 0x02138980
+char *data_ov130_02138980[5] = {
 	"1P MODE",
 	"MULTIBOOT VS MENU MODE",
 	"ROM VS MENU MODE - PARENT",
 	"ROM VS CHILD",
 	"ROM VS FAKE CHILD",
-    },
 };
 
 void *MGDebugMenuScene::create()
@@ -25,11 +21,11 @@ void MGDebugMenuScene::virt_18()
 
 char *MGDebugMenuScene::virt_19(u32 param_1)
 {
-	return MG_DEBUG_STRINGS.strings[param_1];
+	return data_ov130_02138980[param_1];
 }
 
 void func_ov130_02137518(u32);
-u16 data_ov130_02137de4;
+extern u16 data_ov130_02137de4;
 void MGDebugMenuScene::virt_20(u32 param_1)
 {
 	switch (param_1) {
@@ -61,6 +57,5 @@ void MGDebugMenuScene::virt_20(u32 param_1)
 	this->_64 = 0;
 }
 
-MGDebugMenuScene::~MGDebugMenuScene()
-{
-}
+// 0x02138954
+ObjectProfile Object329_Profile = { MGDebugMenuScene::create, 0x149, 0x149 };

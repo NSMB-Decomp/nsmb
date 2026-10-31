@@ -36,9 +36,9 @@ s32 BootScene::onCreate() {
 		REG_BG0CNT = (REG_BG0CNT & 0x43) | 0x1700;
 		REG_BG0CNT = REG_BG0CNT & ~0x40;
 		REG_BG0OFS = 0x0;
-		Nitro::func_02067258((u32)&data_ov001_020cd144, Nitro::func_02061ff8());
+		Nitro::func_02067258(&data_ov001_020cd144, (void *)Nitro::func_02061ff8());
 		Nitro_::func_02063af0((u16*)&data_ov001_020cd734, 0x0, 0x200);
-		Nitro::func_02067258((u32)&data_ov001_020cd934, Nitro::func_020622b8());
+		Nitro::func_02067258(&data_ov001_020cd934, (void *)Nitro::func_020622b8());
 		REG_BG3CNT &= ~0x03;
 		REG_BG3CNT = (REG_BG3CNT & 0x43) | 0x1100;
 		REG_BG3CNT &= ~0x40;
@@ -55,9 +55,9 @@ s32 BootScene::onCreate() {
 		REG_BG2CNT_SUB &= ~0x40;
 		REG_BG2CNT_SUB = (REG_BG2CNT_SUB & 0x43) | 0x310;
 		REG_BG2OFS = 0x0;
-		Nitro::func_02067258((u32)&data_ov001_020cdb24, Nitro::func_02061ee4());
+		Nitro::func_02067258(&data_ov001_020cdb24, (void *)Nitro::func_02061ee4());
 		Nitro::func_02063a88((u32)&data_ov001_020ce84c, 0x0, 0x20);
-		Nitro::func_02067258((u32)&data_ov001_020ce86c, Nitro::func_02062138());
+		Nitro::func_02067258(&data_ov001_020ce86c, (void *)Nitro::func_02062138());
 		data_02085a88 = 0x1;
 		REG_DISPCNT_SUB = ((REG_DISPCNT_SUB & ~0x1f00) | 0x400);
 	}
@@ -138,7 +138,7 @@ s32 BootScene::func_ov001_020cc4b4() {
 		}
 		local_r0 = (local_r0 << 0x10);
 		local_r8 = (local_r0 >> 0x10);
-		(tmp_call0 = Nitro::func_02062244(local_r0));
+		(tmp_call0 = (u32)Nitro::func_02062244());
 		local_r0 = (tmp_call0 + 0x4c0);
 		local_r1 = local_r11;
 		local_r2 = (local_r0 + (local_r7 << 0x1));

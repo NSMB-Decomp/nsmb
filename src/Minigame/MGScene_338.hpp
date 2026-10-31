@@ -1,16 +1,14 @@
+#pragma once
 #include "MGDebugScene.hpp"
 
 class MGScene_338 : public MGDebugScene
 {
       public:
-	u8 _pad[0x8];
-	u32 _64;
-	u32 _68;
-	u8 _pa2[0x10];
+	static ObjectProfile profile;
 
-	~MGScene_338();
-	inline MGScene_338();
-	void *create();
+	inline ~MGScene_338() {};
+	inline MGScene_338() {};
+	static void *create();
 
 	s32 onCreate();
 	s32 onDestroy();

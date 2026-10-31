@@ -27,7 +27,7 @@ func_ov130_02122e94 kind:function(arm,size=0x60) addr:0x02122e94
 func_ov130_02122ef4 kind:function(arm,size=0x30) addr:0x02122ef4
 func_ov130_02122f24 kind:function(arm,size=0xc) addr:0x02122f24
 func_ov130_02122f30 kind:function(arm,size=0x30) addr:0x02122f30
-func_ov130_02122f60 kind:function(arm,size=0x14) addr:0x02122f60
+_Z19func_ov130_02122f60v kind:function(arm,size=0x14) addr:0x02122f60
 func_ov130_02122f74 kind:function(arm,size=0x10) addr:0x02122f74
 func_ov130_02122f84 kind:function(arm,size=0x184) addr:0x02122f84
 func_ov130_02123108 kind:function(arm,size=0x18) addr:0x02123108
@@ -38,7 +38,7 @@ func_ov130_02123200 kind:function(arm,size=0x30) addr:0x02123200
 func_ov130_02123230 kind:function(arm,size=0x40) addr:0x02123230
 func_ov130_02123270 kind:function(arm,size=0x38) addr:0x02123270
 func_ov130_021232a8 kind:function(arm,size=0x14) addr:0x021232a8
-func_ov130_021232bc kind:function(arm,size=0x14) addr:0x021232bc
+_Z19func_ov130_021232bcm kind:function(arm,size=0x14) addr:0x021232bc
 func_ov130_021232d0 kind:function(arm,size=0x44) addr:0x021232d0
 func_ov130_02123314 kind:function(arm,size=0x50) addr:0x02123314
 func_ov130_02123364 kind:function(arm,size=0x20) addr:0x02123364
@@ -179,11 +179,11 @@ _ZN12MGDebugSceneD0Ev kind:function(arm,size=0x40) addr:0x02126a38
 _ZN12MGDebugSceneD1Ev kind:function(arm,size=0x38) addr:0x02126a78
 _ZN12MGDebugScene9preUpdateEv kind:function(arm,size=0x30) addr:0x02126ab0
 _ZN12MGDebugScene9preCreateEv kind:function(arm,size=0x19c) addr:0x02126ae0
-func_ov130_02126c7c kind:function(arm,size=0x34c) addr:0x02126c7c
-func_ov130_02126fc8 kind:function(arm,size=0x88) addr:0x02126fc8
-func_ov130_02127050 kind:function(arm,size=0xc0) addr:0x02127050
-func_ov130_02127110 kind:function(arm,size=0xc0) addr:0x02127110
-func_ov130_021271d0 kind:function(arm,size=0x154) addr:0x021271d0
+_ZN12MGDebugScene19func_ov130_02126c7cEv kind:function(arm,size=0x34c) addr:0x02126c7c
+_ZN12MGDebugScene19func_ov130_02126fc8Ev kind:function(arm,size=0x88) addr:0x02126fc8
+_ZN12MGDebugScene19func_ov130_02127050Ev kind:function(arm,size=0xc0) addr:0x02127050
+_ZN12MGDebugScene19func_ov130_02127110Ev kind:function(arm,size=0xc0) addr:0x02127110
+_ZN12MGDebugScene19func_ov130_021271d0Ev kind:function(arm,size=0x154) addr:0x021271d0
 _ZN9Object328D1Ev kind:function(arm,size=0x5c) addr:0x02127324
 _ZN9Object328D0Ev kind:function(arm,size=0x64) addr:0x02127380
 func_ov130_021273e4 kind:function(arm,size=0x148) addr:0x021273e4
@@ -466,7 +466,7 @@ _ZN11MGScene_3387virt_20Em kind:function(arm,size=0x1d0) addr:0x02134fd8
 _ZN11MGScene_3387virt_19Em kind:function(arm,size=0x44) addr:0x021351a8
 _ZN11MGScene_3387virt_18Ev kind:function(arm,size=0xc) addr:0x021351ec
 _ZN11MGScene_3386createEv kind:function(arm,size=0x38) addr:0x021351f8
-func_ov130_02135230 kind:function(arm,size=0x58) addr:0x02135230
+_Z19func_ov130_02135230Pvm kind:function(arm,size=0x58) addr:0x02135230
 func_ov130_02135288 kind:function(arm,size=0xc) addr:0x02135288
 func_ov130_02135294 kind:function(arm,size=0xc) addr:0x02135294
 func_ov130_021352a0 kind:function(arm,size=0x34) addr:0x021352a0
@@ -549,7 +549,7 @@ func_ov130_021374d8 kind:function(arm,size=0x10) addr:0x021374d8
 func_ov130_021374e8 kind:function(arm,size=0x10) addr:0x021374e8
 func_ov130_021374f8 kind:function(arm,size=0x10) addr:0x021374f8
 func_ov130_02137508 kind:function(arm,size=0x10) addr:0x02137508
-func_ov130_02137518 kind:function(arm,size=0x10) addr:0x02137518
+_Z19func_ov130_02137518m kind:function(arm,size=0x10) addr:0x02137518
 func_ov130_02137528 kind:function(arm,size=0x1d0) addr:0x02137528
 func_ov130_021376f8 kind:function(arm,size=0xf0) addr:0x021376f8
 func_ov130_021377e8 kind:function(arm,size=0x1d4) addr:0x021377e8
@@ -591,10 +591,6 @@ data_ov130_02137dec kind:data(any) addr:0x02137dec
 data_ov130_02137df0 kind:data(any) addr:0x02137df0
 data_ov130_02137df4 kind:data(any) addr:0x02137df4
 data_ov130_02137df8 kind:data(any) addr:0x02137df8
-data_ov130_02137dfa kind:data(any) addr:0x02137dfa
-data_ov130_02137dfc kind:data(any) addr:0x02137dfc
-data_ov130_02137dfe kind:data(any) addr:0x02137dfe
-data_ov130_02137e00 kind:data(any) addr:0x02137e00
 data_ov130_02137f60 kind:data(any) addr:0x02137f60
 data_ov130_02137f63 kind:data(any) addr:0x02137f63
 data_ov130_02138590 kind:data(any) addr:0x02138590
@@ -629,13 +625,13 @@ Object328_Profile kind:data(any) addr:0x021388c4
 data_ov130_021388d4 kind:data(any) addr:0x021388d4
 data_ov130_021388ec kind:data(any) addr:0x021388ec
 _ZTV9Object328 kind:data(any) addr:0x021388fc
-data_ov130_0213894c kind:data(any) addr:0x0213894c
-UnknownProfile::ov130_02138954 kind:data(any) addr:0x02138954
-data_ov130_0213895c kind:data(any) addr:0x0213895c
-data_ov130_0213896c kind:data(any) addr:0x0213896c
+@2230 kind:data(byte[8]) addr:0x0213894c local
+Object329_Profile kind:data(any) addr:0x02138954
+@2233 kind:data(byte[13]) addr:0x0213895c local
+@2234 kind:data(byte[18]) addr:0x0213896c local
 data_ov130_02138980 kind:data(any) addr:0x02138980
-data_ov130_02138994 kind:data(any) addr:0x02138994
-data_ov130_021389ac kind:data(any) addr:0x021389ac
+@2231 kind:data(byte[23]) addr:0x02138994 local
+@2232 kind:data(byte[26]) addr:0x021389ac local
 _ZTV16MGDebugMenuScene kind:data(any) addr:0x021389c8
 data_ov130_02138a24 kind:data(any) addr:0x02138a24
 data_ov130_02138a25 kind:data(any) addr:0x02138a25
@@ -722,7 +718,7 @@ _ZTV9Object330 kind:data(any) addr:0x02138fb0
 @ kind:data(byte[8]) addr:0x02139080 local
 @ kind:data(byte[8]) addr:0x02139088 local
 @ kind:data(byte[8]) addr:0x02139090 local
-MGScene_338::profile kind:data(any) addr:0x02139098
+_ZN11MGScene_3387profileE kind:data(any) addr:0x02139098
 @ kind:data(byte[9]) addr:0x021390a0 local
 @ kind:data(byte[9]) addr:0x021390ac local
 @ kind:data(byte[9]) addr:0x021390b8 local
