@@ -5,8 +5,8 @@
 // MainProfileTable slot 7  |  ov008  |  profile @ 0x020e5820
 class SaveScene : public Scene {
 public:
-	u32 _64;
-	u32 _68;
+	u32 _64; // appears to be unused
+	s32 index;
 	static void *create();
 
 	inline SaveScene() {};

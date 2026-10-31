@@ -41,7 +41,7 @@ s32 SaveScene::onCreate() {
 	Nitro::func_02063a88((u32)data_ov008_020ee340, 0, 2);
 	Nitro::func_020622ec(&REG_BLDCNT_SUB,0x3f,0xfffffff0);
 	this->_64 = 0;
-	this->_68 = 0;
+	this->index = 0;
 	func_02011c34(0xffffffff);
 	return 1;
 }
@@ -61,6 +61,33 @@ s32 SaveScene::onRender() {
 }
 
 s32 SaveScene::onUpdate() {
+	if (!GlobalFader.isComplete()) {
+		return 1;
+	}
+
+	if ((u16)(data_02087650[Input::localConsoleID][0] & 0xc) == 0xc) {
+		func_020131fc(2, 0);
+	} else if (Input::consoleKeys[Input::localConsoleID][0] & 1) {
+		if (this->index < 3) {
+			func_02012e08(this->index, 0, &save);
+			func_020131fc(func_02012934(this->index), save.game.currentWorld);
+		} else {
+			for (s32 i = 0; i < 3; i++) {
+				func_02012ee0(i, &save);
+				func_02012ee0(i + 3, &save);
+			}
+		}
+	} else if (Input::consoleKeysRepeated[0] & 0x80) {
+		this->index++;
+		if (this->index > 3) {
+			this->index = 0;
+		}
+	} else if (Input::consoleKeysRepeated[0] & 0x40) {
+		this->index--;
+		if (this->index < 0) {
+			this->index = 3;
+		}
+	}
 	return 1;
 }
 
