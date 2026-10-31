@@ -239,6 +239,8 @@ public:
 	bool destroyInactive(u32 flags);
 	void func_ov000_0209e264(u32, u32, u32);
 	bool func_ov000_0209ccd0(PlayerBase *);
+    bool func_ov000_0209d240();
+    bool func_ov000_0209d3d0();
 	void func_ov000_0209da00();
 	void func_ov000_0209da0c();
 	static void func_ov000_0209e5a8(u32, u32, u32);
