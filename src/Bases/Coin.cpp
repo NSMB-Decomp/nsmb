@@ -1,7 +1,6 @@
 #include "Coin.hpp"
 #include "Player/PlayerActor.hpp"
 #include "../ProcessManager.hpp"
-// bool (Coin::*data_ov010_0212942c)() = Coin::func_ov010_020d923c; (TODO: This is part of a different sinit)
 bool (Coin::*data_ov010_02129424)() = &Coin::func_ov010_020d8b9c;
 bool (Coin::*data_ov010_0212941c)() = &Coin::func_ov010_020d9890;
 bool (Coin::*data_ov010_02129414)() = &Coin::func_ov010_020d9634;

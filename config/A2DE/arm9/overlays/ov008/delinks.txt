@@ -18,7 +18,10 @@ src/Scenes/Scene8.cpp:
 
 src/Bases/stubs/Object318.cpp:
     .text       start:0x020cd2c0 end:0x020cd340
-    .data       start:0x020e58d0 end:0x020e58e0
+    .init       start:0x020e4d14 end:0x020e4d64
+    .ctor       start:0x020e57e4 end:0x020e57e8
+    .data       start:0x020e58d0 end:0x020e5938
+    .bss        start:0x020ee344 end:0x020ee354
 
 src/Bases/stubs/Object317.cpp:
     .text       start:0x020cd3f8 end:0x020cd9ac

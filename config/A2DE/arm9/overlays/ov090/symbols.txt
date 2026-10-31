@@ -81,8 +81,8 @@ func_ov090_0217fbc8 kind:function(arm,size=0xe0) addr:0x0217fbc8
 func_ov090_0217fca8 kind:function(arm,size=0xe8) addr:0x0217fca8
 func_ov090_0217fd90 kind:function(arm,size=0x5c) addr:0x0217fd90
 func_ov090_0217fdec kind:function(arm,size=0x13c) addr:0x0217fdec
-func_ov090_0217ff28 kind:function(arm,size=0x2cc) addr:0x0217ff28
-func_ov090_021801f4 kind:function(arm,size=0xa4) addr:0x021801f4
+_ZN18Unk_ov090_02184c0819func_ov090_0217ff28Ev kind:function(arm,size=0x2cc) addr:0x0217ff28
+_ZN18Unk_ov090_02184c0819func_ov090_021801f4Ev kind:function(arm,size=0xa4) addr:0x021801f4
 func_ov090_02180298 kind:function(arm,size=0x48) addr:0x02180298
 func_ov090_021802e0 kind:function(arm,size=0x8c) addr:0x021802e0
 _ZN9Object1956createEv kind:function(arm,size=0x154) addr:0x0218036c
@@ -192,16 +192,16 @@ data_ov090_02184bd0 kind:data(any) addr:0x02184bd0
 data_ov090_02184bdc kind:data(any) addr:0x02184bdc
 data_ov090_02184bf8 kind:data(any) addr:0x02184bf8
 data_ov090_02184c00 kind:data(any) addr:0x02184c00
-__sinit_ov090_02184c08 kind:function(arm,size=0x50) addr:0x02184c08
-.p__sinit_ov090_02184c08 kind:data(word) addr:0x02184c58
+__sinit_ov090_02184c08.cpp kind:function(arm,size=0x50) addr:0x02184c08
+.p__sinit_ov090_02184c08.cpp kind:data(word) addr:0x02184c58
 data_ov090_02184c68 kind:data(any) addr:0x02184c68
 data_ov090_02184c70 kind:data(any) addr:0x02184c70
 data_ov090_02184c78 kind:data(any) addr:0x02184c78
 data_ov090_02184c80 kind:data(any) addr:0x02184c80
 Object189_Profile kind:data(any) addr:0x02184c88 ambiguous
 _ZTV9Object189 kind:data(any) addr:0x02184c94
-data_ov090_02184da8 kind:data(any) addr:0x02184da8
-data_ov090_02184db0 kind:data(any) addr:0x02184db0
+@0 kind:data(any) addr:0x02184da8 local
+@1 kind:data(any) addr:0x02184db0 local
 Object195_Profile kind:data(any) addr:0x02184db8 ambiguous
 data_ov090_02184dcc kind:data(any) addr:0x02184dcc
 Object190_Profile kind:data(any) addr:0x02184ed8 ambiguous
@@ -251,5 +251,5 @@ data_ov090_02185470 kind:data(any) addr:0x02185470
 Object105_Profile kind:data(any) addr:0x02185478 ambiguous
 data_ov090_02185484 kind:data(any) addr:0x02185484
 _ZTV9Object105 kind:data(any) addr:0x021854cc
-data_ov090_021855e0 kind:bss addr:0x021855e0
-data_ov090_021855e8 kind:bss addr:0x021855e8
+data_ov090_021855e0 kind:bss(size=0x8) addr:0x021855e0
+data_ov090_021855e8 kind:bss(size=0x8) addr:0x021855e8

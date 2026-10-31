@@ -117,6 +117,12 @@ src/Bases/stubs/Object121.cpp:
     .text       start:0x021629d4 end:0x021645f8
     .data       start:0x02170130 end:0x02170250
 
+src/Bases/ov054_0216c90c.cpp:
+    .init       start:0x0216c90c end:0x0216c9c4
+    .ctor       start:0x0216cc7c end:0x0216cc80
+    .data       start:0x02170258 end:0x02170290
+    .bss        start:0x02171954 end:0x0217199c
+
 src/Bases/stubs/Object280.cpp:
     .text       start:0x02165ebc end:0x02165f14
     .data       start:0x02170290 end:0x021702a8

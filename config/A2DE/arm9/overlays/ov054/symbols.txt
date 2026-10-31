@@ -395,10 +395,10 @@ func_ov054_02164744 kind:function(arm,size=0xf4) addr:0x02164744
 func_ov054_02164838 kind:function(arm,size=0x158) addr:0x02164838
 func_ov054_02164990 kind:function(arm,size=0x38) addr:0x02164990
 func_ov054_021649c8 kind:function(arm,size=0xbc) addr:0x021649c8
-func_ov054_02164a84 kind:function(arm,size=0x3a0) addr:0x02164a84
-func_ov054_02164e24 kind:function(arm,size=0x44) addr:0x02164e24
-func_ov054_02164e68 kind:function(arm,size=0x2b4) addr:0x02164e68
-func_ov054_0216511c kind:function(arm,size=0x174) addr:0x0216511c
+_ZN18Unk_ov054_0216c90c19func_ov054_02164a84Ev kind:function(arm,size=0x3a0) addr:0x02164a84
+_ZN18Unk_ov054_0216c90c19func_ov054_02164e24Ev kind:function(arm,size=0x44) addr:0x02164e24
+_ZN18Unk_ov054_0216c90c19func_ov054_02164e68Ev kind:function(arm,size=0x2b4) addr:0x02164e68
+_ZN18Unk_ov054_0216c90c19func_ov054_0216511cEv kind:function(arm,size=0x174) addr:0x0216511c
 func_ov054_02165290 kind:function(arm,size=0xd8) addr:0x02165290
 func_ov054_02165368 kind:function(arm,size=0xf0) addr:0x02165368
 func_ov054_02165458 kind:function(arm,size=0x1c4) addr:0x02165458
@@ -649,7 +649,7 @@ __sinit_Object251.cpp kind:function(arm,size=0x68) addr:0x0216c6e0
 __sinit_Object86.cpp kind:function(arm,size=0x68) addr:0x0216c748
 __sinit_Object69.cpp kind:function(arm,size=0x24) addr:0x0216c7b0
 __sinit_Object160.cpp kind:function(arm,size=0x138) addr:0x0216c7d4
-__sinit_ov054_0216c90c kind:function(arm,size=0xb8) addr:0x0216c90c
+__sinit_ov054_0216c90c.cpp kind:function(arm,size=0xb8) addr:0x0216c90c
 __sinit_Object71.cpp kind:function(arm,size=0x24) addr:0x0216c9c4
 __sinit_Object72.cpp kind:function(arm,size=0x24) addr:0x0216c9e8
 __sinit_Object20.cpp kind:function(arm,size=0xf0) addr:0x0216ca0c
@@ -666,7 +666,7 @@ __sinit_Object242.cpp kind:function(arm,size=0x150) addr:0x0216cafc
 .p__sinit_Object86.cpp kind:data(word) addr:0x0216cc70
 .p__sinit_Object69.cpp kind:data(word) addr:0x0216cc74
 .p__sinit_Object160.cpp kind:data(word) addr:0x0216cc78
-.p__sinit_ov054_0216c90c kind:data(word) addr:0x0216cc7c
+.p__sinit_ov054_0216c90c.cpp kind:data(word) addr:0x0216cc7c
 .p__sinit_Object71.cpp kind:data(word) addr:0x0216cc80
 .p__sinit_Object72.cpp kind:data(word) addr:0x0216cc84
 .p__sinit_Object20.cpp kind:data(word) addr:0x0216cc88
@@ -1141,13 +1141,13 @@ data_ov054_02170128 kind:data(any) addr:0x02170128
 Object121_Profile kind:data(any) addr:0x02170130 ambiguous
 _ZTV9Object121 kind:data(any) addr:0x0217013c
 data_ov054_02170250 kind:data(any) addr:0x02170250
-data_ov054_02170258 kind:data(any) addr:0x02170258
+@51 kind:data(any) addr:0x02170258 local
 data_ov054_02170260 kind:data(any) addr:0x02170260
 data_ov054_02170268 kind:data(any) addr:0x02170268
-data_ov054_02170270 kind:data(any) addr:0x02170270
+@52 kind:data(any) addr:0x02170270 local
 data_ov054_02170278 kind:data(any) addr:0x02170278
-data_ov054_02170280 kind:data(any) addr:0x02170280
-data_ov054_02170288 kind:data(any) addr:0x02170288
+@53 kind:data(any) addr:0x02170280 local
+@54 kind:data(any) addr:0x02170288 local
 Object280_Profile kind:data(any) addr:0x02170290 ambiguous
 Object281_Profile kind:data(any) addr:0x0217029c ambiguous
 Object278_Profile kind:data(any) addr:0x021702a8 ambiguous
@@ -1247,7 +1247,7 @@ data_ov054_02171908 kind:bss addr:0x02171908
 data_ov054_0217190c kind:bss addr:0x0217190c
 data_ov054_02171918 kind:bss addr:0x02171918
 data_ov054_0217193c kind:bss addr:0x0217193c
-data_ov054_02171954 kind:bss addr:0x02171954
+data_ov054_02171954 kind:bss(size=0x48) addr:0x02171954
 data_ov054_0217199c kind:bss addr:0x0217199c
 data_ov054_0217261c kind:bss(size=0x8) addr:0x0217261c
 data_ov054_02172624 kind:bss(size=0x8) addr:0x02172624

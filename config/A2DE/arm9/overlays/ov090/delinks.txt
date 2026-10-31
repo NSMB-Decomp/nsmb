@@ -9,6 +9,12 @@ src/Bases/stubs/Object189.cpp:
     .text       start:0x0217ef8c end:0x0217fbc8
     .data       start:0x02184c88 end:0x02184da8
 
+src/Bases/ov090_02184c08.cpp:
+    .init       start:0x02184c08 end:0x02184c58
+    .ctor       start:0x02184c58 end:0x02184c5c
+    .data       start:0x02184da8 end:0x02184db8
+    .bss        start:0x021855e0 end:0x02185600
+
 src/Bases/stubs/Object195.cpp:
     .text       start:0x0218036c end:0x021804c0
     .data       start:0x02184db8 end:0x02184dcc

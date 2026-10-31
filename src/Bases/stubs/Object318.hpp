@@ -8,7 +8,10 @@ public:
 	static void *create();
 	inline Object318() {};
 	inline ~Object318() {};
+
+	void func_ov008_020ccd74();
+	void func_ov008_020ccd78();
 };
 
-extern ActorProfile Object318_Profile;
+extern ObjectProfile Object318_Profile;
 

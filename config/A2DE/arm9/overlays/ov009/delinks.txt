@@ -13,6 +13,12 @@ src/Bases/stubs/Object323.cpp:
     .text       start:0x020d3d74 end:0x020d3df4
     .data       start:0x020daadc end:0x020daaec
 
+src/Bases/ov009_020d9db8.cpp:
+    .init       start:0x020d9db8 end:0x020d9e28
+    .ctor       start:0x020da5e4 end:0x020da5e8
+    .data       start:0x020dab94 end:0x020dabb4
+    .bss        start:0x020dbf3c end:0x020dbf5c
+
 src/Bases/stubs/Object305.cpp:
     .text       start:0x020d5014 end:0x020d52d0
     .data       start:0x020dabb4 end:0x020dac18
@@ -45,6 +51,12 @@ src/Bases/stubs/Object309.cpp:
     .data       start:0x020daf04 end:0x020dafb0
     .bss        start:0x020dc11c end:0x020dc164
 
+src/Bases/ov009_020da4a8.cpp:
+    .init       start:0x020da4a8 end:0x020da518
+    .ctor       start:0x020da5f8 end:0x020da5fc
+    .data       start:0x020dafb0 end:0x020dafd0
+    .bss        start:0x020dc168 end:0x020dc188
+
 src/Bases/stubs/Object310.cpp:
     .text       start:0x020d8564 end:0x020d8870
     .data       start:0x020dafd0 end:0x020db034
@@ -59,6 +71,12 @@ src/Bases/stubs/Object311.cpp:
 src/Bases/stubs/Object312.cpp:
     .text       start:0x020d8c50 end:0x020d8fe8
     .data       start:0x020db0b0 end:0x020db114
+
+src/Bases/ov009_020da570.cpp:
+    .init       start:0x020da570 end:0x020da5e0
+    .ctor       start:0x020da600 end:0x020da604
+    .data       start:0x020db114 end:0x020db134
+    .bss        start:0x020dc1a4 end:0x020dc1e0
 
 src/Bases/stubs/Object313.cpp:
     .text       start:0x020d9320 end:0x020d9620
