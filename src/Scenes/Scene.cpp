@@ -1,26 +1,30 @@
 #include "Scene.hpp"
+#include "../system/app.hpp"
 
-void func_02008558();
+inline void *operator new(u32, void *p)
+{
+	return p;
+}
+
 bool func_02046c5c();
 void func_0200f3d8();
-void func_02009b64();
 void func_ov052_02152bf0();
 void func_0200e874(u32, u32, bool);
-void func_0200514c(u32);
-void sceneBaseInit();
 void func_02018ac0();
 void func_0200e944(u32, u32, u32);
-u32 data_02088f18();
-u32 func_02013050(u32);
-u32 data_02085a84;
-u32 data_0208ae58;
-u32 data_02089504;
-u8 data_02085974;
-u8 data_0203bd28;
-u16 data_0203bd2c;
-u16 data_0203bd34;
-u32 data_02088f38;
-Fader *data_02085b14;
+s32 func_02013050(OptionSave *);
+void func_02006444(u32);
+extern u32 data_02085a84;
+extern u32 data_0208ae58;
+extern u8 data_02087630;
+extern u8 data_02088f2c;
+extern u16 data_0208883c;
+extern u32 data_02088f38;
+
+u8 data_0203bd28 = 1;
+u16 data_0203bd30 = 0x181;
+u16 data_0203bd2c = 0x181;
+u16 data_0203bd34 = 0x181;
 
 Scene::Scene()
 {
@@ -45,11 +49,11 @@ Scene::~Scene()
 		if (a) {
 			bool c = func_02046c5c();
 			if (c != 0 && !MB_IsMultiBootChild()) {
-				data_02085ad4[0] = save.options.controlOptions; // TODO: Do not offset using pointers
+				data_02085ad4[0] = save.options.controlOptions;
 			}
 			func_0200f3d8();
 		}
-		func_02009b64();
+		FS::Cache::clear();
 		if ((BOOL(data_02085a84 != 0) && (data_0208ae58 != 0)) == TRUE) {
 			func_ov052_02152bf0();
 			data_0208ae58 = 0;
@@ -79,7 +83,7 @@ void Scene::postCreate(u32 param_1)
 {
 	func_0200e944(this->_5c, this->_60, 1);
 	if (param_1 == 2) {
-		data_02085b14 = &GlobalFader;
+		Fader::current = &GlobalFader;
 	}
 	Object::postCreate(param_1);
 	return;
@@ -106,53 +110,53 @@ void Scene::postDestroy(u32 a)
 bool Scene::preUpdate()
 {
 	if (!Base::preUpdate()) {
-		return 0;
+		return false;
 	}
-	if (data_0203bd30 == 0x181) {
-		if ((this->skipFlags & 1) != 0) {
-			if (!this->hasChildPendingCreation()) {
-				this->skipFlags = this->skipFlags & 0xfe;
-				this->skipFlags = this->skipFlags & 0xfb;
+
+	if (data_0203bd30 != 0x181) {
+		if (!GlobalFader.func_02007c68()) {
+			GlobalFader.func_02007df0(0x20);
+		} else if (GlobalFader.func_02007c68()) {
+			this->destroy();
+		}
+		return false;
+	}
+
+	if (this->skipFlags & 1) {
+		if (!this->hasChildPendingCreation()) {
+			this->skipFlags &= ~1;
+			this->skipFlags &= ~4;
+		}
+		return false;
+	}
+
+	for (s32 i = 0; i < 2; i++) {
+		if (GlobalFader.fadingState[i] & 4) {
+			GlobalFader.func_02007e34(0x20, i);
+		}
+		if (GlobalFader.fadingState[i] & 0x20) {
+			GlobalFader.func_02007cf8(0x20, i);
+		}
+	}
+
+	if (data_02087630 != 0) {
+		if (data_02088f2c != 0 && data_02088f30 != 0) {
+			if (MB_IsMultiBootChild()) {
+				data_0208883c |= 0x8000;
+			} else {
+				data_02088f2c = 0;
+				func_02011e3c(0x1e);
+				GlobalFader.func_02007c44();
+				GlobalFader.func_02007bfc();
+				func_020131fc(4, 0);
+				data_02088f34 = 1;
 			}
 			return false;
 		}
-		u32 i = 0;
-		do {
-			if ((GlobalFader.fadingState[0] & 4) != 0) {
-				GlobalFader.func_02007e34(0x20, i);
-			}
-			if ((GlobalFader.fadingState[0] & 0x20) != 0) {
-				GlobalFader.func_02007cf8(0x20, i);
-			}
-			i += 1;
-			// pFVar3 = (Fader *)(pFVar3->_pad0 + 1);
-		} while (i < 2);
-		// if (data_02087630 == '\0') {
-		//	data_02088f2c = '\x01';
-		// } else if ((data_02088f2c != '\0') && (data_02088f30 != '\0')) {
-		//	bVar1 = MB_IsMultiBootChild();
-		//	if (bVar1) {
-		//		data_0208883c |= 0x8000;
-		//	} else {
-		//		data_02088f2c = '\0';
-		//		func_02011e3c(0x1e);
-		//		func_02007c44(&GlobalFader);
-		//		func_02007bfc(&GlobalFader);
-		//		func_020131fc(4, 0);
-		//		data_02088f34 = 1;
-		//	}
-		//	return 0;
-		// }
-		// return 1;
-	}
-	if (GlobalFader.func_02007c68() == 0) {
-		GlobalFader.func_02007df0(0x20);
 	} else {
-		if (GlobalFader.func_02007c68() != 0) {
-			this->destroy();
-		}
+		data_02088f2c = 1;
 	}
-	return false;
+	return true;
 }
 
 void Scene::postUpdate(u32 a)
@@ -176,38 +180,35 @@ void Scene::postRender(u32 a)
 
 void Scene::prepareFirstScene()
 {
-	if (s32(&GlobalFader) != 0) {
-		func_02008558();
-		// GlobalFader = Fader();
-		//*(s32*)(&GlobalFader) = 1;
-	}
+	new (&GlobalFader) Fader();
+
 	if (MB_IsMultiBootChild()) {
 		data_0203bd30 = 1;
+	} else if (App::getBootScene() == 0) {
+		data_0203bd30 = 0;
 	} else {
-		u32 boot_scene = Game::getBootScene();
-		if (boot_scene == 0) {
-			data_0203bd30 = 0;
+		App::initBoot(0);
+		func_02018ac0();
+		GlobalFader.brightnessFactor[0] = 0x1000;
+		GlobalFader.brightnessFactor[1] = 0x1000;
+
+		s32 result = func_02013050(&save.options);
+		if (result == 0) {
+			data_0203bd30 = 4;
+			data_02085ad4[0] = save.options.controlOptions;
+			func_02006444(save.options.soundMode);
 		} else {
-			sceneBaseInit();
-			func_02018ac0();
-			GlobalFader.brightnessFactor[0] = 0x1000;
-			GlobalFader.brightnessFactor[1] = 0x1000;
-			// iVar2 = func_02013050(&data_02088f18);
-			//  if (iVar2 == 0) {
-			//	data_0203bd30 = 4;
-			//	data_02085ad4 = uRam02088f24;
-			//	func_02006444(uRam02088f20);
-			//  } else {
-			//	if (iVar2 - 2U < 2) {
-			//		data_02088f38 = 7;
-			//	} else {
-			//		data_02088f38 = 6;
-			//	}
-			//	data_0203bd30 = 0xb;
-			//	data_02088f30 = 0;
-			//  }
+			if ((u32)(result - 2) <= 1) {
+				data_02088f38 = 7;
+			} else {
+				data_02088f38 = 6;
+			}
+			data_0203bd30 = 0xb;
+			data_02088f30 = 0;
 		}
 	}
+	data_02088f2c = 0;
+	data_0203bd28 = 0;
 }
 
 Scene *Scene::tryChangeScene()
@@ -217,14 +218,14 @@ Scene *Scene::tryChangeScene()
 	}
 	data_0203bd2c = data_0203bd34;
 	data_0203bd34 = data_0203bd30;
-	data_02085974 &= ~0x40;
+	App::sleepControl &= ~0x40;
 	if (data_0203bd30 == 4) {
 		data_02085a84 = 0;
 		data_02088f30 = 1;
 	}
 #if !defined(VER_Y7QJ)
 	if (data_0203bd30 == 0x146) {
-		func_0200514c(0x10101);
+		App::reset(0x10101);
 	}
 #endif
 	Scene *result = (Scene *)Object::spawnScene(data_0203bd30, data_02088f38, 1);

@@ -234,6 +234,8 @@ class Fader
 	u8 fadeMaskShape[2];
 	u8 fadingType; /* 5C2 */
 
+	static Fader *current;
+
 	Fader();
 
 	bool isComplete();
@@ -245,6 +247,7 @@ class Fader
 	bool func_02007cb0();
 	void func_02007bd8();
 	void func_02007bfc();
+	void func_02007c44();
 };
 extern Fader GlobalFader;
 

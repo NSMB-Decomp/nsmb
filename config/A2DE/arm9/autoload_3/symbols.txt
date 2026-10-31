@@ -105,7 +105,7 @@ data_02085adc kind:bss addr:0x02085adc
 data_02085ae4 kind:bss addr:0x02085ae4
 data_02085af0 kind:bss addr:0x02085af0
 _CurrentWindow kind:bss addr:0x02085b10
-Fader::current kind:data(word) addr:0x02085b14
+_ZN5Fader7currentE kind:data(word) addr:0x02085b14
 data_02085b18 kind:data(word) addr:0x02085b18
 data_02085b1c kind:bss addr:0x02085b1c
 data_02085b20 kind:bss addr:0x02085b20
