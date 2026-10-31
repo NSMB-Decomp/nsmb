@@ -10,7 +10,7 @@ public:
 	static void *create();
 
 	inline SaveScene() {};
-	~SaveScene();
+	inline ~SaveScene() {};
 
 	s32 onCreate();
 	s32 onDestroy();

@@ -5,7 +5,8 @@ void *SaveScene::create()
 	return new SaveScene();
 }
 
-extern u8 data_ov008_020ee340[];
+// 0x020ee340
+u32 data_ov008_020ee340;
 
 s32 SaveScene::onCreate() {
 	func_0200f3d8();
@@ -38,7 +39,7 @@ s32 SaveScene::onCreate() {
 	*(s32 *)0x04000014 = 0; // TODO: REG_BG1HOFS = 0
 	Nitro::func_02066edc(0, G2_GetBG1ScrPtr(), 0x800);
 	REG_DISPCNT_SUB &= 0xffffe0ff;
-	Nitro::func_02063a88((u32)data_ov008_020ee340, 0, 2);
+	Nitro::func_02063a88((u32)&data_ov008_020ee340, 0, 2);
 	Nitro::func_020622ec(&REG_BLDCNT_SUB,0x3f,0xfffffff0);
 	this->_64 = 0;
 	this->index = 0;
@@ -89,10 +90,6 @@ s32 SaveScene::onUpdate() {
 		}
 	}
 	return 1;
-}
-
-SaveScene::~SaveScene() {
-
 }
 
 // 0x020e5820
