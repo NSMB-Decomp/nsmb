@@ -20,9 +20,10 @@ void VsStar::func_ov020_02132618()
 
 void VsStar::damagePlayer(ActiveCollider *collider, PlayerBase *player)
 {
-	if ((collider->_8 + 0x4e4) == 0) {
-		collider->_1c0 = 1;
-		this->func_ov020_02132510(player, (void*)player->linked_player);
+	VsStar *owner = (VsStar *)collider->owner;
+	if (owner->_4e4 == 0) {
+		owner->_4e4 = 1;
+		this->func_ov020_02132510(player, player->linked_player);
 	}
 }
 

@@ -13,7 +13,8 @@ class VsStar : public StageEntity
 	u32 _4cc;
 	u8 _pad1[0x12];
 	u16 _4e2;
-	u8 _pad3[0xc];
+	u16 _4e4;
+	u8 _pad3[0xa];
 
 	inline VsStar() {};
 	~VsStar();
@@ -25,7 +26,7 @@ class VsStar : public StageEntity
 	void func_ov020_021320dc(u32);
 	bool func_ov020_021322a4();
 	void func_ov020_0213238c();
-	void func_ov020_02132510(void*, void*);
+	void func_ov020_02132510(PlayerBase *, s8);
 	void func_ov020_02132618();
 	bool func_ov020_02132660(u32);
 
