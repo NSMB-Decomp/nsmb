@@ -40,6 +40,12 @@ src/ExceptionHandler.cpp:
     .rodata     start:0x02026258 end:0x02026290
     .data       start:0x02039838 end:0x02039968
 
+src/graphics/oam.cpp:
+    .text       start:0x0200debc end:0x0200dee0
+    .init       start:0x02025b0c end:0x02025b5c
+    .ctor       start:0x02039180 end:0x02039184
+    .autobss_3  start:0x02087714 end:0x02087750
+
 src/Bases/Object.cpp:
     complete
     .text       start:0x0201311c end:0x020131d8
@@ -73,6 +79,12 @@ src/graphics/3d/util.cpp:
 src/graphics/3d/modelbase.cpp:
     .text       start:0x02019b7c end:0x02019c18
 
+src/unknown/main_02025e7c.cpp:
+    .text       start:0x0201ec64 end:0x0201ec88
+    .init       start:0x02025e7c end:0x02025ecc
+    .ctor       start:0x0203919c end:0x020391a0
+    .autobss_3  start:0x0208b0a8 end:0x0208b0cc
+
 src/graphics/util/framectrl.cpp:
     .text       start:0x0201fd1c end:0x0201ff20
 
@@ -83,18 +95,6 @@ src/Minigame/MGScene.cpp:
 src/Bases/stubs/Object327.cpp:
     .text       start:0x0202584c end:0x02025878
     .data       start:0x0203d320 end:0x0203d330
-
-src/graphics/oam.cpp:
-    .text       start:0x0200debc end:0x0200dee0
-    .init       start:0x02025b0c end:0x02025b5c
-    .ctor       start:0x02039180 end:0x02039184
-    .autobss_3  start:0x02087714 end:0x02087750
-
-src/unknown/main_02025e7c.cpp:
-    .text       start:0x0201ec64 end:0x0201ec88
-    .init       start:0x02025e7c end:0x02025ecc
-    .ctor       start:0x0203919c end:0x020391a0
-    .autobss_3  start:0x0208b0a8 end:0x0208b0cc
 
 src/unknown/main_02025ecc.cpp:
     .init       start:0x02025ecc end:0x02025f14

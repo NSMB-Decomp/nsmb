@@ -1712,7 +1712,6 @@ from:0x020af1c4 kind:load to:0x02032012 module:main
 from:0x020af2f0 kind:load to:0x02166a04 module:overlay(53)
 from:0x020af3d0 kind:load to:0x02031017 module:main
 from:0x020af864 kind:load to:0x02097661 module:autoload(3)
-from:0x020b05fc kind:load to:0x02181877 module:overlays(53,55)
 from:0x020b110c kind:load to:0x0203501f module:main
 from:0x020b16d4 kind:load to:0x02099614 module:overlay(127)
 from:0x020b16d8 kind:load to:0x020995e8 module:overlay(127)

@@ -31,7 +31,6 @@ __sinit_Object124.cpp kind:function(arm,size=0x90) addr:0x0218a740
 Object124_Profile kind:data(any) addr:0x0218a800 ambiguous
 _ZTV9Object124 kind:data(any) addr:0x0218a80c
 data_ov110_0218a870 kind:data(any) addr:0x0218a870 ambiguous
-data_ov110_0218a884 kind:data(any) addr:0x0218a884 ambiguous
 data_ov110_0218a940 kind:bss(size=0x8) addr:0x0218a940
 data_ov110_0218a948 kind:bss(size=0x8) addr:0x0218a948
 data_ov110_0218a950 kind:bss(size=0x8) addr:0x0218a950
