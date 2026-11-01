@@ -11,4 +11,5 @@ PlayerActor::PlayerActor()
 }
 PlayerActor::~PlayerActor()
 {
+	this->func_ov011_0212c200();
 }

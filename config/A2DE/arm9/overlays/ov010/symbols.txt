@@ -2765,7 +2765,7 @@ data_ov010_02128484 kind:data(any) addr:0x02128484
 data_ov010_02128494 kind:data(any) addr:0x02128494
 data_ov010_021284a8 kind:data(any) addr:0x021284a8
 data_ov010_021284c4 kind:data(any) addr:0x021284c4
-_ZTV6Player kind:data(any) addr:0x021284e0
+_ZTV11PlayerActor kind:data(any) addr:0x021284e0
 {vtable(PlayerActor)} kind:data(any) addr:0x021284e8
 data_ov010_02128604 kind:data(any) addr:0x02128604
 data_ov010_02129194 kind:data(any) addr:0x02129194
