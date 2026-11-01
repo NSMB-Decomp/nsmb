@@ -116,5 +116,9 @@ src/unknown/main_02026100.cpp:
     .ctor       start:0x020391c0 end:0x020391c4
     .autobss_3  start:0x0208b770 end:0x0208b788
 
+src/unknown/main_02026148.cpp:
+    .init       start:0x02026148 end:0x0202614c
+    .ctor       start:0x020391c4 end:0x020391c8
+
 src/ProcessManager.cpp:
     .init       start:0x0202614c end:0x02026244

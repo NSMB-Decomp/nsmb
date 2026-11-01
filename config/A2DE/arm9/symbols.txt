@@ -1401,7 +1401,7 @@ __sinit_02026070 kind:function(arm,size=0x4) addr:0x02026070
 __sinit_main_02026074.cpp kind:function(arm,size=0x48) addr:0x02026074
 __sinit_main_020260bc.cpp kind:function(arm,size=0x44) addr:0x020260bc
 __sinit_main_02026100.cpp kind:function(arm,size=0x48) addr:0x02026100
-__sinit_02026148 kind:function(arm,size=0x4) addr:0x02026148
+__sinit_main_02026148.cpp kind:function(arm,size=0x4) addr:0x02026148
 __sinit_ProcessManager.cpp kind:function(arm,size=0xf8) addr:0x0202614c
 __sinit_02026244 kind:function(arm,size=0x4) addr:0x02026244
 

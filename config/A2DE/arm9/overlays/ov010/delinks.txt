@@ -22,7 +22,7 @@ src/Bases/stubs/Object240.cpp:
 
 src/Bases/Item.cpp:
     .text       start:0x020d0d80 end:0x020d5120
-    .data       start:0x02124350 end:0x02124590
+    .data       start:0x02124268 end:0x02124590
 
 src/Bases/stubs/Object241.cpp:
     .text       start:0x020d5240 end:0x020d5894
