@@ -16,6 +16,11 @@ extern u16 data_02039210[];
 extern volatile u8 data_0208b594;
 extern volatile u8 data_0208b590;
 
+// One 8x8 16-colour (4bpp) character
+struct CharTile {
+	u8 data[0x20];
+};
+
 // 0x02137c0c
 const s16 data_ov130_02137c0c[6] = {20, 12, 8, 6, 4, 0};
 
@@ -223,8 +228,10 @@ bool MGDebugScene::preCreate()
 	REG_POWER_CNT |= 0x8000;
 	G2_SetBG1Control(0, 0, 0, 4, 0);
 	G2S_SetBG1Control(0, 0, 0, 4, 0);
-	Nitro::func_02067258(data_02039218, (u8 *)Nitro::func_02061fa4() + 0x400);
-	Nitro::func_02067258(data_02039218, (u8 *)Nitro::func_02061f84() + 0x400);
+	CharTile *mainFont = &((CharTile *)Nitro::func_02061fa4())[0x20];
+	Nitro::func_02067258(data_02039218, mainFont);
+	CharTile *subFont = &((CharTile *)Nitro::func_02061f84())[0x20];
+	Nitro::func_02067258(data_02039218, subFont);
 	Nitro_::func_02063af0(data_02039210, 0, 6);
 	Nitro::func_02063a88((u32)data_02039210, 0, 6);
 

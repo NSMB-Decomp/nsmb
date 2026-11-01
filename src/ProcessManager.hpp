@@ -47,23 +47,23 @@ class ProcessLink
 struct LinkedList {
 	void *first;
 	void *last;
-};
-struct UnkList {
-	void *first;
-	void *last;
 
-	UnkList() : first(NULL), last(NULL) {}
+	LinkedList() : first(NULL), last(NULL) {}
 };
 struct UnkListEntry {
-	UnkList list;
+	LinkedList list;
 };
 struct ProcessList {
 	LinkedList linked_list;
 	s32 (Base::*executer)();
+
+	ProcessList(s32 (Base::*executer)()) : executer(executer) {}
 };
 struct SceneGraph {
 	SceneNode *root;
 	s32 (Base::*executer)();
+
+	SceneGraph(s32 (Base::*executer)()) : root(NULL), executer(executer) {}
 };
 
 enum ProcessType { Null, Connect, Create, Execute, Delete, Draw };
@@ -78,7 +78,7 @@ extern ProcessList ExecuteTask;
 extern ProcessList DrawTask;
 extern ProcessList DestroyTask;
 
-extern LinkedList idLookupProcesses[8];
+extern UnkListEntry idLookupProcesses[8];
 u32 getIDIndex(ProcessLink *);
 Base *getObjectByID(u32 class_id);
 Base *getNextObjectByObjectID(u16 class_id, Base *prev);

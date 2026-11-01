@@ -181,7 +181,7 @@ Base::Base()
 
 	SceneGraph_addChild(&ProcessManager::ConnectTask, &this->process_link, SpawnParam_Parent);
 	u32 id_index = ProcessManager::getIDIndex(&this->process_link);
-	LinkedList_Prepend(&ProcessManager::idLookupProcesses[id_index], &this->process_link.idLookup);
+	LinkedList_Prepend(&ProcessManager::idLookupProcesses[id_index].list, &this->process_link.idLookup);
 
 	ObjectProfile *profile = CurrentProfileTable[this->object_id];
 
@@ -260,7 +260,7 @@ void Base::postDestroy(u32 a)
 	}
 	SceneGraph_removeChild(&ProcessManager::ConnectTask, &this->process_link);
 	u32 id_index = ProcessManager::getIDIndex(&this->process_link);
-	LinkedList_Remove(&ProcessManager::idLookupProcesses[id_index], &this->process_link.idLookup);
+	LinkedList_Remove(&ProcessManager::idLookupProcesses[id_index].list, &this->process_link.idLookup);
 	LinkedList_Remove(&ProcessManager::DestroyTask.linked_list, &this->process_link.update);
 	if (this->heap != NULL) {
 		func_02045128();
