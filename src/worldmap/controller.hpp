@@ -59,6 +59,45 @@ public:
 
 	static void* create();
 
+	void func_ov008_020d3304();
+	void func_ov008_020d36fc();
+	void func_ov008_020d3774();
+	void func_ov008_020d3b1c();
+	void func_ov008_020d3b44();
+	void func_ov008_020d3e58();
+	void func_ov008_020d3e7c();
+	void func_ov008_020d4278();
+	void func_ov008_020d4330();
+	void func_ov008_020d4368();
+	void func_ov008_020d4378();
+	void func_ov008_020d4514();
+	void func_ov008_020d4548();
+	void func_ov008_020d45c0();
+	void func_ov008_020d45c4();
+	void func_ov008_020d4784();
+	void func_ov008_020d4788();
+	void func_ov008_020d4a5c();
+	void func_ov008_020d4a74();
+	void func_ov008_020d4cdc();
+	void func_ov008_020d4e34();
+	void func_ov008_020d511c();
+	void func_ov008_020d5284();
+	void func_ov008_020d5294();
+	void func_ov008_020d52f0();
+	void func_ov008_020d582c();
+	void func_ov008_020d5ab8();
+	void func_ov008_020d5af0();
+	void func_ov008_020d5b28();
+	void func_ov008_020d5d4c();
+	void func_ov008_020d5e64();
+	void func_ov008_020d61d8();
+	void func_ov008_020d65dc();
+	void func_ov008_020d67f8();
+	void func_ov008_020d6a14();
+	void func_ov008_020d6a40();
+	void func_ov008_020d6a50();
+	void func_ov008_020d6e1c();
+
 
 	WmPlayerModel playerModels[2];
 	WmEntityModel entityModels[2];

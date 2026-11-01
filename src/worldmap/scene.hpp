@@ -197,10 +197,37 @@ namespace WM {
 
 }
 
+// Placeholder name: only known from the worldmapscene.cpp __sinit and its out-of-line ctor/dtor.
+class Unk_ov008_020d1478
+{
+      public:
+	u32 _0;
+	u32 _4;
+	u32 _8;
+	u32 _c;
+	u32 _10;
+	u32 _14;
+
+	Unk_ov008_020d1478(u32 a);
+	~Unk_ov008_020d1478();
+};
+
+// Placeholder name: only known from the worldmapscene.cpp __sinit and its out-of-line ctor/dtor.
+class Unk_ov008_020d0614
+{
+      public:
+	u32 _0;
+
+	Unk_ov008_020d0614();
+	~Unk_ov008_020d0614();
+};
+
 class WorldmapScene : public Scene {
 public:
-
-
-
+	void func_ov008_020ce228();
+	void func_ov008_020ce330();
+	void func_ov008_020ce674();
+	void func_ov008_020ced90();
+	void func_ov008_020cefd4();
 };
 NTR_SIZE_GUARD(WorldmapScene, 0x64);

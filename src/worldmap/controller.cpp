@@ -2,6 +2,53 @@
 
 using namespace WM;
 
+Vec3_32 data_ov008_020ee63c(0x40c000, 0x8000, 0xc000);
+Vec3_32 data_ov008_020ee64c(0x434000, 0x8000, 0xc000);
+WmController::TaskFunc data_ov008_020ee65c[20] = {
+	&WmController::func_ov008_020d6e1c,
+	&WmController::func_ov008_020d6a40,
+	&WmController::func_ov008_020d67f8,
+	&WmController::func_ov008_020d67f8,
+	&WmController::func_ov008_020d61d8,
+	&WmController::func_ov008_020d5d4c,
+	&WmController::func_ov008_020d5af0,
+	&WmController::func_ov008_020d582c,
+	&WmController::func_ov008_020d5294,
+	&WmController::func_ov008_020d511c,
+	&WmController::func_ov008_020d4cdc,
+	&WmController::func_ov008_020d4a5c,
+	&WmController::func_ov008_020d4784,
+	&WmController::func_ov008_020d45c0,
+	&WmController::func_ov008_020d4514,
+	&WmController::func_ov008_020d4368,
+	&WmController::func_ov008_020d4278,
+	&WmController::func_ov008_020d3e58,
+	&WmController::func_ov008_020d3b1c,
+	&WmController::func_ov008_020d36fc,
+};
+WmController::TaskFunc data_ov008_020ee6fc[20] = {
+	&WmController::func_ov008_020d6a50,
+	&WmController::func_ov008_020d6a14,
+	&WmController::func_ov008_020d65dc,
+	&WmController::func_ov008_020d65dc,
+	&WmController::func_ov008_020d5e64,
+	&WmController::func_ov008_020d5b28,
+	&WmController::func_ov008_020d5ab8,
+	&WmController::func_ov008_020d52f0,
+	&WmController::func_ov008_020d5284,
+	&WmController::func_ov008_020d4e34,
+	&WmController::func_ov008_020d4a74,
+	&WmController::func_ov008_020d4788,
+	&WmController::func_ov008_020d45c4,
+	&WmController::func_ov008_020d4548,
+	&WmController::func_ov008_020d4378,
+	&WmController::func_ov008_020d4330,
+	&WmController::func_ov008_020d3e7c,
+	&WmController::func_ov008_020d3b44,
+	&WmController::func_ov008_020d3774,
+	&WmController::func_ov008_020d3304,
+};
+
 struct __Work {
 	NodeLink* link;
 	u32 world;

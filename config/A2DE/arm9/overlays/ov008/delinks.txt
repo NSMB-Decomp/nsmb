@@ -32,23 +32,29 @@ src/Bases/stubs/Object317.cpp:
 
 src/worldmap/worldmapscene.cpp:
     .text       start:0x020cd9ac end:0x020d1544
+    .init       start:0x020e4de4 end:0x020e4f0c
+    .ctor       start:0x020e57ec end:0x020e57f0
     .data       start:0x020e5a2c end:0x020e8bd4
-    .bss        start:0x020ee374 end:0x020ee388
+    .bss        start:0x020ee374 end:0x020ee604
 
 src/worldmap/camera.cpp:
     .text       start:0x020d1544 end:0x020d2024
     .init       start:0x020e4f0c end:0x020e4f8c
     .ctor       start:0x020e57f0 end:0x020e57f4
     .data       start:0x020e8bd4 end:0x020e9394
-    .bss        start:0x020ee388 end:0x020ee624
+    .bss        start:0x020ee604 end:0x020ee624
 
 src/worldmap/controller.cpp:
     .text       start:0x020d2024 end:0x020db204
+    .init       start:0x020e4f8c end:0x020e53ec
+    .ctor       start:0x020e57f4 end:0x020e57f8
     .data       start:0x020e9394 end:0x020e988c
     .bss        start:0x020ee624 end:0x020ee79c
 
 src/worldmap/character.cpp:
     .text       start:0x020db204 end:0x020dbc88
+    .init       start:0x020e53ec end:0x020e54cc
+    .ctor       start:0x020e57f8 end:0x020e57fc
     .data       start:0x020e988c end:0x020e9940
     .bss        start:0x020ee79c end:0x020ee7dc
 
@@ -60,6 +66,8 @@ src/worldmap/entitymodel.cpp:
 src/worldmap/minimap.cpp:
     .text       start:0x020dc1f8 end:0x020dd21c
     .rodata     start:0x020e2e58 end:0x020e3fec
+    .init       start:0x020e54cc end:0x020e569c
+    .ctor       start:0x020e57fc end:0x020e5800
     .data       start:0x020e9960 end:0x020e9b68
     .bss        start:0x020ee7f8 end:0x020ee888
 
@@ -79,6 +87,22 @@ src/Bases/stubs/Object324.cpp:
     .data       start:0x020e9be0 end:0x020e9c48
     .bss        start:0x020ee888 end:0x020ee898
 
+src/Bases/ov008_020e56ec.cpp:
+    .text       start:0x020dec38 end:0x020e0410
+    .init       start:0x020e56ec end:0x020e573c
+    .ctor       start:0x020e5804 end:0x020e5808
+    .bss        start:0x020ee8d0 end:0x020eeb64
+
 src/Bases/stubs/Object314.cpp:
     .text       start:0x020e0410 end:0x020e23fc
     .data       start:0x020ee2c8 end:0x020ee32c
+
+src/Bases/ov008_020e573c.cpp:
+    .init       start:0x020e573c end:0x020e57ac
+    .ctor       start:0x020e5808 end:0x020e580c
+    .bss        start:0x020f1490 end:0x020f1500
+
+src/Bases/ov008_020e57ac.cpp:
+    .init       start:0x020e57ac end:0x020e57e0
+    .ctor       start:0x020e580c end:0x020e5810
+    .bss        start:0x020f15c4 end:0x020f1648
