@@ -30,8 +30,8 @@ func_ov120_0218d7e0 kind:function(arm,size=0x38) addr:0x0218d7e0
 func_ov120_0218d818 kind:function(arm,size=0x1c) addr:0x0218d818
 func_ov120_0218d834 kind:function(arm,size=0x14) addr:0x0218d834
 func_ov120_0218d848 kind:function(arm,size=0x14) addr:0x0218d848
-func_ov120_0218d85c kind:function(arm,size=0x4) addr:0x0218d85c
-func_ov120_0218d860 kind:function(arm,size=0x2c) addr:0x0218d860
+_ZN18Unk_ov120_0218d860D1Ev kind:function(arm,size=0x4) addr:0x0218d85c
+_ZN18Unk_ov120_0218d860C1Ev kind:function(arm,size=0x2c) addr:0x0218d860
 _ZN9Object2236createEv kind:function(arm,size=0x54) addr:0x0218d88c
 _ZN9Object2226createEv kind:function(arm,size=0x54) addr:0x0218d8e0
 _ZN9Object2216createEv kind:function(arm,size=0x54) addr:0x0218d934
@@ -40,7 +40,7 @@ _ZN9Object2196createEv kind:function(arm,size=0x54) addr:0x0218d9dc
 _ZN9Object2186createEv kind:function(arm,size=0x54) addr:0x0218da30
 _ZN9Object2176createEv kind:function(arm,size=0x54) addr:0x0218da84
 _ZN9Object2166createEv kind:function(arm,size=0x54) addr:0x0218dad8
-func_ov120_0218db2c kind:function(arm,size=0x24) addr:0x0218db2c
+__arraydtor$0 kind:function(arm,size=0x24) addr:0x0218db2c local
 data_ov120_0218db50 kind:data(any) addr:0x0218db50
 data_ov120_0218db6c kind:data(any) addr:0x0218db6c
 data_ov120_0218db88 kind:data(any) addr:0x0218db88
@@ -53,8 +53,8 @@ data_ov120_0218dc30 kind:data(any) addr:0x0218dc30
 data_ov120_0218dc68 kind:data(any) addr:0x0218dc68
 data_ov120_0218dca8 kind:data(any) addr:0x0218dca8
 data_ov120_0218dd08 kind:data(any) addr:0x0218dd08
-__sinit_ov120_0218dde8 kind:function(arm,size=0x50) addr:0x0218dde8
-.p__sinit_ov120_0218dde8 kind:data(word) addr:0x0218de38
+__sinit_Object216.cpp kind:function(arm,size=0x50) addr:0x0218dde8
+.p__sinit_Object216.cpp kind:data(word) addr:0x0218de38
 data_ov120_0218de40 kind:data(any) addr:0x0218de40
 data_ov120_0218de44 kind:data(any) addr:0x0218de44
 data_ov120_0218de4c kind:data(any) addr:0x0218de4c
@@ -80,7 +80,7 @@ data_ov120_0218dfa8 kind:data(any) addr:0x0218dfa8 ambiguous
 data_ov120_0218e040 kind:bss addr:0x0218e040
 data_ov120_0218e044 kind:bss addr:0x0218e044
 data_ov120_0218e048 kind:bss addr:0x0218e048
-data_ov120_0218e04c kind:bss addr:0x0218e04c
-data_ov120_0218e058 kind:bss addr:0x0218e058
+@0 kind:bss(size=0xc) addr:0x0218e04c local
+data_ov120_0218e058 kind:bss(size=0xa8) addr:0x0218e058
 data_ov120_0218e0b0 kind:bss addr:0x0218e0b0 ambiguous
 data_ov120_0218e0d0 kind:bss addr:0x0218e0d0 ambiguous
