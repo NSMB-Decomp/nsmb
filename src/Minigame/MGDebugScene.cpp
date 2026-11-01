@@ -41,7 +41,7 @@ void MGDebugScene::func_ov130_021271d0()
 		s32 right = len * 8 + 32;
 		s32 top = (4 + i * 2) * 8 - 4;
 		s32 bottom = top + 16;
-		if (touchX >= 32 && touchX <= right && touchY >= top && touchY < bottom && this->_64 != 0) {
+		if ((s32)touchX >= 32 && touchX <= right && touchY >= top && touchY < bottom && this->_64 != 0) {
 			func_ov130_021232bc(0xf);
 			if (this->_68 < 10) {
 				this->virt_20(i);
