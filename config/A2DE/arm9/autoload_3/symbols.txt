@@ -159,11 +159,7 @@ data_02087688 kind:bss addr:0x02087688
 data_0208768c kind:bss addr:0x0208768c
 data_02087690 kind:bss addr:0x02087690
 data_020876a0 kind:bss addr:0x020876a0
-data_020876b0 kind:bss addr:0x020876b0
-data_020876b2 kind:bss addr:0x020876b2
-data_020876c0 kind:bss addr:0x020876c0
-data_020876c4 kind:bss addr:0x020876c4
-data_020876c6 kind:bss addr:0x020876c6
+data_020876b0 kind:bss(size=0x30) addr:0x020876b0
 data_020876e0 kind:bss addr:0x020876e0
 data_020876e4 kind:bss addr:0x020876e4
 data_020876e8 kind:bss addr:0x020876e8

@@ -5,24 +5,16 @@ const s16 data_ov011_0212e220[2] = {0x4000, -0x4000};
 const s16 data_ov011_0212e21c[2] = {0x3000, -0x3000};
 const s16 data_ov011_0212e218[2] = {0x3800,  -0x3800};
 
-struct UNKNOWN {
-	u16 _0;
-	u8 _pad[18];
-	u16 _1;
-	u8 _pad1[2];
-};
-
-extern UNKNOWN data_020876b2[2];
 extern u8 data_02085a0c;
 extern u32 data_ov000_020ca8d0;
-u16 data_02087660[2];
-u16 data_02087664[2];
+extern u16 data_02087660[2];
+extern u16 data_02087664[2];
 #pragma section autobss_3 begin
 // autoload test
 // TODO: Confirm which of these autoloads are actually a part of PlayerBase
 u32 data_02085abc;
 #pragma section autobss_3 end
-extern PlayerBase *data_0208b35c[2];
+extern PlayerBase *Players[2];
 
 void PlayerBase::func_ov011_0212c950()
 {
@@ -78,32 +70,32 @@ u32 PlayerBase::func_ov011_0212c8ac()
 
 u32 PlayerBase::func_ov011_0212c880()
 {
-	return this->_7a2 & data_020876b2[this->linked_player]._1;
+	return this->_7a2 & data_020876b0[this->linked_player][8];
 }
 
 u32 PlayerBase::func_ov011_0212c854()
 {
-	return this->_7a0 & data_020876b2[this->linked_player]._1;
+	return this->_7a0 & data_020876b0[this->linked_player][8];
 }
 
 u32 PlayerBase::func_ov011_0212c828()
 {
-	return this->_7a2 & data_020876b2[this->linked_player]._0;
+	return this->_7a2 & data_020876b0[this->linked_player][1];
 }
 
 u32 PlayerBase::func_ov011_0212c7fc()
 {
-	return this->_7a0 & data_020876b2[this->linked_player]._0;
+	return this->_7a0 & data_020876b0[this->linked_player][1];
 }
 
 u32 PlayerBase::func_ov011_0212c7d0()
 {
-	return this->_7a2 & data_020876b2[this->linked_player]._1;
+	return this->_7a2 & data_020876b0[this->linked_player][11];
 }
 
 u32 PlayerBase::func_ov011_0212c7a4()
 {
-	return this->_7a0 & data_020876b2[this->linked_player]._1;
+	return this->_7a0 & data_020876b0[this->linked_player][11];
 }
 
 u32 PlayerBase::func_ov011_0212c78c()
@@ -199,7 +191,7 @@ u32 PlayerBase::func_ov011_0212c5ec()
 	if ((this->func_ov011_0212c90c() & 0x70)) {
 		return false;
 	}
-	return this->func_ov011_0212c8dc();
+	return this->func_ov011_0212c8ac();
 }
 
 u32 PlayerBase::func_ov011_0212c5c8()
@@ -212,17 +204,17 @@ u32 PlayerBase::func_ov011_0212c5c8()
 
 u32 PlayerBase::func_ov011_0212c5bc()
 {
-	return this->func_ov011_0212c8cc();
+	return this->func_ov011_0212c8dc();
 }
 
 u32 PlayerBase::func_ov011_0212c5b0()
 {
-	return this->func_ov011_0212c8cc();
+	return this->func_ov011_0212c8ec();
 }
 
 u32 PlayerBase::func_ov011_0212c5a4()
 {
-	return this->func_ov011_0212c8cc();
+	return this->func_ov011_0212c8bc();
 }
 
 u32 PlayerBase::func_ov011_0212c598()
@@ -240,7 +232,7 @@ u32 PlayerBase::func_ov011_0212c56c()
 
 u32 PlayerBase::func_ov011_0212c52c()
 {
-	return this->_7a2 & (data_020876b2[this->linked_player]._0 | 0xf0 | data_020876b2[this->linked_player]._1);
+	return this->_7a2 & (data_020876b0[this->linked_player][1] | 0xf0 | data_020876b0[this->linked_player][11]);
 }
 
 extern u32 data_0208b3d4[2][4];
@@ -324,7 +316,7 @@ void PlayerBase::func_ov011_0212c1b8()
 {
 	s32 i = 0;
 	do {
-		PlayerBase *v = data_0208b35c[i];
+		PlayerBase *v = Players[i];
 		if ((v != NULL) && (this->linked_player != v->linked_player)) {
 			v->_7a8 = 0x1;
 		}
@@ -337,7 +329,7 @@ void PlayerBase::func_ov011_0212c170()
 {
 	s32 i = 0;
 	do {
-		PlayerBase *v = data_0208b35c[i];
+		PlayerBase *v = Players[i];
 		if ((v != NULL) && (this->linked_player != v->linked_player)) {
 			v->_7a8 = 0x0;
 		}

@@ -40,7 +40,7 @@ s32 KeyScene::onCreate()
 	this->_64 = 0;
 	for (s32 i = 0; i < 6; i++) {
 		s32 j;
-		u16 key = data_020876b0[data_ov007_020cc634[i]];
+		u16 key = data_020876b0[0][data_ov007_020cc634[i]];
 		for (j = 0; j < 6; j++) {
 			if (key == data_ov007_020cc628[j]) {
 				break;
@@ -76,7 +76,7 @@ s32 KeyScene::onUpdate()
 
 	if ((u16)(data_02087650[Input::localConsoleID][0] & 0xc) == 0xc) {
 		for (s32 i = 0; i < 6; i++) {
-			data_020876b0[data_ov007_020cc634[i]] = data_ov007_020cc628[this->_68[i]];
+			data_020876b0[0][data_ov007_020cc634[i]] = data_ov007_020cc628[this->_68[i]];
 		}
 		func_020131fc(2, 0);
 	}

@@ -2,13 +2,13 @@
 
 namespace G3D {
 
+	void shutdown() {
+		// Do nothing
+	}
+
 	void initialize() {
 		// Initialize 3D framework
 		Ns_3dInitialize();
-	}
-
-	void shutdown() {
-		// Do nothing
 	}
 
 	bool getTextureParams(Ns3dTextureData* texture, u32 texID, u32& texParams) {

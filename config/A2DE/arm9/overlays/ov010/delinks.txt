@@ -10,8 +10,9 @@ src/Bases/Object316.cpp:
     .data       start:0x02123c80 end:0x02123d10
 
 src/Bases/stubs/Object325.cpp:
+    complete
     .text       start:0x020ce794 end:0x020ce83c
-    .data       start:0x02123d58 end:0x02123dc4
+    .data       start:0x02123d58 end:0x02123dbc
 
 src/Bases/stubs/Object240.cpp:
     .text       start:0x020cf544 end:0x020d0be4

@@ -205,8 +205,8 @@ StageScene::func_ov000_020a16a8 kind:function(arm,size=0x48) addr:0x020a16a8
 StageScene::func_ov000_020a16f0 kind:function(arm,size=0x40) addr:0x020a16f0
 StageScene::func_ov000_020a1730 kind:function(arm,size=0x28) addr:0x020a1730
 StageScene::func_ov000_020a1758 kind:function(arm,size=0xe4) addr:0x020a1758
-StageScene::func_ov000_020a183c kind:function(arm,size=0x60) addr:0x020a183c
-StageScene::func_ov000_020a189c kind:function(arm,size=0x180) addr:0x020a189c
+_Z19func_ov000_020a183cmm kind:function(arm,size=0x60) addr:0x020a183c
+_Z19func_ov000_020a189cm kind:function(arm,size=0x180) addr:0x020a189c
 StageScene::func_ov000_020a1a1c kind:function(arm,size=0x320) addr:0x020a1a1c
 StageScene::func_ov000_020a1d3c kind:function(arm,size=0x870) addr:0x020a1d3c
 StageScene::func_ov000_020a25ac kind:function(arm,size=0x678) addr:0x020a25ac
@@ -1476,14 +1476,8 @@ data_ov000_020cae70 kind:bss addr:0x020cae70
 data_ov000_020cae74 kind:bss addr:0x020cae74
 data_ov000_020cae80 kind:bss addr:0x020cae80
 data_ov000_020cae98 kind:bss addr:0x020cae98
-data_ov000_020caeb8 kind:bss addr:0x020caeb8
-data_ov000_020caebc kind:bss addr:0x020caebc
-data_ov000_020caec0 kind:bss addr:0x020caec0
-data_ov000_020caec4 kind:bss addr:0x020caec4
-data_ov000_020caed8 kind:bss addr:0x020caed8
-data_ov000_020caedc kind:bss addr:0x020caedc
-data_ov000_020caee0 kind:bss addr:0x020caee0
-data_ov000_020caee4 kind:bss addr:0x020caee4
+data_ov000_020caeb8 kind:bss(size=0x20) addr:0x020caeb8
+data_ov000_020caed8 kind:bss(size=0x20) addr:0x020caed8
 data_ov000_020caef8 kind:bss addr:0x020caef8
 data_ov000_020caf18 kind:bss addr:0x020caf18
 data_ov000_020caf1c kind:bss addr:0x020caf1c

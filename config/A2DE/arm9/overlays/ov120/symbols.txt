@@ -82,5 +82,3 @@ data_ov120_0218e044 kind:bss addr:0x0218e044
 data_ov120_0218e048 kind:bss addr:0x0218e048
 @0 kind:bss(size=0xc) addr:0x0218e04c local
 data_ov120_0218e058 kind:bss(size=0xa8) addr:0x0218e058
-data_ov120_0218e0b0 kind:bss addr:0x0218e0b0 ambiguous
-data_ov120_0218e0d0 kind:bss addr:0x0218e0d0 ambiguous

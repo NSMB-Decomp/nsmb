@@ -7,6 +7,7 @@
     .bss        start:0x020b6f20 end:0x020b8920 kind:bss align:32
 
 src/Minigame/ov127_020a8774.cpp:
+    complete
     .init       start:0x020a8774 end:0x020a8788
     .ctor       start:0x020a9120 end:0x020a9124
     .bss        start:0x020b6f58 end:0x020b6f60
