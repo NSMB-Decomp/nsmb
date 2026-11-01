@@ -118,9 +118,11 @@ bool VsStar::onUpdate_0()
 {
 }
 
+extern "C" u32 data_ov052_0215c43c;
 s32 VsStar::onRender()
 {
-	if (data_02085a84 != 0) {
+	bool vsMode = data_02085a84 != 0;
+	if (vsMode) {
 		if (this->_4e2 != 0) {
 			return true;
 		}
@@ -134,8 +136,9 @@ s32 VsStar::onRender()
 		Vec3_32 position = this->position;
 		Vec3_16 rotation = this->rotation;
 		Actor::wrapPosition((u32)&position, (u32)&rotation, 1);
-		drawSprite(DAT_02039200, position.x, position.y + 0x10000, a, 0, 3, &scale, (u32)&rotation, 0, 0);
+		drawSprite(data_ov052_0215c43c, position.x, position.y + 0x10000, (u8)a, 0, 3, &scale, (u16)rotation.x, 0, 0);
 	}
+	return true;
 }
 
 void func_ov010_020f9d64(void *);
