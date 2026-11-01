@@ -233,6 +233,8 @@ class Fader
 	u8 fadingState[2];
 	u8 fadeMaskShape[2];
 	u8 fadingType; /* 5C2 */
+	u8 _5c3;
+	u8 _5c4;
 
 	static Fader *current;
 

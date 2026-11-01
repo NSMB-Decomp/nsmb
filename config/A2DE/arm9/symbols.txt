@@ -118,7 +118,7 @@ _ZN3App8resetGpuEv kind:function(arm,size=0x508) addr:0x020046d8
 _ZN3App9resetVramEv kind:function(arm,size=0x44) addr:0x02004be0
 
 NitroStartUp kind:function(arm,size=0xc) addr:0x02004c24
-func_02004c30 kind:function(arm,size=0x88) addr:0x02004c30
+_Z13func_02004c30v kind:function(arm,size=0x88) addr:0x02004c30
 func_02004cb8 kind:function(arm,size=0xd8) addr:0x02004cb8
 
 _ZN3App8initBootEm kind:function(arm,size=0x6c) addr:0x02004d90
@@ -589,7 +589,7 @@ func_0201301c kind:function(arm,size=0x34) addr:0x0201301c
 _Z13func_02013050P10OptionSave kind:function(arm,size=0x14) addr:0x02013050
 func_02013064 kind:function(arm,size=0x2c) addr:0x02013064
 func_02013090 kind:function(arm,size=0x24) addr:0x02013090
-func_020130b4 kind:function(arm,size=0x4c) addr:0x020130b4
+_Z13func_020130b4v kind:function(arm,size=0x4c) addr:0x020130b4
 Save_clearLoadedSaves kind:function(arm,size=0x1c) addr:0x02013100
 _ZN6ObjectD1Ev kind:function(arm,size=0x20) addr:0x0201311c
 _ZN6ObjectD0Ev kind:function(arm,size=0x28) addr:0x0201313c

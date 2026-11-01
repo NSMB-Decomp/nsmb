@@ -45,9 +45,9 @@ from:0x020ccaf4 kind:load to:0x02085ad4 module:autoload(3)
 from:0x020ccaf8 kind:load to:0x02087650 module:autoload(3)
 from:0x020ccb00 kind:load to:0x0208b4c4 module:autoload(3)
 from:0x020ccb04 kind:load to:0x0208b4c8 module:autoload(3)
-from:0x020ccb08 kind:load to:0x0208b4c9 module:autoload(3)
-from:0x020ccb0c kind:load to:0x0208b4ca module:autoload(3)
-from:0x020ccb10 kind:load to:0x0208b4cb module:autoload(3)
+from:0x020ccb08 kind:load to:0x0208b4c8 add:0x1 module:autoload(3)
+from:0x020ccb0c kind:load to:0x0208b4c8 add:0x2 module:autoload(3)
+from:0x020ccb10 kind:load to:0x0208b4c8 add:0x3 module:autoload(3)
 from:0x020ccb4c kind:arm_call to:0x020083cc module:main
 from:0x020ccb50 kind:arm_call to:0x0200563c module:main
 from:0x020ccb5c kind:arm_call to:0x0201325c module:main

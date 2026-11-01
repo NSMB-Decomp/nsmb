@@ -1,5 +1,5 @@
 func_02043380 kind:function(arm,size=0x18) addr:0x02043380
-func_02043398 kind:function(arm,size=0x18) addr:0x02043398
+_Z13func_02043398Pt kind:function(arm,size=0x18) addr:0x02043398
 func_020433b0 kind:function(arm,size=0x18) addr:0x020433b0
 func_020433c8 kind:function(arm,size=0x18) addr:0x020433c8
 func_020433e0 kind:function(arm,size=0x18) addr:0x020433e0
