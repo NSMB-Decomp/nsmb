@@ -1,4 +1,7 @@
 #include "MPLevelSelectScene.hpp"
+#include "../system/SlotHandle.hpp"
+
+SlotHandle data_ov052_0215c8ac;
 
 void *MPLevelSelectScene::create()
 {

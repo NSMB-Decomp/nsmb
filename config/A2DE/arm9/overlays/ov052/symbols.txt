@@ -239,10 +239,10 @@ data_ov052_0215af18 kind:data(any) addr:0x0215af18
 data_ov052_0215af1c kind:data(any) addr:0x0215af1c
 data_ov052_0215af24 kind:data(any) addr:0x0215af24
 data_ov052_0215af30 kind:data(any) addr:0x0215af30
-__sinit_ov052_0215af88 kind:function(arm,size=0x34) addr:0x0215af88
+__sinit_MPLevelSelectScene.cpp kind:function(arm,size=0x34) addr:0x0215af88
 __sinit_ov052_0215afbc kind:function(arm,size=0x2b8) addr:0x0215afbc
 __sinit_ov052_0215b274 kind:function(arm,size=0x33c) addr:0x0215b274
-.p__sinit_ov052_0215af88 kind:data(word) addr:0x0215b5b0
+.p__sinit_MPLevelSelectScene.cpp kind:data(word) addr:0x0215b5b0
 .p__sinit_ov052_0215afbc kind:data(word) addr:0x0215b5b4
 .p__sinit_ov052_0215b274 kind:data(word) addr:0x0215b5b8
 Object15_Profile kind:data(any) addr:0x0215b5c0
@@ -526,8 +526,8 @@ data_ov052_0215c89c kind:bss addr:0x0215c89c
 data_ov052_0215c8a0 kind:bss addr:0x0215c8a0
 _ZGVptmfs$372 kind:bss addr:0x0215c8a4
 data_ov052_0215c8a8 kind:bss addr:0x0215c8a8
-data_ov052_0215c8ac kind:bss addr:0x0215c8ac
-data_ov052_0215c8b4 kind:bss addr:0x0215c8b4
+data_ov052_0215c8ac kind:bss(size=0x8) addr:0x0215c8ac
+@0 kind:bss(size=0xc) addr:0x0215c8b4 local
 data_ov052_0215c8c0 kind:bss addr:0x0215c8c0
 ptmfs$372 kind:bss addr:0x0215c960
 data_ov052_0215ca00 kind:bss addr:0x0215ca00

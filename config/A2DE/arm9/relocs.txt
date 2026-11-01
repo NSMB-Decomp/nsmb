@@ -1458,8 +1458,8 @@ from:0x0200cdd4 kind:load to:0x020391e0 add:0x8 module:main
 from:0x0200cdd8 kind:load to:0x02080304 module:autoload(2)
 from:0x0200cddc kind:load to:0x02087704 module:autoload(3)
 from:0x0200cde0 kind:load to:0x020877e0 module:autoload(3)
-from:0x0200cde4 kind:load to:0x02087724 module:autoload(3)
-from:0x0200cde8 kind:load to:0x02087728 module:autoload(3)
+from:0x0200cde4 kind:load to:0x02087720 add:0x4 module:autoload(3)
+from:0x0200cde8 kind:load to:0x02087720 add:0x8 module:autoload(3)
 from:0x0200cdec kind:load to:0x020876e4 module:autoload(3)
 from:0x0200cdf0 kind:load to:0x02026314 module:main
 from:0x0200ce00 kind:load to:0x02087760 module:autoload(3)
@@ -1472,8 +1472,8 @@ from:0x0200cf08 kind:arm_call to:0x01ffc9c0 module:itcm
 from:0x0200d26c kind:load to:0x020391e0 add:0x8 module:main
 from:0x0200d270 kind:load to:0x02087704 module:autoload(3)
 from:0x0200d274 kind:load to:0x020877e0 module:autoload(3)
-from:0x0200d278 kind:load to:0x02087724 module:autoload(3)
-from:0x0200d27c kind:load to:0x02087728 module:autoload(3)
+from:0x0200d278 kind:load to:0x02087720 add:0x4 module:autoload(3)
+from:0x0200d27c kind:load to:0x02087720 add:0x8 module:autoload(3)
 from:0x0200d280 kind:load to:0x02087760 module:autoload(3)
 from:0x0200d284 kind:load to:0x02087be0 module:autoload(3)
 from:0x0200d288 kind:load to:0x020876e4 module:autoload(3)
@@ -3553,8 +3553,8 @@ from:0x0201df84 kind:load to:0x0208af3c module:autoload(3)
 from:0x0201df88 kind:load to:0x0208af44 module:autoload(3)
 from:0x0201df8c kind:load to:0x0208af84 module:autoload(3)
 from:0x0201dfd8 kind:load to:0x0208b098 module:autoload(3)
-from:0x0201dfdc kind:load to:0x0208b0b8 module:autoload(3)
-from:0x0201dfe0 kind:load to:0x0208b0bc module:autoload(3)
+from:0x0201dfdc kind:load to:0x0208b0b4 add:0x4 module:autoload(3)
+from:0x0201dfe0 kind:load to:0x0208b0b4 add:0x8 module:autoload(3)
 from:0x0201dfe4 kind:load to:0x0208b08c module:autoload(3)
 from:0x0201e008 kind:load to:0x0203c6c0 module:main
 from:0x0201e01c kind:load to:0x0203c6c0 module:main
@@ -3617,8 +3617,8 @@ from:0x0201e604 kind:arm_call to:0x0201e1d4 module:main
 from:0x0201e634 kind:load to:0x02085a84 module:autoload(3)
 from:0x0201e638 kind:load to:0x02039200 add:0x8 module:main
 from:0x0201e63c kind:load to:0x0208b168 module:autoload(3)
-from:0x0201e640 kind:load to:0x0208b0b8 module:autoload(3)
-from:0x0201e644 kind:load to:0x0208b0bc module:autoload(3)
+from:0x0201e640 kind:load to:0x0208b0b4 add:0x4 module:autoload(3)
+from:0x0201e644 kind:load to:0x0208b0b4 add:0x8 module:autoload(3)
 from:0x0201e648 kind:load to:0x0208b08c module:autoload(3)
 from:0x0201e660 kind:arm_call to:0x0201e400 module:main
 from:0x0201e72c kind:load to:0x02039200 add:0x8 module:main

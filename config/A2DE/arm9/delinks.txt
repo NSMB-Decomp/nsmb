@@ -84,5 +84,37 @@ src/Bases/stubs/Object327.cpp:
     .text       start:0x0202584c end:0x02025878
     .data       start:0x0203d320 end:0x0203d330
 
+src/graphics/oam.cpp:
+    .text       start:0x0200debc end:0x0200dee0
+    .init       start:0x02025b0c end:0x02025b5c
+    .ctor       start:0x02039180 end:0x02039184
+    .autobss_3  start:0x02087714 end:0x02087750
+
+src/unknown/main_02025e7c.cpp:
+    .text       start:0x0201ec64 end:0x0201ec88
+    .init       start:0x02025e7c end:0x02025ecc
+    .ctor       start:0x0203919c end:0x020391a0
+    .autobss_3  start:0x0208b0a8 end:0x0208b0cc
+
+src/unknown/main_02025ecc.cpp:
+    .init       start:0x02025ecc end:0x02025f14
+    .ctor       start:0x020391a0 end:0x020391a4
+    .autobss_3  start:0x0208b4a8 end:0x0208b4c4
+
+src/unknown/main_02026074.cpp:
+    .init       start:0x02026074 end:0x020260bc
+    .ctor       start:0x020391b8 end:0x020391bc
+    .autobss_3  start:0x0208b73c end:0x0208b758
+
+src/unknown/main_020260bc.cpp:
+    .init       start:0x020260bc end:0x02026100
+    .ctor       start:0x020391bc end:0x020391c0
+    .autobss_3  start:0x0208b758 end:0x0208b770
+
+src/unknown/main_02026100.cpp:
+    .init       start:0x02026100 end:0x02026148
+    .ctor       start:0x020391c0 end:0x020391c4
+    .autobss_3  start:0x0208b770 end:0x0208b788
+
 src/ProcessManager.cpp:
     .init       start:0x0202614c end:0x02026244

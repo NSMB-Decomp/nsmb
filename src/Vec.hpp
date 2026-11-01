@@ -154,6 +154,11 @@ struct Vec3_16 : public Vec3_16s {
       public:
 	inline Vec3_16() : Vec3_16s() {};
 	inline Vec3_16(Vec3_16 *a) : Vec3_16s() {};
+	inline Vec3_16(s16 x, s16 y, s16 z) {
+		this->x = x;
+		this->y = y;
+		this->z = z;
+	}
 	#if defined(VER_Y7QJ)
 		inline ~Vec3_16() {};
 	#else

@@ -177,10 +177,8 @@ data_02087704 kind:bss addr:0x02087704
 data_02087708 kind:bss addr:0x02087708
 data_0208770c kind:bss addr:0x0208770c
 data_02087710 kind:bss addr:0x02087710
-data_02087714 kind:bss addr:0x02087714
-data_02087720 kind:bss addr:0x02087720
-data_02087724 kind:bss addr:0x02087724
-data_02087728 kind:bss addr:0x02087728
+@0 kind:bss(size=0xc) addr:0x02087714 local
+data_02087720 kind:bss(size=0x30) addr:0x02087720
 data_02087760 kind:bss addr:0x02087760
 data_020877a0 kind:bss addr:0x020877a0
 data_020877e0 kind:bss addr:0x020877e0
@@ -349,10 +347,8 @@ data_0208b094 kind:bss addr:0x0208b094
 data_0208b098 kind:bss addr:0x0208b098
 data_0208b09c kind:bss addr:0x0208b09c
 data_0208b0a0 kind:bss addr:0x0208b0a0
-data_0208b0a8 kind:bss addr:0x0208b0a8
-data_0208b0b4 kind:bss addr:0x0208b0b4
-data_0208b0b8 kind:bss addr:0x0208b0b8
-data_0208b0bc kind:bss addr:0x0208b0bc
+@1 kind:bss(size=0xc) addr:0x0208b0a8 local
+data_0208b0b4 kind:bss(size=0x18) addr:0x0208b0b4
 data_0208b0cc kind:bss addr:0x0208b0cc
 data_0208b0ce kind:bss addr:0x0208b0ce
 data_0208b0d0 kind:bss addr:0x0208b0d0
@@ -410,8 +406,8 @@ data_0208b498 kind:bss addr:0x0208b498
 data_0208b49c kind:bss addr:0x0208b49c
 data_0208b4a0 kind:bss addr:0x0208b4a0
 data_0208b4a4 kind:bss addr:0x0208b4a4
-data_0208b4a8 kind:bss addr:0x0208b4a8
-data_0208b4b4 kind:bss addr:0x0208b4b4
+@2 kind:bss(size=0xc) addr:0x0208b4a8 local
+data_0208b4b4 kind:bss(size=0x10) addr:0x0208b4b4
 data_0208b4c4 kind:bss addr:0x0208b4c4
 data_0208b4c8 kind:bss addr:0x0208b4c8
 data_0208b4c9 kind:bss addr:0x0208b4c9
@@ -505,12 +501,12 @@ data_0208b72c kind:bss addr:0x0208b72c
 data_0208b730 kind:bss addr:0x0208b730
 data_0208b734 kind:bss addr:0x0208b734
 data_0208b738 kind:bss addr:0x0208b738
-data_0208b73c kind:bss addr:0x0208b73c
-data_0208b748 kind:bss addr:0x0208b748
-data_0208b758 kind:bss addr:0x0208b758
-data_0208b764 kind:bss addr:0x0208b764
-data_0208b770 kind:bss addr:0x0208b770
-data_0208b77c kind:bss addr:0x0208b77c
+@3 kind:bss(size=0xc) addr:0x0208b73c local
+data_0208b748 kind:bss(size=0x10) addr:0x0208b748
+@4 kind:bss(size=0xc) addr:0x0208b758 local
+data_0208b764 kind:bss(size=0xc) addr:0x0208b764
+@5 kind:bss(size=0xc) addr:0x0208b770 local
+data_0208b77c kind:bss(size=0xc) addr:0x0208b77c
 data_0208b788 kind:bss addr:0x0208b788
 data_0208b78c kind:bss addr:0x0208b78c
 data_0208b790 kind:bss addr:0x0208b790
