@@ -22,6 +22,7 @@ public:
 	inline FireSnake();
 
 	s32 onCreate();
+	s32 onDestroy();
 };
 ActorProfile FireSnake_Profile = {
     FireSnake::create,
